@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+	<head>
+		<title>永恒的遗失古都 - 亚特兰蒂斯</title>
+
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta charset="UTF-8" />
+		<meta name="author" content="FreeKnight" />
+		<meta name="description" content="A indie Html5 game studio,play games,enjoy life." />
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link rel="icon" type="image/png" href="../../img/favicon.ico" sizes="16x16">
+		<meta name="theme-color" content="#ffffff">
+
+		<link rel="stylesheet" type="text/css" href="assets/css/chat.css">
+		
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/httpTuling.js"></script>
+
+		<script type="text/javascript">
+			window.onerror = function(errorMessage, scriptURI, lineNumber) {
+				var erorMsg = {
+					message: errorMessage,
+					script: scriptURI,
+					line: lineNumber
+				};
+				alert(errorMessage);
+			};
+		</script>
+	</head>
+
+	<body class="keBody" >
+	<h1 class="keTitle">FreeKnight聊天机器人</h1>
+	<div class="kePublic" style="filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8; -khtml-opacity: 0.8;">
+		<div class="content">
+			<div class="chatBox">
+				<div class="chatLeft">
+					<div class="chat01">
+						<div class="chat01_title">
+							<ul class="talkTo">
+								<li><a href="javascript:;">Alisa</a></li></ul>
+								<li><a href="javascript:;"></a></li></ul>
+							<a class="close_btn" href="javascript:;"></a>
+						</div>
+						<div id="containmessage" class="chat01_content">
+						</div>
+					</div>
+					<div class="chat02">
+						<div class="chat02_title">
+
+						</div>
+						<div class="chat02_content">
+							<textarea id="textmessage"></textarea>
+						</div>
+						<div class="chat02_bar">
+							<ul>
+								<li style="right: 5px; top: 5px;">
+									<a href="javascript:;">
+										<button class="button button-rounded button-tiny" onclick="sendmessage0();" >发送消息</button>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="chatRight">
+					<div class="chat03">
+						<div class="chat03_title">
+							<label class="chat03_title_t">
+							讨论组成员</label>
+						</div>
+						<div class="chat03_content">
+							<ul>
+								<li class="choosed">
+									<label class="online">
+									</label>
+									<a href="javascript:;">
+										<img src="assets/img/Alisa.jpg"></a><a href="javascript:;" class="chat03_name">Alisa</a>
+								</li>
+								<li>
+									<label class="offline">
+									</label>
+									<a href="javascript:;">
+										<img src="assets/img/Custom.jpg"></a><a href="javascript:;" class="chat03_name">FreeKnight</a>
+								</li>
+								<hr/>
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage13();" >搜索新闻</button>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage12();" >搜索图片</button>  
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage11();" >快递查询</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage10();" >空气质量</button>        
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage9();" >百科查询</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage1();" >笑话大全</button>         
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage2();" >故事大全</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage16();" >菜谱查询</button>
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage15();" >列车查询</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage14();" >机票查询</button>
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage8();" >生肖运势</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage7();" >星座运势</button>
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage6();" >号码凶吉</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage5();" >名字凶吉</button>
+								</li> 
+								<li>	
+										<button class="button button-rounded button-tiny" onclick="sendmessage4();" >周公解梦</button>
+										<button class="button button-rounded button-tiny" onclick="sendmessage3();" >成语接龙</button>
+								</li> 
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div style="clear: both;">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
