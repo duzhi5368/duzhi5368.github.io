@@ -98,19 +98,18 @@
       this.load.spritesheet('mob_turret_1', 'assets/mob_turret_1.png', 24, 28);
 
       this.load.spritesheet('bonus_cube', 'assets/cubes.png', 24, 24);
-      this.load.spritesheet('bonus_coin', 'assets/coins.png', 12, 12);
 
 	  // 音频资源
       this.load.audio('shoot_player_1', 'assets/audio/shoot_player_1.wav');
-      this.load.audio('shoot_player_2', 'assets/audio/shoot_player_2.wav');
-      this.load.audio('shoot_player_3', 'assets/audio/shoot_player_3.wav');
-      this.load.audio('shoot_player_4', 'assets/audio/shoot_player_4.wav');
-      this.load.audio('shoot_player_5', 'assets/audio/shoot_player_5.wav');
+      this.load.audio('shoot_player_2', 'assets/audio/shoot_player_1.wav');
+      this.load.audio('shoot_player_3', 'assets/audio/shoot_player_1.wav');
+      this.load.audio('shoot_player_4', 'assets/audio/shoot_player_1.wav');
+      this.load.audio('shoot_player_5', 'assets/audio/shoot_player_1.wav');
 
       this.load.audio('explosion_1', 'assets/audio/explosion_1.wav');
-      this.load.audio('explosion_2', 'assets/audio/explosion_2.wav');
-      this.load.audio('explosion_3', 'assets/audio/explosion_3.wav');
-      this.load.audio('explosion_4', 'assets/audio/explosion_4.wav');
+      this.load.audio('explosion_2', 'assets/audio/explosion_1.wav');
+      this.load.audio('explosion_3', 'assets/audio/explosion_1.wav');
+      this.load.audio('explosion_4', 'assets/audio/explosion_1.wav');
 
       this.load.audio('hurt_1', 'assets/audio/hurt_1.wav');
       this.load.audio('collect_1', 'assets/audio/collect_1.wav');

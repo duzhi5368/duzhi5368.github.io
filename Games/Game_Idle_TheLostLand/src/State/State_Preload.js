@@ -174,10 +174,10 @@ var MACRO_AUTO_RUN_STATE;
         },
         loadBgm : function () {
             this.game.load.audio('AUDIO_MenuMusic',          'asset/game/bgm/menuMusic.mp3');
-            this.game.load.audio('AUDIO_ReasonEnding',       'asset/game/bgm/reasonEnding.mp3');
-            this.game.load.audio('AUDIO_NightCredits',       'asset/game/bgm/nightCredits.mp3');
-            this.game.load.audio('AUDIO_DaylightsOpening',   'asset/game/bgm/daylightsOpening.mp3');
-            this.game.load.audio('AUDIO_GameMusic',           'asset/game/bgm/gameMusic.mp3');
+            this.game.load.audio('AUDIO_ReasonEnding',       'asset/game/bgm/menuMusic.mp3');
+            this.game.load.audio('AUDIO_NightCredits',       'asset/game/bgm/menuMusic.mp3');
+            this.game.load.audio('AUDIO_DaylightsOpening',   'asset/game/bgm/menuMusic.mp3');
+            this.game.load.audio('AUDIO_GameMusic',           'asset/game/bgm/menuMusic.mp3');
         },
     };
 }(GameApp));
