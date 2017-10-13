@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on The lost island</title>
-    <link>/tags/</link>
+    <link>https://duzhi5368.github.io/tags/</link>
     <description>Recent content in Tags on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 02 Oct 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://duzhi5368.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo</title>
-      <link>/tags/hugo/</link>
+      <link>https://duzhi5368.github.io/tags/hugo/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/hugo/</guid>
+      <guid>https://duzhi5368.github.io/tags/hugo/</guid>
       <description></description>
     </item>
     
     <item>
       <title>网页生成</title>
-      <link>/tags/%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90/</link>
+      <link>https://duzhi5368.github.io/tags/%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
       
-      <guid>/tags/%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90/</guid>
+      <guid>https://duzhi5368.github.io/tags/%E7%BD%91%E9%A1%B5%E7%94%9F%E6%88%90/</guid>
       <description></description>
     </item>
     
