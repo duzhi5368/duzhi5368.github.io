@@ -222,9 +222,9 @@
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-10-03T00:00:00Z">
+      <time itemprop="datePublished" datetime="2017-10-13T00:00:00Z">
         
-  十月 3, 2017
+  十月 13, 2017
 
       </time>
     
@@ -249,7 +249,15 @@
               <p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
 </p>
 
-<p>#Markdown语法</p>
+<h2 id="标题标签">标题标签</h2>
+
+<pre><code class="language-js"># Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
+</code></pre>
 
 <h1 id="heading-1">Heading 1</h1>
 
@@ -263,19 +271,44 @@
 
 <h6 id="heading-6">Heading 6</h6>
 
-<h2 id="paragraph">Paragraph</h2>
+<h2 id="特殊字符">特殊字符</h2>
 
-<p>Lorem ipsum dolor sit amet, [test link]() consectetur adipiscing elit. <strong>Strong text</strong> pellentesque ligula commodo viverra vehicula. <em>Italic text</em> at ullamcorper enim. Morbi a euismod nibh. <u>Underline text</u> non elit nisl. <del>Deleted text</del> tristique, sem id condimentum tempus, metus lectus venenatis mauris, sit amet semper lorem felis a eros. Fusce egestas nibh at sagittis auctor. Sed ultricies ac arcu quis molestie. Donec dapibus nunc in nibh egestas, vitae volutpat sem iaculis. Curabitur sem tellus, elementum nec quam id, fermentum laoreet mi. Ut mollis ullamcorper turpis, vitae facilisis velit ultricies sit amet. Etiam laoreet dui odio, id tempus justo tincidunt id. Phasellus scelerisque nunc sed nunc ultricies accumsan.</p>
+<pre><code class="language-C">[test link]() 
+**Strong text** 
+*Italic text* 
+&lt;u&gt;Underline text&lt;/u&gt;
+~~Deleted text~~ 
+`Sed erat diam`
+</code></pre>
 
-<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. <code>Sed erat diam</code>, blandit eget felis aliquam, rhoncus varius urna. Donec tellus sapien, sodales eget ante vitae, feugiat ullamcorper urna. Praesent auctor dui vitae dapibus eleifend. Proin viverra mollis neque, ut ullamcorper elit posuere eget.</p>
+<p>[test link]()
+<strong>Strong text</strong>
+<em>Italic text</em>
+<u>Underline text</u>
+<del>Deleted text</del>
+<code>Sed erat diam</code></p>
 
-<h2 id="list-types">List Types</h2>
+<h2 id="列表类型">列表类型</h2>
 
-<h3 id="definition-list-dl">Definition List (dl)</h3>
+<h3 id="标题列表-dl">标题列表 (dl)</h3>
 
-<dl><dt>Definition List Title</dt><dd>This is a definition list division.</dd></dl>
+<pre><code class="language-C">&lt;dl&gt;&lt;dt&gt;Title&lt;/dt&gt;
+&lt;dd&gt;List item1&lt;/dd&gt;
+&lt;dd&gt;List item2&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
 
-<h3 id="ordered-list-ol">Ordered List (ol)</h3>
+<dl><dt>Title</dt>
+<dd>List item1</dd>
+<dd>List item2</dd>
+</dl>
+
+<h3 id="有序列表-ol">有序列表 (ol)</h3>
+
+<pre><code class="language-C">1. List Item 1
+2. List Item 2
+3. List Item 3
+</code></pre>
 
 <ol>
 <li>List Item 1</li>
@@ -283,7 +316,12 @@
 <li>List Item 3</li>
 </ol>
 
-<h3 id="unordered-list-ul">Unordered List (ul)</h3>
+<h3 id="无序列表-ul">无序列表 (ul)</h3>
+
+<pre><code class="language-C">- List Item 1
+- List Item 2
+- List Item 3
+</code></pre>
 
 <ul>
 <li>List Item 1</li>
@@ -291,7 +329,15 @@
 <li>List Item 3</li>
 </ul>
 
-<h2 id="table">Table</h2>
+<h2 id="表单">表单</h2>
+
+<pre><code class="language-C">|  Header 1  | Header 2   | Header 3   |
+|:----------:|------------|------------|
+| Division 1 | Division 2 | Division 3 |
+| Division 1 | Division 2 | Division 3 |
+| Division 1 | Division 2 | Division 3 |
+| Division 1 | Division 2 | Division 3 |
+</code></pre>
 
 <table>
 <thead>
@@ -329,17 +375,55 @@
 </tbody>
 </table>
 
-<h2 id="misc-stuff-abbr-acronym-sub-sup-etc">Misc Stuff - abbr, acronym, sub, sup, etc.</h2>
+<h2 id="特殊字体">特殊字体</h2>
 
-<p>Lorem <sup>superscript</sup> dolor <sub>subscript</sub> amet, consectetuer adipiscing <kdb>ctrl + c</kdb>. Nullam dignissim convallis est. Quisque aliquam. <cite>cite</cite>. Nunc iaculis suscipit dui.
- Nam
-sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula, nisl. Praesent mattis, massa quis luctus fermentum, turpis mi volutpat justo, eu volutpat enim diam eget metus. Maecenas ornare tortor. Donec sed tellus eget sapien fringilla nonummy. <acronym title="National Basketball Association">NBA</acronym> Mauris a ante. Suspendisse quam sem, consequat at, commodo vitae, feugiat in, nunc. Morbi imperdiet augue quis tellus.  <abbr title="Avenue">AVE</abbr></p>
+<pre><code class="language-C">NormalWords &lt;sup&gt;superscript&lt;/sup&gt; NormalWords
 
-<p>19: 额外Tags</p>
+NormalWords &lt;sub&gt;subscript&lt;/sub&gt; NormalWords
 
-<h1 id="alert">Alert</h1>
+NormalWords &lt;kdb&gt;ctrl + c&lt;/kdb&gt; NormalWords
 
-<p>Read documentation to know how to use <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#alert">Alert tag</a></p>
+NormalWords &lt;cite&gt;cite&lt;/cite&gt; NormalWords
+
+NormalWords &lt;acronym title=&quot;National Basketball Association&quot;&gt;NBA&lt;/acronym&gt; NormalWords
+
+NormalWords &lt;abbr title=&quot;Avenue&quot;&gt;AVE&lt;/abbr&gt; NormalWords
+</code></pre>
+
+<p>NormalWords <sup>superscript</sup> NormalWords</p>
+
+<p>NormalWords <sub>subscript</sub> NormalWords</p>
+
+<p>NormalWords <kdb>ctrl + c</kdb> NormalWords</p>
+
+<p>NormalWords <cite>cite</cite> NormalWords</p>
+
+<p>NormalWords <acronym title="National Basketball Association">NBA</acronym> NormalWords</p>
+
+<p>NormalWords <abbr title="Avenue">AVE</abbr> NormalWords</p>
+
+<h1 id="hugo特殊标签">Hugo特殊标签</h1>
+
+<h2 id="警告色">警告色</h2>
+
+<p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#alert">Alert tag</a></p>
+
+<pre><code class="language-C"><div class="alert info ">
+  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
+</div>
+
+<div class="alert success ">
+  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
+</div>
+
+<div class="alert warning ">
+  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
+</div>
+
+<div class="alert danger ">
+  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
+</div>
+</code></pre>
 
 <div class="alert info ">
   <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
@@ -357,17 +441,16 @@ sit amet sem. Aliquam libero nisi, imperdiet at, tincidunt nec, gravida vehicula
   <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
 </div>
 
-<h1 id="block-quote">Block Quote</h1>
+<h2 id="引用">引用</h2>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#Block_Quote">Block Quote tag</a></p>
+<p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Block_Quote">Block Quote tag</a></p>
 
-<p><strong>Normal blockquote</strong></p>
+<pre><code class="language-C">
+**普通引用**
 
-<blockquote>
-<p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
-</blockquote>
+&gt; Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.
 
-<p><strong>Quote from a book</strong></p>
+**从书本引用**
 
 <blockquote>
   <p>
@@ -383,7 +466,7 @@ Do not just seek happiness for yourself. Seek happiness for all. Through kindnes
   </footer>
 </blockquote>
 
-<p><strong>Quote from Twitter</strong></p>
+**从Twitter引用**
 
 <blockquote>
   <p>
@@ -399,7 +482,7 @@ NEW: DevDocs now comes with syntax highlighting. //devdocs.io
   </footer>
 </blockquote>
 
-<p><strong>Quote from an article on the web</strong></p>
+**从网络文章引用**
 
 <blockquote>
   <p>
@@ -413,19 +496,75 @@ Every interaction is both precious and an opportunity to delight.
   </footer>
 </blockquote>
 
-<h1 id="code-block">Code Block</h1>
+</code></pre>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#Code_Block">Code Block tag</a></p>
+<p><strong>普通引用</strong></p>
+
+<blockquote>
+<p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
+</blockquote>
+
+<p><strong>从书本引用</strong></p>
+
+<blockquote>
+  <p>
+Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
+</p>
+  <footer>
+    <strong>David Levithan</strong>
+    
+      
+        <cite>Wide Awake</cite>
+      
+    
+  </footer>
+</blockquote>
+
+<p><strong>从Twitter引用</strong></p>
+
+<blockquote>
+  <p>
+NEW: DevDocs now comes with syntax highlighting. //devdocs.io
+</p>
+  <footer>
+    <strong>@DevDocs</strong>
+    
+      
+        <cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">https://twitter.com/devdocs/status/356095192085962752</a></cite>
+      
+    
+  </footer>
+</blockquote>
+
+<p><strong>从网络文章引用</strong></p>
+
+<blockquote>
+  <p>
+Every interaction is both precious and an opportunity to delight.
+</p>
+  <footer>
+    <strong>Seth Godin</strong>
+    
+      <cite><a href="//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite>
+    
+  </footer>
+</blockquote>
+
+<h2 id="代码">代码</h2>
+
+<p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Code_Block">Code Block tag</a></p>
 
 <p></p>
 
-<p><strong>Normal code block</strong></p>
+<pre><code class="language-C">
+**普通代码块**
 
-<pre><code class="language-js">alert('Hello World!');
+```js
 alert('Hello World!');
-</code></pre>
+alert('Hello World!');
+```
 
-<p><strong>With caption</strong></p>
+**带标题的代码块**
 
 
   
@@ -457,7 +596,7 @@ array.map(callback[, thisArg])</pre>
   </table>
 </figure>
 
-<p><strong>With caption and URL</strong></p>
+**带标题和引用的代码块**
 
 
   
@@ -505,21 +644,115 @@ RewriteCond %{REQUEST_FILENAME} !-f
   </table>
 </figure>
 
-<h1 id="gist">Gist</h1>
+</code></pre>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#Gist">Gist tag</a></p>
+<p><strong>普通代码块</strong></p>
+
+<pre><code class="language-js">alert('Hello World!');
+alert('Hello World!');
+</code></pre>
+
+<p><strong>带标题的代码块</strong></p>
+
+
+  
+    
+  
+  
+  
+  
+
+
+<figure class="highlight ">
+  <figcaption>
+    
+      <span>Array.map</span>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class=" code-highlight">
+array.map(callback[, thisArg])</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+<p><strong>带标题和引用的代码块</strong></p>
+
+
+  
+    
+  
+  
+    
+  
+  
+    
+  
+  
+    
+  
+
+
+<figure class="highlight apacheconf">
+  <figcaption>
+    
+      <span>apache.conf</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">apache.conf</a>
+    
+  </figcaption>
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre>
+        </td>
+        <td class="code">
+          <pre class="apacheconf code-highlight">
+# rewrite`s rules for wordpress pretty url
+LoadModule rewrite_module  modules/mod_rewrite.so
+RewriteCond %{REQUEST_FILENAME} !-f
+
+&lt;Location /maps/&gt;
+  RewriteMap map txt:map.txt
+  RewriteMap lower int:tolower
+  RewriteCond %{REQUEST_URI} ^/([^/.]&#43;)\.html$ [NC]
+  RewriteCond ${map:${lower:%1}|NOT_FOUND} !NOT_FOUND
+  RewriteRule .? /index.php?q=${map:${lower:%1}} [NC,L]
+&lt;/Location&gt;</pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+<h2 id="github的gist">Github的Gist</h2>
+
+<p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Gist">Gist tag</a></p>
 
 <p></p>
+
+<pre><code class="language-C">
+<script src="//gist.github.com/imathis/996818.js"></script>
+
+</code></pre>
 
 <script src="//gist.github.com/imathis/996818.js"></script>
 
-<h1 id="image">Image</h1>
+<h2 id="图片">图片</h2>
 
-<p>Read documentation to know how to use <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#image">Image tag</a></p>
+<p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#image">Image tag</a></p>
 
 <p></p>
 
-<p>
+<pre><code class="language-C">
+
 
  
   
@@ -632,6 +865,34 @@ RewriteCond %{REQUEST_FILENAME} !-f
 </div>
 
 
+</code></pre>
+
+<p>
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+
+<div class="figure fig-100" >
+  
+    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-15.jpg" data-fancybox-group="">
+  
+    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-15-750.jpg" >
+  
+    </a>
+  
+  
+</div>
+
+
 
  
   
@@ -649,11 +910,40 @@ RewriteCond %{REQUEST_FILENAME} !-f
     
   
 
-<div class="figure nocaption fig-33" >
+<div class="figure nocaption fig-50" >
   
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-9.jpg" data-fancybox-group="">
+    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-4.jpg" title="Ferrari" data-fancybox-group="">
   
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-9-250.jpg" >
+    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-4-375.jpg"  alt="Ferrari">
+  
+    </a>
+  
+  
+</div>
+
+
+
+ 
+  
+  
+  
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+
+<div class="figure nocaption fig-50" >
+  
+    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-12.jpg" title="BMW i8 Concept" data-fancybox-group="">
+  
+    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-12-375.jpg"  alt="BMW i8 Concept">
   
     </a>
   
@@ -680,530 +970,34 @@ RewriteCond %{REQUEST_FILENAME} !-f
 
 <div class="figure nocaption fig-33" >
   
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-2.jpg" data-fancybox-group="">
+    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-14.jpg" data-fancybox-group="">
   
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-2-250.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure right fig-75" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-11.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-11-560.jpg" >
+    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-14-250.jpg" >
   
     </a>
   
   
 </div>
-
-
-
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure right fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-8.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-8-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure right fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-10.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-10-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-      
-    
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure right fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-5.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-5-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-50" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-13.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-13-375.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-17.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-17-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-18.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-18-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-19.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-19-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-20.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-20-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-  <div style="clear:both;"></div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-21.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-21-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-22.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-22-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-23.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-23-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-<div class="figure fig-25" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-24.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-24-185.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-  <div style="clear:both;"></div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-25-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-26-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-27-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-28-150.jpg" >
-  
-  
-</div>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-29-150.jpg" >
-  
-  
-</div>
-
-  <div style="clear:both;"></div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-35-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-30-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-31-150.jpg" >
-  
-  
-</div>
-
-
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-32-150.jpg" >
-  
-  
-</div>
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-
-
-<div class="figure fig-20" >
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-34-150.jpg" >
-  
-  
-</div>
-
-  <div style="clear:both;"></div>
 </p>
 
-<h1 id="jsfiddle">jsFiddle</h1>
+<h2 id="jsfiddle">jsFiddle</h2>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#jsFiddle">jsFiddle tag</a></p>
+<p>参考 <a href="https://hexo.io/docs/tag-plugins.html#jsFiddle">jsFiddle tag</a></p>
 
 <p></p>
 
+<pre><code class="language-C">
 <iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light" frameborder="0" allowfullscreen=""></iframe>
 
-<h1 id="pull-quote">Pull Quote</h1>
+</code></pre>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#Pull_Quote">Pull Quote tag</a></p>
+<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light" frameborder="0" allowfullscreen=""></iframe>
 
-<p>Donec non tempus arcu.
+<h2 id="pull-quote">Pull Quote</h2>
+
+<p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Pull_Quote">Pull Quote tag</a></p>
+
+<pre><code class="language-C">
 Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla. Maecenas mattis interdum ante, quis sagittis.
 <blockquote class="pullquote left">
 	<p>
@@ -1211,29 +1005,51 @@ Here is a pullquote left. Lorem ipsum dolor sit amet, consectetur adipiscing eli
 </p>
 </blockquote>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus molestie arcu, et
-fringilla mauris placerat ac. Nullam luctus bibendum risus. Ut cursus sed ipsum feugiat egestas. Suspendisse elementum, velit eu consequat consequat, augue lorem dapibus libero, eget pulvinar dolor est sit amet nulla. Suspendisse a porta tortor, et posuere mi. Pellentesque ultricies, mi quis volutpat malesuada, erat felis vulputate nisl, ac congue ante tortor ut ante. Proin aliquam sem vel mauris tincidunt, elementum ullamcorper nisl pretium, ultrices cursus justo. Mauris porttitor commodo eros, ac ornare orci interdum in. Cras fermentum cursus leo sed mattis. In dignissim lorem sem, sit amet elementum mauris venenatis ac.
+fringilla mauris placerat ac. Nullam luctus bibendum risus. Ut cursus sed ipsum feugiat egestas. Suspendisse elementum, Mauris porttitor commodo eros, ac ornare orci interdum in. Cras fermentum cursus leo sed mattis. In dignissim lorem sem, sit amet elementum mauris venenatis ac.
 <blockquote class="pullquote right">
 	<p>
 Here is a pullquote right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 </p>
 </blockquote>
 Donec non tempus arcu. Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla.
-Maecenas mattis interdum ante, quis sagittis nibh cursus et. Nulla facilisi. Morbi convallis gravida tortor, ut fermentum enim gravida et. Nunc vel dictum nisl, non ultrices libero.
-Proin vestibulum felis eget orci consectetur lobortis. Vestibulum augue nulla, iaculis vitae augue vehicula,
+dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.
+
+</code></pre>
+
+<p>Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla. Maecenas mattis interdum ante, quis sagittis.
+<blockquote class="pullquote left">
+	<p>
+Here is a pullquote left. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+</blockquote>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus molestie arcu, et
+fringilla mauris placerat ac. Nullam luctus bibendum risus. Ut cursus sed ipsum feugiat egestas. Suspendisse elementum, Mauris porttitor commodo eros, ac ornare orci interdum in. Cras fermentum cursus leo sed mattis. In dignissim lorem sem, sit amet elementum mauris venenatis ac.
+<blockquote class="pullquote right">
+	<p>
+Here is a pullquote right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+</blockquote>
+Donec non tempus arcu. Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla.
 dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.</p>
 
-<h1 id="highlight-text">Highlight text</h1>
+<h2 id="文本高亮">文本高亮</h2>
 
-<p>Read documentation to know how to use <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#highlight-text">Highlight text tag</a></p>
+<p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#highlight-text">Highlight text tag</a></p>
 
-<p><span class="highlight-text red">highlight red</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text green">highlight green</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text blue">highlight blue</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text purple">highlight purple</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text orange">highlight orange</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text yellow">highlight yellow</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text cyan">highlight cyan</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text primary">highlight primary</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text success">highlight success</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text warning">highlight warning</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.<span class="highlight-text danger">highlight danger</span> dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.</p>
+<pre><code class="language-C">
+&lt;p&gt;<span class="highlight-text red">highlight red</span><span class="highlight-text green">highlight green</span> <span class="highlight-text blue">highlight blue</span> <span class="highlight-text purple">highlight purple</span><span class="highlight-text orange">highlight orange</span><span class="highlight-text yellow">highlight yellow</span> <span class="highlight-text cyan">highlight cyan</span> <span class="highlight-text primary">highlight primary</span> <span class="highlight-text success">highlight success</span> <span class="highlight-text warning">highlight warning</span><span class="highlight-text danger">highlight danger</span> &lt;/p&gt;
 
-<h1 id="tabbed-code-block">Tabbed code block</h1>
+</code></pre>
 
-<p>Read documentation to know how to use <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tabbed-code-block">Tabbed code block</a></p>
+<p><span class="highlight-text red">highlight red</span><span class="highlight-text green">highlight green</span> <span class="highlight-text blue">highlight blue</span> <span class="highlight-text purple">highlight purple</span><span class="highlight-text orange">highlight orange</span><span class="highlight-text yellow">highlight yellow</span> <span class="highlight-text cyan">highlight cyan</span> <span class="highlight-text primary">highlight primary</span> <span class="highlight-text success">highlight success</span> <span class="highlight-text warning">highlight warning</span><span class="highlight-text danger">highlight danger</span> </p>
+
+<h2 id="多选项卡代码-多语言代码">多选项卡代码（多语言代码）</h2>
+
+<p>参考  <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tabbed-code-block">Tabbed code block</a></p>
 
 <p></p>
 
+<pre><code class="language-C">
 
 
 
@@ -1256,9 +1072,12 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
   </div>
 </figure>
 
-<h1 id="youtube">Youtube</h1>
+</code></pre>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#YouTube">Youtube tag</a></p>
+<h2 id="youtube-vimeo视频">Youtube/Vimeo视频</h2>
+
+<p>参考  <a href="https://hexo.io/docs/tag-plugins.html#YouTube">Youtube tag</a>
+参考 <a href="https://hexo.io/docs/tag-plugins.html#Vimeo">Vimeo tag</a></p>
 
 <p></p>
 
@@ -1270,6 +1089,25 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
 
 <p>Youtube and Vimeo videos are easily integrated thanks to tags plugins. Of course, you can add video other platforms like dailymotion.
 <!--more--></p>
+
+<pre><code class="language-C">
+**Youtube**
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/xL45JMI8IFg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+**Vimeo**
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//player.vimeo.com/video/17877190" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+ </div>
+
+
+</code></pre>
 
 <p><strong>Youtube</strong></p>
 
@@ -1287,33 +1125,26 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
  </div>
 
 
-<h1 id="vimeo">Vimeo</h1>
+<h2 id="超宽图片">超宽图片</h2>
 
-<p>Read documentation to know how to use <a href="https://hexo.io/docs/tag-plugins.html#Vimeo">Vimeo tag</a></p>
-
-<p></p>
-
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//player.vimeo.com/video/147585091" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
- </div>
-
-
-<h1 id="wide-image">Wide image</h1>
-
-<p>Read documentation to know how to use <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#wide-image">Wide image tag</a></p>
-
-<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+<p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#wide-image">Wide image tag</a></p>
 
 <p></p>
 
+<pre><code class="language-C">
 </div>
 <div class="figure figure--fullWidth">
   <img class="figure-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-1.jpg" alt="Mercedes SLS" /><span class="caption">Mercedes SLS</span>
 </div>
 <div class="main-content-wrap">
 
-<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+</code></pre>
+
+</div>
+<div class="figure figure--fullWidth">
+  <img class="figure-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-1.jpg" alt="Mercedes SLS" /><span class="caption">Mercedes SLS</span>
+</div>
+<div class="main-content-wrap">
               
             </div>
           </div>
