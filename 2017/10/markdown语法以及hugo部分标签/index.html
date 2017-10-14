@@ -251,12 +251,12 @@
 
 <h2 id="标题标签">标题标签</h2>
 
-<pre><code class="language-js"># Heading 1
-## Heading 2
-### Heading 3
-#### Heading 4
-##### Heading 5
-###### Heading 6
+<pre><code class="language-js">[comment]: # Heading 1
+[comment]: ## Heading 2
+[comment]: ### Heading 3
+[comment]: #### Heading 4
+[comment]: ##### Heading 5
+[comment]: ###### Heading 6
 </code></pre>
 
 <h1 id="heading-1">Heading 1</h1>
@@ -273,12 +273,12 @@
 
 <h2 id="特殊字符">特殊字符</h2>
 
-<pre><code class="language-C">[test link]() 
-**Strong text** 
-*Italic text* 
-&lt;u&gt;Underline text&lt;/u&gt;
-~~Deleted text~~ 
-`Sed erat diam`
+<pre><code class="language-C">[comment]: [test link]() 
+[comment]: **Strong text** 
+[comment]: *Italic text* 
+[comment]: &lt;u&gt;Underline text&lt;/u&gt;
+[comment]: ~~Deleted text~~ 
+[comment]: `Sed erat diam`
 </code></pre>
 
 <p>[test link]()
@@ -292,10 +292,10 @@
 
 <h3 id="标题列表-dl">标题列表 (dl)</h3>
 
-<pre><code class="language-C">&lt;dl&gt;&lt;dt&gt;Title&lt;/dt&gt;
-&lt;dd&gt;List item1&lt;/dd&gt;
-&lt;dd&gt;List item2&lt;/dd&gt;
-&lt;/dl&gt;
+<pre><code class="language-C">
+[comment]: &lt;dd&gt;List item1&lt;/dd&gt;
+[comment]: &lt;dd&gt;List item2&lt;/dd&gt;
+
 </code></pre>
 
 <dl><dt>Title</dt>
@@ -305,9 +305,9 @@
 
 <h3 id="有序列表-ol">有序列表 (ol)</h3>
 
-<pre><code class="language-C">1. List Item 1
-2. List Item 2
-3. List Item 3
+<pre><code class="language-C">[comment]: 1. List Item 1
+[comment]: 2. List Item 2
+[comment]: 3. List Item 3
 </code></pre>
 
 <ol>
@@ -318,9 +318,9 @@
 
 <h3 id="无序列表-ul">无序列表 (ul)</h3>
 
-<pre><code class="language-C">- List Item 1
-- List Item 2
-- List Item 3
+<pre><code class="language-C">[comment]: - List Item 1
+[comment]: - List Item 2
+[comment]: - List Item 3
 </code></pre>
 
 <ul>
@@ -331,12 +331,12 @@
 
 <h2 id="表单">表单</h2>
 
-<pre><code class="language-C">|  Header 1  | Header 2   | Header 3   |
-|:----------:|------------|------------|
-| Division 1 | Division 2 | Division 3 |
-| Division 1 | Division 2 | Division 3 |
-| Division 1 | Division 2 | Division 3 |
-| Division 1 | Division 2 | Division 3 |
+<pre><code class="language-C">[comment]: |  Header 1  | Header 2   | Header 3   |
+
+[comment]: | Division 1 | Division 2 | Division 3 |
+[comment]: | Division 1 | Division 2 | Division 3 |
+[comment]: | Division 1 | Division 2 | Division 3 |
+[comment]: | Division 1 | Division 2 | Division 3 |
 </code></pre>
 
 <table>
@@ -377,17 +377,17 @@
 
 <h2 id="特殊字体">特殊字体</h2>
 
-<pre><code class="language-C">NormalWords &lt;sup&gt;superscript&lt;/sup&gt; NormalWords
-
-NormalWords &lt;sub&gt;subscript&lt;/sub&gt; NormalWords
-
-NormalWords &lt;kdb&gt;ctrl + c&lt;/kdb&gt; NormalWords
-
-NormalWords &lt;cite&gt;cite&lt;/cite&gt; NormalWords
-
-NormalWords &lt;acronym title=&quot;National Basketball Association&quot;&gt;NBA&lt;/acronym&gt; NormalWords
-
-NormalWords &lt;abbr title=&quot;Avenue&quot;&gt;AVE&lt;/abbr&gt; NormalWords
+<pre><code class="language-C">[comment]:NormalWords &lt;sup&gt;superscript&lt;/sup&gt; NormalWords
+[comment]:
+[comment]:NormalWords &lt;sub&gt;subscript&lt;/sub&gt; NormalWords
+[comment]:
+[comment]:NormalWords &lt;kdb&gt;ctrl + c&lt;/kdb&gt; NormalWords
+[comment]:
+[comment]:NormalWords &lt;cite&gt;cite&lt;/cite&gt; NormalWords
+[comment]:
+[comment]:NormalWords &lt;acronym title=&quot;National Basketball Association&quot;&gt;NBA&lt;/acronym&gt; NormalWords
+[comment]:
+[comment]:NormalWords &lt;abbr title=&quot;Avenue&quot;&gt;AVE&lt;/abbr&gt; NormalWords
 </code></pre>
 
 <p>NormalWords <sup>superscript</sup> NormalWords</p>
@@ -408,21 +408,10 @@ NormalWords &lt;abbr title=&quot;Avenue&quot;&gt;AVE&lt;/abbr&gt; NormalWords
 
 <p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#alert">Alert tag</a></p>
 
-<pre><code class="language-C"><div class="alert info ">
-  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
-</div>
+<pre><code class="language-C">
 
-<div class="alert success ">
-  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
-</div>
 
-<div class="alert warning ">
-  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
-</div>
 
-<div class="alert danger ">
-  <p>Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.</p>
-</div>
 </code></pre>
 
 <div class="alert info ">
@@ -446,55 +435,15 @@ NormalWords &lt;abbr title=&quot;Avenue&quot;&gt;AVE&lt;/abbr&gt; NormalWords
 <p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Block_Quote">Block Quote tag</a></p>
 
 <pre><code class="language-C">
-**普通引用**
 
-&gt; Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.
+[comment]:
+[comment]:&gt; Praesent diam elit, interdum ut pulvinar placerat, imperdiet at magna.
 
-**从书本引用**
 
-<blockquote>
-  <p>
-Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.
-</p>
-  <footer>
-    <strong>David Levithan</strong>
-    
-      
-        <cite>Wide Awake</cite>
-      
-    
-  </footer>
-</blockquote>
 
-**从Twitter引用**
 
-<blockquote>
-  <p>
-NEW: DevDocs now comes with syntax highlighting. //devdocs.io
-</p>
-  <footer>
-    <strong>@DevDocs</strong>
-    
-      
-        <cite><a href="https://twitter.com/devdocs/status/356095192085962752" target="_blank" rel="external">https://twitter.com/devdocs/status/356095192085962752</a></cite>
-      
-    
-  </footer>
-</blockquote>
 
-**从网络文章引用**
 
-<blockquote>
-  <p>
-Every interaction is both precious and an opportunity to delight.
-</p>
-  <footer>
-    <strong>Seth Godin</strong>
-    
-      <cite><a href="//sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html" target="_blank" rel="external">Welcome to Island Marketing</a></cite>
-    
-  </footer>
-</blockquote>
 
 </code></pre>
 
@@ -557,92 +506,15 @@ Every interaction is both precious and an opportunity to delight.
 <p></p>
 
 <pre><code class="language-C">
-**普通代码块**
-
-```js
-alert('Hello World!');
-alert('Hello World!');
-```
-
-**带标题的代码块**
 
 
-  
-    
-  
-  
-  
-  
+[comment]:alert('Hello World!');
+[comment]:alert('Hello World!');
 
 
-<figure class="highlight ">
-  <figcaption>
-    
-      <span>Array.map</span>
-    
-  </figcaption>
-  <table>
-    <tbody>
-      <tr>
-        <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
-        </td>
-        <td class="code">
-          <pre class=" code-highlight">
-array.map(callback[, thisArg])</pre>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-
-**带标题和引用的代码块**
 
 
-  
-    
-  
-  
-    
-  
-  
-    
-  
-  
-    
-  
 
-
-<figure class="highlight apacheconf">
-  <figcaption>
-    
-      <span>apache.conf</span><a href="http://underscorejs.org/#compact" target="_blank" rel="external">apache.conf</a>
-    
-  </figcaption>
-  <table>
-    <tbody>
-      <tr>
-        <td class="gutter">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre>
-        </td>
-        <td class="code">
-          <pre class="apacheconf code-highlight">
-# rewrite`s rules for wordpress pretty url
-LoadModule rewrite_module  modules/mod_rewrite.so
-RewriteCond %{REQUEST_FILENAME} !-f
-
-&lt;Location /maps/&gt;
-  RewriteMap map txt:map.txt
-  RewriteMap lower int:tolower
-  RewriteCond %{REQUEST_URI} ^/([^/.]&#43;)\.html$ [NC]
-  RewriteCond ${map:${lower:%1}|NOT_FOUND} !NOT_FOUND
-  RewriteRule .? /index.php?q=${map:${lower:%1}} [NC,L]
-&lt;/Location&gt;</pre>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
 
 </code></pre>
 
@@ -739,7 +611,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 <p></p>
 
 <pre><code class="language-C">
-<script src="//gist.github.com/imathis/996818.js"></script>
+
 
 </code></pre>
 
@@ -754,115 +626,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 <pre><code class="language-C">
 
 
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
 
-<div class="figure fig-100" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-15.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-15-750.jpg" >
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
-<div class="figure nocaption fig-50" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-4.jpg" title="Ferrari" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-4-375.jpg"  alt="Ferrari">
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
-<div class="figure nocaption fig-50" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-12.jpg" title="BMW i8 Concept" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-12-375.jpg"  alt="BMW i8 Concept">
-  
-    </a>
-  
-  
-</div>
-
-
-
- 
-  
-  
-  
-  
-    
-  
-    
-      
-    
-  
-    
-      
-    
-  
-
-<div class="figure nocaption fig-33" >
-  
-    <a class="fancybox" href="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-14.jpg" data-fancybox-group="">
-  
-    <img class="fig-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-14-250.jpg" >
-  
-    </a>
-  
-  
-</div>
 
 
 </code></pre>
@@ -987,7 +751,7 @@ RewriteCond %{REQUEST_FILENAME} !-f
 <p></p>
 
 <pre><code class="language-C">
-<iframe scrolling="no" width="100%" height="300" src="//jsfiddle.net/ccWP7/embedded/js,resources,html,css,result/light" frameborder="0" allowfullscreen=""></iframe>
+
 
 </code></pre>
 
@@ -998,21 +762,13 @@ RewriteCond %{REQUEST_FILENAME} !-f
 <p>参考 <a href="https://hexo.io/docs/tag-plugins.html#Pull_Quote">Pull Quote tag</a></p>
 
 <pre><code class="language-C">
-Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla. Maecenas mattis interdum ante, quis sagittis.
-<blockquote class="pullquote left">
-	<p>
-Here is a pullquote left. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</p>
-</blockquote>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus molestie arcu, et
-fringilla mauris placerat ac. Nullam luctus bibendum risus. Ut cursus sed ipsum feugiat egestas. Suspendisse elementum, Mauris porttitor commodo eros, ac ornare orci interdum in. Cras fermentum cursus leo sed mattis. In dignissim lorem sem, sit amet elementum mauris venenatis ac.
-<blockquote class="pullquote right">
-	<p>
-Here is a pullquote right. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</p>
-</blockquote>
-Donec non tempus arcu. Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla.
-dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.
+[comment]:Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla. Maecenas mattis interdum ante, quis sagittis.
+
+[comment]:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tempus molestie arcu, et
+[comment]:fringilla mauris placerat ac. Nullam luctus bibendum risus. Ut cursus sed ipsum feugiat egestas. Suspendisse elementum, Mauris porttitor commodo eros, ac ornare orci interdum in. Cras fermentum cursus leo sed mattis. In dignissim lorem sem, sit amet elementum mauris venenatis ac.
+
+[comment]:Donec non tempus arcu. Phasellus adipiscing, mauris nec mollis egestas, ipsum nunc auctor velit, et rhoncus lorem ipsum at ante. Duis vel mauris nulla.
+[comment]:dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac magna. Etiam vel pharetra elit.
 
 </code></pre>
 
@@ -1037,7 +793,7 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
 <p>参考 <a href="https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#highlight-text">Highlight text tag</a></p>
 
 <pre><code class="language-C">
-&lt;p&gt;<span class="highlight-text red">highlight red</span><span class="highlight-text green">highlight green</span> <span class="highlight-text blue">highlight blue</span> <span class="highlight-text purple">highlight purple</span><span class="highlight-text orange">highlight orange</span><span class="highlight-text yellow">highlight yellow</span> <span class="highlight-text cyan">highlight cyan</span> <span class="highlight-text primary">highlight primary</span> <span class="highlight-text success">highlight success</span> <span class="highlight-text warning">highlight warning</span><span class="highlight-text danger">highlight danger</span> &lt;/p&gt;
+[comment]:&lt;p&gt;<span class="highlight-text red">highlight red</span><span class="highlight-text green">highlight green</span> <span class="highlight-text blue">highlight blue</span> <span class="highlight-text purple">highlight purple</span><span class="highlight-text orange">highlight orange</span><span class="highlight-text yellow">highlight yellow</span> <span class="highlight-text cyan">highlight cyan</span> <span class="highlight-text primary">highlight primary</span> <span class="highlight-text success">highlight success</span> <span class="highlight-text warning">highlight warning</span><span class="highlight-text danger">highlight danger</span> &lt;/p&gt;
 
 </code></pre>
 
@@ -1051,26 +807,6 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
 
 <pre><code class="language-C">
 
-
-
-  
-    
-  
-  
-
-<figure class="codeblock codeblock--tabbed">
-  <figcaption>
-    
-      <span>tabbed_codeblock</span>
-    
-    <ul class="tabs">
-      
-    </ul>
-  </figcaption> 
-  <div class="tabs-content">
-    
-  </div>
-</figure>
 
 </code></pre>
 
@@ -1091,20 +827,9 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
 <!--more--></p>
 
 <pre><code class="language-C">
-**Youtube**
 
 
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/xL45JMI8IFg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
- </div>
 
-
-**Vimeo**
-
-
-<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
-  <iframe src="//player.vimeo.com/video/17877190" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
- </div>
 
 
 </code></pre>
@@ -1132,11 +857,7 @@ dignissim ultrices libero. Sed imperdiet urna et quam ultrices tincidunt nec ac 
 <p></p>
 
 <pre><code class="language-C">
-</div>
-<div class="figure figure--fullWidth">
-  <img class="figure-img" src="//d1u9biwaxjngwg.cloudfront.net/tag-plugins-showcase/car-1.jpg" alt="Mercedes SLS" /><span class="caption">Mercedes SLS</span>
-</div>
-<div class="main-content-wrap">
+
 
 </code></pre>
 
