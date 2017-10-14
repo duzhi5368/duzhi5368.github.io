@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -18,25 +22,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
-    <title>Dx10</title>
+    <title>3D拣选--减少冗余渲染</title>
     <meta name="author" content="FreeKnight.Wong">
-    <meta name="keywords" content=", FreeKnight, Blog">
+    <meta name="keywords" content="FreeKnight, duzhi5368, 渲染优化, FreeKnight, Blog">
 
     <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://duzhi5368.github.io/tags/dx10/index.xml">
-    
 
     
-    <meta name="description" content="FreeKnight&#39;s personal blog">
-    <meta property="og:description" content="FreeKnight&#39;s personal blog">
+    <meta name="description" content="进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。
+
+">
+    <meta property="og:description" content="进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。
+
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Dx10">
-    <meta property="og:url" content="/tags/dx10/">
+    <meta property="og:title" content="3D拣选--减少冗余渲染">
+    <meta property="og:url" content="/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
     <meta property="og:site_name" content="The lost island">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="The lost island">
-    <meta name="twitter:description" content="FreeKnight&#39;s personal blog">
+    <meta name="twitter:description" content="进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。
+
+">
     
       <meta name="twitter:creator" content="@duzhi5368">
     
@@ -73,7 +81,7 @@
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="1">
+      <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
@@ -81,7 +89,7 @@
   
 </header>
 
-      <nav id="sidebar" data-behavior="1">
+      <nav id="sidebar" data-behavior="4">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -200,40 +208,26 @@
 </nav>
 
       
-        
 
-      
-      <div id="main" data-behavior="1"
+      <div id="main" data-behavior="4"
         class="
                hasCoverMetaIn
                ">
-        
-          <section class="postShorten-group main-content-wrap">
-            
-            
-              
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
   
-    
+    <h1 class="post-title" itemprop="headline">
+      3D拣选--减少冗余渲染
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/">
-          DX10的改进
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2007-03-05T00:00:00Z">
+      <time itemprop="datePublished" datetime="2007-03-22T00:00:00Z">
         
-  三月 5, 2007
+  三月 22, 2007
 
       </time>
     
@@ -255,28 +249,124 @@
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>根据微软声明，DX10只会集成在Vista系统中，初期不会发布类似DX9.0C这样单独的版本，也不会支持XP。
-这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。</p>
-
-<p>提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。</p>
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。</p>
 
 <p></p>
-      <p>
-        <a href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/" class="postShorten-excerpt_link link">阅读全文</a>
+
+<p>根据PCS方法，我们可以将一个视锥判断的结果分为三类：完全可见，完全不可见，部分可见。其中，前两者我们都需要渲染，剔除最后一种，不渲染它。</p>
+
+<p>常见的拣选方法有BSP二叉树，四叉树，八叉树锥形遮挡法，层次结构拣选法，优先层投影法，深度投影遮挡拣选，直接离散遮挡等办法，在其中又可进行扩展投影做预处理，虚拟遮挡物，点采样等手段。</p>
+
+<p>我们可以理解，以前使用的视锥剔除，就是将场景进行分割为一个个场景节点，当我们的摄象机可见锥体与之重合时，视之为可见，则进一步将其分割判断，而不可见部分，则直接剔除。</p>
+
+<h4 id="此时-我们从几何学上可以将方法提出分为三种">此时，我们从几何学上可以将方法提出分为三种</h4>
+
+<p>1：直接将视锥投影为一个三角形，再与地图节点进行判断是否相交，这样是矩形与三角形的交互判断，运算量比较低，但不精确。</p>
+
+<p>2：将视锥近似的棱锥体与空间节点半平面进行求交运算，当棱锥和半平面各点的点积具有同样符号时，我们认为视锥各顶点位于平面同侧，两者不相交。这种算法消耗时间较长，但可以相对精确计算出剔除节点。</p>
+
+<p>3：这是个很有意思的办法，判断过物体碰撞的朋友应该知道，两个球体判断相对位置比其他任何形状体都方便，它就是将视锥和空间节点都做出一个最小外界球，判断这两个球是否相交，这样算法速度上有极大优势，很易判断，但缺乏精度比较严重。</p>
+
+<p>上面三种算发都各有优势，一定程度上拣选了相对比较多的不可见三角形，但因为精确度不足，容易造成拣选不完全或者可见区被拣选掉的糟糕情况，而实际上渲染一个节点的时间要远远长于进行精确拣选的时间，因此我们，需要寻找更高效的一种拣选方法，在更高的精确度要求之下，兼顾一定的速度。</p>
+
+<hr />
+
+<ul>
+<li><p>首先，我们将远视锥平面进行缩小，将视锥变换为一个长方体的剪裁视锥。这样，我们可获得一个视程未变的长方体，进行初步的判断，判断完毕后，我们再对远平面进行恢复工作，进行第二次判断修正。
+之后，我们将整个平面单位化，我们就可以很方面的测绘出地形节点到平面之间的距离，因为所有平面是面向视锥的，当节点到远剪裁视锥面的距离大于0时，则他在平面前方，反之后方，等于0时节点在远视锥面上，我们也设置为可见。将位于后方的部分可以拣选掉。</p></li>
+
+<li><p>接下来我们可以对可见的地形节点中的模型进行拣选，这里的判断很简单，设置包围体，让其与视锥六个面进行判断。设置包围体时，FK强烈推荐大家使用DX9.0中的BoundingMesh，它不仅速度上优于BoundingBox,Sphere，而精确度也高于前两者。原因是，BoundingMesh不是我们使用几何方法计算产生的，而是在构造Mesh时，D3D已经通过实点扩张构造好的。</p></li>
+
+<li><p>另外，为了加快拣选速度，希望大家不要在屏幕大小的主缓冲区进行拣选，可以设置一个小些的缓冲，如320X240这样的区域进行粗略的拣选工作，会加快一定的速度。</p></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91/">引擎开发</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" data-tooltip="使用Hugo自动生成静态网页">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" data-tooltip="BCB保存系统配置文件">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-      </p>
-    </div>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
   </div>
-  
-</article>
+
 
             
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
             
-
-          </section>
-        
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
@@ -284,6 +374,76 @@
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" data-tooltip="使用Hugo自动生成静态网页">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" data-tooltip="BCB保存系统配置文件">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F3d%25E6%258B%25A3%25E9%2580%2589--%25E5%2587%258F%25E5%25B0%2591%25E5%2586%2597%25E4%25BD%2599%25E6%25B8%25B2%25E6%259F%2593%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -564,6 +724,32 @@ $(document).ready(function() {
   });
 });
 </script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93\/';
+          
+            this.page.identifier = '\/2007\/03\/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 

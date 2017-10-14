@@ -6,10 +6,31 @@
     <description>Recent content in 游戏开发 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 05 Mar 2007 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Mar 2007 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>3D拣选--减少冗余渲染</title>
+      <link>https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/</guid>
+      <description>&lt;p&gt;进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BCB保存系统配置文件</title>
+      <link>https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;p&gt;BCB保存系统配置文件，一般来说有三种办法:
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>DX10的改进</title>
@@ -21,6 +42,28 @@
 这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。&lt;/p&gt;
 
 &lt;p&gt;提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理</title>
+      <link>https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;有朋友问我，想实现多键盘事件同时处理，用什么函数？&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏引擎演化史</title>
+      <link>https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/</guid>
+      <description>&lt;p&gt;在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
