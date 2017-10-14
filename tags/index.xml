@@ -6,10 +6,19 @@
     <description>Recent content in Tags on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Mar 2007 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dx10</title>
+      <link>https://duzhi5368.github.io/tags/dx10/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/tags/dx10/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Hugo</title>
@@ -30,11 +39,29 @@
     </item>
     
     <item>
+      <title>图形渲染</title>
+      <link>https://duzhi5368.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>心情</title>
       <link>https://duzhi5368.github.io/tags/%E5%BF%83%E6%83%85/</link>
       <pubDate>Sun, 04 Mar 2007 00:00:00 +0000</pubDate>
       
       <guid>https://duzhi5368.github.io/tags/%E5%BF%83%E6%83%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏开发</title>
+      <link>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
       <description></description>
     </item>
     
