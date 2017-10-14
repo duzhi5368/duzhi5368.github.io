@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>FreeKnight移民旅行手册</title>
+	   	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
+		
+		<script type="text/javascript" src="src/js/raphael-min.js"></script>
+		<script type="text/javascript" src="src/js/map.js"></script>
+        <script type="text/javascript" src="src/js/areaData.js"></script>
+
+        <script type="text/javascript" src="src/js/chinaData.js"></script>
+        <script type="text/javascript" src="src/js/worldData.js"></script>
+
+        <script type="text/javascript" src="src/js/richedit.js"></script>
+  
+		<link rel="stylesheet" type="text/css" href="src/css/map.css" />
+
+	</head>
+	<body>
+        <!-- <h3>For freedom!!!</h3> -->
+
+		<div id="MapCanvas"></div>
+		<div id="InfoPanel">
+			<div style="float:left">
+				<input type="text" id="reseachContryEdit" value="搜索国家" style="width: 87px">
+				<input type="button" value="搜" onClick="map.OnReseach(this)">
+				<br>
+				<select id="CountrySelect" multiple="multiple" style="text-align: left; height: 455px; width: 120px" onchange="map.selectCountryIndex(this)">
+				</select>
+			</div>
+			<div style="float:right">
+				<div style="float:left">
+					<form name="f1" action="javascript:alert('FIELD 1:\n' + document.f1.richEdit0.value + '\n\nFIELD 2:\n' + document.f1.richEdit1.value)" method=post>
+						<script type="text/javascript">
+							var richEdit = new EDITOR();
+							richEdit.textBGColor = "#FFF0F0";
+							richEdit.textBorder = "2px dotted red";
+							richEdit.textFont = "微软雅黑";
+							richEdit.textFontSize = 14;
+							richEdit.textWidth = 425;
+							richEdit.create("欢迎使用 <b>自由骑士笃志</b> 移民旅游手册.");
+						</script>
+					</form>
+				</div>
+				<div style="float:right">
+					<form name="f1" action="javascript:alert('FIELD 1:\n' + document.f1.richEdit0.value + '\n\nFIELD 2:\n' + document.f1.richEdit1.value)" method=post>
+						<script type="text/javascript">
+							var richEdit2 = new EDITOR();
+							richEdit2.textBGColor = "#FFF0F0";
+							richEdit2.textBorder = "2px dotted red";
+							richEdit2.textFont = "微软雅黑";
+							richEdit2.textFontSize = 14;
+							richEdit2.textWidth = 425;
+							richEdit2.create("欢迎使用 <b>自由骑士笃志</b> 移民旅游手册.");
+						</script>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			map.main(
+				{   // 绘制数据
+					mapData : world,
+					areaData : travelledData
+				},
+				{   // 绘制参数
+					owner: 'MapCanvas',   // 绘制地图的div
+					width: 1000,          // 大小与矢量图形文件图形对应
+					height: 470,          // 暂不调整
+				}
+			);
+		</script>
+	</body>
+</html>
+<!-- 
+	TODO
+	1：塞舌尔，安提瓜，圣基茨，新加坡，南极洲的存在
+	2: BUG, 移动地图时，Pin不进行同步移动
+-->
