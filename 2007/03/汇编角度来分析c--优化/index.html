@@ -22,27 +22,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
-    <title>设置BCB中ListView中的Item控件颜色</title>
+    <title>汇编角度来分析C&#43;&#43;优化</title>
     <meta name="author" content="FreeKnight.Wong">
-    <meta name="keywords" content="FreeKnight, duzhi5368, ListView, BCB, FreeKnight, Blog">
+    <meta name="keywords" content="FreeKnight, duzhi5368, 汇编, C&#43;&#43;优化, FreeKnight, Blog">
 
     <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
     
 
     
-    <meta name="description" content="设置BCB中ListView中的Item控件颜色
+    <meta name="description" content="以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C&#43;&#43;层其实有很多可以编程习惯，可以根据汇编原理进行优化。
 
 ">
-    <meta property="og:description" content="设置BCB中ListView中的Item控件颜色
+    <meta property="og:description" content="以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C&#43;&#43;层其实有很多可以编程习惯，可以根据汇编原理进行优化。
 
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="设置BCB中ListView中的Item控件颜色">
-    <meta property="og:url" content="/2007/03/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2/">
+    <meta property="og:title" content="汇编角度来分析C&#43;&#43;优化">
+    <meta property="og:url" content="/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
     <meta property="og:site_name" content="The lost island">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="The lost island">
-    <meta name="twitter:description" content="设置BCB中ListView中的Item控件颜色
+    <meta name="twitter:description" content="以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C&#43;&#43;层其实有很多可以编程习惯，可以根据汇编原理进行优化。
 
 ">
     
@@ -219,15 +219,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      设置BCB中ListView中的Item控件颜色
+      汇编角度来分析C&#43;&#43;优化
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2007-03-05T00:00:00Z">
+      <time itemprop="datePublished" datetime="2007-03-24T00:00:00Z">
         
-  三月 5, 2007
+  三月 24, 2007
 
       </time>
     
@@ -249,37 +249,169 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>设置BCB中ListView中的Item控件颜色</p>
+              <p>以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。</p>
 
 <p></p>
 
-<pre><code class="language-cpp">
-//根据Item的索引值,对ListView的AdvancedCustomDrawItem事件进行处理.
+<hr />
 
-void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
-       TCustomListView *Sender, TListItem *Item, TCustomDrawState State,
-       TCustomDrawStage Stage, bool &amp;DefaultDraw)
-{
-     // if( ListView1-&gt;Selected )
-     if( Item-&gt;StateIndex == 2 )
-     {
-         Sender-&gt;Canvas-&gt;Font-&gt;Color    =    clBlack;
-         Sender-&gt;Canvas-&gt;Brush-&gt;Color    =    clRed;
-     }
-      if( Item-&gt;StateIndex == 1 )
-     {
-         Sender-&gt;Canvas-&gt;Font-&gt;Color    =    clBlack;
-         Sender-&gt;Canvas-&gt;Brush-&gt;Color    =    clGreen;
-     }
-      if( Item-&gt;StateIndex == 3 )
-     {
-         Sender-&gt;Canvas-&gt;Font-&gt;Color    =    clBlack;
-         Sender-&gt;Canvas-&gt;Brush-&gt;Color    =   (TColor)(0x000080);
-     }
+<h4 id="多使用float">多使用float.</h4>
 
-}
+<p>为了让编译器产生更好的3DNow!或SSE指令代码，我们可以必须确定浮点型变量和表达式是float型的，为避免float自动转换为double，我们声明时需要强调，并在后面加以f后缀。</p>
 
+<hr />
+
+<h4 id="适时使用无符号整形">适时使用无符号整形</h4>
+
+<ul>
+<li>int转换float/double类型时，建议使用有符号整形，因为X86构架中，提供了从int转换为float/double类型的指令，而没有提供unsigned int转换为浮点型的指令，我们看下编译器反汇编后的汇编代码。</li>
+</ul>
+
+<pre><code class="language-cpp">double x;          mov [temp + 4], 0
+unsigned int x;    mov eax, i
+x = i;             mov [temp], eax
+               flid qword ptr [temp]
+               fstp qword ptr [x]
 </code></pre>
+
+<p>这段代码不仅指令数多，而且因为指令配对失败造成的FLID指令会被延迟执行，代码运行较慢。
+而使用无符号整形的话，会快的多，反汇编如下</p>
+
+<pre><code class="language-cpp">double x;         flid qword ptr [i]
+int i;            flid qword ptr [x]
+x = i;
+</code></pre>
+
+<p>指令配对，代码运行较快</p>
+
+<ul>
+<li>对整形求商求余时，使用无符号整形会比较快，我们也以汇编代码查看分析</li>
+</ul>
+
+<pre><code class="language-cpp">int i;               mov eax, i
+i = i / 4;           cdq
+                     and edx, 3
+                     and edx, edx
+                     sar eax, 2
+                     mov i, eax
+</code></pre>
+
+<p>而当我们使用无符号整形时</p>
+
+<pre><code class="language-cpp">unsigned int i;              shr i, 2
+i = i / 4;
+</code></pre>
+
+<ul>
+<li>同样，在循环计数，数组下标时，尽可能的使用无符号整形，会提高代码运行速度。</li>
+</ul>
+
+<hr />
+
+<h4 id="多使用for-少使用while">多使用for,少使用while</h4>
+
+<p>我们依旧是看反汇编代码。</p>
+
+<pre><code class="language-cpp">while( 1 );                      mov eax, 1
+                                 test eax, eax
+                                 je temp+23h
+                                 jmp temp+18h
+</code></pre>
+
+<p>而for的则是</p>
+
+<pre><code class="language-cpp">for( ; ; );                      jmp temp=23h
+</code></pre>
+
+<hr />
+
+<h4 id="多使用数组-少使用指针">多使用数组，少使用指针</h4>
+
+<p>我这条建议恐怕要受到广大C++程序员的责骂与非议，而实际上编译器是很难对指针进行优化的，因为默认的编译器会假设指针可以访问任何的内存地址。而我们使用操作符[]来访问数组的话，会让编译器减少产生不安全代码的问题</p>
+
+<hr />
+
+<h4 id="循环的优化">循环的优化</h4>
+
+<ul>
+<li>人工拆分小循环
+为了充分的利用CPU的指令缓存，我们可以把一些很小的循环手工拆开，虽然这样写出的代码会显得有些冗余“低水平”，而这样做的确可以提高性能。例如</li>
+</ul>
+
+<pre><code class="language-cpp">　　// 3D转化：把矢量V和4x4矩阵M相乘
+　　for (i = 0; i &lt; 4; i ++)
+　　{
+　　　　r[i] = 0;
+　　　　for (j = 0; j &lt; 4; j ++)
+　　　　{
+　　　　　　r[i] += M[j][i]*V[j];
+　　　　}
+　　}
+</code></pre>
+
+<p>我们可以将其拆分为</p>
+
+<pre><code class="language-cpp">　　// 3D转化：把矢量V和4x4矩阵M相乘
+　　r[0] = M[0][0]*V[0] + M[1][0]*V[1] + M[2][0]*V[2] + M[3][0]*V[3];
+　　r[1] = M[0][1]*V[0] + M[1][1]*V[1] + M[2][1]*V[2] + M[3][1]*V[3];
+　　r[2] = M[0][2]*V[0] + M[1][2]*V[1] + M[2][2]*V[2] + M[3][2]*V[3];
+　　r[3] = M[0][3]*V[0] + M[1][3]*V[1] + M[2][3]*V[2] + M[3][3]*v[3];
+</code></pre>
+
+<ul>
+<li>小循环写外，大循环写里，这样可以避免断掉CPU的连续循环指令。例如</li>
+</ul>
+
+<pre><code class="language-cpp">for( unsigned int i=0; i&lt;=10; ++i )
+{
+     for( unsigned int j=0; j&lt;=10000; ++j )
+     {
+      // TODO:
+     }  
+}
+</code></pre>
+
+<p>就比下面的好</p>
+
+<pre><code class="language-cpp">for( unsigned int j=0; j&lt;=10000; ++j )
+{
+     for( unsigned int j=0; j&lt;=10; ++i )
+     {
+      // TODO:
+     }  
+}
+</code></pre>
+
+<p>同样的道理，循环与判断嵌套时，我们也可以将判断放外，循环放内比较好，避免判断打断循环指令。</p>
+
+<hr />
+
+<h4 id="避免使用无必要的读写依赖">避免使用无必要的读写依赖</h4>
+
+<p>当数据保存到内存时存在读写依赖，尽管AMD Athlon等CPU有加速读写依赖延迟的硬件，允许将保存的数据在写入前读取出来，但是，我们手工将读写保存去除的话，代码性能能有很大的提升。
+我们的做法通常是牺牲一定的空间在寄存器中创建一个临时变量。</p>
+
+<hr />
+
+<h4 id="优化switch">优化Switch</h4>
+
+<p>Switch可能使用多种算法进行优化，其中最普通的是跳转表和比较链。我推荐大家将最有可能的case放在第一位，此时比较链会得到一定性能的提高，另外，case尽量使用比较小的连续整数，因为此时编译器会将Switch转化为跳转表。</p>
+
+<hr />
+
+<h4 id="尽量多的使用常量const">尽量多的使用常量const</h4>
+
+<p>因为C++标准规定，若一个const对象的地址不被获取，编译器可以不对它分配存储空间。</p>
+
+<hr />
+
+<h4 id="多使用内联函数和静态函数">多使用内联函数和静态函数</h4>
+
+<p>当然，内联函数不是越多越好，它是以代码膨胀以代价的加速，根据需要吧。而static强制使用内部连接的函数可以进行代码的优化，不然编译器默认的会把函数定义为外部连接。</p>
+
+<hr />
+
+<p>困了，今天就先分析到这里。</p>
               
             </div>
           </div>
@@ -291,7 +423,9 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/bcb/">BCB</a>
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B1%87%E7%BC%96/">汇编</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
 
                   </div>
                 
@@ -303,7 +437,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/" data-tooltip="游戏引擎演化史">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" data-tooltip="使用Hugo自动生成静态网页">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -311,7 +445,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%97%A5%E8%AE%B02007-03-04/" data-tooltip="日记2007-03-04">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E8%BF%98%E6%8B%BF%E7%9A%84%E5%87%BA%E6%9D%A5%E7%9A%84%E5%9B%BE%E7%89%87/" data-tooltip="还拿的出来的图片">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -328,7 +462,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
               <i class="fa fa-home"></i>
             </a>
           </li>
@@ -374,7 +508,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/" data-tooltip="游戏引擎演化史">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/" data-tooltip="使用Hugo自动生成静态网页">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -382,7 +516,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%97%A5%E8%AE%B02007-03-04/" data-tooltip="日记2007-03-04">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E8%BF%98%E6%8B%BF%E7%9A%84%E5%87%BA%E6%9D%A5%E7%9A%84%E5%9B%BE%E7%89%87/" data-tooltip="还拿的出来的图片">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -399,7 +533,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
               <i class="fa fa-home"></i>
             </a>
           </li>
@@ -429,7 +563,7 @@ void __fastcall TForm1::ListView1AdvancedCustomDrawItem(
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E8%25AE%25BE%25E7%25BD%25AEbcb%25E4%25B8%25ADlistview%25E4%25B8%25AD%25E7%259A%2584item%25E6%258E%25A7%25E4%25BB%25B6%25E9%25A2%259C%25E8%2589%25B2%2F">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E6%25B1%2587%25E7%25BC%2596%25E8%25A7%2592%25E5%25BA%25A6%25E6%259D%25A5%25E5%2588%2586%25E6%259E%2590c--%25E4%25BC%2598%25E5%258C%2596%2F">
           <i class="fa fa-home"></i><span>分享到 Homepage</span>
         </a>
       </li>
@@ -722,9 +856,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2\/';
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96\/';
           
-            this.page.identifier = '\/2007\/03\/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2\/'
+            this.page.identifier = '\/2007\/03\/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96\/'
           
         };
         (function() {

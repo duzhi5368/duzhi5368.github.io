@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 24 Mar 2007 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>汇编角度来分析C&#43;&#43;优化</title>
+      <link>https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Sat, 24 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/</guid>
+      <description>&lt;p&gt;以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

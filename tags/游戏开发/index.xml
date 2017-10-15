@@ -6,10 +6,21 @@
     <description>Recent content in 游戏开发 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 22 Mar 2007 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Mar 2007 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>引擎设置规范计划(一)</title>
+      <link>https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%B8%80/</link>
+      <pubDate>Fri, 23 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%B8%80/</guid>
+      <description>&lt;p&gt;引擎设置规范计划(一)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>3D拣选--减少冗余渲染</title>
