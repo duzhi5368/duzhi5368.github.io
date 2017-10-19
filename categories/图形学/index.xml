@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>图形学 on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
+    <description>Recent content in 图形学 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 22 Mar 2007 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>3D拣选--减少冗余渲染</title>
+      <link>https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/</guid>
+      <description>&lt;p&gt;进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>DX10的改进</title>
+      <link>https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/</guid>
+      <description>&lt;p&gt;根据微软声明，DX10只会集成在Vista系统中，初期不会发布类似DX9.0C这样单独的版本，也不会支持XP。
+这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。&lt;/p&gt;
+
+&lt;p&gt;提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏引擎演化史</title>
+      <link>https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/</link>
+      <pubDate>Mon, 05 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/</guid>
+      <description>&lt;p&gt;在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
