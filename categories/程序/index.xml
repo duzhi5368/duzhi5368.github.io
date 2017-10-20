@@ -102,6 +102,77 @@
     </item>
     
     <item>
+      <title>C&#43;&#43;相关书籍下载地址</title>
+      <link>https://duzhi5368.github.io/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;vc++技术内幕第四版 (潘爱民)
+&lt;a href=&#34;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&#34;&gt;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C++经典对话系列
+中文：&lt;a href=&#34;http://www.jka77.com/book/cvst_cn.chm&#34;&gt;http://www.jka77.com/book/cvst_cn.chm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VC文件扩展名大全</title>
+      <link>https://duzhi5368.github.io/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</guid>
+      <description>&lt;p&gt;.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。&lt;/p&gt;
+
+&lt;p&gt;.BMP：位图资源文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Eclipse快捷键指南大全</title>
+      <link>https://duzhi5368.github.io/2006/10/eclipse%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Sun, 08 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/10/eclipse%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97%E5%A4%A7%E5%85%A8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;作用域        功能        快捷键&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;全局        查找并替换        Ctrl+F&lt;/p&gt;
+
+&lt;p&gt;文本编辑器        查找上一个        Ctrl+Shift+K&lt;/p&gt;
+
+&lt;p&gt;文本编辑器        查找下一个        Ctrl+K&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Eclipse平台部分快截操作</title>
+      <link>https://duzhi5368.github.io/2006/09/eclipse%E5%B9%B3%E5%8F%B0%E9%83%A8%E5%88%86%E5%BF%AB%E6%88%AA%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/09/eclipse%E5%B9%B3%E5%8F%B0%E9%83%A8%E5%88%86%E5%BF%AB%E6%88%AA%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;格式化代码：Ctrl+shift+F&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;//最后整理代码时用处比较大&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>菜鸟论流氓软件与反流氓软件</title>
+      <link>https://duzhi5368.github.io/2006/09/%E8%8F%9C%E9%B8%9F%E8%AE%BA%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%8F%8D%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/09/%E8%8F%9C%E9%B8%9F%E8%AE%BA%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%8F%8D%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/</guid>
+      <description>&lt;p&gt;流氓软件的技术五花八门，任何一项功能都有可能成为流氓技术，就象武器，用好了可以伸张正义，用歪了却成为罪恶的帮凶。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>自己编写的一个JAVA贪吃蛇源代码和一个价值500万的算法</title>
       <link>https://duzhi5368.github.io/2006/09/%E8%87%AA%E5%B7%B1%E7%BC%96%E5%86%99%E7%9A%84%E4%B8%80%E4%B8%AAjava%E8%B4%AA%E5%90%83%E8%9B%87%E6%BA%90%E4%BB%A3%E7%A0%81%E5%92%8C%E4%B8%80%E4%B8%AA%E4%BB%B7%E5%80%BC500%E4%B8%87%E7%9A%84%E7%AE%97%E6%B3%95/</link>
       <pubDate>Fri, 08 Sep 2006 00:00:00 +0000</pubDate>
