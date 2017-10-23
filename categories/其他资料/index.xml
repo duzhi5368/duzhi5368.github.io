@@ -6,10 +6,21 @@
     <description>Recent content in 其他资料 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Nov 2006 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 26 Dec 2006 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/categories/%E5%85%B6%E4%BB%96%E8%B5%84%E6%96%99/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[转帖]熟练编程人员和新手的差距在哪儿</title>
+      <link>https://duzhi5368.github.io/2006/12/%E8%BD%AC%E5%B8%96%E7%86%9F%E7%BB%83%E7%BC%96%E7%A8%8B%E4%BA%BA%E5%91%98%E5%92%8C%E6%96%B0%E6%89%8B%E7%9A%84%E5%B7%AE%E8%B7%9D%E5%9C%A8%E5%93%AA%E5%84%BF/</link>
+      <pubDate>Tue, 26 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/12/%E8%BD%AC%E5%B8%96%E7%86%9F%E7%BB%83%E7%BC%96%E7%A8%8B%E4%BA%BA%E5%91%98%E5%92%8C%E6%96%B0%E6%89%8B%E7%9A%84%E5%B7%AE%E8%B7%9D%E5%9C%A8%E5%93%AA%E5%84%BF/</guid>
+      <description>&lt;p&gt;熟练人员经过多年的积累加上自己的CodeSnip的总结，基本不用额外再查找资料。而一般的开发人员在开发过程中会花掉10-20%时间去查找资料。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Windows运行命令行简介</title>
