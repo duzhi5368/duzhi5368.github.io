@@ -1,0 +1,971 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>3D游戏编程入门(十三)使用D3D绘制图形&lt;下&gt;</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="恩，我们继续D3D的基本框架介绍。
+
+刚才我们已经创建了WINDOWS窗口，也初始化D3D程序获得D3D设备指针了，接下俩，我们来处理消息循环。
+
+">
+    <meta property="og:description" content="恩，我们继续D3D的基本框架介绍。
+
+刚才我们已经创建了WINDOWS窗口，也初始化D3D程序获得D3D设备指针了，接下俩，我们来处理消息循环。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="3D游戏编程入门(十三)使用D3D绘制图形&lt;下&gt;">
+    <meta property="og:url" content="/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%89%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8B/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="恩，我们继续D3D的基本框架介绍。
+
+刚才我们已经创建了WINDOWS窗口，也初始化D3D程序获得D3D设备指针了，接下俩，我们来处理消息循环。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      3D游戏编程入门(十三)使用D3D绘制图形&lt;下&gt;
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-01-02T00:00:00Z">
+        
+  一月 2, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e5%9b%be%e5%bd%a2%e5%ad%a6">图形学</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>恩，我们继续D3D的基本框架介绍。</p>
+
+<p>刚才我们已经创建了WINDOWS窗口，也初始化D3D程序获得D3D设备指针了，接下俩，我们来处理消息循环。</p>
+
+<p></p>
+
+<p>这里值得注意的是，我们的图象循环是始终进行的，它一定是在一个死循环中，直到我们获得WM_QUIT消息终止了整个程序，我们才能从循环中出来，而消息处理也是始终进行的，我们可以把它们放在一个循环中。那么我们是否可以这么写？</p>
+
+<pre><code class="language-cpp">     while(msg.message != WM_QUIT)
+     {
+        fMessage = PeekMessage(&amp;msg, NULL, 0U, 0U, PM_REMOVE);
+        if(fMessage)
+        {
+            //处理消息
+            TranslateMessage(&amp;msg);
+            DispatchMessage(&amp;msg);
+            //绘制
+            Render();
+        }
+        else
+        {
+        }
+     }
+</code></pre>
+
+<p>结果显然是不行的，这样将导致我们仅仅在获得有效消息时才进行绘制，而大部分时间我们并未得到有效的消息，所以我们只能将Render();绘制函数放到else中，这样，当我们没有获得有效消息时，将持续的进行绘制工作，当我们获得有效消息时则停止绘制。这样会不会导致一个情况，就是大量的有效信息被频繁发送，而导致我们无法进行图象绘制呢？呵呵，别担心，我们可以在消息处理中加入WM_PAINT的情况，在这里加入渲染，就不会有停止绘制的危险了。</p>
+
+<p>在Render()中，是我们绘制图形的所有方法。我将其分为几大步骤</p>
+
+<ol>
+<li>清空后台缓存中的图形绘制区域。g_pD3DDevice-&gt;Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);</li>
+<li>设置开始绘制g_pD3DDevice-&gt;BeginScene();</li>
+<li>开始实际绘制</li>
+<li>结束绘制    g_pD3DDevice-&gt;EndScene();</li>
+<li>屏幕翻转    g_pD3DDevice-&gt;Present(NULL, NULL, NULL, NULL);</li>
+</ol>
+
+<hr />
+
+<ol>
+<li>首先，我们清空图形绘制区，D3D中方法为：</li>
+</ol>
+
+<pre><code class="language-CPP">HRESULT Clear(
+     DWORD Count,    //清除的矩形区域数量，一般设置为0代表就清理某一块连续面
+     const D3DRECT *pRects,//清除的矩形区域数组指针，这个比较麻烦，我们直接清除的话用NULL就好
+      DWORD Flags,   //清除标志，指定清除哪一个缓冲区，可选D3DCLEAR_STENCIL、D3DCLEAR_TARGET、D3DCLEAR_ZBUFFER的组合，分别代表摸版缓冲区，颜色缓冲区，深度缓冲区，我们可以用位或符进行组合
+      D3DCOLOR Color,   //清除后重置的颜色，假若想填充黑色，则D3DCOLOR_XRGB(0, 0, 0)；
+     float Z,   //清除后重置的深度值，从0－1.0，设置为1就好，设置为0的话，就会遮挡住我们之后的图象，因为从z轴来说，我们的填充背景色比图象还将靠近我们的屏幕
+     DWORD Stencil  //呵呵，这个不懂，填0就好。
+ );
+</code></pre>
+
+<ol>
+<li><p>之后BeginScene来告诉D3D设备开始渲染工作，</p></li>
+
+<li><p>开始正式绘制工作了，我们首先需要设置一个FVF灵活顶点格式，来存放顶点信息，我这里仅设置了顶点的坐标和颜色了。</p></li>
+</ol>
+
+<p>（1）：</p>
+
+<pre><code class="language-CPP"> //自定义顶点格式
+ struct CUSTOMVERTEX
+ {
+     FLOAT x, y, z, rhw;  // 三维坐标
+     DWORD colour;   // 顶点颜色
+ };
+ #define D3DFVF_CUSTOMVERTEX (D3DFVF_XYZRHW|D3DFVF_DIFFUSE)  //定义说明FVF格式的具体模式
+</code></pre>
+
+<p>（2）：之后我们需要对每个顶点进行相应的设置</p>
+
+<pre><code class="language-CPP"> //设置顶点位置，颜色信息
+ CUSTOMVERTEX cvVertices[] =
+ {
+    {250.0f, 100.0f, 0.5f, 1.0f, D3DCOLOR_XRGB(255, 0, 0),},  //顶点1红色
+    {400.0f, 350.0f, 0.5f, 1.0f, D3DCOLOR_XRGB(0, 255, 0),},  //顶点2绿色
+    {100.0f, 350.0f, 0.5f, 1.0f, D3DCOLOR_XRGB(0, 0, 255),},  //顶点3蓝色
+ };
+</code></pre>
+
+<p>这样我们获得了三个顶点，他们的三维坐标和颜色我们都已经设置好。呃，值得注意的是，我们设置顶点时应该按照逆时针的顺序安置三个顶点，否则在系统处理时会默认的设置顺时针图元为不可见。</p>
+
+<p>（3）：接下来我们设置一个顶点缓存区来存放我们的顶点信息</p>
+
+<pre><code class="language-CPP"> HRESULT CreateVertexBuffer(
+        UINT Length,  //顶点缓冲区的大小，按字节数算
+        DWORD Usage,  //顶点缓冲区属性 
+        DWORD FVF,  //灵活顶点格式
+        D3DPOOL Pool,  //顶点缓冲区内存位置
+        IDirect3DVertexBuffer9** ppVertexBuffer, //顶点缓冲区指针地址，这个是为了输出而准备的，之后我们可以从这里获得顶点缓冲区的地址，方便访问
+        HANDLE* pHandle              //保留参数，置为0，DX为了支持以后的开发，很多函数中都保留这类暂时无用参数，设为0就可以
+ )
+</code></pre>
+
+<p>Length顶点缓冲区大小我们可以是先sizeof()获得FVF灵活顶点格式的结构体大小再乘以顶点个数，也可直接使用上面我们定义的cvVertices这个结构数组大小来确定。</p>
+
+<p>Usage顶点缓冲区属性，取值可以为0或下列中任意类型或组合</p>
+
+<ul>
+<li>D3DUSAGE_DONOTCLIP 禁用裁剪，表示顶点缓冲区中的顶点不进行裁剪，当设置该属性时，渲染状态D3DRS_CLIPPING必须设为FALSE</li>
+<li>D3DUSAGE_DYNAMIC 使用动态内存，这就是说将我们的顶点缓存放在一个十分活跃的缓存区中，在系统调用时将更加优先对此区域的存取，但过大的结构不适合如此设置，因为优先权并不适合给过大块的内存使用。用比较土的话来说，如果都优先了，那还有什么
+优先可言？</li>
+<li>D3DUSAGE_WRITEONLY 只写属性，不能进行读操作，设置该属性可以提高系统性能</li>
+<li>D3DUSAGE_SOFTWAREPROCESSING 使用软件进行顶点运算，否则使用硬件计算</li>
+</ul>
+
+<p>其他还有些绘制曲线和点的设置，我就不再介绍了，3D游戏中一般很少使用。</p>
+
+<p>DWORD FVF灵活顶点格式，就是我们刚才自己定义的结构体格式D3DFVF_CUSTOMVERTEX</p>
+
+<p>D3DPOOL Pool缓冲区内存位置，我们通常使用D3DPOOL_DEFAULT或D3DPOOL_MANAGED这两种类型，其区别是前者将顶点缓冲放置显存后将不再进行管理，后者将顶点缓冲放置显存之后，还将在系统内存中备份一份，当我们的程序由于某种原因损坏到顶点缓冲区时，系统将会根据系统内存的备份对其进行恢复，当然，虽然安全性有提高，却牺牲了一些系统内存和运行效率，可以根据情况进行不同的设置。</p>
+
+<p>我们看下这段的完整代码：</p>
+
+<pre><code class="language-CPP"> //创建顶点缓冲
+  if(FAILED(g_pD3DDevice-&gt;CreateVertexBuffer
+  (3 * sizeof(CUSTOMVERTEX), 0, D3DFVF_CUSTOMVERTEX,
+       D3DPOOL_DEFAULT, &amp;g_pVertexBuffer,NULL
+  )))
+  {
+      return E_FAIL;
+  } 
+</code></pre>
+
+<p>（4）：将顶点信息拷贝到顶点缓冲区
+我们已经在显存中开辟了一块空间来存放顶点信息，也有了顶点信息的结构，我们接下来就需要将顶点信息载入到显存中。
+为避免在此过程中，顶点缓冲又被其他程序占用，我们先锁定它，使其不受任何影响和修改</p>
+
+<pre><code class="language-CPP"> //锁定顶点缓冲
+ if(FAILED(g_pVertexBuffer-&gt;Lock(0, sizeof(cvVertices),(void**)&amp;pVertices, 0)))
+ {
+          return E_FAIL;
+ }
+ //拷贝顶点信息
+ memcpy(pVertices, cvVertices, sizeof(cvVertices));
+ //解锁
+ g_pVertexBuffer-&gt;Unlock()
+</code></pre>
+
+<p>锁定我们调用Lock函数，他的参数依次为“加锁内存的起始位置”，“加锁内存的长度大小”，“返回的内存指针地址（方便我们访问该块内存）”,“加锁的属性（设置为0则可）”。</p>
+
+<p>锁定好了之后，我们使用mencpy将第二个参数的内存内容拷贝到第一个参数的内存中，第三个参数是拷贝内容的大小。</p>
+
+<p>在拷贝完毕后，我们解锁Unlock（呵呵，不用参数），则我们已经将顶点信息完美的拷贝到了我们的显卡缓存中了。</p>
+
+<p>（6）：渲染数据流链接</p>
+
+<p>我们绘制图形之前，需要先将顶点缓冲区和渲染数据流连接。函数声明如下</p>
+
+<pre><code class="language-CPP"> HRESULT SetStreamSource(
+   UINT StreamNumber, //渲染数据流序号
+   IDirect3DVertexBuffer9 *pStreamData, //进行绑定连接的顶点缓冲区指针
+   UINT OffsetInBytes, //进行绑定连接的渲染数据流的起始位置
+   UINT Stride               //渲染数据流中一个顶点所占的内存的大小
+ );
+</code></pre>
+
+<p>假使我们有比较多的顶点进行渲染，我们在StreamNumber这里可以传入渲染数据流的序号进行控制。</p>
+
+<ul>
+<li>pStreamData进行记录顶点缓冲区的地址。</li>
+<li>OffsetInBytes表示在渲染数据流中有效顶点的起始位置，这里是以字节数进行表示。</li>
+<li>Stride表示渲染数据流每两个相邻的顶点之间的间隔，通常来说它应该等于我们每个顶点在顶点缓存中所占的字节数。</li>
+</ul>
+
+<p>（7）：设置渲染数据流中的灵活顶点格式</p>
+
+<p>这个很容易理解，不说了。函数为</p>
+
+<pre><code class="language-CPP"> HRESULT SetFVF(
+  DWORD FVF                              //灵活顶点格式
+ );
+</code></pre>
+
+<p>（8）：绘制图形</p>
+
+<p>一切都准备好了，我们就可以将渲染数据流中的图元绘制到后台缓冲了。调用开始我们说过的绘制三角形的函数</p>
+
+<pre><code class="language-cpp"> HRESULT DrawPrimitive(
+ D3DPRIMITIVETYPE PrimitiveType,  //绘制的图元类型
+     UINT StartVertex,       //绘制的起始顶点的索引值
+     UINT PrimitiveCount      //绘制的图元数量
+ );
+</code></pre>
+
+<ol>
+<li>结束绘制</li>
+</ol>
+
+<p>有BeginScence当然要有EndScence咯，用它来通知我们的D3D设备，我们的图形渲染工作结束了</p>
+
+<p><code>g_pD3DDevice-&gt;EndScene();</code></p>
+
+<ol>
+<li>屏幕翻转</li>
+</ol>
+
+<p>我们现在所有的图象都已经提供给了后台缓冲区了，我们要告诉系统，将我们的图象放置到前台，让我们看到。则需要调用这个函数。</p>
+
+<pre><code class="language-cpp"> HRESULT Present(         
+ CONST RECT *pSourceRect,    //复制源的矩形区域指针
+     CONST RECT *pDestRect,    //复制目的地的矩形区域指针
+    HWND hDestWindowOverride,    //Direct3D设备窗口句柄
+    CONST RGNDATA *pDirtyRegion  //最小更新区域指针
+ );
+</code></pre>
+
+<p>如果你之前都是按照我的代码来设计的话，这里参数全传NULL就可以了，我们使用其默认值不会出现任何问题的。</p>
+
+<ol>
+<li>结束D3D程序</li>
+</ol>
+
+<p>我们也画完了，也贴出来了，但是我们不能就这么一走了之哦，程序还占用着系统资源呢，我们必须去手动释放这些被占用的资源。</p>
+
+<p>在我们关闭窗口时，我们通常会需要释放所有的资源，这时窗口会收到一个WM_DESTROY的消息，我们在这个消息的判断中加上释放资源的方法。就现阶段，我们仅仅需要释放的就是顶点缓存，D3D设备指针，D3D指针。之后我们讲到索引缓存等的时候，就需要释放更多了，所以我们干脆写个方法，把所有需要释放的东西放在一起，方便我们的调试整理</p>
+
+<pre><code class="language-CPP"> #define SafeRelease(pObject) if(pObject != NULL){pObject-&gt;Release(); pObject=NULL;}
+  //释放建立的对象
+  void CleanUp()
+  {
+        SafeRelease(g_pVertexBuffer);
+        SafeRelease(g_pD3DDevice);
+        SafeRelease(g_pD3D);
+  }
+  CleanUp();
+  //注销wndclass类
+  UnregisterClass(&quot;base&quot;, wc.hInstance);
+</code></pre>
+
+<p>大家可以看到，我在前面先define自己定义了一个SafeRelease的方法，而在其中加上了一个意外判断之后再调用了系统给予我们的 Release方法，这是一个比较好的习惯，它将帮助我们更安全的释放工作。在动态内存释放时，我们尽量也使用自己写的SafeFree方法来替代系统的free。</p>
+
+<p>UnregisterClass是一个Windows API函数，它注销WNDCLASS类并释放内存，其中第一个参数是类名，第2个是应用程序实例句柄，在创建Windows时我有很详细的介绍，这里不说了。</p>
+
+<hr />
+
+<p>基本上，使用D3D建立一个三角形就这么多了，一会我再将整理好的完整代码发上，大家可以参考。具体的函数名和参数可能一时半会记不住，这是很正常的，但是大体的流程框架一定要熟记于心哦~：）</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%9B%BE%E5%BD%A2%E6%B8%B2%E6%9F%93/">图形渲染</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%80d3d%E5%9F%BA%E7%A1%80%E4%B9%8Bfvf%E6%A0%BC%E5%BC%8F%E5%9B%BE%E5%85%83/" data-tooltip="3D游戏编程入门(十一)D3D基础之FVF格式,图元">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%BA%8C%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8A/" data-tooltip="3D游戏编程入门(十二)使用D3D绘制图形&lt;上&gt;">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%89%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%80d3d%E5%9F%BA%E7%A1%80%E4%B9%8Bfvf%E6%A0%BC%E5%BC%8F%E5%9B%BE%E5%85%83/" data-tooltip="3D游戏编程入门(十一)D3D基础之FVF格式,图元">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%BA%8C%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8A/" data-tooltip="3D游戏编程入门(十二)使用D3D绘制图形&lt;上&gt;">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%89%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F01%2F3d%25E6%25B8%25B8%25E6%2588%258F%25E7%25BC%2596%25E7%25A8%258B%25E5%2585%25A5%25E9%2597%25A8%25E5%258D%2581%25E4%25B8%2589%25E4%25BD%25BF%25E7%2594%25A8d3d%25E7%25BB%2598%25E5%2588%25B6%25E5%259B%25BE%25E5%25BD%25A2%25E4%25B8%258B%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/">
+                <h3 class="media-heading">Markdown语法以及Hugo部分标签</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/">
+                <h3 class="media-heading">使用Hugo自动生成静态网页</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用HUGO自动生成静态网页的方法
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
+                <h3 class="media-heading">汇编角度来分析C&#43;&#43;优化</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%B8%80/">
+                <h3 class="media-heading">引擎设置规范计划(一)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>引擎设置规范计划(一)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
+                <h3 class="media-heading">3D拣选--减少冗余渲染</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+                <h3 class="media-heading">BCB保存系统配置文件</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB保存系统配置文件，一般来说有三种办法:
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9F%A5%E8%AF%86/">
+                <h3 class="media-heading">如何有效的学习知识</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>从事IT这行业，很多人知道公司都很重视工作经验，也很多人一直对此很不以为然。“不是有很多自学成材的人么？而且我也一直很努力的学习了。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/">
+                <h3 class="media-heading">DX10的改进</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>根据微软声明，DX10只会集成在Vista系统中，初期不会发布类似DX9.0C这样单独的版本，也不会支持XP。
+这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。</p>
+
+<p>提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+                <h3 class="media-heading">建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>有朋友问我，想实现多键盘事件同时处理，用什么函数？</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/">
+                <h3 class="media-heading">游戏引擎演化史</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         177 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/01\/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%89%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8B\/';
+          
+            this.page.identifier = '\/2007\/01\/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%89%E4%BD%BF%E7%94%A8d3d%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2%E4%B8%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
