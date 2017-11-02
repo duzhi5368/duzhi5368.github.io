@@ -1,0 +1,1069 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>经典考题C-C&#43;&#43;基本概念</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。
+
+">
+    <meta property="og:description" content="该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="经典考题C-C&#43;&#43;基本概念">
+    <meta property="og:url" content="/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      经典考题C-C&#43;&#43;基本概念
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-02-04T00:00:00Z">
+        
+  二月 4, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。</p>
+
+<p></p>
+
+<p>因为时间的关系，某志不会将每个答案进行详细分析，只会对自己的错误和经典问题进行说明，如您查看时有任何问题不清楚，欢迎留言提出，某志一定知无不言，言无不尽，呵呵~</p>
+
+<p>当然某志也这么做^ ^V好吧，我们来一起努力。</p>
+
+<hr />
+
+<p>Q1：What does the following program print?</p>
+
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+  int x = 2, y, z;
+  x *= ( y=z=5 );  cout &lt;&lt; x &lt;&lt; endl;
+  z = 3;
+  x == ( y = z );  cout &lt;&lt; x &lt;&lt; endl;
+  x = ( y == z );  cout &lt;&lt; x &lt;&lt; endl;
+  x = ( y &amp; z );   cout &lt;&lt; x &lt;&lt; endl;
+  x = ( y &amp;&amp; z );  cout &lt;&lt; x &lt;&lt; endl;
+  y = 4;
+  x = ( y | z );   cout &lt;&lt; x &lt;&lt; endl;
+  x = ( y || z );  cout &lt;&lt; x &lt;&lt; endl;
+  return 0;
+}
+</code></pre>
+
+<p>笃志猜测答案：10，0，1，1，3，1，7</p>
+
+<p>标准答案：   10，10，1，3，1，7，1</p>
+
+<p>T T错误原因：第二个最后值是0，但是x的值还是10。后面的位与运算&rdquo;&amp;&ldquo;和与运算&rdquo;&amp;&amp;&ldquo;弄混淆了。</p>
+
+<hr />
+
+<p>Q2: What does the following program print?</p>
+
+<pre><code class="language-CPP">#include &lt;iostream&gt;
+using namespace std;
+int Vac = 3;
+int main()
+{
+  int Vac = 10;
+  ::Vac++;
+  cout &lt;&lt; ::Vac &lt;&lt; endl;
+  cout &lt;&lt; Vac &lt;&lt; endl;
+  return 0;
+}
+</code></pre>
+
+<p>笃志猜测答案：4,10</p>
+
+<p>标准答案：    4，10</p>
+
+<p>^ ^V:考察全局变量和局域变量对比的问题。</p>
+
+<hr />
+
+<p>Q3：What will be the output of the following code?</p>
+
+<pre><code class="language-CPP">int i = 3,j = 4;
+i? i++: ++j;
+printf( &quot;%d %d\n&quot;, i, j );
+</code></pre>
+
+<p>笃志猜测答案：4，4</p>
+
+<p>标准答案：   4，4</p>
+
+<p>^ ^V:考察三元运算符的</p>
+
+<hr />
+
+<p>Q4：What will be the output of the following code?</p>
+
+<pre><code class="language-CPP">int i = 1,j = 2;
+int k = i+++j;
+cout &lt;&lt; k &lt;&lt; endl;
+</code></pre>
+
+<p>笃志猜测答案：3</p>
+
+<p>标准答案：    3</p>
+
+<p>^ ^V :i+++j是考察运算符优先级，应当是i++后再+j，但由于i++是先拿i进行运算，后再自增，所以结果是3</p>
+
+<hr />
+
+<p>Q4：x = x + 1;x += 1;x++;这三条语句，哪条效率最高，为什么？</p>
+
+<p>笃志猜测答案：x++最高，x+=1次之，x=x+1效率最低。</p>
+
+<p>标准答案：x++最高，x+=1次之，x=x+1效率最低。</p>
+
+<p>^ ^V:原因我们可以分步解释：</p>
+
+<ul>
+<li>x++使用了两步，1，读取x的地址，2,x自增</li>
+<li>x+=1使用了三步，1，读取x的地址，2，x+1，3，将得到的值传给x</li>
+<li>x=x+1使用了4步，1，读取右x的地址，2，x+1,3,读取左x的地址，4，将得到的x+1值传到左边x处。</li>
+</ul>
+
+<hr />
+
+<p>Q5：What will be the output of the following C code?</p>
+
+<pre><code class="language-CPP">#define product (x) (x*x)
+int main()
+{
+  int i = 3, j, k;
+  j = product( i++ );
+  k = product( ++i );
+  printf( &quot;j = %d, k = %d&quot;, j, k );
+  return 0;
+}
+</code></pre>
+
+<p>笃志猜测答案：9，25</p>
+
+<p>标准答案：    9，49</p>
+
+<p>T T错误原因：忘记了在第一步中i已经自加了“两”次，第二步中i也自加了“两”次，一直认为是一次。。</p>
+
+<p>本题考察的是宏定义以及前自增，后自增运算。</p>
+
+<hr />
+
+<p>Q6：If there are &ldquo;int a = 5, b = 3;&rdquo;,the values of a and b are ___ and ___ after execute&rdquo;!a&amp;&amp;b++;&rdquo; .</p>
+
+<p>笃志猜测答案：5，4</p>
+
+<p>标准答案：    5，3</p>
+
+<p>T T错误原因：因为上次错误的教训，某志这次没有将题目的运算结果为0写出，但是却忘记了一个问题，在“!a”运算出为0假时，由于&amp;&amp;号，之后的运算编译器都将不再进行，直接无视。所以后面无论是++b,还是b++或是其他的代码，都会完全无效。</p>
+
+<hr />
+
+<p>Q7：We have two pieces of code,which one do you prefer,and tell why?</p>
+
+<p>A:
+Code 1:</p>
+
+<pre><code class="language-CPP">  if( 'A' == a )
+  {
+      a++;
+  }
+</code></pre>
+
+<p>Code 2:</p>
+
+<pre><code class="language-CPP">  if( a == 'A' )
+  {
+      a++;
+  }
+</code></pre>
+
+<p>B:
+Code 1:</p>
+
+<pre><code class="language-CPP">  for( i=0; i&lt;8; i++ )
+  {
+     X = i + Y + J * 7;
+     printf( &quot;%d&quot;, x );
+  }
+</code></pre>
+
+<p>Code 2:</p>
+
+<pre><code class="language-CPP">  S = Y + J * 7;
+  for( i=0; i&lt;8; i++ )
+  {
+     printf( &quot;%d&quot;, i+S );
+  }
+</code></pre>
+
+<p>笃志猜测答案：A&ndash;Code1,B&ndash;Code2。</p>
+
+<p>标准答案：   A&ndash;Code1,B&ndash;Code2。</p>
+
+<p>^ ^V:原因是，A中第一种模式，可以避免我们将“==”写成“=”而造成编译出错。B中第二种模式是将部分加法运算放到循环外，可以减少重复运算，提高效率。缺点是不够简洁。</p>
+
+<hr />
+
+<p>Q8：What will be the output of the following code?</p>
+
+<pre><code class="language-CPP">char Fun( void )
+{
+  unsigned int a = 6;
+  int b = -20;
+  char c;
+  ( a + b &gt; 6 )?( c = 1 ):( c = 0 );
+  return c;
+}
+</code></pre>
+
+<p>笃志猜测答案：0</p>
+
+<p>标准答案：    1</p>
+
+<p>T T错误原因：原来这是个考察类型转换的题目，其中a+b的结果不是-14。因为无符号整型和整型计算后，会自动转换为无符号整型，得到结果是一个极大的无符号整型4294967382，再三元运算，结果自然是1了。呜呜。。</p>
+
+<hr />
+
+<p>Q9：</p>
+
+<pre><code class="language-CPP">21 22 ……
+20  7  8  9 10
+19  6  1  2 11
+18  5  4  3 12
+17 16 15 14 13
+</code></pre>
+
+<p>看清楚上列数字的排列规律，我们假设1所在的坐标是（0，0），x向右为正，y方向向下为正，如此时7的坐标是（-1，-1），我们现在编程实现，当我们输入任意一点的坐标（x,y）,输出该坐标对应的数字。</p>
+
+<p>笃志先哭，规律是找到了，可是T T怎么写却完全没有头绪了。不过，似乎(0,0)(1,-1)(2,-2)都是连续奇数的平方，1，9，25。。。恩，算不算切入点？当x&gt;0且x==(-y)时，(x,y)处的值为(2x+1)*(2x+1),再一个控制行判断，一个控制列判断，啊，有点乱，明天继续分析。</p>
+
+<p>标准答案：呵呵，和某志切入点类似，之后也是加了个行列控制，看来思想还是一致，大家看看代码吧。</p>
+
+<pre><code class="language-CPP">#include &lt;stdio.h&gt;
+#define max(a,b) ((a)&lt;(b)?(b):(a))
+#define abs(a) ((a)&gt;0?(a):-(a))
+//两个宏定义，一个取大值，一个取绝对值
+int foo(int x, int y)
+{
+  int t = max(abs(x), abs(y));
+  int u = t + t;
+  int v = u - 1;
+  v = v * v + u;
+  if( x == -t )
+     v += u + t - y;
+  else if( y == -t )
+     v += 3 * u + x - t;
+  else if( y == t )
+     v += t - x;
+  else v += y - t;
+  return v;
+}
+int main()
+{
+  int x, y;
+  for( y = -4; y &lt;= 4; y++ )
+  {
+    for( x = -4; x &lt;= 4; x++ )
+    {
+       printf( &quot;%5d&quot;, foo(x, y) );
+    }
+    printf( &quot;\n&quot; );
+  }
+  while( scanf(&quot;%d%d&quot;, &amp;x, &amp;y)==2 )
+    printf( &quot;%d\n&quot;, foo( x, y ) );
+  return 0;
+}
+</code></pre>
+
+<hr />
+
+<p>Q10:There are two int variables: a and b,don&rsquo;t use &ldquo;if&rdquo;,&ldquo;?:&ldquo;,&ldquo;switch&rdquo;or other judgement statements,find out the biggest one of the two numbers?</p>
+
+<p>笃志猜测答案：不会T T</p>
+
+<p>标准答案：int max = ((a + b) + abs(a -  b)) / 2</p>
+
+<p>T T：这东西确实不好想啊。。某志领教。</p>
+
+<hr />
+
+<p>Q11：如何将a,b的值进行互换，并且不使用中间变量。</p>
+
+<p>笃志猜测答案：
+a = a + b;
+b = a - b;
+a = a - b;</p>
+
+<p>标准答案：
+a = a ^ b;
+b = a ^ b;
+b = a ^ b;</p>
+
+<p>答案说明：汗，某志的方法有问题，原因是当a,b两个值过大时，a+b就可能出现超过int界限的问题，居然用异或……好办法。</p>
+
+<hr />
+
+<p>Q12：在C++程序中调用被C编译器处理过的函数，为什么要加上extern &ldquo;C&rdquo;?</p>
+
+<p>笃志猜测答案：C和C++编译器不同，编译后的文件名和函数名都按照一定规则进行修改，加上这句为了编译器识别。</p>
+
+<p>标准答案：C++语言支持函数重载，C语言不支持函数重载。函数在被两者编译后的名字不同，例如fun(int a)函数被C编译器编译后在库中名字为_fun，而在C++编译后将名为类似_fun_int之类的名字，C++提供了交换指定符号extern &ldquo;C&rdquo;解决名称匹配问题。</p>
+
+<p>答案分析：某志仅仅记住了表面，却没有清晰其原因实质“重载性”导致的述说不明白。</p>
+
+<hr />
+
+<p>Q13：头文件中ifndef/define/endif是干什么用的？</p>
+
+<p>笃志猜测答案：防止重复预编译。</p>
+
+<p>标准答案：    防止该头文件被重复使用。</p>
+
+<hr />
+
+<p>Q14：#include &ldquo;filename.h&rdquo;和#include <filename.h>有什么区别？</p>
+
+<p>笃志猜测答案：&rdquo;&ldquo;包含的头文件，系统将优先从用户自定义的文件夹开始寻找，查找不到则到系统文件夹寻找，&lt;&gt;包含的头文件，编译器将直接到系统文件夹中寻找。</p>
+
+<p>标准答案：&lt;&gt;编译器将从标准库路径开始搜索，“”编译器将从用户的工作路径开始搜索。</p>
+
+<hr />
+
+<p>Q15：如何判断一段程序是使用C编译程序还是使用C++编译程序？</p>
+
+<p>笃志猜测答案：呃，看包含头文件的方式吧，还有标准输入输出函数的名称。</p>
+
+<p>标准答案：C++编译时定义了_cplusplus.C编译时定义了<em>STDC</em></p>
+
+<p>答案说明：呜，完全没听说过啊。&gt;_&lt;开始背记，整理下回来问问。。</p>
+
+<hr />
+
+<p>Q16：在main主函数执行完毕之后，是否可以再执行一段代码？给出说明。</p>
+
+<p>笃志猜测答案：不可能。除非仅仅将某函数的定义在main之下，但其使用必须在main函数之内才会调用，main函数结束之后，任何代码不可执行。</p>
+
+<p>标准答案：可以使用atexit()函数注册一个函数，代码如下：</p>
+
+<pre><code class="language-CPP">#include &lt;stdlib.h&gt;
+int atexit( void (&quot;function&quot;)(void));
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+void fn1( void ),void fn2( void );
+int main( void )
+{
+  atexit( fn1 );
+  atexit( fn2 );
+}
+void fn1()
+{
+  printf(&quot;Hello&quot;);
+}
+void fn2()
+{
+  printf(&quot;World&quot;);
+}
+</code></pre>
+
+<p>答案分析：说真的，实在不知道还有这方法，不过某志在拿去编译后也根本无法正常运行。怀疑是代码有误或是很过时的一种方法，无论如何，明天去问问高手，暂时有个印象就好</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/%E6%B8%B8%E6%88%8F%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9%E5%90%8D%E7%A7%B0%E6%B1%87%E6%80%BB/" data-tooltip="游戏渲染引擎关键要点名称汇总">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/%E5%93%81%E5%91%B3%E5%AD%A4%E7%8B%AC/" data-tooltip="品味孤独">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/%E6%B8%B8%E6%88%8F%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9%E5%90%8D%E7%A7%B0%E6%B1%87%E6%80%BB/" data-tooltip="游戏渲染引擎关键要点名称汇总">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/%E5%93%81%E5%91%B3%E5%AD%A4%E7%8B%AC/" data-tooltip="品味孤独">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F02%2F%25E7%25BB%258F%25E5%2585%25B8%25E8%2580%2583%25E9%25A2%2598c-c--%25E5%259F%25BA%25E6%259C%25AC%25E6%25A6%2582%25E5%25BF%25B5%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/">
+                <h3 class="media-heading">Markdown语法以及Hugo部分标签</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/">
+                <h3 class="media-heading">使用Hugo自动生成静态网页</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用HUGO自动生成静态网页的方法
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
+                <h3 class="media-heading">汇编角度来分析C&#43;&#43;优化</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%B8%80/">
+                <h3 class="media-heading">引擎设置规范计划(一)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>引擎设置规范计划(一)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
+                <h3 class="media-heading">3D拣选--减少冗余渲染</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+                <h3 class="media-heading">BCB保存系统配置文件</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB保存系统配置文件，一般来说有三种办法:
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9F%A5%E8%AF%86/">
+                <h3 class="media-heading">如何有效的学习知识</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>从事IT这行业，很多人知道公司都很重视工作经验，也很多人一直对此很不以为然。“不是有很多自学成材的人么？而且我也一直很努力的学习了。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/">
+                <h3 class="media-heading">DX10的改进</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>根据微软声明，DX10只会集成在Vista系统中，初期不会发布类似DX9.0C这样单独的版本，也不会支持XP。
+这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。</p>
+
+<p>提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+                <h3 class="media-heading">建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>有朋友问我，想实现多键盘事件同时处理，用什么函数？</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         209 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/02\/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5\/';
+          
+            this.page.identifier = '\/2007\/02\/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

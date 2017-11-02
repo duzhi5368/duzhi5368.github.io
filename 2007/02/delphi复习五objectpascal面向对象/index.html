@@ -1,0 +1,954 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>Delphi复习（五）ObjectPascal面向对象</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。
+
+">
+    <meta property="og:description" content="Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Delphi复习（五）ObjectPascal面向对象">
+    <meta property="og:url" content="/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Delphi复习（五）ObjectPascal面向对象
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-02-14T00:00:00Z">
+        
+  二月 14, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。</p>
+
+<p></p>
+
+<h3 id="我们先了解一下oop编程语言的三大特性">我们先了解一下OOP编程语言的三大特性：</h3>
+
+<ol>
+<li>封装（表现为类的实现，private的设置）</li>
+</ol>
+
+<p>它就是将类的数据封闭在类的内部，使得外部程序必须使用正确的方法才能对类内部的数据进行访问，它很大程度上的保护了类内部的私有数据。</p>
+
+<ol>
+<li>继承（父类子类等）</li>
+</ol>
+
+<p>子类继承父类，直接就获得父类的一切内容，包括父类的每一个属性和方法，然而子类可以在其上进行进一步的发展扩充。就象现实中人类，分男人和女人，那么父类就是人类，它用有人类的共同特性，而男人和女人是有区别的，这些区别便可以分别表示在子类中的扩充中。</p>
+
+<ol>
+<li>多态（函数的重载等）</li>
+</ol>
+
+<p>多态意味着我们同样的动作可以由多种方式来实现，这取决于执行该动作的类。例如吃事物这个事件，人们吃饭需要将食物做熟，并使用工具帮助进食，而其他动物可能就是直接的食用，因为类别的不同，即使是同样的事件，也存在着不同的处理方式，这就类似于多态。</p>
+
+<p>这是很重要的，我们在程序设计时按照这种逻辑思路去设计，将会明白这三个词所代表的意义有多大。</p>
+
+<h3 id="一-类与对象">一：类与对象。</h3>
+
+<p>我们在使用Delphi时，每加的一个组件其实就是一个类的对象。最初的Form1我们也可以把它看做一个类的对象，不过这些类是在系统库中就被定义好的，它的属性，函数都是在系统库中。类本身是不可直接被调用的，它仅仅在内存中为自己的对象提供一个指针或者引用，在我们使用它之前，必须创建一个新的实例，用它来分配内存，并且调用类中的一切属性和函数。</p>
+
+<p>我们声明一个类，使用保留字class，如</p>
+
+<pre><code>Type
+  TMyFirstClass = Class(TObject)
+  ……
+  end;
+</code></pre>
+
+<p>这是声明了一个类，它继承于TObject类。值得注意的是，类的标识符通常以“T”开头，仅仅是个命名规则，编译器是不在乎的。但为了可读性还是加上的好。另外，若是新建的类没指明其父类的话，则默认的认为该类继承TObject类。如</p>
+
+<pre><code>Type TMySecondClass = class
+ ……
+ end;
+</code></pre>
+
+<p>之后我们可以声明它的对象</p>
+
+<pre><code>var
+  MyFirstClass : TMyFirstClass ;
+</code></pre>
+
+<p>再在后面加个点就可以调用其中的属性或者函数方法了。</p>
+
+<p>如C++一样，我们在生成一个类的对象并分配内存时，需要调用它的构造方法，不过在C++中，我们New的时候，系统自动为我们做了调用构造函数的事情，而Pascal中就需要我们手工调用该函数进行内存分配和初始化了，默认的系统会给一个Create的构造函数，但是它不会帮助我们初始化数据，要想初始化数据，我们需要自己来写我们的构造函数，使用关键字Constructor.例如</p>
+
+<pre><code>Type
+  TMyThirdClass = Class
+  Name : String;
+  Age : Integer;
+  Constructor Create();
+  Function IsAdlt : Boolean;
+ end;
+</code></pre>
+
+<p>其中构造函数的实现为</p>
+
+<pre><code>Constructor Create();
+Begin
+Name := 'duzhi';
+Age := 23;
+end;
+</code></pre>
+
+<p>这样，我们在创建一个该类对象时就可调用其构造函数为对象分配内存并且初始化。</p>
+
+<pre><code>var
+Duzhi3 : TMyThirdClass.Create() ;
+</code></pre>
+
+<p>或者分两步为：</p>
+
+<pre><code>var
+Duzhi3 : TMyThirdClass ;
+begin
+Duzhi3.Create*();
+……
+end;
+</code></pre>
+
+<p>当然我们需要注意的是，我们在程序运行结束够并没有释放刚才创建的对象，要释放对象，就要使用Free函数。</p>
+
+<p>但是要注意的是Free完毕后，我们的对象并非一定指向Nil（相当于C++中的NULL）。</p>
+
+<p>我们可以会疑问，哪儿来的Free函数，包括在构造对象时，我们可以调用系统的Create函数，这个函数又是哪儿来的呢？还记得开始我说过的么？我们的类，默认的都是继承TObject的，在其中就有这两个函数，他们是负责对象内存的创建和释放的。我们的任何类都继承了这两个方法，所以可以直接调用。</p>
+
+<h3 id="二-类的封装">二：类的封装</h3>
+
+<p>我们在设计类的时候，封装性是为了增加类的安全性而设计的，我们可以将类想象为一个“黑盒子”，我们可以完全不清楚它内部到底是什么，它仅为我们留下了一个小小的接口，我们不能直接访问类的内部成员，这种OOP设计对安全性，可修改性都很有利。对于封装性，ObjectPascal(op)提供了五个控制符：</p>
+
+<p>public,private,protected,published和automated。</p>
+
+<p>1）public</p>
+
+<p>它是允许在外部对该类型进行访问的，和C++/JAVA等语言是完全一致的，不再细说了，使用方法如下例</p>
+
+<p>2)private</p>
+
+<p>它是完全定义在类内的私有成员的，不允许在外部进行访问调用，但在类内的代码允许进行调用，使用方法如下</p>
+
+<pre><code>type
+  TMyForthClass = Class(Object)
+  public
+  Name :String;
+  private
+  Age : Integer;
+  public
+  Function GetAge :Integer;
+end;
+</code></pre>
+
+<p>我们在外部可以调用Name属性和GetAge函数，对Age却是不可进行调用的。例如</p>
+
+<pre><code>var
+Duzhi4 : TMyForthClass ;
+iTemp : Integer;
+begin
+Duzhi4 := TMyForthClass.Create;
+Duzhi4.Name := 'Duzhi';    // 正确的
+// Duzhi4.Age := 23;       // 错误的
+iTemp := Duzhi4.GetAge; // 正确的
+end;
+</code></pre>
+
+<p>3）protected类型</p>
+
+<p>和C++一样，允许被其子类（派生类）访问，不赘述了。</p>
+
+<p>4）published类型</p>
+
+<p>这是OP中特有的，它的可见性最高，甚至比public还高。public是程序在运行期间可以被访问，而该“发行成员”在设计期间和运行期间都可以被访问。实际上某志现在还不大清楚其真实的意义。呵呵，等候高手解答。</p>
+
+<p>5）automated类型</p>
+
+<p>和public基本一致，唯一区别是声明为该类型的属性方法会自动生成类型信息，为创建OLE（自动化服务）成为可能。</p>
+
+<h3 id="三-类的继承性">三：类的继承性</h3>
+
+<p>这个性能主要目的，某志觉得就是节省代码，然后就是对类的优化好处比较多。举例，我们在某个程序6.0版本中发现了一些比较优秀的方法，在7.0中我们准备继续使用，OK那么我们继承，觉得有问题的方法，我们就不再继承，在7.0版本中也可以再添加一些新的方法。其实，我们如果复制6.0的有效代码，拷贝到7.0上单独又算一个新的类到也没有什么问题，不过当某一方法出现问题了，6.0和7.0中都需要分别修改一遍罢了，其他区别还真没发现。</p>
+
+<h3 id="四-类的多态性">四，类的多态性。</h3>
+
+<p>这里我给出一段代码，大家从中看看能够注意到多少细节。</p>
+
+<pre><code>type
+ Tshape = Class  //定义了一个TShape类,注意，该段后没有分号
+ ……
+ procedure Paint(x,y:Integer);Virtual;  //声明了一了虚函数，注意声明方式
+end;
+ TCircle = Class(TShape) //继承TShape类的TCircle类。
+ ……
+ procedure Paint；Override;  //重载了Paint方法，注意没带参数，注意重载方式，后面必须加Override
+end;
+  TRectangle = Clas(TShape)  //继承了TShape类的TRectangle类
+  ……
+  procedure Paint;Override; //重载了Paint方法
+end;
+Var
+ MyShape : TShape;
+ x,y : Integer;
+ begin
+ x:=50;
+ y:=50;
+ MyShape := TCircle.Create;   //创建TCircle的对象
+ MyShape.Paint(x,y);  //调用TCircle对象的Paint方法
+ MyShape.Free;  //别忘记释放对象
+ MyShape := Treatang.Create;   //创建Treatang的对象
+ MyShape.Paint(x,y);  //调用Treatang对象的Paint方法
+ MyShape.Free;  //别忘记释放对象
+end.     //注意，最后是句号，表示代码结束。
+</code></pre>
+
+<p>我们在主程序部分，可以发现，有两行MyShape.Paint(x,y);  此时我们是调用哪个Paint方法呢？是父类还是子类，是哪个子类，显然，编译器需要根据调用此方法的对象类型进行判断。</p>
+
+<p>值得注意的是重载的方法必须和父类中的同名虚函数在参数个数，顺序，类型上都完全一致，若是有返回值的函数的话，返回类型也必须相同。</p>
+
+<h3 id="五-静态方法">五：静态方法。</h3>
+
+<p>除非特别说明，否则声明的方法都是静态方法，他和一般的过程和函数是没有区别的，编译器能够确定静态方法的确切内存地址，对它的访问编译都极快。</p>
+
+<p>但是由于静态方法即使被类继承，它的子类也将在相同的地方使用同样的内存地址进行该方法的访问，所以，静态方法是无法进行重载的。他仅会被其他函数覆盖。所以，在上面的例子中，若我们不对函数添加virtual修饰词的话，下面的方法都会互相进行覆盖，最后仅仅留有最后声明的函数。</p>
+
+<p>但若是改变了函数的参数个数，顺序，类型的话，那就不会被覆盖，系统会认为他们不是一个函数。</p>
+
+<h3 id="六-虚函数和方法的重载-重写">六：虚函数和方法的重载,重写。</h3>
+
+<p>其实在例子中我们已经可以看出，只要在函数后加以virtual修饰，就代表它是一个虚函数，当我们子类中想重载这个函数时，可以在新的函数后增加一个Override指令。但是可能有三种情况会导致编译错误：</p>
+
+<ol>
+<li>该方法在父类中不存在，子类也就无从继承了。</li>
+<li>该方法在父类中是静态的，那么也无法进行继承。</li>
+<li>该方法和父类中的声明不完全相同（参数类型，个数，顺序不同），其实也是第一种情况的变形了。</li>
+</ol>
+
+<p>函数的重写，使用关键字overload来标志该方法，就会获得一个具有相同名字的方法，且两方法的参数是不同的。</p>
+
+<p>可能有朋友弄不清重写和重载的区别，实际上可以简单理解区别为是否在一个类中，若两同名异参的函数在一个类中，就理解为重写，相反，在不同类中，两类又有父子关系，就为重载。</p>
+
+<h3 id="七-动态方法">七：动态方法。</h3>
+
+<p>呃，本来某志不想提虚函数表的，因为这块很容易弄晕人。但是这个动态方法和虚方法的区别仅仅就是一个虚函数表，不得不说了。</p>
+
+<p>我们需要知道，虚函数的地址，是由运行期间由对象进行寻找的，而虚函数在声明时就在对象的VMT（虚拟函数表）中创建了一个表项，在这里存储自己的地址，以方便对象的访问。我们每创建一个子类，它就会把其父类的VMT继承过来，再加以补充自己的虚函数。</p>
+
+<p>这样做法就导致了动态方法和虚方法的区别。动态方法的地址没有虚方法好找，因为它没有自己的VMT方便寻找。但是动态方法又比虚方法节省内存（不用保存VMT了啊），这两一个在时间上，一个在空间上有自己的优势，根据用户需要了。
+要使用动态方法，可以在其声明之后增加指令Dynamic.</p>
+
+<h3 id="八-抽象类">八：抽象类</h3>
+
+<p>和JAVA中一样，加个Abstract指令。之后它的子类就必须实现这个抽象方法咯，除非其子类也是抽象类，那么不需要实现该方法，但是抽象类是不能实例化生成其对象的。</p>
+
+<h3 id="九-补充说明">九：补充说明</h3>
+
+<p>1：注意，之前我们有说过，函数可以有一至多个带有默认值的参数，即是将该参数加以括号标志出的，此时我们传参时可忽略此参数。他们会获得默认值。</p>
+
+<p>2：在一个方法中，可以使用Self关键字访问当前对象。当引用对象的本地数据时，对Self的引用是隐含的了。</p>
+
+<p>3：默认情况下，方法是使用register调用约定：简单的参数和返回值要从调用代码传递到函数之中，并且使用CPU寄存器而非堆栈返回，这个过程可以使方法调用的更快。</p>
+
+<p>4：若我们在封装时，想避免使用全局变量，可以为该变量设置一个Get和Set方法，使其他类调用该变量时，必须使用这两种方法来进行访问，此时我们可以这么写代码</p>
+
+<p><code>property Str :String read GetText write SetText;</code></p>
+
+<p>在我们按下Ctrl+Shift+C进行代码框架的自动编写时，系统会自动的生成两个方法，GetText和SetText，分别为对给变量Str的读取访问和写入访问。这样的话我们可以改善封装性。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/delphi/">Delphi</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/" data-tooltip="Delphi复习（二）ObjectPascal数据类型上">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/" data-tooltip="Delphi复习（四）ObjectPascal语句，过程和函数">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/" data-tooltip="Delphi复习（二）ObjectPascal数据类型上">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/" data-tooltip="Delphi复习（四）ObjectPascal语句，过程和函数">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F02%2Fdelphi%25E5%25A4%258D%25E4%25B9%25A0%25E4%25BA%2594objectpascal%25E9%259D%25A2%25E5%2590%2591%25E5%25AF%25B9%25E8%25B1%25A1%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/">
+                <h3 class="media-heading">Markdown语法以及Hugo部分标签</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/">
+                <h3 class="media-heading">使用Hugo自动生成静态网页</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用HUGO自动生成静态网页的方法
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/">
+                <h3 class="media-heading">汇编角度来分析C&#43;&#43;优化</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%B8%80/">
+                <h3 class="media-heading">引擎设置规范计划(一)</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>引擎设置规范计划(一)</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/3d%E6%8B%A3%E9%80%89--%E5%87%8F%E5%B0%91%E5%86%97%E4%BD%99%E6%B8%B2%E6%9F%93/">
+                <h3 class="media-heading">3D拣选--减少冗余渲染</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>进行3D游戏的渲染，特别是比较大的场景，例如现在很多游戏中的无缝链接地图，需要我们对空间进行拣选。剔除不必要渲染的部分，减少GPU的压力。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/bcb%E4%BF%9D%E5%AD%98%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+                <h3 class="media-heading">BCB保存系统配置文件</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB保存系统配置文件，一般来说有三种办法:
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%A6%82%E4%BD%95%E6%9C%89%E6%95%88%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%9F%A5%E8%AF%86/">
+                <h3 class="media-heading">如何有效的学习知识</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>从事IT这行业，很多人知道公司都很重视工作经验，也很多人一直对此很不以为然。“不是有很多自学成材的人么？而且我也一直很努力的学习了。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/">
+                <h3 class="media-heading">DX10的改进</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>根据微软声明，DX10只会集成在Vista系统中，初期不会发布类似DX9.0C这样单独的版本，也不会支持XP。
+这意味着DX10可能2007年初伴随Vista发布，而且将捆绑性质的销售。。呼，微软真有野心啊。</p>
+
+<p>提起DX10，我们都知道它渲染速度快了，支持更逼真优秀的渲染，然而它的特性更是我们需要了解的。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
+                <h3 class="media-heading">建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>有朋友问我，想实现多键盘事件同时处理，用什么函数？</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         209 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/02\/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/';
+          
+            this.page.identifier = '\/2007\/02\/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

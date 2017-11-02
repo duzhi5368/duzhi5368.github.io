@@ -102,6 +102,211 @@
     </item>
     
     <item>
+      <title>Delphi复习（一）IDE与基础知识</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;p&gt;本人下载使用的是CSDN中的Delphi7企业版，其注册号为：6AMD-PDJ686-APME9D-9CDR Key为：YVX-27C
+运行环境为WindowsXP Pro SP2&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（三）ObjectPascal数据类型下</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</guid>
+      <description>&lt;h3 id=&#34;二-字符串类型string&#34;&gt;二：字符串类型String&lt;/h3&gt;
+
+&lt;p&gt;在OP中，我们通常是使用单引号来括住字符串的，如&amp;rsquo;Duzhi is a TianCai!&amp;lsquo;，注意，非双引号。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（二）ObjectPascal数据类型上</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/</guid>
+      <description>&lt;p&gt;Delphi是基于ObjectPascal语言设计的，而ObjectPascal语言又是基于Pascal语言发展起来的，它拥有语法结构严谨，编译代码效率高等优点。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（五）ObjectPascal面向对象</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（四）ObjectPascal语句，过程和函数</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;在程序语言的学习中，数据类型之后的就是语句学习了，我们用语句关键字和操作指令来控制程序。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>D3D相关英语单词</title>
+      <link>https://duzhi5368.github.io/2007/02/d3d%E7%9B%B8%E5%85%B3%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/d3d%E7%9B%B8%E5%85%B3%E8%8B%B1%E8%AF%AD%E5%8D%95%E8%AF%8D/</guid>
+      <description>&lt;h3 id=&#34;一-图形几何知识&#34;&gt;一：图形几何知识&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;D3DXMATRIX{}&amp;mdash;4*4的矩阵结构,是由D3DMATRIX继承来的，并且重载了许多操作符，方便矩阵运算&lt;/li&gt;
+&lt;li&gt;D3DXMatrixIdentity()&amp;mdash;标准化单位矩阵&lt;/li&gt;
+&lt;li&gt;D3DXMatrixTranspose()&amp;mdash;求转置矩阵&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>汇编基础</title>
+      <link>https://duzhi5368.github.io/2007/02/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/%E6%B1%87%E7%BC%96%E5%9F%BA%E7%A1%80/</guid>
+      <description>&lt;p&gt;机器语言：我们计算机能够识别的数据是二进制代码，机器指令也是二进制的代码组成的指令。所以用机器语言编写的程序，是计算机唯一能够直接识别运行的程序，其他语言编写的程序都需要经过翻译才能执行。所以，机器语言程序被称为目标程序。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏渲染引擎关键要点名称汇总</title>
+      <link>https://duzhi5368.github.io/2007/02/%E6%B8%B8%E6%88%8F%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9%E5%90%8D%E7%A7%B0%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/%E6%B8%B8%E6%88%8F%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E%E5%85%B3%E9%94%AE%E8%A6%81%E7%82%B9%E5%90%8D%E7%A7%B0%E6%B1%87%E6%80%BB/</guid>
+      <description>&lt;h3 id=&#34;一-几何知识&#34;&gt;一：几何知识。&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;向量及其概念，运算&lt;/li&gt;
+&lt;li&gt;矩阵及其概念，运算&lt;/li&gt;
+&lt;li&gt;平面，射线概念，意义&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>经典考题C-C&#43;&#43;基本概念</title>
+      <link>https://duzhi5368.github.io/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;p&gt;该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十六)网格模型</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E5%85%AD%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sat, 27 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E5%85%AD%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/</guid>
+      <description>&lt;h3 id=&#34;网格模型&#34;&gt;网格模型&lt;/h3&gt;
+
+&lt;p&gt;这个章节我们主要对ID3DXMesh接口的数据和方法进行复习。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>专题复习：内存</title>
+      <link>https://duzhi5368.github.io/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E5%86%85%E5%AD%98/</link>
+      <pubDate>Sat, 27 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E5%86%85%E5%AD%98/</guid>
+      <description>&lt;p&gt;要说C语言最优秀最方便的东西是什么，我想是指针，要说C语言入门最难的是什么，我想还是指针.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十五)导入.x文件</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%94%E5%AF%BC%E5%85%A5.x%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Sun, 21 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%94%E5%AF%BC%E5%85%A5.x%E6%96%87%E4%BB%B6/</guid>
+      <description>&lt;p&gt;恩，在之前我们所有的复习中，我都是以一个正方形为模型进行渲染演示的，当然，我们的游戏中不可能就几个几何图形在渲染绘制出来，我们也不可能去一个顶点一个顶点的设置我们的人物场景.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十四)FONT字体</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E5%9B%9Bfont%E5%AD%97%E4%BD%93/</link>
+      <pubDate>Sun, 21 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E5%9B%9Bfont%E5%AD%97%E4%BD%93/</guid>
+      <description>&lt;p&gt;在一个游戏成品中，我们组成游戏界面的不仅仅是图形，还需要的有文字。在我们调试游戏过程中，也需要时刻获取游戏画面FPS桢数，我们需要了解在D3D应用程序中如何绘制文字。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十)灯光材质</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E7%81%AF%E5%85%89%E6%9D%90%E8%B4%A8/</link>
+      <pubDate>Sun, 14 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E7%81%AF%E5%85%89%E6%9D%90%E8%B4%A8/</guid>
+      <description>&lt;p&gt;恩，现在上不了网了，所以也专心复习了。不废话。&lt;/p&gt;
+
+&lt;p&gt;另外需要补充的是，即本章节起，将参考部分其他D3D相关书籍来复习了，因为我确实不知道如何去空头讲述了，自己学的也不扎实，无法条理的叙述。但依旧大幅度的对原教程进行补充和说明。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十一)纹理补充说明</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BA%B9%E7%90%86%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Sun, 14 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%B8%80%E7%BA%B9%E7%90%86%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;似乎之前有说到过纹理，不过继续是复习，再复习一下也没关系啦。恩，另外这里还要在复习下多重纹理，记得上星期没提到的。这里说下。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二十二)Alpha混合</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%8Calpha%E6%B7%B7%E5%90%88/</link>
+      <pubDate>Sun, 14 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%8Calpha%E6%B7%B7%E5%90%88/</guid>
+      <description>&lt;p&gt;恩，我们首先来想一下，我们现实中的物体，有很多是透明的，如玻璃，冰块等，我们可以透过它们看到后面的物体和颜色。而我们单纯的纹理贴图是无法实现这种效果的，这就要求我们使用Alpha混合。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(十九)给模型帖制纹理</title>
+      <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B9%9D%E7%BB%99%E6%A8%A1%E5%9E%8B%E5%B8%96%E5%88%B6%E7%BA%B9%E7%90%86/</link>
+      <pubDate>Fri, 05 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B9%9D%E7%BB%99%E6%A8%A1%E5%9E%8B%E5%B8%96%E5%88%B6%E7%BA%B9%E7%90%86/</guid>
+      <description>&lt;p&gt;呼，好累啊，不知怎么的，近来一直比较疲惫，总想睡觉&amp;gt;_&amp;lt;果然是人又变懒了么。&lt;/p&gt;
+
+&lt;p&gt;还是继续复习好了，学着学着就能学进了。恩，我们实现了立方体的绘制，并且给它矩阵让它能够变换了，今天我们开始给它帖上纹理。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>3D游戏编程入门(十七)设置变换矩阵让立方体变换</title>
       <link>https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%8D%81%E4%B8%83%E8%AE%BE%E7%BD%AE%E5%8F%98%E6%8D%A2%E7%9F%A9%E9%98%B5%E8%AE%A9%E7%AB%8B%E6%96%B9%E4%BD%93%E5%8F%98%E6%8D%A2/</link>
       <pubDate>Wed, 03 Jan 2007 00:00:00 +0000</pubDate>
