@@ -1,0 +1,983 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>网络编程</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="近来在做P2P下载工具，复习一下网络编程。
+
+">
+    <meta property="og:description" content="近来在做P2P下载工具，复习一下网络编程。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="网络编程">
+    <meta property="og:url" content="/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="近来在做P2P下载工具，复习一下网络编程。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      网络编程
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-03-29T00:00:00Z">
+        
+  三月 29, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>近来在做P2P下载工具，复习一下网络编程。</p>
+
+<p></p>
+
+<h3 id="通信网络类型">通信网络类型</h3>
+
+<p>所有的通信网络就其实现技术可以分成两种：线路交换和包交换。</p>
+
+<p>其中线路交换就是传输时发送端和接收端之间建立一个特定的线路连接，数据在此线路上进行传输，比如电话。</p>
+
+<p>包交换就是发送端将数据分割为块，处理后形成一个包Packet，将包在网络中单独传输，包中除了传输的数据以外，还有发送端地址，接收端地址，以及端口，文件大小等类似的必要信息。典型的就是计算机网络。</p>
+
+<hr />
+
+<h3 id="7层网络协议">7层网络协议</h3>
+
+<p>基于ISO（国际标准化组织）提出的OSI标准，也就是七层通信协议标准，我们将网络协议分为7层：</p>
+
+<ol>
+<li>应用层Application：最接近用户的层，一般是构架在通信协议以上的网络应用软件，直接与用户交互。</li>
+<li>表示层Presentation：作用是将不同计算机的编码方式统一起来，并且对数据进行一些压缩，加密等工作。</li>
+<li>会话层Session：控制数据传输时的数据交换，包括传输方向，中断处理等。</li>
+<li>传输层Transport：控制数据流保证数据正确传输，屏蔽硬件变动和差异。</li>
+<li>网络层NetWork：在发送器和接收端创建一个虚拟路径，实现数据包的路由。</li>
+<li>数据链路层DataLink：对底层数据进行封包，将上层数据进行分割为桢。</li>
+<li>物理层Physical：控制数据在物质媒介上的传输。</li>
+</ol>
+
+<h3 id="tcp-ip">TCP/IP</h3>
+
+<p>而我们常听到的TCP/IP协议是开发时的一系列协议，作为一中网络标准控制我们的开发，此协议主要分为四层：</p>
+
+<ol>
+<li>应用层：相当于OSI模型的应用层+表示层+会话层。</li>
+<li>传输层：相当于OSI模型中的传输层。</li>
+<li>网络层：相当于OSI模型中的网络层。</li>
+<li>网络访问层：相当于OSI中的数据链路层+物理层。</li>
+</ol>
+
+<p>但是值得我们记住的，所谓的TCP/IP，通常并不是仅仅包括TCP和IP这两个协议，通常还包括其他协议，包括FTP，SMTP，HTTP，TFTP，UDP，TCMP，ARP，RARP，TELENT等协议，这些一起被称为协议簇。</p>
+
+<h3 id="udp-vs-tcp">UDP VS TCP</h3>
+
+<p>因为不是职业做网络协议方面的，所以这里不详细解释其他协议的含义，我们重点说下TCP协议和UDP协议的区别。</p>
+
+<ul>
+<li><p>TCP协议安全性高，它要求两台计算机中的信息字节流无差错的进行交互，所以两者间必须建立有效的连接。</p></li>
+
+<li><p>UDP协议安全性低，它是无连接的协议，不需要与对方建立连接，仅仅是将数据包发送过去，对方是否会遗漏数据，它不关心，不进行数据完整性安全性检查。然而在传输少量数据时，UDP速度比较快。</p></li>
+</ul>
+
+<h3 id="socket套接字">Socket套接字</h3>
+
+<p>我们首先可以理解，网络间的通信，在简化之后，不过是网络间两两端点之间的通信，而Socket就是通信端点的一种抽象，提供了一种发送和接收数据的机制。</p>
+
+<p>Socket创建后，可以通过网络与其他的Scoket创建应用程序通信，就类似于一个下水道的两个端口，只要这个端口找到了另外一个端口，在他们之间就可以铺设一个信息管道，进行信息传递。</p>
+
+<p>而管道口是既可以出水也可以入水的，Scoket做为网络上的I/O基础，可以进行信息的输入输出工作。但若我们需要与另外一个计算机进行连接，我们需要知道它的IP和Port端口号，而这个信息就存储在Socket中，我们可以理解为管道口那里也挂着个门牌号一样。</p>
+
+<p>在这里我们就可以解释上面UDP/TCP的区别所在了。我们是使用Socket来进行网络间通信。</p>
+
+<p>而Scoket可分为两类，Socket_Stream流Socket和Socket_Dgram数据报Socket，而这两种Socket的区别在于，流Scoket是双向的，有序的，无重复的，无边界记录的数据流。而数据报Socket不保证可靠，不保证有序，不保证重复性，它建立的就是UDP之类的不可靠通信。</p>
+
+<h3 id="c-s体系与p2p体系">C/S体系与P2P体系</h3>
+
+<p>Client/Server客户端/服务器模式是很早就为网络接受的一种模型，他的实质就是服务器上保存资源，用户客户端与其通信，Server端进行数据包发送，Client进行接收。</p>
+
+<p>网络游戏中则是玩家用户先对服务器进行数据传输，反馈玩家当前按键消息，服务器根据消息进行判断，数据库运算反馈信息，用户计算机接收信息，并进行相应的图形显示。例如：玩家按下&rsquo;A&rsquo;键，对应一个动作信息&ndash;&gt;服务器判断，该动作信息能够触发什么事件，例如攻击了，怪物少了108的HP，玩家消耗12点魔法力，再将这些处理后的信息发送给玩家&ndash;&gt;玩家计算机收到信息，进行显示，怪物血槽减少，玩家蓝色魔法槽减少等。</p>
+
+<p>这些都是在两台计算机之下进行的交互通信，而且各计算机负责的功能不同，身份不同。
+而P2P（Peer-to-Peer）原意就是平等to平等，也就是说，互联的两台计算机，是完全平等的，进行发送的一方也进行接收，这样就大大加强了用户之间的资源流通，同时也减少了单一服务器的压力，ServerLass。</p>
+
+<p>现在我要做的就是将游戏的客户端下载，更新等功能实现P2P方式下载，不再是单纯的FTP下载，减少服务器压力。</p>
+
+<h3 id="c-s通信编码">C/S通信编码</h3>
+
+<p>一：Client端设计思路</p>
+
+<p>创建Socket-&gt;连接服务器-&gt;发送接收数据-&gt;关闭Scoket。</p>
+
+<p>二：Server端设计思路</p>
+
+<p>创建Socket-&gt;绑定Socket-&gt;监听Socket-&gt;建立连接-&gt;接收发送数据-&gt;关闭Socket</p>
+
+<h3 id="winsocket编程入门api">WinSocket编程入门API</h3>
+
+<p>WinSocket规范实际上是Microsoft和一些公司共同制定的一套WINDOWS下的编程接口。注意，他不是TCP/IP那样的协议，仅是一套编程接口。</p>
+
+<p>我们在使用WinSock编程时，需要包含WinSock API的头文件winsock.h，现在是winsock2.h，并连接库文件ws2_32.lib。</p>
+
+<p>按照上面的设计思路，我来复习下相关API。</p>
+
+<h3 id="客户端编程">客户端编程</h3>
+
+<ol>
+<li>首先，调用WSAStartup()函数来和Winsock的动态连接库建立关系，然后调用socket来建立一个TCP或UDP Socket，使用bind()来手动指定IP地址和port端口号。（也可不指定，使用系统分配，之后可以使用getsockname()获取该值）</li>
+<li>之后发送连接请求，调用connect()函数，此过程应该是循环的，直到成功，或者连接次数超时失败。</li>
+<li>进行数据传输，因为暂不考虑使用UDP Socket，所以仅谈TCP Socket。发送函数send()，接收函数recv();</li>
+<li>结束Socket连接。closesocket()函数，之后断开释放与Winsock库关系WSACleanup();</li>
+</ol>
+
+<h3 id="服务器端编程">服务器端编程</h3>
+
+<ol>
+<li>依旧是初始化WinSocket DLL，WSAStartup();成功后我们可以使用该DLL中的API。</li>
+<li>创建Socket,Socket();</li>
+<li>绑定端口，对这个监听的Socket指定端口，这样的话，当客户端再次连接时，就可以知道连接哪个地址和端口。bind();</li>
+<li>设置监听，listen();（注意，监听数量最大为5），这个应该是持续的，直到接收到Client的Connect请求。</li>
+<li>接受连接：当监听到Client的请求之后对其IParam进行分析，若允许连接，则accept()，该函数会生成一个新的Socket与客户端的Socket进行连接，而原本的Socket将继续监听等待下一个连接请求。</li>
+<li>关闭连接。当发现连接不合法不准备接受连接，或者服务器关闭整修时，则可closesocket()关闭监听socket，此函数无论客户端还是服务器端调用，都会中断连接。最后依旧调用WSACleanup()来通知WinStack来释放socket资源。</li>
+</ol>
+
+<h3 id="下面用个简单的代码进行说明">下面用个简单的代码进行说明。</h3>
+
+<pre><code class="language-CPP">/*======================== 
+*客户端WinSocketAPI使用Demo
+*Edit by 自由骑士笃志
+*Mail: 
+*=======================*/
+#include &lt;winsock2.h&gt;
+#include &lt;stdio.h&gt;
+
+#pragma comment(lib, &quot;ws2_32.lib&quot;)
+
+
+// 宏设置端口号
+#define PORT_NUM 9000
+
+void main( int argc,char **argv )
+{
+
+WSADATA wsaData; // 结构体,保存WinSocket库信息
+SOCKET Socket;   // Socket对象
+SOCKADDR_IN serverAddr; // 结构体,保存Socket信息
+int nPort = PORT_NUM; // 端口号
+int nFileLength; // 文件长度
+
+if ( argc &lt;= 1 )
+{
+   printf( &quot;USAGE:filename&lt;Server IP address&gt;.\n&quot; );
+   return;
+}
+
+
+/* 
+* 函数名称:WSAStartup()
+*
+* 函数作用:连接Winsock库
+*
+* 函数说明:
+* WSAStartup该函数参数意义为:第一个参数是Socket版本号,
+* 现在使用的是2.2版,假如想使用2.1版,则MAKEWORD( 2, 1 ),
+* 第二个参数是out的,它是记录版本信息的一个指针,之后我们
+* 会用到,该函数会将该版本号的Socket捆绑到程序中,若成功,
+* 则返回0.
+*/
+if( ( WSAStartup( MAKEWORD( 2,2 ), &amp;wsaData ) ) != 0 )
+{
+   printf( &quot;连接Winsock库失败 \n&quot; );
+   return;
+}
+
+// 创建Socket并记录对象
+
+/* 
+* 函数名称:socket()
+*
+* 函数作用:创建Socket并记录对象
+*
+* 函数说明:
+* socket()用来生成一个新的Socket,其参数一为PF_INET或AF_INET,
+* 只有这两个可选,PF代表协议族,AF代表地址族,实际意义一样,无需多理.
+* 参数二为Socket类型,之前我们说过Socket分为流Scoket(SOCK_STREAM)
+* 以及数据报Scoket(SOCK_DGRAM),第三个参数是通讯协议,若不指定的话
+* 一般就设置为0,该函数若调用成功,则返回Socket对象,若失败则返回
+* INVALID_SOCKET,失败时可使用WSAGetLastError()获取失败的原因.
+*/
+if( ( Socket = socket( AF_INET, SOCK_STREAM, IPPROTO_TCP ) ) == INVALID_SOCKET )
+{
+   printf( &quot;创建套接字失败   %d\n&quot;, 
+        WSAGetLastError() );
+   WSACleanup();
+   return;
+}
+
+/* 注:SOCKADDR_IN结构还有个参数是sin_zero,我这里没有设置
+* 一般来说我们可以用bzero()或memset()函数将其置为零
+*   (它用来将sockaddr_in结构填充到与struct sockaddr同样的长度)不理解也可
+*/
+serverAddr.sin_family = AF_INET;   // 地址族
+serverAddr.sin_port = htons( nPort );   // 端口号
+serverAddr.sin_addr.s_addr = inet_addr( argv[1] ); // IP地址
+
+/* 注:这里的htons是字节转换,分离出中间的to之后,可按照下表分析
+* h表示&quot;host&quot; ，n表示&quot;network&quot;，s 表示&quot;short&quot;，l表示 &quot;long&quot;。
+*/
+printf( &quot;正在连接服务器,请稍候 %s : %d...\n&quot;,
+inet_ntoa( serverAddr.sin_addr ), htons( serverAddr.sin_port ) );
+
+
+/* 
+* 函数名称:connect
+*
+* 函数作用:对另一Socket提出连接申请
+*
+* 函数说明:
+* connect()该函数第一个参数是本机socket信息,第二个参数是想要连接的
+* 对方地址,第三个参数是对方地址的信息长度,该函数成功则返回0
+* 失败则返回SOCKET_ERROR
+*/
+if( connect( Socket,( SOCKADDR* )&amp;serverAddr, sizeof( serverAddr )) == SOCKET_ERROR )
+{
+   printf(&quot;连接服务器失败 %s \n&quot;,WSAGetLastError());
+   closesocket( Socket );
+   WSACleanup();
+   return; 
+}
+
+printf( &quot;连接成功,更新数据中,请稍候...\n&quot; );
+
+/*
+* 函数名称:socket()
+*
+* 函数作用:向另一Socket发送数据
+*
+* 函数说明:
+* send()函数用于TCP Scoket数据发送,其中第一个参数是本机Socket对象(识别码)
+* 第二个参数是即将发送的信息缓冲区的指针,第三个是即将发送的信息缓冲区大小
+* 我们可以使用setsockopt/getsockopt来设置和获取缓冲区信息
+* 第四个参数是函数调用类型,一般默认为0则可.此函数成功则返回输出信息文件的大小
+* 这里值得注意的,这个大小未必和信息缓冲区大小一致,也未必和你准备输出的文件
+* 大小一致,所以我们需要使用这个长度和准备发出的文件大小比对,以确保没有数据丢失
+* ,此函数失败则返回SOCKET_ERROR
+*/
+if( ( nFileLength = send( Socket, &quot;Hi,from a client.&quot;, 17, 0 ) ) == SOCKET_ERROR )
+{
+   printf ( &quot;发送数据失败 %s \n&quot;,WSAGetLastError() );
+   closesocket( Socket );
+   WSACleanup();
+   return;
+}
+
+/*
+* 函数名称:closesocket()
+* 
+* 函数作用:结束Socket连接,释放Socket对象
+*
+* 函数说明:结束Socket连接,参数是本机Socket对象(识别码),
+*    该函数重载的另外一个声明是无参的
+*/
+printf(&quot;数据发送成功! %d bytes.\n&quot;,nFileLength );
+closesocket( Socket );
+
+/*
+* 函数名称:WSACleanup()
+* 
+* 函数作用:终止对WinSocketDLL的调用
+*
+* 函数说明:若在多线程中调用该函数,它将会终止WinSocket在所有线程中的使用
+*/
+WSACleanup();
+}
+
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF/">网络通讯</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/" data-tooltip="typedef精解偶得">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C/" data-tooltip="引擎设置规范计划(二)">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/" data-tooltip="typedef精解偶得">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C/" data-tooltip="引擎设置规范计划(二)">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E7%25BD%2591%25E7%25BB%259C%25E7%25BC%2596%25E7%25A8%258B%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/11/%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/">
+                <h3 class="media-heading">人需要出走</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>其實我不太講旅行或旅遊，我常常用的一個字是「出走」。人在一個環境太久了、太熟悉了，就失去他的敏銳度，也失去了創作力的激發，所以需要出走。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/11/10_12-11_02%E5%8D%8A%E6%9C%88%E8%AE%B0/">
+                <h3 class="media-heading">10_12-11_02半月记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>从12号开始弄新空间基本完毕，到现在已经20天了，修复了部分BUG之外，大部分在做老日志迁徙工作，确实有些枯燥；在整理过程中重新审视之前的东西，也确有一点感触。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/">
+                <h3 class="media-heading">Markdown语法以及Hugo部分标签</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/">
+                <h3 class="media-heading">使用Hugo自动生成静态网页</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用HUGO自动生成静态网页的方法
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/">
+                <h3 class="media-heading">BCB中C与Lua互相函数变量调用代码</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB中C与Lua互相函数变量调用代码</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/bcb%E6%89%B9%E9%87%8F%E6%8E%A7%E4%BB%B6%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81/">
+                <h3 class="media-heading">BCB批量控件处理代码</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB批量控件处理代码</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/%E7%94%A8c--%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B9%8Birrlicht%E5%BC%95%E6%93%8E/">
+                <h3 class="media-heading">用C&#43;&#43;实现跨平台游戏开发之Irrlicht引擎</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Irrlicht引擎是一个用C++书写的高性能实时的3D引擎，可以应用于C++程序或者.NET语言中。通过使用Direct3D（Windows平台），OpenGL 1.2或它自己的软件着色程序，可以实现该引擎的完全跨平台。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/%E8%AE%A1%E5%88%92%E5%95%8A%E8%AE%A1%E5%88%92/">
+                <h3 class="media-heading">计划啊计划</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>有人说，爱定计划的人不容易成功,因为计划赶不上变化,他很容易受自己计划拖累,只要有一次没完成,那么以后他的计划也不再是有用的计划了.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         229 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B\/';
+          
+            this.page.identifier = '\/2007\/03\/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -6,10 +6,45 @@
     <description>Recent content in C&#43;&#43; on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 24 Mar 2007 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 May 2007 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BCB中C与Lua互相函数变量调用代码</title>
+      <link>https://duzhi5368.github.io/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
+      <description>&lt;p&gt;BCB中C与Lua互相函数变量调用代码&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>STL入门</title>
+      <link>https://duzhi5368.github.io/2007/04/stl%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 19 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/04/stl%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;C++标准函数库中80%是STL，其中广泛使用了泛性编程思想.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>typedef精解偶得</title>
+      <link>https://duzhi5368.github.io/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/</guid>
+      <description>&lt;h3 id=&#34;typedef声明指针陷阱&#34;&gt;typedef声明指针陷阱&lt;/h3&gt;
+
+&lt;p&gt;我们使用typedef可以加强代码的健壮性，例如象下面这样隐藏指针语法：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>汇编角度来分析C&#43;&#43;优化</title>

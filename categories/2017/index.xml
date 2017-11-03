@@ -6,10 +6,32 @@
     <description>Recent content in 2017 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 13 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 03 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/categories/2017/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>人需要出走</title>
+      <link>https://duzhi5368.github.io/2017/11/%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/11/%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/</guid>
+      <description>&lt;p&gt;其實我不太講旅行或旅遊，我常常用的一個字是「出走」。人在一個環境太久了、太熟悉了，就失去他的敏銳度，也失去了創作力的激發，所以需要出走。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>10_12-11_02半月记</title>
+      <link>https://duzhi5368.github.io/2017/11/10_12-11_02%E5%8D%8A%E6%9C%88%E8%AE%B0/</link>
+      <pubDate>Thu, 02 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/11/10_12-11_02%E5%8D%8A%E6%9C%88%E8%AE%B0/</guid>
+      <description>&lt;p&gt;从12号开始弄新空间基本完毕，到现在已经20天了，修复了部分BUG之外，大部分在做老日志迁徙工作，确实有些枯燥；在整理过程中重新审视之前的东西，也确有一点感触。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Markdown语法以及Hugo部分标签</title>

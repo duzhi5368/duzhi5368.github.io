@@ -1,0 +1,811 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>引擎设置规范计划(二)</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="1：一行代码仅进行一种动作，如定义一个变量，或执行一条语句。
+
+if..else..for..do..while 等必须单独占行，执行语句不得在其后，执行语句无论多长必须添加{ }。
+
+">
+    <meta property="og:description" content="1：一行代码仅进行一种动作，如定义一个变量，或执行一条语句。
+
+if..else..for..do..while 等必须单独占行，执行语句不得在其后，执行语句无论多长必须添加{ }。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="引擎设置规范计划(二)">
+    <meta property="og:url" content="/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="1：一行代码仅进行一种动作，如定义一个变量，或执行一条语句。
+
+if..else..for..do..while 等必须单独占行，执行语句不得在其后，执行语句无论多长必须添加{ }。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      引擎设置规范计划(二)
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-03-27T00:00:00Z">
+        
+  三月 27, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <h3 id="1-一行代码仅进行一种动作-如定义一个变量-或执行一条语句">1：一行代码仅进行一种动作，如定义一个变量，或执行一条语句。</h3>
+
+<p>if..else..for..do..while 等必须单独占行，执行语句不得在其后，执行语句无论多长必须添加{ }。</p>
+
+<p></p>
+
+<p>例如：</p>
+
+<pre><code class="language-CPP">int width,height,depth; //宽度高度深度
+if(width&lt;height)dosomething();
+</code></pre>
+
+<p>上面代码不标准可更换为</p>
+
+<pre><code class="language-cpp">int   nWidth; // 宽度
+int   nHeight; // 高度
+int   nDepth; // 深度
+
+if( nWidth &lt; nHeight )
+{
+     DoSomeThing(); 
+}
+</code></pre>
+
+<h3 id="2-空格">2:空格。</h3>
+
+<p>所有关键字前后保留空格，包括for (; ; ){}。
+所有函数名后不留空格，例如Fun();。
+逗号分号后保留空格。
+操作运算符前后尽量留空格。</p>
+
+<h3 id="3-代码缩进">3：代码缩进</h3>
+
+<p>所有大括号均占两行，并且配对的进行对齐缩进。</p>
+
+<h3 id="4-修饰符靠近变量名">4：修饰符靠近变量名</h3>
+
+<p>原因如下：int* x,y;我们会认为y是int*类型的，而实际上仅是int型的。但是这样比较直观。</p>
+
+<p>int *x,y;不容易将y误解。</p>
+
+<h3 id="5-注释">5：注释</h3>
+
+<p>1）；注释应当放置在代码的上方或右方，不可放下方。
+2）；代码较长且多重嵌套时，应当在段落结束处添加注释，end of XXX,以便阅读
+3）：自定义比较复杂的函数时，应先加以说明：</p>
+
+<pre><code class="language-cpp">/*
+*函数介绍：
+*输入参数：
+*输出参数：
+*返回值：
+*/
+</code></pre>
+
+<h3 id="6-类声明">6：类声明</h3>
+
+<p>首先对Public接口函数声明，之后再对Private数据进行声明，第一使自己设计类时思路清晰，第二方便别人阅读。</p>
+
+<h3 id="7-命名规则">7：命名规则</h3>
+
+<p>数据均采用“匈牙利”命名法。</p>
+
+<p>类的成员函数使用单动词，全局函数使用动宾结构。
+类名，函数名以大写开头，采用Windows大小写混编，不使用下划线。
+变量，参数以修饰符g<em>(全局),m</em>(成员),s_(静态)等为首，之后跟类型。
+常量以全部大写为准，以下划线分割。
+所有函数，类，宏定义，变量，参数，常量，在遵循以上标准后，添加FK进行标识。</p>
+
+<h3 id="8-数据初始化均放在类构造函数的初始化表中进行">8：数据初始化均放在类构造函数的初始化表中进行。</h3>
+
+<h3 id="9-函数无参数-则使用void填充">9：函数无参数，则使用void填充。</h3>
+
+<p>switch后必须跟配对的Default，即使仅有一个Break</p>
+
+<h3 id="10-copy类型的函数-目的参数在前-源文件在后">10：Copy类型的函数，目的参数在前，源文件在后。</h3>
+
+<p>多使用GetSet等配对函数。</p>
+
+<p>设置SafeFree,SafeDelete,SafeDelete []</p>
+
+<h3 id="11-避免30行以上的大段函数-每一个函数实现且仅实现一个功能为佳">11：避免30行以上的大段函数，每一个函数实现且仅实现一个功能为佳</h3>
+
+<h3 id="12-debug版本下-使用assert断言来查错">12：Debug版本下，使用assert断言来查错</h3>
+
+<p>值得注意的是，非法情况可以不做处理，但错误情况必须做出相应的处理提示。避免一切宏定义，可使用内联函数替代宏定义，使用const替代宏定义常量。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%BC%95%E6%93%8E%E5%BC%80%E5%8F%91/">引擎开发</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-tooltip="网络编程">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/" data-tooltip="汇编角度来分析C&#43;&#43;优化">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2017 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-tooltip="网络编程">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/" data-tooltip="汇编角度来分析C&#43;&#43;优化">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E5%25BC%2595%25E6%2593%258E%25E8%25AE%25BE%25E7%25BD%25AE%25E8%25A7%2584%25E8%258C%2583%25E8%25AE%25A1%25E5%2588%2592%25E4%25BA%258C%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/11/%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/">
+                <h3 class="media-heading">人需要出走</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>其實我不太講旅行或旅遊，我常常用的一個字是「出走」。人在一個環境太久了、太熟悉了，就失去他的敏銳度，也失去了創作力的激發，所以需要出走。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/11/10_12-11_02%E5%8D%8A%E6%9C%88%E8%AE%B0/">
+                <h3 class="media-heading">10_12-11_02半月记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>从12号开始弄新空间基本完毕，到现在已经20天了，修复了部分BUG之外，大部分在做老日志迁徙工作，确实有些枯燥；在整理过程中重新审视之前的东西，也确有一点感触。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/">
+                <h3 class="media-heading">Markdown语法以及Hugo部分标签</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/">
+                <h3 class="media-heading">使用Hugo自动生成静态网页</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>使用HUGO自动生成静态网页的方法
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2009/07/dont--infatuate-with-meplease./">
+                <h3 class="media-heading">Don&#39;t  infatuate with me,Please.</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2009
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>不要迷恋哥，哥只是个传说。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/">
+                <h3 class="media-heading">BCB中C与Lua互相函数变量调用代码</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB中C与Lua互相函数变量调用代码</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/bcb%E6%89%B9%E9%87%8F%E6%8E%A7%E4%BB%B6%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81/">
+                <h3 class="media-heading">BCB批量控件处理代码</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>BCB批量控件处理代码</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/%E7%94%A8c--%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B9%8Birrlicht%E5%BC%95%E6%93%8E/">
+                <h3 class="media-heading">用C&#43;&#43;实现跨平台游戏开发之Irrlicht引擎</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Irrlicht引擎是一个用C++书写的高性能实时的3D引擎，可以应用于C++程序或者.NET语言中。通过使用Direct3D（Windows平台），OpenGL 1.2或它自己的软件着色程序，可以实现该引擎的完全跨平台。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2007/05/%E8%AE%A1%E5%88%92%E5%95%8A%E8%AE%A1%E5%88%92/">
+                <h3 class="media-heading">计划啊计划</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2007
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>有人说，爱定计划的人不容易成功,因为计划赶不上变化,他很容易受自己计划拖累,只要有一次没完成,那么以后他的计划也不再是有用的计划了.</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         229 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C\/';
+          
+            this.page.identifier = '\/2007\/03\/%E5%BC%95%E6%93%8E%E8%AE%BE%E7%BD%AE%E8%A7%84%E8%8C%83%E8%AE%A1%E5%88%92%E4%BA%8C\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
