@@ -1,0 +1,843 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>大数据游戏用户分群思路</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="本文记录一下用大数据对游戏用户进行用户分群的想法流程。
+
+">
+    <meta property="og:description" content="本文记录一下用大数据对游戏用户进行用户分群的想法流程。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="大数据游戏用户分群思路">
+    <meta property="og:url" content="/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="本文记录一下用大数据对游戏用户进行用户分群的想法流程。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      大数据游戏用户分群思路
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-09-03T00:00:00Z">
+        
+  九月 3, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e5%a4%a7%e6%95%b0%e6%8d%ae">大数据</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2018">2018</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>本文记录一下用大数据对游戏用户进行用户分群的想法流程。</p>
+
+<p></p>
+
+<h1 id="模块名">模块名</h1>
+
+<p>用户分群</p>
+
+<h1 id="需求">需求</h1>
+
+<p>根据用户在游戏中的信息，对用户进行分群。（重点：挖掘付费能力强的核心用户）</p>
+
+<h1 id="开发和思考流程">开发和思考流程</h1>
+
+<ul>
+<li><p>首先：根据用户的基本特征进行基本分群。（例如：在线时间 高，中，低；累计充值 高，中，低）</p></li>
+
+<li><p>然后：根据多种基本特征 组合 或 聚合，得到最终分群结果。（例如：土豪，肝神）</p></li>
+</ul>
+
+<h1 id="具体步骤">具体步骤</h1>
+
+<h2 id="定义标签">定义标签</h2>
+
+<ul>
+<li>基础标签：从原始数据转化而来，通过数据分布模型得到。</li>
+<li>二次标签：通过基础标签生成，由市场运营人员根据逻辑相关性组合得到。</li>
+</ul>
+
+<h2 id="基本流程">基本流程</h2>
+
+<ul>
+<li><p>每天，每周，每月，程序自动根据动态数据聚合统计更新出基础标签的配置。（例如：通过昨日用户充值，动态计算出“充值量为 高”的用户充值范围的定义；例如更新“最近三十天总充值为 高”的定义）</p></li>
+
+<li><p>然后，通过配置和用户数据生成用户基础标签。（例如：上一步生成的配置是“最近30天充值在12620到38291之间的用户为充值量为 高 的用户”，用户数据为“最近30天充值21321”，那么用户基础标签就多了一个“最近30天充值量：高”）</p></li>
+
+<li><p>然后，使用者运营市场人员，通过基础标签的组合模板，定义出他们的二次标签。（例如：市场人员的“土豪”模板定义为，“最近30天充值量：巨高”，“最近30天代币消耗量：巨高”，求交得到“土豪”人群）</p></li>
+</ul>
+
+<h1 id="基础标签分组">基础标签分组</h1>
+
+<p>基础标签的分组需要根据不同数值类型，建立不同的分布模型。</p>
+
+<h3 id="正态分布-normal-distribution">正态分布 Normal Distribution</h3>
+
+<ul>
+<li><p>函数表达式
+<img src="../../../images/NormalDistribution_Func.png" alt="正态分布函数式" /></p></li>
+
+<li><p>参数
+μ 平均数
+σ 标准差</p></li>
+
+<li><p>特征
+对称分布</p></li>
+
+<li><p>适用标签
+用户游戏时间分布：大部分用户会是在晚上8-11点在进行游戏，此为高峰期，其他时间多为对称分布</p></li>
+
+<li><p>曲线分布图
+<img src="../../../images/NormalDistribution_Image.png" alt="正态分布曲线图" /></p></li>
+</ul>
+
+<h3 id="泊松分布-poisson-distribution">泊松分布 Poisson Distribution</h3>
+
+<ul>
+<li><p>函数表达式
+<img src="../../../images/PoissonDistribution_Func.png" alt="泊松分布函数式" /></p></li>
+
+<li><p>参数
+λ 平均数</p></li>
+
+<li><p>特征
+左倾分布，离散型数值</p></li>
+
+<li><p>适用标签
+每日用户登录次数：此值为离散分布，且低登录次数的用户显著较多
+每日充值次数：此值为离散分布，且低充值次数的用户显著较多</p></li>
+
+<li><p>曲线分布图
+<img src="../../../images/PoissonDistribution_Image.png" alt="泊松分布曲线图" /></p></li>
+</ul>
+
+<h3 id="伽马分布-gamma-distribution">伽马分布 Gamma Distribution</h3>
+
+<ul>
+<li><p>函数表达式
+<img src="../../../images/GammaDistribution_Func.png" alt="伽马分布函数式" /></p></li>
+
+<li><p>参数
+α 形状参数
+β 尺度参数</p></li>
+
+<li><p>特征
+左倾分布，连续型数值</p></li>
+
+<li><p>适用标签
+充值总额：此值为连续分布，因为用户充值总额只会增加；且低充值总额的用户显著较多
+游戏总时长：此值为连续分布，因为用户游戏时长只会增加；且低时间用户量大</p></li>
+
+<li><p>曲线分布图
+<img src="../../../images/GammaDistribution_Image.png" alt="伽马分布曲线图" /></p></li>
+</ul>
+
+<h2 id="总结分组">总结分组</h2>
+
+<p>找到合适的曲线分布图后，通过其中位数或者平均数，Q3，Q1，根据业务实际需求，可以最简单的将基础标签分类为六类: 很低，低，中，较高，高，巨高</p>
+
+<h1 id="总结">总结</h1>
+
+<p>优点：方法容易理解，效果明确，满足用户自定义需求。</p>
+
+<p>缺点：数据延迟时间一天，定时任务有依赖（基础标签生成任务 依赖于 模板聚合任务）</p>
+
+<p>扩展点：通过基础标签的数据库，使用K-means等进行聚合生成二级标签，可自行缓慢根据业务更变动态增加函数库。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B5%81%E5%A4%B1%E7%94%A8%E6%88%B7%E9%A2%84%E8%AD%A6%E5%92%8C%E5%A4%84%E7%90%86/" data-tooltip="大数据流失用户预警和处理">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/07/%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E6%8C%82%E8%B5%B7/" data-tooltip="程序技术挂起">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B5%81%E5%A4%B1%E7%94%A8%E6%88%B7%E9%A2%84%E8%AD%A6%E5%92%8C%E5%A4%84%E7%90%86/" data-tooltip="大数据流失用户预警和处理">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/07/%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E6%8C%82%E8%B5%B7/" data-tooltip="程序技术挂起">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2018%2F09%2F%25E5%25A4%25A7%25E6%2595%25B0%25E6%258D%25AE%25E6%25B8%25B8%25E6%2588%258F%25E7%2594%25A8%25E6%2588%25B7%25E5%2588%2586%25E7%25BE%25A4%25E6%2580%259D%25E8%25B7%25AF%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B5%81%E5%A4%B1%E7%94%A8%E6%88%B7%E9%A2%84%E8%AD%A6%E5%92%8C%E5%A4%84%E7%90%86/">
+                <h3 class="media-heading">大数据流失用户预警和处理</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本文记录一下用大数据对流失用户的预警和处理的想法流程。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/09/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF/">
+                <h3 class="media-heading">大数据游戏用户分群思路</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本文记录一下用大数据对游戏用户进行用户分群的想法流程。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/07/%E7%A8%8B%E5%BA%8F%E6%8A%80%E6%9C%AF%E6%8C%82%E8%B5%B7/">
+                <h3 class="media-heading">程序技术挂起</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>我是很懒很蠢的。</p>
+
+<p>这是翻看最近几年的计划做出的结论。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/07/%E6%97%A5%E8%AE%B02018-07-27/">
+                <h3 class="media-heading">日记2018-07-27</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近忙于工作，一直没有足够充裕的时间来更新日志，刚发现已经四个多月了，时间过得真快。
+翻看之前的日记，更觉得时间过得快了，四个月前的状态和现状差别已经很大，恍如隔世，没区别的是：依然一事无成。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/02/%E6%97%A5%E8%AE%B02018-02-28/">
+                <h3 class="media-heading">日记2018-02-28</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>二月份还是比较努力的，在英语和机器学习上都还可以，健身比较不足，工作强度略大。于是这里做一些优化。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/02/%E6%97%A5%E8%AE%B02018-02-05/">
+                <h3 class="media-heading">日记2018-02-05</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>看了Rect的日志，也有一肚子的话想说，上周学习深度学习也确实榨干了脑汁，想偷懒一下，于是决定花一些时间来写点什么。</p>
+
+<p>其实最近接触的东西也挺多的，脑子还是丝毫没有停歇，不管是技术还是思想。只是似乎知道的越多，越容易陷入怀疑和迷茫，更不知道写些什么了，反而需要更多的“引子”来开启话题。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/01/%E6%97%A5%E8%AE%B02018-1-25/">
+                <h3 class="media-heading">日记2018-1-25</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>嗯，有一段时间没记录了。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/12/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E4%B9%8B%E4%B8%80html/">
+                <h3 class="media-heading">全栈开发学习之一：HTML</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>全栈开发复习之 HTML</p>
+
+<p>学习自 <a href="https://www.freecodecamp.com">https://www.freecodecamp.com</a> 和 <a href="https://www.w3schools.com">https://www.w3schools.com</a></p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/12/%E6%9C%89%E7%82%B9%E5%B0%8F%E5%B0%8F%E7%9A%84%E4%B8%8D%E5%AE%89/">
+                <h3 class="media-heading">有点小小的不安</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>2017即将结束，这一年与往年最大不同就是全年在国外。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/12/%E6%80%BB%E7%BB%932017%E5%B1%95%E6%9C%9B2018/">
+                <h3 class="media-heading">总结2017，展望2018</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2017
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>很快就要圣诞节了，然而这里没有雪。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         239 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2018\/09\/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF\/';
+          
+            this.page.identifier = '\/2018\/09\/%E5%A4%A7%E6%95%B0%E6%8D%AE%E6%B8%B8%E6%88%8F%E7%94%A8%E6%88%B7%E5%88%86%E7%BE%A4%E6%80%9D%E8%B7%AF\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
