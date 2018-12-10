@@ -287,7 +287,7 @@
 
 <p>我们对2016,2017期间数据进行了单月，半年，一年，20个月的数据筛选，发现T是呈现收敛的，部分数据如下图（注：根据图表特性，我们综合使用了中位数和平均数）：</p>
 
-<p><img src="../../../images/ReturnDay_Table.png" alt="时间段区域和T值关系" /></p>
+<p><img src="../../../../images/ReturnDay_Table.png" alt="时间段区域和T值关系" /></p>
 
 <p>所以，我们认为会收敛于T = 35，即流失天为35，也就意味着：在这款游戏中，若一个玩家超过35天未曾登录游戏，就属于流失用户。</p>
 
@@ -321,7 +321,7 @@
 
 <p>然后，无论哪个方法得到的特征，我们都进行统计检定进行客观测试，例如（相关系数，卡方检定，信息增益等方式）</p>
 
-<p><img src="../../../images/ReturnDay_ChiSquare.png" alt="特征统计检定" /></p>
+<p><img src="../../../../images/ReturnDay_ChiSquare.png" alt="特征统计检定" /></p>
 
 <h2 id="预测模型选取">预测模型选取</h2>
 
@@ -400,7 +400,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
 
 <p>我们获取了特征之后，通过PCA降维之后，发现流失用户和普通用户分群良好，说明特征量选取很好，可预测结果会比较理想。</p>
 
-<p><img src="../../../images/CustomerLoss_PCA.png" alt="特征统计检定" /></p>
+<p><img src="../../../../images/CustomerLoss_PCA.png" alt="特征统计检定" /></p>
 
 <p>其中红色点为35天后会流失用户；蓝色点为普通用户。可以看到两者虽然有重合现象，但基本上可以分辨两种行为方式不同的群体。</p>
 
@@ -412,7 +412,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
 
 <p>在正则化参数C时，做交叉选取确定了比较好的准确度accuracy和覆盖度recall.如下图：</p>
 
-<p><img src="../../../images/CustomerLoss_LR.png" alt="逻辑回归" /></p>
+<p><img src="../../../../images/CustomerLoss_LR.png" alt="逻辑回归" /></p>
 
 <p>其中绿色曲线为测试数据，蓝色曲线为训练数据。</p>
 
@@ -427,7 +427,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
 <p>我们先固定C=1，交叉选取求α，最终得到最好覆盖率和准确率时α=0.00129155
 然后我们固定α=0.00129155，交叉选取求C得到最好覆盖率和准确率时C=0.0000001</p>
 
-<p><img src="../../../images/CustomerLoss_SVM.png" alt="SVM" /></p>
+<p><img src="../../../../images/CustomerLoss_SVM.png" alt="SVM" /></p>
 
 <p>SVM计算消耗时间过长，为三天，不能适应需求，所以放弃。</p>
 
@@ -435,7 +435,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
 
 <p>结果和逻辑回归差不多，但对于非平衡数据不能很好的分布式处理，所以放弃。</p>
 
-<p><img src="../../../images/CustomerLoss_DecisionTree.png" alt="SVM" /></p>
+<p><img src="../../../../images/CustomerLoss_DecisionTree.png" alt="SVM" /></p>
 
 <h4 id="幸存分析-coxph">幸存分析 CoxPH</h4>
 
@@ -482,7 +482,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/12/%E6%97%A5%E8%AE%B02018-12-10/" data-tooltip="日记2018-12-10">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -553,7 +553,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/12/%E6%97%A5%E8%AE%B02018-12-10/" data-tooltip="日记2018-12-10">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -665,6 +665,27 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
       <div class="no-result text-color-light text-center"></div>
       <div class="results">
         
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/12/%E6%97%A5%E8%AE%B02018-12-10/">
+                <h3 class="media-heading">日记2018-12-10</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>已经快12月了，距离2018年结束指日可待。</p>
+
+<p>最近主要的生活变化包括以下部分：1：沉迷了一段手游。2：继续研究Golang,大数据和人工智能部分。3：做了一些养老理财投资。4：部分时间开销用来照顾小孩。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
         
           <div class="media">
             
@@ -844,25 +865,6 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
             <hr>
           </div>
         
-          <div class="media">
-            
-            <div class="media-body">
-              <a class="link-unstyled" href="https://duzhi5368.github.io/2017/12/%E6%80%BB%E7%BB%932017%E5%B1%95%E6%9C%9B2018/">
-                <h3 class="media-heading">总结2017，展望2018</h3>
-              </a>
-              <span class="media-meta">
-                <span class="media-date text-small">
-                  Dec 12, 2017
-                </span>
-              </span>
-              <div class="media-content hide-xs font-merryweather"><p>很快就要圣诞节了，然而这里没有雪。</p>
-
-<p></p></div>
-            </div>
-            <div style="clear:both;"></div>
-            <hr>
-          </div>
-        
       </div>
     </div>
     <div class="modal-footer">
@@ -870,7 +872,7 @@ uq * (X * （35 * P%） - Y) - (uq(（1-s）/ s) * y)
          data-message-zero=""
          data-message-one=""
          data-message-other="">
-         239 posts found
+         240 posts found
       </p>
     </div>
   </div>
