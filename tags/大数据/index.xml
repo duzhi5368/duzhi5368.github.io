@@ -6,10 +6,23 @@
     <description>Recent content in 大数据 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 29 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>大数据入门记录</title>
+      <link>https://duzhi5368.github.io/2018/12/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2018/12/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;嗯，记录大数据基本概念，以及核心软件Hadoop, Spark核心概念。&lt;/p&gt;
+
+&lt;p&gt;作为程序员入门大数据的记录。（写了近一天……我知道为啥现在自己写技术文章很少了）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>大数据流失用户预警和处理</title>
