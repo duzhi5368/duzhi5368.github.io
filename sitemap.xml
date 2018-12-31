@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://duzhi5368.github.io/2018/12/%E6%B2%A1%E4%BA%86%E5%9C%A3%E5%85%89%E5%8F%AA%E8%83%BD%E7%9B%B8%E4%BF%A1%E8%87%AA%E5%B7%B1/</loc>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://duzhi5368.github.io/2018/12/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
   </url>
@@ -1226,14 +1231,14 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</loc>
-    <lastmod>2006-08-29T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/categories/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</loc>
+    <lastmod>2006-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/categories/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</loc>
-    <lastmod>2006-01-01T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</loc>
+    <lastmod>2006-08-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1257,7 +1262,7 @@
   
   <url>
     <loc>https://duzhi5368.github.io/categories/2018/</loc>
-    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1328,7 +1333,7 @@
   
   <url>
     <loc>https://duzhi5368.github.io/post/</loc>
-    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1340,7 +1345,7 @@
   
   <url>
     <loc>https://duzhi5368.github.io/</loc>
-    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1351,13 +1356,13 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E5%8A%A8%E6%BC%AB/</loc>
+    <loc>https://duzhi5368.github.io/categories/%E5%8A%A8%E6%BC%AB/</loc>
     <lastmod>2007-04-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/categories/%E5%8A%A8%E6%BC%AB/</loc>
+    <loc>https://duzhi5368.github.io/tags/%E5%8A%A8%E6%BC%AB/</loc>
     <lastmod>2007-04-19T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1381,13 +1386,13 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+    <loc>https://duzhi5368.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
+    <loc>https://duzhi5368.github.io/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1406,13 +1411,13 @@
   
   <url>
     <loc>https://duzhi5368.github.io/tags/%E5%BF%83%E6%83%85/</loc>
-    <lastmod>2018-02-05T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://duzhi5368.github.io/categories/%E5%BF%83%E6%83%85%E6%84%9F%E6%82%9F/</loc>
-    <lastmod>2017-12-27T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1435,25 +1440,25 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E6%97%85%E8%A1%8C/</loc>
-    <lastmod>2017-11-03T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://duzhi5368.github.io/categories/%E6%97%85%E8%A1%8C/</loc>
     <lastmod>2017-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/%E6%97%85%E8%A1%8C/</loc>
+    <lastmod>2017-11-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://duzhi5368.github.io/categories/%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2018-12-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://duzhi5368.github.io/tags/%E6%97%A5%E8%AE%B0/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1477,20 +1482,14 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2006-07-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2006-08-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2007-05-31T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2006-07-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1501,8 +1500,8 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/</loc>
-    <lastmod>2007-04-13T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2007-05-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1513,13 +1512,19 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E7%A4%BE%E4%BC%9A%E6%97%B6%E6%94%BF/</loc>
-    <lastmod>2006-12-30T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/</loc>
+    <lastmod>2007-04-13T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://duzhi5368.github.io/categories/%E7%A4%BE%E4%BC%9A%E6%97%B6%E6%94%BF/</loc>
+    <lastmod>2006-12-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://duzhi5368.github.io/tags/%E7%A4%BE%E4%BC%9A%E6%97%B6%E6%94%BF/</loc>
     <lastmod>2006-12-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -1555,14 +1560,14 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E7%BE%8E%E6%9C%AF/</loc>
-    <lastmod>2006-10-08T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/categories/%E7%BE%8E%E6%9C%AF/</loc>
+    <lastmod>2006-01-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/categories/%E7%BE%8E%E6%9C%AF/</loc>
-    <lastmod>2006-01-01T00:00:00+00:00</lastmod>
+    <loc>https://duzhi5368.github.io/tags/%E7%BE%8E%E6%9C%AF/</loc>
+    <lastmod>2006-10-08T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -1573,13 +1578,13 @@
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/tags/%E8%AE%A1%E5%88%92/</loc>
+    <loc>https://duzhi5368.github.io/categories/%E8%AE%A1%E5%88%92/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://duzhi5368.github.io/categories/%E8%AE%A1%E5%88%92/</loc>
+    <loc>https://duzhi5368.github.io/tags/%E8%AE%A1%E5%88%92/</loc>
     <lastmod>2018-12-29T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
