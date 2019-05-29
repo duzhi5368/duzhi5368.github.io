@@ -1,0 +1,894 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>The lost island</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以很计划好好学一下golang。
+
+期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。
+
+而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。
+
+这里记录下Go, C&#43;&#43;, Rust的一些初步了解，以供自己参考。
+
+没错，我打算以后用Rust开发游戏客户端，Web的话就TS。
+
+">
+    <meta property="og:description" content="最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以很计划好好学一下golang。
+
+期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。
+
+而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。
+
+这里记录下Go, C&#43;&#43;, Rust的一些初步了解，以供自己参考。
+
+没错，我打算以后用Rust开发游戏客户端，Web的话就TS。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="The lost island">
+    <meta property="og:url" content="/2019/05/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以很计划好好学一下golang。
+
+期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。
+
+而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。
+
+这里记录下Go, C&#43;&#43;, Rust的一些初步了解，以供自己参考。
+
+没错，我打算以后用Rust开发游戏客户端，Web的话就TS。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-29T00:00:00Z">
+        
+  五月 29, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2019">2019</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以很计划好好学一下golang。</p>
+
+<p>期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。</p>
+
+<p>而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。</p>
+
+<p>这里记录下Go, C++, Rust的一些初步了解，以供自己参考。</p>
+
+<p>没错，我打算以后用Rust开发游戏客户端，Web的话就TS。</p>
+
+<p></p>
+
+<h2 id="特点">特点</h2>
+
+<blockquote>
+<p>Go: 并行，简洁
+Rust: 安全，规矩多
+C++: 高性能，强大的自由</p>
+</blockquote>
+
+<p>##一句话描述</p>
+
+<blockquote>
+<p>Go: ”做正确事情的C；Python的替代品“
+Rust: ”务实的Haskhell；安全的C++“
+C++: &ldquo;能力非常非常强大&rdquo;</p>
+</blockquote>
+
+<h2 id="积极领域">积极领域</h2>
+
+<blockquote>
+<p>Go: 服务器（特别是网站http服务器），分布式系统，网络编程，自动化工具
+Rust: 操作系统，底层基础软件，性能要求高的软件（如游戏，ML）
+C++: 操作系统，嵌入式开发，底层基础软件，性能要求高的软件（如游戏，ML）</p>
+</blockquote>
+
+<h2 id="跨平台能力">跨平台能力</h2>
+
+<blockquote>
+<p>Go: 简洁便利
+Rust: 比C++简单一些
+C++: 困难</p>
+</blockquote>
+
+<h2 id="基本库支持">基本库支持</h2>
+
+<blockquote>
+<p>Go: 非常强大
+Rust: 比较强大
+C++: 基本无意义</p>
+</blockquote>
+
+<h2 id="内存管理">内存管理</h2>
+
+<blockquote>
+<p>Go: 根据对象生命周期，自动推断是放在堆上还是栈上，有自动GC。Go的GC是高频低延迟的，Java则是低频率高延迟的，所以Go的GC稍微没有那么明显，但依然有额外开销。
+Rust: 手动声明内存分配在堆上还是栈上，然后通过scopes进行管理。所以使用者必须了解内存分配。
+C++：自行控制内存分配，使用者必须了解内存分配。</p>
+</blockquote>
+
+<h2 id="开发效率和学习难度">开发效率和学习难度</h2>
+
+<blockquote>
+<p>Go: 学习曲线比较平缓。开发很快，但运行期间测试问题很多。
+Rust: 入手相对较难，概念较多，但比C++强。开发较慢，但运行期间出问题的概率较低。
+C++：入手难，精通更难。开发非常慢，运行期间出问题概率高。</p>
+</blockquote>
+
+<h2 id="泛型支持">泛型支持</h2>
+
+<blockquote>
+<p>Go: 不支持。导致很多人用interface{}模拟。
+Rust: 支持。
+C++: 支持。</p>
+</blockquote>
+
+<h2 id="性能优化分析">性能优化分析</h2>
+
+<blockquote>
+<p>Go: pprof很方便强大。
+Rust: 无
+C++: 无</p>
+</blockquote>
+
+<h2 id="编译构建速度">编译构建速度</h2>
+
+<blockquote>
+<p>Go: 快的很
+Rust: 和C++有一拼……
+C++: 不联编的话会要命</p>
+</blockquote>
+
+<h2 id="包版本管理工具">包版本管理工具</h2>
+
+<blockquote>
+<p>Go: 有简单的基本工具，但还需改进
+Rust: 依赖Cargo
+C++: 无</p>
+</blockquote>
+
+<h2 id="单元测试">单元测试</h2>
+
+<blockquote>
+<p>Go: 自带testing，但过于简单，建议考虑使用 testify 库
+Rust: 没有完整的单元测试支持，但是可以使用assert做检查
+C++: 没有完整的单元测试支持，但是可以使用assert做检查</p>
+</blockquote>
+
+<h2 id="注释">注释</h2>
+
+<blockquote>
+<p>Go: 自带GoDoc，不太方便
+Rust: 使用MdBook，支持Markdown，很舒服
+C++: 使用doxygen，不方便</p>
+</blockquote>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/c&#43;&#43;/">C&#43;&#43;</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/go/">Go</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/rust/">Rust</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/05/%E5%B7%A5%E4%BD%9C%E5%8D%81%E4%B8%89%E5%B9%B4%E5%8D%8A%E7%9A%84%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" data-tooltip="工作十三年半的技术总结">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/05/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/05/%E5%B7%A5%E4%BD%9C%E5%8D%81%E4%B8%89%E5%B9%B4%E5%8D%8A%E7%9A%84%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" data-tooltip="工作十三年半的技术总结">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/05/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2019%2F05%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/05/">
+                <h3 class="media-heading"></h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以很计划好好学一下golang。</p>
+
+<p>期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。</p>
+
+<p>而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。</p>
+
+<p>这里记录下Go, C++, Rust的一些初步了解，以供自己参考。</p>
+
+<p>没错，我打算以后用Rust开发游戏客户端，Web的话就TS。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/05/%E5%B7%A5%E4%BD%9C%E5%8D%81%E4%B8%89%E5%B9%B4%E5%8D%8A%E7%9A%84%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">
+                <h3 class="media-heading">工作十三年半的技术总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>似乎这一两年只记录了心情和计划，并没有谈太多的技术，我打算逐步回归做一些技术记录。</p>
+
+<p>技术记录令人讨厌的就是两点：</p>
+
+<ul>
+<li><p>1：技术文章，方向越是专精，越是受众少，写起来挺难引起共鸣的；而自己又没有达到绝顶高手的地步，更是写的没有太多营养。想学的人有太多信息可以获得；不想学的人你写些什么都没有用。所以会很孤单。</p></li>
+
+<li><p>2：另外，写完之后，技术文章通常需要自己回头去看的概率比较低，因为能写的出来，其实多半是已经被自己良好消化的。如果仅用来记录一些坑，倒是之后用得到，但难成体系，专门写个日志又太麻烦，毕竟现在日志发布流程很不自动化，短期内也没办法自动化，天天换工作环境……</p></li>
+</ul>
+
+<p>但毕竟要养成做技术记录的习惯，这对自己部分技术细节理解还是有意义的，所以还是写给自己看吧。</p>
+
+<p>突然做出这种决定，还没有好的方向，所以这一次还是先做之前的技术方向整理。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/05/%E9%BB%91%E5%B8%BDseo%E5%85%A5%E9%97%A8/">
+                <h3 class="media-heading">黑帽SEO入门</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>SEO意思就是“搜索引擎优化”.</p>
+
+<p>黑帽SEO，就是利用作弊的方式达到网站关键词排名提升的做法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/04/%E6%97%A5%E8%AE%B02019-04-22/">
+                <h3 class="media-heading">日记2019-04-22</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近在公司做cocos creator的东西，并不令人开心，主要原因是使用场景编辑器这种工作不是我很有兴趣的，技术成长不大，时间紧张，也无法更深层次的进行技术研究，被体力活压的很凶。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/04/%E6%97%A5%E8%AE%B02019-04-09/">
+                <h3 class="media-heading">日记2019-04-09</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天4月9号，菲律宾的regular holiday，加上周末和周一两天假，我已加班三天。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/01/%E6%97%A5%E8%AE%B02019-01-21/">
+                <h3 class="media-heading">日记2019-01-21</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>前一段忙于一些公司加密算法的开发，刚刚完成。加上对游戏的感觉正好到了倦怠期，于是得到了一些盈余的时间，期间有些感触，记录在此。</p>
+
+<p>首先今年的目标整体来说就四点：攒钱，英语，数字游牧，健身运动。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/12/%E6%B2%A1%E4%BA%86%E5%9C%A3%E5%85%89%E5%8F%AA%E8%83%BD%E7%9B%B8%E4%BF%A1%E8%87%AA%E5%B7%B1/">
+                <h3 class="media-heading">没了圣光，只能相信自己</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近在搞一些有趣的东西，在别的地方不便说，但还是希望这里和哥几个有些交流，如果能有人对这块有兴趣就好了，可以更多的互通有无。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/12/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%85%A5%E9%97%A8%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">大数据入门记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>嗯，记录大数据基本概念，以及核心软件Hadoop, Spark核心概念。</p>
+
+<p>作为程序员入门大数据的记录。（写了近一天……我知道为啥现在自己写技术文章很少了）</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/12/%E6%97%A5%E8%AE%B02018-12-29/">
+                <h3 class="media-heading">日记2018-12-29</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>呃，这篇原本是对Rect日志的留言答复，因为太长被拒绝发表，干脆拉出来单独记录了，正好最近也没什么好主题想说的，凑个字了，哈哈。</p>
+
+<p>话说，我感觉我们这群中年男人都开始”油腻“了~</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2018/12/%E6%97%A5%E8%AE%B02018-12-10/">
+                <h3 class="media-heading">日记2018-12-10</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>已经快12月了，距离2018年结束指日可待。</p>
+
+<p>最近主要的生活变化包括以下部分：1：沉迷了一段手游。2：继续研究Golang,大数据和人工智能部分。3：做了一些养老理财投资。4：部分时间开销用来照顾小孩。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         249 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2019\/05\/';
+          
+            this.page.identifier = '\/2019\/05\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
