@@ -6,10 +6,23 @@
     <description>Recent content in 程序 on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Jun 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/categories/%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>微服务</title>
+      <link>https://duzhi5368.github.io/2019/08/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Thu, 22 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2019/08/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description>&lt;p&gt;最近总听周围的人提微服务。&lt;/p&gt;
+
+&lt;p&gt;为什么使用微服务？微服务解决了什么问题，带来了什么问题？&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>日记2019-06-19</title>
