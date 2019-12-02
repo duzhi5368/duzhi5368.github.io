@@ -6,10 +6,64 @@
     <description>Recent content in Posts on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 11 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>月记201911</title>
+      <link>https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/</link>
+      <pubDate>Mon, 02 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;产品思维&lt;/li&gt;
+&lt;li&gt;黑客技术
+
+&lt;ul&gt;
+&lt;li&gt;OSCP&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;赚钱&lt;/li&gt;
+&lt;li&gt;Gap Year&lt;/li&gt;
+&lt;li&gt;《论工业社会极其未来》&lt;/li&gt;
+&lt;li&gt;打工&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>对KIRA君的站点渗透尝试</title>
+      <link>https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/</guid>
+      <description>&lt;p&gt;闲着无聊，拿Kira君的博客试试手.m(_ _)m&lt;/p&gt;
+
+&lt;p&gt;最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。&lt;/p&gt;
+
+&lt;p&gt;……万恶的内网。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读书笔记《Google Hacking技术》</title>
+      <link>https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/</guid>
+      <description>&lt;p&gt;这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。&lt;/p&gt;
+
+&lt;p&gt;利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。&lt;/p&gt;
+
+&lt;p&gt;如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。&lt;/p&gt;
+
+&lt;p&gt;某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>半月记20191018_20191031</title>
