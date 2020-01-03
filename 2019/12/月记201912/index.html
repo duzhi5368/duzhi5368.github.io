@@ -1,0 +1,1399 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>月记201912</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="F.I.R.E与厄瓜多尔
+
+小孩教育
+
+Kali安装Tor
+
+硬件中断输入
+
+USB远程访问
+
+Detours进行Windows dll劫持
+
+">
+    <meta property="og:description" content="F.I.R.E与厄瓜多尔
+
+小孩教育
+
+Kali安装Tor
+
+硬件中断输入
+
+USB远程访问
+
+Detours进行Windows dll劫持
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="月记201912">
+    <meta property="og:url" content="/2019/12/%E6%9C%88%E8%AE%B0201912/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="F.I.R.E与厄瓜多尔
+
+小孩教育
+
+Kali安装Tor
+
+硬件中断输入
+
+USB远程访问
+
+Detours进行Windows dll劫持
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      月记201912
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-12-31T00:00:00Z">
+        
+  十二月 31, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%97%a5%e8%ae%b0">日记</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2019">2019</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><strong>F.I.R.E与厄瓜多尔</strong></p>
+
+<p><strong>小孩教育</strong></p>
+
+<p><strong>Kali安装Tor</strong></p>
+
+<p><strong>硬件中断输入</strong></p>
+
+<p><strong>USB远程访问</strong></p>
+
+<p><strong>Detours进行Windows dll劫持</strong></p>
+
+<p></p>
+
+<h2 id="f-i-r-e与厄瓜多尔">F.I.R.E与厄瓜多尔</h2>
+
+<h4 id="定义">定义</h4>
+
+<p>首先，FIRE的定义是“财务独立，提前退休”。</p>
+
+<p>它的手段核心就是前期做巨量积累（通常在10年内），然后在30+左右年龄，通过积累资金的被动收益来维持自己的支出。</p>
+
+<p>之前为这个事做了蛮多筹划，直到最近我开始考虑小孩教育，才发现自己有一个严重的考虑不周：我没有考虑小孩小学初中高中的教育支出。</p>
+
+<p>而看到我妈带孩子，想起了年少时在学校受到的填鸭教育。我实在无法忍受孩子像我一样，再从公立学校一步一步走出来。这条路实在太艰辛，我走过就好，实在不忍他再重复了。</p>
+
+<p>FIRE的核心概念之一是减少欲望，降低支出。</p>
+
+<p>但小孩接受私教费用挺高，而且我即将又有俩娃，开销更大，原本筹划的加拿大，哥斯达黎加行不通。不得不做新的安排。</p>
+
+<h4 id="比较">比较</h4>
+
+<p>其次，我要知道相关名词的特点和区别。</p>
+
+<ul>
+<li>远程工作： 依然是入职打工获得收入，但可以在家进行远程工作，所有<strong>有一点的时间自由度</strong>。
+
+<ul>
+<li>工作时间依然受限，但有一定的自由度。</li>
+<li>不工作，无收入。</li>
+<li>依然被榨取大量中间收入。</li>
+</ul></li>
+<li>自由工作/数字游牧： 网上接外包单，定期完成任务获得收入，可选择单位时间不接单，<strong>时间和地点更加自由</strong>。
+
+<ul>
+<li>工作时间不受绝对控制，时间上基本自由。</li>
+<li>不工作，无收入。</li>
+<li>被榨取少量中间收入。</li>
+</ul></li>
+<li>被动收入： <strong>一次投入，多次回报</strong>获得收入。
+
+<ul>
+<li>工作时间完全不受控制，时间上基本自由。</li>
+<li>不工作，少量收入。</li>
+<li>被榨取少量中间收入。</li>
+</ul></li>
+<li>FIRE：提前退休，<strong>不需要工作</strong>，纯粹依靠前期投资获得收入。
+
+<ul>
+<li>工作时间完全为0。</li>
+<li>不需要工作。</li>
+<li>没有中间收入被榨取。
+<br /></li>
+</ul></li>
+</ul>
+
+<p>基本上，上述概念是逐层递进的。它是我定义的 远程工作-&gt;数字游牧-&gt;被动收入 之路的最高级，即财务自由。</p>
+
+<h4 id="核心理论">核心理论</h4>
+
+<p>退休之前，有年支出的25倍存款，然后保持自己资产年化4%以上即可。</p>
+
+<p>但注意，上面的4%必须扣除通膨率。</p>
+
+<h4 id="数值例子">数值例子</h4>
+
+<p>例如，某人一家四口家庭当前每年每年支出16W</p>
+
+<ul>
+<li><p>水 50 + 电 150 + 燃气 100 = 300</p></li>
+
+<li><p>电话费俩人 100 + 网费 200 = 300</p></li>
+
+<li><p>伙食费 3000</p></li>
+
+<li><p>交通费 350</p></li>
+
+<li><p>幼儿园 3000</p></li>
+
+<li><p>偶尔下馆子看电影出去转转 1000</p></li>
+
+<li><p>年度旅游一次 2500</p></li>
+
+<li><p>衣服 1000</p></li>
+
+<li><p>清洁护肤 500</p></li>
+
+<li><p>孩子过节生日娱乐 1000</p></li>
+
+<li><p>看病医疗 200</p></li>
+
+<li><p>家具家电更新 200</p></li>
+</ul>
+
+<p>总计 = 13300 * 12 = 16W左右</p>
+
+<p>那么按照年化4%，即25倍开销即可FIRE，则需400W投资即可。</p>
+
+<h4 id="投资方式推荐">投资方式推荐</h4>
+
+<p>一般投资方式，例如美股标普500指数在过去40年平均年化10%，20年美债ETF过去14年年化则是6%。假设50%：50%去投资美股和美债，年化率大约是8%。</p>
+
+<p>而美国从1913年到现在100年内，年平均通膨是3%。1998-2018这30年的美国平均通膨是2%。</p>
+
+<p>所以，只要有6%的年化就足够了。</p>
+
+<p>所以，购买美股指数和美债是行的通的。</p>
+
+<p>但，如果境外购买美股，则要考虑两个问题，一个是汇率问题，一个是基金手续费。这俩的抽成大约是达到1%，要自行想办法处理。</p>
+
+<h4 id="厄瓜多尔">厄瓜多尔</h4>
+
+<p><strong>优势</strong></p>
+
+<ul>
+<li>私立医疗水平不错，永居权限每月缴纳85刀即可享受优质公私医疗。</li>
+<li>国际学校超过300家（泰国仅130家），全IB学校16所（菲律宾仅1所），费用低廉，私立学校月支出200-600刀，IB学校月支出1000刀。</li>
+<li>生活水平要求低，农业产品国，基本消费更低（一家两口月支出1000刀以内，一家四口读公立支出1500刀以内，一家四口读普通私立学校2300刀）</li>
+<li>绿化面积很高，污染少。气温恒定，基多（9-23），昆卡（11-23），海边（21-33）全年温差不超过1度。有山有海，有温有热，满足多样性。</li>
+<li>使用美元，不用担心政府搞通膨。银行存款利率极高，年化6%-8.5%左右。</li>
+<li>无任何肤色民族歧视。</li>
+<li>护照非常适合做跳板，中南美共同体意味着去智利乌拉圭工作居住都随意，护照去西班牙美国加拿大拿绿卡比中国护照给力，护照去中国免签。</li>
+</ul>
+
+<p><strong>劣势</strong></p>
+
+<ul>
+<li>回国坐飞机24小时。</li>
+<li>贪污和中国差不多（南美只有智利靠谱），法制精神一般（和中国得分完全一致）。</li>
+<li>交通事故死亡率居然和中国差不多……</li>
+</ul>
+
+<p><strong>难以评判</strong></p>
+
+<ul>
+<li>治安（暴力犯罪）比较复杂，各大网站意见不统一。但综合各大网站信息整理起来，比菲律宾稍微强一些，半斤八两吧。</li>
+<li>免签国家确实不错，美加澳新以及欧洲申根没有一个免签的……不过，听说申根快给它免签了，我觉得靠谱，毕竟它邻国秘鲁也没啥大差别，申根都免了，我琢磨也快了。</li>
+</ul>
+
+<p><strong>总结</strong></p>
+
+<p>反正目前看起来，目的是养老和小孩教育的话，除了治安之外，整体相当靠谱。</p>
+
+<h4 id="厄瓜多尔的fire计划">厄瓜多尔的FIRE计划</h4>
+
+<p><strong>支出</strong></p>
+
+<ul>
+<li>俩小孩读普通国际学校 = 800</li>
+<li>电费 = 40</li>
+<li>话费 = 50</li>
+<li>ETAPA网费 = 30</li>
+<li>交通 = 50</li>
+<li>家庭用品 = 50</li>
+<li>医保 = 160</li>
+<li>医疗 = 200</li>
+<li>食物 = 400</li>
+<li>外出用餐 = 20 * 10顿 = 200</li>
+<li>其他娱乐应急若干 300</li>
+</ul>
+
+<p>一个月大约2300刀。</p>
+
+<p><strong>收入</strong></p>
+
+<p>现在香港保险年收22500刀 = 1875刀/月</p>
+
+<p><strong>补充说明</strong></p>
+
+<p>美元过去30年通膨为2%，过去100年通膨是3%。我视为2.7%。</p>
+
+<p>如果我再存20W刀到当地银行，按照6%-8.5%的利率（我视为6%），那么得到的利息足以抵消保险和存款的通膨。</p>
+
+<p>如果多存10W刀到当地银行，则可以每月额外产生425刀利息，达到完整收支平衡。</p>
+
+<p>如有更多利率或被动收入，可留住以备小孩高中IB费用，大学费用和父母医疗自己医疗，旅游费用。</p>
+
+<p><strong>结论</strong></p>
+
+<ul>
+<li>需要再存当地30W刀到银行</li>
+<li>需要15W刀购买当地House一个（很多很不错的，500平米的3室新房靠近海边的也就这价格）</li>
+<li>为小孩教育需要基多市中心一个2室一厅的Apartment一个，约10W刀（小孩读大学可出租）</li>
+</ul>
+
+<p><strong>计划</strong></p>
+
+<p>当前收入不做调整，则需4年。若跳槽则需接近2年。所以，40岁之前可达成。</p>
+
+<h2 id="小孩教育">小孩教育</h2>
+
+<h4 id="亚洲教育情况比较">亚洲教育情况比较</h4>
+
+<p>整体来说，在前面的会适合当前情况一点。</p>
+
+<ul>
+<li>国家档次和生活水平（低-&gt;高，低的也未必最好）</li>
+</ul>
+
+<p>菲律宾&gt;泰国&gt;马来西亚&gt;韩国&gt;新加坡</p>
+
+<ul>
+<li>当地高质量学校数量和概率（优-&gt;劣）</li>
+</ul>
+
+<p>新加坡&gt;韩国&gt;泰国&gt;马来西亚&gt;菲律宾</p>
+
+<ul>
+<li>英语环境（优-&gt;劣）</li>
+</ul>
+
+<p>新加坡&gt;菲律宾&gt;马来西亚&gt;泰国&gt;韩国</p>
+
+<ul>
+<li>费用高低（低-&gt;高）</li>
+</ul>
+
+<p>泰国&gt;马来西亚&gt;菲律宾&gt;新加坡&gt;韩国</p>
+
+<ul>
+<li>身份居留容易度（易-&gt;难）</li>
+</ul>
+
+<p>菲律宾&gt;韩国&gt;马来西亚&gt;新加坡&gt;泰国</p>
+
+<ul>
+<li>大学优劣（优-&gt;劣，基本可以无视，没打算小孩在亚洲读大学）</li>
+</ul>
+
+<p>新加坡&gt;韩国&gt;马来西亚&gt;菲律宾&gt;泰国</p>
+
+<h4 id="基本概念普及">基本概念普及</h4>
+
+<p>IB: 国际认可文凭。</p>
+
+<pre><code>- 包含小学（PYP，3-12岁）中学（MYP 11-16）预科（DP）。一般非特殊说明的学校可能只有IBDP，只有声称全IB的才包含PYP,MYP。
+- 国际认可，属于国际高中学历。重点是培养学生综合能力。文理兼修，英语要求最高。 
+- 45分制。40分以上很有竞争力。
+- 缺点是：学生课业负担很大，而且有可能不能毕业。。。
+- 一般推荐从小学就开始读。
+</code></pre>
+
+<p>AP：美国大学预修。</p>
+
+<pre><code>- 注意！不是国际高中学历，也仅有美国承认。
+- 其考试成绩可换取美国大学的学分。
+- 5分制。4分以上有竞争力。
+- 缺点是：是锦上添花的课程，而且仅有效于美国，英国，澳洲，加拿大等部分国家。
+</code></pre>
+
+<p>A-Level：英国普通高中。</p>
+
+<pre><code>- 任何说英语的国家都承认。
+- 无社会实践，比较容易，适合中国学生，容易拿高分。
+- 9分制（A* - G），B级（6分）以上有竞争力。
+- 缺点是：有些应试教育。
+</code></pre>
+
+<p>IGCSE： 国际中学教育。</p>
+
+<pre><code>- 因为IBDP, AP, A-Level都是两年，相当中国的高中。在那之前的初中，就可以读IGCSE，可无缝衔接IB，A-level。
+</code></pre>
+
+<ul>
+<li>选课灵活度：AP&gt;A-Level&gt;IB</li>
+</ul>
+
+<p>AP可以直选1门课，可以选10门; A-Level则限制在3-4门; IB则是固定套餐，可选专业受限，文理不让偏科，最低6门学科。</p>
+
+<ul>
+<li>整体难度：IB&gt;AP&gt;A-Level</li>
+</ul>
+
+<p>IB不仅仅学文理科，还要学艺术，还要去完成论文和社会活动。AP和A-Level则不限制社会活动，会比较轻松。</p>
+
+<ul>
+<li>单科难度：AP&gt;A-Level&gt;IB</li>
+</ul>
+
+<p>AP部门课程是大学级别难度；但IB的知识很有体系性，培养的是全能型选手。</p>
+
+<ul>
+<li>教学方向：IB&gt;AP=A-Level</li>
+</ul>
+
+<p>IB的最大特点就是，教育是概念性学习，而另外两者是知识性学习。</p>
+
+<p>例如：</p>
+
+<pre><code>- 中国是题海战术帮助学生记忆答案，例如，如何修好一个丰田汽车；
+- AP,A-LEVEL是探究性学习帮助学生寻找答案，例如，我不擅长修车，但如何学会去修车；
+- 而IB则是反思训练帮助学生去提出答案，例如，我为什么修车，如何制造一个能自我维护的汽车。
+</code></pre>
+
+<h2 id="kali安装tor">Kali安装Tor</h2>
+
+<ul>
+<li>apt-get install tor</li>
+<li>访问<a href="https://www.torproject.org">https://www.torproject.org</a> 下载对应平台的Browser</li>
+<li>cd Downloads</li>
+<li>tar -xJf tor-browser-linux64-9.0.2_en-US.tar.xz</li>
+<li>运行 ./start-tor-browser.desktop 会提示“The Tor Browser Bundle should not be run as root. Exiting.”</li>
+<li>cd Browser</li>
+<li>vi start-tor-browser</li>
+<li>注释掉</li>
+</ul>
+
+<pre><code># complain “The Tor Browser Bundle should not be run as root. Exiting.”
+# exit 1
+</code></pre>
+
+<ul>
+<li>再启动外面的 ./start-tor-browser.desktop</li>
+<li>打开tor浏览器后，到暗网google看一下 ： <a href="http://xmh57jrzrnw6insl.onion">http://xmh57jrzrnw6insl.onion</a></li>
+</ul>
+
+<h2 id="硬件中断输入">硬件中断输入</h2>
+
+<p><a href="https://github.com/starofrainnight/winio">WinIO</a></p>
+
+<p><a href="https://github.com/QCute/WinRing0">WinRing0</a></p>
+
+<p><a href="https://github.com/duzhi5368/Interception">Interception</a></p>
+
+<h2 id="usb远程访问">USB远程访问</h2>
+
+<h4 id="架构">架构</h4>
+
+<p>为了便于管理和操作，U盘需要插到远程的服务器上，通过计算机网络读取U盘。客户端是windows，服务器端考虑到稳定性将采用linux。</p>
+
+<h4 id="官网">官网</h4>
+
+<p><a href="http://usbip.sourceforge.net/">UsbIP</a></p>
+
+<p>备选方案<a href="http://www.usb-over-network.com/">UsbOverNetwork</a></p>
+
+<h4 id="基于centos7的usb服务器搭建">基于Centos7的USB服务器搭建</h4>
+
+<ul>
+<li><p>安装Centos7(USBIP内核kernel3.1以上)</p></li>
+
+<li><p>设置静态网络（如果是VM，采用NAT模式）</p></li>
+</ul>
+
+<pre><code>cd /etc/sysconfig/network-scripts/
+vi   ifcfg-ens33
+根据实际情况设置内容如下： 
+
+  BOOTPROTO=static
+  NAME=ens33 
+  UUID=447cda9d-5780-4d43-8d67-8693f2ad40ce
+  DEVICE=ens33
+  ONBOOT=yes
+  IPADDR=192.168.75.146
+  NETMASK=255.255.255.0
+  GATEWAY=192.168.75.2
+  DNS1=10.71.40.1
+  DNS2=10.71.40.2
+
+service network restart
+
+测试是否可以连通代理服务器 ping  10.66.72.173 必须成功
+</code></pre>
+
+<ul>
+<li>便于测试将防火墙关闭（也可以设置白名单）</li>
+</ul>
+
+<pre><code>    service firewalld stop （关闭开机自动启动chkconfig firewalld off）
+</code></pre>
+
+<ul>
+<li>设置YUM安装源（通过10.66.72.173的YUM代理模式从互联网拉YUM源）</li>
+</ul>
+
+<pre><code>    设置通用YUM源，将附件nexus.repo、epel.repo、elrepo.repo 放入 /etc/yum.repos.d
+</code></pre>
+
+<ul>
+<li><p>yum update 更新yum</p></li>
+
+<li><p>yum install kmod-usbip （安装usbip相关辅助，如果elrepo的版本是kmod-usbip-1.0.1-4对于linux内核过高，可以手动rpm安装附件kmod-usbip-1.0.1-3      rpm -Uvh kmod-usbip*.rpm）</p></li>
+
+<li><p>yum install usbip-utils （将从elrepo安装usbip服务器端，版本是2.0）</p></li>
+
+<li><p>检查是否安装成功</p></li>
+</ul>
+
+<pre><code>    [root@localhost]#which usbip
+    /usr/sbin/usbip
+</code></pre>
+
+<ul>
+<li>挂载模块</li>
+</ul>
+
+<pre><code>    sudo modprobe usbip_core
+    sudo modprobe usbip_host（服务器）
+    sudo modprobe vhci-hcd（客户端） 
+</code></pre>
+
+<ul>
+<li><p>守护进程启动 sudo usbipd -D</p></li>
+
+<li><p>将U盘插入USB-Hub（或者电脑插槽），如果VM，需要设置下USB支持，并且虚拟插入U盘</p></li>
+
+<li><p>sudo usbip list -l  查看本地usb设备</p></li>
+</ul>
+
+<pre><code>    [root@localhost]# usbip list -l
+    
+    - busid 3-1 (0e0f:0003)
+        VMWare, Inc.: Virtual Mouse(0e0f:0003)
+        
+    - busid 3-2 (163c:548c)   // 这个就是虚拟USB设备
+        unknown vendor: unknown product(163c:548c)
+</code></pre>
+
+<ul>
+<li>绑定设备sudo  usbip bind -b 3-2</li>
+</ul>
+
+<pre><code>    [root@localhost]# sudo  usbip bind -b 3-2
+    usbup: info: bind device on busid 3-2: complete
+</code></pre>
+
+<ul>
+<li>实验绑定（本机当成客户端，试图远程绑定，然后解绑）</li>
+</ul>
+
+<pre><code>    sudo  usbip attach -r localhost -b 3-2
+    sudo  usbip port （获取port，用于解绑）
+    sudo  usbip detach -p 00 （解绑）
+</code></pre>
+
+<h4 id="windows客户端部分">windows客户端部分</h4>
+
+<ul>
+<li><p>安装win7</p></li>
+
+<li><p>关闭驱动签名 管理员身份 运行 cmd</p></li>
+</ul>
+
+<pre><code>    bcdedit /set testsigning on
+    重启Win7（重启后桌面上显示测试字样）
+</code></pre>
+
+<ul>
+<li><p>将附件 usbip-win-client-2.0.rar拷贝进入系统，并且解压</p></li>
+
+<li><p>打开设备管理器，添加一个过期硬件</p></li>
+
+<li><p>选择手动安装驱动，并且选择usbip-win-client-2.0解压目录</p></li>
+
+<li><p>安装成功后，可见设备列表中有 USB/IP Virtual HOst Controller Interface设备</p></li>
+
+<li><p>管理员身份，运行cmd，cd到目录usbip-win-client-2.0</p></li>
+
+<li><p>运行查看远程服务器共享的，USB：usbip  -l  192.168.75.146</p></li>
+
+<li><p>绑定远程</p></li>
+</ul>
+
+<pre><code>    usbip  -a 192.168.75.146 b  3- 2
+    系统会自动按照相关文件，并且在可移动设备能够看见远程的设备
+</code></pre>
+
+<ul>
+<li>此时即可远程访问USB</li>
+</ul>
+
+<h2 id="detours-劫持">Detours 劫持</h2>
+
+<h4 id="下载">下载</h4>
+
+<p>从 <a href="https://www.microsoft.com/en-us/download/details.aspx?id=52586&amp;from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fdownloads%2Fd36340fb-4d3c-4ddd-bf5b-1db25d03713d%2Fdefault.aspx">https://www.microsoft.com/en-us/download/details.aspx?id=52586&amp;from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fdownloads%2Fd36340fb-4d3c-4ddd-bf5b-1db25d03713d%2Fdefault.aspx</a> 这里下载</p>
+
+<h4 id="编译">编译</h4>
+
+<p>windows下使用 <strong>VS开发人员命令提示</strong> 工具</p>
+
+<pre><code>cd D:\xxx\Detours\src
+d:
+nmake
+</code></pre>
+
+<p>编译完得到，detours.h ，detours.lib ，detver.h</p>
+
+<h4 id="编码">编码</h4>
+
+<pre><code>    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+    #include &lt;string.h&gt;
+    #include &lt;windows.h&gt;
+    #include &quot;detours.h&quot;
+    
+    #pragma comment(lib , &quot;detours.lib&quot;)
+    
+    // 存储需要进行hook的函数指针地址
+    // 当前测试函数为system函数
+    static int(*poldsystem)(const char * _Command) = system;
+    
+    //自己实现一个system函数
+    int mysystem(const char *  _Command) {
+        const char * ps = NULL;
+        ps = strstr(_Command, &quot;calc&quot;);
+        if (ps != NULL)
+            printf(&quot;%s 已经被劫持啦！\n&quot;, _Command);
+        else
+            printf(&quot;%s 不做检查，仅劫持calc！\n&quot;, _Command);
+        return 0;
+    };
+    
+    //开始拦截
+    void Hook() {
+        DetourRestoreAfterWith(); //恢复初始状态
+        DetourTransactionBegin(); //拦截开始
+        DetourUpdateThread(GetCurrentThread()); //刷新当前线程
+        /** 此处下面填写自己想要拦截的函数 **/
+        DetourAttach((void **)&amp;poldsystem, mysystem);    //实现函数拦截
+        DetourTransactionCommit(); //提交事务，拦截生效
+    }
+    
+    //撤销拦截
+    void UnHook() {
+        DetourTransactionBegin(); //拦截开始
+        DetourUpdateThread(GetCurrentThread()); //刷新当前线程
+        /** 此处下面填写自己想要取消拦截的函数 **/
+        DetourDetach((void **)&amp;poldsystem, mysystem); // 取消拦截
+        DetourTransactionCommit();  //提交事务，取消拦截生效
+    }
+    int main(void) {
+        printf(&quot;调用了system('calc')函数 \n&quot;);
+        system(&quot;calc&quot;);
+    
+        Hook();
+        printf(&quot;已经开启HOOK，按下任意键继续 \n&quot;);
+    
+        getchar();
+    
+        printf(&quot;调用了system('calc')函数，按下任意键继续 \n&quot;);
+        system(&quot;calc&quot;);
+    
+        getchar();
+    
+        printf(&quot;调用了system('ipconfig')函数，按下任意键继续 \n&quot;);
+        system(&quot;ipconfig&quot;);
+    
+        getchar();
+    
+        UnHook();
+        printf(&quot;已经关闭HOOK，按下任意键退出 \n&quot;);
+    
+        getchar();
+    }
+</code></pre>
+
+<p>上面可以编译运行查看结果。如果想注入其他进程，只需修改</p>
+
+<pre><code>    _declspec(dllexport) void main(){
+        ...
+    }
+</code></pre>
+
+<p>生成 xx.dll 即可。</p>
+
+<h4 id="注入">注入</h4>
+
+<p>使用 Xenos（<a href="https://github.com/DarthTon/Xenos）或者Blackbone(https://github.com/DarthTon/Blackbone">https://github.com/DarthTon/Xenos）或者Blackbone(https://github.com/DarthTon/Blackbone</a>) 进行dll绑定进程的注入</p>
+
+<h4 id="完成">完成</h4>
+
+<p>之后，每次目标进程调用system函数时就会进入我们的hook</p>
+
+<h4 id="todo">TODO</h4>
+
+<p>整合 Xenos，自动hook一些关键系统函数和socket函数，嘿嘿嘿嘿嘿</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%97%A5%E8%AE%B0/">日记</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/" data-tooltip="渗透问答">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/" data-tooltip="渗透问答">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2019%2F12%2F%25E6%259C%2588%25E8%25AE%25B0201912%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201912/">
+                <h3 class="media-heading">月记201912</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p><strong>F.I.R.E与厄瓜多尔</strong></p>
+
+<p><strong>小孩教育</strong></p>
+
+<p><strong>Kali安装Tor</strong></p>
+
+<p><strong>硬件中断输入</strong></p>
+
+<p><strong>USB远程访问</strong></p>
+
+<p><strong>Detours进行Windows dll劫持</strong></p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/">
+                <h3 class="media-heading">渗透问答</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>利用问答方式，对渗透工作做一个全面的基础的回顾和整理。</p>
+
+<p>也可以考虑用作渗透工程师面试题。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E8%A2%AB%E5%8A%A8%E6%94%B6%E5%85%A5%E6%80%9D%E8%80%83/">
+                <h3 class="media-heading">被动收入思考</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>想F.I.R.E，但资金还是差了那么一丢丢，为了应对通膨，需要最基本的被动收入来支撑。</p>
+
+<p>于是整理了一些对被动收入的理解和分析&hellip;</p>
+
+<p>但是，依然没有什么太多的收获，作为以后备忘参考吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E5%AE%89%E5%85%A8%E8%AE%B2%E5%BA%A7ppt/">
+                <h3 class="media-heading">安全讲座PPT</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>为公司做的安全讲座PPT，结果没人喜欢听，大家都等着看秀魔术……</p>
+
+<p>呃，但依然总结了就不想浪费，备份于此吧。</p>
+
+<p>主要包含 黑客渗透课题，安全防护课题，基本安全方案 介绍。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/12/%E6%9C%88%E8%AE%B0201911/">
+                <h3 class="media-heading">月记201911</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Dec 12, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><ul>
+<li>产品思维</li>
+<li>黑客技术
+
+<ul>
+<li>OSCP</li>
+</ul></li>
+<li>赚钱</li>
+<li>Gap Year</li>
+<li>《论工业社会极其未来》</li>
+<li>打工</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/">
+                <h3 class="media-heading">对KIRA君的站点渗透尝试</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>闲着无聊，拿Kira君的博客试试手.m(_ _)m</p>
+
+<p>最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。</p>
+
+<p>……万恶的内网。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+                <h3 class="media-heading">读书笔记《Google Hacking技术》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。</p>
+
+<p>利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。</p>
+
+<p>如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。</p>
+
+<p>某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/11/%E5%8D%8A%E6%9C%88%E8%AE%B020191018_20191031/">
+                <h3 class="media-heading">半月记20191018_20191031</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月主要研究黑客的一些东西吧，其他变化不大，看了一些电影，哈哈~</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%B2%BE%E9%80%9Ametasploit%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                <h3 class="media-heading">读书笔记《精通Metasploit渗透测试》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本想简单记录一点的，一不小心就记录多了。</p>
+
+<p>一边看书过程中，一边 google 明确名词并扩展知识面。</p>
+
+<p>本文主要就是记录如何使用渗透工具Metasploit对目标进行漏洞扫描，渗透，注入攻击载荷并做后渗透破坏工作。</p>
+
+<p>嗯，本书我给打7分吧。有不少干货，但系统性上还缺了些，不足以成为神书。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E9%BB%91%E5%AE%A2%E4%B8%8E%E7%94%BB%E5%AE%B6/">
+                <h3 class="media-heading">读书笔记《黑客与画家》</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>黑客伦理</p>
+
+<p>言论自由与质疑</p>
+
+<p>做伟大的事</p>
+
+<p>黑客与画家</p>
+
+<p>如何做自己喜欢的事</p>
+
+<p>思考“禁区”</p>
+
+<p>为什么该创业</p>
+
+<p>该如何创业</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         266 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2019\/12\/%E6%9C%88%E8%AE%B0201912\/';
+          
+            this.page.identifier = '\/2019\/12\/%E6%9C%88%E8%AE%B0201912\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
