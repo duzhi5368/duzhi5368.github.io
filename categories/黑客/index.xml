@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>黑客 on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/%E9%BB%91%E5%AE%A2/</link>
+    <description>Recent content in 黑客 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/%E9%BB%91%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ModSecurity网络安全防御策略【未完结】</title>
+      <link>https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;ModSecurity网络安全防御策略&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基本防御方法&lt;/li&gt;
+&lt;li&gt;漏洞检测和修复&lt;/li&gt;
+&lt;li&gt;陷阱和蜜罐&lt;/li&gt;
+&lt;li&gt;使用第三方信息库&lt;/li&gt;
+&lt;li&gt;请求数据分析&lt;/li&gt;
+&lt;li&gt;响应数据分析&lt;/li&gt;
+&lt;li&gt;身份验证防护&lt;/li&gt;
+&lt;li&gt;会话状态防护&lt;/li&gt;
+&lt;li&gt;应用层攻击防护&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sql注入攻防【未完结】</title>
+      <link>https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

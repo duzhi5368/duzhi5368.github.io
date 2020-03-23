@@ -6,10 +6,61 @@
     <description>Recent content in Posts on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ModSecurity网络安全防御策略【未完结】</title>
+      <link>https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;ModSecurity网络安全防御策略&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基本防御方法&lt;/li&gt;
+&lt;li&gt;漏洞检测和修复&lt;/li&gt;
+&lt;li&gt;陷阱和蜜罐&lt;/li&gt;
+&lt;li&gt;使用第三方信息库&lt;/li&gt;
+&lt;li&gt;请求数据分析&lt;/li&gt;
+&lt;li&gt;响应数据分析&lt;/li&gt;
+&lt;li&gt;身份验证防护&lt;/li&gt;
+&lt;li&gt;会话状态防护&lt;/li&gt;
+&lt;li&gt;应用层攻击防护&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sql注入攻防【未完结】</title>
+      <link>https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记202002</title>
+      <link>https://duzhi5368.github.io/2020/02/%E6%9C%88%E8%AE%B0202002/</link>
+      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2020/02/%E6%9C%88%E8%AE%B0202002/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;远程办公&lt;/li&gt;
+&lt;li&gt;电影：阿信的故事&lt;/li&gt;
+&lt;li&gt;日本&lt;/li&gt;
+&lt;li&gt;语言&lt;/li&gt;
+&lt;li&gt;技术进展&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>月记202001</title>
