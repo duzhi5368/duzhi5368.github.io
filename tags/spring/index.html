@@ -1,0 +1,703 @@
+
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>Spring</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content=", FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://duzhi5368.github.io/tags/spring/index.xml">
+    
+
+    
+    <meta name="description" content="FreeKnight&#39;s personal blog">
+    <meta property="og:description" content="FreeKnight&#39;s personal blog">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Spring">
+    <meta property="og:url" content="/tags/spring/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="FreeKnight&#39;s personal blog">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+        
+
+      
+      <div id="main" data-behavior="1"
+        class="
+               hasCoverMetaIn
+               ">
+        
+          <section class="postShorten-group main-content-wrap">
+            
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+          SpringBoot学习记录
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-15T00:00:00Z">
+        
+  五月 15, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2020">2020</a>
+    
+  
+
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>近来在做web开发，以spring boot作为web服务器，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的spring boot概念，在学习时逐步记录下来。</p>
+
+<p></p>
+      <p>
+        <a href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+              
+  
+    
+  
+
+
+  
+
+<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
+  <div class="postShorten-wrap">
+    
+    <div class="postShorten-header">
+      <h1 class="postShorten-title" itemprop="headline">
+        <a class="link-unstyled" href="https://duzhi5368.github.io/2020/04/spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+          Spring框架学习记录
+        </a>
+      </h1>
+      
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-29T00:00:00Z">
+        
+  四月 29, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2020">2020</a>
+    
+  
+
+
+  </div>
+
+    </div>
+    <div class="postShorten-excerpt" itemprop="articleBody">
+      <p>近来在做web开发，从spring开始做一些简单的学习。</p>
+
+<p>下面是一些基本的spring概念，在学习时逐步记录下来。</p>
+
+<p></p>
+      <p>
+        <a href="https://duzhi5368.github.io/2020/04/spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="postShorten-excerpt_link link">阅读全文</a>
+        
+      </p>
+    </div>
+  </div>
+  
+</article>
+
+            
+            
+
+          </section>
+        
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/%E5%8F%8C%E6%9C%88%E8%AE%B0202004-05/">
+                <h3 class="media-heading">双月记202004-05</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">日本工作与学历
+时间投资方向
+坚定的移民
+我要成为vlogger
+学习平台
+混蛋石*兵
+&lt;我住在这里的理由&gt;
+网易博客被封
+技术：中台
+技术：GPT-2
+日本工作与学历 我去日本负责技术管理了，位置在大阪难波黑门市场附近，原本一切都很好，商务签证办下来，接下来是在补工签的时候出了幺蛾子。
+工签需要大学成绩单……
+我是06年毕业的，之后就没用过成绩单，之前是日本劳务签不需要这玩意儿，到新加坡菲律宾也仅要学历证明没要成绩单，给学校要，结果学校说05年之前的必须拿身份证去学校档案处亲自领取，而公司这边希望一周内缴纳资料，显然来不及了……嘛，现在情况是先等人事处理消息了。
+其实一提到学历就是我心头一道疤。十几年了没能过去这道坎，总是躲着，这次联系华农的同学又把这事勾起来了。
+我读了四年，却没学位证，后面怎么努力怎么努力，也没办法补上这一点。取澳洲移民加拿大技术移民，从来都不在我考虑范围之内。我的技术不错，程序这个行业也是优势移民行业，综合能力也不算差，素质，视野，能力都是有的，英语虽然不是优势，但一年过个雅思6还是没有什么心理压力的，但就因为学历一直受到限制。
+已经工作十几年了，还是逃不开这个阴影。
+这次再度掀开旧伤疤，现在能不能去日本，我反而感觉无所谓了。反而提醒我自己是真的该去还学位债了，自己欠下的，自己还。
+我必须去看看高龄申请大学的一些资料并列上核心日程进行准备了，为此必须做好财力准备和英语准备。
+就这样，不多说，把coursera英语程序课程列入核心目标，之后补学士学位。
+时间投资方向 英语英语英语
+ 先以新概念英语为主要学习目标 然后背诵新概念英语3册课文 期间全部代码开发尽量使用标准英文用词和注释，阅读英文原版资料 最后针对雅思考试做报班准备  日语
+ 主要还是以生活英语为主即可 以日本本地的免费日语培训为主  游戏程序
+ 业余时间除语言之外，全部投资这里，主要以unity为主 用unity免费资源做一些东西 之后以 unreal作为基本学习 加强渲染框架的理解  WEB开发
+ 以java spring boot+vue为主，考虑react学习 在工作时间主要提高这个部分 补充周边知识储备  移民信息
+ 作为休闲时间的安排 配合老婆一起了解移民，留学信息，依然以老婆那边的信息获取为主 老婆留学后，以了解移民，工作，和房屋购买为主。  健身
+ 每天早上半小时  坚定的移民 这里先说一件最新发生的事：国内发生了假奶粉的事件，虽然说起来主要是在湖南发生，其实，不仅仅是在那里发生的，我家在河南，我的第二个孩子也中招了。
+没错，喝了两罐假奶粉。
+这种奶粉和之前带毒的三氯氰胺奶粉不一样，只是一种固体饮料（实在不能理解的话，想一下健身用的蛋白粉好了），有严重的营养缺失，小孩子喝多了会出现佝偻病。这种奶粉会通过国家食品安全局和医药局双局认证，且受到妇产科医生以及婴幼儿奶粉店的推荐，想必是有不错的推销收益吧。
+广大民众并不具备专业的奶粉知识，包装上不做显著说明，再加上医生和销售员的极力推荐，自然会买错。
+然后我老妈得知自己买的奶粉是会导致小孩畸形的时候，凌晨2点给我视频，哭的稀里哗啦。其实我还比较淡定，毕竟第二个娃现在主要还是母乳，喝的也不算太久，应该还能缓的回来。
+但！这TMD不能忍。婴儿是家之根本，是有特殊意义的。如果国家不能监管得当，就TMD该换人，这几年之间，毒奶粉假疫苗暴力幼儿园假奶粉之类的事层出不穷，已经触动底线了。
+用我的话来说，纵使我多恨一个人，杀了他全家，也不会去动婴儿的，这种做人的基本准则。这就是底线。
+总而言之，因为这档子混蛋事情，我老婆终于觉悟了，明确的进行移民。
+现在有几条路，以优先级记录如下：</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">vue学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，以vue作为web前端，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">SpringBoot学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，以spring boot作为web服务器，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的spring boot概念，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/%E6%8A%80%E6%9C%AF%E5%8D%81%E4%BA%94%E5%B9%B4/">
+                <h3 class="media-heading">技术十五年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>昨天接到公司技术总监电话，去日本大阪工作已经定下，任职日本分部的技术负责人，全权负责日本分部的人员招聘管理，团队建设和技术方向管控，在这公司做了三年半纯技术，终究又被派到了管理岗位，这次是要好好认真的做好技术管理了。</p>
+
+<p>趁着明天五一不上班，做一下这些年的技术方向和简单整理。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/04/spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">Spring框架学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，从spring开始做一些简单的学习。</p>
+
+<p>下面是一些基本的spring概念，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/%E6%9C%88%E8%AE%B0202003/">
+                <h3 class="media-heading">月记202003</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>隔离工作
+肺炎
+自我提高
+生活
+我看忠孝
+中国经济</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+                <h3 class="media-heading">ModSecurity网络安全防御策略【未完结】</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>ModSecurity网络安全防御策略</p>
+
+<ul>
+<li>基本防御方法</li>
+<li>漏洞检测和修复</li>
+<li>陷阱和蜜罐</li>
+<li>使用第三方信息库</li>
+<li>请求数据分析</li>
+<li>响应数据分析</li>
+<li>身份验证防护</li>
+<li>会话状态防护</li>
+<li>应用层攻击防护</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+                <h3 class="media-heading">sql注入攻防【未完结】</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/02/%E6%9C%88%E8%AE%B0202002/">
+                <h3 class="media-heading">月记202002</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><ul>
+<li>远程办公</li>
+<li>电影：阿信的故事</li>
+<li>日本</li>
+<li>语言</li>
+<li>技术进展</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/01/%E6%9C%88%E8%AE%B0202001/">
+                <h3 class="media-heading">月记202001</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>英语</p>
+
+<p>《小森林》</p>
+
+<p>工作</p>
+
+<p>品葱</p>
+
+<p>打飞机</p>
+
+<p>武汉肺炎</p>
+
+<p>《死亡搁浅》</p>
+
+<p>《底特律：being human》</p>
+
+<p>渗透</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         278 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,2749 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>vue学习记录</title>
+    <meta name="author" content="FreeKnight.Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, FreeKnight, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="近来在做web开发，以vue作为web前端，从0开始一些简单的学习。
+
+下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。
+
+">
+    <meta property="og:description" content="近来在做web开发，以vue作为web前端，从0开始一些简单的学习。
+
+下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="vue学习记录">
+    <meta property="og:url" content="/2020/05/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="近来在做web开发，以vue作为web前端，从0开始一些简单的学习。
+
+下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">FreeKnight.Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.flickr.com/photos/158973746@N07" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-flickr"></i>
+      
+      <span class="sidebar-button-desc">Flickr</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      vue学习记录
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-05-28T00:00:00Z">
+        
+  五月 28, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2020">2020</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>近来在做web开发，以vue作为web前端，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。</p>
+
+<p></p>
+
+<hr />
+
+<h2 id="vue">VUE</h2>
+
+<p>是一个javascript的渐进式的用户界面网页开发框架，便于我们快速开发网站。</p>
+
+<h4 id="竞争对手">竞争对手</h4>
+
+<p>Angular -  学习曲线比较陡峭</p>
+
+<p>ReactJS - 代码可读性比较差</p>
+
+<p>EmberJS,Knockout等</p>
+
+<p>一般来说，JQuery算第一代js网页开发技术，Angular算第二代，React,Vue算第三代。</p>
+
+<h4 id="推荐学习站点">推荐学习站点</h4>
+
+<p><a href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
+
+<p><a href="http://vuejs-templates.github.io/">http://vuejs-templates.github.io/</a></p>
+
+<h4 id="最基本支持">最基本支持</h4>
+
+<ul>
+<li><p>cli：vue的命令行方式使用和开发</p></li>
+
+<li><p>vue-router: 路由框架 <a href="https://router.vuejs.org/">https://router.vuejs.org/</a></p></li>
+
+<li><p>vuex: 状态管理 <a href="https://vuex.vuejs.org/">https://vuex.vuejs.org/</a></p></li>
+</ul>
+
+<h4 id="vue加强套餐">VUE加强套餐</h4>
+
+<p>vue-chartjs</p>
+
+<ul>
+<li>用来实现图表。</li>
+<li><a href="https://vue-chartjs.org">https://vue-chartjs.org</a></li>
+<li>演示：<a href="http://demo.vue-chartjs.org">http://demo.vue-chartjs.org</a></li>
+</ul>
+
+<p>vue-fa</p>
+
+<ul>
+<li>用来调用fontAwesome5的组件，实现各种小 icon 的实现。</li>
+<li><a href="https://cweili.github.io/vue-fa/">https://cweili.github.io/vue-fa/</a></li>
+</ul>
+
+<p>vee-validate</p>
+
+<ul>
+<li>基于模板的vue校验框架，用来做一些前端对表单提交的预验证处理</li>
+<li><a href="https://logaretm.github.io/vee-validate/">https://logaretm.github.io/vee-validate/</a></li>
+</ul>
+
+<p>eslint-plugin-vue</p>
+
+<ul>
+<li>用来规范vue文法的校验工具，可以集成到vscode</li>
+<li><a href="https://eslint.vuejs.org/">https://eslint.vuejs.org/</a></li>
+</ul>
+
+<p>vue-lazyload</p>
+
+<ul>
+<li>用来图片懒装载，这样图片会在加载时显示loading，加载完毕后自动正常显示</li>
+<li><a href="https://github.com/hilongjw/vue-lazyload">https://github.com/hilongjw/vue-lazyload</a></li>
+</ul>
+
+<p>axios</p>
+
+<ul>
+<li>HTTP通讯组件，可以远程访问rest api服务</li>
+<li><a href="https://github.com/axios/axios">https://github.com/axios/axios</a></li>
+</ul>
+
+<p>vuedraggable</p>
+
+<ul>
+<li>VUE网页对象拖动组件</li>
+<li><a href="https://github.com/Sortablejs/vue.draggable">https://github.com/Sortablejs/vue.draggable</a></li>
+<li>演示：<a href="https://github.com/Sortablejs/vue.draggable">https://github.com/Sortablejs/vue.draggable</a></li>
+</ul>
+
+<p>vue-socket.io</p>
+
+<ul>
+<li>对socket.io(基于websocket)封装，可以和vuex状态管理配合使用</li>
+<li><a href="https://github.com/metinseylan/vue-socket.io">https://github.com/metinseylan/vue-socket.io</a></li>
+</ul>
+
+<p>vue-multiselect</p>
+
+<ul>
+<li>多选框，包括状态管理，下拉框，Ajax，检索框等功能</li>
+<li><a href="https://vue-multiselect.js.org/">https://vue-multiselect.js.org/</a></li>
+</ul>
+
+<p>vuejs-datepicker</p>
+
+<ul>
+<li>日期选择组件</li>
+<li><a href="https://github.com/charliekassel/vuejs-datepicker">https://github.com/charliekassel/vuejs-datepicker</a></li>
+</ul>
+
+<p>vue-element-admin</p>
+
+<ul>
+<li>Vue的文本输入框，Markdown编辑器，Svg图表，剪切板，Excel导出，复杂组合table表格 (很实用)</li>
+<li><a href="https://panjiachen.github.io/vue-element-admin-site/">https://panjiachen.github.io/vue-element-admin-site/</a></li>
+</ul>
+
+<p>vue-typer</p>
+
+<ul>
+<li>打印机效果（逐字符慢慢显示）</li>
+<li><a href="https://cngu.github.io/vue-typer/">https://cngu.github.io/vue-typer/</a></li>
+</ul>
+
+<p>vue-good-table</p>
+
+<ul>
+<li>复杂组合table表格 (很实用), 比vue-element-admin简单小巧一些，但功能也少一些。</li>
+<li><a href="https://xaksis.github.io/vue-good-table/">https://xaksis.github.io/vue-good-table/</a></li>
+</ul>
+
+<p>vue ui/ux 框架</p>
+
+<ul>
+<li>bootstrap-vue,   element,   vuetifyjs,   vue-strap</li>
+<li><a href="https://bootstrap-vue.org/">https://bootstrap-vue.org/</a></li>
+<li><a href="http://element-cn.eleme.io">http://element-cn.eleme.io</a></li>
+<li><a href="https://vuetifyjs.com">https://vuetifyjs.com</a></li>
+<li><a href="http://yuche.github.io/vue-strap/">http://yuche.github.io/vue-strap/</a></li>
+</ul>
+
+<p>nuxtjs</p>
+
+<ul>
+<li><p>基于vue的通用应用框架</p>
+
+<ul>
+<li>支持自动代码分层</li>
+<li>服务器渲染</li>
+<li>异步数据</li>
+<li>静态文件服务</li>
+<li>压缩打包js和css</li>
+<li>本地开发热加载</li>
+<li>集成eslint</li>
+<li>支持http/2推送</li>
+<li>支持多种样式处理：sass, less, stylus等</li>
+</ul></li>
+
+<li><p><a href="https://nuxtjs.org/">https://nuxtjs.org/</a></p></li>
+</ul>
+
+<h4 id="学习代码">学习代码</h4>
+
+<p><strong>1. HelloWorld</strong></p>
+
+<ul>
+<li>添加引用</li>
+</ul>
+
+<pre><code class="language-html">  &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/srcipt&gt;
+</code></pre>
+
+<ul>
+<li>添加html代码块</li>
+</ul>
+
+<pre><code class="language-html">  &lt;div id=&quot;myApp&quot;&gt;
+    {{ message }}
+  &lt;/div&gt;
+</code></pre>
+
+<ul>
+<li>添加javascript代码块</li>
+</ul>
+
+<pre><code class="language-javascript">  var myApp = new Vue({
+    el: &quot;#myApp&quot;,   // 对应div id
+    data: {
+        message: &quot;Hello, world!&quot;    // 此处定义变量，HTML中使用
+    }
+  });
+</code></pre>
+
+<ul>
+<li>完整代码</li>
+</ul>
+
+<pre><code class="language-html">  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+      &lt;head&gt;
+          &lt;title&gt;freeknight Vue test&lt;/title&gt;
+          &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+          &lt;div id='myApp'&gt;
+              {{ message }}
+          &lt;/div&gt;
+          &lt;script&gt;
+              var myApp = new Vue({
+                  el: '#myApp',
+                  data: {
+                      message: &quot;Hello, world!&quot;
+                  }
+              });
+          &lt;/script&gt;
+      &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+
+<p>**流程控制符 **</p>
+
+<p>v-if, v-for</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 2&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;h3&gt;游戏列表&lt;/h3&gt;
+            &lt;div v-if=&quot;isCanBeSeen&quot;&gt;可控制隐藏项&lt;/div&gt;
+            &lt;ol&gt;
+                &lt;li v-for=&quot;game in games&quot;&gt;{{game.title}} / {{game.price}}元&lt;/li&gt;
+            &lt;/ol&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    isCanBeSeen: true,  // 控制中间的div项是否存在。注意，不仅仅是不显示，而是直接不存在，不会加入dom树。
+                    games:[
+                        {title:&quot;游戏名1&quot;, price:200},
+                        {title:&quot;游戏名2&quot;, price:300},
+                        {title:&quot;游戏名3&quot;, price:500},
+                    ],
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>**用户输入绑定 **</p>
+
+<p>v-model 将用户输入绑定到一个js变量，以供其他地方访问使用。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 3&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;input v-model='myGame'&gt;&lt;/input&gt;
+            &lt;p&gt;你最喜欢的游戏是: {{myGame}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    myGame: &quot;默认游戏名&quot;,    // 这个变量被v-model绑定。当&lt;input&gt;更变，myGame变量更变，也就导致 &lt;p&gt; 元素数据发生更变。
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>按钮事件响应</strong></p>
+
+<p>v-on:{ click,keydown,keyup,dbclick,load &hellip;} 就是绑定按钮各种状态的事件处理</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 4&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;p&gt;你最喜欢的游戏是: {{myGame}}&lt;/p&gt;
+            &lt;button v-on:click=&quot;btnClick('游戏1')&quot;&gt;游戏1&lt;/button&gt;
+            &lt;button v-on:click=&quot;btnClick('游戏2')&quot;&gt;游戏2&lt;/button&gt;
+            &lt;!-- 下面的 @ 符号，等同于 v-on: 的简写 --&gt;
+            &lt;button @click=&quot;btnClick('游戏3')&quot;&gt;游戏3&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    myGame: &quot;默认游戏名&quot;
+                }, 
+                methods:{
+                    btnClick: function(gameName){
+                        this.myGame = gameName;
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>组件</strong></p>
+
+<p>component 一个功能的区域块，有一个自定义的html tag标签。</p>
+
+<p>v-bind 进行组件属性绑定</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 5&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;ol&gt;
+                &lt;!-- v-bind 进行参数/属性绑定 --&gt;
+                &lt;game-item v-for=&quot;game in games&quot; v-bind:eachgame=&quot;game&quot;&gt;&lt;/game-item&gt;
+            &lt;/ol&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 自定义组件 game-item
+            Vue.component('game-item',{
+                props: ['eachgame'],    // 组件的一个属性
+                template: '&lt;li&gt;{{ eachgame.title }}&lt;/li&gt;'       // 组件的渲染模板
+            });
+
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    games:[
+                        {title:&quot;游戏名1&quot;, price:200},
+                        {title:&quot;游戏名2&quot;, price:300},
+                        {title:&quot;游戏名3&quot;, price:500},
+                    ]
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>过滤器属性</strong></p>
+
+<p>filter，做一些变量数据格式化的操作。例如数值的简单再计算，日期的格式调整，字母大小写之类</p>
+
+<pre><code class="language-HTML">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 6&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;p&gt;{{ message }}&lt;/p&gt;
+            &lt;p&gt;{{ message | toupper }}&lt;/p&gt;
+            &lt;p&gt;{{ floatValue }}&lt;/p&gt;
+            &lt;p&gt;{{ floatValue | topercent }}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    message: &quot;Hello, world!&quot;,
+                    floatValue: 0.3,
+                },
+                filters:{
+                    toupper: function(value){
+                        return value.toUpperCase(); // 最终显示  HELLO, WORLD!
+                    },
+                    topercent: function(value){
+                        return value * 100 + &quot;%&quot;;   // 最终显示  30%
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>计算属性</strong></p>
+
+<p>computed，对数据进行计算加工后得到新的数据在进行显示，和filter是类似的</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 7&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;p&gt;{{ floatValue }}元&lt;/p&gt;
+            &lt;p&gt;{{ USDlloar }}美元&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                },
+                computed:{
+                    USDlloar: function(){
+                        return Math.round(this.floatValue / 7.1);
+                    },
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>观察一个属性</strong></p>
+
+<p>watch 监视一个变量，一旦变化，则做出事件触发。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 8&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;p&gt;{{ floatValue }}元&lt;/p&gt;
+            &lt;p&gt;{{ USDlloar }}美元&lt;/p&gt;
+            &lt;button @click=&quot;btnClick(100)&quot;&gt;加100块&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                    USDlloar: 0,
+                },
+                watch: {    
+                    // 当 floatValue 的值发生变化，会执行该变量的watch函数
+                    floatValue: function(newVal, oldVal){
+                        console.log(oldVal, '-&gt;', newVal);
+                        this.USDlloar = Math.round(this.floatValue / 7.1);
+                    }
+                },
+                methods:{
+                    btnClick: function(newVal){
+                        this.floatValue += newVal;
+                    }
+                }
+            });
+
+            // 进行初始化,这个赋值也会激活watch
+            myApp.floatValue = 515;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>设置计算属性</strong></p>
+
+<p>setter 可以对计算属性进行修改时获得事件触发。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 9&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;p&gt;{{ floatValue }}元&lt;/p&gt;
+            &lt;p&gt;{{ USDlloar }}美元&lt;/p&gt;
+            &lt;p&gt;{{ USDlloarSetter }}美元&lt;/p&gt;
+            &lt;button @click=&quot;btnClick(100)&quot;&gt;加价100元&lt;/button&gt;
+            &lt;button @click=&quot;btnClickUSD(100)&quot;&gt;加价100刀&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    floatValue: 513,
+                },
+                computed:{
+                    // 这种函数方式，只适合单项计算，不适合反向影响
+                    USDlloar: function(){
+                        return Math.round(this.floatValue / 7.1);
+                    },
+
+                    // 这个对象方式，可以双向影响。在 get, set 时均会触发事件
+                    USDlloarSetter: {
+                        get: function(){
+                            return Math.round(this.floatValue / 7.1);
+                        },
+                        set: function(value){
+                            this.floatValue = Math.round(value * 7.1);
+                        }
+                    },
+                },
+                methods:{
+                    btnClick: function(newVal){
+                        this.floatValue += newVal;
+                    },
+                    btnClickUSD: function(newVal){
+                        this.USDlloarSetter += newVal;
+                    },
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>属性绑定</strong></p>
+
+<p>v-bind为一个标签的一个属性绑定变量。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 10&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;myCss.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;!-- 在 ：冒号后面是要绑定的属性，这里我们绑定的是 class 类--&gt;
+            &lt;!-- 当isActive变量为true时，本 div 的class则为 active, 受到css影响，字体为红色 --&gt;
+            &lt;!-- 当isActive变量为flase时，本 div 的class则为 空, 不受到css影响，字体为默认黑色 --&gt;
+            &lt;div v-bind:class=&quot;{active:isActive}&quot;&gt; 红色文本1 &lt;/div&gt;
+            &lt;!-- 可以简写为 :attribute --&gt;
+            &lt;div :class=&quot;{active:isActive}&quot;&gt; 红色文本2 &lt;/div&gt;
+            &lt;div&gt;
+                &lt;!-- 这里我们绑定的是 提示信息 属性--&gt;
+                &lt;a href=&quot;#&quot; :title=&quot;hintText&quot;&gt;鼠标移过来看看&lt;/a&gt;
+            &lt;/div&gt;
+            &lt;button @click=&quot;btnClick&quot;&gt;更变状态&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    isActive: true,
+                    hintText: &quot;这是提示信息&quot;,
+                },
+                methods:{
+                    btnClick: function(){
+                        this.isActive = (!this.isActive);
+                        this.hintText += &quot;@&quot;;
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<pre><code class="language-css">body{
+    font-size: 24px;
+}
+
+.active{
+    color: red;
+}
+</code></pre>
+
+<p><strong>类对象绑定</strong></p>
+
+<p>和上面差不多，只是不再绑定单一属性，而是绑定一系列属性的对象</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 11&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;link href=&quot;myCss.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;!-- 在 ：冒号后面是要绑定的属性，这里我们绑定的是 class 类--&gt;
+            &lt;!-- 当isActive变量为true时，本 div 的class则为 active, 受到css影响，字体为红色 --&gt;
+            &lt;!-- 当isActive变量为flase时，本 div 的class则为 空, 不受到css影响，字体为默认黑色 --&gt;
+            &lt;div v-bind:class=&quot;myclass&quot;&gt; 红色文本1 &lt;/div&gt;
+            &lt;!-- 可以简写为 :attribute --&gt;
+            &lt;div :class=&quot;myclass&quot;&gt; 红色文本2 &lt;/div&gt;
+
+            &lt;button @click=&quot;btnClick&quot;&gt;更变状态&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    myclass:{
+                        active: true,
+                        bigfont: true,
+                    }
+                },
+                methods:{
+                    btnClick: function(){
+                        this.myclass.active = (!this.myclass.active);
+                        this.myclass.bigfont = (!this.myclass.bigfont);
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<pre><code class="language-css">body{
+    font-size: 24px;
+}
+
+.active{
+    color: red;
+}
+
+.bigfont{
+    font-weight: bolder;
+    font-size: 32px;
+}
+</code></pre>
+
+<p><strong>条件渲染</strong></p>
+
+<p>v-if, v-else-if, v-else</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 12&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;h1 v-if=&quot;result == 0&quot;&gt;无成绩&lt;/h1&gt;
+            &lt;h1 v-else-if=&quot;result &gt;= 80&quot;&gt;考的很好&lt;/h1&gt;
+            &lt;h1 v-else-if=&quot;result &lt; 60&quot;&gt;没及格&lt;/h1&gt;
+            &lt;h1 v-else&gt;考的一般&lt;/h1&gt;
+            &lt;button @click=&quot;btnClick&quot;&gt;考试成绩&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: 0,
+                },
+                methods:{
+                    btnClick: function(){
+                        this.result = Math.round(Math.random() * 100);
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>元素显示</strong></p>
+
+<p>v-show 标记是否显示，注意，不显示的依然会在dom树中。和上面的 v-if不一样</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 13&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;h1 v-show=&quot;result&quot;&gt;这个 h1 标签永久存在。&lt;/h1&gt;
+            &lt;button @click=&quot;btnClick&quot;&gt;修改可见&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: true,
+                },
+                methods:{
+                    btnClick: function(){
+                        this.result = !this.result;
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>对象迭代</strong></p>
+
+<p>v-for 和前面的一个v-for区别是，之前处理的是数组，这次处理的是一个对象。<em>这个方法很适合进行debug。</em></p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 14&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;h3&gt;js对象迭代&lt;/h3&gt;
+            &lt;div v-for=&quot;(value, key) in games&quot;&gt;{{key}}:{{value}}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    isCanBeSeen: false,
+                    games:{
+                        title: &quot;名字&quot;,
+                        price: 200,
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>事件处理</strong></p>
+
+<p>v-on:{event}  简写 @{event} 当用户和页面交互时，获取用户事件信息。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 15&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;input id=&quot;myInput&quot; v-on:keyup=&quot;myInputKeyup($event)&quot;&gt;
+            &lt;button id=&quot;myButton&quot; @click=&quot;btnClick($event)&quot;&gt;ok&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                },
+                methods:{
+                        myInputKeyup: function(event){
+                            this.debugLog(event);
+                        },
+                        btnClick: function(event){
+                            this.debugLog(event);
+                        },
+                        debugLog: function(event){
+                            console.log(&quot;组件类型：&quot;, event.srcElement.tagName,
+                            &quot;组件ID：&quot;,     event.srcElement.id,
+                            &quot;组件数据：&quot;,   event.srcElement.innerHTML,
+                            &quot;用户按键：&quot;,    event.key? event.key: &quot;无&quot;)
+                        }
+                    }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>表单控件绑定</strong></p>
+
+<p>这个<strong>非常重要</strong>。</p>
+
+<p>v-model 给组件绑定一个数据，注意，这里是<strong>双向绑定</strong>。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 16&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;!-- 注意：这里都是双向绑定。即，若修改了input中的数据，message变量值也发生了改变 --&gt;
+            
+            &lt;!-- 输入框 --&gt;
+            &lt;input type=&quot;text&quot; v-model=&quot;message&quot; placeholder=&quot;没东西&quot;&gt;
+            &lt;p&gt;Message 变量值是 {{message}}&lt;/p&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;!-- 多选框 --&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;cb1&quot; value=&quot;第一项的值&quot; v-model=&quot;checkboxValue&quot;&gt;
+            &lt;label for=&quot;cb1&quot;&gt;第一项&lt;/label&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;cb2&quot; value=&quot;第二项的值&quot; v-model=&quot;checkboxValue&quot;&gt;
+            &lt;label for=&quot;cb2&quot;&gt;第二项&lt;/label&gt;
+            &lt;input type=&quot;checkbox&quot; id=&quot;cb3&quot; value=&quot;第三项的值&quot; v-model=&quot;checkboxValue&quot;&gt;
+            &lt;label for=&quot;cb3&quot;&gt;第三项&lt;/label&gt;
+            &lt;p&gt;checkboxValue 变量值是 {{checkboxValue}}&lt;/p&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;!-- 单选框--&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;r1&quot; value=&quot;第1项的值&quot; v-model=&quot;singleCheckboxValue&quot;&gt;
+            &lt;label for=&quot;r1&quot;&gt;第1项&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;r2&quot; value=&quot;第2项的值&quot; v-model=&quot;singleCheckboxValue&quot;&gt;
+            &lt;label for=&quot;r2&quot;&gt;第2项&lt;/label&gt;
+            &lt;input type=&quot;radio&quot; id=&quot;r3&quot; value=&quot;第3项的值&quot; v-model=&quot;singleCheckboxValue&quot;&gt;
+            &lt;label for=&quot;r3&quot;&gt;第3项&lt;/label&gt;
+            &lt;p&gt;singleCheckboxValue 变量值是 {{singleCheckboxValue}}&lt;/p&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;!-- 单选下拉框 --&gt;
+            &lt;select v-model=&quot;selectValue&quot;&gt;
+                &lt;option v-for=&quot;question in questionsValues&quot;&gt;{{question}}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;p&gt;selectValue 变量值是 {{selectValue}}&lt;/p&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;!-- 复选下拉框 --&gt;
+            &lt;select v-model=&quot;selectValues&quot; multiple style=&quot;height: 70px;&quot;&gt;
+                &lt;option v-for=&quot;question in questionsValues&quot;&gt;{{question}}&lt;/option&gt;
+            &lt;/select&gt;
+            &lt;p&gt;selectValues 变量值是 {{selectValues}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    message: &quot;Hello, world!&quot;,
+                    checkboxValue: [],
+                    singleCheckboxValue: &quot;&quot;,
+                    selectValue: &quot;&quot;,
+                    selectValues: [],
+                    questionsValues :[
+                        &quot;问题1&quot;,
+                        &quot;问题2&quot;,
+                        &quot;问题3&quot;,
+                        &quot;问题4&quot;,
+                        &quot;问题5&quot;,
+                    ]
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>表单控件修饰符</strong></p>
+
+<p>.lazy</p>
+
+<p><input v-model.lazy="params1" @change="onchange"> 此时用户输入不再做绑定数据params的实时更新处理，仅在控件的onChange事件中更新该变量。目的是提高页面性能。</p>
+
+<p>.number</p>
+
+<p><input v-model.number="age" type="number"> 将用户输入内容转换为数值类型，若输入为非数值，则返回NaN</p>
+
+<p>.trim</p>
+
+<p><input v-model.trim="content"> 自动去除用户输入内容两端的空格</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 17&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;h1&gt;用户注册&lt;/h1&gt;
+            &lt;div&gt;
+                &lt;label for=&quot;username&quot;&gt;用户：&lt;/label&gt;
+                &lt;input type=&quot;text&quot; id=&quot;username&quot; v-model.lazy=&quot;username&quot; @change=&quot;checkUsername&quot;&gt;
+                &lt;span v-if=&quot;isUsernameOK&quot;&gt;可以注册&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;label for=&quot;age&quot;&gt;年龄：&lt;/label&gt;
+                &lt;input type=&quot;number&quot; id=&quot;age&quot; v-model.number=&quot;age&quot;&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;label for=&quot;content&quot;&gt;个人看法: &lt;/label&gt;
+                &lt;textarea id=&quot;content&quot; v-model.trim=&quot;content&quot; cols=&quot;55&quot; rows=&quot;8&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+
+            &lt;h4&gt;信息提示&lt;/h4&gt;
+            &lt;p&gt;{{username}}&lt;/p&gt;
+            &lt;p&gt;{{age}}&lt;/p&gt;
+            &lt;p&gt;{{content}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    username: &quot;&quot;,
+                    isUsernameOK: false,
+                    age: &quot;&quot;,
+                    content: &quot;&quot;
+                },
+                methods:{
+                    checkUsername: function(){
+
+                        if(this.username.length &lt;= 0){
+                            this.isUsernameOK = false;
+                        }else{
+                            this.isUsernameOK = true;
+                        }
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>组件作用域</strong></p>
+
+<p>Component 一个区域内容，类似自定义一个标签。</p>
+
+<p>Portlet 某一个页面功能</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 18&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;today-weather&gt;&lt;/today-weather&gt;
+
+            &lt;another-weather&gt;&lt;/another-weather&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            // 注册一个全局的组件，不属于 myApp，而是属于VUE全局，注意：全局组件必须声明在 new Vue() 之前。
+            Vue.component('today-weather',{
+                template: '&lt;div&gt;天气预报模板&lt;/div&gt;'
+            });
+            // 可复用的局部组件,声明为一个普通的js对象
+            var anotherWeatherComponent = {
+                template: '&lt;div&gt;另外一个可复用的天气预报模板&lt;/div&gt;'
+            };
+            var myApp = new Vue({
+                el: '#myApp',
+                components:{
+                    // 绑定HTML标签和组件模板对象，这个component仅仅可被本 myApp 内使用。
+                    'another-weather': anotherWeatherComponent
+                },
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;v
+</code></pre>
+
+<p><strong>特殊的组件</strong></p>
+
+<p>因为HTML的限制，部分元素只能在浏览器解析HTML之后才会去获取组件模板内容，典型的例如表格，排序组件<ol><ul><table><select><option>等元素。</p>
+
+<p>如果写成</p>
+
+<pre><code class="language-html">&lt;table&gt;
+    &lt;my-compenent&gt;&lt;/my-compenent&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p>是不能显示正确位置的。需要使用特殊的 is  属性如下：</p>
+
+<pre><code class="language-html">&lt;table&gt;
+    &lt;tr is='my-compenent'&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p><strong>组件中的数据</strong></p>
+
+<p>组件中的变量数据，不能使用data属性，只能使用data函数。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 19&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;div&gt;
+                今天的天气是：&lt;today-weather&gt;&lt;/today-weather&gt;
+                明天的天气是：&lt;tomorrow-weather&gt;&lt;/tomorrow-weather&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component(&quot;today-weather&quot;,{
+                template: &quot;&lt;strong&gt;{{todayWeatherValue}}&lt;/strong&gt;&quot;,
+                data:{
+                    todayWeatherValue: '大雪',  // 这是一个数据data属性，将会js报错。
+                }
+            });
+            Vue.component(&quot;tomorrow-weather&quot;,{
+                template: &quot;&lt;strong&gt;{{tomorrowWeatherValue}}&lt;/strong&gt;&quot;,
+                data: function(){
+                    return{
+                        tomorrowWeatherValue: '晴天',  // 这是一个data函数，这样则是正确的
+                    };
+                }
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>组件间的数据传递</strong></p>
+
+<p>props 接收外界数据或变量</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 20&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;text-result :score=&quot;50&quot;&gt;&lt;/text-result&gt;
+            &lt;text-result :score=&quot;70&quot;&gt;&lt;/text-result&gt;
+            &lt;text-result :score=&quot;100&quot;&gt;&lt;/text-result&gt;
+            &lt;hr/&gt;
+            &lt;div&gt;请输入名字: &lt;input v-model=&quot;yourname&quot;&gt;&lt;/div&gt;
+            &lt;say-hello :pname=&quot;yourname&quot;&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component('text-result', {
+                props: ['score'],   // 这里是接数据
+                template: '&lt;div&gt;&lt;strong&gt;{{score}}分 {{result}}&lt;/strong&gt;&lt;/div&gt;',
+                computed:{          // 顺道复习conputed
+                    result: function(){
+                        var strResult = &quot;未知&quot;;
+                        if(this.score &lt; 60){
+                            strResult = &quot;不及格&quot;;
+                        }else if(this.score &gt;= 80){
+                            strResult = &quot;成绩很好&quot;;
+                        }else{
+                            strResult = &quot;马马虎虎&quot;;
+                        }
+                        return strResult;
+                    }
+                }
+            });
+            Vue.component('say-hello',{
+                props: ['pname'],   // 这里接的是变量
+                template: '&lt;div&gt;&lt;strong&gt; hello, {{pname}} &lt;/strong&gt;&lt;/div&gt;'
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+                data:{
+                    yourname: &quot;freeknight&quot;
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>参数检查验证</strong></p>
+
+<p>type, validator, default</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 1&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;show-member-info name=&quot;freeknight&quot; :age=&quot;18&quot; :detail=&quot;{address:'singaporo', language:'日语'}&quot;&gt;
+            &lt;/show-member-info&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component('show-member-info', {
+                props:{
+                    name: {
+                        type: String,
+                        required: true,                 // 该组件的该参数项为强制存在
+                    },
+                    age:{
+                        type: Number,
+                        validator: function(value){     // 有效性校验
+                            return value &gt;= 0 &amp;&amp; value &lt;= 100;
+                        }
+                    },
+                    detail:{
+                        type: Object,
+                        default: function(){            // 默认值
+                            return {
+                                address: 'NoPlace',
+                                language: '英语'
+                            }
+                        }
+                    }
+                },
+                template: '&lt;div&gt;名字: {{this.name}} &lt;br/&gt;'
+                        + '年龄: {{this.age}} &lt;br/&gt;'
+                        + '地址: {{this.detail.address}} &lt;br/&gt;'
+                        + '语言: {{this.detail.language}} &lt;/div&gt;'
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>事件的传递</strong></p>
+
+<p>v-on 监听消息，$emit 提交事件</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 22&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;add-method :a=&quot;6&quot; :b=&quot;12&quot; v-on:add_event=&quot;getAddResult&quot;&gt;&lt;/add-method&gt;
+            &lt;hr/&gt;
+            &lt;h3&gt;{{result}}&lt;/h3&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component('add-method',{
+                props: ['a', 'b'],
+                // 按钮，点击事件为add
+                template: '&lt;div&gt;&lt;button v-on:click=&quot;add&quot;&gt;加&lt;/button&gt;&lt;/div&gt;',
+                methods:{
+                    add: function(){
+                        var value = 0;
+                        value = this.a + this.b;
+                        console.log(value);
+                        // 提交一个add_event事件
+                        this.$emit( 'add_event', { 
+                            result: value 
+                        });
+                    }
+                }
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+                data: {
+                    result: 0
+                },
+                methods:{
+                    getAddResult: function(val){
+                        this.result = val.result;
+                    }
+                }
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>slot插槽</strong></p>
+
+<p>slot 是父附件和子附件性通讯的方式。</p>
+
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;freeknight Vue test 23&lt;/title&gt;
+        &lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id='myApp'&gt;
+            &lt;say-to pname=&quot;小A&quot;&gt;你吃了没&lt;/say-to&gt;
+            &lt;say-to pname=&quot;小B&quot;&gt;你饿了没&lt;/say-to&gt;
+            &lt;say-to pname=&quot;小C&quot;&gt;你给他们做饭吧&lt;/say-to&gt;
+
+            &lt;nba-all-stars c=&quot;奥尼尔&quot; pf=&quot;加内特&quot;&gt;
+                &lt;span slot=&quot;sf&quot;&gt;皮克&lt;/span&gt;
+                &lt;span slot=&quot;sg&quot;&gt;丘吉尔&lt;/span&gt;
+                &lt;span slot=&quot;pg&quot;&gt;特朗普&lt;/span&gt;
+            &lt;/nba-all-stars&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component('say-to',{
+                props: ['pname'],
+                template: '&lt;div&gt; 你好, {{pname}}! '
+                    + '&lt;slot&gt;&lt;/slot&gt;'       // 这里，将上面标签中的内容&quot;你吃了没&quot;&quot;你饿了没&quot;等，嵌入到组件内容中了
+                    + '&lt;/div&gt;',
+            });
+            Vue.component('nba-all-stars',{
+                props: ['c', 'pf'],         // 这是普通组件属性
+                template: '&lt;div&gt;'
+                    +'&lt;p&gt;中锋: {{c}}&lt;/p&gt;'
+                    +'&lt;p&gt;大前: {{pf}}&lt;/p&gt;'
+                    +'&lt;p&gt;小前: &lt;slot name=&quot;sf&quot;&gt;&lt;/slot&gt;&lt;/p&gt;' // 带标签名的slot
+                    +'&lt;p&gt;分卫: &lt;slot name=&quot;sg&quot;&gt;&lt;/slot&gt;&lt;/p&gt;'
+                    +'&lt;p&gt;控卫: &lt;slot name=&quot;pg&quot;&gt;&lt;/slot&gt;&lt;/p&gt;'
+                    +'&lt;/div&gt;',
+            });
+            var myApp = new Vue({
+                el: '#myApp',
+            });
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>Vue cli安装</strong></p>
+
+<pre><code class="language-bash">c:\Users\freeknight&gt;npm -v              // 查看npm版本
+6.14.4
+
+c:\Users\freeknight&gt;npm show vue-cli    // 查看npm远程仓库中的vue-cli版本
+报错…… npm ERR! code ECONNRESET request to https://registry.npmjs.org/vue-cli failed..
+
+c:\Users\freeknight&gt;npm config set registry http://registry.npmjs.org/      // 将npm请求从https改为http
+
+c:\Users\freeknight&gt;npm show vue-cli    // 这次OK了
+vue-cli@2.9.6 | MIT | deps: 20 | versions: 35
+dist-tags:
+latest: 2.9.6
+published a year ago by yyx990803 &lt;yyx990803@gmail.com&gt;
+
+c:\Users\freeknight&gt;npm install -g vue-cli@2.9.6    // 下载vue
++ vue-cli@2.9.6
+added 238 packages from 205 contributors in 62.513s
+
+c:\Users\freeknight&gt;vue -V              // 查看本地vue版本
+2.9.6
+c:\Users\freeknight&gt;vue -h              // 查看帮助
+Usage: vue &lt;command&gt; [options]
+Options:
+  -V, --version  output the version number
+  -h, --help     output usage information
+Commands:
+  init           generate a new project from a template // 通过模板去初始化一个工程
+  list           list available official templates      // 查看可用的官方模板列表，官方模板到 https://github.com/vuejs-templates 这里看就好
+  build          prototype a new project                // 发包发布自己的项目
+  create         (for v3 warning only)
+  help [cmd]     display help for [cmd]
+
+c:\Users\freeknight&gt;vue webpack myProjectName       // 使用webpack默认模板去创建一个叫myProject的项目
+c:\Users\freeknight&gt;vue username/repo myMyProjectName // 使用 GitHub 仓库做模板创建
+</code></pre>
+
+<p><strong>webpack模板工程</strong></p>
+
+<p>其详细文档可参见： <a href="http://vuejs-templates.github.io/webpack/prerender.html">http://vuejs-templates.github.io/webpack/prerender.html</a></p>
+
+<pre><code class="language-bash">c:\Users\freeknight&gt;vue init webpack myweb  // 创建webpack的模板工程
+
+? Project name myweb                        // 工程名确认
+? Project description A Vue.js project      // 描述文字确认
+? Author d******8@gmail.com                 // 开发者邮箱确认
+? Vue build
+&gt; Runtime + Compiler: recommended for most users    // 注意：建议选这个带compiler编译器的。
+? Vue build standalone
+? Install vue-router? Yes
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset Standard
+? Set up unit tests No
+? Setup e2e tests with Nightwatch? No
+? Should we run `npm install` for you after the project has been created? (recommended) npm
+
+   vue-cli · Generated &quot;myweb&quot;.
+   
+   // One thousand years later......
+   // One thousand years later......
+   // One thousand years later......
+   
+# Project initialization finished!
+# ========================
+
+To get started:
+
+  cd myweb
+  npm run dev
+  
+c:\Users\freeknight&gt;cd myweb        // 进入项目文件夹
+c:\Users\freeknight&gt;npm run dev     // 其实是在执行 package.json 中的scripts对象中的 dev 脚本。
+ DONE  Compiled successfully in 21276ms 22:04:36
+ I  Your application is running here: http://localhost:8080
+ 可以本地浏览器打开 http://localhost:8080 查看
+ 
+c:\Users\freeknight&gt;npm run build   // 打包发布输出，其实是在执行 package.json 中的scripts对象中的 build 脚本。
+会将发布版本生成到dist目录下。使用该目录进行发布即可
+</code></pre>
+
+<p>该项目工程中最重要的结构依然是</p>
+
+<ul>
+<li><p>src 源文件文件夹</p></li>
+
+<li><p>dist 打包发布文件夹</p></li>
+
+<li><p>package.json 项目工程设置文件</p></li>
+</ul>
+
+<p><strong>VUE项目中导入bootstrap4</strong></p>
+
+<p>引入bootstrap目的是让网页更加漂亮。</p>
+
+<pre><code class="language-bash">$cd myweb
+$npm install bootstrap --save --save-exact  // 安装bootstrap，--save会将其直接加入到package.json项目文件中 --save-exact表示其版本号前不再有 &quot;dependencies&quot;: {
+    &quot;bootstrap&quot;: “^4.4.1”} 的这个 ^ 符号，表示版本指定，不允许智能调整。
++ bootstrap@4.4.1
+added 1 package from 2 contributors and audited 12619 packages in 66.6s
+</code></pre>
+
+<p>安装完毕bootstrap后，找到myweb目录下的src目录中的main.js，这个是文件入口。
+在这里导入bootstrap，添加以下一行</p>
+
+<pre><code class="language-javascript">import 'bootstrap/dist/css/bootstrap.min.css'
+</code></pre>
+
+<p>然后就可以使用bootstrap了。
+如果我们想测试是否导入bootstrap成功，可以修改 src 目录中的 app.vue 入口模板文件做个测试</p>
+
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;img src=&quot;./assets/logo.png&quot;&gt;
+    &lt;hr/&gt;
+    &lt;button class=&quot;btn btn-success&quot;&gt;测试bootstrap&lt;/button&gt;    // 这里加入bootstrap的CSS样式
+    &lt;button class=&quot;btn btn-danger&quot;&gt;测试bootstrap&lt;/button&gt;     // 这里加入bootstrap的CSS样式
+    &lt;hr/&gt;
+    &lt;router-view/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>执行npm start，你本地浏览器看看按钮的效果就知道了。（或者移除上面的import，可以进行对比）</p>
+
+<p><em>当然，这是传统的方式使用bootstrap+VUE，更好的方式是使用</em> <a href="https://bootstrap-vue.org/">https://bootstrap-vue.org/</a>  ，<em>它提供了一系列的bootstrap的组件tag，例如更美观的按钮</em></p>
+
+<pre><code class="language-html">&lt;b-button variant=&quot;success&quot;&gt;新样式button&lt;/b-button&gt;
+</code></pre>
+
+<p><strong>VUE项目中引入Ajax库 Axios</strong></p>
+
+<p>引入ajax的目的是，从服务器取得数据，使网页有远程存取能力。</p>
+
+<p>axios不仅支持浏览器，也可用于node.js开发。</p>
+
+<pre><code class="language-bash">$cd myweb
+$npm install --save --save-exact axios vue-axios // 这里安装了两个库，一个axios基本库，一个vue-axios封装的vue组件，可便于我们在vue中使用axios
++ axios@0.19.2
++ vue-axios@2.1.5
+added 4 packages from 8 contributors, updated 1 package and audited 12624 packages in 47.866s
+</code></pre>
+
+<p>安装完毕后，一样找到src目录下的main.js，进行注册。</p>
+
+<pre><code class="language-javascript">import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+// 注意，它还需要指定vue使用
+Vue.use(VueAxios, axios)
+</code></pre>
+
+<p>然后我们测试是否成功，可以找到src目录下的components中的 helloworld.vue，直接复制下面内容覆盖helloworld.vue即可。</p>
+
+<pre><code class="language-js">&lt;!-- HTML部分，我给基本清理了 --&gt;
+&lt;template&gt;
+  &lt;div class=&quot;hello&quot;&gt;
+    &lt;pre&gt;{{content}}&lt;/pre&gt;  &lt;!-- 显示的组件 --&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;!-- JS部分 --&gt;
+&lt;script&gt;
+export default { /* 这里表示导出helloworld这个组件 */
+  name: 'HelloWorld',
+  data () {
+    return {
+      content: '没有内容'
+    }
+  },
+  // 该页面加载完毕后，自动执行的函数 mounted
+  mounted () {
+    var myApiAddress = 'https://newsapi.org/v2/top-headlines'
+    this.axios.post(myApiAddress).then(
+      body =&gt; {
+        this.content = body.data /* 将从API请求的数据返回，设置到content中并显示出来 */
+      }
+    )
+  }
+}
+&lt;/script&gt;
+
+&lt;!-- CSS样式部分，内容我给删除了 --&gt;
+&lt;!-- 添加 &quot;scoped&quot; 属性表示这个css样式仅仅作用于当前组件，不会影响其他组件 --&gt;
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+
+<p><strong>VUE自定义样式单</strong></p>
+
+<ul>
+<li>进入assets目录，创建mycss.css文件</li>
+</ul>
+
+<pre><code class="language-css">.myClass1 {
+    color: red;
+    border: 1px solid blue;
+}
+</code></pre>
+
+<ul>
+<li>打开app.Vue</li>
+</ul>
+
+<pre><code class="language-javascript">&lt;script&gt;
+import './assets/mycss.css'   // 添加自定义css文件
+export default {
+  name: 'App',
+  data(){
+    return &quot;&quot;;
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<ul>
+<li>添加测试</li>
+</ul>
+
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;img src=&quot;./assets/logo.png&quot;&gt;
+    &lt;div class='myClass1'&gt;你好&lt;/div&gt;
+    &lt;router-view/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p><strong>webpack项目工程结构</strong></p>
+
+<pre><code>.
+├── build/                      # webpack配置文件，通常不应该修改。如果你想自定义webpack loader，可以看webpack.base.conf.js
+│   └── ...
+├── config/                     # 工程设置文件 【发布测试运维时需要处理这里】
+│   ├── index.js                # 核心项目设置文件
+│   └── ...
+├── dist/                       # 最终生成发布目录，执行 npm run build得到
+├── src/                        # 最主要代码工作文件夹
+│   ├── main.js                 # app入口函数
+│   ├── App.vue                 # app主组件
+│   ├── components/             # 组件文件夹 【95%时间在这里】
+│   │   └── ...                 # 最核心开发文件夹。一个.vue文件对应一个组件，一个组件包括 template（HTML内容），script（组件js脚本），style（组件css样式）
+│   └── assets/                 # 组件资源目录，例如图片，全局css等
+│       └── ...
+├── static/                     # 静态资源，这里面的资源在最后发布时会直接被拷贝到发布文件夹。一般是视频啦，提供用户下载的可执行文件之类
+├── test/                       # 测试相关目录文件夹
+│   └── unit/                   # unit 单元测试文件夹
+│   │   ├── ...
+│   └── e2e/                    # e2e 测试文件夹
+│   │   ├── ...
+├── .babelrc                    # babel 配置文件
+├── .editorconfig               # 开发ide的配置文件
+├── .eslintrc.js                # eslint 配置
+├── .eslintignore               # eslint 规则例外文件
+├── .gitignore                  # git 管理例外文件
+├── .postcssrc.js               # postcss 配置文件
+├── index.html                  # index.html的一个单页面模板，整个程序的真正入口。它调src/main.js,然后main.js加载了最基本的一个组件叫App.vue，并且使用src/router加载大量子页面作为二级菜单三级菜单，每个子菜单页面对应各个不同的component以及子component。
+├── package.json                # npm包依赖管理和构建密码命令   【前期添加依赖时要关注这里】
+└── README.md                   
+</code></pre>
+
+<p><strong>VUE路由router</strong></p>
+
+<p><a href="https://router.vuejs.org/">https://router.vuejs.org/</a> 可以看中文文档 <a href="https://router.vuejs.org/zh/">https://router.vuejs.org/zh/</a></p>
+
+<p>它是用来做网页页面路由的。</p>
+
+<p><strong>安装</strong>  很简单，但一般情况下都是安装好的，并不需要手动处理。</p>
+
+<pre><code class="language-bash">$npm install vue-router --save --save-exact
+</code></pre>
+
+<p><strong>使用</strong>  的时候需要查看 src/main.js</p>
+
+<pre><code class="language-html">import router from './router'
+
+// 这里是入口组件，在这里使用router对象，则意味着所有子组件都可以使用到router对象
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '&lt;App/&gt;'
+})
+</code></pre>
+
+<p>以及 src/router/index.js</p>
+
+<pre><code class="language-javascript">import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'    // 添加我们的组件
+import HelloWorld2 from '@/components/HelloWorld2'
+
+Vue.use(Router)
+
+// 输出url映射类 Router
+export default new Router({
+  routes: [
+    {
+      path: '/',        // 完成一个url和一个组件之间的映射
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/Helloworld2',
+      name: 'HelloWorld2',
+      component: HelloWorld2
+    }
+  ]
+})
+</code></pre>
+
+<p>如果说 主页面组件中  需要有HelloWorld2这个子页面组件的跳转链接，那么可以修改 主页面.Vue 如下。</p>
+
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div id=app&gt;
+        &lt;p&gt;
+            &lt;!-- 这就类似于 a 标签和 ref 属性 --&gt;
+            &lt;router-link to='/'&gt;HOME&lt;/router-link&gt;
+            &lt;router-link to='/Helloworld2'&gt;访问helloworld&lt;/router-link&gt;
+        &lt;/p&gt;
+
+        &lt;router-view/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p><strong>动态路由</strong></p>
+
+<p>就是路由URL会发生一些变化，例如，<a href="http://xxoo.com/player/1">http://xxoo.com/player/1</a>  <a href="http://xxoo.com/player/2">http://xxoo.com/player/2</a> 打开两个不同的页面，但 1,2 这些动态URL内路径不能枚举写死。</p>
+
+<p>创建components/Player.vue 组件</p>
+
+<pre><code class="language-javascript">&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;球员页面&lt;/h1&gt;
+    &lt;p&gt;{{detail}}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: 'Player',
+    data() {
+        return {
+            detail: {}
+        }
+    },
+    mounted() {
+        // formLoad初始化时,通过player uid获取球员信息
+        this.detail = this.getPlayerDetail(this.$route.params.uid);
+    },
+    beforeRouteUpdate(to, from, next){
+        // route发生更变之前的回调消息，如果没有该函数，则会在切换网页后，detail不变的情况。
+        // 因为mounted是init行为，当页面渲染完毕后，不会再次重复被调用
+        this.detail = this.getPlayerDetail(to.params.uid);
+        next(); // 事件提交给系统处理
+    },
+    methods:{
+        getPlayerDetail(uid){
+            // 这里也可以使用 axios 从服务器获取
+            switch(uid){
+                case '1':
+                    return {uid: 1, name: &quot;德玛西亚&quot;, point:33 }
+                case '2':
+                    return {uid: 2, name: &quot;诺克萨斯&quot;, point:12 }
+                default:
+                    return {uid: -1}
+                }
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+
+<p>设置路由，修改router/index.js</p>
+
+<pre><code class="language-javascript">import Vue from 'vue'
+import Router from 'vue-router'
+import Player from '@/components/Player'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/player/:uid',
+      name: 'Player',
+      component: Player
+    }
+  ]
+})
+</code></pre>
+
+<p>修改App.vue进行测试，传入带不同路径的URL</p>
+
+<pre><code class="language-HTML">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;
+      &lt;router-link to=&quot;/&quot;&gt;主页&lt;/router-link&gt;
+      &lt;router-link to=&quot;/player/1&quot;&gt;德玛西亚&lt;/router-link&gt;
+      &lt;router-link to=&quot;/player/2&quot;&gt;诺克萨斯&lt;/router-link&gt;
+    &lt;/p&gt;
+    &lt;router-view/&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import './assets/mycss.css' // 添加自定义css文件
+export default {
+  name: 'App'
+}
+&lt;/script&gt;
+</code></pre>
+
+<p><strong>嵌套路由</strong></p>
+
+<p>在动态路由后面添加新的URL，例如：<a href="http://xxoo.com/player/1/profile">http://xxoo.com/player/1/profile</a> <a href="http://xxoo.com/player/2/stats">http://xxoo.com/player/2/stats</a> 这样的URL。</p>
+
+<p>创建components/Player/Profile.vue 组件</p>
+
+<pre><code class="language-HTML">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;球员介绍: {{$route.params.uid}}&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>创建components/Player/Stats.vue 组件</p>
+
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h2&gt;球员数据: {{$route.params.uid}}&lt;/h2&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p>修改router/index.js</p>
+
+<pre><code class="language-javascript">import Vue from 'vue'
+import Router from 'vue-router'
+import Player from '@/components/Player'
+import PlayerProfile from '@/components/Player/Profile'
+import PlayerStats from '@/components/Player/Stats'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/player/:uid',
+      name: 'Player',
+      component: Player,
+      children:[
+        {
+            path: 'profile',
+            component: PlayerProfile,
+        },
+        {
+            path: 'stats',
+            component: PlayerStats,
+        },
+      ]
+    }
+  ]
+})
+</code></pre>
+
+<p>修改component/player.vue，我们这里还实现了 组件内嵌套子组件 的功能。</p>
+
+<pre><code class="language-javascript">&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;球员页面&lt;/h1&gt;
+    &lt;p&gt;{{detail.uid}}&lt;/p&gt;
+    &lt;p&gt;{{detail.name}}&lt;/p&gt;
+    &lt;p&gt;{{detail.point}}&lt;/p&gt;
+    &lt;hr/&gt;
+    &lt;!-- 这是在player.vue中嵌入子vue组件 --&gt;
+    &lt;!-- 这里绑定的是data中的两个变量profile, stats --&gt;
+    &lt;router-link :to=&quot;profile&quot;&gt;简介&lt;/router-link&gt;
+    &lt;router-link :to=&quot;stats&quot;&gt;数据&lt;/router-link&gt;
+    &lt;hr/&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: 'Player',
+    data() {
+        return {
+            detail: {},
+            profile: '',
+            stats: '',
+        }
+    },
+    mounted() {
+        // formLoad初始化时,通过player uid获取球员信息
+        this.detail = this.getPlayerDetail(this.$route.params.uid);
+        this.profile = '/player/' + this.$route.params.uid + '/profile';
+        this.stats = '/player/' + this.$route.params.uid + '/stats';
+    },
+    beforeRouteUpdate(to, from, next){
+        // route发生更变之前的回调消息，如果没有该函数，则会在切换网页后，detail不变的情况。
+        // 因为mounted是init行为，当页面渲染完毕后，不会再次重复被调用
+        this.detail = this.getPlayerDetail(to.params.uid);
+        this.profile = '/player/' + to.params.uid + '/profile';
+        this.stats = '/player/' + to.params.uid + '/stats';
+        next(); // 事件提交给系统处理
+    },
+    methods:{
+        getPlayerDetail(uid){
+            // 这里也可以使用 axios 从服务器获取
+            switch(uid){
+                case '1':
+                    return {uid: 1, name: &quot;德玛西亚&quot;, point:33 }
+                case '2':
+                    return {uid: 2, name: &quot;诺克萨斯&quot;, point:12 }
+                default:
+                    return {uid: -1}
+                }
+            }
+        }
+    }
+&lt;/script&gt;
+</code></pre>
+
+<p><strong>路由编程</strong></p>
+
+<p>上面我使用 route-link 标记来生成页面中的<a ref=''>标记，然后进行的url转向到其他的组件页面。我们也可以使用新的方式。router.push(location, onComplete?, onAbort?)</p>
+
+<p>下面对App.vue做修改</p>
+
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    
+ 
+    &lt;p&gt;
+      &lt;router-link to=&quot;/&quot;&gt;主页&lt;/router-link&gt;
+      &lt;router-link to=&quot;/player/1&quot;&gt;德玛西亚1&lt;/router-link&gt;
+      &lt;router-link to=&quot;/player/2&quot;&gt;诺克萨斯1&lt;/router-link&gt;
+    &lt;/p&gt;
+    &lt;!-- to前面加冒号，后面则添加json对象，也就等同 router.push(...) --&gt;
+    &lt;router-link :to=&quot;{name: 'Player', params: {uid: 1}}&quot;&gt;德玛西亚2&lt;/router-link&gt;
+    &lt;router-link :to=&quot;{path: '/player/2/stats'}&quot;&gt;诺克萨斯2&lt;/router-link&gt;
+    &lt;hr/&gt;
+    &lt;button @click=&quot;btnClick(1)&quot;&gt;德玛西亚3&lt;/button&gt;
+    &lt;button @click=&quot;btnClick(2)&quot;&gt;诺克萨斯3&lt;/button&gt;
+
+    &lt;router-view/&gt;
+  
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import './assets/mycss.css' // 添加自定义css文件
+export default {
+  name: 'App',
+  methods:{
+    btnClick(uid){
+      console.log(uid);
+      // 按键之后，进行path的重定向
+      this.$router.push({path: '/player/${uid}'})
+      // 重定向方式2
+      // this.$router.push({name: 'Player', params: {uid: uid}})
+      // 重定向方式3 ，这样访问的则是 http://xxoo.net/player?uid=1
+      // this.$router.push({name: 'Player', query: {uid: uid}})
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+&lt;/style&gt;
+
+</code></pre>
+
+<p><strong>单路由多view</strong></p>
+
+<p>一个页面 (也就是一个路由) 中组合多个组件。</p>
+
+<p>router-view[name] 绑定</p>
+
+<p>components : 注意有s</p>
+
+<pre><code class="language-javascript">// index.js
+import SettingDetail from '@/components/Setting/Detail'
+import SettingHeader from '@/components/Setting/Header'
+import SettingSideBar from '@/components/Setting/SideBar'
+
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      components: {
+          myHeader: SettingHeader,
+          mySideBar: SettingSideBar,
+          myDetail: SettingDetail,
+      }
+    }
+  ]
+})
+</code></pre>
+
+<p>App.vue</p>
+
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;td colspan=&quot;2&quot; style=&quot;background-color:darkgoldenrod&quot;&gt;
+                &lt;router-view name=&quot;myHeader&quot;&gt;&lt;/router-view&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td width=&quot;20%&quot; style=&quot;background-color:thistle&quot;&gt;
+                &lt;router-view name=&quot;mySideBar&quot;&gt;&lt;/router-view&gt;
+            &lt;/td&gt;
+            &lt;td width=&quot;20%&quot; style=&quot;background-color:aquamarine&quot;&gt;
+                &lt;router-view name=&quot;myDetail&quot;&gt;&lt;/router-view&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+  
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+<p><strong>URL重定向</strong></p>
+
+<p>alias: URL别名</p>
+
+<p>redirect: 重定向</p>
+
+<pre><code class="language-javascript">//index.js
+export default new Router({
+  routes: [
+    {
+      path: '/player/:uid',
+      name: 'Player',
+      // 此时输入 htttp://xxoo.com/about/1 等同于  http://xxoo.com/player/1
+      alias: 'about',
+      component: Player,
+      children:[
+        {
+            path: 'profile',
+            component: PlayerProfile,
+        },
+        {
+            path: 'stats',
+            component: PlayerStats,
+        },
+      ]
+    },
+    {
+      path: '/',
+      name: 'Home',
+      components: {
+          myHeader: SettingHeader,
+          mySideBar: SettingSideBar,
+          myDetail: SettingDetail,
+      }
+    },
+    {
+      path: '/hi',  // 这里可以使用 * 通配
+      name: 'hi',
+      // 输入 http://xxxoo.com/hi  等同于输入 http://xxxoo.com/player/2 ,会自动重定向
+      redirect: '/player/2',
+    }
+  ]
+})
+</code></pre>
+
+<p><strong>多参数路由</strong></p>
+
+<p>路由传递多个属性props</p>
+
+<p>user.vue</p>
+
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div&gt;
+        &lt;h1&gt;
+            测试url多参
+        &lt;/h1&gt;
+        &lt;p&gt;uid={{ uid }}, nationality={{ nationality }}&lt;/p&gt;
+        &lt;!-- 这里可以有上下两种方式去获取参数 --&gt;
+        &lt;p&gt;$route.params.uid={{ $route.params.uid }}&lt;/p&gt;
+        &lt;p&gt;$route.params.nationality={{ $route.params.nationality }}&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: &quot;User&quot;,
+    // 这里表示从  params 里接受两个参数
+    props: ['uid', 'nationality']
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>index.js 添加route</p>
+
+<pre><code class="language-javascript">    {
+      path: '/user/:uid/:nationality',
+      name: 'User',
+      component: User,
+      props: true,
+    }
+</code></pre>
+
+<p>App.vue</p>
+
+<pre><code class="language-html">    &lt;p&gt;
+      &lt;router-link to=&quot;/user/1/USA&quot;&gt;User1&lt;/router-link&gt;
+      &lt;router-link to=&quot;/user/2/china&quot;&gt;User2&lt;/router-link&gt;
+    &lt;/p&gt;
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/javascripte/">javascripte</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/vue/">vue</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2020/05/%E5%8F%8C%E6%9C%88%E8%AE%B0202004-05/" data-tooltip="双月记202004-05">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" data-tooltip="SpringBoot学习记录">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2020/05/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2020 <a href="https://duzhi5368.github.io">FreeKnight</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2020/05/%E5%8F%8C%E6%9C%88%E8%AE%B0202004-05/" data-tooltip="双月记202004-05">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" data-tooltip="SpringBoot学习记录">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2020/05/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2020%2F05%2Fvue%25E5%25AD%25A6%25E4%25B9%25A0%25E8%25AE%25B0%25E5%25BD%2595%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/323d61e9279c83a8fbccc01acf01f1e2?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">FreeKnight.Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game software engineer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Makati
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/%E5%8F%8C%E6%9C%88%E8%AE%B0202004-05/">
+                <h3 class="media-heading">双月记202004-05</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">日本工作与学历
+时间投资方向
+坚定的移民
+我要成为vlogger
+学习平台
+混蛋石*兵
+&lt;我住在这里的理由&gt;
+网易博客被封
+技术：中台
+技术：GPT-2
+日本工作与学历 我去日本负责技术管理了，位置在大阪难波黑门市场附近，原本一切都很好，商务签证办下来，接下来是在补工签的时候出了幺蛾子。
+工签需要大学成绩单……
+我是06年毕业的，之后就没用过成绩单，之前是日本劳务签不需要这玩意儿，到新加坡菲律宾也仅要学历证明没要成绩单，给学校要，结果学校说05年之前的必须拿身份证去学校档案处亲自领取，而公司这边希望一周内缴纳资料，显然来不及了……嘛，现在情况是先等人事处理消息了。
+其实一提到学历就是我心头一道疤。十几年了没能过去这道坎，总是躲着，这次联系华农的同学又把这事勾起来了。
+我读了四年，却没学位证，后面怎么努力怎么努力，也没办法补上这一点。取澳洲移民加拿大技术移民，从来都不在我考虑范围之内。我的技术不错，程序这个行业也是优势移民行业，综合能力也不算差，素质，视野，能力都是有的，英语虽然不是优势，但一年过个雅思6还是没有什么心理压力的，但就因为学历一直受到限制。
+已经工作十几年了，还是逃不开这个阴影。
+这次再度掀开旧伤疤，现在能不能去日本，我反而感觉无所谓了。反而提醒我自己是真的该去还学位债了，自己欠下的，自己还。
+我必须去看看高龄申请大学的一些资料并列上核心日程进行准备了，为此必须做好财力准备和英语准备。
+就这样，不多说，把coursera英语程序课程列入核心目标，之后补学士学位。
+时间投资方向 英语英语英语
+ 先以新概念英语为主要学习目标 然后背诵新概念英语3册课文 期间全部代码开发尽量使用标准英文用词和注释，阅读英文原版资料 最后针对雅思考试做报班准备  日语
+ 主要还是以生活英语为主即可 以日本本地的免费日语培训为主  游戏程序
+ 业余时间除语言之外，全部投资这里，主要以unity为主 用unity免费资源做一些东西 之后以 unreal作为基本学习 加强渲染框架的理解  WEB开发
+ 以java spring boot+vue为主，考虑react学习 在工作时间主要提高这个部分 补充周边知识储备  移民信息
+ 作为休闲时间的安排 配合老婆一起了解移民，留学信息，依然以老婆那边的信息获取为主 老婆留学后，以了解移民，工作，和房屋购买为主。  健身
+ 每天早上半小时  坚定的移民 这里先说一件最新发生的事：国内发生了假奶粉的事件，虽然说起来主要是在湖南发生，其实，不仅仅是在那里发生的，我家在河南，我的第二个孩子也中招了。
+没错，喝了两罐假奶粉。
+这种奶粉和之前带毒的三氯氰胺奶粉不一样，只是一种固体饮料（实在不能理解的话，想一下健身用的蛋白粉好了），有严重的营养缺失，小孩子喝多了会出现佝偻病。这种奶粉会通过国家食品安全局和医药局双局认证，且受到妇产科医生以及婴幼儿奶粉店的推荐，想必是有不错的推销收益吧。
+广大民众并不具备专业的奶粉知识，包装上不做显著说明，再加上医生和销售员的极力推荐，自然会买错。
+然后我老妈得知自己买的奶粉是会导致小孩畸形的时候，凌晨2点给我视频，哭的稀里哗啦。其实我还比较淡定，毕竟第二个娃现在主要还是母乳，喝的也不算太久，应该还能缓的回来。
+但！这TMD不能忍。婴儿是家之根本，是有特殊意义的。如果国家不能监管得当，就TMD该换人，这几年之间，毒奶粉假疫苗暴力幼儿园假奶粉之类的事层出不穷，已经触动底线了。
+用我的话来说，纵使我多恨一个人，杀了他全家，也不会去动婴儿的，这种做人的基本准则。这就是底线。
+总而言之，因为这档子混蛋事情，我老婆终于觉悟了，明确的进行移民。
+现在有几条路，以优先级记录如下：</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">vue学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，以vue作为web前端，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的vue概念和一些学习代码，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/springboot%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">SpringBoot学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，以spring boot作为web服务器，从0开始一些简单的学习。</p>
+
+<p>下面是一些基本的spring boot概念，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/05/%E6%8A%80%E6%9C%AF%E5%8D%81%E4%BA%94%E5%B9%B4/">
+                <h3 class="media-heading">技术十五年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>昨天接到公司技术总监电话，去日本大阪工作已经定下，任职日本分部的技术负责人，全权负责日本分部的人员招聘管理，团队建设和技术方向管控，在这公司做了三年半纯技术，终究又被派到了管理岗位，这次是要好好认真的做好技术管理了。</p>
+
+<p>趁着明天五一不上班，做一下这些年的技术方向和简单整理。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/04/spring%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+                <h3 class="media-heading">Spring框架学习记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Apr 4, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>近来在做web开发，从spring开始做一些简单的学习。</p>
+
+<p>下面是一些基本的spring概念，在学习时逐步记录下来。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/%E6%9C%88%E8%AE%B0202003/">
+                <h3 class="media-heading">月记202003</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>隔离工作
+肺炎
+自我提高
+生活
+我看忠孝
+中国经济</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+                <h3 class="media-heading">ModSecurity网络安全防御策略【未完结】</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>ModSecurity网络安全防御策略</p>
+
+<ul>
+<li>基本防御方法</li>
+<li>漏洞检测和修复</li>
+<li>陷阱和蜜罐</li>
+<li>使用第三方信息库</li>
+<li>请求数据分析</li>
+<li>响应数据分析</li>
+<li>身份验证防护</li>
+<li>会话状态防护</li>
+<li>应用层攻击防护</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+                <h3 class="media-heading">sql注入攻防【未完结】</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Mar 3, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/02/%E6%9C%88%E8%AE%B0202002/">
+                <h3 class="media-heading">月记202002</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><ul>
+<li>远程办公</li>
+<li>电影：阿信的故事</li>
+<li>日本</li>
+<li>语言</li>
+<li>技术进展</li>
+</ul>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2020/01/%E6%9C%88%E8%AE%B0202001/">
+                <h3 class="media-heading">月记202001</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 2020
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>英语</p>
+
+<p>《小森林》</p>
+
+<p>工作</p>
+
+<p>品葱</p>
+
+<p>打飞机</p>
+
+<p>武汉肺炎</p>
+
+<p>《死亡搁浅》</p>
+
+<p>《底特律：being human》</p>
+
+<p>渗透</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         278 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2020\/05\/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95\/';
+          
+            this.page.identifier = '\/2020\/05\/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
