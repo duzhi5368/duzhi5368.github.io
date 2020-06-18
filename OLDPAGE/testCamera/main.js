@@ -1,6 +1,6 @@
 
 // 初始化
-windows.onload = function(){
+window.onload = function(){
   var video = document.getElementById('video');
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
