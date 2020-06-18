@@ -11,10 +11,10 @@ function setup() {
   videoP5 = createCapture(VIDEO);
   videoP5.id("video");
   videoP5.size(vidW, vidH);
-  videoP5.position(vidX, vidY);
+  //videoP5.position(vidX, vidY);
 
   canvasP5 = createCanvas(vidW, vidH);
-  canvasP5.position(vidX, vidY);
+  canvasP5.center();
 
   var tracker = new tracking.LandmarksTracker();
   tracker.setInitialScale(4);
