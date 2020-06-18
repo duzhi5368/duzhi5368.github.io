@@ -54,6 +54,7 @@
             jpeg_quality: 90,      // jpeg image quality from 0 (worst) to 100 (best)
             is_gray: false,
             picSize: 0,
+            boundingBox: null,
             enable_flash: true,    // enable flash fallback,
             force_flash: false,    // force flash mode,
             flip_horiz: false,     // flip image horiz (mirror mode)
@@ -869,6 +870,20 @@
                     context.putImageData(imageSrc, 0, 0);
                 }
 
+                if(params.boundingBox){
+                    //var imageSrc = context.getImageData(0, 0, params.dest_width, params.dest_height);
+                    context.beginPath();
+                    context.rect(this.params.boundingBox.x, this.params.boundingBox.y,
+                        this.params.boundingBox.width, this.params.boundingBox.height);
+                    context.clip();
+                }
+
+                /*
+                context.drawImage(this.video, (this.params.dest_width - this.params.picSize)/2,
+                        (this.params.dest_height - this.params.picSize)/2,
+                        this.params.picSize, this.params.picSize);
+                 */
+
                 // render image if needed (flash)
                 if (this.src && this.width && this.height) {
                     context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
@@ -914,13 +929,7 @@
             // grab image frame from userMedia or flash movie
             if (this.userMedia) {
                 // native implementation
-                if(this.params.picSize != 0) {
-                    context.drawImage(this.video, (this.params.dest_width - this.params.picSize)/2,
-                        (this.params.dest_height - this.params.picSize)/2,
-                        this.params.picSize, this.params.picSize);
-                }else {
-                    context.drawImage(this.video, 0, 0, this.params.dest_width, this.params.dest_height);
-                }
+                context.drawImage(this.video, 0, 0, this.params.dest_width, this.params.dest_height);
 
                 // fire callback right away
                 func();

@@ -88,15 +88,20 @@ window.showTrack = function (event) {
     return;
 
   var isLegal = true;       // 这个包围盒是否合法
+  var legalBindingBox = null;
   // 细节绘制
   event.data.faces.forEach(function(boundingBox, faceIndex) {
+    isLegal = isBoundingBoxLegal(boundingBox);
+    if(isLegal){
+      legalBindingBox = boundingBox;
+    }
     var isShowPoint = false;  // 是否显示点
     var isShowLine = true;    // 是否显示线
     var faceLandmarks = event.data.landmarks[faceIndex]
     // 暂时关闭基本显示
     // simpleDisplayFaceInfo(boundingBox);
     // 脸边包围框
-    displayFaceLandmarksBoundingBox(boundingBox, faceIndex, true);
+    displayFaceLandmarksBoundingBox(boundingBox, faceIndex, isLegal);
     lerpFacesLandmarks(faceLandmarks)
     // 线，点
     displayFaceLandmarksDot(lerpedFacesLandmarks, isShowPoint, isShowLine)
@@ -104,6 +109,7 @@ window.showTrack = function (event) {
 
   // 截图
   if(isLegal) {
+    WebCam.set({boundingBox: legalBindingBox});
     Webcam.snap(function (data_uri) {
       //console.log(data_uri);
       document.getElementById('snapshot').innerHTML =
