@@ -855,7 +855,7 @@
             var func = function() {
 
                 if(params.is_gray){
-                    var imageSrc = context.getImageData(0, 0, context.width, context.height);
+                    var imageSrc = context.getImageData(0, 0, params.dest_width, params.dest_height);
                     var dataSrc = imageSrc.data;
                     var len = dataSrc.length;
                     var i = 0;

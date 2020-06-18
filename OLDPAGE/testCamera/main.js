@@ -15,8 +15,6 @@ window.onload = function(){
     image_format: 'jpeg',
     jpeg_quality: 90,
     is_gray: true,
-    crop_width: 300,
-    crop_height: 300,
   });
   Webcam.attach( '#holder' )
   // 面部跟踪器
