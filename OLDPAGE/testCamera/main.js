@@ -57,8 +57,6 @@ window.onload = function(){
   Webcam.set({
     width: 640,
     height: 480,
-    dest_width: 300,
-    dest_height: 300,
     cameraId: 'video',
     image_format: 'jpeg',
     jpeg_quality: 90,
