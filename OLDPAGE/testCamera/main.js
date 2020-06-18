@@ -5,13 +5,6 @@ window.onload = function(){
   video = document.getElementById('video');
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
-  // 面部跟踪器
-  var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
-  tracker.setInitialScale(4);
-  tracker.setStepSize(2);
-  tracker.setEdgesDensity(0.1);
-  tracking.track('#video', tracker, { camera: true });
-  tracker.on('track', window.showTrack);
   // 截屏器
   Webcam.set({
     width: 320,
@@ -22,6 +15,15 @@ window.onload = function(){
     jpeg_quality: 90
   });
   Webcam.attach( '#my_camera' )
+  // 面部跟踪器
+  var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
+  tracker.setInitialScale(4);
+  tracker.setStepSize(2);
+  tracker.setEdgesDensity(0.1);
+  var cameraDiv = document.getElementById('my_camera');
+  var videoElement = cameraDiv.getElementById('fkvideo');
+  tracking.track(videoElement, tracker, { camera: true });
+  tracker.on('track', window.showTrack);
   // 设置
   var gui = new dat.GUI();
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
