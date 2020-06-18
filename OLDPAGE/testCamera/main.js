@@ -1,6 +1,8 @@
+var video = null;
 var canvas = null;
 // 初始化
 window.onload = function(){
+  video = document.getElementById('video');
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
