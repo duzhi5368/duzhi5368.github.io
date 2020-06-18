@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>FaceTracker</title>
-    <script src="libraries/tracking-min.js"></script>
-    <script src="libraries/data/face-min.js"></script>
-    <script src="libraries/data/eye-min.js"></script>
-    <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="libraries/tracking-min.js"></script>
-    <script src="libraries/data/face-min.js"></script>
-    <script src="libraries/data/eye-min.js"></script>
-    <script src="sketch.js" type="text/javascript"></script>
+<head>
+  <meta charset="utf-8">
+  <title>tracking.js - face alignment with camera</title>
+  <link rel="stylesheet" href="assets/demo.css">
 
-    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
-  </head>
-  <body>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/p5.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+
+  <script src="libraries/build/tracking.js"></script>
+  <script src="libraries/build/data/face-min.js"></script>
+  <script src="libraries/src/alignment/training/Landmarks.js"></script>
+  <script src="libraries/src/alignment/training/Regressor.js"></script>
+</head>
+<body>
+  <script src="sketch.js"></script>
+</body>
 </html>

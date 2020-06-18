@@ -1,36 +1,52 @@
-/*
-  Face detection using tracking.js
-  Context: P5.js
-*/
-var tracker;    // instance of the tracker library
+var points = [];
+var canvasP5;
+var videoP5;
+
+var vidW = 640;
+var vidH = 480;
+var vidX = 0;
+var vidY = 100;
 
 function setup() {
-  // setup camera capture
-  var video = createCapture(VIDEO); // take control of the camera
-  video.size(400, 300);             // set the capture resolution
-  video.position(0, 0);             // set the position of the camera image
-  var canvas = createCanvas(400, 300);  // draw the canvas over the image
-  canvas.position(0,0);             // set the canvas position
-  // set up the tracker:
-  tracker = new tracking.ObjectTracker('face');
-  tracker.setInitialScale(4);     // set the tracking parameters
+  videoP5 = createCapture(VIDEO);
+  videoP5.id("video");
+  videoP5.size(vidW, vidH);
+  videoP5.position(vidX, vidY);
+
+  canvasP5 = createCanvas(vidW, vidH);
+  canvasP5.position(vidX, vidY);
+
+  var tracker = new tracking.LandmarksTracker();
+  tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
-  tracking.track(video.elt, tracker); // track on the video image
-  tracker.on('track', showTracks);    // callback for the tracker
-  ellipseMode(CORNER);                // draw circles from the corner
+
+  tracking.track('#video', tracker, { camera: true });
+  tracker.on('track', function(event) {
+    if(!event.data) return;
+    event.data.landmarks.forEach(function(landmarks) {
+      points = [];
+      for(var l in landmarks){
+        points.push({x: landmarks[l][0], y: landmarks[l][1]});
+      }
+    });
+
+  });
 }
 
 function draw() {
-  // nothing to do here.
-}  // end of draw() function
+  image(videoP5, 0, 0);
+  fill(255, 0, 0);
+  for (var i = 0; i < points.length; i++) {
+    text(i, points[i].x, points[i].y);
+  }
 
-function showTracks(event) {
-    clear();
-    var faces = event.data;
-    for (f in faces) {
-      fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
-      noStroke();                     // no border
-      ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
-    }
+
+  if (points.length > 24) {
+    // left eye
+    ellipse(points[20].x, points[20].y + 10, 50, 50);
+
+    // right eye
+    ellipse(points[24].x, points[24].y + 10, 50, 50);
+  }
 }
