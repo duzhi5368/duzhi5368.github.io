@@ -18,11 +18,12 @@ window.onload = function(){
 }
 
 window.showTrack = function (event) {
+  var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
   event.data.forEach(function(rect) {
     console.log(rect);
-    show(rect);
+    //show(rect);
     context.strokeStyle = '#a64ceb';
     context.strokeRect(rect.x, rect.y, rect.width, rect.height);
     context.font = '11px Helvetica';
@@ -31,13 +32,13 @@ window.showTrack = function (event) {
     context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
   });
 
-  clear();
-  var faces = event.data;
-  for (f in faces) {
-    fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
-    noStroke();                     // no border
-    ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
-  }
+  //clear();
+  //var faces = event.data;
+  //for (f in faces) {
+    //fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
+    //noStroke();                     // no border
+    //ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
+  //}
 }
 /*
 var points = [];
