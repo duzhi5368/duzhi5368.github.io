@@ -857,9 +857,17 @@
             var func = function() {
 
                 if(params.boundingBox){
-                    context.drawImage(this.video, params.boundingBox.x, params.boundingBox.y,
-                        params.boundingBox.width, params.boundingBox.height,
-                        0,0,params.boundingBox.width,params.boundingBox.height);
+                    if(params.picSize == 0) {
+                        context.drawImage(this.video, params.boundingBox.x, params.boundingBox.y,
+                            params.boundingBox.width, params.boundingBox.height,
+                            0, 0, params.boundingBox.width, params.boundingBox.height);
+                    }else{
+                        context.drawImage(this.video, params.boundingBox.x, params.boundingBox.y,
+                            params.boundingBox.width, params.boundingBox.height,
+                            (this.params.dest_width - params.picSize) / 2,
+                            (this.params.dest_height - params.picSize) / 2,
+                            params.picSize, params.picSize);
+                    }
                 }else{
                     // native implementation
                     context.drawImage(this.video, 0, 0, this.params.dest_width, this.params.dest_height);
