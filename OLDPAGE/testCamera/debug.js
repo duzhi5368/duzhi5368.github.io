@@ -1,33 +1,24 @@
 var stats = new Stats();
-stats.showPanel( 1 );
-document.body.appendChild( stats.dom );
+stats.setMode(2);
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.left = '10px';
+stats.domElement.style.top = '50px';
+stats.domElement.style.zIndex = 100;
+document.addEventListener('DOMContentLoaded', function(event) {
+    document.body.appendChild(stats.domElement);
+});
 
-/*
-var canvas = document.createElement( 'statsCanvas' );
-canvas.width = 512;
-canvas.height = 512;
-*/
-document.body.appendChild( canvasP5 );
+var objectEmit_ = tracking.ObjectTracker.prototype.emit;
+var colorEmit_ = tracking.ColorTracker.prototype.emit;
 
-var context = canvasP5.getContext( '2d' );
-context.fillStyle = 'rgba(127,0,255,0.05)';
+stats.begin();
 
-function animate() {
-    var time = performance.now() / 1000;
-    context.clearRect( 0, 0, 512, 512 );
-
-    stats.begin();
-
-    for ( var i = 0; i < 2000; i ++ ) {
-        var x = Math.cos( time + i * 0.01 ) * 196 + 256;
-        var y = Math.sin( time + i * 0.01234 ) * 196 + 256;
-
-        context.beginPath();
-        context.arc( x, y, 10, 0, Math.PI * 2, true );
-        context.fill();
-    }
-
+tracking.ObjectTracker.prototype.emit = function() {
     stats.end();
-    requestAnimationFrame( animate );
-}
-animate();
+    objectEmit_.apply(this, arguments);
+};
+
+tracking.ColorTracker.prototype.emit = function() {
+    stats.end();
+    colorEmit_.apply(this, arguments);
+};
