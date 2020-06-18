@@ -1,6 +1,53 @@
+var landmarkFeatures = {
+  jaw : {
+    first: 0,
+    last: 8,
+    fillStyle: 'white',
+    closed: false,
+  },
+  nose : {
+    first:15,
+    last: 18,
+    fillStyle: 'green',
+    closed: true,
+  },
+  mouth : {
+    first:27,
+    last: 30,
+    fillStyle: 'red',
+    closed: true,
+  },
+  eyeL : {
+    first:19,
+    last: 22,
+    fillStyle: 'purple',
+    closed: false,
+  },
+  eyeR : {
+    first:23,
+    last: 26,
+    fillStyle: 'purple',
+    closed: false,
+  },
+  eyeBrowL : {
+    first: 9,
+    last: 11,
+    fillStyle: 'yellow',
+    closed: false,
+  },
+  eyeBrowR : {
+    first:12,
+    last: 14,
+    fillStyle: 'yellow',
+    closed: false,
+  },
+}
+
 var video = null;
 var canvas = null;
 var context = null;
+
+var lerpedFacesLandmarks = []
 // 初始化
 window.onload = function(){
   video = document.getElementById('video');
@@ -52,8 +99,8 @@ window.showTrack = function (event) {
   // 细节绘制
   event.data.faces.forEach(function(boundingBox, faceIndex) {
     var faceLandmarks = event.data.landmarks[faceIndex]
-    displayFaceLandmarksBoundingBox(boundingBox, faceIndex)
-    //lerpFacesLandmarks(faceLandmarks)
+    displayFaceLandmarksBoundingBox(boundingBox, faceIndex, true);
+    lerpFacesLandmarks(faceLandmarks)
     //displayFaceLandmarksDot(lerpedFacesLandmarks)
   });
   // 脸部关键点
@@ -75,13 +122,71 @@ window.showTrack = function (event) {
     ;
   } );
 
-  function displayFaceLandmarksBoundingBox(boundingBox, faceIndex){
-    context.strokeStyle = '#a64ceb';
+  function displayFaceLandmarksBoundingBox(boundingBox, faceIndex, isLegal){
+    if(isLegal) {
+      context.strokeStyle = '#00ff00';
+    }else{
+      context.strokeStyle = '#ff0000';
+    }
     context.strokeRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
     context.font = '11px Helvetica';
     context.fillStyle = "#fff";
     context.fillText('idx: '+faceIndex, boundingBox.x + boundingBox.width + 5, boundingBox.y + 11);
     context.fillText('x: ' + boundingBox.x + 'px', boundingBox.x + boundingBox.width + 5, boundingBox.y + 22);
     context.fillText('y: ' + boundingBox.y + 'px', boundingBox.x + boundingBox.width + 5, boundingBox.y + 33);
+  }
+
+  function lerpFacesLandmarks(newFaceLandmarks){
+    for(var i = 0; i < newFaceLandmarks.length; i++){
+      if( lerpedFacesLandmarks[i] !== undefined ) continue
+      lerpedFacesLandmarks[i] = [
+        newFaceLandmarks[i][0],
+        newFaceLandmarks[i][1],
+      ]
+    }
+    for(var i = 0; i < newFaceLandmarks.length; i++){
+      var lerpFactor = 0.7;
+      lerpedFacesLandmarks[i][0] = newFaceLandmarks[i][0] * lerpFactor  + lerpedFacesLandmarks[i][0] * (1-lerpFactor)
+      lerpedFacesLandmarks[i][1] = newFaceLandmarks[i][1] * lerpFactor  + lerpedFacesLandmarks[i][1] * (1-lerpFactor)
+    }
+  }
+
+  function displayFaceLandmarksDot(faceLandmarks){
+    Object.keys(landmarkFeatures).forEach(function(featureLabel){
+      displayFaceLandmarksFeature(faceLandmarks, featureLabel)
+    })
+  }
+
+  function displayFaceLandmarksFeature(faceLandmarks, featureLabel){
+    var feature = landmarkFeatures[featureLabel]
+
+    // 点
+    context.fillStyle = feature.fillStyle
+    for(var i = feature.first; i <= feature.last; i++){
+      var xy = faceLandmarks[i]
+      context.beginPath();
+      context.arc(xy[0],xy[1],1,0,2*Math.PI);
+      context.fill();
+    }
+
+    // 线
+    var feature = landmarkFeatures[featureLabel]
+    context.strokeStyle = feature.fillStyle
+    context.beginPath();
+    for(var i = feature.first; i <= feature.last; i++){
+      var x = faceLandmarks[i][0]
+      var y = faceLandmarks[i][1]
+      if( i === 0 ){
+        context.moveTo(x, y)
+      }else{
+        context.lineTo(x, y)
+      }
+    }
+    if( feature.closed === true ){
+      var x = faceLandmarks[feature.first][0]
+      var y = faceLandmarks[feature.first][1]
+      context.lineTo(x, y)
+    }
+    context.stroke();
   }
 }
