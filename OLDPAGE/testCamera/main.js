@@ -1,10 +1,11 @@
 var video = null;
 var canvas = null;
+var context = null;
 // 初始化
 window.onload = function(){
   video = document.getElementById('video');
   canvas = document.getElementById('canvas');
-  var context = canvas.getContext('2d');
+  context = canvas.getContext('2d');
   // 截屏器
   Webcam.set({
     width: 640,
@@ -32,13 +33,13 @@ window.onload = function(){
 }
 
 window.showTrack = function (event) {
-  var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
+  if(event == null || event.data === undefined)
+    return;
   if(!event.data.faces)
     return;
-  if(event.data.faces.length != 1) {
+  if(event.data.faces.length != 1)
     return;
-  }
   // 遍历出现的脸部
   event.data.faces.forEach(function(rect) {
     context.strokeStyle = '#00cc00';
@@ -47,6 +48,13 @@ window.showTrack = function (event) {
     context.fillStyle = "#fff";
     context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
     context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+  });
+  // 细节绘制
+  event.data.faces.forEach(function(boundingBox, faceIndex) {
+    var faceLandmarks = event.data.landmarks[faceIndex]
+    displayFaceLandmarksBoundingBox(boundingBox, faceIndex)
+    //lerpFacesLandmarks(faceLandmarks)
+    //displayFaceLandmarksDot(lerpedFacesLandmarks)
   });
   // 脸部关键点
   event.data.landmarks.forEach(function(landmarks) {
@@ -66,4 +74,14 @@ window.showTrack = function (event) {
         '</textarea>'
     ;
   } );
+
+  function displayFaceLandmarksBoundingBox(boundingBox, faceIndex){
+    context.strokeStyle = '#a64ceb';
+    context.strokeRect(boundingBox.x, boundingBox.y, boundingBox.width, boundingBox.height);
+    context.font = '11px Helvetica';
+    context.fillStyle = "#fff";
+    context.fillText('idx: '+faceIndex, boundingBox.x + boundingBox.width + 5, boundingBox.y + 11);
+    context.fillText('x: ' + boundingBox.x + 'px', boundingBox.x + boundingBox.width + 5, boundingBox.y + 22);
+    context.fillText('y: ' + boundingBox.y + 'px', boundingBox.x + boundingBox.width + 5, boundingBox.y + 33);
+  }
 }
