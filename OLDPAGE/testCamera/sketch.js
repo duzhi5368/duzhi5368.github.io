@@ -18,7 +18,7 @@ function setup() {
 
   var tracker = new tracking.LandmarksTracker();
   tracker.setInitialScale(4);
-  tracker.setStepSize(2);
+  tracker.setStepSize(1);
   tracker.setEdgesDensity(0.1);
 
   tracking.track('#video', tracker, { camera: true });
@@ -37,16 +37,19 @@ function setup() {
 function draw() {
   image(videoP5, 0, 0);
   fill(255, 0, 0);
+  /*
+  // 面部各点
   for (var i = 0; i < points.length; i++) {
     text(i, points[i].x, points[i].y);
   }
+   */
 
 
+  /*
+  // 眼睛
   if (points.length > 24) {
-    // left eye
     ellipse(points[20].x, points[20].y + 10, 50, 50);
-
-    // right eye
     ellipse(points[24].x, points[24].y + 10, 50, 50);
   }
+  */
 }
