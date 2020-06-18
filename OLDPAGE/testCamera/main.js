@@ -2,7 +2,7 @@ var landmarkFeatures = {
   jaw : {
     first: 0,
     last: 8,
-    fillStyle: 'white',
+    fillStyle: 'yellow',
     closed: false,
   },
   nose : {
@@ -14,19 +14,19 @@ var landmarkFeatures = {
   mouth : {
     first:27,
     last: 30,
-    fillStyle: 'red',
+    fillStyle: 'yellow',
     closed: true,
   },
   eyeL : {
     first:19,
     last: 22,
-    fillStyle: 'purple',
+    fillStyle: 'yellow',
     closed: false,
   },
   eyeR : {
     first:23,
     last: 26,
-    fillStyle: 'purple',
+    fillStyle: 'yellow',
     closed: false,
   },
   eyeBrowL : {
@@ -88,9 +88,9 @@ window.showTrack = function (event) {
   if(event.data.faces.length != 1)
     return;
 
+  var isLegal = true;       // 这个包围盒是否合法
   // 细节绘制
   event.data.faces.forEach(function(boundingBox, faceIndex) {
-    var isLegal = true;       // 这个包围盒是否合法
     var isShowPoint = false;  // 是否显示点
     var isShowLine = true;    // 是否显示线
     var faceLandmarks = event.data.landmarks[faceIndex]
@@ -104,17 +104,24 @@ window.showTrack = function (event) {
   });
 
   // 截图
-  Webcam.snap( function(data_uri) {
-    //console.log(data_uri);
-    document.getElementById('snapshot').innerHTML =
-        '<h1>下面是发给服务器的图片</h1>' +
-        '<img src="'+data_uri+'"/>'+
-        '<br>'+
-        '<textarea rows="40" cols="80">' +
-        data_uri +
-        '</textarea>'
-    ;
-  } );
+  if(isLegal) {
+    Webcam.snap(function (data_uri) {
+      //console.log(data_uri);
+      document.getElementById('snapshot').innerHTML =
+          '<h1>下面是发给服务器的图片</h1>' +
+          '<img src="' + data_uri + '"/>' +
+          '<br>' +
+          '<textarea rows="40" cols="80">' +
+          data_uri +
+          '</textarea>'
+      ;
+    });
+  }
+
+  // 判断两帧之间矩阵相似度
+  function isBoundingBoxLegal(boundingBox){
+    return true;
+  }
 
   function simpleDisplayFaceInfo(rect){
     context.strokeStyle = '#00cc00';

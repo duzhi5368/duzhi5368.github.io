@@ -870,7 +870,8 @@
 
                 // render image if needed (flash)
                 if (this.src && this.width && this.height) {
-                    context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
+                    //context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
+                    context.drawImage(this, 20, 20, 50, 50);
                 }
 
 
