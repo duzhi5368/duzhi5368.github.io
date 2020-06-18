@@ -13,6 +13,7 @@
   <script src="libraries/src/alignment/training/Landmarks.js"></script>
   <script src="libraries/src/alignment/training/Regressor.js"></script>
   <script src="libraries/src/datGui/dat.gui.min.js"></script>
+  <script src="libraries/src/webcam/webcam-min.js"></script>
 
   <script src="main.js"></script>
   <script src="debug.js"></script>
@@ -26,7 +27,9 @@
   </style>
 </head>
 <body>
-<video id="video" width="640" height="480" preload autoplay loop muted></video>
+  <video id="video" width="640" height="480" preload autoplay loop muted></video>
   <canvas id="canvas" width="640" height="480"></canvas>
+  <div id="my_camera"></div>
+  <div id="snapshot">这里是发送到服务器的照片</div>
 </body>
 </html>

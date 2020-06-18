@@ -5,12 +5,23 @@ window.onload = function(){
   video = document.getElementById('video');
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
+  // 面部跟踪器
   var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
   tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
+  // 截屏器
+  Webcam.set({
+    width: 320,
+    height: 240,
+    dest_width: 640,
+    dest_height: 480,
+    image_format: 'jpeg',
+    jpeg_quality: 90
+  });
+  Webcam.attach( '#my_camera' )
   // 设置
   var gui = new dat.GUI();
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
@@ -41,14 +52,12 @@ window.showTrack = function (event) {
       context.fillText(l, landmarks[l][0], landmarks[l][1]);
     }
   });
-
-  // 眼睛
-  /*
-  if (points.length > 24) {
-    ellipse(points[20].x, points[20].y + 10, 50, 50);
-    ellipse(points[24].x, points[24].y + 10, 50, 50);
-  }
-  */
+  // 截图
+  Webcam.snap( function(data_uri) {
+    document.getElementById('snapshot').innerHTML =
+        '<h2>你的照片:</h2>' +
+        '<img src="'+data_uri+'"/>';
+  } );
 }
 
 /*
