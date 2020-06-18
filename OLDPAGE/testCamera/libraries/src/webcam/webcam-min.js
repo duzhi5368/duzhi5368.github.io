@@ -296,7 +296,7 @@
                 }
 
                 // add video element to dom
-                if(this.params.cameraId != null) {
+                if(this.params.cameraId == null) {
                     elem.appendChild(video);
                 }
                 this.video = video;
