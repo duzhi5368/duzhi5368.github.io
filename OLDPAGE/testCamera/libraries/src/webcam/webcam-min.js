@@ -872,7 +872,7 @@
 
                 if(params.boundingBox){
                     //var imageSrc = context.getImageData(0, 0, params.dest_width, params.dest_height);
-                    context.drawImage(this, params.boundingBox.x, params.boundingBox.y,
+                    context.drawImage(this.video, params.boundingBox.x, params.boundingBox.y,
                         params.boundingBox.width, params.boundingBox.height,
                         0,0,params.boundingBox.width,params.boundingBox.height);
                 }
