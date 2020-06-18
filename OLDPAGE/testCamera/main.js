@@ -8,7 +8,7 @@ window.onload = function(){
   video = createCapture(VIDEO);
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
-  var tracker = new tracking.ObjectTracker('face');
+  var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
   tracker.setInitialScale(2);
   tracker.setStepSize(1);
   tracker.setEdgesDensity(0.15);
@@ -23,6 +23,7 @@ window.onload = function(){
 }
 
 window.showTrack = function (event) {
+  console.log(event.data);
   if(!event.data)
     return;
   if(event.data.length != 1) {
