@@ -19,14 +19,13 @@ window.onload = function(){
 }
 
 window.showTrack = function (event) {
-  console.log(event.data);
+  var context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
   if(!event.data.faces)
     return;
   if(event.data.faces.length != 1) {
     return;
   }
-  var context = canvas.getContext('2d');
-  context.clearRect(0, 0, canvas.width, canvas.height);
   // 遍历出现的脸部
   event.data.faces.forEach(function(rect) {
     context.strokeStyle = '#00cc00';
