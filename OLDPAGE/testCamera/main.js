@@ -10,14 +10,14 @@ window.onload = function(){
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
-  tracking.track('#video', tracker, { camera: true });
+  tracking.track('#fkvideo', tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 截屏器
   Webcam.set({
     width: 320,
     height: 240,
-    dest_width: 640,
-    dest_height: 480,
+    dest_width: 320,
+    dest_height: 240,
     image_format: 'jpeg',
     jpeg_quality: 90
   });
