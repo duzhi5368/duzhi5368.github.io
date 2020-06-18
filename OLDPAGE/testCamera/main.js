@@ -21,7 +21,7 @@ window.onload = function(){
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
   var cameraDiv = document.getElementById('my_camera');
-  var videoElement = cameraDiv.getElementById('fkvideo');
+  var videoElement = cameraDiv.getElementsByTagName('video');
   tracking.track(videoElement, tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 设置
@@ -56,7 +56,7 @@ window.showTrack = function (event) {
   });
   // 截图
   Webcam.snap( function(data_uri) {
-    console.log(data_uri);
+    //console.log(data_uri);
     document.getElementById('snapshot').innerHTML =
         '<img src="'+data_uri+'"/>';
   } );
