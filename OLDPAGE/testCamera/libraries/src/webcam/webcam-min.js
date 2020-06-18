@@ -268,12 +268,15 @@
 
             if (this.userMedia) {
                 // setup webcam video container
+                /*
                 var video = document.createElement('video');
                 video.setAttribute('id', 'fkvideo');
                 video.setAttribute('autoplay', 'autoplay');
                 video.setAttribute('playsinline', 'playsinline');
                 video.style.width = '' + this.params.dest_width + 'px';
                 video.style.height = '' + this.params.dest_height + 'px';
+                 */
+                var video = document.getElementById('video');
 
                 if ((scaleX != 1.0) || (scaleY != 1.0)) {
                     elem.style.overflow = 'hidden';
@@ -289,8 +292,10 @@
                     video.style.transform = 'scaleX('+scaleX+') scaleY('+scaleY+')';
                 }
 
+                /*
                 // add video element to dom
                 elem.appendChild( video );
+                */
                 this.video = video;
 
                 // ask user for access to their camera

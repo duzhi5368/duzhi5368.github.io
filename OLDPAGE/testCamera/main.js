@@ -20,9 +20,9 @@ window.onload = function(){
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
-  var cameraDiv = document.getElementById('my_camera');
-  var videoElement = cameraDiv.getElementsByTagName('video');
-  tracking.track(videoElement, tracker, { camera: true });
+  //var cameraDiv = document.getElementById('my_camera');
+  //var videoElement = cameraDiv.getElementsByTagName('video');
+  tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 设置
   var gui = new dat.GUI();
