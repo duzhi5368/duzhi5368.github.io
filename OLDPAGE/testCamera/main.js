@@ -20,7 +20,7 @@ window.onload = function(){
 window.showTrack = function (event) {
   if(!event.data)
     return;
-  if(event.data.total != 1) {
+  if(event.data.length != 1) {
     return;
   }
   var canvas = document.getElementById('canvas');
