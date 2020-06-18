@@ -825,7 +825,11 @@
             var self = this;
             var params = this.params;
 
-            if (!this.loaded) return this.dispatch('error', new WebcamError("Webcam is not loaded yet"));
+            if (!this.loaded)
+            {
+                return null;
+                //return this.dispatch('error', new WebcamError("Webcam is not loaded yet"));
+            }
             // if (!this.live) return this.dispatch('error', new WebcamError("Webcam is not live yet"));
             if (!user_callback) return this.dispatch('error', new WebcamError("Please provide a callback function or canvas to snap()"));
 
