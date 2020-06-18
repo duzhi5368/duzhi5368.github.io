@@ -676,7 +676,10 @@
 
         getMovie: function() {
             // get reference to movie object/embed in DOM
-            if (!this.loaded) return this.dispatch('error', new FlashError("Flash Movie is not loaded yet"));
+            if (!this.loaded) {
+                return null;
+                // return this.dispatch('error', new FlashError("Flash Movie is not loaded yet"));
+            }
             var movie = document.getElementById('webcam_movie_obj');
             if (!movie || !movie._snap) movie = document.getElementById('webcam_movie_embed');
             if (!movie) this.dispatch('error', new FlashError("Cannot locate Flash movie in DOM"));
