@@ -87,28 +87,26 @@ window.showTrack = function (event) {
     return;
   if(event.data.faces.length != 1)
     return;
-  // 遍历出现的脸部
-  event.data.faces.forEach(function(rect) {
-    context.strokeStyle = '#00cc00';
-    context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-    context.font = '11px Helvetica';
-    context.fillStyle = "#fff";
-    context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-    context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-  });
+
   // 细节绘制
   event.data.faces.forEach(function(boundingBox, faceIndex) {
     var faceLandmarks = event.data.landmarks[faceIndex]
+    // 暂时关闭基本显示
+    // simpleDisplayFaceInfo(boundingBox);
     displayFaceLandmarksBoundingBox(boundingBox, faceIndex, true);
     lerpFacesLandmarks(faceLandmarks)
     displayFaceLandmarksDot(lerpedFacesLandmarks)
   });
+
+  /*
   // 脸部关键点
   event.data.landmarks.forEach(function(landmarks) {
     for(var l in landmarks){
       context.fillText(l, landmarks[l][0], landmarks[l][1]);
     }
   });
+   */
+
   // 截图
   Webcam.snap( function(data_uri) {
     //console.log(data_uri);
@@ -121,6 +119,15 @@ window.showTrack = function (event) {
         '</textarea>'
     ;
   } );
+
+  function simpleDisplayFaceInfo(rect){
+    context.strokeStyle = '#00cc00';
+    context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    context.font = '11px Helvetica';
+    context.fillStyle = "#fff";
+    context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+    context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+  }
 
   function displayFaceLandmarksBoundingBox(boundingBox, faceIndex, isLegal){
     if(isLegal) {
