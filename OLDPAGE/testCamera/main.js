@@ -20,6 +20,21 @@ window.onload = function(){
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
   gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
   gui.add(tracker, 'stepSize', 1, 5).step(0.1);
+
+  function draw() {
+    image(video, 0, 0);
+    fill(255, 0, 0);
+    // 面部各点
+    for (var i = 0; i < points.length; i++) {
+      text(i, points[i].x, points[i].y);
+    }
+
+    // 眼睛
+    if (points.length > 24) {
+      ellipse(points[20].x, points[20].y + 10, 50, 50);
+      ellipse(points[24].x, points[24].y + 10, 50, 50);
+    }
+  }
 }
 
 window.showTrack = function (event) {
@@ -49,20 +64,6 @@ window.showTrack = function (event) {
   });
 }
 
-window.draw = function() {
-  image(video, 0, 0);
-  fill(255, 0, 0);
-  // 面部各点
-  for (var i = 0; i < points.length; i++) {
-    text(i, points[i].x, points[i].y);
-  }
-
-  // 眼睛
-  if (points.length > 24) {
-    ellipse(points[20].x, points[20].y + 10, 50, 50);
-    ellipse(points[24].x, points[24].y + 10, 50, 50);
-  }
-}
 /*
 var points = [];
 var canvasP5;
