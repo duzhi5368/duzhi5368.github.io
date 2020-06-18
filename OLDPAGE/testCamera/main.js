@@ -90,22 +90,18 @@ window.showTrack = function (event) {
 
   // 细节绘制
   event.data.faces.forEach(function(boundingBox, faceIndex) {
+    var isLegal = true;       // 这个包围盒是否合法
+    var isShowPoint = false;  // 是否显示点
+    var isShowLine = true;    // 是否显示线
     var faceLandmarks = event.data.landmarks[faceIndex]
     // 暂时关闭基本显示
     // simpleDisplayFaceInfo(boundingBox);
+    // 脸边包围框
     displayFaceLandmarksBoundingBox(boundingBox, faceIndex, true);
     lerpFacesLandmarks(faceLandmarks)
-    displayFaceLandmarksDot(lerpedFacesLandmarks)
+    // 线，点
+    displayFaceLandmarksDot(lerpedFacesLandmarks, isShowPoint, isShowLine)
   });
-
-  /*
-  // 脸部关键点
-  event.data.landmarks.forEach(function(landmarks) {
-    for(var l in landmarks){
-      context.fillText(l, landmarks[l][0], landmarks[l][1]);
-    }
-  });
-   */
 
   // 截图
   Webcam.snap( function(data_uri) {
@@ -158,41 +154,44 @@ window.showTrack = function (event) {
     }
   }
 
-  function displayFaceLandmarksDot(faceLandmarks){
+  function displayFaceLandmarksDot(faceLandmarks, isShowPoint, isShowLine){
     Object.keys(landmarkFeatures).forEach(function(featureLabel){
-      displayFaceLandmarksFeature(faceLandmarks, featureLabel)
+      displayFaceLandmarksFeature(faceLandmarks, featureLabel, isShowPoint, isShowLine)
     })
   }
 
-  function displayFaceLandmarksFeature(faceLandmarks, featureLabel){
+  function displayFaceLandmarksFeature(faceLandmarks, featureLabel, isShowPoint, isShowLine){
     var feature = landmarkFeatures[featureLabel]
-
     // 点
     context.fillStyle = feature.fillStyle
-    for(var i = feature.first; i <= feature.last; i++){
-      var xy = faceLandmarks[i]
-      context.beginPath();
-      context.arc(xy[0],xy[1],1,0,2*Math.PI);
-      context.fill();
+    if(isShowPoint) {
+      for (var i = feature.first; i <= feature.last; i++) {
+        var xy = faceLandmarks[i]
+        context.beginPath();
+        context.arc(xy[0], xy[1], 1, 0, 2 * Math.PI);
+        context.fill();
+      }
     }
 
     // 线
-    var feature = landmarkFeatures[featureLabel]
-    context.strokeStyle = feature.fillStyle
-    context.beginPath();
-    for(var i = feature.first; i <= feature.last; i++){
-      var x = faceLandmarks[i][0]
-      var y = faceLandmarks[i][1]
-      if( i === 0 ){
-        context.moveTo(x, y)
-      }else{
+    if(isShowLine) {
+      var feature = landmarkFeatures[featureLabel]
+      context.strokeStyle = feature.fillStyle
+      context.beginPath();
+      for (var i = feature.first; i <= feature.last; i++) {
+        var x = faceLandmarks[i][0]
+        var y = faceLandmarks[i][1]
+        if (i === 0) {
+          context.moveTo(x, y)
+        } else {
+          context.lineTo(x, y)
+        }
+      }
+      if (feature.closed === true) {
+        var x = faceLandmarks[feature.first][0]
+        var y = faceLandmarks[feature.first][1]
         context.lineTo(x, y)
       }
-    }
-    if( feature.closed === true ){
-      var x = faceLandmarks[feature.first][0]
-      var y = faceLandmarks[feature.first][1]
-      context.lineTo(x, y)
     }
     context.stroke();
   }
