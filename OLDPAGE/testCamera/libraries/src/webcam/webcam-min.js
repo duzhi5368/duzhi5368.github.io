@@ -872,12 +872,10 @@
 
                 if(params.boundingBox){
                     //var imageSrc = context.getImageData(0, 0, params.dest_width, params.dest_height);
-                    context.beginPath();
-                    context.rect(params.boundingBox.x, params.boundingBox.y,
-                        params.boundingBox.width, params.boundingBox.height);
-                    context.clip();
+                    context.drawImage(this, params.boundingBox.x, params.boundingBox.y,
+                        params.boundingBox.width, params.boundingBox.height,
+                        0,0,params.boundingBox.width,params.boundingBox.height);
                 }
-
                 /*
                 context.drawImage(this.video, (this.params.dest_width - this.params.picSize)/2,
                         (this.params.dest_height - this.params.picSize)/2,
