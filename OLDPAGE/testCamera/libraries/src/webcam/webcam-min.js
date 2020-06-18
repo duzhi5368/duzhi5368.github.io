@@ -853,10 +853,26 @@
 
             // create inline function, called after image load (flash) or immediately (native)
             var func = function() {
+
+                if(params.is_gray){
+                    var imageSrc = context.getImageData(0, 0, context.width, context.height);
+                    var dataSrc = imageSrc.data;
+                    var len = dataSrc.length;
+                    var i = 0;
+                    var luma = 0;
+                    for(; i < len; i += 4) {
+                        luma = dataSrc[i] * 0.2126 + dataSrc[i+1] * 0.7152 + dataSrc[i+2] * 0.0722;
+                        dataSrc[i] = dataSrc[i+1] = dataSrc[i+2] = luma;
+                        dataSrc[i+3] = dataSrc[i+3];
+                    }
+                    context.putImageData(imageSrc, 0, 0);
+                }
+
                 // render image if needed (flash)
-                if (this.src && this.width && this.heightSS) {
+                if (this.src && this.width && this.height) {
                     context.drawImage(this, 0, 0, params.dest_width, params.dest_height);
                 }
+
 
                 // crop if desired
                 if (params.crop_width && params.crop_height) {
@@ -865,42 +881,15 @@
                     crop_canvas.height = params.crop_height;
                     var crop_context = crop_canvas.getContext('2d');
 
-                    if(!params.is_gray) {
-                        crop_context.drawImage(canvas,
-                            Math.floor((params.dest_width / 2) - (params.crop_width / 2)),
-                            Math.floor((params.dest_height / 2) - (params.crop_height / 2)),
-                            params.crop_width,
-                            params.crop_height,
-                            0,
-                            0,
-                            params.crop_width,
-                            params.crop_height
-                        );
-                    } else {
-                        var idataSrc = crop_context.getImageData(0, 0, crop_canvas.width, crop_canvas.height);
-                        var idataDst = crop_context.createImageData(crop_canvas.width, crop_canvas.height);
-                        var dataSrc = idataSrc.data;
-                        var dataDst = idataDst.data;
-                        var len = dataSrc.length;
-                        var i = 0;
-                        var luma = 0;
-                        for(; i < len; i += 4) {
-                            luma = dataSrc[i] * 0.2126 + dataSrc[i+1] * 0.7152 + dataSrc[i+2] * 0.0722;
-                            dataDst[i] = dataDst[i+1] = dataDst[i+2] = luma;
-                            dataDst[i+3] = dataSrc[i+3];
-                        }
-                        crop_context.putImageData(idataDst, 0, 0);
-                        crop_context.drawImage(canvas,
-                            Math.floor((params.dest_width / 2) - (params.crop_width / 2)),
-                            Math.floor((params.dest_height / 2) - (params.crop_height / 2)),
-                            params.crop_width,
-                            params.crop_height,
-                            0,
-                            0,
-                            params.crop_width,
-                            params.crop_height
-                        );
-                    }
+                    crop_context.drawImage(canvas,
+                        Math.floor((params.dest_width / 2) - (params.crop_width / 2)),
+                        Math.floor((params.dest_height / 2) - (params.crop_height / 2)),
+                        params.crop_width,
+                        params.crop_height,
+                        0,
+                        0,
+                        params.crop_width,
+                        params.crop_height);
 
                     // swap canvases
                     context = crop_context;
