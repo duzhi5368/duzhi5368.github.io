@@ -889,7 +889,7 @@
                             dataDst[i] = dataDst[i+1] = dataDst[i+2] = luma;
                             dataDst[i+3] = dataSrc[i+3];
                         }
-                        crop_context.putImageData(dataDst, 0, 0);
+                        crop_context.putImageData(idataDst, 0, 0);
                         crop_context.drawImage(canvas,
                             Math.floor((params.dest_width / 2) - (params.crop_width / 2)),
                             Math.floor((params.dest_height / 2) - (params.crop_height / 2)),
