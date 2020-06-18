@@ -10,7 +10,7 @@ window.onload = function(){
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
-  tracking.track('#fkvideo', tracker, { camera: true });
+  tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 截屏器
   Webcam.set({
