@@ -2,12 +2,14 @@ var stats = new Stats();
 stats.showPanel( 1 );
 document.body.appendChild( stats.dom );
 
+/*
 var canvas = document.createElement( 'statsCanvas' );
 canvas.width = 512;
 canvas.height = 512;
-document.body.appendChild( canvas );
+*/
+document.body.appendChild( canvasP5 );
 
-var context = canvas.getContext( '2d' );
+var context = canvasP5.getContext( '2d' );
 context.fillStyle = 'rgba(127,0,255,0.05)';
 
 function animate() {

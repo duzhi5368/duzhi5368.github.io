@@ -36,13 +36,10 @@ function setup() {
 function draw() {
   image(videoP5, 0, 0);
   fill(255, 0, 0);
-  /*
   // 面部各点
   for (var i = 0; i < points.length; i++) {
     text(i, points[i].x, points[i].y);
   }
-   */
-
 
   /*
   // 眼睛
