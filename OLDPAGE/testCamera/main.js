@@ -61,7 +61,7 @@ window.showTrack = function (event) {
         '<h1>下面是发给服务器的图片</h1>' +
         '<img src="'+data_uri+'"/>'+
         '<br>'+
-        '<p>'+ data_uri + '</p>>'
+        '<input type="text" value='+ data_uri +'>'
     ;
   } );
 }
