@@ -24,9 +24,9 @@ window.onload = function(){
 
 window.showTrack = function (event) {
   console.log(event.data);
-  if(!event.data)
+  if(!event.data.faces)
     return;
-  if(event.data.length != 1) {
+  if(event.data.faces.length != 1) {
     return;
   }
   var context = canvas.getContext('2d');
