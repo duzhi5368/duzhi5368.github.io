@@ -10,7 +10,7 @@ window.onload = function(){
   tracker.setEdgesDensity(0.15);
   tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
-  // 設置
+  // 设置
   var gui = new dat.GUI();
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
   gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
@@ -18,27 +18,23 @@ window.onload = function(){
 }
 
 window.showTrack = function (event) {
+  if(!event.data)
+    return;
+  if(event.data.total != 1) {
+    return;
+  }
   var canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
+  // 遍历出现的脸部
   event.data.forEach(function(rect) {
-    console.log(rect);
-    //show(rect);
-    context.strokeStyle = '#a64ceb';
+    context.strokeStyle = '#00cc00';
     context.strokeRect(rect.x, rect.y, rect.width, rect.height);
     context.font = '11px Helvetica';
     context.fillStyle = "#fff";
     context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
     context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
   });
-
-  //clear();
-  //var faces = event.data;
-  //for (f in faces) {
-    //fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
-    //noStroke();                     // no border
-    //ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
-  //}
 }
 /*
 var points = [];
