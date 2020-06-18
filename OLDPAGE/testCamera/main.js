@@ -5,7 +5,6 @@ var canvas = null;
 // 初始化
 window.onload = function(){
   video = document.getElementById('video');
-  video = createCapture(VIDEO);
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
@@ -22,7 +21,7 @@ window.onload = function(){
   gui.add(tracker, 'stepSize', 1, 5).step(0.1);
 
   function draw() {
-    image(video, 0, 0);
+    //image(video, 0, 0);
     fill(255, 0, 0);
     // 面部各点
     for (var i = 0; i < points.length; i++) {
