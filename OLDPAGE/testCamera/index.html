@@ -12,9 +12,18 @@
   <script src="libraries/src/stats/stats-min.js"></script>
   <script src="libraries/src/alignment/training/Landmarks.js"></script>
   <script src="libraries/src/alignment/training/Regressor.js"></script>
+  <script src="libraries/src/datGui/dat.gui.min.js"></script>
 
   <script src="main.js"></script>
   <script src="debug.js"></script>
+
+  <style>
+    video, canvas {
+      margin-left: 0px;
+      margin-top: 0px;
+      position: absolute;
+    }
+  </style>
 </head>
 <body>
   <video id="video" width="640" height="480" preload autoplay loop muted></video>

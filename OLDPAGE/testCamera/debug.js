@@ -2,7 +2,7 @@ var stats = new Stats();
 stats.setMode(2);
 stats.domElement.style.position = 'absolute';
 stats.domElement.style.left = '10px';
-stats.domElement.style.top = '50px';
+stats.domElement.style.top = '10px';
 stats.domElement.style.zIndex = 100;
 document.addEventListener('DOMContentLoaded', function(event) {
     document.body.appendChild(stats.domElement);

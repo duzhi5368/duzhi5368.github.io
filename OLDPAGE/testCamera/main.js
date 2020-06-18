@@ -12,8 +12,15 @@ window.onload = function(){
   tracker.on('track', function(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+    var faces = event.data;
+    for (f in faces) {
+      fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
+      noStroke();                     // no border
+      ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
+    }
+
     event.data.forEach(function(rect) {
-      postRect(rect);
+      show(rect);
       context.strokeStyle = '#a64ceb';
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
       context.font = '11px Helvetica';
