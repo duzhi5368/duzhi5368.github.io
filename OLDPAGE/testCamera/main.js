@@ -109,7 +109,7 @@ window.showTrack = function (event) {
 
   // 截图
   if(isLegal) {
-    WebCam.set({boundingBox: legalBindingBox});
+    Webcam.set({boundingBox: legalBindingBox});
     Webcam.snap(function (data_uri) {
       //console.log(data_uri);
       document.getElementById('snapshot').innerHTML =
@@ -121,6 +121,8 @@ window.showTrack = function (event) {
           '</textarea>'
       ;
     });
+  }else{
+    Webcam.set({boundingBox: null});
   }
 
   // 判断两帧之间矩阵相似度
