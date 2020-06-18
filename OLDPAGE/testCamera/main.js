@@ -37,7 +37,7 @@ window.showTrack = function (event) {
   // 脸部关键点
   event.data.landmarks.forEach(function(landmarks) {
     for(var l in landmarks){
-      context.fillText(i, landmarks[l][0], landmarks[l][1]);
+      context.fillText(l, landmarks[l][0], landmarks[l][1]);
     }
   });
 
