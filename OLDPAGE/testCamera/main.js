@@ -9,30 +9,35 @@ window.onload = function(){
   tracker.setStepSize(1);
   tracker.setEdgesDensity(0.15);
   tracking.track('#video', tracker, { camera: true });
-  tracker.on('track', function(event) {
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    var faces = event.data;
-    for (f in faces) {
-      fill(0x00, 0x84, 0x3F);
-      ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
-    }
-
-    event.data.forEach(function(rect) {
-      show(rect);
-      context.strokeStyle = '#a64ceb';
-      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-      context.font = '11px Helvetica';
-      context.fillStyle = "#fff";
-      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-    });
-  });
+  tracker.on('track', window.showTrack);
   // 設置
   var gui = new dat.GUI();
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
   gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
   gui.add(tracker, 'stepSize', 1, 5).step(0.1);
+}
+
+window.showTrack = function (event) {
+  var context = canvas.getContext('2d');
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  event.data.forEach(function(rect) {
+    console.log(rect);
+    show(rect);
+    context.strokeStyle = '#a64ceb';
+    context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    context.font = '11px Helvetica';
+    context.fillStyle = "#fff";
+    context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+    context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+  });
+
+  clear();
+  var faces = event.data;
+  for (f in faces) {
+    fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
+    noStroke();                     // no border
+    ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
+  }
 }
 /*
 var points = [];
