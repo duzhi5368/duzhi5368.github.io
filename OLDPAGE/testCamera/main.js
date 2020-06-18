@@ -54,8 +54,8 @@ window.showTrack = function (event) {
   });
   // 截图
   Webcam.snap( function(data_uri) {
+    console.log(data_uri);
     document.getElementById('snapshot').innerHTML =
-        '<h2>你的照片:</h2>' +
         '<img src="'+data_uri+'"/>';
   } );
 }
