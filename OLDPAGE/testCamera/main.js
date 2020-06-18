@@ -7,21 +7,17 @@ window.onload = function(){
   var context = canvas.getContext('2d');
   // 截屏器
   Webcam.set({
-    width: 320,
-    height: 240,
     dest_width: 320,
     dest_height: 240,
     image_format: 'jpeg',
     jpeg_quality: 90
   });
-  Webcam.attach( '#my_camera' )
+  Webcam.attach( '#holder' )
   // 面部跟踪器
   var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
   tracker.setEdgesDensity(0.1);
-  //var cameraDiv = document.getElementById('my_camera');
-  //var videoElement = cameraDiv.getElementsByTagName('video');
   tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 设置
