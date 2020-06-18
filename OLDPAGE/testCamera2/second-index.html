@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <script src="face-api.js"></script>
+</head>    
+<body>
+     
+        <video autoplay style="width:300px;height:300px;"></video>
+     <img src="" id="img" style="width:300px;height:300px;" alt="" srcset="">
+
+     <button id="snap_picture">picture</button>
+     <button id="record_video">video</button>
+     <canvas  style="width:300px;height:300px; display:none;" id="canvas"></canvas>
+      
+
+     <img id="myImg" style="width:300px;height:300px;" src="images/example114.JPG" />
+     <canvas id="myCanvas"></canvas>
+
+        <script>
+        
+
+        const MODEL_URL = 'models'
+
+
+
+        const canvas = document.getElementById('myCanvas')
+
+
+
+
+
+
+        async function LoadUserImage(queryImage1)
+{
+
+    console.log(queryImage1)
+    await faceapi.loadSsdMobilenetv1Model(MODEL_URL)
+    // accordingly for the other models:
+    await faceapi.loadTinyFaceDetectorModel(MODEL_URL)
+    await faceapi.loadMtcnnModel(MODEL_URL)
+    await faceapi.loadFaceLandmarkModel(MODEL_URL)
+    await faceapi.loadFaceLandmarkTinyModel(MODEL_URL)
+    await faceapi.loadFaceRecognitionModel(MODEL_URL)
+    await faceapi.loadFaceExpressionModel(MODEL_URL)
+    
+    console.log(faceapi.nets)
+    const referenceImage = document.getElementById("myImg");
+    // const queryImage1 = document.getElementById('myImg');
+
+     
+
+    const results = await faceapi
+  .detectAllFaces(referenceImage)
+  .withFaceLandmarks()
+  .withFaceDescriptors()
+
+  //results = results.map(fd => fd.forSize(width, height))
+
+if (!results.length) {
+  return
+}
+
+console.log(results)
+// create FaceMatcher with automatically assigned labels
+// from the detection results for the reference image
+const faceMatcher = new faceapi.FaceMatcher(results)
+
+const singleResult = await faceapi
+  .detectSingleFace(queryImage1)
+  .withFaceLandmarks()
+  .withFaceDescriptor()
+
+  console.log(singleResult)
+//singleResult = singleResult.map(fd=>fd.forSize(width,height))
+
+if (singleResult) {
+  const bestMatch = faceMatcher.findBestMatch(singleResult.descriptor)
+  console.log(bestMatch)
+}
+
+
+const detections = await faceapi.detectAllFaces(queryImage1)
+
+console.log(detections)
+// resize the detected boxes in case your displayed image has a different size then the original
+const detectionsForSize = faceapi.resizeResults(detections, { width: queryImage1.width, height: queryImage1.height })
+// draw them into a canvas
+
+canvas.width = queryImage1.width
+canvas.height = queryImage1.height
+faceapi.drawDetection(canvas, detectionsForSize, { withScore: true })
+
+
+// const detectionsWithLandmarks = await faceapi
+//   .detectAllFaces(queryImage1)
+//   .withFaceLandmarks()
+
+// // resize the detected boxes and landmarks in case your displayed image has a different size then the original
+// const detectionsWithLandmarksForSize = faceapi.resizeResults(detectionsWithLandmarks, { width: queryImage1.width, height: queryImage1.height })
+// // draw them into a canvas
+// canvas.width = queryImage1.width
+// canvas.height = queryImage1.height
+// faceapi.drawLandmarks(canvas, detectionsWithLandmarksForSize, { drawLines: true })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        const img = document.querySelector("#img")
+        const video = document.querySelector('video');
+        const canvas101 = document.querySelector("#canvas");
+
+        
+          const record_video = document.querySelector("#record_video");
+        record_video.addEventListener("click",record_video_webcamp);
+  
+        const constraints = {
+          video: true
+            };
+
+  async function record_video_webcamp()
+  {
+ 
+            navigator.mediaDevices.getUserMedia(constraints).
+          then((stream) => {video.srcObject = stream});
+  }
+
+ var snap_picture = document.querySelector("#snap_picture");
+ snap_picture.addEventListener("click",snap_image);
+ async function snap_image()
+ {
+    canvas101.width = video.videoWidth;
+  canvas101.height = video.videoHeight;
+  canvas101.getContext('2d').drawImage(video, 0, 0);
+  // Other browsers will fall back to image/png
+  img.src = canvas101.toDataURL('image/png');
+
+  LoadUserImage(img);
+
+}
+
+
+
+        </script>
+
+
+</body>
+</html>
