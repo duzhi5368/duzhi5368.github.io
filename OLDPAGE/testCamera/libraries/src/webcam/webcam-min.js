@@ -915,7 +915,7 @@
             if (this.userMedia) {
                 // native implementation
                 if(this.params.picSize != 0) {
-                    context.drawImage(this, 20, 20, 50, 50);
+                    context.drawImage(this.video, 20, 20, 50, 50);
                 }else {
                     context.drawImage(this.video, 0, 0, this.params.dest_width, this.params.dest_height);
                 }
