@@ -14,8 +14,7 @@ window.onload = function(){
 
     var faces = event.data;
     for (f in faces) {
-      fill(0xFF, 0x00, 0x84, 0x3F);   // a nice shade of fuchsia
-      noStroke();                     // no border
+      fill(0x00, 0x84, 0x3F);
       ellipse(faces[f].x, faces[f].y, faces[f].width, faces[f].height);
     }
 
@@ -29,7 +28,7 @@ window.onload = function(){
       context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
     });
   });
-  //
+  // 設置
   var gui = new dat.GUI();
   gui.add(tracker, 'edgesDensity', 0.1, 0.5).step(0.01);
   gui.add(tracker, 'initialScale', 1.0, 10.0).step(0.1);
