@@ -7,14 +7,17 @@
   <script src="libraries/src/p5/p5.min.js"></script>
   <script src="libraries/src/p5/p5.dom.min.js"></script>
 
-  <script src="libraries/build/tracking.js"></script>
+  <script src="libraries/build/tracking-min.js"></script>
   <script src="libraries/build/data/face-min.js"></script>
-  <script src="libraries/src/stats/stats.js"></script>
+  <script src="libraries/src/stats/stats-min.js"></script>
   <script src="libraries/src/alignment/training/Landmarks.js"></script>
   <script src="libraries/src/alignment/training/Regressor.js"></script>
-</head>
-<body>
+
   <script src="main.js"></script>
   <script src="debug.js"></script>
+</head>
+<body>
+  <video id="video" width="640" height="480" preload autoplay loop muted></video>
+  <canvas id="canvas" width="640" height="480"></canvas>
 </body>
 </html>
