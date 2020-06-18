@@ -873,8 +873,8 @@
                 if(params.boundingBox){
                     //var imageSrc = context.getImageData(0, 0, params.dest_width, params.dest_height);
                     context.beginPath();
-                    context.rect(this.params.boundingBox.x, this.params.boundingBox.y,
-                        this.params.boundingBox.width, this.params.boundingBox.height);
+                    context.rect(params.boundingBox.x, params.boundingBox.y,
+                        params.boundingBox.width, params.boundingBox.height);
                     context.clip();
                 }
 
