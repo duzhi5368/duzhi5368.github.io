@@ -101,7 +101,7 @@ window.showTrack = function (event) {
     var faceLandmarks = event.data.landmarks[faceIndex]
     displayFaceLandmarksBoundingBox(boundingBox, faceIndex, true);
     lerpFacesLandmarks(faceLandmarks)
-    //displayFaceLandmarksDot(lerpedFacesLandmarks)
+    displayFaceLandmarksDot(lerpedFacesLandmarks)
   });
   // 脸部关键点
   event.data.landmarks.forEach(function(landmarks) {
