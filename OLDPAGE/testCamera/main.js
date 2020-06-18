@@ -6,9 +6,9 @@ window.onload = function(){
   canvas = document.getElementById('canvas');
   var context = canvas.getContext('2d');
   var tracker = new tracking.LandmarksTracker(); //ObjectTracker('face');
-  tracker.setInitialScale(2);
-  tracker.setStepSize(1);
-  tracker.setEdgesDensity(0.15);
+  tracker.setInitialScale(4);
+  tracker.setStepSize(2);
+  tracker.setEdgesDensity(0.1);
   tracking.track('#video', tracker, { camera: true });
   tracker.on('track', window.showTrack);
   // 设置
