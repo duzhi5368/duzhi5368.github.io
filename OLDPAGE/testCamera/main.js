@@ -32,7 +32,7 @@ window.showTrack = function (event) {
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
   // 遍历出现的脸部
-  event.data.forEach(function(rect) {
+  event.data.faces.forEach(function(rect) {
     context.strokeStyle = '#00cc00';
     context.strokeRect(rect.x, rect.y, rect.width, rect.height);
     context.font = '11px Helvetica';
