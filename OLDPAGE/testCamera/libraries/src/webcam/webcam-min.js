@@ -49,6 +49,7 @@
             height: 0,
             dest_width: 0,         // size of captured image
             dest_height: 0,        // these default to width/height
+            cameraId: null,
             image_format: 'jpeg',  // image format (may be jpeg or png)
             jpeg_quality: 90,      // jpeg image quality from 0 (worst) to 100 (best)
             enable_flash: true,    // enable flash fallback,
@@ -268,15 +269,17 @@
 
             if (this.userMedia) {
                 // setup webcam video container
-                /*
-                var video = document.createElement('video');
-                video.setAttribute('id', 'fkvideo');
-                video.setAttribute('autoplay', 'autoplay');
-                video.setAttribute('playsinline', 'playsinline');
-                video.style.width = '' + this.params.dest_width + 'px';
-                video.style.height = '' + this.params.dest_height + 'px';
-                 */
-                var video = document.getElementById('video');
+                var video = null;
+                if(this.params.cameraId == null){
+                    video = document.createElement('video');
+                    video.setAttribute('id', 'fkvideo');
+                    video.setAttribute('autoplay', 'autoplay');
+                    video.setAttribute('playsinline', 'playsinline');
+                    video.style.width = '' + this.params.dest_width + 'px';
+                    video.style.height = '' + this.params.dest_height + 'px';
+                }else{
+                    video = document.getElementById(this.params.cameraId);
+                }
 
                 if ((scaleX != 1.0) || (scaleY != 1.0)) {
                     elem.style.overflow = 'hidden';
@@ -292,10 +295,10 @@
                     video.style.transform = 'scaleX('+scaleX+') scaleY('+scaleY+')';
                 }
 
-                /*
                 // add video element to dom
-                elem.appendChild( video );
-                */
+                if(this.params.cameraId != null) {
+                    elem.appendChild(video);
+                }
                 this.video = video;
 
                 // ask user for access to their camera
