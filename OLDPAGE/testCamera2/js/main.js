@@ -287,14 +287,11 @@ $("#face-similarity").change(function () {
     p.then(function(){
       loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
     }).then(function(){
-      var descriptor1 = faceapi.computeFaceDescriptor(similarityDstCanvas)
-      return descriptor1
+      return faceapi.computeFaceDescriptor(similarityDstCanvas)
     }).then(function(descriptor1){
-      var descriptor2 = faceapi.computeFaceDescriptor(similaritySrcCanvas)
-      return [descriptor1, descriptor2]
+      return [descriptor1, faceapi.computeFaceDescriptor(similaritySrcCanvas)]
     }).then(function(descriptors){
-      var distance = faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
-      return distance
+      return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
     }).then(function(distanceResult) {
       console.log(distanceResult);
     })
