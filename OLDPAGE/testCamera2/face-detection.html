@@ -13,81 +13,83 @@
 </head>
 <body>
         <main>
-            <div class="container mt-1">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-xl-3 align-top">
-                        <div class="row mb-3">
-                                <div class="col-md-10 col-6 form-control">
-                                        <label class="form-switch">
-                                        <input type="checkbox" id="webcam-switch">
-                                        <i></i> 开启摄像头 </label>
-                                        <!-- 摄像头列表 -->
-                                        <button id="cameraFlip" class="btn d-none"></button>
-                                </div>
-                                <div class="col-md-10 col-6 form-control h-100">
+            <div class="container mt-auto">
+                <div class="container mt-1">
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-xl-3 align-top">
+                            <div class="row mb-3">
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch">
+                                            <input type="checkbox" id="webcam-switch">
+                                            <i></i> 开启摄像头 </label>
+                                            <!-- 摄像头列表 -->
+                                            <button id="cameraFlip" class="btn d-none"></button>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control h-100">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="detection-switch">
+                                            <i></i> 面部检测 </label>
+
+                                            <!-- 时间问题，仅支持 ssd_mobilenet_v1
+                                            <label>* 选择识别模型</label>
+                                            <select id="selectFaceDetector">
+                                                <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
+                                                <option value="tiny_face_detector">Tiny Face Detector</option>
+                                            </select>
+                                            -->
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="box-switch">
+                                            <i></i> 面部包围盒 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="landmarks-switch">
+                                            <i></i> 面部特征点 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
                                         <label class="form-switch disabled">
-                                        <input type="checkbox" disabled id="detection-switch">
-                                        <i></i> 面部检测 </label>
-
-                                        <!-- 时间问题，仅支持 ssd_mobilenet_v1
-                                        <label>* 选择识别模型</label>
-                                        <select id="selectFaceDetector">
-                                            <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
-                                            <option value="tiny_face_detector">Tiny Face Detector</option>
-                                        </select>
-                                        -->
-                                </div>   
-                                <div class="col-md-10 col-6 form-control">
+                                            <input type="checkbox" disabled id="auto-snapshot">
+                                            <i></i> 自动截屏 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
                                         <label class="form-switch disabled">
-                                        <input type="checkbox" disabled id="box-switch">
-                                        <i></i> 面部包围盒 </label>
-                                </div>
-                                <div class="col-md-10 col-6 form-control">
-                                        <label class="form-switch disabled">
-                                        <input type="checkbox" disabled id="landmarks-switch">
-                                        <i></i> 面部特征点 </label>
-                                </div>
-                                <div class="col-md-10 col-6 form-control">
-                                    <label class="form-switch disabled">
-                                        <input type="checkbox" disabled id="auto-snapshot">
-                                        <i></i> 自动截屏 </label>
-                                </div>
-                                <div class="col-md-10 col-6 form-control">
-                                    <label class="form-switch disabled">
-                                        <input type="checkbox" disabled id="auto-img-processing">
-                                        <i></i> 截屏加工 </label>
-                                </div>
-                        </div>
-                    </div>
-
-                    <!-- 附属支持 -->
-                    <div class="col-12 col-md-8 col-xl-9 align-top" id="webcam-container">
-                        <div class="loading d-none">
-                                加载训练模型ing...
-                                <div class="spinner-border" role="status">
-                                        <span class="sr-only"></span>
-                                </div>
-                        </div>
-                        
-                        <div id="video-container">
-                                <video id="webcam" autoplay muted playsinline></video>
+                                            <input type="checkbox" disabled id="auto-img-processing">
+                                            <i></i> 截屏加工 </label>
+                                    </div>
+                            </div>
                         </div>
 
-                        <div id="canvas-container">
-                            <!-- 这里存放面部轮廓线canvas -->
-                        </div>
+                        <!-- 附属支持 -->
+                        <div class="col-12 col-md-8 col-xl-9 align-top" id="webcam-container">
+                            <div class="loading d-none">
+                                    加载训练模型ing...
+                                    <div class="spinner-border" role="status">
+                                            <span class="sr-only"></span>
+                                    </div>
+                            </div>
 
-                        <div id="errorMsg" class="col-12 alert-danger d-none">
-                        启动摄像机失败 <br>
-                        请检查开启摄像机访问许可
-                        </div>
+                            <div id="video-container">
+                                    <video id="webcam" autoplay muted playsinline></video>
+                            </div>
 
+                            <div id="canvas-container">
+                                <!-- 这里存放面部轮廓线canvas -->
+                            </div>
+
+                            <div id="errorMsg" class="col-12 alert-danger d-none">
+                            启动摄像机失败 <br>
+                            请检查开启摄像机访问许可
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="snapshot-container">
-                <div id="snapshot" style="margin-top:500px">
-                    <!-- 这里存放截图中canvas -->
+                <div id="snapshot-container">
+                    <div id="snapshot" style="margin-top:500px">
+                        <!-- 这里存放截图中canvas -->
+                    </div>
                 </div>
             </div>
         </main>   
