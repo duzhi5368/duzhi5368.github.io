@@ -105,7 +105,7 @@ function createCanvas(){
   if( canvas == null )
   {
     canvas = faceapi.createCanvasFromMedia(webcamElement)
-    document.getElementById('webcam-container').append(canvas)
+    document.getElementById('canvas-container').append(canvas)
     faceapi.matchDimensions(canvas, displaySize)
   }
 }
