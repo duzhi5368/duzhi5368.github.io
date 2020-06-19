@@ -3,6 +3,7 @@ const webcam = new Webcam(webcamElement, 'user');
 const modelPath = 'models';
 let displaySize;
 let faceDetection;
+let minConfidence = 0.5;
 
 // 开启摄像头
 $("#webcam-switch").change(function () {
@@ -119,7 +120,8 @@ function toggleContrl(id, show){
 
 function startDetection(){
   faceDetection = setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(webcamElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks(true).withFaceExpressions().withAgeAndGender()
+    const option = new faceapi.SsdMobilenetv1Options({ minConfidence })
+    const detections = await faceapi.detectAllFaces(webcamElement, option).withFaceLandmarks(true)
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     if($("#box-switch").is(":checked")){
