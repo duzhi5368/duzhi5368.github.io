@@ -138,11 +138,11 @@ function startDetection(){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     }
 
-    if(detections.size() == 1){
+    if(detections.length == 1){
       displayError('', false);
       console.log(detections[0].box);
       onTimerLogic();
-    }else if(detections.size() > 1){
+    }else if(detections.length > 1){
       displayError("摄像头内人脸不止一个", true);
     }else{
       displayError("摄像头内没有人脸", true);
