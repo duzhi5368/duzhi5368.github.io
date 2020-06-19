@@ -256,8 +256,8 @@ $("#face-similarity").change(function () {
   }
 
   if(this.checked){
-    loadImgToCanvas(similarityDstContainer, "./image/freeknight.jpg");
-    copyCanvasToImg(snapshotCanvas, similarityDstImg);
+    loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
+    copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
   }
   else {
 
@@ -275,8 +275,9 @@ function loadImgToCanvas(canvas, url){
   img.src = url;
 }
 
-function copyCanvasToImg(canvas, image){
-
+function copyCanvasToImg(src, dst){
+  var ctx = dst.getContext('2d');
+  ctx.drawImage(src, 0, 0);
 }
 
 function similarityFace(){
