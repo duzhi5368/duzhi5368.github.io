@@ -257,8 +257,10 @@ $("#face-similarity").change(function () {
   }
 
   if(this.checked){
-    loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
-    copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
+    loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png");
+    loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png");
+    //loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
+    //copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
     var diffSorce = similarityFace(similaritySrcCanvas, similarityDstCanvas);
     console.log(diffSorce)
   }
