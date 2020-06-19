@@ -102,7 +102,7 @@ function clearCanvas(){
 }
 
 function createCanvas(){
-  if( document.getElementsById("canvas").length == 0 )
+  if( document.getElementById("canvas") == null )
   {
     canvas = faceapi.createCanvasFromMedia(webcamElement)
     document.getElementById('webcam-container').append(canvas)
