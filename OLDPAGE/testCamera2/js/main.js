@@ -256,7 +256,7 @@ $("#face-similarity").change(function () {
     similarityDstContainer.append(similarityDstCanvas);
   }
 
-  if(this.checked){
+  if(this.checked) {
     //loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
     //copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
 
@@ -280,24 +280,26 @@ $("#face-similarity").change(function () {
       })
     })
     */
-    const p = new Promise(function(resolve, reject){
+    const p = new Promise(function (resolve, reject) {
       loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png")
       resolve()
     });
-    p.then(function(){
+
+    p.then(function () {
       loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
-    }).then(function(){  /*
+    }).then(function () {  /*
       return faceapi.computeFaceDescriptor(similarityDstCanvas)
     }).then(function(descriptor1){
       descriptor2 = faceapi.computeFaceDescriptor(similaritySrcCanvas)
       return [descriptor1, descriptor2] */
       Promise.all([
         descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
-        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)]
-    }).then(function(descriptors){
-      return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
-    }).then(function(distanceResult) {
-      console.log(distanceResult);
+        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)])
+          .then(function (descriptors) {
+            return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
+          }).then(function (distanceResult) {
+        console.log(distanceResult);
+      })
     })
   }
   else {
