@@ -7,6 +7,7 @@ let faceDetection;
 let bIsUpdateLogic = false;
 let bIsAutoImgProcessing = false;
 let minConfidence = 0.9;
+let distanceValue = 0.4
 
 // 开启摄像头
 $("#webcam-switch").change(function () {
@@ -272,11 +273,18 @@ $("#face-similarity").change(function () {
           .then(function (descriptors) {
             return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
           }).then(function (distanceResult) {
-        console.log(distanceResult);
+          if(distanceResult == 0){
+            displaySorce("相似度：不明")
+          }else if(distanceResult > distanceValue){
+            displaySorce("不是同一个人")
+          }else{
+            displaySorce("是同一个人")
+          }
       })
     })
   }
   else {
+    $("#errorMsg").addClass("d-none");
     //clearCanvas(similaritySrcCanvas);
     //clearCanvas(similarityDstCanvas);
   }
@@ -298,4 +306,11 @@ function loadImgToCanvas(canvas, url){
 function copyCanvasToCanvas(src, dst){
   var ctx = dst.getContext('2d');
   ctx.drawImage(src, 0, 0);
+}
+
+function displaySorce(str){
+    if (str != '') {
+      $("#similarityMsg").html(str);
+    }
+    $("#similarityMsg").removeClass("d-none");
 }
