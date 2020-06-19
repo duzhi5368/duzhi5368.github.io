@@ -270,8 +270,8 @@ $("#face-similarity").change(function () {
     })
   }
   else {
-    clearCanvas(similaritySrcCanvas);
-    clearCanvas(similarityDstCanvas);
+    //clearCanvas(similaritySrcCanvas);
+    //clearCanvas(similarityDstCanvas);
   }
 })
 
