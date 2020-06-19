@@ -6,6 +6,7 @@ let canvas;
 let faceDetection;
 let bIsUpdateLogic = false;
 let bIsAutoImgProcessing = false;
+let bIsFaceSimilarity = false;
 let minConfidence = 0.9;
 
 // 开启摄像头
@@ -149,18 +150,22 @@ function startDetection(){
       if (detections.length == 1) {
         displayError('', false);
         var boundingBox = detections[0].alignedRect.box;
-        onTimerLogic(boundingBox, 300);
+        screenshot(boundingBox, 300);
       } else if (detections.length > 1) {
         displayError("摄像头内人脸不止一个", true);
       } else {
         displayError("摄像头内没有人脸", true);
       }
     }
+
+    if(bIsFaceSimilarity){
+      similarityFace();
+    }
     
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
-  }, 500)
+  }, 300)
 }
 
 
@@ -182,8 +187,7 @@ $("#auto-img-processing").change(function () {
   }
 })
 
-// 定时任务
-function onTimerLogic(boundingBox, picSize){
+function screenshot(boundingBox, picSize){
   var video = document.getElementById('webcam');
   var snapshotContainer = document.getElementById('snapshot');
   var snapshotCanvas = document.getElementById('showsnapshot');
@@ -237,10 +241,16 @@ function grayscal(snapshotCanvas){
 $("#face-similarity").change(function () {
   if(this.checked){
     var similarityImg = document.createElement("similarity");
-    similarityImg.src="./image/bernadette.jpg";
+    similarityImg.src="./image/freeknight.jpg";
+    bIsFaceSimilarity = true;
   }
   else {
     var similarityImg = document.createElement("similarity");
     similarityImg.src = '';
+    bIsFaceSimilarity = false;
   }
 })
+
+function similarityFace(){
+  
+}
