@@ -142,9 +142,8 @@ function startDetection(){
     if(bIsUpdateLogic) {
       if (detections.length == 1) {
         displayError('', false);
-        console.log(detections);
-        console.log(detections[0]);
-        onTimerLogic();
+        var boundingBox = detections[0].alignedRect.box;
+        onTimerLogic(boundingBox, 300);
       } else if (detections.length > 1) {
         displayError("摄像头内人脸不止一个", true);
       } else {
@@ -169,7 +168,7 @@ $("#auto-snapshot").change(function () {
 })
 
 // 定时任务
-function onTimerLogic(){
+function onTimerLogic(boundingBox, picSize){
   var video = document.getElementById('webcam');
   var snapshotContainer = document.getElementById('snapshot-container');
   var snapshotCanvas = document.getElementById('showsnapshot');
@@ -178,17 +177,25 @@ function onTimerLogic(){
     snapshotCanvas.setAttribute('width', '300');
     snapshotCanvas.setAttribute('height', '300');
     snapshotCanvas.setAttribute('id', 'showsnapshot');
-    snapshotContainer.appendChild(snapshotCanvas);
+    snapshotContainer.append(snapshotCanvas);
   }
 
-  drawSnapshot(snapshotCanvas, video);
+  drawSnapshot(snapshotCanvas, boundingBox, video, picSize);
   grayscal(snapshotCanvas);
 }
 
-function drawSnapshot(snapshotCanvas, video){
+function drawSnapshot(snapshotCanvas, video, boundingBox, picSize){
   var context = snapshotCanvas.getContext('2d');
   context.fillRect(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
-  context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
+  if(boundingBox == null) {
+    context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
+  }else{
+    context.drawImage(video, boundingBox.x, boundingBox.y,
+        boundingBox.width, boundingBox.height,
+        (snapshotCanvas.clientWidth - picSize) / 2,
+        (snapshotCanvas.clientHeight - picSize) / 2,
+        picSize, picSize);
+  }
 }
 
 function grayscal(snapshotCanvas){
