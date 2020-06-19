@@ -73,8 +73,6 @@ $("#detection-switch").change(function () {
     Promise.all([
       faceapi.nets.ssdMobilenetv1.load(modelPath),
       faceapi.nets.faceLandmark68TinyNet.load(modelPath),
-      //faceapi.nets.faceExpressionNet.load(modelPath),
-      //faceapi.nets.ageGenderNet.load(modelPath)
     ]).then(function(){
       createCanvas();
       startDetection();
