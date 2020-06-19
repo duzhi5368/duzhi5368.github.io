@@ -177,4 +177,16 @@ function onTimer(){
   var context = snapshotCanvas.getContext('2d');
   context.fillRect(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
+
+  var imageSrc = context.getImageData(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
+  var dataSrc = imageSrc.data;
+  var len = dataSrc.length;
+  var i = 0;
+  var luma = 0;
+  for(; i < len; i += 4) {
+    luma = dataSrc[i] * 0.2126 + dataSrc[i+1] * 0.7152 + dataSrc[i+2] * 0.0722;
+    dataSrc[i] = dataSrc[i+1] = dataSrc[i+2] = luma;
+    dataSrc[i+3] = dataSrc[i+3];
+  }
+  context.putImageData(imageSrc, 0, 0);
 }
