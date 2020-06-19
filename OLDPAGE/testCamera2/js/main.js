@@ -282,10 +282,8 @@ function copyCanvasToCanvas(src, dst){
 }
 
 function similarityFace(canvas1, canvas2){
-  const descriptor1 = Promise.all(faceapi.computeFaceDescriptor(canvas1))
-  const descriptor2 = Promise.all(faceapi.computeFaceDescriptor(canvas2))
-  const distance = faceapi.utils.round(
-      faceapi.euclideanDistance(descriptor1, descriptor2)
-  )
+  const descriptor1 = faceapi.computeFaceDescriptor(canvas1)
+  const descriptor2 = faceapi.computeFaceDescriptor(canvas2)
+  const distance = faceapi.round(faceapi.euclideanDistance(descriptor1, descriptor2))
   return distance;
 }
