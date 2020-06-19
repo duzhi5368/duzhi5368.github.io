@@ -3,7 +3,7 @@ const webcam = new Webcam(webcamElement, 'user');
 const modelPath = 'models';
 let displaySize;
 let faceDetection;
-let minConfidence = 0.5;
+let minConfidence = 0.9;
 
 // 开启摄像头
 $("#webcam-switch").change(function () {
@@ -68,6 +68,7 @@ $("#detection-switch").change(function () {
     toggleContrl("landmarks-switch", true);
     toggleContrl("expression-switch", true);
     toggleContrl("age-gender-switch", true);
+    toggleContrl("auto-snapshot", true);
     $("#box-switch").prop('checked', true);
     $(".loading").removeClass('d-none');
 
@@ -84,6 +85,7 @@ $("#detection-switch").change(function () {
     toggleContrl("landmarks-switch", false);
     toggleContrl("expression-switch", false);
     toggleContrl("age-gender-switch", false);
+    toggleContrl("auto-snapshot", false);
 
     clearInterval(faceDetection);
     clearCanvas();
@@ -150,4 +152,20 @@ function startDetection(){
       $(".loading").addClass('d-none')
     }
   }, 300)
+}
+
+let delayTime = 1000;
+let intervalFunc = null;
+$("#auto-snapshot").change(function () {
+  if(this.checked){
+    intervalFunc = setInterval(onTimer, delayTime);
+  }
+  else {
+    clearInterval(intervalFunc);
+  }
+})
+
+// 定时任务
+function onTimer(){
+  console.log("on timer");
 }

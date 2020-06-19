@@ -47,6 +47,11 @@
                                         <input type="checkbox" disabled id="landmarks-switch">
                                         <i></i> 面部特征点 </label>
                                 </div>
+                                <div class="col-md-10 col-6 form-control">
+                                    <label class="form-switch disabled">
+                                        <input type="checkbox" disabled id="auto-snapshot">
+                                        <i></i> 自动截屏 </label>
+                                </div>
                         </div>
                     </div>
 
@@ -66,6 +71,13 @@
                         <div id="errorMsg" class="col-12 alert-danger d-none">
                         启动摄像机失败 <br>
                         请检查开启摄像机访问许可
+                        </div>
+                    </div>
+
+                    <!-- 截图区 -->
+                    <div class="col-12 col-md-8 col-xl-9 align-top" id="infos-contanier">
+                        <div id="snapshot-container">
+                            <canvas id="snapshot" height="300" width="300"/>
                         </div>
                     </div>
                 </div>
