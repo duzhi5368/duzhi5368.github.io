@@ -190,11 +190,14 @@ function drawSnapshot(snapshotCanvas, video, boundingBox, picSize){
   if(boundingBox == null) {
     context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   }else{
+    var xScale = picSize / boundingBox.width;
+    var yScale = picSize / boundingBox.height;
+    var scale = xScale > yScale ? yScale : xScale;
     context.drawImage(video, boundingBox.x, boundingBox.y,
         boundingBox.width, boundingBox.height,
         (snapshotCanvas.clientWidth - picSize) / 2,
         (snapshotCanvas.clientHeight - picSize) / 2,
-        picSize, picSize);
+        boundingBox.width * scale, boundingBox.height * scale);
   }
 }
 
