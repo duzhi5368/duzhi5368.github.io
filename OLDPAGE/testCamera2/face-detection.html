@@ -25,7 +25,7 @@
                                             <!-- 摄像头列表 -->
                                             <button id="cameraFlip" class="btn d-none"></button>
                                     </div>
-                                    <div class="col-md-10 col-6 form-control h-100">
+                                    <div class="col-md-10 col-6 form-control">
                                             <label class="form-switch disabled">
                                             <input type="checkbox" disabled id="detection-switch">
                                             <i></i> 面部检测 </label>
@@ -58,6 +58,11 @@
                                             <input type="checkbox" disabled id="auto-img-processing">
                                             <i></i> 截屏加工 </label>
                                     </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                        <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="face-similarity">
+                                            <i></i> 面部对比 </label>
+                                    </div>
                             </div>
                         </div>
 
@@ -87,10 +92,11 @@
                     </div>
                 </div>
                 <div class="container mt-1" id="snapshot-container">
-                    <div class="row">
+                    <div class="col mb-4">
                         <div class="col-12 col-md-4 col-xl-3 align-top">
+                            <img id="similarity" alt="参考图"></img>
                         </div>
-                        <div class="col-12 col-md-8 col-xl-9 align-top" id="snapshot">
+                        <div class="col-12 col-md-8 col-xl-3 align-top" id="snapshot">
                             <!-- 这里存放截图中canvas -->
                         </div>
                     </div>

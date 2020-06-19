@@ -76,6 +76,9 @@ $("#detection-switch").change(function () {
     toggleContrl("expression-switch", true);
     toggleContrl("age-gender-switch", true);
     toggleContrl("auto-snapshot", true);
+    toggleContrl("auto-img-processing", true);
+    toggleContrl("face-similarity", true);
+
     $("#box-switch").prop('checked', true);
     $(".loading").removeClass('d-none');
 
@@ -93,6 +96,8 @@ $("#detection-switch").change(function () {
     toggleContrl("expression-switch", false);
     toggleContrl("age-gender-switch", false);
     toggleContrl("auto-snapshot", false);
+    toggleContrl("auto-img-processing",false);
+    toggleContrl("face-similarity", false);
 
     clearInterval(faceDetection);
     clearCanvas();
@@ -168,7 +173,7 @@ $("#auto-snapshot").change(function () {
   }
 })
 
-$("auto-img-processing").change(function () {
+$("#auto-img-processing").change(function () {
   if(this.checked){
     bIsAutoImgProcessing = true;
   }
@@ -228,3 +233,14 @@ function grayscal(snapshotCanvas){
   }
   context.putImageData(imageSrc, 0, 0);
 }
+
+$("#face-similarity").change(function () {
+  if(this.checked){
+    var similarityImg = document.createElement("similarity");
+    similarityImg.src="./image/bernadette.jpg";
+  }
+  else {
+    var similarityImg = document.createElement("similarity");
+    similarityImg.src = '';
+  }
+})
