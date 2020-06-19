@@ -2,6 +2,7 @@ const webcamElement = document.getElementById('webcam');
 const webcam = new Webcam(webcamElement, 'user');
 const modelPath = 'models';
 let displaySize;
+let canvas;
 let faceDetection;
 let minConfidence = 0.9;
 
