@@ -26,6 +26,28 @@ $("#webcam-switch").change(function () {
   }        
 });
 
+function cameraStarted(){
+  toggleContrl("detection-switch", true);
+  $("#errorMsg").addClass("d-none");
+  // 开启列表
+  if( webcam.webcamList.length > 1){
+    $("#cameraFlip").removeClass('d-none');
+  }
+}
+
+function cameraStopped(){
+  toggleContrl("detection-switch", false);
+  $("#errorMsg").addClass("d-none");
+  $("#cameraFlip").addClass('d-none');
+}
+
+function displayError(err = ''){
+  if(err!=''){
+    $("#errorMsg").html(err);
+  }
+  $("#errorMsg").removeClass("d-none");
+}
+
 $('#cameraFlip').click(function() {
     webcam.flip();
     webcam.start()
@@ -34,10 +56,13 @@ $('#cameraFlip').click(function() {
     });
 });
 
+// 摄像头启动初始化
 $("#webcam").bind("loadedmetadata", function () {
+  console.log("摄像头初始化...");
   displaySize = { width:this.scrollWidth, height: this.scrollHeight }
 });
 
+// 开启面部识别
 $("#detection-switch").change(function () {
   if(this.checked){
     toggleContrl("box-switch", true);
@@ -46,29 +71,35 @@ $("#detection-switch").change(function () {
     toggleContrl("age-gender-switch", true);
     $("#box-switch").prop('checked', true);
     $(".loading").removeClass('d-none');
+
     Promise.all([
       faceapi.nets.tinyFaceDetector.load(modelPath),
       faceapi.nets.faceLandmark68TinyNet.load(modelPath),
-      faceapi.nets.faceExpressionNet.load(modelPath),
-      faceapi.nets.ageGenderNet.load(modelPath)
+      //faceapi.nets.faceExpressionNet.load(modelPath),
+      //faceapi.nets.ageGenderNet.load(modelPath)
     ]).then(function(){
       createCanvas();
       startDetection();
     })
   }
   else {
-    clearInterval(faceDetection);
     toggleContrl("box-switch", false);
     toggleContrl("landmarks-switch", false);
     toggleContrl("expression-switch", false);
     toggleContrl("age-gender-switch", false);
-    if(typeof canvas !== "undefined"){
-      setTimeout(function() {
-        canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-      }, 1000);
-    }
+
+    clearInterval(faceDetection);
+    clearCanvas();
   }        
 });
+
+function clearCanvas(){
+  if(typeof canvas !== "undefined"){
+    setTimeout(function() {
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+    }, 1000);
+  }
+}
 
 function createCanvas(){
   if( document.getElementsByTagName("canvas").length == 0 )
@@ -121,25 +152,4 @@ function startDetection(){
       $(".loading").addClass('d-none')
     }
   }, 300)
-}
-
-function cameraStarted(){
-  toggleContrl("detection-switch", true);
-  $("#errorMsg").addClass("d-none");
-  if( webcam.webcamList.length > 1){
-    $("#cameraFlip").removeClass('d-none');
-  }
-}
-
-function cameraStopped(){
-  toggleContrl("detection-switch", false);
-  $("#errorMsg").addClass("d-none");
-  $("#cameraFlip").addClass('d-none');
-}
-
-function displayError(err = ''){
-  if(err!=''){
-      $("#errorMsg").html(err);
-  }
-  $("#errorMsg").removeClass("d-none");
 }
