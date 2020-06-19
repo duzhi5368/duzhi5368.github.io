@@ -286,12 +286,15 @@ $("#face-similarity").change(function () {
     });
     p.then(function(){
       loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
-    }).then(function(){
+    }).then(function(){  /*
       return faceapi.computeFaceDescriptor(similarityDstCanvas)
     }).then(function(descriptor1){
       descriptor2 = faceapi.computeFaceDescriptor(similaritySrcCanvas)
-      return [descriptor1, descriptor2]
-    }).then(function(descriptors){
+      return [descriptor1, descriptor2] */
+      Promise.all([
+        descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
+        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)]
+    ).then(function(descriptors){
       return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
     }).then(function(distanceResult) {
       console.log(distanceResult);
