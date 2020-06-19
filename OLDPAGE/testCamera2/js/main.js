@@ -168,7 +168,7 @@ $("#auto-snapshot").change(function () {
 
 // 定时任务
 function onTimer(){
-  var video = document.querySelector('webcam');
+  var video = document.getElementById('webcam');
   var snapshotContainer = document.getElementById('snapshot-container');
   var snapshotCanvas = document.createElement("canvas");
   snapshotCanvas.setAttribute('width', '300');
