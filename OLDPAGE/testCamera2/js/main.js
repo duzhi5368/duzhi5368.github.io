@@ -265,8 +265,16 @@ $("#face-similarity").change(function () {
       loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png"),
       loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
     ]).then(function(){
-      var diffSorce = similarityFace(similaritySrcCanvas, similarityDstCanvas);
-      console.log(diffSorce)
+      var descriptor1 = null;
+      var descriptor2 = null;
+      var distance = 0;
+      Promise.all([
+        descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
+        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)
+      ]).then(function() {
+        distance = faceapi.euclideanDistance(descriptor1, descriptor2);
+        console.log(distance)
+      })
     })
   }
   else {
