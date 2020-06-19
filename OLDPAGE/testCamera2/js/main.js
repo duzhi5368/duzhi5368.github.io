@@ -94,7 +94,7 @@ $("#detection-switch").change(function () {
 });
 
 function clearCanvas(){
-  if(typeof canvas !== "undefined"){
+  if(canvas != null){
     setTimeout(function() {
       canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     }, 1000);
@@ -102,7 +102,7 @@ function clearCanvas(){
 }
 
 function createCanvas(){
-  if( document.getElementsByTagName("canvas").length == 0 )
+  if( document.getElementsById("canvas").length == 0 )
   {
     canvas = faceapi.createCanvasFromMedia(webcamElement)
     document.getElementById('webcam-container').append(canvas)
