@@ -7,7 +7,7 @@ let faceDetection;
 let bIsUpdateLogic = false;
 let bIsAutoImgProcessing = false;
 let minConfidence = 0.8;  // 人脸识别值
-let distanceValue = 0.4   // 人脸相似度值
+let distanceValue = 60   // 人脸相似度值
 
 // 开启摄像头
 $("#webcam-switch").change(function () {
@@ -274,13 +274,13 @@ $("#face-similarity").change(function () {
           .then(function (descriptors) {
             return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
           }).then(function (distanceResult) {
-            console.log(distanceResult);
-          if(distanceResult == 0){
+            distanceResult = (1 - distanceResult) * 100
+          if(distanceResult == 100){
             displaySorce("相似度：不明")
-          }else if(distanceResult > distanceValue){
-            displaySorce("不是同一个人:" + distanceResult)
+          }else if(distanceResult < distanceValue){
+            displaySorce("不是同一个人，相似度：" + distanceResult)
           }else{
-            displaySorce("是同一个人:" + distanceResult)
+            displaySorce("是同一个人，相似度：" + distanceResult)
           }
       })
     })
