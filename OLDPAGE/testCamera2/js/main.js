@@ -170,7 +170,7 @@ $("#auto-snapshot").change(function () {
 // 定时任务
 function onTimerLogic(boundingBox, picSize){
   var video = document.getElementById('webcam');
-  var snapshotContainer = document.getElementById('snapshot-container');
+  var snapshotContainer = document.getElementById('snapshot');
   var snapshotCanvas = document.getElementById('showsnapshot');
   if(snapshotCanvas == null) {
     snapshotCanvas = document.createElement("canvas");
@@ -180,7 +180,7 @@ function onTimerLogic(boundingBox, picSize){
     snapshotContainer.append(snapshotCanvas);
   }
 
-  drawSnapshot(snapshotCanvas, boundingBox, video, picSize);
+  drawSnapshot(snapshotCanvas, video, boundingBox, picSize);
   grayscal(snapshotCanvas);
 }
 
