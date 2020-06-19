@@ -298,6 +298,6 @@ function similarityFace(canvas1, canvas2){
     descriptor2 = faceapi.computeFaceDescriptor(canvas2)
   ]).then(function() {
     distance = faceapi.round(faceapi.euclideanDistance(descriptor1, descriptor2))
+    return distance;
   })
-  return distance;
 }
