@@ -6,7 +6,6 @@ let canvas;
 let faceDetection;
 let bIsUpdateLogic = false;
 let bIsAutoImgProcessing = false;
-let bIsFaceSimilarity = false;
 let minConfidence = 0.9;
 
 // 开启摄像头
@@ -157,10 +156,6 @@ function startDetection(){
         displayError("摄像头内没有人脸", true);
       }
     }
-
-    if(bIsFaceSimilarity){
-      similarityFace();
-    }
     
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
@@ -189,13 +184,13 @@ $("#auto-img-processing").change(function () {
 
 function screenshot(boundingBox, picSize){
   var video = document.getElementById('webcam');
-  var snapshotContainer = document.getElementById('snapshot');
-  var snapshotCanvas = document.getElementById('showsnapshot');
+  var snapshotContainer = document.getElementById('snapshotContainer');
+  var snapshotCanvas = document.getElementById('snapshot');
   if(snapshotCanvas == null) {
     snapshotCanvas = document.createElement("canvas");
     snapshotCanvas.setAttribute('width', '300');
     snapshotCanvas.setAttribute('height', '300');
-    snapshotCanvas.setAttribute('id', 'showsnapshot');
+    snapshotCanvas.setAttribute('id', 'snapshot');
     snapshotContainer.append(snapshotCanvas);
   }
 
@@ -239,18 +234,51 @@ function grayscal(snapshotCanvas){
 }
 
 $("#face-similarity").change(function () {
+  var snapshotCanvas = document.getElementById('snapshot');
+
+  var similaritySrcContainer = document.getElementById('similaritySrcContainer');
+  var similaritySrcCanvas = document.getElementById('similaritySrc');
+  if(similaritySrcCanvas == null) {
+    similaritySrcCanvas = document.createElement("canvas");
+    similaritySrcCanvas.setAttribute('width', '300');
+    similaritySrcCanvas.setAttribute('height', '300');
+    similaritySrcCanvas.setAttribute('id', 'similaritySrc');
+    similaritySrcContainer.append(similaritySrcCanvas);
+  }
+  var similarityDstContainer = document.getElementById('similarityDstContainer');
+  var similarityDstCanvas = document.getElementById('similarityDst');
+  if(similarityDstCanvas == null) {
+    similarityDstCanvas = document.createElement("canvas");
+    similarityDstCanvas.setAttribute('width', '300');
+    similarityDstCanvas.setAttribute('height', '300');
+    similarityDstCanvas.setAttribute('id', 'similarityDst');
+    similarityDstContainer.append(similarityDstCanvas);
+  }
+
   if(this.checked){
-    var similarityImg = document.createElement("similarity");
-    similarityImg.src="./image/freeknight.jpg";
-    bIsFaceSimilarity = true;
+    loadImgToCanvas(similarityDstContainer, "./image/freeknight.jpg");
+    copyCanvasToImg(snapshotCanvas, similarityDstImg);
   }
   else {
-    var similarityImg = document.createElement("similarity");
-    similarityImg.src = '';
-    bIsFaceSimilarity = false;
+
   }
 })
 
+function loadImgToCanvas(canvas, url){
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0);
+    ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
+    ctx.fillRect(0, 0, img.width, img.height);
+  };
+  img.src = url;
+}
+
+function copyCanvasToImg(canvas, image){
+
+}
+
 function similarityFace(){
-  
+
 }
