@@ -289,7 +289,8 @@ $("#face-similarity").change(function () {
     }).then(function(){
       return faceapi.computeFaceDescriptor(similarityDstCanvas)
     }).then(function(descriptor1){
-      return [descriptor1, faceapi.computeFaceDescriptor(similaritySrcCanvas)]
+      descriptor2 = faceapi.computeFaceDescriptor(similaritySrcCanvas)
+      return [descriptor1, descriptor2]
     }).then(function(descriptors){
       return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
     }).then(function(distanceResult) {
