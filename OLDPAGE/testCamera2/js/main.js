@@ -272,7 +272,7 @@ $("#face-similarity").change(function () {
         descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
         descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)
       ]).then(function() {
-        distance = faceapi.euclideanDistance(descriptor1, descriptor2);
+        distance = faceapi.utils.round(faceapi.euclideanDistance(descriptor1, descriptor2));
         console.log(distance)
       })
     })
