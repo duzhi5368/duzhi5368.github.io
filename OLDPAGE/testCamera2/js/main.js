@@ -85,6 +85,7 @@ $("#detection-switch").change(function () {
     Promise.all([
       faceapi.nets.ssdMobilenetv1.load(modelPath),
       faceapi.nets.faceLandmark68TinyNet.load(modelPath),
+      faceapi.loadFaceRecognitionModel(modelPath)
     ]).then(function(){
       createCanvas();
       startDetection();
