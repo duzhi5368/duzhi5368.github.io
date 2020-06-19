@@ -4,6 +4,7 @@ const modelPath = 'models';
 let displaySize;
 let canvas;
 let faceDetection;
+let bIsUpdateLogic = false;
 let minConfidence = 0.9;
 
 // 开启摄像头
@@ -138,14 +139,17 @@ function startDetection(){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     }
 
-    if(detections.length == 1){
-      displayError('', false);
-      console.log(detections[0].box);
-      onTimerLogic();
-    }else if(detections.length > 1){
-      displayError("摄像头内人脸不止一个", true);
-    }else{
-      displayError("摄像头内没有人脸", true);
+    if(bIsUpdateLogic) {
+      if (detections.length == 1) {
+        displayError('', false);
+        console.log(detections);
+        console.log(detections[0]);
+        onTimerLogic();
+      } else if (detections.length > 1) {
+        displayError("摄像头内人脸不止一个", true);
+      } else {
+        displayError("摄像头内没有人脸", true);
+      }
     }
     
     if(!$(".loading").hasClass('d-none')){
@@ -154,18 +158,15 @@ function startDetection(){
   }, 500)
 }
 
-/*
-let delayTime = 1000;
-let intervalFunc = null;
+
 $("#auto-snapshot").change(function () {
   if(this.checked){
-    intervalFunc = setInterval(onTimer, delayTime);
+    bIsUpdateLogic = true;
   }
   else {
-    clearInterval(intervalFunc);
+    bIsUpdateLogic = false;
   }
 })
-*/
 
 // 定时任务
 function onTimerLogic(){
