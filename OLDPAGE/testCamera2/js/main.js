@@ -1,9 +1,7 @@
 const webcamElement = document.getElementById('webcam');
 const webcam = new Webcam(webcamElement, 'user');
 const modelPath = 'models';
-let currentStream;
 let displaySize;
-let convas;
 let faceDetection;
 
 // 开启摄像头

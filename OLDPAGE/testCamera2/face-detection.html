@@ -24,16 +24,18 @@
                                         <!-- 摄像头列表 -->
                                         <button id="cameraFlip" class="btn d-none"></button>
                                 </div>
-                                <div class="col-md-10 col-6 form-control">
+                                <div class="col-md-10 col-6 form-control h-100">
                                         <label class="form-switch disabled">
                                         <input type="checkbox" disabled id="detection-switch">
                                         <i></i> 面部检测 </label>
 
+                                        <!-- 时间问题，仅支持tiny face detecetor
+                                        <label>* 选择识别模型</label>
                                         <select id="selectFaceDetector">
                                             <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
                                             <option value="tiny_face_detector">Tiny Face Detector</option>
                                         </select>
-                                        <label>选择识别模型</label>
+                                        -->
                                 </div>   
                                 <div class="col-md-10 col-6 form-control">
                                         <label class="form-switch disabled">
