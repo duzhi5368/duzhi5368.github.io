@@ -5,6 +5,7 @@ let displaySize;
 let canvas;
 let faceDetection;
 let bIsUpdateLogic = false;
+let bIsAutoImgProcessing = false;
 let minConfidence = 0.9;
 
 // 开启摄像头
@@ -167,6 +168,15 @@ $("#auto-snapshot").change(function () {
   }
 })
 
+$("auto-img-processing").change(function () {
+  if(this.checked){
+    bIsAutoImgProcessing = true;
+  }
+  else {
+    bIsAutoImgProcessing = false;
+  }
+})
+
 // 定时任务
 function onTimerLogic(boundingBox, picSize){
   var video = document.getElementById('webcam');
@@ -187,7 +197,7 @@ function onTimerLogic(boundingBox, picSize){
 function drawSnapshot(snapshotCanvas, video, boundingBox, picSize){
   var context = snapshotCanvas.getContext('2d');
   context.fillRect(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
-  if(boundingBox == null) {
+  if(boundingBox == null || !bIsAutoImgProcessing) {
     context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   }else{
     var xScale = picSize / boundingBox.width;
@@ -202,6 +212,9 @@ function drawSnapshot(snapshotCanvas, video, boundingBox, picSize){
 }
 
 function grayscal(snapshotCanvas){
+  if(!bIsAutoImgProcessing){
+    return;
+  }
   var context = snapshotCanvas.getContext('2d');
   var imageSrc = context.getImageData(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   var dataSrc = imageSrc.data;
