@@ -270,9 +270,12 @@ $("#face-similarity").change(function () {
       Promise.all([
         descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
         descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)
-      ]).then(function(result) {
-        distance = faceapi.utils.round(faceapi.euclideanDistance(result[0], result[1]));
-        console.log(distance)
+      ]).then(function(descriptors) {
+        Promise.all([
+            distance = faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
+        ]).then(function(distanceResult) {
+          console.log(distanceResult);
+        })
       })
     })
   }
