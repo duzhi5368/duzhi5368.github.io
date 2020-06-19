@@ -257,9 +257,10 @@ $("#face-similarity").change(function () {
     similarityDstContainer.append(similarityDstCanvas);
   }
 
+  var picListEle = document.getElementById('picList');
   if(this.checked) {
     const p = new Promise(function (resolve, reject) {
-      loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png")
+      loadImgToCanvas(similarityDstCanvas, picListEle.value)
       resolve()
     });
 
@@ -277,9 +278,9 @@ $("#face-similarity").change(function () {
           if(distanceResult == 0){
             displaySorce("相似度：不明")
           }else if(distanceResult > distanceValue){
-            displaySorce("不是同一个人")
+            displaySorce("不是同一个人:" + distanceResult)
           }else{
-            displaySorce("是同一个人")
+            displaySorce("是同一个人:" + distanceResult)
           }
       })
     })
