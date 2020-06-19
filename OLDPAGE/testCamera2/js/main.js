@@ -162,6 +162,7 @@ function onTimer(){
     snapshotCanvas = document.createElement("canvas");
     snapshotCanvas.setAttribute('width', '300');
     snapshotCanvas.setAttribute('height', '300');
+    snapshotCanvas.setAttribute('margin-top', '500');
     snapshotCanvas.setAttribute('id', 'showsnapshot');
     snapshotContainer.appendChild(snapshotCanvas);
   }
