@@ -6,13 +6,14 @@ let displaySize;
 let convas;
 let faceDetection;
 
+// 开启摄像头
 $("#webcam-switch").change(function () {
   if(this.checked){
       webcam.start()
           .then(result =>{
              cameraStarted();
              webcamElement.style.transform = "";
-             console.log("webcam started");
+             console.log("摄像头开启...");
           })
           .catch(err => {
               displayError();
@@ -21,7 +22,7 @@ $("#webcam-switch").change(function () {
   else {        
       cameraStopped();
       webcam.stop();
-      console.log("webcam stopped");
+      console.log("摄像头关闭...");
   }        
 });
 
