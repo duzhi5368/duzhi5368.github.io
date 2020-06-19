@@ -170,14 +170,27 @@ $("#auto-snapshot").change(function () {
 function onTimer(){
   var video = document.getElementById('webcam');
   var snapshotContainer = document.getElementById('snapshot-container');
-  var snapshotCanvas = document.createElement("canvas");
-  snapshotCanvas.setAttribute('width', '300');
-  snapshotCanvas.setAttribute('height', '300');
-  snapshotContainer.appendChild(snapshotCanvas);
+  var snapshotCanvas = document.getElementById('showsnapshot');
+  if(snapshotCanvas == null) {
+    snapshotCanvas = document.createElement("canvas");
+    snapshotCanvas.setAttribute('width', '300');
+    snapshotCanvas.setAttribute('height', '300');
+    snapshotCanvas.setAttribute('id', 'showsnapshot');
+    snapshotContainer.appendChild(snapshotCanvas);
+  }
+
+  drawSnapshot(snapshotCanvas, video);
+  grayscal(snapshotCanvas);
+}
+
+function drawSnapshot(snapshotCanvas, video){
   var context = snapshotCanvas.getContext('2d');
   context.fillRect(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
+}
 
+function grayscal(snapshotCanvas){
+  var context = snapshotCanvas.getContext('2d');
   var imageSrc = context.getImageData(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   var dataSrc = imageSrc.data;
   var len = dataSrc.length;
