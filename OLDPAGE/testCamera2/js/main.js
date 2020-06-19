@@ -258,7 +258,8 @@ $("#face-similarity").change(function () {
   if(this.checked){
     loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
     copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
-    //var diffSorce = similarityFace(similaritySrcCanvas, similarityDstCanvas);
+    var diffSorce = similarityFace(similaritySrcCanvas, similarityDstCanvas);
+    console.log(diffSorce)
   }
   else {
     clearCanvas(similaritySrcCanvas);
@@ -281,12 +282,8 @@ function copyCanvasToCanvas(src, dst){
 }
 
 function similarityFace(canvas1, canvas2){
-  var img1 = new Image();
-  img1.src = canvas1.toDataURL();
-  var img2 = new Image();
-  img2.src = canvas2.toDataURL();
-  const descriptor1 = Promise.all(faceapi.computeFaceDescriptor(img1))
-  const descriptor2 = Promise.all(faceapi.computeFaceDescriptor(img2))
+  const descriptor1 = Promise.all(faceapi.computeFaceDescriptor(canvas1))
+  const descriptor2 = Promise.all(faceapi.computeFaceDescriptor(canvas2))
   const distance = faceapi.utils.round(
       faceapi.euclideanDistance(descriptor1, descriptor2)
   )
