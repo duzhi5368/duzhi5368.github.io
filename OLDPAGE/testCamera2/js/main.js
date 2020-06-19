@@ -260,26 +260,6 @@ $("#face-similarity").change(function () {
     //loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
     //copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
 
-    /*
-    var descriptor1 = null;
-    var descriptor2 = null;
-    var distance = 0;
-    Promise.all([
-      loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png"),
-      loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
-    ]).then(function(){
-      Promise.all([
-        descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
-        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)
-      ]).then(function(descriptors) {
-        Promise.all([
-            distance = faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
-        ]).then(function(distanceResult) {
-          console.log(distanceResult);
-        })
-      })
-    })
-    */
     const p = new Promise(function (resolve, reject) {
       loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png")
       resolve()
@@ -287,14 +267,10 @@ $("#face-similarity").change(function () {
 
     p.then(function () {
       loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
-    }).then(function () {  /*
-      return faceapi.computeFaceDescriptor(similarityDstCanvas)
-    }).then(function(descriptor1){
-      descriptor2 = faceapi.computeFaceDescriptor(similaritySrcCanvas)
-      return [descriptor1, descriptor2] */
+    }).then(function () {
       Promise.all([
-        descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
-        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)])
+        descriptor1 = faceapi.computeFaceDescriptor("./image/sheldon.png"),   //similaritySrcCanvas),
+        descriptor2 = faceapi.computeFaceDescriptor("./image/sheldon2.png")]) //similarityDstCanvas)])
           .then(function (descriptors) {
             return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
           }).then(function (distanceResult) {
