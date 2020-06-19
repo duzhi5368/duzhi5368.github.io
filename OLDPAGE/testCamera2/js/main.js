@@ -102,7 +102,7 @@ function clearCanvas(){
 }
 
 function createCanvas(){
-  if( document.getElementById("canvas") == null )
+  if( document.getElementsByTagName("canvas") == null )
   {
     canvas = faceapi.createCanvasFromMedia(webcamElement)
     document.getElementById('webcam-container').append(canvas)
@@ -169,7 +169,11 @@ $("#auto-snapshot").change(function () {
 // 定时任务
 function onTimer(){
   var video = document.querySelector('webcam');
-  var snapshotCanvas = document.querySelector('snapshot');
+  var snapshotContainer = document.getElementById('snapshot-container');
+  var snapshotCanvas = document.createElement("canvas");
+  snapshotCanvas.setAttribute('width', '300');
+  snapshotCanvas.setAttribute('height', '300');
+  snapshotContainer.appendChild(snapshotCanvas);
   var context = snapshotCanvas.getContext('2d');
   context.fillRect(0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
   context.drawImage(video, 0, 0, snapshotCanvas.clientWidth, snapshotCanvas.clientHeight);
