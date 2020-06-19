@@ -133,21 +133,8 @@ function startDetection(){
     if($("#landmarks-switch").is(":checked")){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     }
-    if($("#expression-switch").is(":checked")){
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    }
-    if($("#age-gender-switch").is(":checked")){
-      resizedDetections.forEach(result => {
-        const { age, gender, genderProbability } = result
-        new faceapi.draw.DrawTextField(
-          [
-            `${faceapi.round(age, 0)} years`,
-            `${gender} (${faceapi.round(genderProbability)})`
-          ],
-          result.detection.box.bottomRight
-        ).draw(canvas)
-      })
-    }
+
+    console.log(resizedDetections);
     
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
