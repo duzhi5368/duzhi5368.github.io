@@ -257,20 +257,18 @@ $("#face-similarity").change(function () {
   }
 
   if(this.checked) {
-    //loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
-    //copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
-
     const p = new Promise(function (resolve, reject) {
       loadImgToCanvas(similarityDstCanvas, "./image/sheldon.png")
       resolve()
     });
 
     p.then(function () {
-      loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
+      copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
+      //loadImgToCanvas(similaritySrcCanvas, "./image/sheldon2.png")
     }).then(function () {
       Promise.all([
-        descriptor1 = faceapi.computeFaceDescriptor("./image/sheldon.png"),   //similaritySrcCanvas),
-        descriptor2 = faceapi.computeFaceDescriptor("./image/sheldon2.png")]) //similarityDstCanvas)])
+        descriptor1 = faceapi.computeFaceDescriptor(similaritySrcCanvas),
+        descriptor2 = faceapi.computeFaceDescriptor(similarityDstCanvas)])
           .then(function (descriptors) {
             return faceapi.utils.round(faceapi.euclideanDistance(descriptors[0], descriptors[1]))
           }).then(function (distanceResult) {
@@ -285,12 +283,16 @@ $("#face-similarity").change(function () {
 })
 
 function loadImgToCanvas(canvas, url){
-  var ctx = canvas.getContext('2d');
-  var img = new Image();
-  img.onload = function () {
-    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
-  };
-  img.src = url;
+  new Promise( function(resolve, reject) {
+        var ctx = canvas.getContext('2d');
+        var img = new Image();
+        img.onload = function () {
+          ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
+        };
+        img.src = url;
+        resolve()
+      }
+  )
 }
 
 function copyCanvasToCanvas(src, dst){
