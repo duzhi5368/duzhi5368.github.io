@@ -16,7 +16,7 @@ $("#webcam-switch").change(function () {
              console.log("摄像头开启...");
           })
           .catch(err => {
-              displayError();
+              displayError('摄像头开启失败', true);
           });
   }
   else {        
@@ -41,11 +41,15 @@ function cameraStopped(){
   $("#cameraFlip").addClass('d-none');
 }
 
-function displayError(err = ''){
-  if(err!=''){
-    $("#errorMsg").html(err);
+function displayError(err = '', bIsShow){
+  if(bIsShow) {
+    if (err != '') {
+      $("#errorMsg").html(err);
+    }
+    $("#errorMsg").removeClass("d-none");
+  }else{
+    $("#errorMsg").addClass("d-none");
   }
-  $("#errorMsg").removeClass("d-none");
 }
 
 $('#cameraFlip').click(function() {
@@ -134,14 +138,22 @@ function startDetection(){
       faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     }
 
-    console.log(resizedDetections);
+    if(resizedDetections.size() == 1){
+      displayError('', false);
+      onTimerLogic();
+    }else if(resizedDetections.size() > 1){
+      displayError("摄像头内人脸不止一个", true);
+    }else{
+      displayError("摄像头内没有人脸", true);
+    }
     
     if(!$(".loading").hasClass('d-none')){
       $(".loading").addClass('d-none')
     }
-  }, 300)
+  }, 500)
 }
 
+/*
 let delayTime = 1000;
 let intervalFunc = null;
 $("#auto-snapshot").change(function () {
@@ -152,9 +164,10 @@ $("#auto-snapshot").change(function () {
     clearInterval(intervalFunc);
   }
 })
+*/
 
 // 定时任务
-function onTimer(){
+function onTimerLogic(){
   var video = document.getElementById('webcam');
   var snapshotContainer = document.getElementById('snapshot-container');
   var snapshotCanvas = document.getElementById('showsnapshot');
@@ -162,7 +175,6 @@ function onTimer(){
     snapshotCanvas = document.createElement("canvas");
     snapshotCanvas.setAttribute('width', '300');
     snapshotCanvas.setAttribute('height', '300');
-    snapshotCanvas.setAttribute('margin-top', '500');
     snapshotCanvas.setAttribute('id', 'showsnapshot');
     snapshotContainer.appendChild(snapshotCanvas);
   }
