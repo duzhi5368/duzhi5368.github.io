@@ -100,14 +100,14 @@ $("#detection-switch").change(function () {
     toggleContrl("face-similarity", false);
 
     clearInterval(faceDetection);
-    clearCanvas();
+    clearCanvas(canvas);
   }        
 });
 
-function clearCanvas(){
-  if(canvas != null){
+function clearCanvas(thisCanvas){
+  if(thisCanvas != null){
     setTimeout(function() {
-      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+      thisCanvas.getContext('2d').clearRect(0, 0, thisCanvas.width, thisCanvas.height)
     }, 1000);
   }
 }
@@ -258,9 +258,11 @@ $("#face-similarity").change(function () {
   if(this.checked){
     loadImgToCanvas(similarityDstCanvas, "./image/freeknight.jpg");
     copyCanvasToCanvas(snapshotCanvas, similaritySrcCanvas);
+    var diffSorce = similarityFace(similaritySrcCanvas, similarityDstCanvas);
   }
   else {
-
+    clearCanvas(similaritySrcCanvas);
+    clearCanvas(similarityDstCanvas);
   }
 })
 
@@ -268,18 +270,16 @@ function loadImgToCanvas(canvas, url){
   var ctx = canvas.getContext('2d');
   var img = new Image();
   img.onload = function () {
-    ctx.drawImage(img, 0, 0);
-    ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
-    ctx.fillRect(0, 0, img.width, img.height);
+    ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, canvas.width, canvas.height);
   };
   img.src = url;
 }
 
-function copyCanvasToImg(src, dst){
+function copyCanvasToCanvas(src, dst){
   var ctx = dst.getContext('2d');
   ctx.drawImage(src, 0, 0);
 }
 
-function similarityFace(){
-
+function similarityFace(canvas1, canvas2){
+  return 0;
 }
