@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>FK面部检测2号</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="style/bootstrap.min.css" >
+    <link rel="stylesheet" href="style/face-detection.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src='js/face-api.min.js'></script>
+    <script src="js/webcam-easy.min.js"></script>
+</head>
+<body>
+        <h1 style="text-align:center">自由骑士人脸识别 v1.0.0</h1>
+        <main>
+            <div class="container mt-auto">
+                <div class="container mt-1">
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-xl-3 align-top">
+                            <div class="row mb-3">
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch">
+                                            <input type="checkbox" id="webcam-switch">
+                                            <i></i> 开启摄像头 </label>
+                                            <!-- 摄像头列表 -->
+                                            <button id="cameraFlip" class="btn d-none"></button>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="detection-switch">
+                                            <i></i> 面部检测 </label>
+
+                                            <!-- 时间问题，仅支持 ssd_mobilenet_v1
+                                            <label>* 选择识别模型</label>
+                                            <select id="selectFaceDetector">
+                                                <option value="ssd_mobilenetv1">SSD Mobilenet V1</option>
+                                                <option value="tiny_face_detector">Tiny Face Detector</option>
+                                            </select>
+                                            -->
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="box-switch">
+                                            <i></i> 面部包围盒 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="landmarks-switch">
+                                            <i></i> 面部特征点 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                        <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="auto-snapshot">
+                                            <i></i> 自动截屏 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                        <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="auto-img-processing">
+                                            <i></i> 截屏加工 </label>
+                                    </div>
+                                    <div class="col-md-10 col-6 form-control">
+                                            <label class="form-switch disabled">
+                                            <input type="checkbox" disabled id="face-similarity">
+                                            <i></i> 面部对比</label>
+                                            <div>
+                                                <select id="picList">
+                                                    <option value="./image/sheldon.png">谢尔顿1</option>
+                                                    <option value="./image/sheldon2.png">谢尔顿2</option>
+                                                    <option value="./image/sheldon3.png">谢尔顿3</option>
+                                                    <option value="./image/stuart.png">斯瓦特</option>
+                                                    <option value="./image/bernadette.png">伯纳德特</option>
+                                                </select>
+                                            </div>
+                                        <br/>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <!-- 附属支持 -->
+                        <div class="col-12 col-md-8 col-xl-9 align-top" id="webcam-container">
+                            <div class="loading d-none">
+                                    加载训练模型ing...
+                                    <div class="spinner-border" role="status">
+                                            <span class="sr-only"></span>
+                                    </div>
+                            </div>
+
+                            <div id="video-container">
+                                    <video id="webcam" autoplay muted playsinline></video>
+                            </div>
+
+                            <div id="canvas-container">
+                                <!-- 这里存放面部轮廓线canvas -->
+                            </div>
+
+                            <div id="errorMsg" class="col-12 alert-danger d-none">
+                            启动摄像机失败 <br>
+                            请检查开启摄像机访问许可
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="container mt-1" id="snapshot-container">
+                    <div class="row">
+                        <div class="col-12 col-md-4 col-xl-3 align-top" id="snapshotContainer">
+                            <!-- 这里存放截图中canvas -->
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 align-top" id="similaritySrcContainer">
+
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-3 align-top" id="similarityDstContainer">
+
+                        </div>
+                        <div id="similarityMsg" class="col-12 alert-danger d-none">
+                            相似度：不明
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>   
+        <script src="js/main.js"></script>
+</body>
+</html>
