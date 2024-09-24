@@ -1,0 +1,1010 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>碎碎念---策划文档(七)游戏关卡设计</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="依旧不废话,直接进行讲述.
+
+">
+    <meta property="og:description" content="依旧不废话,直接进行讲述.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="碎碎念---策划文档(七)游戏关卡设计">
+    <meta property="og:url" content="/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="依旧不废话,直接进行讲述.
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/oldpage/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      碎碎念---策划文档(七)游戏关卡设计
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2006-12-23T00:00:00Z">
+        
+  十二月 23, 2006
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2006">2006</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>依旧不废话,直接进行讲述.</p>
+
+<p></p>
+
+<p>##游戏关卡</p>
+
+<p>我们玩一些RTS,ACT游戏时候,通常爱将游戏按照关卡来划分,而现在的RPG游戏,也经常按照关卡章节来将游戏分段化,实际上我们在设计游戏的时候也可以按照这样的思路去分关卡设计,这将有利于我们很好的控制游戏流程.</p>
+
+<p>#####游戏关卡的设计内容</p>
+
+<ol>
+<li>关卡名称.</li>
+</ol>
+
+<p>它将有利于你日后的描述和整理工作.</p>
+
+<ol>
+<li>关卡限制.</li>
+</ol>
+
+<p>即使是单线性链状结构,我们也需要对关卡的触发设置一定的限制,而多线性网状结构的设计,我们更需要设计关卡限制,我们不可能允许玩家刚开始就去挑战终极BOSS,也可能在某些条件未满足时,禁止玩家发生一些支线.这些都是对关卡的限制,这是必不可少的.</p>
+
+<ol>
+<li>发生地点.</li>
+</ol>
+
+<p>我们的剧情,任务发生的空间地点,这些也是必须的.</p>
+
+<ol>
+<li>相关对象.</li>
+</ol>
+
+<p>在关卡中,我们需要一些NPC来协助我们进行任务继续下去,他们或者起提示的促进作用,或者起战斗的阻碍作用,我们都确切的需要.当然,这些对象可能是一些场景和道具.</p>
+
+<ol>
+<li>相应奖励.</li>
+</ol>
+
+<p>玩家在完成某个任务或关卡后,有必要对他进行一些适当的奖励,毕竟他们为你的游戏花费了更多的时间和精力.当然,对于主线,我们的奖励就是允许玩家进一步进行游戏,直至潼关.</p>
+
+<ol>
+<li>关卡流程.</li>
+</ol>
+
+<p>我们的关卡,任务都是有按照一定的顺序去发展的,或许你在游戏情节的设计时讲述了这个顺序,然而那时的你将会以更多的注意力重视到整体剧情的把握,而这里,将是细节性的描述,我们要完全根据它来制作游戏.</p>
+
+<ol>
+<li>关卡对白.</li>
+</ol>
+
+<p>很少有没有对白的游戏,当然由于类型的不同,对白也有或多或少的变动.通常来说,RPG的关卡对白需要的最多,而我依旧需要强调的是,关卡对白不等于小说,我们需要更多的说明而不是描述,无法表现的修饰词我们应当尽量减到最少.</p>
+
+<p>#####游戏关卡流程文档</p>
+
+<p>当我们想好这一切时,我们可以开始我们的文档,这里既可以使用文字方式,也可以使用流程图方式,当然依旧是更支持流程图,它直观而且高效.</p>
+
+<p>这里仅拿个以前无聊中写的东西为例.
+例:</p>
+
+<ul>
+<li>任务名称</li>
+</ul>
+
+<p>误闯蛇窟</p>
+
+<ul>
+<li>关卡任务目标</li>
+</ul>
+
+<p>主线任务目标：进入绑架赵灵儿的蛇窟，打败蛇妖救出赵灵儿。</p>
+
+<p>支线任务目标：帮助受害女孩小兰送手帕回家，以报平安。</p>
+
+<ul>
+<li>关卡所需道具</li>
+</ul>
+
+<p>主线：醍醐香，密室钥匙</p>
+
+<p>支线：小兰的手帕</p>
+
+<ul>
+<li>关卡所需NPC</li>
+</ul>
+
+<p>主要角色：林家大总管，蛇窟众侍女甲，受害村民女孩小兰，蛇妖（男），狐狸精（女），小兰的爷爷</p>
+
+<p>次要角色：林家家丁若干，其他蛇窟侍女若干（5-6名），小兰父母村子中村民，蛇窟内受害女孩其他若干（4-6名）</p>
+
+<ul>
+<li>触发关卡任务条件</li>
+</ul>
+
+<p>主线1：赵灵儿消失离队，林月如要求带队入蛇窟寻找灵儿，开启蛇窟地图。
+与蛇窟侍女甲对话，身上携带醍醐香，则可获得密室钥匙。
+击败密室内的狐狸精，蛇妖出现，击败之再对话，获得北石门钥匙。</p>
+
+<p>支线1：与受害女孩小兰对话，获得道具“小兰的手帕”。
+携带道具“小兰的手帕”，与村中小兰的父母对话，获得奖励，任务结束。</p>
+
+<ul>
+<li>关卡奖励</li>
+</ul>
+
+<p>主线：获得开启蛇窟北石门的石钥匙。</p>
+
+<p>支线：获得越女剑一把。</p>
+
+<p>#####关卡流程</p>
+
+<p>#####任务对白</p>
+
+<p><strong>深夜，开始赵灵儿消失不见，李逍遥，林月如和几名林家家丁追蛇状怪物到达后山杂草丛处。</strong></p>
+
+<p>李逍遥（低头私语）：刚才那妖物倒是奇怪的很，见它的时候怎么有一种可怜的感觉。</p>
+
+<p>林月如（站在山丘上远望怪物消失的方向，不耐烦的说道）：妖物就是妖物，哪有什么可怜不可怜的！倒是叫它跑了，真是可惜。再叫本小姐看到它，定不会放过！</p>
+
+<p>李逍遥（转身走到林月如身后微笑道）：好了，林大小姐，要追杀也要等天亮吧。我们先回去，灵儿还在林家堡等我们呢。</p>
+
+<p>林月如（回头惊讶道）：呀，我这一路只顾追那妖物，却把灵儿妹妹独自丢在林家堡了，希望回去灵儿她别怪我就好。（对众家丁挥手大声道）走，回林家堡。</p>
+
+<p>众家丁：是！</p>
+
+<p><strong>逍遥走在最前，月如紧紧跟随，众家丁列队随后准备回林家堡，这时林家堡方向跑来3人，林家大总管匆匆走在最前，后面跟了两名家丁，各手持一火把。</strong></p>
+
+<p>林家大总管（向林月如急忙走去，边走边说）：小……小姐，不好了……那怪物走后，灵儿小姐也不见了，找遍了全堡也看不到，有人说灵儿小姐可能被那蛇妖抓到后山的蛇窟里了……“</p>
+
+<p>李逍遥（着急）：什么，你说清楚点，灵儿怎么了？什么后山的蛇窟？</p>
+
+<p>林月如：瞧你急的，人家丢的时候你有这么着急吗。</p>
+
+<p>李逍遥：……</p>
+
+<p>林月如：很早以前后山就有个洞窟，据说里面住着一个蛇怪，总是抓临近村子里的少女，然后就不见那些少女出来，恐怕是被吃掉了。我们林家堡早就想替百姓除此大害了，只是没想到这次它居然敢动灵儿妹妹……</p>
+
+<p>林月如：大总管，你带家丁回去，和我爹爹说，我和逍遥要去为民除害了，除非我自己想回来，不然谁也别想带我回去。</p>
+
+<p>林家大总管（紧张，摆手，在月如面前哀求道）：小姐，使不得啊，我回去会被老爷打断腿的啊……</p>
+
+<p>林月如（转过身子对着地抽4次鞭子，尘土飞扬，周围家丁纷纷散开，转回身道）：大总管，你是想现在就被打断腿呢，还是先回去呢？</p>
+
+<p>林家大总管：……小姐，我知道了。小的回去了，您要早点回来啊。（移动到群家丁前）走，都回林家堡。</p>
+
+<p>林月如（转身对逍遥高兴的说）：这里你没有我熟悉，让我来带路吧</p>
+
+<p>李逍遥：好。</p>
+
+<p><strong>进入蛇洞深处，与侍女甲对话。</strong></p>
+
+<p>侍女甲（惊恐的后退）：你们是谁，这里是不许外人进入的。</p>
+
+<p>李逍遥（上前一步）：快告诉我灵儿在哪儿？！</p>
+
+<p>侍女甲：灵儿？哪个灵儿？我们大王抓来的女孩都在密室里，但是我没听说过有叫灵儿的姑娘。</p>
+
+<p>李逍遥：密室在哪儿，怎么进去？</p>
+
+<p>侍女甲：这个我可不能告诉你。</p>
+
+<p>李逍遥心想（看来她真的不愿意说，只能去找点药物先把她弄晕才行）</p>
+
+<blockquote>
+<p>分支1：没有醍醐香。  侍女甲：我是不会告诉你们的。</p>
+
+<p>分支2：有醍醐香  李逍遥使用醍醐香。<br />
+李逍遥：快点告诉我们密室在哪儿，怎么进去！<br />
+侍女甲：zzzZZZ密室……密室就在我身后的箱子下，这里是开启密室的金钥匙<br />
+（李逍遥获得密室金钥匙）<br />
+再调查侍女甲，提示“此人已睡着”</p>
+</blockquote>
+
+<p><strong>调查侍女家身后箱子，箱子移动，有一钥匙孔，使用密室金钥匙，进入密室，内有一狐狸精正躺在虎皮躺椅上。</strong></p>
+
+<p><strong>见李逍遥等二人进来，狐狸精站起</strong>。</p>
+
+<p>狐狸精：呦，这位俊俏的小哥，深更半夜的来找奴家，可是有什么特殊的事情要商谈么</p>
+
+<p>李逍遥（拔剑相向）；少废话，快说你把灵儿藏在哪儿了</p>
+
+<p>狐狸精；灵儿，我这洞府里的民家侍女多了，就是没听说哪个叫灵儿的，莫非那是你的意中人</p>
+
+<p>李逍遥（挥剑）：妖怪别罗嗦，快还我灵儿来！</p>
+
+<p>狐狸精（侧身闪过）；呦，不给你点颜色看看你真不知道自己是老几，可别怪老娘不客气！</p>
+
+<p><strong>（战斗开始，进入战斗界面）</strong></p>
+
+<p>战斗胜利后，李逍遥持剑指向狐狸精，狐狸精跪坐在地上，身上血迹斑斑。</p>
+
+<p>李逍遥：妖女，说还是不说！</p>
+
+<p>狐狸精：你叫老娘说什么，这里根本没你们要找的姑娘……</p>
+
+<p>李逍遥（挥剑）：妖物找死！若是你们敢伤灵儿一丝颔毛，我定叫你们全洞妖物陪葬！</p>
+
+<p>狐狸精（受伤倒下）：啊……老公……替……替我报仇……</p>
+
+<p>（狐狸精死亡，李逍遥身手出现手持大镰刀的半身蛇妖）</p>
+
+<p>蛇妖：啊，爱妻，爱妻……你们这些可恶的人类！不可饶恕！</p>
+
+<p><strong>（战斗开始，进入战斗界面）</strong></p>
+
+<p>战斗胜利后，蛇妖死亡。</p>
+
+<p>调查蛇妖，获得“北石门钥匙”，再调查提示“一具冰冷的蛇尸”。</p>
+
+<p><strong>判定，李逍遥与蛇窟中所有人员对话后，林月如走出队伍，触发对话。</strong></p>
+
+<p>林月如：逍遥，看来灵儿真的不在这个蛇洞里</p>
+
+<p>李逍遥：不可能，不可能，灵儿不会离开我的</p>
+
+<p>林月如：逍遥你先别冲动，我听说这里往北走有个XX村，我想灵儿会不会是逃出去，被村人救了</p>
+
+<p>李逍遥：好，那我们立刻去村子里看看</p>
+
+<p><strong>（林月如入队）</strong></p>
+
+<blockquote>
+<p>调查北石门，携带“北石门钥匙”则切换场景村子野外。</p>
+
+<p>无“北石门钥匙”则提示“这扇门很牢固，需要一把石钥匙”</p>
+</blockquote>
+
+<p><strong>支线：进入蛇洞深处地牢，与受害少女小兰对话。</strong></p>
+
+<p>小兰（蜷在角落）：不……不要杀我，呜呜</p>
+
+<p>李逍遥（走近蹲下）：小妹子别担心，我们是林家堡的人，是来救你们的</p>
+
+<p>小兰：林家堡的……啊，大哥哥，小兰想回家</p>
+
+<p>李逍遥：别担心，我把这里的妖物除掉就带你们回去</p>
+
+<p>小兰：呜呜，可是小兰腿受伤了，要稍后才能回去，大哥哥，您能不能帮我捎个口信回家，我怕爷爷担心</p>
+
+<p>李逍遥：好的</p>
+
+<p>小兰：这是我的手帕，您拿回村子给我爷爷看，他就会相信你了</p>
+
+<p>（李逍遥获得小兰的手帕）</p>
+
+<p>再调查小兰，小兰重复说道：我要尽快养好伤回家。</p>
+
+<p><strong>回村中与小兰爷爷对话</strong></p>
+
+<p>小兰爷爷：我家孙女半月前出去就没见她回家，恐怕是被蛇妖抓走了，小兰真是命苦啊……</p>
+
+<p>李逍遥：你是小兰的爷爷吗，小兰现在没事，这是她让我捎送回来的手帕。</p>
+
+<p>（李逍遥失去手帕）</p>
+
+<p>小兰爷爷：对的，这是小兰的手帕，小兰现在还平安吗</p>
+
+<p>李逍遥；她很快就会回来的，您老在家里等她吧</p>
+
+<p>小兰爷爷：真是谢谢恩公，这里有把小兰他母亲留下的越女剑，就送给恩公吧。</p>
+
+<p>（得到越女剑）</p>
+
+<p>#####关卡设计技巧</p>
+
+<ol>
+<li>关卡节奏的控制.</li>
+</ol>
+
+<p>一个平淡无奇的故事是无人问津的,游戏也是同理.我们在游戏的设计中有必要加入一些技巧,令玩家有一种刺激感.我们可以在情节的设计上,音乐的节奏感上,周边环境布局上,敌人的数量上控制游戏节奏.</p>
+
+<ol>
+<li>有效的设置子目标.</li>
+</ol>
+
+<p>就拿最传统的英雄救美故事来说,我们的主线目标无疑是控制英雄去某某地方打败XX坏蛋救回美丽的公主,而我们的游戏中不可能仅仅有这么一个故事任务.我们可以在救美的路途中设计更多的子目标来引导玩家去通向救美的主目标.</p>
+
+<ol>
+<li>巧妙设计关卡地图.</li>
+</ol>
+
+<p>我们关卡中很重要的一个环节是关卡地图,但因为它并不适合以文档形式表达,所以我们通常仅在得到了地图编辑器后才会认真细节的调整和设计它.`而实际上关卡地图是非常重要的,很多游戏中地图的设计与玩家的技巧控制有很大关系,大家可以去想想魔兽和CS.但对于RPG游戏,我们更需要重视的是对路标的设置,复杂的关卡容易令玩家迷失,我们需要去设计一些东西作为标志指引玩家,这可以是路标,也可以是一些独特而显眼的雕塑等,当玩家再次经过它,将明白自己的大概位置,方便玩家了解关卡的布局.</p>
+
+<ol>
+<li>提供多种选择.</li>
+</ol>
+
+<p>优秀的关卡设计师会给玩家更多的选择去完成某个目标,这样将使游戏拥有更高的可玩性.当然这种选择不仅仅上在剧情上,我们可以设置奖励时也使用如此的技巧,例如,在一个很危险的区域,我们放置一个优秀的装备,玩家可以自行选择去取得或是放弃.</p>
+
+<ol>
+<li>避免滥用开关系统.</li>
+</ol>
+
+<p>开关是控制游戏流程最简单的一种手段,但我们没有必要去频繁使用它,过频繁的使用开关,很容易使玩家感觉到厌倦,我们可以考虑使用其他方法来控制游戏的进程.</p>
+
+<hr />
+
+<p>累了,就说这么多,明天我将会将游戏的界面和操作设计简单说一下,策划文档的介绍就结束了,我也将用更多的时间投入编程的复习中去~</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%AD%96%E5%88%92/">策划</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2006/12/%E5%86%99%E8%BF%99%E4%BA%9B%E6%89%80%E8%B0%93%E7%9A%84-%E6%95%99%E7%A8%8B-%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E/" data-tooltip="写这些所谓的-教程-的目的和一些说明">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AD%E6%B8%B8%E6%88%8Fai%E8%AE%BE%E8%AE%A1/" data-tooltip="碎碎念---策划文档(六)游戏AI设计">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2006/12/%E5%86%99%E8%BF%99%E4%BA%9B%E6%89%80%E8%B0%93%E7%9A%84-%E6%95%99%E7%A8%8B-%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E/" data-tooltip="写这些所谓的-教程-的目的和一些说明">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AD%E6%B8%B8%E6%88%8Fai%E8%AE%BE%E8%AE%A1/" data-tooltip="碎碎念---策划文档(六)游戏AI设计">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2006%2F12%2F%25E7%25A2%258E%25E7%25A2%258E%25E5%25BF%25B5---%25E7%25AD%2596%25E5%2588%2592%25E6%2596%2587%25E6%25A1%25A3%25E4%25B8%2583%25E6%25B8%25B8%25E6%2588%258F%25E5%2585%25B3%25E5%258D%25A1%25E8%25AE%25BE%25E8%25AE%25A1%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2006\/12\/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1\/';
+          
+            this.page.identifier = '\/2006\/12\/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

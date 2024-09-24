@@ -1,0 +1,1013 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>读书笔记《Google Hacking技术》</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。
+
+利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。
+
+如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。
+
+某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”
+
+">
+    <meta property="og:description" content="这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。
+
+利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。
+
+如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。
+
+某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="读书笔记《Google Hacking技术》">
+    <meta property="og:url" content="/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。
+
+利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。
+
+如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。
+
+某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/oldpage/index.html">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      读书笔记《Google Hacking技术》
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-15T00:00:00Z">
+        
+  十一月 15, 2019
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2019">2019</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。</p>
+
+<p>利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。</p>
+
+<p>如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。</p>
+
+<p>某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”</p>
+
+<p></p>
+
+<h2 id="基础篇">基础篇</h2>
+
+<h4 id="google搜索基本法则">Google搜索基本法则</h4>
+
+<ol>
+<li>查询是不区分大小写的。</li>
+</ol>
+
+<p>例如搜索“hello world”和搜索&rdquo;HelLo WorlD&rdquo;的搜索结果数量是完全不变的。</p>
+
+<ol>
+<li>搜索时是会拆词的。</li>
+</ol>
+
+<p>搜索查询引擎是不会去理解一个句子，</p>
+
+<p>例如搜索“我爱吃苹果”和搜索“我 爱 吃 苹果”的搜索结果数量是几乎一致的。</p>
+
+<ol>
+<li>搜索会有停用词忽略的。</li>
+</ol>
+
+<p>搜索时，一些意义不大的词，会被搜索引擎忽略。这些词被称为“停用词”（Stop word），例如“什么，谁，和，的”这些词。</p>
+
+<p>例如搜索“什么音乐最好听”和搜索“音乐 最好听”的搜索结果数量是几乎一致的。</p>
+
+<h4 id="google搜索基本技巧">Google搜索基本技巧</h4>
+
+<ol>
+<li>逻辑符号 “-”</li>
+</ol>
+
+<p>“-” 的意义是排除，例如我们搜索“apple -orange”，即表示我们仅需要带有“apple”的文章，而且，其中如果出现了“orange”则进行排除。</p>
+
+<p>这一点其实很常用，例如我搜索“肩周炎”，但是前几页搜索都是XX医院的广告，此时就可以屏蔽掉它，搜索“肩周炎 -医院”就可以得到对应的信息了。</p>
+
+<p>其他的“AND OR + | ”这些符号意义很少，不记录了。</p>
+
+<ol>
+<li>完全匹配符号 &lsquo;&ldquo;&rdquo;&rsquo;</li>
+</ol>
+
+<p>一个双引号包围起来的多个单词会被视为不可拆分的词组，要求完全匹配。</p>
+
+<p>例如，我们想搜索“太阳能汽车”，但是如果仅仅输入  <strong>太阳能汽车价格</strong>  这七个字，那么搜索引擎会进行自动分词，拆成“太阳能 汽车 价格”，最终可能连“太阳能风能的优劣”“丰田汽车价格”都会被搜索到。</p>
+
+<p>但如果我们在这些关键字前后加上双引号的话，那么将强制要求搜索引擎不拆分词，即，目标网页内必须 连续的出现 <strong>太阳能汽车价格</strong> 才行。</p>
+
+<h4 id="google高级搜索技巧">Google高级搜索技巧</h4>
+
+<ul>
+<li><p>标题限制符： intitle, 例如搜索“intitle:英雄联盟”，则搜索结果要求网页标题内包括&rdquo;英雄联盟&rdquo;的网页，在网页内容中出现“英雄联盟”是不会被搜索到的。 （PS：网页标题一般都是在浏览器标签栏显示的）</p></li>
+
+<li><p>多重标题限制符：allintitle，和上面的差不多，只是将全部关键字都限制在标题中，例如搜索“allintitle:英雄联盟 DOTA”则要求“英雄联盟”和“DOTA”关键字都出现在标题中才行，但“intitle:英雄联盟 DOTA”则仅要求“英雄联盟”出现在标题，而“DOTA”出现在正文中即可。</p></li>
+
+<li><p>网址限制符： inurl, allinurl ，则是要求搜索关键字必须出现在网址中。例如搜索“inurl:/login”即可搜索到大量不同网站的登陆页面，因为这些页面网址中通常都含有“/login”</p></li>
+
+<li><p>网内搜索限制符： site，和上面inurl不同，它是站内搜索。例如搜索：“汽车 site:sina.com”，则表示在sina.com这个网站中进行搜索“汽车”这个关键字。</p></li>
+
+<li><p>文件类型限制符： filetype，它是指定文件格式的搜索。例如搜索:&ldquo;烹饪秘籍 filetype:pdf&rdquo;，将会仅仅搜索到PDF文档格式的数据。ext与filetype等价，例如搜索：“烹饪秘籍 ext:pdf”</p></li>
+
+<li><p>关联性搜索符：related，搜索和指定网站类似的网站。例如搜索：“related:zhihu.com”，可以方面你搜索一些不错的站点。</p></li>
+
+<li><p>其他一些不常用的</p>
+
+<ul>
+<li><p>价格搜索符： $ ，例如搜索 “汽车 $12000” ，比 “汽车 价格 12000元” 有效的多。</p></li>
+
+<li><p>社交平台搜索符： @， 例如搜索 “刘德华 @facebook” “Trump @twitter” 。</p></li>
+
+<li><p>日期限制符：date, 缓存搜索符：cache, 股票搜索符：stocks，音乐搜索符：music, 电影搜索符：movie, 天气预报搜索符：weather</p></li>
+
+<li><p>数字区域符： numrange:19900416-19910416</p></li>
+</ul></li>
+</ul>
+
+<h4 id="其他">其他</h4>
+
+<p>这些搜索在其他搜索引擎也通常是有效的，例如 yahoo, baidu 等</p>
+
+<h2 id="hacking篇">Hacking篇</h2>
+
+<h4 id="搜索目录列表">搜索目录列表</h4>
+
+<ul>
+<li><p>搜索 intitle:index.of</p></li>
+
+<li><p>进阶搜索指定目录 intitle:index.of inurl:admin</p></li>
+
+<li><p>进阶搜索指定目录2 intitle:index.of inurl:&ldquo;/admin/*&rdquo;</p></li>
+
+<li><p>服务器版本 intitle:index.of &ldquo;server at&rdquo;</p></li>
+
+<li><p>其他：特殊目录 intitle:index.of inurl:backup</p></li>
+</ul>
+
+<h4 id="搜索核心文件">搜索核心文件</h4>
+
+<ul>
+<li><p>WS-FTP客户端配置文件 filetype:ini inurl:ws_ftp</p></li>
+
+<li><p>其他组合式配置文件搜索 inurl:conf OR inurl:config OR inurl:cfg</p>
+
+<ul>
+<li><p>PHP配置文件 intitle:index.of config.php</p></li>
+
+<li><p>MySQL配置文件 filetype:cnf my.cnf -cvs -example</p></li>
+</ul></li>
+
+<li><p>日志文件 filetype:log inurl:log</p>
+
+<ul>
+<li><p>PHP Web统计表日志 &ldquo;by Reimar Hoven&rdquo; | inurl:&ldquo;log/logdb.dta&rdquo;</p></li>
+
+<li><p>Java口令文件 ext:log password END_FILE</p></li>
+
+<li><p>putty日志文件 filetype:log username putty</p></li>
+</ul></li>
+
+<li><p>数据文件</p>
+
+<ul>
+<li><p>口令文件 filetype:xls username password email</p></li>
+
+<li><p>管理数据 filetype:xls inurl:admin</p></li>
+
+<li><p>数据库备份文件 inurl:backup filetype:mdb</p></li>
+</ul></li>
+
+<li><p>数据库登录页面</p>
+
+<ul>
+<li><p>MySQL登录 intitle:&ldquo;Web Data Administrator - Login&rdquo;</p></li>
+
+<li><p>PHPMyAdmin登录 inurl:&ldquo;main.php&rdquo; &ldquo;phpMyAdmin&rdquo;</p></li>
+</ul></li>
+
+<li><p>帮助文件</p>
+
+<ul>
+<li><p>MySQL配置文件 inurl:&ldquo;index of&rdquo; mysql.conf OR mysql_config</p></li>
+
+<li><p>PHP配置文件 inurl:php.ini filetype:ini</p></li>
+</ul></li>
+
+<li><p>特殊代码文件</p>
+
+<ul>
+<li>PHP核心函数文件 filetype:inc intext:mysql_connect
+<br /></li>
+</ul></li>
+
+<li><p>错误消息</p>
+
+<ul>
+<li><p>泄露SQL代码 &ldquo;You have an error in your SQL syntax near&rdquo; filetype:log</p></li>
+
+<li><p>MySQL错误消息信息泄露  &ldquo;MySQL error with query&rdquo;, &ldquo;access denied for user&rdquo; &ldquo;using password&rdquo;, &ldquo;Warning: mysql_query(&rdquo;</p></li>
+</ul></li>
+
+<li><p>数据库Dump文件</p>
+
+<ul>
+<li><p>SQL数据库dump  filetype:sql &ldquo;Dumping data for table&rdquo;</p></li>
+
+<li><p>SQL数据库dump  filetype:sql &ldquo;Dumping data for table (username|user|users|password)&rdquo;</p></li>
+
+<li><p>phpMyAdmin创建的SQL数据库dump &ldquo;# phpMyAdmin MySQL-Dump&rdquo; filetype:txt</p></li>
+</ul></li>
+</ul>
+
+<h4 id="搜索漏洞">搜索漏洞</h4>
+
+<ul>
+<li><p>搜索漏洞站点 filetype:c exploit 再提取域名</p></li>
+
+<li><p>搜索部分源码</p></li>
+</ul>
+
+<pre><code>    - C     .c      &quot;#include &lt;stdio.h&gt;&quot;
+    - C#    .cs     &quot;using System;&quot;
+    - C++   .cpp    &quot;#include &quot;stdafx.h&quot;&quot;
+    - Java  .java   &quot;class public static&quot;
+    - JS    .js     &quot;&lt;script language= &quot;JavaScript&quot;&gt;&quot;
+    - Python .py    &quot;#!/usr/bin/env&quot;
+</code></pre>
+
+<ul>
+<li><p>搜索部分漏洞源码</p>
+
+<ul>
+<li>XSS回显: lang:php echo.*\$_(GET|POST)</li>
+<li>XSS回显: lang:php echo.*\$_SERVER[&lsquo;PHP_SELF&rsquo;]</li>
+<li>SQL注入: lang:php mysql<em>query(.*\$</em>(GET|POST).*)</li>
+<li>SQL注入: lang:php &ldquo;WHERE username=&lsquo;$_&rdquo;</li>
+<li>其他漏洞: lang:php \$_SERVER[&lsquo;HTTP_REFERER&rsquo;]</li>
+</ul></li>
+
+<li><p>搜索容易受到攻击的目标</p>
+
+<p>一般这里我们需要分析源码，例如下载一个wordpress安装后，查看其源码，找到类似“Powered by WordPress 2.0.1”这样的关键词，进行查找定位。</p>
+
+<p>这种方式可能能使对方泄露版本号，地址，产品细节等信息。</p>
+
+<p>然后通过产品细节，查找定位其exploit。</p>
+
+<ul>
+<li>Gellery1.44具有远程攻击漏洞 &ldquo;Powered by Gallery v1.4.4&rdquo;</li>
+<li>Asp Nuke 1.2~1.4版有SQL注入漏洞 &ldquo;inurl:gotoURL.asp?url=&rdquo;</li>
+<li>FCKEditor 2.0,2.2有多个漏洞 &ldquo;index of&rdquo; intext:fckeditor inurl:fckeditor
+<br /></li>
+</ul>
+
+<p><strong>类似的exploit有数千种之多，可以多收集，例如exploit, vulnerability, vulnerable</strong></p></li>
+
+<li><p>搜索登录入口</p>
+
+<ul>
+<li><p>常规登陆口 inurl:login.asp OR inurl:/admin/login.asp OR &ldquo;please log in&rdquo; OR intitle:&ldquo;please login&rdquo;</p></li>
+
+<li><p>.NET登陆页  ASP.login_aspx &ldquo;ASP.NET_SessionId&rdquo;</p></li>
+</ul></li>
+
+<li><p>搜索网络Web工具</p>
+
+<ul>
+<li><p>例如搜索 inurl:nqt.php intitle:&ldquo;Network Query Tool&rdquo;  可以打开搜索的页面，进行网站信息搜索，可以有效的隐藏自己的IP</p></li>
+
+<li><p>例如搜索 inurl:&ldquo;lg/&rdquo; | inurl:lookingglass  可以找到显示路由统计信息的lookingglass服务器</p></li>
+
+<li><p>例如搜索 intitle:&ldquo;Welcome to ntop!&rdquo; 可以找到显示网络流量统计信息的服务器</p></li>
+
+<li><p>例如搜索 nessus 报告 this file was generated by nessus</p></li>
+</ul></li>
+
+<li><p>搜索网络设备</p>
+
+<ul>
+<li><p>例如搜索网络摄像头 intitle:&ldquo;ViewerFrame?Mode=&rdquo;</p></li>
+
+<li><p>例如搜索网络打印机 inurl:hp/device/this.LCDispatcher</p></li>
+
+<li><p>搜索防火墙设置，网络路由器，VOIP电话，UPS电源控制，市政水表等</p></li>
+</ul></li>
+</ul>
+
+<h4 id="秘密信息">秘密信息</h4>
+
+<pre><code>- 搜索用户名列表 inurl:admin inurl:userlist filetype:asp
+
+- 搜索用户信息泄露 filetype:rdp rdp
+
+- 搜索密码 inurl:lilo.conf filetype:conf password -tatercounter2000 -bootpwd -man
+
+- 搜索个人信用卡号，社会安全号码，个人财务数据，常见聊天软件文件等等
+</code></pre>
+
+<h4 id="其他技巧">其他技巧</h4>
+
+<ul>
+<li><p>部分搜索时，需要去除类似test, example, sample等明显的测试数据，可以 -test 这样去掉。</p></li>
+
+<li><p>可以加上 site:xxxoo.com 来限制对指定站点的搜索</p></li>
+
+<li><p>可以针对关键字，找到对应的其他语言来进行搜索，例如password的德语是&rdquo;Kennwort&rdquo;, 法语是&rdquo;mot de passe&rdquo;，葡萄牙语是&rdquo;senha&rdquo;等等</p></li>
+
+<li><p>通常建议，在批量自动化搜索后，可以通过正则表达式等编码手解析段排除掉不正确的站点。</p></li>
+</ul>
+
+<h2 id="授之以渔">授之以渔</h2>
+
+<p>上面的Hacking关键词数千个之多，下面是推荐的资料库</p>
+
+<p><a href="https://www.exploit-db.com/google-hacking-database">Google hacking database</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E9%BB%91%E5%AE%A2/">黑客</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/" data-tooltip="对KIRA君的站点渗透尝试">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E5%8D%8A%E6%9C%88%E8%AE%B020191018_20191031/" data-tooltip="半月记20191018_20191031">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/" data-tooltip="对KIRA君的站点渗透尝试">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2019/11/%E5%8D%8A%E6%9C%88%E8%AE%B020191018_20191031/" data-tooltip="半月记20191018_20191031">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2019%2F11%2F%25E8%25AF%25BB%25E4%25B9%25A6%25E7%25AC%2594%25E8%25AE%25B0google-hacking%25E6%258A%2580%25E6%259C%25AF%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2019\/11\/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF\/';
+          
+            this.page.identifier = '\/2019\/11\/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

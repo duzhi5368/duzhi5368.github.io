@@ -1,27 +1,310 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on Fafo4games</title>
-    <link>https://fafo4games.com/categories/</link>
-    <description>Recent content in Categories on Fafo4games</description>
+    <title>Categories on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/</link>
+    <description>Recent content in Categories on The lost island</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jun 2022 11:10:36 +0800</lastBuildDate><atom:link href="https://fafo4games.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 08 Apr 2003 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
-      <title>Blog</title>
-      <link>https://fafo4games.com/categories/blog/</link>
-      <pubDate>Sat, 18 Jun 2022 11:10:36 +0800</pubDate>
+      <title>2003</title>
+      <link>https://duzhi5368.github.io/categories/2003/</link>
+      <pubDate>Tue, 08 Apr 2003 00:00:00 +0000</pubDate>
       
-      <guid>https://fafo4games.com/categories/blog/</guid>
+      <guid>https://duzhi5368.github.io/categories/2003/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>News</title>
-      <link>https://fafo4games.com/categories/news/</link>
-      <pubDate>Wed, 18 May 2022 11:10:36 +0800</pubDate>
+      <title>2004</title>
+      <link>https://duzhi5368.github.io/categories/2004/</link>
+      <pubDate>Fri, 01 Oct 2004 00:00:00 +0000</pubDate>
       
-      <guid>https://fafo4games.com/categories/news/</guid>
+      <guid>https://duzhi5368.github.io/categories/2004/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2006</title>
+      <link>https://duzhi5368.github.io/categories/2006/</link>
+      <pubDate>Sat, 30 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2006/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2006年之前</title>
+      <link>https://duzhi5368.github.io/categories/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</link>
+      <pubDate>Sun, 01 Jan 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2007</title>
+      <link>https://duzhi5368.github.io/categories/2007/</link>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2007/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2009</title>
+      <link>https://duzhi5368.github.io/categories/2009/</link>
+      <pubDate>Thu, 02 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2009/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2017</title>
+      <link>https://duzhi5368.github.io/categories/2017/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2017/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2018</title>
+      <link>https://duzhi5368.github.io/categories/2018/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2018/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2019</title>
+      <link>https://duzhi5368.github.io/categories/2019/</link>
+      <pubDate>Tue, 31 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2019/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2020</title>
+      <link>https://duzhi5368.github.io/categories/2020/</link>
+      <pubDate>Sun, 13 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2020/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2021</title>
+      <link>https://duzhi5368.github.io/categories/2021/</link>
+      <pubDate>Mon, 05 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2021/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2023</title>
+      <link>https://duzhi5368.github.io/categories/2023/</link>
+      <pubDate>Sun, 26 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2023/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2024</title>
+      <link>https://duzhi5368.github.io/categories/2024/</link>
+      <pubDate>Mon, 30 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/2024/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>其他资料</title>
+      <link>https://duzhi5368.github.io/categories/%E5%85%B6%E4%BB%96%E8%B5%84%E6%96%99/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%85%B6%E4%BB%96%E8%B5%84%E6%96%99/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>动漫</title>
+      <link>https://duzhi5368.github.io/categories/%E5%8A%A8%E6%BC%AB/</link>
+      <pubDate>Thu, 19 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%8A%A8%E6%BC%AB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>回忆</title>
+      <link>https://duzhi5368.github.io/categories/%E5%9B%9E%E5%BF%86/</link>
+      <pubDate>Sun, 28 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%9B%9E%E5%BF%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图形学</title>
+      <link>https://duzhi5368.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</link>
+      <pubDate>Thu, 22 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据</title>
+      <link>https://duzhi5368.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</link>
+      <pubDate>Sat, 29 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>心情感悟</title>
+      <link>https://duzhi5368.github.io/categories/%E5%BF%83%E6%83%85%E6%84%9F%E6%82%9F/</link>
+      <pubDate>Mon, 31 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E5%BF%83%E6%83%85%E6%84%9F%E6%82%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>意见看法</title>
+      <link>https://duzhi5368.github.io/categories/%E6%84%8F%E8%A7%81%E7%9C%8B%E6%B3%95/</link>
+      <pubDate>Fri, 13 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%84%8F%E8%A7%81%E7%9C%8B%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文学</title>
+      <link>https://duzhi5368.github.io/categories/%E6%96%87%E5%AD%A6/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%96%87%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>旅行</title>
+      <link>https://duzhi5368.github.io/categories/%E6%97%85%E8%A1%8C/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%97%85%E8%A1%8C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日记</title>
+      <link>https://duzhi5368.github.io/categories/%E6%97%A5%E8%AE%B0/</link>
+      <pubDate>Mon, 30 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%97%A5%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏</title>
+      <link>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F/</link>
+      <pubDate>Tue, 29 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏开发</title>
+      <link>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏行业</title>
+      <link>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/</link>
+      <pubDate>Fri, 13 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>社会时政</title>
+      <link>https://duzhi5368.github.io/categories/%E7%A4%BE%E4%BC%9A%E6%97%B6%E6%94%BF/</link>
+      <pubDate>Sat, 30 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E7%A4%BE%E4%BC%9A%E6%97%B6%E6%94%BF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>程序</title>
+      <link>https://duzhi5368.github.io/categories/%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Thu, 28 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E7%A8%8B%E5%BA%8F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网页技术</title>
+      <link>https://duzhi5368.github.io/categories/%E7%BD%91%E9%A1%B5%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E7%BD%91%E9%A1%B5%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>美术</title>
+      <link>https://duzhi5368.github.io/categories/%E7%BE%8E%E6%9C%AF/</link>
+      <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E7%BE%8E%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>航海</title>
+      <link>https://duzhi5368.github.io/categories/%E8%88%AA%E6%B5%B7/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E8%88%AA%E6%B5%B7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>计划</title>
+      <link>https://duzhi5368.github.io/categories/%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E8%AE%A1%E5%88%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>黑客</title>
+      <link>https://duzhi5368.github.io/categories/%E9%BB%91%E5%AE%A2/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/categories/%E9%BB%91%E5%AE%A2/</guid>
       <description></description>
     </item>
     
