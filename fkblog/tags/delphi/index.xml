@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Delphi on The lost island</title>
+    <link>https://fafo4games.com/tags/delphi/</link>
+    <description>Recent content in Delphi on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 14 Feb 2007 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fafo4games.com/tags/delphi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Delphi复习（一）IDE与基础知识</title>
+      <link>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;p&gt;本人下载使用的是CSDN中的Delphi7企业版，其注册号为：6AMD-PDJ686-APME9D-9CDR Key为：YVX-27C
+运行环境为WindowsXP Pro SP2&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（三）ObjectPascal数据类型下</title>
+      <link>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</guid>
+      <description>&lt;h3 id=&#34;二-字符串类型string&#34;&gt;二：字符串类型String&lt;/h3&gt;
+
+&lt;p&gt;在OP中，我们通常是使用单引号来括住字符串的，如&amp;rsquo;Duzhi is a TianCai!&amp;lsquo;，注意，非双引号。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（二）ObjectPascal数据类型上</title>
+      <link>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%8Cobjectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A/</guid>
+      <description>&lt;p&gt;Delphi是基于ObjectPascal语言设计的，而ObjectPascal语言又是基于Pascal语言发展起来的，它拥有语法结构严谨，编译代码效率高等优点。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（五）ObjectPascal面向对象</title>
+      <link>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%BA%94objectpascal%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</guid>
+      <description>&lt;p&gt;Delphi的特性还记得么？其中一条就是，既支持面向过程的编程，又支持面向对象OOP的编程，虽然我们完全可以在不了解OOP语言特性的情况下编写Delphi程序，但是我们只有充分理解这种特性后才能更充分的了解Delphi编程环境。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（四）ObjectPascal语句，过程和函数</title>
+      <link>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/delphi%E5%A4%8D%E4%B9%A0%E5%9B%9Bobjectpascal%E8%AF%AD%E5%8F%A5%E8%BF%87%E7%A8%8B%E5%92%8C%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;在程序语言的学习中，数据类型之后的就是语句学习了，我们用语句关键字和操作指令来控制程序。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

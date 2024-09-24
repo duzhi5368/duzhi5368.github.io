@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C&#43;&#43; on The lost island</title>
+    <link>https://fafo4games.com/tags/c&#43;&#43;/</link>
+    <description>Recent content in C&#43;&#43; on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fafo4games.com/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rust&amp;Go&amp;C&#43;&#43;比较</title>
+      <link>https://fafo4games.com/2019/05/rustgoc--%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/05/rustgoc--%E6%AF%94%E8%BE%83/</guid>
+      <description>&lt;p&gt;最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以计划好好学一下golang。&lt;/p&gt;
+
+&lt;p&gt;期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。&lt;/p&gt;
+
+&lt;p&gt;而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。&lt;/p&gt;
+
+&lt;p&gt;这里记录下Go, C++, Rust的一些初步了解，以供自己参考。&lt;/p&gt;
+
+&lt;p&gt;没错，我打算以后用Rust开发游戏客户端，Web的话就TS。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BCB中C与Lua互相函数变量调用代码</title>
+      <link>https://fafo4games.com/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/05/bcb%E4%B8%ADc%E4%B8%8Elua%E4%BA%92%E7%9B%B8%E5%87%BD%E6%95%B0%E5%8F%98%E9%87%8F%E8%B0%83%E7%94%A8%E4%BB%A3%E7%A0%81/</guid>
+      <description>&lt;p&gt;BCB中C与Lua互相函数变量调用代码&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>STL入门</title>
+      <link>https://fafo4games.com/2007/04/stl%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Thu, 19 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/04/stl%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;C++标准函数库中80%是STL，其中广泛使用了泛性编程思想.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>typedef精解偶得</title>
+      <link>https://fafo4games.com/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/03/typedef%E7%B2%BE%E8%A7%A3%E5%81%B6%E5%BE%97/</guid>
+      <description>&lt;h3 id=&#34;typedef声明指针陷阱&#34;&gt;typedef声明指针陷阱&lt;/h3&gt;
+
+&lt;p&gt;我们使用typedef可以加强代码的健壮性，例如象下面这样隐藏指针语法：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>汇编角度来分析C&#43;&#43;优化</title>
+      <link>https://fafo4games.com/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Sat, 24 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/03/%E6%B1%87%E7%BC%96%E8%A7%92%E5%BA%A6%E6%9D%A5%E5%88%86%E6%9E%90c--%E4%BC%98%E5%8C%96/</guid>
+      <description>&lt;p&gt;以前学过一阵子汇编，后来又忘记了不少，最近翻起来，又发现在C++层其实有很多可以编程习惯，可以根据汇编原理进行优化。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>经典考题C-C&#43;&#43;基本概念</title>
+      <link>https://fafo4games.com/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Sun, 04 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/02/%E7%BB%8F%E5%85%B8%E8%80%83%E9%A2%98c-c--%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;p&gt;该系列都是以考题的模式进行的，希望大家先别看答案，自己做答，再核对下分析，记录下自己的不足。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>专题复习：内存</title>
+      <link>https://fafo4games.com/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E5%86%85%E5%AD%98/</link>
+      <pubDate>Sat, 27 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0%E5%86%85%E5%AD%98/</guid>
+      <description>&lt;p&gt;要说C语言最优秀最方便的东西是什么，我想是指针，要说C语言入门最难的是什么，我想还是指针.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;相关书籍下载地址</title>
+      <link>https://fafo4games.com/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;vc++技术内幕第四版 (潘爱民)
+&lt;a href=&#34;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&#34;&gt;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C++经典对话系列
+中文：&lt;a href=&#34;http://www.jka77.com/book/cvst_cn.chm&#34;&gt;http://www.jka77.com/book/cvst_cn.chm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VC文件扩展名大全</title>
+      <link>https://fafo4games.com/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</guid>
+      <description>&lt;p&gt;.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。&lt;/p&gt;
+
+&lt;p&gt;.BMP：位图资源文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>给C&#43;&#43;初学者的50个忠告</title>
+      <link>https://fafo4games.com/2006/01/%E7%BB%99c--%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%8450%E4%B8%AA%E5%BF%A0%E5%91%8A/</link>
+      <pubDate>Sun, 01 Jan 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/01/%E7%BB%99c--%E5%88%9D%E5%AD%A6%E8%80%85%E7%9A%8450%E4%B8%AA%E5%BF%A0%E5%91%8A/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;同时，也是给自己的忠告! 　&lt;/strong&gt;　&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;把C++当成一门新的语言学习（和C没啥关系！真的。）；
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

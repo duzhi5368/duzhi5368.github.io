@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on The lost island</title>
+    <link>https://fafo4games.com/tags/rust/</link>
+    <description>Recent content in Rust on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 29 May 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fafo4games.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rust&amp;Go&amp;C&#43;&#43;比较</title>
+      <link>https://fafo4games.com/2019/05/rustgoc--%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Wed, 29 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/05/rustgoc--%E6%AF%94%E8%BE%83/</guid>
+      <description>&lt;p&gt;最近在用Golang做了一个中型项目开发，从零搭建，所以学到很多，加上之前私下做的俩golang项目和在公司做的三四个golang项目，我也算是用golang做了不少小玩意儿了。所以计划好好学一下golang。&lt;/p&gt;
+
+&lt;p&gt;期间接触了一点python，但如之前用flask那次一样，死活没爱。而WEB前端这块我还在犹豫到底是学JS ES6，7呢还是TS，加上最近工作和它有点远，还是暂时挂起。&lt;/p&gt;
+
+&lt;p&gt;而最近发现一个更好玩的语言，Rust，简直令我沉迷，连Go都快被我抛弃了~哈哈。&lt;/p&gt;
+
+&lt;p&gt;这里记录下Go, C++, Rust的一些初步了解，以供自己参考。&lt;/p&gt;
+
+&lt;p&gt;没错，我打算以后用Rust开发游戏客户端，Web的话就TS。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
