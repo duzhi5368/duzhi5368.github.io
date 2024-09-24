@@ -1,0 +1,943 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>游戏策划新手看</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://fafo4games.com/favicon.png">
+    
+
+    
+    <meta name="description" content="先说几句跑题话，刚随着小佳和老佳 的友情链接，跑去韩寒博客和徐静蕾的博客里逛了几圈回来，发现挺无聊的，我果然是个流行绝缘体，跑去找找游戏策划的资料，一搜索发现了不得，密密麻麻几十页，之后未再详细查证，随意挑选了几篇看看，可谓是失望透顶
+
+">
+    <meta property="og:description" content="先说几句跑题话，刚随着小佳和老佳 的友情链接，跑去韩寒博客和徐静蕾的博客里逛了几圈回来，发现挺无聊的，我果然是个流行绝缘体，跑去找找游戏策划的资料，一搜索发现了不得，密密麻麻几十页，之后未再详细查证，随意挑选了几篇看看，可谓是失望透顶
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="游戏策划新手看">
+    <meta property="og:url" content="/2006/07/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="先说几句跑题话，刚随着小佳和老佳 的友情链接，跑去韩寒博客和徐静蕾的博客里逛了几圈回来，发现挺无聊的，我果然是个流行绝缘体，跑去找找游戏策划的资料，一搜索发现了不得，密密麻麻几十页，之后未再详细查证，随意挑选了几篇看看，可谓是失望透顶
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://fafo4games.com/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://fafo4games.com/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://fafo4games.com/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/freeknight/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      游戏策划新手看
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2006-07-18T00:00:00Z">
+        
+  七月 18, 2006
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e5%85%b6%e4%bb%96%e8%b5%84%e6%96%99">其他资料</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/2006">2006</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>先说几句跑题话，刚随着小佳和老佳 的友情链接，跑去韩寒博客和徐静蕾的博客里逛了几圈回来，发现挺无聊的，我果然是个流行绝缘体，跑去找找游戏策划的资料，一搜索发现了不得，密密麻麻几十页，之后未再详细查证，随意挑选了几篇看看，可谓是失望透顶</p>
+
+<p></p>
+
+<p>……基本都是些游戏爱好者咨询文字，没有什么可吸纳的经验之谈。如何从事游戏策划，游戏策划需要哪些技能能力，基本是最大的两个问题，这里我以个人理解回答一下，以便了解好了。</p>
+
+<p>###对人生，世界的洞察能力</p>
+
+<p>这里想问一下，各位喜欢什么游戏？假如是RPG，你可能扮演的是一个救世英雄，假如是RTS，你可能扮演的一国君王，指挥小兵发展经济，出兵战斗，假如是SLG，你可能会以一个父亲，餐厅经营者的身份出现……</p>
+
+<p>不论是正义的化身，还是邪恶的代表，一个成功的作品在给你安排角色的时候，一定会让你在踌躇满志，在你的欲望得到满足的时候，忘记掏腰包的烦恼。</p>
+
+<p>所以，首先你要明白人们需要什么，希望获得什么。</p>
+
+<p>###对市场的调研能力</p>
+
+<p>喜欢游戏朋友可能会被其中的剧情打动，可能会对其中精美的画面迷恋，所以很多喜欢玩游戏的朋友准备转行于游戏开发事业时，很容易忘记游戏也是一个商品这一定义。出一款游戏的直接目的和最终目的都是为了为公司赚钱，这是永远都不许忘记的。为了更好的服务大众？笑话，您不如加入学雷锋社团。</p>
+
+<p>因此，一个策划必须保证自己的作品能卖出去能赚到钱，否则就很难有再做策划的机会，因为一个游戏作品的开销足以轻松的使国内的一个制作组走上绝路。</p>
+
+<p>由于游戏产品的时效性问题（制作周期长，销售周期短），策划在决定做一个方案前一定要进行深入的调查研究，并对得到的信息资料进行分析和判断，以确保产品有足够的市场。</p>
+
+<p>###对系统工程的操作能力</p>
+
+<p>一个游戏的开发并不是设定几个数字，想几个道具，编写一段故事这么简单。在你最开始的立项报告书中甚至可以完全不提这些游戏元素，但是市场调研、确定方案、制作、测试、发售、售后服务几个大的步骤，广告宣传、信息反馈、资源获取、技术进步多个体系你却不可省去，如何去正确有组织的调配好各部分之间的关系？如何去获得更好的销售渠道？等这些都是游戏策划必须去考虑的事，所以一个优秀的游戏策划必须拥有一些公关，营销方面的知识。</p>
+
+<p>###对程序、美术、音乐的鉴赏能力</p>
+
+<p>这里只是说鉴赏能力，并不是要求你很深入的学习，那是程序和美工的事情。</p>
+
+<p>简单来说，你不需要懂得如何去编写一段碰撞的C语言程序，甚至连看懂也不需要。但是你必须清楚碰撞这个构思是否可行，会不会出现问题，是否可靠，制作起来需要多长时间等这些要素也会令你足够的头疼。</p>
+
+<p>美术方面，我不要求你看得懂毕加索的鸽子，郑板桥的竹子和徐悲鸿的马，但是，你必须看的明白美术人员制作出来的图和你的设计理念是否一致，问题出现在哪个地方？音效也是如此，是古典的？流行的？紧张的？缓慢的？欢快的？忧郁的？使用什么乐器表达比较适当？是否占用空间过大？使用什么格式比较好？是否可以重复利用？等等都策划必须想到并且表达出来的事。</p>
+
+<p>###对游戏作品的分析能力</p>
+
+<p>想独断的制作一款完全颠覆以往游戏理念的游戏，恐怕是中国很多游戏玩家的梦想，经常见到某某说自己设计的游戏如何如何新颖，结果拿来一看，还是东拼西凑而成。游戏本身就是借鉴他人的长处而产生，这就是它山之石，可以攻玉。这里我并不是支持大家一味照搬，真正的拿来主义精华就在于拿来别人的长处，加以升华获得自己的特色。别人一个游戏很成功，成功在哪儿？失败的游戏失败点又在哪儿，我们都需要详细的去分析去整理。游戏策划不是游戏玩家，觉得游戏不好了就不玩，作为策划，看到自己最没兴趣的最垃圾的游戏也必须去玩，去发现普通玩家不认真发现的地方&mdash;游戏的结构如何，数据是否严谨？</p>
+
+<p>通常一款值得研究的游戏玩个十几遍是很正常的，直到你看到它就想吐，你就成功了一半。</p>
+
+<p>###文字、语言的表达能力</p>
+
+<p>也曾见到过一些朋友的所谓的策划案，洋洋洒洒十来页，一半是道具，一半是剧情……我只能说，这东西交上去肯定100%丢废纸箱里。因为你们不知道策划文档是最什么用的。这里我来说下。</p>
+
+<p>当游戏策划者有一个构思之后，首先是创意说明书，说明游戏的特点，大体构架，风格。接着立项报告，里面要有基本的运营方案和利益分析等，争取别人的投资。接着就是策划文挡。</p>
+
+<p>策划文档首先是给程序和美工看的，当然其他运营人员也必须看，例如如何去宣传？游戏的特点？画面？针对的用户群？等等。既然是给别人看的，那么你必须把自己的想法全部条理清晰的告诉大家。</p>
+
+<p>这里单就一个游戏CG来说，如何让美术设计人员既理解你的意图，又发挥他的想象力，恐怕是一件很费口舌的事情。你告诉他，我做个俩人对打的场面，气势要恢弘，这样不同的美工可能做出的CG截然不同，你没有足够的时间，精力和资金让他们做出海量再进行挑选，所以你脑子中必须构架出一系列画面，并且用文字表达的很清楚，所以你有必要去学习一下摄影相关知识，什么时候镜头拉近，什么时候特写，什么时候反转180度，什么时候使用淡入淡出？持续几秒？场景的角色都是谁？这些都是策划要表达出来的，当然时候可行也必须想好，假如想表示场面恢弘，你就说要在这画面里出现一万个风格不同的士兵，估计美工还没来的及骂死你的时候你已经被开除了。</p>
+
+<p>如何去完整的，条理的表达出自己的构思，是策划最重要的一点。</p>
+
+<p>附加说一点：一般一个中型单机游戏策划文档约10万字，别拿着几千字的元素表当宝。</p>
+
+<p>###部门之间的协调能力</p>
+
+<p>一个游戏的制作主要有策划、美术、音乐、程序几个大的部门，到后期还有测试、营销等部门的参与。这些部门工作性质各不相同，相互之间既有同一性又有矛盾性。如何让各部门既能服从整体规划又有一定的灵活性以发挥各自的能动性，这就需要策划具有比较强的协调能力。各部分有不理解的部分了，找谁？找自己部分的老大，XX总监，XX总监也不清楚了找谁？找主策划。如何去协调各部分之间的关系是策划很大的头疼问题。</p>
+
+<p>假使一个问题出现了，美工说这个跳跃动作是由于程序实现不了，所以美工才加了这么大量的工作去做跳跃的分组图，这时你该怎么办。过一会程序抱怨说，因为美工做不出这个流星的效果，才导致程序要来实现流星滑过的动态结构，你又该怎么办？</p>
+
+<p>万一矛盾发生，在处理这类矛盾时，既要公正无私，又要照顾情面。你如何做出最好的判断和调解？</p>
+
+<p>###天马行空的思维能力</p>
+
+<p>一个发散型的思维是策划必须的。你设计一款游戏，有许多玩家在玩，相当于你一个人或者你们制作团队几个人在和大批的玩家在斗智，如何想到他们想不到的，如何给他们更多的惊喜，这是你必须考虑的。总之一句话，别人能想到的，你必须能想到；别人想不到的，你也尽可能的想到。所以，这里很要求你多方面知识的积累。</p>
+
+<p>###常用软件的使用能力</p>
+
+<p>这个是最废话的，也是最好学习见成果的。这里要说明的是，除了策划本身需要懂得的软件使用以外，程序和美工的软件你也应该有个清楚的了解。</p>
+
+<p>##下面是推荐的一些策划必须了解软件</p>
+
+<ol>
+<li>Microsoft Office系列软件：含Word、Excel、Visio、PowerPoint</li>
+<li>Adobe软件：Photoshop</li>
+</ol>
+
+<p>其它有必要学习的技能</p>
+
+<ul>
+<li>程序相关语言：C++（选修汇编，选学习软件VC，网络游戏必懂）JAVA（手机游戏必懂，在J2ME平台上）</li>
+<li>美术相关软件：3DMAX（选学习软件maya）</li>
+<li>高等软件掌握能力（指能迅速上手使用各类软件）</li>
+</ul>
+
+<p>###推荐书籍</p>
+
+<ul>
+<li><p>神话类书籍：《中国神话传说词典》（袁珂编）、《山海经》、《神仙传》</p></li>
+
+<li><p>历史类书籍：《史纪》、《三国志》、《中国人史纲》（柏杨著）（选读《中国上下五千年》、《世界上下五千年》）</p></li>
+
+<li><p>文学类书籍：《西游记》、《三国演义》、《水浒传》、《封神演义》、《说唐》（选读《红楼梦》）</p></li>
+
+<li><p>武侠类书籍：金庸全集；古龙《陆小凤》、《楚留香传奇》、《武林外史》、《绝代双骄》；温瑞安《四大名捕》系列</p></li>
+
+<li><p>奇幻类书籍：龙枪编年史</p></li>
+
+<li><p>科幻类书籍：儒勒·凡尔纳三步曲《海底两万里》、《神秘岛》、《格兰特船长的儿女》（选读倪匡《卫斯理》系列）</p></li>
+</ul>
+
+<p>###推荐电影、动漫</p>
+
+<ul>
+<li>教父系列，魔戒系列，斯皮尔伯格的电影</li>
+<li>幽游白书</li>
+<li>COWBOY-BEBOP（太空牛仔）</li>
+<li>剑风传奇</li>
+<li>龙珠</li>
+<li>JOJO奇妙冒险</li>
+<li>机动战士高达（几个剧场版）</li>
+<li>足球小将</li>
+<li>花之庆次</li>
+<li>孔雀王</li>
+<li>福星小子</li>
+</ul>
+
+<p>电影和动漫尽可能的多看，在不影响学习和工作的前提条件下，之后尽量对其构架规则进行记录分析。</p>
+
+<p>###游戏设计方面的书籍</p>
+
+<p>《游戏软件设计与开发大揭秘》</p>
+
+<p>　　美：Marc Saltzman著
+　　何健辉 应光光 陈志远等译
+　　清华大学出版社
+　　价：42.00￥</p>
+
+<p>《游戏设计——原理与实践》</p>
+
+<p>　　美：Richard Rouse III
+　　尤晓东 等译
+　　电子工业出版社
+　　价：48.00￥</p>
+
+<p>《游戏的设计与开发——梦开始的地方》</p>
+
+<p>　　叶展 叶丁编著
+　　人民交通出版社
+　　航空工业出版社
+　　价：50.00￥</p>
+
+<p>《游戏设计概论》</p>
+
+<p>　　荣钦科技 编著
+　　北京科海电子出版社
+　　价：36.00元</p>
+
+<p>这四本中，对于专业游戏设计师来说，可以用来补补课，对于自己哪些还不门儿清的地方有个了解。对于新手上路，或者立志入行的朋友，推荐先看叶氏兄弟的《游戏的设计与开发——梦开始的地方》，进阶书籍为《游戏设计——原理与实践》、《游戏设计概论》，参考书目《游戏软件设计与开发大揭秘》</p>
+
+<p>《软件开发的创新思维》</p>
+
+<p>　　　　美：Alan Cooper
+　　　　刘瑞挺 刘强 程岩等译
+　　　　电子工业出版社
+　　　　价：30.00￥</p>
+
+<p>对大多数软件开发皆有用的书，强烈推荐看一下，是针对软件而言，包括对界面、软件操作等内容做了非常直感的分析，尤其对用户的分析，完全可以适用于网络游戏软件。</p>
+
+<p>###项目管理书籍</p>
+
+<p>　　　　《人月神话》
+　　　　美：Frederick P. brooks Jr. 著
+　　　　UML China翻译组 汪颖 译
+　　　　清华大学出版社
+　　　　价：29.80￥</p>
+
+<p>　　　　《人件》
+　　　　美：Tom Demarco &amp; Timothy lister著
+　　　　UML China 译
+　　　　清华大学出版社
+　　　　价：29.80￥
+上面这两本书，是朋友大鲵推荐的，看了一下果然受益匪浅，主要是教你如果在IT公司管理产品项目，第二本是针对IT公司产品项目开发团队的管理和带动。偶多次提到这两本书的好处，咳，这次就不说了。</p>
+
+<p>###其它书籍</p>
+
+<p>《电影剧作概论》</p>
+
+<p>　　　　汪流（主编） 王迪 黄式宪 刘一兵 柳城 著
+　　　　中国电影出版社
+　　　　价：24.80￥</p>
+
+<p>《现代电影剧作艺术论》</p>
+
+<p>　　　　王迪 著
+　　　　中国电影出版社
+　　　　价：11.60￥</p>
+
+<p>《电影剧作教程》</p>
+
+<p>　　　　刘立滨 主编
+　　　　何可可 李波 著
+　　　　中国电影出版社
+　　　　价：22.00￥</p>
+
+<p>《电视策划与撰稿》</p>
+
+<p>　　　　许永 著
+　　　　中国广播电视出版社
+　　　　价：18.00￥</p>
+
+<p>《电视戏曲论纲》</p>
+
+<p>　　　　杨燕 著
+　　　　中国广播电视出版社
+　　　　价：17.00￥</p>
+
+<hr />
+
+<p>以上五本，前两本推荐，咳，后三本看了肯定能学到东西，不看也无伤大碍，自己判断值不值吧。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/07/%E5%B8%B8%E8%A7%81%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3%E7%AE%80%E7%A7%B0%E9%80%9F%E6%9F%A5/" data-tooltip="常见游戏相关简称速查">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/07/%E9%80%9B%E9%9F%A9%E5%AF%92%E5%8D%9A%E5%AE%A2%E5%BD%92%E6%9D%A5/" data-tooltip="逛韩寒博客归来">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/07/%E5%B8%B8%E8%A7%81%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3%E7%AE%80%E7%A7%B0%E9%80%9F%E6%9F%A5/" data-tooltip="常见游戏相关简称速查">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/07/%E9%80%9B%E9%9F%A9%E5%AF%92%E5%8D%9A%E5%AE%A2%E5%BD%92%E6%9D%A5/" data-tooltip="逛韩寒博客归来">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Ffafo4games.com%2F2006%2F07%2F%25E6%25B8%25B8%25E6%2588%258F%25E7%25AD%2596%25E5%2588%2592%25E6%2596%25B0%25E6%2589%258B%25E7%259C%258B%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://fafo4games.com/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://fafo4games.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/fafo4games.com\/2006\/07\/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B\/';
+          
+            this.page.identifier = '\/2006\/07\/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2006 on The lost island</title>
+    <link>https://fafo4games.com/categories/2006/</link>
+    <description>Recent content in 2006 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 30 Dec 2006 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fafo4games.com/categories/2006/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>06_12_30_11:05AM老萨在巴格达被执行绞刑</title>
+      <link>https://fafo4games.com/2006/12/06_12_30_1105am%E8%80%81%E8%90%A8%E5%9C%A8%E5%B7%B4%E6%A0%BC%E8%BE%BE%E8%A2%AB%E6%89%A7%E8%A1%8C%E7%BB%9E%E5%88%91/</link>
+      <pubDate>Sat, 30 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/06_12_30_1105am%E8%80%81%E8%90%A8%E5%9C%A8%E5%B7%B4%E6%A0%BC%E8%BE%BE%E8%A2%AB%E6%89%A7%E8%A1%8C%E7%BB%9E%E5%88%91/</guid>
+      <description>&lt;p&gt;在距离07年还有40余小时时,枭雄萨达姆停止了他的历史足迹.对此,我只发表四个字的看法:无奈啊,&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;成王败寇.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(七)Windows的GDI组件(下)</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%83windows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%8B/</link>
+      <pubDate>Fri, 29 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%83windows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%8B/</guid>
+      <description>&lt;p&gt;直接正文了.&lt;/p&gt;
+
+&lt;p&gt;我们之前介绍过是用WIN GUI进行简单图象的绘制,画基本的点,线,面以及笔刷,画笔的设置,而实际上,我们知道游戏中很少会让程序员使用画笔去自行绘制,多是美工制作好的位图,我们拿来进行游戏的制作,今天我们就位图的显示进行说明.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>喧嚣网络,我独逍遥</title>
+      <link>https://fafo4games.com/2006/12/%E5%96%A7%E5%9A%A3%E7%BD%91%E7%BB%9C%E6%88%91%E7%8B%AC%E9%80%8D%E9%81%A5/</link>
+      <pubDate>Thu, 28 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E5%96%A7%E5%9A%A3%E7%BD%91%E7%BB%9C%E6%88%91%E7%8B%AC%E9%80%8D%E9%81%A5/</guid>
+      <description>&lt;p&gt;很久博客没有里没有随感型的日志了,越是专于编程,越觉得自己是一只可悲的井低之蛙,只能逼迫自己日夜忙于知识的积累学习,然而想不到的是,这居然帮助我逃过了一次又一次无聊的网络事件.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(六)Windows的GDI组件(中)</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%85%ADwindows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%AD/</link>
+      <pubDate>Wed, 27 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%85%ADwindows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%AD/</guid>
+      <description>&lt;p&gt;恩,继续.&lt;/p&gt;
+
+&lt;p&gt;前天我们说到了使用GDI函数进行绘制图形,已经说完了点和线,今天将其补完.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转帖]熟练编程人员和新手的差距在哪儿</title>
+      <link>https://fafo4games.com/2006/12/%E8%BD%AC%E5%B8%96%E7%86%9F%E7%BB%83%E7%BC%96%E7%A8%8B%E4%BA%BA%E5%91%98%E5%92%8C%E6%96%B0%E6%89%8B%E7%9A%84%E5%B7%AE%E8%B7%9D%E5%9C%A8%E5%93%AA%E5%84%BF/</link>
+      <pubDate>Tue, 26 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E8%BD%AC%E5%B8%96%E7%86%9F%E7%BB%83%E7%BC%96%E7%A8%8B%E4%BA%BA%E5%91%98%E5%92%8C%E6%96%B0%E6%89%8B%E7%9A%84%E5%B7%AE%E8%B7%9D%E5%9C%A8%E5%93%AA%E5%84%BF/</guid>
+      <description>&lt;p&gt;熟练人员经过多年的积累加上自己的CodeSnip的总结，基本不用额外再查找资料。而一般的开发人员在开发过程中会花掉10-20%时间去查找资料。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(五)Windows的GDI组件(上)</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%94windows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%8A/</link>
+      <pubDate>Mon, 25 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%94windows%E7%9A%84gdi%E7%BB%84%E4%BB%B6%E4%B8%8A/</guid>
+      <description>&lt;p&gt;恩,加快时间复习,依旧不再废话&lt;/p&gt;
+
+&lt;p&gt;之前我们简单说明了Windows的基本消息机制,并且成功创建了一个空白的窗口,今天我们将简单介绍一下Windows的GDI.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(四)第一个Win32窗口</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%9B%9B%E7%AC%AC%E4%B8%80%E4%B8%AAwin32%E7%AA%97%E5%8F%A3/</link>
+      <pubDate>Mon, 25 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E5%9B%9B%E7%AC%AC%E4%B8%80%E4%B8%AAwin32%E7%AA%97%E5%8F%A3/</guid>
+      <description>&lt;p&gt;昨天我们说了WIN编程原本就是一个消息传递的过程,今天我们来制作第一个窗口&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(三)Windows消息机制</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%89windows%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Sun, 24 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%89windows%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/</guid>
+      <description>&lt;p&gt;相当伤心,本来写了很多的,结果这天杀的新浪&amp;hellip;只好重新写了,呼&lt;/p&gt;
+
+&lt;p&gt;刚才我们说了Windows编程的基础知识和名词解释,我们现在继续讲述WIN编程的消息机制.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(二)Windows编程基础概念</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8Cwindows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</link>
+      <pubDate>Sun, 24 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8Cwindows%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</guid>
+      <description>&lt;p&gt;终于可以继续D3D的相关复习了.呼,这将长期而辛苦~希望我们能够一同努力下去.切入正题&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(八)游戏界面和游戏操作</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AB%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2%E5%92%8C%E6%B8%B8%E6%88%8F%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 24 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AB%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2%E5%92%8C%E6%B8%B8%E6%88%8F%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;p&gt;继续终结最后一章,呼~: )做完了就去复习程序的东西了,写这个还是挺费时间的,虽然不知道是否有什么用处.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>写这些所谓的-教程-的目的和一些说明</title>
+      <link>https://fafo4games.com/2006/12/%E5%86%99%E8%BF%99%E4%BA%9B%E6%89%80%E8%B0%93%E7%9A%84-%E6%95%99%E7%A8%8B-%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Sat, 23 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E5%86%99%E8%BF%99%E4%BA%9B%E6%89%80%E8%B0%93%E7%9A%84-%E6%95%99%E7%A8%8B-%E7%9A%84%E7%9B%AE%E7%9A%84%E5%92%8C%E4%B8%80%E4%BA%9B%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;首先很高兴,我的这些凌杂东西能够得到一些朋友的认可.甚至有些朋友高抬我,让我考虑出书,我在此表示衷心的感谢,然而出书我是双手不赞成的.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(七)游戏关卡设计</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 23 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%83%E6%B8%B8%E6%88%8F%E5%85%B3%E5%8D%A1%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;依旧不废话,直接进行讲述.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(六)游戏AI设计</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AD%E6%B8%B8%E6%88%8Fai%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 23 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%85%AD%E6%B8%B8%E6%88%8Fai%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;昨日登陆66RPG论坛时发现了柳柳的公告,&amp;ldquo;论坛调整中&amp;rdquo;.而今天一看,确实做不小的改动,如果各位看了柳柳的调整公告会更明白些.我对公告内容没什么更多的评价,即使有也不可能在这帖中废话,然而它对我发帖毕竟带来了一大苦恼:由于论坛更换了服务器IP,现在登陆论坛非常缓慢,而且经常出现&amp;rdquo;该页无法显示&amp;rdquo;的错误信息.而正巧我这个人不爱在发帖前保存副本,呼,祈祷好运.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D游戏编程入门(一)前期准备开发环境篇</title>
+      <link>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%80%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%AF%87/</link>
+      <pubDate>Thu, 21 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%B8%80%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%AF%87/</guid>
+      <description>&lt;p&gt;在决定写3D游戏编程之前,我犹豫了很长一段时间&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>盘点2006,展望2007</title>
+      <link>https://fafo4games.com/2006/12/%E7%9B%98%E7%82%B92006%E5%B1%95%E6%9C%9B2007/</link>
+      <pubDate>Thu, 21 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%9B%98%E7%82%B92006%E5%B1%95%E6%9C%9B2007/</guid>
+      <description>&lt;p&gt;2006年虽然还有几天才会过去,而我已经迫不及待的开始整理自己的这一年,是的,依旧是那样的一个急性子,正如我深夜不睡也要赶完这篇博文一样,我担忧,这将影响我的一生.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(五)游戏规则和平衡设计</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%BA%94%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99%E5%92%8C%E5%B9%B3%E8%A1%A1%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 21 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%BA%94%E6%B8%B8%E6%88%8F%E8%A7%84%E5%88%99%E5%92%8C%E5%B9%B3%E8%A1%A1%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;呼,泡杯咖啡,继续写,还是那句老话:所有例子和观点均属个人意见.&lt;/p&gt;
+
+&lt;p&gt;在前面我们说了游戏元素的一堆东西,特别是属性特征是与玩家进行较强交互的部分,那么,如何去交互呢?这需要我们为游戏编写一套游戏规则.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(四)游戏元素设计</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%9B%9B%E6%B8%B8%E6%88%8F%E5%85%83%E7%B4%A0%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 21 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E5%9B%9B%E6%B8%B8%E6%88%8F%E5%85%83%E7%B4%A0%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;昨天太累了,翘班了在家里睡觉,帖子也没有继续下去,对此今天我将作出连发两帖的补偿.依旧是头晕晕无废话想说,继续直接正题.(PS:纯属于个人意见)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(三)游戏故事情节</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%89%E6%B8%B8%E6%88%8F%E6%95%85%E4%BA%8B%E6%83%85%E8%8A%82/</link>
+      <pubDate>Tue, 19 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%89%E6%B8%B8%E6%88%8F%E6%95%85%E4%BA%8B%E6%83%85%E8%8A%82/</guid>
+      <description>&lt;p&gt;最近事情比较多，我这里就不废话其他了，直接切入正题。呃,再补充一句,以下所有叙述,评论均属于个人意见.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(二)游戏特点和游戏创意</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%BA%8C%E6%B8%B8%E6%88%8F%E7%89%B9%E7%82%B9%E5%92%8C%E6%B8%B8%E6%88%8F%E5%88%9B%E6%84%8F/</link>
+      <pubDate>Tue, 19 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%BA%8C%E6%B8%B8%E6%88%8F%E7%89%B9%E7%82%B9%E5%92%8C%E6%B8%B8%E6%88%8F%E5%88%9B%E6%84%8F/</guid>
+      <description>&lt;p&gt;大家早.因为时间关系,今天我碎碎念的东西将会比较少一些.这里说句令人遗憾的话,不知是我的表达能力太差,抑或是曲高和寡的缘故,我的帖子遭到了最残忍的待遇,甚至连臭鸡蛋也没有得到一个,冷冷清清.这是令我比较丧气的事情.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-12-17</title>
+      <link>https://fafo4games.com/2006/12/%E6%97%A5%E8%AE%B02006-12-17/</link>
+      <pubDate>Sun, 17 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E6%97%A5%E8%AE%B02006-12-17/</guid>
+      <description>&lt;p&gt;近来又对RPG Maker有兴趣了,开始研究Ruby脚本语言,- -JAVA东西忘记的差不多了,要赶快抽点时间做个项目出来,不然肯定玩完.D3D真令人有大,一涉及内存分配我就郁闷,那么多的API还要去考虑算法,数据结构,内存处理的东西果然不是常人能学的.不过还是要继续,不然学个半调子的程序搞什么啊.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sun, 17 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3/</guid>
+      <description>&lt;p&gt;以往很少来66RPG,并非我不知道贵站,仅因为以前对RM认识不够.总偏大的认为这仅仅是一个编辑器,一个别人已经定好框架的游戏模版引擎,因此对其多少有些不屑一顾的错误定位,也很少光顾相关站点.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>碎碎念---策划文档(一)游戏名称&amp;游戏类型</title>
+      <link>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%80%E6%B8%B8%E6%88%8F%E5%90%8D%E7%A7%B0%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Sun, 17 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E7%A2%8E%E7%A2%8E%E5%BF%B5---%E7%AD%96%E5%88%92%E6%96%87%E6%A1%A3%E4%B8%80%E6%B8%B8%E6%88%8F%E5%90%8D%E7%A7%B0%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%9E%8B/</guid>
+      <description>&lt;p&gt;首先,请允许我道歉一件事,在上次帖子中我曾以较高的起点来要求大家来做策划文档,却忽视了&amp;rdquo;业余游戏爱好者之家&amp;rdquo;这一66RPG的宗旨,是我的问题.这个问题有朋友PM过我,对此我在这里对大家道歉.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-12-13</title>
+      <link>https://fafo4games.com/2006/12/%E6%97%A5%E8%AE%B02006-12-13/</link>
+      <pubDate>Wed, 13 Dec 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/12/%E6%97%A5%E8%AE%B02006-12-13/</guid>
+      <description>&lt;p&gt;好象程序员业内公认的是最博大精深的语言是C++,因为它的通用性极富吸引力,JAVA一结束就来努力功克它.可是还没个把月,上面停止了C++的学习支持,&amp;ldquo;去搞WIN32!&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;相关书籍下载地址</title>
+      <link>https://fafo4games.com/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/c--%E7%9B%B8%E5%85%B3%E4%B9%A6%E7%B1%8D%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;vc++技术内幕第四版 (潘爱民)
+&lt;a href=&#34;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&#34;&gt;ftp://210.32.157.56/课件/c++primer/vc++技术内幕IV(潘爱民).rar&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;C++经典对话系列
+中文：&lt;a href=&#34;http://www.jka77.com/book/cvst_cn.chm&#34;&gt;http://www.jka77.com/book/cvst_cn.chm&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VC文件扩展名大全</title>
+      <link>https://fafo4games.com/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/vc%E6%96%87%E4%BB%B6%E6%89%A9%E5%B1%95%E5%90%8D%E5%A4%A7%E5%85%A8/</guid>
+      <description>&lt;p&gt;.APS：存放二进制资源的中间文件，VC把当前资源文件转换成二进制格式，并存放在APS文件中，以加快资源装载速度。资源辅助文件。&lt;/p&gt;
+
+&lt;p&gt;.BMP：位图资源文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Windows运行命令行简介</title>
+      <link>https://fafo4games.com/2006/11/windows%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/windows%E8%BF%90%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AE%80%E4%BB%8B/</guid>
+      <description>&lt;p&gt;winver&amp;mdash;&amp;mdash;&amp;mdash;检查Windows版本&lt;/p&gt;
+
+&lt;p&gt;wmimgmt.msc&amp;mdash;-打开windows管理体系结构(WMI)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>つもりちがい十ヵ条</title>
+      <link>https://fafo4games.com/2006/11/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A1%E3%81%8C%E3%81%84%E5%8D%81%E3%83%B5%E6%9D%A1/</link>
+      <pubDate>Tue, 28 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E3%81%A4%E3%82%82%E3%82%8A%E3%81%A1%E3%81%8C%E3%81%84%E5%8D%81%E3%83%B5%E6%9D%A1/</guid>
+      <description>&lt;p&gt;たかいつもりで低いのが　　    教養きょうよう&lt;/p&gt;
+
+&lt;p&gt;低ひくいつもりで高いのが　　気位きぐらい&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-11-22</title>
+      <link>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-22/</link>
+      <pubDate>Wed, 22 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-22/</guid>
+      <description>&lt;p&gt;J2ME基本熟练达成,现转攻C++
+为持续复习J2ME,定下:每周周末坚持研究一段完整游戏代码,每两周坚持打出一个游戏代码.&lt;/p&gt;
+
+&lt;p&gt;其余时间努力C++
+根据暂时理解.C/C++/C*NET区别并不大,应该有可能三者通吃,所以,视情况考虑兼修另外两项.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-11-20</title>
+      <link>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-20/</link>
+      <pubDate>Mon, 20 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-20/</guid>
+      <description>&lt;p&gt;某志近来一直是提心吊胆的度过的。&lt;/p&gt;
+
+&lt;p&gt;事情原本是这样的，我们手机程序BOSS范madam下达了一个命令，自由分4人一小组，每组尽快提交一个手机游戏项目。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>又论&lt;君が望む永遠&gt;</title>
+      <link>https://fafo4games.com/2006/11/%E5%8F%88%E8%AE%BA%E5%90%9B%E3%81%8C%E6%9C%9B%E3%82%80%E6%B0%B8%E9%81%A0/</link>
+      <pubDate>Sun, 12 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E5%8F%88%E8%AE%BA%E5%90%9B%E3%81%8C%E6%9C%9B%E3%82%80%E6%B0%B8%E9%81%A0/</guid>
+      <description>&lt;p&gt;一年多前,第一次看这个动画,就深深的感动了我.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>喜欢沉默</title>
+      <link>https://fafo4games.com/2006/11/%E5%96%9C%E6%AC%A2%E6%B2%89%E9%BB%98/</link>
+      <pubDate>Sun, 12 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E5%96%9C%E6%AC%A2%E6%B2%89%E9%BB%98/</guid>
+      <description>&lt;p&gt;啊哈哈,收回刚才说出的话.果然我还是很敏感的,刚脱离代码的催眠,朋友留下的一个QQ消息就引起了我的思考.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>还是没累到</title>
+      <link>https://fafo4games.com/2006/11/%E8%BF%98%E6%98%AF%E6%B2%A1%E7%B4%AF%E5%88%B0/</link>
+      <pubDate>Sun, 12 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E8%BF%98%E6%98%AF%E6%B2%A1%E7%B4%AF%E5%88%B0/</guid>
+      <description>&lt;p&gt;平时总觉得自己想法太多,日记根本记不过来,所见所听时刻都能给人以所谓的&amp;rdquo;感悟&amp;rdquo;,心想自己一定是个特别特别敏感的家伙.近来几天,却发现自己可能是错了.一切多思的原因都因为&amp;mdash;&amp;ndash;还是太闲.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-11-05</title>
+      <link>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-05/</link>
+      <pubDate>Sun, 05 Nov 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/11/%E6%97%A5%E8%AE%B02006-11-05/</guid>
+      <description>&lt;p&gt;网虫果然是网虫,才10天没上网就心烦意乱起来,连吃饭都缺乏食欲,睡觉时候也总象少了些什么东西似的.恩,那就这样吧,以后娶个电脑做老婆得了,呵呵&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>解读阿斯兰·萨拉的26个关键字</title>
+      <link>https://fafo4games.com/2006/10/%E8%A7%A3%E8%AF%BB%E9%98%BF%E6%96%AF%E5%85%B0%E8%90%A8%E6%8B%89%E7%9A%8426%E4%B8%AA%E5%85%B3%E9%94%AE%E5%AD%97/</link>
+      <pubDate>Sun, 22 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E8%A7%A3%E8%AF%BB%E9%98%BF%E6%96%AF%E5%85%B0%E8%90%A8%E6%8B%89%E7%9A%8426%E4%B8%AA%E5%85%B3%E9%94%AE%E5%AD%97/</guid>
+      <description>&lt;p&gt;解读阿斯兰·萨拉的26个关键字&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何进入游戏行业成为一个程序员</title>
+      <link>https://fafo4games.com/2006/10/%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98/</link>
+      <pubDate>Fri, 20 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E7%A8%8B%E5%BA%8F%E5%91%98/</guid>
+      <description>&lt;p&gt;###“我想在电脑游戏行业里找到一个工作。”&lt;/p&gt;
+
+&lt;p&gt;对这个目标的标准答案通常会归结为“做一个游戏 DEMO”。这是否确切意味着什么呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>感谢世界,感激上苍</title>
+      <link>https://fafo4games.com/2006/10/%E6%84%9F%E8%B0%A2%E4%B8%96%E7%95%8C%E6%84%9F%E6%BF%80%E4%B8%8A%E8%8B%8D/</link>
+      <pubDate>Tue, 17 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E6%84%9F%E8%B0%A2%E4%B8%96%E7%95%8C%E6%84%9F%E6%BF%80%E4%B8%8A%E8%8B%8D/</guid>
+      <description>&lt;p&gt;4天前,我久违的回家了一次,变化和震动是很大的.&lt;/p&gt;
+
+&lt;p&gt;很多事情不合逻辑的发生了巨大的变化,我有点不好接受.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>一不小心点到道德经三十八章</title>
+      <link>https://fafo4games.com/2006/10/%E4%B8%80%E4%B8%8D%E5%B0%8F%E5%BF%83%E7%82%B9%E5%88%B0%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B8%89%E5%8D%81%E5%85%AB%E7%AB%A0/</link>
+      <pubDate>Mon, 09 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E4%B8%80%E4%B8%8D%E5%B0%8F%E5%BF%83%E7%82%B9%E5%88%B0%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B8%89%E5%8D%81%E5%85%AB%E7%AB%A0/</guid>
+      <description>&lt;p&gt;QQ被盗,无聊中,发现这个,就随便回味回味研究研究吧..&lt;/p&gt;
+
+&lt;p&gt;哎,忙了一天,QQ还被盗了,白折腾的策划文档.T T&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Eclipse快捷键指南大全</title>
+      <link>https://fafo4games.com/2006/10/eclipse%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Sun, 08 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/eclipse%E5%BF%AB%E6%8D%B7%E9%94%AE%E6%8C%87%E5%8D%97%E5%A4%A7%E5%85%A8/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;作用域        功能        快捷键&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;全局        查找并替换        Ctrl+F&lt;/p&gt;
+
+&lt;p&gt;文本编辑器        查找上一个        Ctrl+Shift+K&lt;/p&gt;
+
+&lt;p&gt;文本编辑器        查找下一个        Ctrl+K&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>像素画</title>
+      <link>https://fafo4games.com/2006/10/%E5%83%8F%E7%B4%A0%E7%94%BB/</link>
+      <pubDate>Sun, 08 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E5%83%8F%E7%B4%A0%E7%94%BB/</guid>
+      <description>&lt;p&gt;最近搞点手机游戏制作,像素美工奇缺人手,基本全是插话高手,看来走动漫原画的路是行不通了,路上抓到个人就会的技术能值钱吗.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-10-08</title>
+      <link>https://fafo4games.com/2006/10/%E6%97%A5%E8%AE%B02006-10-08/</link>
+      <pubDate>Sun, 08 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E6%97%A5%E8%AE%B02006-10-08/</guid>
+      <description>&lt;p&gt;马上又要开忙了.呼&lt;/p&gt;
+
+&lt;p&gt;整个10.1基本没有休息,代码代码还是代码,人晕晕沉沉有点厌烦的感觉了,是否厌倦了程序生活?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自警2:成功,近吗?</title>
+      <link>https://fafo4games.com/2006/10/%E8%87%AA%E8%AD%A62%E6%88%90%E5%8A%9F%E8%BF%91%E5%90%97/</link>
+      <pubDate>Fri, 06 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E8%87%AA%E8%AD%A62%E6%88%90%E5%8A%9F%E8%BF%91%E5%90%97/</guid>
+      <description>&lt;p&gt;最近1、2年不论是做pc游戏、网络游戏还是手机游戏的小组、工作室越来越多，业界曝光的收购、合并、吸纳事件层出不穷，这里还不包括暗箱操作、隐姓埋名的各种收购、重组。正因为这些花枝招展的事件，理想与利益结合的诱惑，目前国内的小组、工作室也是多如牛毛。小组和工作室的路在何方的确变数多多，总的现象小弟个人归纳了有以下几种：&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自警:成功,远吗?</title>
+      <link>https://fafo4games.com/2006/10/%E8%87%AA%E8%AD%A6%E6%88%90%E5%8A%9F%E8%BF%9C%E5%90%97/</link>
+      <pubDate>Fri, 06 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E8%87%AA%E8%AD%A6%E6%88%90%E5%8A%9F%E8%BF%9C%E5%90%97/</guid>
+      <description>&lt;p&gt;四川新闻网-成都日报讯：&lt;/p&gt;
+
+&lt;p&gt;有这么一群人，他们生于上世纪80年代，白手起家却身家颇丰。证明着这还是创造财富奇迹的年代。年轻富有是他们的特质，认真执着是他们的理念。他们有着成熟男人的处事经验，跟年纪稍长的IT前辈们比，生于80年代的他们更敢作敢为，没有包袱。当面前一瓶瓶啤酒清空了之后，他们会像梦呓一样地说着：人一辈子不能像平常人一样过，要活出自己的味道。——《南都周刊》&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>论萌</title>
+      <link>https://fafo4games.com/2006/10/%E8%AE%BA%E8%90%8C/</link>
+      <pubDate>Fri, 06 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E8%AE%BA%E8%90%8C/</guid>
+      <description>&lt;p&gt;###萌的起源与发展&lt;/p&gt;
+
+&lt;p&gt;一般咸认为，‘萌え’一字是由‘燃え’所变化而来，来源是出自日文的IME输入法。‘萌’本意是指读者在看到美少女角色时，产生一种热血沸腾的精神状态。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>无法承受之重</title>
+      <link>https://fafo4games.com/2006/10/%E6%97%A0%E6%B3%95%E6%89%BF%E5%8F%97%E4%B9%8B%E9%87%8D/</link>
+      <pubDate>Wed, 04 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E6%97%A0%E6%B3%95%E6%89%BF%E5%8F%97%E4%B9%8B%E9%87%8D/</guid>
+      <description>&lt;p&gt;在&amp;lt;君望永远&amp;gt;之中,我曾用过此词,生活的艰辛和现实的无奈令我无可奈何只能选择悲叹.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>致:长门有希</title>
+      <link>https://fafo4games.com/2006/10/%E8%87%B4%E9%95%BF%E9%97%A8%E6%9C%89%E5%B8%8C/</link>
+      <pubDate>Wed, 04 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E8%87%B4%E9%95%BF%E9%97%A8%E6%9C%89%E5%B8%8C/</guid>
+      <description>&lt;p&gt;最欣赏的有希:&lt;/p&gt;
+
+&lt;p&gt;我们虽身在异地却依旧时刻相处着，承受着共同的孤独，人群潮涌,我与你却一同,如置身沙漠。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>酒,烟,与我</title>
+      <link>https://fafo4games.com/2006/10/%E9%85%92%E7%83%9F%E4%B8%8E%E6%88%91/</link>
+      <pubDate>Wed, 04 Oct 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/10/%E9%85%92%E7%83%9F%E4%B8%8E%E6%88%91/</guid>
+      <description>&lt;p&gt;###我&lt;/p&gt;
+
+&lt;p&gt;阴郁的家伙，装做开朗而已，因为我处在一个社会中，我依靠人们，人们希望我开朗，我于是就开朗了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Eclipse平台部分快截操作</title>
+      <link>https://fafo4games.com/2006/09/eclipse%E5%B9%B3%E5%8F%B0%E9%83%A8%E5%88%86%E5%BF%AB%E6%88%AA%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/eclipse%E5%B9%B3%E5%8F%B0%E9%83%A8%E5%88%86%E5%BF%AB%E6%88%AA%E6%93%8D%E4%BD%9C/</guid>
+      <description>&lt;ol&gt;
+&lt;li&gt;格式化代码：Ctrl+shift+F&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;//最后整理代码时用处比较大&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>就9月12日晚百度受黑客攻击事宜消息简介</title>
+      <link>https://fafo4games.com/2006/09/%E5%B0%B19%E6%9C%8812%E6%97%A5%E6%99%9A%E7%99%BE%E5%BA%A6%E5%8F%97%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%8B%E5%AE%9C%E6%B6%88%E6%81%AF%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E5%B0%B19%E6%9C%8812%E6%97%A5%E6%99%9A%E7%99%BE%E5%BA%A6%E5%8F%97%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E4%BA%8B%E5%AE%9C%E6%B6%88%E6%81%AF%E7%AE%80%E4%BB%8B/</guid>
+      <description>&lt;p&gt;“沉溺技术的人不了解媒体的力量，trail(化名)的第一反应是相当惊讶。”9月13日，经过长时间努力，记者辗转联系到“黑客攻击百度”事件的一位知情人士。&lt;/p&gt;
+
+&lt;p&gt;据他透露，公众和媒体对此事的高度关注已超出百度攻击者——黑客Ttrail的预期。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>笃志五年计划</title>
+      <link>https://fafo4games.com/2006/09/%E7%AC%83%E5%BF%97%E4%BA%94%E5%B9%B4%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E7%AC%83%E5%BF%97%E4%BA%94%E5%B9%B4%E8%AE%A1%E5%88%92/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;2017年10月补：第一个五年计划，基本全跪。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>菜鸟论流氓软件与反流氓软件</title>
+      <link>https://fafo4games.com/2006/09/%E8%8F%9C%E9%B8%9F%E8%AE%BA%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%8F%8D%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Fri, 22 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E8%8F%9C%E9%B8%9F%E8%AE%BA%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6%E4%B8%8E%E5%8F%8D%E6%B5%81%E6%B0%93%E8%BD%AF%E4%BB%B6/</guid>
+      <description>&lt;p&gt;流氓软件的技术五花八门，任何一项功能都有可能成为流氓技术，就象武器，用好了可以伸张正义，用歪了却成为罪恶的帮凶。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>日记2006-09-17</title>
+      <link>https://fafo4games.com/2006/09/%E6%97%A5%E8%AE%B02006-09-17/</link>
+      <pubDate>Sun, 17 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E6%97%A5%E8%AE%B02006-09-17/</guid>
+      <description>&lt;p&gt;近来几日，除了吃饭睡觉以及周一至周五的每日半天的工作外，其余时间已完全奉献给JAVA，学习累的时候就画张画，画完继续看JAVA，疲劳的无言。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>怀念了？可笑！</title>
+      <link>https://fafo4games.com/2006/09/%E6%80%80%E5%BF%B5%E4%BA%86%E5%8F%AF%E7%AC%91/</link>
+      <pubDate>Tue, 12 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E6%80%80%E5%BF%B5%E4%BA%86%E5%8F%AF%E7%AC%91/</guid>
+      <description>&lt;p&gt;正顶着无限的睡意跑这里缅怀着可爱可狠可笑可悲的大学生活。
+                                             &amp;ndash;题记&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>激动ing，发现好东东</title>
+      <link>https://fafo4games.com/2006/09/%E6%BF%80%E5%8A%A8ing%E5%8F%91%E7%8E%B0%E5%A5%BD%E4%B8%9C%E4%B8%9C/</link>
+      <pubDate>Sat, 09 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E6%BF%80%E5%8A%A8ing%E5%8F%91%E7%8E%B0%E5%A5%BD%E4%B8%9C%E4%B8%9C/</guid>
+      <description>&lt;p&gt;openCanvas4 Plus 4.06 汉化版&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>业内大事记</title>
+      <link>https://fafo4games.com/2006/09/%E4%B8%9A%E5%86%85%E5%A4%A7%E4%BA%8B%E8%AE%B0/</link>
+      <pubDate>Fri, 08 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E4%B8%9A%E5%86%85%E5%A4%A7%E4%BA%8B%E8%AE%B0/</guid>
+      <description>&lt;p&gt;###游戏米果六人辞职&lt;/p&gt;
+
+&lt;p&gt;无疑，在国内最近游戏界吵的最热闹的莫过于游戏米果gamigo的制作人，主企，主美，主程，企划主管，美术主管的六人辞职事件。连我这个两耳无闻窗外事的家伙都大大惊动了。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>成为游戏制作者，你准备好了么？</title>
+      <link>https://fafo4games.com/2006/09/%E6%88%90%E4%B8%BA%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E8%80%85%E4%BD%A0%E5%87%86%E5%A4%87%E5%A5%BD%E4%BA%86%E4%B9%88/</link>
+      <pubDate>Fri, 08 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E6%88%90%E4%B8%BA%E6%B8%B8%E6%88%8F%E5%88%B6%E4%BD%9C%E8%80%85%E4%BD%A0%E5%87%86%E5%A4%87%E5%A5%BD%E4%BA%86%E4%B9%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>自己编写的一个JAVA贪吃蛇源代码和一个价值500万的算法</title>
+      <link>https://fafo4games.com/2006/09/%E8%87%AA%E5%B7%B1%E7%BC%96%E5%86%99%E7%9A%84%E4%B8%80%E4%B8%AAjava%E8%B4%AA%E5%90%83%E8%9B%87%E6%BA%90%E4%BB%A3%E7%A0%81%E5%92%8C%E4%B8%80%E4%B8%AA%E4%BB%B7%E5%80%BC500%E4%B8%87%E7%9A%84%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Fri, 08 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E8%87%AA%E5%B7%B1%E7%BC%96%E5%86%99%E7%9A%84%E4%B8%80%E4%B8%AAjava%E8%B4%AA%E5%90%83%E8%9B%87%E6%BA%90%E4%BB%A3%E7%A0%81%E5%92%8C%E4%B8%80%E4%B8%AA%E4%BB%B7%E5%80%BC500%E4%B8%87%E7%9A%84%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;p&gt;首先来考虑一个可能价值500万的方法。&lt;/p&gt;
+
+&lt;p&gt;先描述下算法的思想：&lt;/p&gt;
+
+&lt;p&gt;现在有一年中开双色球的数据，写出一个算法的思想，就是分析下一期出的数的概率最大的。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>无聊的解释下博客存在原因</title>
+      <link>https://fafo4games.com/2006/09/%E6%97%A0%E8%81%8A%E7%9A%84%E8%A7%A3%E9%87%8A%E4%B8%8B%E5%8D%9A%E5%AE%A2%E5%AD%98%E5%9C%A8%E5%8E%9F%E5%9B%A0/</link>
+      <pubDate>Thu, 07 Sep 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/09/%E6%97%A0%E8%81%8A%E7%9A%84%E8%A7%A3%E9%87%8A%E4%B8%8B%E5%8D%9A%E5%AE%A2%E5%AD%98%E5%9C%A8%E5%8E%9F%E5%9B%A0/</guid>
+      <description>&lt;p&gt;今天跑博客里简单看了看，意外发现竟然还有新朋友留言，一丝心喜一丝烦乱，如我在各个论坛中一样。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>四低四高</title>
+      <link>https://fafo4games.com/2006/08/%E5%9B%9B%E4%BD%8E%E5%9B%9B%E9%AB%98/</link>
+      <pubDate>Thu, 31 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/08/%E5%9B%9B%E4%BD%8E%E5%9B%9B%E9%AB%98/</guid>
+      <description>&lt;p&gt;人是社会性的。如今已经不再有桃花园让我有地隐遁，而活在这个纷杂的世界中，最令某志头疼的莫过于两件：做人，做事。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>那雪山的誓言</title>
+      <link>https://fafo4games.com/2006/08/%E9%82%A3%E9%9B%AA%E5%B1%B1%E7%9A%84%E8%AA%93%E8%A8%80/</link>
+      <pubDate>Tue, 29 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/08/%E9%82%A3%E9%9B%AA%E5%B1%B1%E7%9A%84%E8%AA%93%E8%A8%80/</guid>
+      <description>&lt;p&gt;小草，这点东西是写给你看的，却不知身在异地的你是否能看到，或许，我已不再奢求你能看到吧，给我自己的一些回味？或者仅仅是这样。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>最近用3D做的人物脸部图</title>
+      <link>https://fafo4games.com/2006/08/%E6%9C%80%E8%BF%91%E7%94%A83d%E5%81%9A%E7%9A%84%E4%BA%BA%E7%89%A9%E8%84%B8%E9%83%A8%E5%9B%BE/</link>
+      <pubDate>Wed, 09 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/08/%E6%9C%80%E8%BF%91%E7%94%A83d%E5%81%9A%E7%9A%84%E4%BA%BA%E7%89%A9%E8%84%B8%E9%83%A8%E5%9B%BE/</guid>
+      <description>&lt;p&gt;最近用3D做的人物脸部图&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>骑士宣言</title>
+      <link>https://fafo4games.com/2006/08/%E9%AA%91%E5%A3%AB%E5%AE%A3%E8%A8%80/</link>
+      <pubDate>Wed, 09 Aug 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/08/%E9%AA%91%E5%A3%AB%E5%AE%A3%E8%A8%80/</guid>
+      <description>&lt;p&gt;十七世纪的古老情调，壁炉火在燃烧&lt;/p&gt;
+
+&lt;p&gt;折射火光的水晶吊灯，在大厅里炫耀&lt;/p&gt;
+
+&lt;p&gt;主人的肖像神秘的笑，感觉无法去找&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>外国人眼中的三国人物</title>
+      <link>https://fafo4games.com/2006/07/%E5%A4%96%E5%9B%BD%E4%BA%BA%E7%9C%BC%E4%B8%AD%E7%9A%84%E4%B8%89%E5%9B%BD%E4%BA%BA%E7%89%A9/</link>
+      <pubDate>Sun, 30 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E5%A4%96%E5%9B%BD%E4%BA%BA%E7%9C%BC%E4%B8%AD%E7%9A%84%E4%B8%89%E5%9B%BD%E4%BA%BA%E7%89%A9/</guid>
+      <description>&lt;p&gt;（译者注：这是我在国外一个三国无双游戏论坛上看到的一篇长帖,作者叫Novosquare，the stupid，估计是个三国无双的狂热玩家。他对三国无双里的每一个人都做了一番研究，做为一个外国人也真不容易……也很闲……我正好刚完成论文，比较无聊，于是就把这篇帖子翻译过来，让大家看看外国人眼中的三国到底是什么样子。原文太长，我只选了几个主要人物就累的要死……其他的以后有机会再说啦。)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>拍马术</title>
+      <link>https://fafo4games.com/2006/07/%E6%8B%8D%E9%A9%AC%E6%9C%AF/</link>
+      <pubDate>Sat, 29 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E6%8B%8D%E9%A9%AC%E6%9C%AF/</guid>
+      <description>&lt;p&gt;拍马首先是一门学问，这一点是务必要确立的。纵观皇皇历史，横看浩浩世界，都是一路拍将过来，又一路拍将过去。故《官场现形记》、《胡雪岩》、《厚黑学》以及《拍马术》等等书籍列位看官一定要细读精读，任何事物如没有理论的支持是站不住脚的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FOR小草</title>
+      <link>https://fafo4games.com/2006/07/for%E5%B0%8F%E8%8D%89/</link>
+      <pubDate>Mon, 24 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/for%E5%B0%8F%E8%8D%89/</guid>
+      <description>&lt;p&gt;七夕在即，为小草准备的JAVA小东东：）运行编译看看&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>歌词还不错的武侠RPG主题歌歌词</title>
+      <link>https://fafo4games.com/2006/07/%E6%AD%8C%E8%AF%8D%E8%BF%98%E4%B8%8D%E9%94%99%E7%9A%84%E6%AD%A6%E4%BE%A0rpg%E4%B8%BB%E9%A2%98%E6%AD%8C%E6%AD%8C%E8%AF%8D/</link>
+      <pubDate>Mon, 24 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E6%AD%8C%E8%AF%8D%E8%BF%98%E4%B8%8D%E9%94%99%E7%9A%84%E6%AD%A6%E4%BE%A0rpg%E4%B8%BB%E9%A2%98%E6%AD%8C%E6%AD%8C%E8%AF%8D/</guid>
+      <description>&lt;p&gt;歌名：武侠RPG Demo（暂命名）&lt;/p&gt;
+
+&lt;p&gt;曲：东方演算&lt;/p&gt;
+
+&lt;p&gt;词：KONG&lt;/p&gt;
+
+&lt;p&gt;注：用我印象比较深的几个国产RPG游戏内容串成滴，具体如下&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JAVA学习复习</title>
+      <link>https://fafo4games.com/2006/07/java%E5%AD%A6%E4%B9%A0%E5%A4%8D%E4%B9%A0/</link>
+      <pubDate>Thu, 20 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/java%E5%AD%A6%E4%B9%A0%E5%A4%8D%E4%B9%A0/</guid>
+      <description>&lt;p&gt;近一两天没搞博客，在学JAVA，并且对JAVA产生了浓厚的兴趣，虽然很令我失望的是JAVA没有C语言的指针，我本以为因此它会丧失很多功能，可是之后看到寝室一朋友的《JAVA 2开发入门》，我的观念就改观了，如此强大且支持多平台的高级语言是很难得一见的，不过话又说回来，要是它有VB那么亲切的界面我会更喜欢它的。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>TO星钻物语回忆</title>
+      <link>https://fafo4games.com/2006/07/to%E6%98%9F%E9%92%BB%E7%89%A9%E8%AF%AD%E5%9B%9E%E5%BF%86/</link>
+      <pubDate>Tue, 18 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/to%E6%98%9F%E9%92%BB%E7%89%A9%E8%AF%AD%E5%9B%9E%E5%BF%86/</guid>
+      <description>&lt;p&gt;今天在17173上看到大航海世纪OL将与7月28号大陆内测的消息，于是跑到论坛上找内测号，管理员大人要求我提交一份以前写的心情T T，虽然没少写，却从来未曾保留过，遂上网查找，竟发现了以前的一篇文章，如今确是回忆了，保留下来吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>常见游戏相关简称速查</title>
+      <link>https://fafo4games.com/2006/07/%E5%B8%B8%E8%A7%81%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3%E7%AE%80%E7%A7%B0%E9%80%9F%E6%9F%A5/</link>
+      <pubDate>Tue, 18 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E5%B8%B8%E8%A7%81%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3%E7%AE%80%E7%A7%B0%E9%80%9F%E6%9F%A5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>游戏策划新手看</title>
+      <link>https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B/</link>
+      <pubDate>Tue, 18 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%AD%96%E5%88%92%E6%96%B0%E6%89%8B%E7%9C%8B/</guid>
+      <description>&lt;p&gt;先说几句跑题话，刚随着小佳和老佳 的友情链接，跑去韩寒博客和徐静蕾的博客里逛了几圈回来，发现挺无聊的，我果然是个流行绝缘体，跑去找找游戏策划的资料，一搜索发现了不得，密密麻麻几十页，之后未再详细查证，随意挑选了几篇看看，可谓是失望透顶&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>逛韩寒博客归来</title>
+      <link>https://fafo4games.com/2006/07/%E9%80%9B%E9%9F%A9%E5%AF%92%E5%8D%9A%E5%AE%A2%E5%BD%92%E6%9D%A5/</link>
+      <pubDate>Tue, 18 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E9%80%9B%E9%9F%A9%E5%AF%92%E5%8D%9A%E5%AE%A2%E5%BD%92%E6%9D%A5/</guid>
+      <description>&lt;p&gt;对与名人，我一般是比较避讳去谈论的，因为或多或少都有些各自的粉丝，理智的也便好了，但那不可称为粉丝，最多算个支持者，而真正的粉丝是很恐怖的，我惹不起，所以这里不再评论他博客优良与否。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WOW市场调研报告</title>
+      <link>https://fafo4games.com/2006/07/wow%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/</link>
+      <pubDate>Sun, 16 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/wow%E5%B8%82%E5%9C%BA%E8%B0%83%E7%A0%94%E6%8A%A5%E5%91%8A/</guid>
+      <description>&lt;p&gt;在天堂和地狱间徘徊
+《wow》市场调研报告（纲要）&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏界面设计</title>
+      <link>https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sun, 16 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;###游戏界面设计的原则&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>菊花与刀----我的随笔</title>
+      <link>https://fafo4games.com/2006/07/%E8%8F%8A%E8%8A%B1%E4%B8%8E%E5%88%80----%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sun, 16 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E8%8F%8A%E8%8A%B1%E4%B8%8E%E5%88%80----%E6%88%91%E7%9A%84%E9%9A%8F%E7%AC%94/</guid>
+      <description>&lt;p&gt;既然谈到了《菊花与刀》，某志索性也提起几笔，因为我很喜欢日本文化的缘故，所以难免会引起愤青不满，这里我说的只代表个人对文化领域的意见，希望您手下留情，不要替我升华到政治上去，感激不尽。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>菊花与刀---引出对日本漫画的思考</title>
+      <link>https://fafo4games.com/2006/07/%E8%8F%8A%E8%8A%B1%E4%B8%8E%E5%88%80---%E5%BC%95%E5%87%BA%E5%AF%B9%E6%97%A5%E6%9C%AC%E6%BC%AB%E7%94%BB%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Sun, 16 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E8%8F%8A%E8%8A%B1%E4%B8%8E%E5%88%80---%E5%BC%95%E5%87%BA%E5%AF%B9%E6%97%A5%E6%9C%AC%E6%BC%AB%E7%94%BB%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>&lt;p&gt;日本的漫画在吸收和借鉴了中国国画中的白描手法后，结合了西方动画的手法，将漫画推进到了一个新的境界。可以说日本漫画是伴随着80年代出生的中国青年成长起来的。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FATE STAY NIGHT英雄解释</title>
+      <link>https://fafo4games.com/2006/07/fate-stay-night%E8%8B%B1%E9%9B%84%E8%A7%A3%E9%87%8A/</link>
+      <pubDate>Sat, 15 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/fate-stay-night%E8%8B%B1%E9%9B%84%E8%A7%A3%E9%87%8A/</guid>
+      <description>&lt;p&gt;###SABER 亚瑟王&lt;/p&gt;
+
+&lt;p&gt;亚瑟虽系皇族，但作为私生子被寄养在普通贵族的家里，未曾获得特别的照顾。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>我思，故我在</title>
+      <link>https://fafo4games.com/2006/07/%E6%88%91%E6%80%9D%E6%95%85%E6%88%91%E5%9C%A8/</link>
+      <pubDate>Fri, 14 Jul 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2006/07/%E6%88%91%E6%80%9D%E6%95%85%E6%88%91%E5%9C%A8/</guid>
+      <description>&lt;p&gt;下午忙呼了一下午博客，果然是个很打发时间的事情……我没那么多多余的时间。呼，真想放弃不做啊，可是没办法持之以恒的毛病也是必须克服的，也抱着一丝抛砖引玉的侥幸心理继续努力吧T T&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

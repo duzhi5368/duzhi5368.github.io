@@ -1,2 +1,0 @@
-1:  完成Game_Idle_TheLostLand
-2:  完成Blog迁移

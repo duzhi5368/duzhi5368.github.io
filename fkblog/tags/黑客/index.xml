@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>黑客 on The lost island</title>
+    <link>https://fafo4games.com/tags/%E9%BB%91%E5%AE%A2/</link>
+    <description>Recent content in 黑客 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 23 Mar 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fafo4games.com/tags/%E9%BB%91%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ModSecurity网络安全防御策略【未完结】</title>
+      <link>https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Mon, 23 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;ModSecurity网络安全防御策略&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;基本防御方法&lt;/li&gt;
+&lt;li&gt;漏洞检测和修复&lt;/li&gt;
+&lt;li&gt;陷阱和蜜罐&lt;/li&gt;
+&lt;li&gt;使用第三方信息库&lt;/li&gt;
+&lt;li&gt;请求数据分析&lt;/li&gt;
+&lt;li&gt;响应数据分析&lt;/li&gt;
+&lt;li&gt;身份验证防护&lt;/li&gt;
+&lt;li&gt;会话状态防护&lt;/li&gt;
+&lt;li&gt;应用层攻击防护&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>sql注入攻防【未完结】</title>
+      <link>https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/</guid>
+      <description>&lt;p&gt;sql注入之前做的一些整理，和modsecurity一样，都是之前整理未完成的，因为已经熟悉了解就没有兴趣继续写下去了。权当备份。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>渗透问答</title>
+      <link>https://fafo4games.com/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/12/%E6%B8%97%E9%80%8F%E9%97%AE%E7%AD%94/</guid>
+      <description>&lt;p&gt;利用问答方式，对渗透工作做一个全面的基础的回顾和整理。&lt;/p&gt;
+
+&lt;p&gt;也可以考虑用作渗透工程师面试题。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>安全讲座PPT</title>
+      <link>https://fafo4games.com/2019/12/%E5%AE%89%E5%85%A8%E8%AE%B2%E5%BA%A7ppt/</link>
+      <pubDate>Mon, 16 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/12/%E5%AE%89%E5%85%A8%E8%AE%B2%E5%BA%A7ppt/</guid>
+      <description>&lt;p&gt;为公司做的安全讲座PPT，结果没人喜欢听，大家都等着看秀魔术……&lt;/p&gt;
+
+&lt;p&gt;呃，但依然总结了就不想浪费，备份于此吧。&lt;/p&gt;
+
+&lt;p&gt;主要包含 黑客渗透课题，安全防护课题，基本安全方案 介绍。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>对KIRA君的站点渗透尝试</title>
+      <link>https://fafo4games.com/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/</link>
+      <pubDate>Fri, 22 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/11/%E5%AF%B9kira%E5%90%9B%E7%9A%84%E7%AB%99%E7%82%B9%E6%B8%97%E9%80%8F%E5%B0%9D%E8%AF%95/</guid>
+      <description>&lt;p&gt;闲着无聊，拿Kira君的博客试试手.m(_ _)m&lt;/p&gt;
+
+&lt;p&gt;最终失败了，主要原因是内网渗透不熟，先这样吧……公司这环境也不足够我做更多尝试了。&lt;/p&gt;
+
+&lt;p&gt;……万恶的内网。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读书笔记《Google Hacking技术》</title>
+      <link>https://fafo4games.com/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Fri, 15 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/11/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0google-hacking%E6%8A%80%E6%9C%AF/</guid>
+      <description>&lt;p&gt;这是一份人人都该去了解的最基础的HACK技术，它几乎没有编程需求，只有基本的互联网操作，值得去学习一下。&lt;/p&gt;
+
+&lt;p&gt;利用信息的不对称一直是商业活动的核心要素之一。而当前我们在一个信息时代，如何利用搜索引擎获取信息，汇总信息，筛选信息则是重中之重。&lt;/p&gt;
+
+&lt;p&gt;如果能够加上英语基础，扩大自己的视野，配以一个有创意灵活的脑子，就一定会在这个时代占据生存的有利环境。&lt;/p&gt;
+
+&lt;p&gt;某志总结依然是“英语是基础，互联网是手段，脑子是个好东西，有这三样，金钱总会来的。”&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读书笔记《精通Metasploit渗透测试》</title>
+      <link>https://fafo4games.com/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%B2%BE%E9%80%9Ametasploit%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://fafo4games.com/2019/10/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%B2%BE%E9%80%9Ametasploit%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</guid>
+      <description>&lt;p&gt;本想简单记录一点的，一不小心就记录多了。&lt;/p&gt;
+
+&lt;p&gt;一边看书过程中，一边 google 明确名词并扩展知识面。&lt;/p&gt;
+
+&lt;p&gt;本文主要就是记录如何使用渗透工具Metasploit对目标进行漏洞扫描，渗透，注入攻击载荷并做后渗透破坏工作。&lt;/p&gt;
+
+&lt;p&gt;嗯，本书我给打7分吧。有不少干货，但系统性上还缺了些，不足以成为神书。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

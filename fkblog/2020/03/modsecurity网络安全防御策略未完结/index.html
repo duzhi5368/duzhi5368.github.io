@@ -1,0 +1,1573 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>ModSecurity网络安全防御策略【未完结】</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://fafo4games.com/favicon.png">
+    
+
+    
+    <meta name="description" content="ModSecurity网络安全防御策略
+
+
+基本防御方法
+漏洞检测和修复
+陷阱和蜜罐
+使用第三方信息库
+请求数据分析
+响应数据分析
+身份验证防护
+会话状态防护
+应用层攻击防护
+
+
+">
+    <meta property="og:description" content="ModSecurity网络安全防御策略
+
+
+基本防御方法
+漏洞检测和修复
+陷阱和蜜罐
+使用第三方信息库
+请求数据分析
+响应数据分析
+身份验证防护
+会话状态防护
+应用层攻击防护
+
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="ModSecurity网络安全防御策略【未完结】">
+    <meta property="og:url" content="/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="ModSecurity网络安全防御策略
+
+
+基本防御方法
+漏洞检测和修复
+陷阱和蜜罐
+使用第三方信息库
+请求数据分析
+响应数据分析
+身份验证防护
+会话状态防护
+应用层攻击防护
+
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://fafo4games.com/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://fafo4games.com/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://fafo4games.com/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/freeknight/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      ModSecurity网络安全防御策略【未完结】
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-03-23T00:00:00Z">
+        
+  三月 23, 2020
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e9%bb%91%e5%ae%a2">黑客</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/2020">2020</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>ModSecurity网络安全防御策略</p>
+
+<ul>
+<li>基本防御方法</li>
+<li>漏洞检测和修复</li>
+<li>陷阱和蜜罐</li>
+<li>使用第三方信息库</li>
+<li>请求数据分析</li>
+<li>响应数据分析</li>
+<li>身份验证防护</li>
+<li>会话状态防护</li>
+<li>应用层攻击防护</li>
+</ul>
+
+<p></p>
+
+<h2 id="什么是modesecurity">什么是ModeSecurity</h2>
+
+<p>ModSecurity是由Trustwave的SpiderLabs开发的开源，跨平台Web应用程序防火墙（WAF）。</p>
+
+<p>它可提供针对Web应用程序的多种攻击保护，并允许HTTP流量监视，日志记录和实时分析。</p>
+
+<h2 id="基本防御">基本防御</h2>
+
+<h3 id="1-使用modsecurity的核心规则集-crs">1. 使用ModSecurity的核心规则集（CRS）</h3>
+
+<p>概念：通过安装ModSecurity的核心规则集快速配置攻击检测规则。</p>
+
+<p>因为ModSecurity本身无防护功能，必须配置规则才有用。用户可以自定义配置规则，但没有时间和经验的用户可以使用CRS来检测一些通用攻击。</p>
+
+<p>CRS内容包括：</p>
+
+<ul>
+<li>HTTP防护：检测违反HTTP协议和使用策略的请求</li>
+<li>IP黑名单：使用了第三方的IP信用度信息，对可能进行恶意访问的IP做了检查和告警</li>
+<li>恶意网站链接检测：使用了Google Safe Browsing API对网页中的链接进行检查，避免被暗链</li>
+<li>DOS攻击防护：阻挡HTTP Flood攻击，减缓DoS攻击</li>
+<li>自动化识别：识别机器人，爬虫，扫描器和其他的简单恶意行为</li>
+<li>恶意文件识别：集成AV扫描识别网站上传的恶意文件</li>
+<li>追踪敏感信息：追踪身份证，信用卡等数据的使用并阻断信息泄露行为</li>
+<li>木马防护：检测对木马程序的访问</li>
+<li>网站瑕疵识别：检测网站不正确配置的时候会告警</li>
+<li>错误信息识别和隐藏：会对服务器发送出去的程序错误信息作出识别和隐藏</li>
+</ul>
+
+<pre><code>    # Apache的httpd.conf配置中添加CRS文件
+    &lt;IfModule security2_module&gt;
+        Include conf/crs/modsecurity_crs_10_setup.conf
+        Include conf/crs/activated_rules//*.conf
+    &lt;/IfModule&gt;
+</code></pre>
+
+<h3 id="2-建立自动请求特征学习的http请求校验层">2. 建立自动请求特征学习的HTTP请求校验层</h3>
+
+<p>概念：建立一个输入校验层。对请求的参数个数，参数名，参数长度，参数类型进行检查。但参数长度，个数，类型这些无需我们手动配置，而是通过若干个（例如100个）有效请求，自动训练分析得到的。</p>
+
+<p>工具：在ModSecurity中，这些需要分析的特征可以持久化存储在数据库中，可使用Lua API创建规则，自动检测进行识别。</p>
+
+<pre><code>    # 设置训练集大小
+    SecAction &quot;phase:1, id:'981082', t:none,nolog,pass, initcol:resource=%{request_headers.host}_%{request_filename}, setvar:resource.min_pattern_threshold=9, setvar:resource.min_traffic_threshold=100&quot;
+</code></pre>
+
+<p>核心：注意，不要仅仅检查用户输入，因为有太多种方式组装HTTP请求数据。</p>
+
+<p>缺点：没有自动重新学习机制，一旦学习完毕，则永久固定。对特征的持久化存储有最大限制。</p>
+
+<h3 id="3-使用哈希值参数来避免数据被篡改">3. 使用哈希值参数来避免数据被篡改</h3>
+
+<p>概念：对响应返回的URL添加加盐的hash值作为参数。当用户尝试打开新URL时，服务器对hash值做哈希校验，来确保URL没有被篡改。</p>
+
+<p>工具：在ModSecurity中，使用SetEncryptionEngin机制即可自动添加hash参数并做检查。</p>
+
+<pre><code>    SecEncryptionEngine On
+</code></pre>
+
+<p>情况：可检查 Hash值不匹配 和 Hash参数字段 丢失问题。</p>
+
+<p>缺点：如果参数中有用户输入的不确定数据，并不能对该数据做出检测。</p>
+
+<h3 id="4-使用威胁权值规则">4. 使用威胁权值规则</h3>
+
+<p>传统检测是容易理解的，单挑规则是无状态的，各个规则之间不会协作。这样的优点是容易理解并且性能很好。但从安全角度不是最优的。</p>
+
+<p>概念：我们将威胁的检测逻辑 和 处罚进行解耦。当一个威胁匹配之后，并不一定直接执行干扰动作，而将其累加到一个威胁权值中。不同的威胁权值进行不同的行为即可。</p>
+
+<p>优点：不会忽略低风险的告警。对不同的事件的容忍度可以简单的调整。</p>
+
+<p>缺点：对于普通用户而言过于复杂。</p>
+
+<h3 id="5-检测通用软件的已知网络漏洞">5. 检测通用软件的已知网络漏洞</h3>
+
+<p>概念：对一些常见的软件（如Nginx, Apache，SQL等）的已知网络漏洞做检查并进行记录或者Block操作。</p>
+
+<p>工具：可使用Snort IDS的Web攻击集来做防护。Snort IDS是一个WAF防火墙，它本身包含一部分ET（已知规则）规则，我们可以直接使用Snort IDS进行防护。或者将这些Snort的ET规则转为ModSecurity规则进行防护使用。</p>
+
+<p>优点：和ModSecurity CRS的通用攻击检测不同，Snort ET的规则是对公开的通用软件的已知网络漏洞开发的。它针对性更强。</p>
+
+<p>缺点：需要做Snort-&gt;ModSecurity的规则格式转换工作</p>
+
+<h3 id="6-使用贝叶斯分析检测web攻击">6. 使用贝叶斯分析检测Web攻击</h3>
+
+<p>概念：用贝叶斯分类器来对HTTP的请求参数进行判定是否为恶意请求。</p>
+
+<p>工具：需要先安装Fidelis Assis的OSBF-Lua模块。然后安装Moonfilter，它将lua脚本分为一个训练界面一个分类界面，便于使用。最后使用MoonRunner对训练集进行周期性训练工作。</p>
+
+<p>优点：相对于正则表达判定，其判定边界更加模糊，攻击者难以通过测试得到正确的有效方案。</p>
+
+<p>缺点：需要先创建大量攻击数据来做训练。</p>
+
+<h3 id="7-进行http审计日志">7. 进行HTTP审计日志</h3>
+
+<p>概念：记录全部HTTP请求和响应消息以供全面分析和监察。</p>
+
+<p>工具：ModSecurity的指令原生支持，只需修改Apache的配置文件即可。</p>
+
+<p>优点：可以记录完整的请求消息和响应消息，可以记录攻击者手法和所窃取的信息数据。</p>
+
+<p>缺点：日志数据量很大，且IO操作影响性能。</p>
+
+<p>改进版：</p>
+
+<ul>
+<li><p>通过SecRule设置仅记录指定响应码的消息（例如：5XX，除了404的4XX）</p></li>
+
+<li><p>忽略静态资源的请求</p></li>
+
+<li><p>记录日志中屏蔽敏感信息</p></li>
+
+<li><p>修改Apache配置，将日志送到中心日志服务器进行记录</p></li>
+
+<li><p>中心日志服务器的日志可以使用Audit Console来查看，排序，搜索等操作</p></li>
+</ul>
+
+<h2 id="漏洞监测和修复">漏洞监测和修复</h2>
+
+<h3 id="1-pvi被动漏洞识别">1. PVI被动漏洞识别</h3>
+
+<p>概念：被动式漏洞识别是不会对请求做干扰动作的，它只会进行警告。对于一些不敏感的行为可以这样处理。</p>
+
+<p>例如：字符集没有设置或设置错误。HTTP头部分数据不正确或不安全设置。Cookie被设置在宽松的域下或者未对SessionID设置了HttpOnly标志。</p>
+
+<h3 id="2-主动漏洞扫描并做扫描结果自动转换">2. 主动漏洞扫描并做扫描结果自动转换</h3>
+
+<p>概念：主动漏洞扫描就是使用一些第三方工具，对网站进行扫描。我们将扫描得到的一些漏洞添加到自己的ModSecurity中，自动化的生成“虚拟补丁”。</p>
+
+<p>工具：</p>
+
+<p>Grabber，Golismero，OWASP Xenotix XSS，Paros，Arachni，XssPy，w3af，Nikto，Wfuzz，OWASP ZAP，Wapiti，Vega，SQLmap，WebScarab</p>
+
+<p>例如：</p>
+
+<p>对于Arachni扫描得到的XML数据，通过OWASP ModSecurity核心规则集中的 arachni2modsec.pl 的脚本，就可以转换为 ModSecurity 防护规则。</p>
+
+<p>优点：</p>
+
+<ul>
+<li>可以自动化的创建补丁，无需逐个手工编写补丁。</li>
+<li>更新频率和可扩展性都会更好。</li>
+</ul>
+
+<h2 id="陷阱和蜜罐">陷阱和蜜罐</h2>
+
+<h3 id="1-开启蜜罐端口">1. 开启蜜罐端口</h3>
+
+<p>概念：通过在Apache服务器上再开一个端口，例如假如默认是80端口，我们再开放8080， 8000， 8888端口之类的。任何访问这些端口的IP都是恶意IP，可添加黑名单。</p>
+
+<p>工具：使用ModSecurity规则文件进行这些端口的监视，一旦出现流量立刻告警。</p>
+
+<pre><code>    Listen 8000
+    Listen 8080
+    Listen 8888
+    SecRule SERVER_PORT &quot;^(8000|8080|8888)$&quot; &quot;id:'999004', phase:2, t:none,log,block,msg:'HoneyTrap Alert: Traffic reviced on fake port.', setvar:ip.malicious_client=1&quot;
+</code></pre>
+
+<p>优点：</p>
+
+<ul>
+<li>蜜罐和陷阱的告警更少也更加精准</li>
+<li>蜜罐和陷阱基本不会发生误报</li>
+</ul>
+
+<h3 id="2-添加假的robots-txt-disallow字段">2. 添加假的robots.txt Disallow字段</h3>
+
+<p>概念：Robots.txt中disallow字段是禁止爬虫访问的，但如果我们伪造一个敏感文件（例如：DB_backup.1342712832），诱骗黑客访问并记录其IP，即可将这些IP添加黑名单。</p>
+
+<p>工具：使用ModSecurity规则文件进行这些disallow路径的监视，一旦出现流量立刻告警。</p>
+
+<pre><code>    SetContentInjection On
+    SecRule REQUEST_FILENAME &quot;@streq /robots.txt&quot; &quot;id:'999005', phase:4, t:none,nolog,pass,append:'Disallow: /DB_backup.%(time_epoch)/'&quot;
+</code></pre>
+
+<p>改进版：</p>
+
+<ul>
+<li>为了让陷阱更加真实，我们可以添加一层假的认证机制：使用ModSecurity增加规则，来永久返回一个假的401认证页面。攻击者可能会使用自动化破解工具，但我们没有真正的账户密码，只是浪费他的时间。</li>
+</ul>
+
+<h3 id="3-添加假的html注释">3. 添加假的HTML注释</h3>
+
+<p>概念：在HTML页面中，添加假的注释如下：</p>
+
+<pre><code>    &lt;!-- DEBUG: this source code for test login page is login2.php--&gt;
+    &lt;form action=&quot;login.php&quot; method=&quot;post&quot;&gt;
+</code></pre>
+
+<p>然后我们建立ModSecurity规则文件，对login2.php进行监视即可，一旦出现有人访问，立刻IP加入黑名单。</p>
+
+<h3 id="4-添加假的表单隐藏字段">4. 添加假的表单隐藏字段</h3>
+
+<p>概念：HTML中隐藏表单和普通表单类似做请求的数据进行传递，但用户不可见。这个值没有任何实际意义，但一旦被修改，则说明这个请求是被修改的伪造的。</p>
+
+<p>工具：使用ModSecurity规则文件可以简单的为全部页面添加这样一个隐藏表单，我们只需在waf检测规则中检查该值是否被变更即可。</p>
+
+<pre><code>    SecRule STREAM_OUTPUT_BODY &quot;@rsub s/&lt;\/form&gt;/&lt;input type=\&quot;hidden\&quot; name=\&quot;debug\&quot; value=\&quot;false\&quot;&lt;\/form&gt;/&quot; &quot;id:'999009', phase:4, t:none,nolog,pass&quot;
+</code></pre>
+
+<p>优点：一个规则即可影响全部HTML页面。</p>
+
+<p>缺点：每个请求都需要添加这个无意义的字段，API修改量太大。</p>
+
+<h3 id="5-添加假的cookie">5. 添加假的Cookie</h3>
+
+<p>概念：Cookie作为用户浏览器内存储的数据，在前期set cookie之后，后来的请求会需要用户客户端发送cookie。我们同样，提供一个无意义的cookie，诱骗黑客进行修改，一旦该值发生更变，直接进行处理。</p>
+
+<pre><code>    # 为所有的set-cookie响应头，添加一个 “最后cookie名字+ -user_role”这个字段，并设置值为 Admin:0。用来诱骗黑客将其改为1.
+    SecRule RESPONSE_HEADERS: Set-Cookie &quot;^(.*?)=&quot; &quot;id:'999013', phase:3, t:none,nolog,pass,capture,setenv:honeytrap_cookie_name=%{tx.1}-user_role&quot;
+    Header always set Set-Cookie &quot;%{HONEYTRAP_COOKIE_NAME} = Admin:0&quot;
+    
+    # 检测是否有人修改
+    SecRule REQUEST_HEADERS:Cookie &quot;@contains %{global.honeytrap_cookie_name}&quot; &quot;chain.id:'999014', phase:1, t:none,log,block,msg:'Honeytrap alert: Fake cookie data'&quot;
+    # 设置这个IP为危险IP，添加到malicious_client变量中
+    SecRule REQUEST_HEADERS:Cookie &quot;!@contains = Admin:0&quot; &quot;setvar:ip.malicious_client=1&quot;
+</code></pre>
+
+<p>优点：因为只有进行set-cookie响应才添加该字段，所以真实性比较好。</p>
+
+<h2 id="使用第三方信息库">使用第三方信息库</h2>
+
+<h3 id="1-分析用户地理位置信息">1. 分析用户地理位置信息</h3>
+
+<p>概念：使用第三方数据包分析用户地理信息，并做地址判断进行访问禁止。</p>
+
+<p>工具：下载<a href="http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz">MaxMind的GeoIP信息</a>，然后使用SecGeoLookupDb将客户端IP进行解析。</p>
+
+<pre><code>    # 使用解析库，将IP信息分析出地理信息保存在 GEO 变量中
+    SecGeoLoopupDb /usr/local/apache/conf/GeoLiteCity.dat
+    SecRule REMOTE_ADDR &quot;@geoLookup&quot; &quot;id:'999015', phase:1, t:none,pass,nolog&quot;
+    # 添加规则，禁止美国IP访问
+    SecRule GEO:COUNTRY_CODE3 &quot;@streq USA&quot; &quot;id:'999016', phase:1, t:none,log,block,msg:'Client ip from USA'&quot;
+</code></pre>
+
+<p>缺点：黑客很可能使用代理。</p>
+
+<p>改进版：</p>
+
+<ul>
+<li>发现指定国家IP，可以先不阻止，而进行记录，以便之后进行分析。</li>
+<li>发现指定国家IP，存储到变量中，到一定数量后激活新规则，进行禁止。</li>
+</ul>
+
+<h3 id="2-分析用户代理行为">2. 分析用户代理行为</h3>
+
+<p>概念：我们有两种方式判断用户使用了代理。</p>
+
+<ul>
+<li>根据同一session时，用户IP所在地理位置发生更变，判断用户使用代理。</li>
+<li>根据用户X-forwarded-for头的多IP更变，判断用户使用了代理。</li>
+</ul>
+
+<pre><code>    # X-Forwarded-For 请求头中是可以获取代理链IP的，如下
+    X-Forwarded-For: 72.14.199.171, 116.12.134.189
+    
+    # 那么 116.12.134.189 就是代理IP，而 72.14.199.171 则是真实IP。
+    # 其实用户也可以伪造该值，例如指定 X-Forwarded-For: 1.1.1.1，则传输到服务器的数据将是 X-Forwarded-For: 1.1.1.1， 72.14.199.171, 116.12.134.189
+    # 此时只要在客户端将用户当前IP记录，则可知道真实IP从哪儿开始的。
+    
+    # 根据IP跳转，分别得到每个IP的地理位置，就可以知道用户是否使用了代理。
+    # 如果IP地理位置一致，则是ISP跳转。如果IP地址位置不一致，基本就是使用了代理。
+</code></pre>
+
+<p>缺点：用户使用代理，未必是恶意的，也可能仅仅是保护自身隐私。</p>
+
+<h3 id="3-使用实时危险ip库">3. 使用实时危险IP库</h3>
+
+<p>概念：例如使用Spamhaus黑名单（SBL）和Spamhaus攻击黑名单（XBL），每次收到用户请求后，将用户IP给Spamhaus网站检查（这个过程使用的是DNS协议），如果Spamhaus网站发现该IP为危险IP，则会告知我们，我们再做特殊处理。</p>
+
+<p>优点：在被DDOS攻击时可以考虑这样过滤攻击者IP。</p>
+
+<p>缺点：这个列表是被动态维护的，需要动态请求。</p>
+
+<p>改进版：</p>
+
+<ul>
+<li>我们自己本地使用ModSecurity创建内部的RBL（危险IP）服务。例如 Jwall-rbld。</li>
+</ul>
+
+<h3 id="4-使用危险url库">4. 使用危险URL库</h3>
+
+<p>概念：主要对于论坛等允许用户发送信息的服务，我们不希望用户留言发帖中有恶意URL。则需要将用户留言中的URL送去“安全审查”。 google有免费的API服务，我们也可以将其下载下来（GSB），配置到ModSecurity策略中。</p>
+
+<h2 id="请求数据分析">请求数据分析</h2>
+
+<p>默认情况下，ModSecurity是不做请求体数据分析的，只管请求头。但这显然不满足需求，我们就需要作如下操作。</p>
+
+<pre><code>    # 将请求体内容存放到缓冲区，赋值给 REQUEST_BODY 变量，解析后的参数存放在 ARGS 变量中
+    SecRequestBodyAccess On
+    # 允许的请求体最大大小（注意：包括文件附件大小）
+    SecRequestBodyLimit 13107200
+    # 允许的请求体最大大小（注意：不包括文件附件大小）
+    SecRequestBodyNoFilesLimit 131072
+    SecRequestBodyInMemoryLimit 131072
+    # 当请求体大小过大时的处理方式：reject拒绝处理请求，ProcessPartial处理部分请求
+    SecRequestBodyLimitAction Reject
+</code></pre>
+
+<p>如希望ModSecurity可以解析 XML请求体 和 SOAP请求体 格式，则需要</p>
+
+<pre><code>    LoadFile /usr/lib/libxml2.so.2
+    SecRule REQUEST_HEADERS:Content-Type: &quot;text/xml&quot; &quot;phase:1, t:none, t:lowercase, pass, nolog, ctl:requestBodyProcessor=XML&quot;
+</code></pre>
+
+<p>如希望ModSecurity可以解析 JSON请求体 格式，则需要</p>
+
+<pre><code>    SecRule REQUEST_HEADERS:Content-Type &quot;application/json&quot; &quot;id:'200001',phase:1,t:none,t:lowercase,pass,nolog,ctl:requestBodyProcessor=JSON&quot;
+</code></pre>
+
+<h3 id="1-检测不完整解析">1. 检测不完整解析</h3>
+
+<p>概念：请求体中的消息格式不是正确的XML格式，Form格式或JSON格式</p>
+
+<p>工具：</p>
+
+<pre><code>    SecRule REQBODY_ERROR &quot;!@eq 0&quot; &quot;phase:2, t:none,log,deny,status:400,msg:'Failed to parse request body.' logdata:'%{reqbody_error_msg}',severity:2&quot;
+    SecRule MULTIPART_STRICT_ERROR &quot;!@eq 0&quot; &quot;phase:2, t:none,log,deny,status:404,msg:'Miltipart request body failed'&quot;
+    SecRule MULTIPART_UNMATCHED_BOUNDARY &quot;!@eq 0&quot; &quot;phase:2, t:none,log,deny,status:44,msg:'Miltipart parser detected a possible unmatched boundary.'&quot;
+</code></pre>
+
+<h3 id="2-规范unicode编码">2. 规范Unicode编码</h3>
+
+<p>概念：为了避免使用Unicode绕过问题，我们使用Unicode映射文件，做出预先映射之后再进行字符审查警告即可。</p>
+
+<p>例如：用户数据为</p>
+
+<pre><code>    %u3008%u0131pt%u3009%u212fval(%uFF07al%u212Frt(%22XSS%22)%u02C8)%u2329/src%u0131pt%u232A
+    
+    会被Unicode解码为
+    
+    &lt;script&gt;eval('alert(&quot;XSS&quot;)')&lt;/script&gt;
+</code></pre>
+
+<p>我们想对其进行安全审查，则可以</p>
+
+<pre><code>    # 指定编码集
+    SecUnicodeCodePage 20127
+    SecUnicodeMapFile /usr/local/apache/conf/crs/uncode.mapping
+    # 检查 &lt; 符号
+    SecRule ARGS &quot;@contains &lt;&quot; &quot;phase:1, t:none, t:urlDecodeUni,log,pass&quot;
+    # 阻断全角或半角Unicode特殊符号
+    SecRule REQUEST_URI|REQUEST_BODY &quot;\%u[fF]{2}[0-9a-fA-F]{2}&quot; &quot;id:'950116',phase:2, t:none, recv:'2.2.3',block,msg:'Unicode full/half width abuse attack attempt.', severity:'5'&quot;
+</code></pre>
+
+<h3 id="3-识别多次编码">3. 识别多次编码</h3>
+
+<p>概念：黑客经常通过多次编码的方式，来绕开常规检测。我们则需要对参数进行一次URL解码后，继续检测是否有未解码的数据。</p>
+
+<p>例如：</p>
+
+<pre><code>    # 源
+    &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;
+    # 一次编码，将 &lt;&gt;/ 符号进行编码。
+    %3Cscript%3Ealert(&quot;XSS&quot;)%3C%2Fscript%3E
+    # 二次编码，将 % 进行编码为 %25
+    %253Cscript%253Ealert(&quot;XSS&quot;)%253C%252Fscript%253E
+</code></pre>
+
+<p>检测多重编码</p>
+
+<pre><code>    # 阻断多重编码
+    SecRule ARGS &quot;\%((?!$|\W)|[0-9a-fA-F]{2}|u[0-9a-fA-F]{4})&quot; &quot;id:'950109',phase:2, t:none, recv:'2.2.3',block,msg:'Mutilple URL encoding detected.', severity:'5'&quot;
+</code></pre>
+
+<h3 id="4-请求头缺失或异常">4. 请求头缺失或异常</h3>
+
+<p>概念：一些常规的浏览器请求头会发送 Host, User-Agent, Accept 字段。但攻击脚本可能不会包含这些头，我们对其进行检测。</p>
+
+<p>异常则是一些看起来显然不合理的请求头，例如</p>
+
+<pre><code>    User-Agent: User-Agent: Opera/9.00 (Windows NT 5.1; U; en)
+</code></pre>
+
+<p>这个请求头里有两个 User-Agent，显然是某个自己开发的脚本BUG。</p>
+
+<h3 id="5-浏览器的请求头顺序">5. 浏览器的请求头顺序</h3>
+
+<p>概念：没错，不同的浏览器在发送请求头时候，会有自己固定的顺序。</p>
+
+<p>例如有些会先发送Host，有些会先发送Accept，这些数据被统计起来，称为一个叫 passive os fingerprinting 库里。它记录了全部OS对应浏览器的请求头顺序。只要顺序不对，就可以理解为，是用户自造的请求头消息。</p>
+
+<h3 id="6-检测多余的参数-缺失的参数-重复的参数-长度异常的参数-使用了异常字符集的参数">6. 检测多余的参数，缺失的参数，重复的参数，长度异常的参数，使用了异常字符集的参数</h3>
+
+<p>概念：这些都容易理解，不再细说了。</p>
+
+<h2 id="响应数据分析">响应数据分析</h2>
+
+<h3 id="1-http响应分割攻击">1. HTTP响应分割攻击</h3>
+
+<p>概念：通过再相应内容中，增加回车符 %0d 和换行符 %0a，来欺骗浏览器或代理服务器，使其返回错误数据。</p>
+
+<p>例如：</p>
+
+<pre><code>    我们客户端请求： 
+        GET /xxoo.aspx?lang=english
+    我们服务器响应数据中有以下内容：
+        Set-Cookie: lang=english; path=/
+        
+    黑客很容易想到，我们将参数直接转为cookie发送给客户端了。
+    
+    此时他发送如下请求：
+        GET /xxoo.aspx?lang=english;%20path=/%0d%0aSet-Cookie:%20amSessionId=12345
+        # 其中 %0d 是回车符，%0a 是换行符
+    服务器响应将会如下内容：
+        Set-Cookie: lang=english; path=/
+        Set-Cookie: amSessionId=12345; path=/
+    会导致 cookie 被复写并充值 sessionID，出现用户更变。
+</code></pre>
+
+<p>方法：</p>
+
+<pre><code>    SecRule REQUEST_COOKIES|REQUEST_COOKIES_NAMES|REQUEST_FILENAME|ARGS_NAMES|ARGS|XML:&quot;phase:2, rev:'2.2.5', t:none, t:lowercase,capture,ctl:aduitLogParts=+E,block,msg:'HTTP response splitting attack', id:'950910', logdata:'%(TX.0)', severity:'2'&quot;
+</code></pre>
+
+<h3 id="2-恶意跳转攻击">2. 恶意跳转攻击</h3>
+
+<p>概念：它的攻击目标是用户，而非网站。它将你的网站作为恶意链接中转平台，使用户跳转到恶意连接目标。</p>
+
+<p>例如：</p>
+
+<pre><code>    # 黑客修改你的.htaccess文件如下，这将导致任何通过知名搜索引擎访问你的网站的用户都跳转到恶意网站
+    RewriteEngine On
+    RewriteOption inherit
+    RewriteCond %(HTTP_REFERER) .*(google|bing|yahoo|baidu).*$ [NC]
+    RewriteRule .* http://fuck.com [R.L]
+</code></pre>
+
+<p>方法：</p>
+
+<pre><code>    SecMarker BEGIN_RES_PROFILE_ANALYSIS
+    # 执行appsensor_response_profile.lua标准脚本，会分析每个资源请求的响应码，对特殊响应达到一定阀值后，会进行日志提示
+    SecAction &quot;id:999303&quot;,phase:5,nolog,pass,exec:/etc/apache/modesecurity-crs/lua/appsensor_response_profile.lua&quot;
+    SecMarker END_RES_PROFILE_ANALYSIS
+</code></pre>
+
+<h3 id="3-服务器信息响应头泄露">3. 服务器信息响应头泄露</h3>
+
+<p>概念：黑客的第一步都是信息统计，在请求头中，可能会泄露服务器部分信息。</p>
+
+<p>例如：</p>
+
+<pre><code>    # 一个服务器响应如下
+    HTTP/1.1 200 OK
+    Server: Apache/2.2.14 (Ubuntu 4.5)
+    X-Powered-By: PHP/5.3.2-Ubuntu 4.5
+</code></pre>
+
+<p>此消息就泄露了服务器信息。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 使用ModSecurity的全局指令 SecServerSignature，可以将响应头进行随意需改。
+    ServerTokens Full
+    SecServerSignature &quot;Microsoft-IIS/7.0&quot;
+    
+    # 删除敏感响应头字段
+    Header unset X-Powered-By
+    Header unset X-AspNet-Version
+</code></pre>
+
+<h3 id="4-检查服务器响应体数据">4. 检查服务器响应体数据</h3>
+
+<p>默认情况下ModSecurity不会访问响应体内容。如果需要对其进行检测，则需要配置一些指令，如下：</p>
+
+<pre><code>    # 存储响应体内容到 RESPONSE_BODY 变量中
+    SecResponseBodyAccess On
+    # 设置关注的响应体类型(大多数情况下我们无须关注静态资源数据)
+    SecResponseBodyMimeType (null) text/plain text/html text/xml text/json
+    # 设置允许回传给客户端的响应体最大大小
+    SecResponseBodyLimit 524288
+    # 设置响应体超过大小后的处理方法 ( ProcessPartial 或 Reject )
+    SecResponseBodyLimitAction ProcessPartial
+</code></pre>
+
+<h3 id="5-检查更变的页面标题或更变的页面大小">5. 检查更变的页面标题或更变的页面大小</h3>
+
+<p>概念：一般黑客获得一个网站，很习惯去修改网页的首页title标签。或者会进行脱库行为，那么我们的响应数据返回将会极大，我们可以对这些响应体进行检查。</p>
+
+<p>方法:</p>
+
+<pre><code>    # 使用OWASP核心规则集
+    SecMarker BEGIN_RES_PROFILE_ANNLYSIS
+    SecAction &quot;id:'999304', phase:5, t:nolog, pass, exec:/etc/apache2/modsecurity-crs/lua/appsensor_response_profile.lua&quot;
+    SecMarker END_RES_PROFILE_ANNLYSIS
+</code></pre>
+
+<p>缺点：在一些特殊情况的页面会出现误报，例如论坛的帖子和评论页面，它的大小可能变化很大。建议仅对部分接口进行此类监控。</p>
+
+<h3 id="6-程序异常栈信息和数据库错误消息">6. 程序异常栈信息和数据库错误消息</h3>
+
+<p>概念：部分情况下，我们会将程序错误堆栈信息打印出去，或者数据库的错误信息打印出去，这都是黑客获取信息的常见手段。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 检查堆栈错误
+    SecRule RESPONSE_BODY &quot;&gt;error \'ASP\b|An Error Has Occurred|&gt;Syntax error in string in query expression&quot; &quot;phase:4, rev:'2.2.3', t:none,capture,ctl:auditLogParts=+E,block,msg:'IIS information leakage', id:'997111'&quot;
+    # 检查SQL错误
+    SecRule RESPONSE_BODY &quot;\[Microsoft\]\[ODBC |Driver.* SQL[-_ ]*Server|OLE DB.* SQL Server|(W/A)SQL Server.*Driver|Warning.*mssql_.*]&quot; &quot;phase:4, rev:'2.2.3', t:none,capture,ctl:auditLogParts=+E,block,msg:'SQL information leakage', id:'997197'&quot;
+</code></pre>
+
+<h3 id="7-针对异常响应时间的检测">7. 针对异常响应时间的检测</h3>
+
+<p>概念：在SQL盲注技巧中，有一个就是基于时间的盲注。它的请求会导致数据库停滞一段时间，黑客因此可知道数据库命令是否成功注入。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 记录phase:2 阶段的时间
+    SecAction &quot;phase:2, id:'999309', t:none, nolog, pass, setvar:tx.response_timer_1=%{time_sec}&quot;
+    # 记录phase:3 阶段的时间，并相减以获得响应的处理时间
+    SecAction &quot;phase:3, id:'999310', t:none, nolog, pass, setvar:tx.response_timer_2=%{time_sec}, setvar:tx.response_timer_2=-%{tx.response_timer_1}&quot;
+    # 进行检查，超过5秒响应就记录Log
+    SecRule TX:RESPONSE_TIMER_2 &quot;@ge 5&quot; &quot;phase:3, id:'999311', t:none, log, block, msg:'Response latency threshold violation.', logdata:'Larency: %{tx.response_timer_2} secs.'&quot;
+</code></pre>
+
+<h3 id="8-检测是否有敏感用户数据泄露">8. 检测是否有敏感用户数据泄露</h3>
+
+<p>概念：在ModSecurity核心规则集中，ModSecurity_crs_25_cc_known.conf文件中，对输出响应数据中的安全数据做了基本检查，例如信用卡数据规则，做了正则检查。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 检查Visa数据泄露
+    SecRule RESPONSE_BODY|RESPONSE_HEADER：Location &quot;@verifyCC (?:^|[^\d])(?&lt;!google_ad_client=\&quot;pub-)(4\d{3}\-?\d{4}-?\d{2}\-?\d(?:\d{3}?)??)(?:[^\d]|$)&quot; &quot;phase:4,  t:none,capture,ctl:auditLogParts=+E,block,msg:'Visa credit card number sent to suer', id:'920008', severity:'1'&quot;
+</code></pre>
+
+<h3 id="9-检测木马-后门以及webshell的访问尝试">9. 检测木马，后门以及webshell的访问尝试</h3>
+
+<p>概念：黑客可能通过多种方法来上传后门或者webshell程序。这些文件可能是合法的上传文件功能，也可能是OS级别。而ModSecurity通过对响应数据的检查，可以发现对方访问的webshell。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 检查返回shell类关键字(一个样例)
+    SecRule RESPONSE_BODY &quot;ph(?:p(?:(?:commander|-terminal)\b|myshell)))&quot; &quot;phase:4, rev:'2.2.3', t:none,capture,ctl:auditLogParts=+E,block,msg:'Backdoor access', id:'950922', severity:'2'&quot;
+</code></pre>
+
+<h2 id="身份验证防护">身份验证防护</h2>
+
+<h3 id="1-检测是否使用了通用的-默认的或危险用户名密码">1. 检测是否使用了通用的，默认的或危险用户名密码</h3>
+
+<p>概念：通常用账密做身份验证时，部分系统会有默认账户和预设密码。虽然网站维护人员会修改账密，但黑客通常会对这些账密入手，一旦尝试使用默认账户密码就应该预警。</p>
+
+<p>方法：</p>
+
+<pre><code>    SecRule REQUEST_FILENAME &quot;@streq /myTestLogin.php&quot; &quot;chain, phase:2, id:999320, t:none,block,msg:'default username submit.', logdata:'%{args.log}'&quot;
+    SecRule REQUEST_METHOD &quot;@streq POST&quot; &quot;chain&quot;
+</code></pre>
+
+<p>上述规则代码会对常见登录账号检查，包括</p>
+
+<pre><code>    账号：admin, administrator, root, system, operator, super, test, qa, backup
+</code></pre>
+
+<h3 id="2-检测用户是否提交了多个用户名">2. 检测用户是否提交了多个用户名</h3>
+
+<p>概念：通常部分用户会使用简单的密码，黑客可能得到了username列表，然后轮训的方式对每个账号进行简单密码测试，这种方式被称为“水平暴力破解”，它不是破解一个账号密码，而是破解账号。</p>
+
+<p>方法：</p>
+
+<p>这个在ModSecurity核心规则集中 modsecurity_crs_10_config.conf 文件中启用，这里我们要先启用基于IP的持久化存储。</p>
+
+<pre><code>    # 保存 ua_hash 变量
+    SecRule REQUEST_HEADERS: User-Agent &quot;^(.*)$&quot; &quot;phase:1, id:'981217', t:none,pass,nolog, t:sha1, t:hexEncode, setvar:tx.ua_hash=%{matched_var}&quot;
+    # 保存 real_ip 变量
+    SecRule REQUEST_HEADERS: x-forwarded-for &quot;^\b(\d{1,3}\.\d{1,3}\.\d{1,3})\b&quot; &quot;phase:1. id:'981225', t:none,nolog,capture, setvar:tx.real_ip=%{tx.1}&quot;
+    # 保存 IP_hash(UA)
+    SecRule &amp;TX.REAL_IP &quot;!@eq 0&quot; &quot;phase:1, id:'981226', t:none,pass,nolog,initcol:global=global, initcol:ip=%{tx.real_ip}_%{tx.ua_hash}&quot;
+    # 保存 IP_hash(UA)
+    SecRule &amp;TX.REAL_IP &quot;@eq 0&quot; &quot;phase:1, id:'981228', t:none,pass,nolog,initcol:global=global, initcol:ip=%{tx.remote_addr}_%{tx.ua_hash}&quot;
+</code></pre>
+
+<p>我们持久化存储保存 IP_hash(UA) 之后，就可以对请求进行检查了</p>
+
+<pre><code>    # 如果第一次请求，则将 IP_hash(UA) 存储到变量中
+    SecRule REQUEST_FILENAME &quot;@streq /myTestLogin.php&quot; &quot;chain,phase:2,id:999321,t:none,pass,nolog&quot;
+        SecRule REQUEST_METHOD &quot;@streq POST&quot; &quot;chain&quot;
+            SecRule ARGS:log &quot;.*&quot; &quot;chain&quot;
+                SecRule &amp;IP:PREVIOUS_USERNAME &quot;@eq 0&quot; &quot;setvar:ip.previous_username=&amp;{args.log}&quot;
+    # 之后的请求，都要做检查。如果一分钟内提交大于等于5个不同用户名尝试登录，则触发告警事件处理
+    SecRule REUQEST_FILENAME &quot;@streq /myTestLogin.php&quot; &quot;chain, phase:2, id:999322, t:none,block,msg:'Mutilple username login.', logdata:'Current username: %{args.log}', Total of username submitted: %{ip.multiple_username_count}&quot;
+        SecRule REUQEST_METHOD &quot;@streq POST&quot; &quot;chain&quot;
+            SecRule &amp;IP:PREVIOUS_USERNAME &quot;@eq 1&quot; &quot;chain&quot;
+                SecRule ARGS:log &quot;!@within %{ip.previous_username}&quot; &quot;chain,setvar:ip.multiple_username_count=+1, expirevar:ip.multiple_username_count+=60, setvar:'ip.previous_username=%{ip.previous_username}, %{args.log}'&quot;
+                    SecRule IP:MULTIPLE_USERNAME_COUNT &quot;@gt 5&quot;
+</code></pre>
+
+<h3 id="3-检测多次失败的身份验证">3. 检测多次失败的身份验证</h3>
+
+<p>概念：如果一个用户频繁的出现密码错误问题，很大概率是出现了黑客攻击可能。所以我们需要对登录错误频率进行检测。</p>
+
+<p>方法：</p>
+
+<p>我们先假设，如果用户账密错误，我们会返回<strong>200状态码</strong>和<strong>&lsquo;incorrent password&rsquo;</strong>字符串。</p>
+
+<p>我们则可以创建如下规则</p>
+
+<pre><code>    # 一分钟如果一个IP错误登录5次，则触发告警事件处理
+    SecRule REQUEST_FILENAME &quot;@streq /myTestLogin.php&quot; &quot;chain, phase:4, id:999323, t:none, block, msg:'Authentication failure.', logdata:'Number of authentication failures: %{ip.failed_auth_attempt}'&quot;
+        SecRule REUQEST_METHOD &quot;@streq POST&quot; &quot;chain&quot;
+            SecRule ARGS:pwd &quot;.*&quot; &quot;chain&quot;
+                SecRule RESPONSE_STATUS &quot;200&quot; &quot;chain&quot;
+                    SecRule RESPONSE_BODY &quot;@contains incorrent password&quot; &quot;chain, setvar:ip.failed_auth_attempt=+1, expirevar:ip.failed_auth_attempt=60&quot;
+                        SecRule IP:FAILED_AUTH_ATTEMPT &quot;@gt 5&quot;
+</code></pre>
+
+<h3 id="4-垂直暴力破解身份验证尝试">4. 垂直暴力破解身份验证尝试</h3>
+
+<p>概念：这是最常规的密码测试，就是一个账户多次更换密码尝试登录，最终可能还登录成功了。对于这种暴力密码登录方式，黑客最重要的方式就是“自动化”，使用类似burp suit之类的工具，根据返回数据进行自动测试。 针对这种情况，我们应当需要避免用户获取充分的信息，即让该IP不可访问，而非继续提供“错误”或“成功”的消息。</p>
+
+<p>方法：</p>
+
+<p>我们使用ModSecurity核心规则集的 modsecurity_crs_10_config.conf 文件的暴力破解检测即可。</p>
+
+<pre><code>    # 修改 modsecurity_crs_10_config.conf 文件中规则如下
+    SecAction &quot;phase:1, id:'981214', t:none,nolog,pass, setvar:'tx.brute_force_protected_urkls=/myTestLogin.php', setvar:'tx.brute_force_burst_time_slice=60', setvar:'tx.brute_force_counter_threshold=10', setvar:'tx.brute_force_timeout=300'&quot;
+    # 然后激活该文件规则，进行记录
+    SecRule IP:BRUTE_FORCE_BLOCK &quot;@eq 1&quot; &quot;chain, phase:1, id:'981036',block,msg:'Brute force attack identified from %{remote_addr} (%{tx.brute_force_block_counter} hits since last alert)', setvar:ip.brute_force_block_counter=+1&quot;
+        SecRule IP:BRUTE_FORE_BLOCK_FLAG &quot;@eq 0&quot; &quot;setvar:'tx.brute_force_block_flag=1', expirebvar:'tx.brute_force_block_flag=60', setvar:'tx.brute_force_block_counter=%{ip.brute_force_block_counter}', setvar:'ip.brute_force_block_counter=0'&quot;
+    # 阻塞请求
+    SecRule IP:BRUTE_FORE_BLOCK &quot;@eq 1&quot; &quot;phase:1, id:'981037', block, nolog, setvar:ip.brute_force_block_counter=+1&quot;
+</code></pre>
+
+<p>这样我们就可以设置如果一个IP在 1分钟内有5个登录请求，则该用户会被阻断5分钟不可登录（客户端得到返回码是 403， 不再是200），并产生报警记录。</p>
+
+<h3 id="5-从waf层规范返回信息">5. 从WAF层规范返回信息</h3>
+
+<p>概念：我们知道，为了安全起见，“登录错误：账号不存在”和“登陆错误：密码错误”的返回信息应该一致，例如提示“账号或密码错误”之类，这个可以通过修改代码，也可以在WAF层做出规范。</p>
+
+<pre><code>    # 开启文本注入
+    SecContentInjection On
+    SecStreamOutBodyInjection On
+    SecRule REQUEST_FILENAME &quot;@streq /myTestLogin.php&quot; &quot;chain, phase:4, t:none,nolog,pass&quot;
+        SecRule ARGS:log|ARGS:pwd &quot;!^$&quot; &quot;chain&quot;
+            SecRule STREAM_OUTPUT_BODY &quot;@rsub s/&lt;div&gt;登陆错误： .*?&lt;\/div&gt; /&lt;div&gt;登陆错误： 账号或密码错误.&lt;\/div&gt;&quot;
+</code></pre>
+
+<h2 id="会话状态防护">会话状态防护</h2>
+
+<h3 id="1-检测非法cookie">1. 检测非法cookie</h3>
+
+<p>概念：通常来说，账号密码身份验证完毕后，我们会给用户一个 sesssionID，以此作为他的身份标示，这东西通常存在cookie里。如果黑客通过类似burp suit之类批量抓取大量sessionID样本，是有概率暴力推算出sessionID生成规则的，那么黑客就依然可以伪造身份。</p>
+
+<p>我们需要检测cookie是否合法，则不能通过算法规则。我们需要确认，给客户端发送的cookie是否和客户端返回的cookie一致。</p>
+
+<p>方法：</p>
+
+<pre><code>    # 修改 modsecurity_crs_40_appsensor_detection_point_2.3_session_excepti 规则文件
+    SecRule RESPONSE_HEADERS: /Set-Cookie2?/ &quot;(?i:(j?sessionid|(php)?sessid|(asp|jserv|jw)?session[-_]?|cf(id|token)|sid)=([^\s]+)\;\s?))&quot; &quot;chain,phase:3,id:'981062', t:none,pass,nolog,capture,setsid:%{TX.6}, setvar:session.sessionid=%{TX.6}, setvar:session.valid=1&quot;
+        SecRule REMOTE_ADDR &quot;^(\d{1,3}\.\d{1,3}\.\d{1,3}\.)&quot; &quot;chain,capture,setvar:session.ip_block=%{tx.1}&quot;
+            SecRule REQUEST_HEADERS:User-Agent &quot;.*&quot; &quot;t:none, t:sha1, t:hexEncode, setvar:session.ua=%{matched_var}&quot;
+    # 上述规则默认会追踪常见SessionID, 如JSESSIONID, SESSIONID, PHPSESSID, SESSID, ASPSESSIONID, SESSION_ID, SESSION-ID, CFID, CFTOKEN, SID, JWSESSIONID.
+    # 如果收到一个cookie值，未在ModSecurity中保存，则会被告警。
+</code></pre>
+
+<p>改进： 这种方式也同样可以检测cookie恶意篡改注入攻击。只要cookie项不在保存数据中，则会被识别告警。所以，当用户使用UA cookie攻击也会同样被捕获。</p>
+
+<h3 id="2-检测会话有效期">2. 检测会话有效期</h3>
+
+<p>概念：一般来说，会话会有超时时间，超时时间包括：</p>
+
+<ul>
+<li>会话不活跃的超时（例如，10分钟没有操作请求，则强制重新登录）</li>
+<li>会话总时间超时（例如，即使用户一直在持续操作请求，超过1个小时，也会强制用户重新验证身份）</li>
+</ul>
+
+<p>这俩种方式，mod security 都可以通过expirevar和session.valid进行限制支持，代码略。</p>
+
+<h3 id="3-检测客户端位置在会话有效期内是否更变">3. 检测客户端位置在会话有效期内是否更变</h3>
+
+<p>概念：通过检测客户端的GeoIP可以得知客户端在会话有效期内是否发生变化。</p>
+
+<p>方法：主要使用SecGeoLookupDb指令，@geoLookup操作符对session REMOTE_ADDR进行检测即可。</p>
+
+<p>缺点：会产生误报，如果用户使用代理服务器或TOR网络，都会被判断为不正常访问。</p>
+
+<h3 id="4-检测客户端会话有效期内ua是否更变">4. 检测客户端会话有效期内UA是否更变</h3>
+
+<p>概念：和GeoIP一样，就是检查客户端会话有效期内UA字符串是否更变。</p>
+
+<p>方法：对用户UA字段做sha1和hexEncode保存起来，和后续请求进行比对。</p>
+
+<p>改进方式：我们可以不仅仅对原始UA进行检测，还可以在前端做JS检测，然后通过cookie上报浏览器各种设置，例如“当前屏幕大小，当前时区，浏览器插件列表，语言设置等”。</p>
+
+<p>如果要使用这种方式，无需修改代码，只需在modSecurity中开启 SecContentInjection On, SecStreamOutBodyInspection On ，然后在关心的html页面加入预先的js代码即可。</p>
+
+<h2 id="应用层攻击防护">应用层攻击防护</h2>
+
+<h3 id="1-阻断非ascii字符请求">1. 阻断非ASCII字符请求</h3>
+
+<p>概念：黑客可能会恶意提交非法字符，以实现特殊效果。</p>
+
+<p>例如有如下请求：</p>
+
+<pre><code>    GET /index.php?option=test&amp;controller=../etc/passwd%00.php HTTP/1.0
+</code></pre>
+
+<p>看起来似乎想请求一个PHP文件，实际上，黑客是使用wordpress的 controller 插件参数去访问系统OS的一个密码文件。其中的 %00 被翻译为 NULL，所以请求实际会被 controller 参数截断，相当于</p>
+
+<pre><code>    GET /index.php?option=test&amp;controller=../etc/passwd
+</code></pre>
+
+<p>因为后缀&rdquo;看起来&rdquo;是PHP，在比较弱的WAF防护下，可能会被绕过。</p>
+
+<p>所以我们需要阻断 NULL 字节和一些特殊字符，例如反斜杠 / 等。</p>
+
+<p>方法：例如限制值采用标准的ASCII字符（32~126）。</p>
+
+<pre><code>    SecRule TX:PARANOID_MODE &quot;@eq 1&quot; &quot;chain,phase:2,rev:'2.2.5',block,msg:'Invalid characters in request', id:'960018', severity:'4', t:none, t:urlecodeUni&quot;
+        SecRule REUQEST_URI|REQUEST_BODY|REQUEST_HEADERS_NAMES|REQUEST_HEADERS|!REQUEST_HEADERS:Referer|TX:HPP_DATA &quot;@validateByteRange 32-126&quot;
+</code></pre>
+
+<h3 id="2-防止路径检测">2. 防止路径检测</h3>
+
+<p>概念：黑客利用路径遍历的方式，便利寻找服务器不希望提供的文件，目录甚至文件系统级别的根目录。</p>
+
+<p>例如蜜罐中有如下请求：</p>
+
+<pre><code>    GET /index.php?option=test&amp;controller=../etc/passwd%00.php HTTP/1.0
+    GET /index.php?option=test&amp;controller=../../etc/passwd%00.php HTTP/1.0
+    GET /index.php?option=test&amp;controller=../../../etc/passwd%00.php HTTP/1.0
+</code></pre>
+
+<p>黑客显然在测试获取系统文件，正在进行路径猜测。而且，其中的 &lsquo;/../&rsquo; 这四个字符，是可以更改编码的，如下</p>
+
+<pre><code>    Hex编码       %2f%2e%2e%2f 或 \x2F\x2E\x2E\x2F
+    短UTF8编码     %c0%af%c0%ae%c0%ae%c0%af
+    长UTF8编码     %e0%80%af%e0%80%ae%e0%80%ae%e0%80%af
+    双% Hex编码    %252d%252e%252e%252f
+    前Nibble     %%32F%%32E%%32E%%32F
+    后Nibble     %2%46%2%45%2%45%2%46
+    双Nibble     %32%46%32%45%32%45%32%46
+    Unicode8    %u002f%002e%u002e%002f 或 \u002F\u002E\u002E\u002F
+    Unicode32   \U0000002F\U0000002E\U0000002E\U0000002F
+    HTML        &amp;#47;&amp;#46;&amp;#46;&amp;#47;
+    HTML Hex    &amp;#x2F;&amp;#x2E;&amp;#x2E;&amp;#x2F;
+    八进制     \057\056\056\057
+    URL编码       %2F..%2F
+</code></pre>
+
+<p>所以，我们要对多重编码进行检查。</p>
+
+<p>方法：ModSecurity也是进行复杂正则实现的。。</p>
+
+<h3 id="3-防止路径暴力扫描">3. 防止路径暴力扫描</h3>
+
+<p>概念：黑客利用路径遍历的方式，便利寻找服务器不希望提供的文件或接口。</p>
+
+<p>例如蜜罐中有如下请求：</p>
+
+<pre><code>    GET /index.php?option=test&amp;controller=../backup.rar HTTP/1.0
+    GET /index.php?option=test&amp;controller=../backup.txt HTTP/1.0
+    GET /index.php?option=test&amp;controller=../backup.zip HTTP/1.0
+    GET /index.php?option=test&amp;controller=../loginbackup.php HTTP/1.0
+</code></pre>
+
+<p>黑客的目的则是在试探，我们的目录下是否有命名为 backup 的文件，以及扫描是否有某些未开放的API或者备份文件，测试文件之类的。</p>
+
+<p>方法：对url使用加密的hash值作为token验证，即可，例如</p>
+
+<pre><code>    GET /index.php?option=test&amp;controller=../xxoo.php?mytoken=e10adc3949ba59abbe56e057f20f883e HTTP/1.0
+    
+    # 如果黑客尝试下列请求，则会因为mytoken不正确而被阻挡
+    GET /index.php?option=test&amp;controller=../backup.rar?mytoken=e10adc3949ba59abbe56e057f20f883e HTTP/1.0
+</code></pre>
+
+<p>要自动生成该token并做自动验证，只需</p>
+
+<pre><code>    SecDisableBackendCompression On
+    SecContentInjection On
+    SecStreamOutBodyInspection On
+    SecEncryptionEngine On
+    SecEncryptionKey rand keyOnly
+    SecEncryptionParam mytoken
+    SecEncryptionMethodrx &quot;HashUrl&quot; &quot;[a-zA-Z0-9]&quot;
+    SecRule REQUEST_URL &quot;@validateEncryption [a-zA-Z0-9]&quot; &quot;phase:2, ctl:enryptionEnforcement=On&quot;
+</code></pre>
+
+<h3 id="4-阻断sql注入">4. 阻断SQL注入</h3>
+
+<p>概念：这是个老生常谈话题了。主要注入收入包括，</p>
+
+<ul>
+<li>使用SQL注入</li>
+<li>使用SQL十六进制编码绕过监察</li>
+<li>字符串终止或语句终止</li>
+<li>使用了SQL操作符</li>
+<li>使用了SQL永真逻辑</li>
+<li>使用了通用DB名</li>
+</ul>
+
+<p>这些方式在ModSecurity的 modsecurity_crs-41_sql_inhection_attacks.conf 文件中默认都进行检查防护了。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E9%BB%91%E5%AE%A2/">黑客</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/%E6%9C%88%E8%AE%B0202003/" data-tooltip="月记202003">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/" data-tooltip="sql注入攻防【未完结】">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/%E6%9C%88%E8%AE%B0202003/" data-tooltip="月记202003">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2020/03/sql%E6%B3%A8%E5%85%A5%E6%94%BB%E9%98%B2%E6%9C%AA%E5%AE%8C%E7%BB%93/" data-tooltip="sql注入攻防【未完结】">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2020/03/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Ffafo4games.com%2F2020%2F03%2Fmodsecurity%25E7%25BD%2591%25E7%25BB%259C%25E5%25AE%2589%25E5%2585%25A8%25E9%2598%25B2%25E5%25BE%25A1%25E7%25AD%2596%25E7%2595%25A5%25E6%259C%25AA%25E5%25AE%258C%25E7%25BB%2593%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://fafo4games.com/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://fafo4games.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/fafo4games.com\/2020\/03\/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93\/';
+          
+            this.page.identifier = '\/2020\/03\/modsecurity%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E9%98%B2%E5%BE%A1%E7%AD%96%E7%95%A5%E6%9C%AA%E5%AE%8C%E7%BB%93\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

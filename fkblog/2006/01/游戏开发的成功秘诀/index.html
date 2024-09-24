@@ -1,0 +1,808 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>游戏开发的成功秘诀</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, 游戏开发, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://fafo4games.com/favicon.png">
+    
+
+    
+    <meta name="description" content="“离子风暴”开发公司的奠基人之一汤姆·霍尔先生在网上发表了一篇有趣的文章，披露了快速成为游戏开发者的“成功秘诀”。
+
+">
+    <meta property="og:description" content="“离子风暴”开发公司的奠基人之一汤姆·霍尔先生在网上发表了一篇有趣的文章，披露了快速成为游戏开发者的“成功秘诀”。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="游戏开发的成功秘诀">
+    <meta property="og:url" content="/2006/01/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%88%90%E5%8A%9F%E7%A7%98%E8%AF%80/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="“离子风暴”开发公司的奠基人之一汤姆·霍尔先生在网上发表了一篇有趣的文章，披露了快速成为游戏开发者的“成功秘诀”。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://fafo4games.com/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://fafo4games.com/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://fafo4games.com/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/OLDPAGE/index.html" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">OldPage</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.facebook.com/FreeKnight5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-facebook-official"></i>
+      
+      <span class="sidebar-button-desc">Facebook</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.linkedin.com/in/freeknight/" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-linkedin"></i>
+      
+      <span class="sidebar-button-desc">LinkedIn</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.com/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      游戏开发的成功秘诀
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2006-01-01T00:00:00Z">
+        
+  一月 1, 2006
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/%e6%b8%b8%e6%88%8f%e8%a1%8c%e4%b8%9a">游戏行业</a>, 
+    
+      <a class="category-link" href="https://fafo4games.com/categories/2006%e5%b9%b4%e4%b9%8b%e5%89%8d">2006年之前</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>“离子风暴”开发公司的奠基人之一汤姆·霍尔先生在网上发表了一篇有趣的文章，披露了快速成为游戏开发者的“成功秘诀”。</p>
+
+<p></p>
+
+<p>唉，世上哪有那么便宜的事呢？可汤姆·霍尔说得一本正经，一脸严肃，不由得你不信。再加上笔者生来对“投机取巧”“不劳而获”“一蹴而就”之类的事情有一种按捺不住的好奇（首先声明，笔者一生的道路走得踏踏实实，一步一个脚印，绝无此类“劣迹”，仅好奇耳），便偷偷地看了。不看则已，一看才知世上竟有汤姆·霍尔这类大滑头，失望之余便有些忿忿然，忿忿然之余又不禁哑然失笑，豁然明白了霍尔先生的苦心。　　</p>
+
+<p>原来他出此奇文并非存心戏弄读者，实在是有几分“劝世”的用意在其中。作为闻名遐迩的游戏开发者，汤姆·霍尔在开发游戏的同时（眼下他正忙着开发一款以未来为背景的游戏：《时空异变》），常常会收到一些来信，写信者表露出有心在游戏业驰骋一番的雄心，提出的问题可大致划分为以下三种：　　</p>
+
+<ol>
+<li>“我脑子里新奇念头层出不穷，你愿意雇用我吗？”　　</li>
+</ol>
+
+<p>对于第一种来信，霍尔的回答只有两句话：“新奇念头人人有”和“不行”。</p>
+
+<p>霍尔解释说：“如今游戏业并不缺乏新奇念头，每天都有成千上万的新念头在产生和消亡。尽管新奇对于一个游戏的成败至关重要，然而更重要的是行动，将其付诸实现。爱迪生说什么来着：‘发明是百分之一的灵感和百分之九十九的汗水的混合物。’除非你拿出东西来，否则没人愿意听你凭空说话。埋头制作游戏需要某种献身精神，你可能会嘲笑那些开发游戏的人‘这也做得不好’、‘那也做得不对’，可他们实实在在完成了一件作品，这就使他们显得与众不同。因为99%的人是希望在他们付出劳动之前能确保得到回报的庸常之辈。”　　</p>
+
+<ol>
+<li>“我把自己刚刚完成的游戏设计寄来，你能抽空看看吗？很了不起的构想噢！”　　</li>
+</ol>
+
+<p>对于这种来信，霍尔拒绝得更快，几乎是不加思索的“No”。</p>
+
+<p>原因也有些出人意表：“他们寄来的构想可能是粗浅的习作，也可能是未来的惊世大作，可我是一眼也不敢看的。</p>
+
+<p>原因很简单，我自己也是搞游戏策划的，他的想法可能会与我已有的想法不谋而合。由于这种事无法证明，所以他会认为我剽窃了他的念头。</p>
+
+<p>第二，我看过的东西会残存在我的感知里，在我将来的游戏策划中它会不知不觉地跑出来作怪，这样我还是摆脱不了被指控剽窃的危险。</p>
+
+<p>第三，一旦我看过了某个构思，我就必须对其加以评论，运用我自己的想法对其进行指导。出于自私的考虑，我不想让自己的‘酷’念头为他人所用，我自己将来还用得着呢。还有呵，对于杂志上发表的有关游戏策划的评说我也是避之而唯恐不及，尽管发表意见的人会说：‘这就是我认为的好游戏，你们就照着做吧。’可一旦这个念头被某个游戏开发者所采用，并且挣了几百万，98%的人会打官司索要专利费。另外2%的人也会在配偶的撺掇下把你告上法庭。唯一的办法就是眼不见为净。”</p>
+
+<ol>
+<li>“我觉得制作游戏是一件令人兴奋的事。你是怎么走上这条路的？你使用了什么工具？”　　</li>
+</ol>
+
+<p>让霍尔先生看着顺眼的大概只有这第三种问题了。由于这种信件仅仅是提出问题，而没有隐含的危险性，霍尔先生的解答也就来得很爽快。在这里他不仅仅是回答问题，而是借此对游戏开发这个行当表述了自己独特的见解。　　</p>
+
+<p>“倘若你真的喜欢电脑游戏，而你周围又没人会开发游戏，而你自己又没有通过书本和工具学会开发游戏的能力，除非有人教你如何开发游戏否则你便不知该怎样着手，倘若情况是这样，那你就趁早打消开发游戏的念头。　　</p>
+
+<p>“倘若你刚刚玩过一款伟大的游戏便觉得自己也能行，而实际上你对游戏开发一无所知，你所持有的仅仅是对成功和名望的渴望，那你就不要做游戏开发者。　　</p>
+
+<p>“倘若你无可救药地迷上了电脑游戏，如醉如痴地阅读游戏杂志，时不时地用QuickBASIC编写自己的简单游戏，不畏艰难地将一些好游戏的内核打开，来回比较它们的优劣，那你也不适合搞游戏开发。”　　</p>
+
+<p>汤姆·霍尔不留情面地把以上几种人都“炒了鱿鱼”，因为在他看来，游戏业不是个仅靠热情和痴迷便能胜任的行当。游戏公司是赚钱的公司，而不是搞游戏研究的地方。这里的竞争法则是严酷的，一如好莱坞电影业。在投奔这个新世界之前你要考虑再三，并且要准备在开始阶段去饭馆端碟子—可能会端上一辈子。　　</p>
+
+<p>“倘若以上所说的仍难不住你，你仍旧无法打消开发游戏的念头，那么我就给你详细描述一下你将面临的艰难道路，这是一条可能走向成功的充满荆棘的道路。”看来霍尔先生终于不忍心将那么多痴迷的年轻人拒之门外，开始布道施教了。“在你充分了解了它的艰难之后，我将向你指出另一条路，我会把不必花费多少力气便能快速成功的超级秘诀告诉你。不过要在你阅读了下面的内容之后。”</p>
+
+<p>打开你的电脑，在DOS状态下敲入QBASIC，你会发现有一个程序在运行。它就是QBASIC，随着DOS附送的一个编程程序。你的操作系统种没有一样东西是用它编写的—它运行太慢—但你却可以用它来写一些游戏程序。依照霍尔先生的看法，你应该先从学习别人的程序着手。上街买一些游戏编程手册，然后就可以干起来了。你会犯这样或那样的错误，然而没人会在意的。在“观摩学习”中，你要留意几个问题：他们是如何使游戏变得有趣而使操作变得简单的？倘若换了自己会怎么做？他们是如何改进的？什么东西使你在玩了50个小时之后依然不对它产生厌烦？　　</p>
+
+<p>汤姆·霍尔布置的作业可不轻松，大约需要开发100个左右自己的小游戏。前10个应该是不堪入目的入门习作，从第11个开始，应该有了一点起色，从第50个游戏起，你开始有了自己的声音。正如音乐家的成长一样，在你开发了100个游戏之后，游戏开发程序就成了可以让你任意支配的乐器，用它来随心所欲地表达自己的思想了。　　</p>
+
+<p>你要开发的游戏种类应该没有限制，想到什么就开发什么。作为开始，你不妨拿游戏业最老的游戏之一：Pac-Man来作临本，你会发现它实际上不象看上去那么简单。你还可以让一个小人从A点走到B点，躲避从C点掉下来的一个小球。关键是你要开始制作游戏，并完成它。随着自己的作品的增多，你会产生自豪感，并且会逐渐感到上瘾。等到某一天，你的朋友要求拷贝一份你制作的游戏回家去玩，那时你差不多就出徒了。你再绞尽脑汁制作一个全新的游戏，一个前人从未干过的新品，尽可能把它打磨精细，然后就可以拿到游戏业界去闯运气了。　　</p>
+
+<p>成功的道路不止一条，然而汤姆·霍尔走向成功的道路却是实实在在的先例，想成为游戏开发者的人自然很想知道。我们将他走过的道路粗略地画了一个轮廓：</p>
+
+<p>从小常去玩街机，后来自己买了个游戏机，上高中时买了电脑，自己开发了50个游戏。而后上大学学习编程，又利用业余时间制作了30个游戏，其它的业余时间则全部用来玩游戏。阅读有关书籍与杂志的同时，开始为杂志撰稿，还为有智力障碍的学生编制游戏，毕业时拿到了计算机专业学位，在一个小公司谋得职业，它每月都有程序发布。在搞应用程序的同时又制作了几款游戏，并开始在其它一些制作游戏的部门窥探，结识了几个游戏天才人物，并使自己的作品得到他们的赏识。等到羽毛丰满，便自立门户，创建了自己的游戏公司。每天工作16个小时，每星期工作7天，挣的钱仅够维持生计。制作各种各样的游戏，逐步走向成功。这条道路是艰难和漫长的，然而要想成为一个游戏开发者，该做的事一样少不了。　　</p>
+
+<p>“不是说还有一条道路吗？”心有不甘的读者问。　　</p>
+
+<p>不错，的确还有一条路。走这条路你可以不必花费时间和精力去学习编程，你可以在一夜之间实现自己的梦想。汤姆·霍尔知道这条路，并把它称为“走向成功的超级秘诀”，慷慨地在此奉献给大家。秘诀分为三个步骤，排列如下：　　</p>
+
+<ul>
+<li><p>第一步：有几百万美金闲钱可调用。　　</p></li>
+
+<li><p>第二步：购买一个现成的游戏开发公司。　　</p></li>
+
+<li><p>第三步：别忘了在合同里加上一条，公司开发的所有游戏前面都要加上你的大名。　　</p></li>
+</ul>
+
+<p>大功告成。这样你就（至少在公众的眼里）成了一位游戏开发者。是不是简洁而又迅速？看着游戏封面你那烫金的大名，你是否感到陶醉？唯一的不足之处就是，你别指望这样别人会对你产生多少敬意。假如你真的想成为货真价实的游戏开发者，除了第一条充满荆棘的困难道路外，似乎没有什么别的路好走。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/">游戏行业</a>
+
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://fafo4games.com/tags/2006%E5%B9%B4%E4%B9%8B%E5%89%8D/">2006年之前</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/01/%E6%B4%9B%E7%A5%9E%E8%B5%8B/" data-tooltip="洛神赋">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/01/%E7%81%AB%E8%BD%A6%E7%AB%99%E7%9A%84%E5%A5%B3%E5%AD%A9/" data-tooltip="火车站的女孩">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2006/01/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%88%90%E5%8A%9F%E7%A7%98%E8%AF%80/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/01/%E6%B4%9B%E7%A5%9E%E8%B5%8B/" data-tooltip="洛神赋">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://fafo4games.com/2006/01/%E7%81%AB%E8%BD%A6%E7%AB%99%E7%9A%84%E5%A5%B3%E5%AD%A9/" data-tooltip="火车站的女孩">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://fafo4games.com/2006/01/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%88%90%E5%8A%9F%E7%A7%98%E8%AF%80/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Ffafo4games.com%2F2006%2F01%2F%25E6%25B8%25B8%25E6%2588%258F%25E5%25BC%2580%25E5%258F%2591%25E7%259A%2584%25E6%2588%2590%25E5%258A%259F%25E7%25A7%2598%25E8%25AF%2580%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/07/%E5%91%A8%E8%AE%B020240719_20240730/">
+                <h3 class="media-heading">周记20240719_20240730</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240523-20240531/">
+                <h3 class="media-heading">半月记20240523-20240531</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近整理了一下计划，包括事业规划，资金方面计划，以及之后的生活计划。然后整理了一些最近的生活感受以及对独立游戏的想法。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/%E5%8D%8A%E6%9C%88%E8%AE%B020240508-20240522/">
+                <h3 class="media-heading">半月记20240508-20240522</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230220-20230226/">
+                <h3 class="media-heading">周记20230220-20230226</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周学习进度还好，除最后两天休息，没有特殊的事情进行干扰，但也没有进入拼命努力的状态，我想是时候退出全部社交环境了。</p>
+
+<p>经过4个月，特别是最近2个月的状态调整，可以明显的感觉到语言有大幅度进步，Unity更是完整消化一遍，很有信心，虽然慢了一些，但吸收的的确非常稳，如果能一直如此就好了。</p>
+
+<p>尝试更多的投入其中吧，我只有这一年时间可以安心学习了。起码，要怀着这种心情去投入学习吧。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230213-20230219/">
+                <h3 class="media-heading">周记20230213-20230219</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个星期本身除了偶尔晚上玩一些google play游戏之外，已经顺利的进入了学习状态，自我感觉良好，但单周统计结果并不如预期，所以做了一些调整。</p>
+
+<p>另外本周接触了一些AI做的COSER图，以及AI配音的视频。深深感觉逃避AI是不可能的了，只能去接受它，特别是在游戏开发等偏轻度创作领域，所以索性将其加入下半年学习列表中。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://fafo4games.com/2023/02/%E5%91%A8%E8%AE%B020230130-20230212/">
+                <h3 class="media-heading">周记20230130-20230212</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2023
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>本周和老婆商量了一下接下来的安排，虽然依然不能太相信她的话，不过衡量的天平还是更多向“不打工，纯靠数字游牧赚钱”这边又靠了一些。</p>
+
+<p>这也就意味着，Unreal的权重进一步降低了，而独立游戏，外包兼职的权重加重（美术被迫要考虑拿起来了），渗透黑客权重不变。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         299 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://fafo4games.com/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://fafo4games.com/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/fafo4games.com\/2006\/01\/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%88%90%E5%8A%9F%E7%A7%98%E8%AF%80\/';
+          
+            this.page.identifier = '\/2006\/01\/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E7%9A%84%E6%88%90%E5%8A%9F%E7%A7%98%E8%AF%80\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
