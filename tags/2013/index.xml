@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2013 on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/2013/</link>
+    <description>Recent content in 2013 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 30 Dec 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/2013/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>月记201312</title>
+      <link>https://duzhi5368.github.io/2013/12/%E6%9C%88%E8%AE%B0201312/</link>
+      <pubDate>Mon, 30 Dec 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/12/%E6%9C%88%E8%AE%B0201312/</guid>
+      <description>&lt;p&gt;2013年12月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201311</title>
+      <link>https://duzhi5368.github.io/2013/11/%E6%9C%88%E8%AE%B0201311/</link>
+      <pubDate>Sat, 30 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/11/%E6%9C%88%E8%AE%B0201311/</guid>
+      <description>&lt;p&gt;2013年11月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>MFC上运行cocos2dx</title>
+      <link>https://duzhi5368.github.io/2013/11/mfc%E4%B8%8A%E8%BF%90%E8%A1%8Ccocos2dx/</link>
+      <pubDate>Thu, 21 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/11/mfc%E4%B8%8A%E8%BF%90%E8%A1%8Ccocos2dx/</guid>
+      <description>&lt;p&gt;有时候做一些编辑器挺方便的。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.csdn.net/akof1314/article/details/8133800&#34;&gt;http://blog.csdn.net/akof1314/article/details/8133800&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>cocos2d-x中文乱码问题</title>
+      <link>https://duzhi5368.github.io/2013/11/cocos2d-x%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 14 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/11/cocos2d-x%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;复杂的或者不实用的不再说明，只说最直接有效的方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201310</title>
+      <link>https://duzhi5368.github.io/2013/10/%E6%9C%88%E8%AE%B0201310/</link>
+      <pubDate>Wed, 30 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/10/%E6%9C%88%E8%AE%B0201310/</guid>
+      <description>&lt;p&gt;2013年10月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Cocos2d-x VisualStudio开发模板简易搭建</title>
+      <link>https://duzhi5368.github.io/2013/10/cocos2d-x-visualstudio%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF%E7%AE%80%E6%98%93%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Fri, 18 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/10/cocos2d-x-visualstudio%E5%BC%80%E5%8F%91%E6%A8%A1%E6%9D%BF%E7%AE%80%E6%98%93%E6%90%AD%E5%BB%BA/</guid>
+      <description>&lt;p&gt;下载到Cocos2d-x，在VS中创建新项目，自己添加头文件，库文件，这个大家都会，但是相对比较繁琐，如果我们可以像Mac机上一样，在创建项目时就有一个模板项目，则更加便捷。下面我们提供一个很简单的方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]ios开发全流程</title>
+      <link>https://duzhi5368.github.io/2013/08/%E8%BD%ACios%E5%BC%80%E5%8F%91%E5%85%A8%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Thu, 08 Aug 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/08/%E8%BD%ACios%E5%BC%80%E5%8F%91%E5%85%A8%E6%B5%81%E7%A8%8B/</guid>
+      <description>&lt;p&gt;iOS开发流程：注册，开发，真机测试，发布，上线。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201307</title>
+      <link>https://duzhi5368.github.io/2013/07/%E6%9C%88%E8%AE%B0201307/</link>
+      <pubDate>Tue, 30 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/07/%E6%9C%88%E8%AE%B0201307/</guid>
+      <description>&lt;p&gt;2013年7月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]安装MS SQL Server 2008</title>
+      <link>https://duzhi5368.github.io/2013/04/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008/</link>
+      <pubDate>Fri, 19 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/04/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008/</guid>
+      <description>&lt;p&gt;在XP下，安装MS SQL Server 2008.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201303</title>
+      <link>https://duzhi5368.github.io/2013/03/%E6%9C%88%E8%AE%B0201303/</link>
+      <pubDate>Sat, 30 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/03/%E6%9C%88%E8%AE%B0201303/</guid>
+      <description>&lt;p&gt;2013年3月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>未处理的MissingManifestResource异常</title>
+      <link>https://duzhi5368.github.io/2013/03/%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84missingmanifestresource%E5%BC%82%E5%B8%B8/</link>
+      <pubDate>Mon, 04 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/03/%E6%9C%AA%E5%A4%84%E7%90%86%E7%9A%84missingmanifestresource%E5%BC%82%E5%B8%B8/</guid>
+      <description>&lt;p&gt;CLR窗体错误：未处理的“System.Resources.MissingManifestResourceException”类型的异常出现在 mscorlib.dll 中&lt;/p&gt;
+
+&lt;p&gt;转自：&lt;a href=&#34;http://support.microsoft.com/kb/318603/zh-cn&#34;&gt;http://support.microsoft.com/kb/318603/zh-cn&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201302</title>
+      <link>https://duzhi5368.github.io/2013/02/%E6%9C%88%E8%AE%B0201302/</link>
+      <pubDate>Thu, 28 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/02/%E6%9C%88%E8%AE%B0201302/</guid>
+      <description>&lt;p&gt;2013年2月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201301</title>
+      <link>https://duzhi5368.github.io/2013/01/%E6%9C%88%E8%AE%B0201301/</link>
+      <pubDate>Wed, 30 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/01/%E6%9C%88%E8%AE%B0201301/</guid>
+      <description>&lt;p&gt;2013年1月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>服务器自检启动bat批处理</title>
+      <link>https://duzhi5368.github.io/2013/01/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E6%A3%80%E5%90%AF%E5%8A%A8bat%E6%89%B9%E5%A4%84%E7%90%86/</link>
+      <pubDate>Wed, 23 Jan 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2013/01/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%87%AA%E6%A3%80%E5%90%AF%E5%8A%A8bat%E6%89%B9%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;启动FK游戏服务器的批处理文件。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

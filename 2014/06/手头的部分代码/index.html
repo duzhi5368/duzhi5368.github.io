@@ -1,0 +1,1447 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>手头的部分代码</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="几百个游戏相关库和代码。后面直接批处理生成了-。-懒的慢慢描述了
+
+Created by FreeKnight 2011-08-13
+modify by FreeKnight 2014-06-13
+
+">
+    <meta property="og:description" content="几百个游戏相关库和代码。后面直接批处理生成了-。-懒的慢慢描述了
+
+Created by FreeKnight 2011-08-13
+modify by FreeKnight 2014-06-13
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="手头的部分代码">
+    <meta property="og:url" content="/2014/06/%E6%89%8B%E5%A4%B4%E7%9A%84%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="几百个游戏相关库和代码。后面直接批处理生成了-。-懒的慢慢描述了
+
+Created by FreeKnight 2011-08-13
+modify by FreeKnight 2014-06-13
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      手头的部分代码
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2014-06-18T00:00:00Z">
+        
+  六月 18, 2014
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2014">2014</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>几百个游戏相关库和代码。后面直接批处理生成了-。-懒的慢慢描述了</p>
+
+<p>Created by FreeKnight 2011-08-13
+modify by FreeKnight 2014-06-13</p>
+
+<p></p>
+
+<p>《天龙八部》  3.77 GB(未压缩)
+官方网站：<a href="http://tl.changyou.com/">http://tl.changyou.com/</a>
+客户端代码，服务端代码，工具代码（有完整天龙八部编辑器）引擎代码，客户端美术资源，部分文档。
+说明：此代码为宏图修改+完整天龙源代码，100%可跑，可进游戏，非网上流传不完整版本</p>
+
+<p>《BigWorld引擎》
+官方网站：<a href="http://www.bigworldtech.com/index/index.php">http://www.bigworldtech.com/index/index.php</a>
+世界顶尖BigWorld引擎，BW191版本全套源码，包括编辑器、服务端、DEMO、资源。
+BW195版本世界最全，包含最机密的专利核心代码。BW192、BW2.0安装包等。</p>
+
+<p>《第六世界》  768 MB(未压缩)
+17173专区：<a href="http://web.17173.com/_world6/">http://web.17173.com/_world6/</a>
+顶尖大型WEB在线游戏源代码，AS3+FLEX，后台服务端C++编写，全套源码、资源。可跑可进游戏。</p>
+
+<p>《疯狂派对》  1.22 GB(未压缩)
+官方网站：<a href="http://www.ppcrazy.com/">http://www.ppcrazy.com/</a>
+客户端代码，服务端代码，工具代码，引擎代码，客户端资源。可跑可进游戏。</p>
+
+<p>《ChaoticEden》（混沌伊甸园）  1.86 GB(未压缩)
+官方网站：<a href="http://www.chaoticeden.co.kr/">http://www.chaoticeden.co.kr/</a>
+客户端代码，服务端代码，工具代码，引擎代码，客户端资源，完整数据库，脚本等。</p>
+
+<p>《LostWeapon》 271 MB(未压缩)
+2D横版游戏LostWeapon，客户端代码，服务端代码，工具代码，引擎代码</p>
+
+<p>《LUNA》（露娜） 194 MB(未压缩)
+官方网站：<a href="http://www.lunajoy.com/">http://www.lunajoy.com/</a>
+客户端代码，服务端代码，引擎代码，工具代码。</p>
+
+<p>《Ninety-NineNights》（九十九夜）2.81 GB
+X-BOX次时代游戏
+完整源代码，工具源代码，游戏资源。</p>
+
+<p>《碰碰i世代》621 MB
+官方倒闭游戏。
+客户端代码。资源，工具。</p>
+
+<p>《骑士》（Knight）703 MB
+官方倒闭游戏。
+客户端代码，服务端代码，引擎代码，工具代码，客户端资源</p>
+
+<p>《奇迹世界》（SUN）3.14 GB
+官方网站：<a href="http://sun.the9.com/">http://sun.the9.com/</a>
+客户端代码，服务端代码，引擎代码，工具代码，客户端资源，部分.MAX。</p>
+
+<p>《QQ幻想》204 MB(未压缩)
+官方网站：<a href="http://fo.qq.com/index.shtml">http://fo.qq.com/index.shtml</a>
+客户端代码，工具代码，部分代码。</p>
+
+<p>《RFOnline》2.82 GB(未压缩)
+官方网站：<a href="http://www.rfonline.co.kr/">http://www.rfonline.co.kr/</a>
+客户端代码，服务端代码，引擎代码，工具代码，.MAX源文件。文档。</p>
+
+<p>《千年 Online》1.04 GB (未压缩)
+官方网站：<a href="http://www.xk1000y.com/">http://www.xk1000y.com/</a>
+客户端代码，服务端代码，引擎代码，工具代码，资源。</p>
+
+<p>《突袭》（SuddenAttack） 3.24 GB(未压缩)
+官方网站：<a href="http://www.tuxi.com.cn/">http://www.tuxi.com.cn/</a>
+客户端代码，服务端代码，引擎代码，工具代码，客户端资源。</p>
+
+<p>《苍天OL》3.05 GB(未压缩)
+官方网站：<a href="http://ct.sdo.com/">http://ct.sdo.com/</a>
+客户端代码，服务端代码。</p>
+
+<p>《成吉思汗》475 MB(未压缩)
+官方网站：<a href="http://han.70yx.com/index.shtml">http://han.70yx.com/index.shtml</a>
+客户端代码，工具代码。</p>
+
+<p>《大唐豪侠》3.07 GB(未压缩)
+官方网站：<a href="http://dt.163.com/">http://dt.163.com/</a>
+客户端代码，服务端代码，引擎代码，工具代码，部分资源，文档。</p>
+
+<p>《IrisOL》 1.39 GB(未压缩)
+官方网站：<a href="http://iris.eyainteractive.com/">http://iris.eyainteractive.com/</a>
+客户端代码，服务端代码，工具代码，GB引擎。</p>
+
+<p>《永恒OL》892 MB (未压缩)
+官方倒闭游戏。
+客户端代码，服务端代码，引擎代码，工具代码，资源。</p>
+
+<p>《激战》88.2 MB (未压缩)
+17173专区：<a href="http://gw.17173.com/">http://gw.17173.com/</a>
+服务端代码。部分代码</p>
+
+<p>《豆斗兵团》 692 MB(未压缩)
+17173专区：<a href="http://newgame.17173.com/content/2007-01-09/20070109160709285.shtml">http://newgame.17173.com/content/2007-01-09/20070109160709285.shtml</a>
+2D横版游戏豆斗兵团，客户端代码，服务端代码，工具代码，引擎代码。</p>
+
+<p>《黑暗降临》168 MB (未压缩)
+17173专区：<a href="http://newgame.17173.com/content/2006-06-24/20060624203818815.shtml">http://newgame.17173.com/content/2006-06-24/20060624203818815.shtml</a>
+客户端代码，服务端代码，工具代码，引擎代码。</p>
+
+<p>《西西三国》 6.60 GB(未压缩)
+官方网站：<a href="http://www.xixisanguo.com/">http://www.xixisanguo.com/</a>
+服务端代码，客户端代码，工具代码，引擎代码，客户端资源，文档。</p>
+
+<p>《时空之泪》 5.85 GB(未压缩)
+官方网站：<a href="http://www.gdsonline.cn/">http://www.gdsonline.cn/</a>
+服务端代码，客户端代码，工具代码，引擎代码，客户端美术资源，所有开发文档。</p>
+
+<p>《凤舞天骄》 1.93 GB(未压缩)
+官方网站：<a href="http://fw.object.com.cn/">http://fw.object.com.cn/</a>
+服务端代码，客户端代码，引擎代码，客户端资源，部分文档。
+说明：此代码为完整源代码，100%可跑，可进游戏，非网上流传不完整版本。</p>
+
+<p>《蛋清OL》 2.97 GB(未压缩)
+官方网站：<a href="http://www.7uif.com/website/">http://www.7uif.com/website/</a>
+服务端代码，客户端代码，完整工具代码，引擎代码，客户端资源。
+说明：此代码为完整源代码，附带所有工具，非网上流传不完整版本。</p>
+
+<p>《石器世界3D》（韩国maypan） 4.40GB(未压缩)
+官方网站：<a href="http://www.maypan.com/">http://www.maypan.com/</a>
+服务端代码，客户端代码，工具代码，GB引擎，客户端资源（韩国）。</p>
+
+<p>《天机OL》（魔神争霸）  5.41 GB(未压缩)
+官方网站：<a href="http://ms.ferrygame.com/page/index.aspx">http://ms.ferrygame.com/page/index.aspx</a>
+服务端代码，客户端代码，工具代码，引擎代码，客户端美术资源，700多M完整文档，完整策划案，工具使用录像等。</p>
+
+<p>《魔咒》  2.49 GB(RAR压缩包)
+官方网站：<a href="http://ms.ferrygame.com/page/index.aspx">http://ms.ferrygame.com/page/index.aspx</a>
+服务端代码，客户端代码，工具代码，引擎代码，客户端美术资源，文档。</p>
+
+<p>《猛将》 1.24 GB(未压缩)
+官方倒闭游戏
+客户端代码，服务端代码，工具代码，引擎代码，开发文档，客户端资源。</p>
+
+<p>《乌龙学院》 10.12 GB(RAR压缩包)
+官方网站：<a href="http://www.wulongonline.com/">http://www.wulongonline.com/</a>
+服务端代码，工具代码，客户端美术资源，开发文档，官方网站，官方论坛，英语教材。</p>
+
+<p>《神界》 1.84 GB(RAR压缩包)
+官方网站：<a href="http://sj.gyyx.cn/">http://sj.gyyx.cn/</a>
+服务端代码，客户端代码，客户端资源，引擎，半即时回合制。</p>
+
+<p>《科隆2》 2.60 GB(RAR压缩包)
+官方倒闭游戏
+客户端代码，服务端代码，工具代码，引擎代码，开发文档（韩国）。</p>
+
+<p>《战火:红色警戒》 7.91 GB(未压缩)
+官方网站：<a href="http://www.fireol.com/">http://www.fireol.com/</a>
+客户端代码，服务端代码，工具代码，引擎代码，官方网站，开发文档。</p>
+
+<p>《绝对女神》 3.49 GB(RAR压缩包)
+官方倒闭游戏
+客户端代码，服务端代码，工具代码，引擎代码，开发文档（韩国）。</p>
+
+<p>《街头足球》 956 MB(RAR压缩包)
+韩国游戏，客户端代码，服务端代码，工具代码，引擎代码，文档（韩国）。</p>
+
+<p>《天方夜谭》  2.74 GB(未压缩)
+官方倒闭游戏，非网上流传50M不完整代码，服务端代码，客户端代码，工具代码，引擎代码，客户端资源</p>
+
+<p>《墨香》 194 MB(未压缩)
+官方网站：<a href="http://ms.runup.cn/downsite.php">http://ms.runup.cn/downsite.php</a>
+客户端代码，服务端代码，引擎代码，工具代码。</p>
+
+<p>《乱Online》 11.1 GB(未压缩)
+官方网站：<a href="http://ran.runup.com.hk/">http://ran.runup.com.hk/</a>
+客户端代码，服务端代码，客户端资源，引擎代码</p>
+
+<p>《春秋Q传》 1.18 GB(RAR压缩包)
+官方网站：<a href="http://cq.xoyo.com/">http://cq.xoyo.com/</a>
+客户端代码，客户端资源，部分文档。</p>
+
+<p>《人在江湖》  238 MB(未压缩)
+服务端代码，客户端代码，引擎代码，注释。</p>
+
+<p>《魔域》 988 MB(未压缩)
+官方网站：<a href="http://my.91.com/">http://my.91.com/</a>
+服务端代码，客户端代码，工具代码，客户端资源。</p>
+
+<p>《剑侠情缘网络版》 3.32 GB (未压缩)
+官方网站：<a href="http://jx.xoyo.com/">http://jx.xoyo.com/</a>
+服务端代码，客户端代码，客户端资源，工具代码
+说明：此代码为完整源代码，附带所有工具，非网上流传不完整版本。</p>
+
+<p>《英雄王座》 4.81 GB(未压缩)
+官方倒闭游戏。
+服务端代码，客户端代码，引擎代码，客户端资源，工具代码，开发文档，.MAX源文件。
+说明：此代码为完整源代码，附带所有工具文档，MAX源文件，非网上流传不完整版本</p>
+
+<p>《飞车小子》 1.73 GB(未压缩)
+韩国游戏，服务端代码，客户端代码，引擎代码，工具代码，客户端资源。</p>
+
+<p>《韩国休闲游戏》 433 MB(RAR压缩包)
+韩国游戏（桌面游戏，学校格斗等），服务端代码，客户端代码，工具代码。</p>
+
+<p>《SKY_ONLINE_SERVER》 7.60 MB(未压缩)
+官方网站：<a href="http://www.skyonline.co.kr/">http://www.skyonline.co.kr/</a>
+服务端代码（韩国）</p>
+
+<p>《神奇OL》 58.7 MB(RAR压缩包)
+官方倒闭游戏，服务端代码，客户端代码。</p>
+
+<p>《KeroKing online》 8.23 MB(RAR压缩包)
+韩国游戏，部分代码。</p>
+
+<p>《帝国传奇》 332 MB(未压缩)
+官方网站：<a href="http://www.el-g.com/">http://www.el-g.com/</a>
+客户端代码，服务端代码。</p>
+
+<p>《彩虹骑士2》 102 MB(未压缩)
+官方网站：<a href="http://gc.segame.com/">http://gc.segame.com/</a>
+客户端代码，服务端代码。</p>
+
+<p>《QQ三国》 898 MB(未压缩)
+官方网站：<a href="http://sg.qq.com/">http://sg.qq.com/</a>
+客户端代码，服务端代码（韩国）。</p>
+
+<p>《光之国度》
+官方网站：<a href="http://shine.gtgame.com.cn/">http://shine.gtgame.com.cn/</a>
+部分代码。</p>
+
+<p>《笑闹天宫》 96.7 MB(未压缩)
+官方网站：<a href="http://www.juugoo.com/xntg/">http://www.juugoo.com/xntg/</a>
+部分文件，代码。</p>
+
+<p>《天之炼狱》 1.16 GB(未压缩)
+官方网站：<a href="http://www.darkeden.com/">http://www.darkeden.com/</a>
+服务端代码，客户端代码，引擎代码，客户端资源。</p>
+
+<h2 id="棋牌类">棋牌类</h2>
+
+<p>《雨杰视频棋牌2.0》完整程度：★★★★★ 945 MB(未压缩)
+雨杰视频棋牌商业版20000 RMB，完整内核，64款游戏。</p>
+
+<p>《欢乐大赢家》完整程度：★★★★★ 750 MB(未压缩)
+Flash棋牌游戏，完整内核，开发文档</p>
+
+<p>《网狐完整套》完整程度：★★★★★ 1.31 GB(未压缩)
+网狐完整套，完整内核，开发文档，工具。</p>
+
+<p>《网狐二次开发版》完整程度：★★★★★ 761 MB(未压缩)
+网狐二次开发版，完整内核，开发文档，工具。</p>
+
+<hr />
+
+<p>卷 Study 的文件夹 PATH 列表</p>
+
+<p>卷序列号为 ECDF-303A
+H:\游戏开发整理\程序</p>
+
+<p>├─中型引擎
+│      Angel-2.1_值得改装的2D游戏引擎.zip
+│      Apocalyx引擎_OpenGl强大图形引擎.rar
+│      Ares引擎.rar
+│      Athena Client.rar
+│      athena3D引擎.rar
+│      chronos-engine_MUD引擎.rar
+│      delta3d1.2_中等3D引擎.rar
+│      Destiny3D_v0.8引擎_中等3D引擎.rar
+│      DX9编写的中型3D引擎rgde1v0.1.zip
+│      ege.zip
+│      Fly3D_不错的3D引擎.zip
+│      FootballGame_服务器.zip
+│      HalloweenSrc_中型FPS的3D引擎.rar
+│      IndieLibGame.zip
+│      Lsge2D小引擎.rar
+│      nebula2.rar
+│      nel_不错的3D引擎.rar
+│      newaspEngine_v0.2引擎_中型3D引擎.rar
+│      Numen引擎.rar
+│      OGF框架Source.rar
+│      Opcode_中型3D引擎.rar
+│      OpenGL编写的2D带物理大引擎EE-2011-03-11-dev.7z
+│      osframework_1.30_不错的3D引擎.rar
+│      OSG_不错的3D引擎.zip│      Queek引擎.rar
+│      Raycrash3D网络游戏引擎.rar
+│      SkySpirit天灵引擎.rar
+│      sore_网络游戏引擎.rar
+│      spark3D引擎代码_不错的3D引擎.rar
+│      todengine_3D引擎.rar
+│      WildMagic3.rar
+│     Y2GE引擎_中等的2D引擎.rar
+│      ZeusEngine.rar
+│      Zome2_3D引擎.rar
+│      服务器引擎_KBEngine.zip
+├─中型游戏代码
+│      allacrost单机回合游戏.rar
+│      Allacrost客户端.rar
+│      Athena客户端.rar
+│      BZflag单机坦克客户端.rar
+│      C3D单机基于Ogre的WOW游戏.rar
+│      D2XXL单机FPS客户端.rar
+│      Daimonin2D客户端服务器.zip
+│      Doom客户端.rar
+│      Ex20build2单机基于SDL的FPS游戏.rar
+│      Mud人在江湖客户端.rar
+│      PokerTH网络扑克客户端服务器.rar
+│      Quake3.rar
+│      RetribEngine单机FPS客户端.rar
+│      Rose服务器.rar
+│      SMC横幅卷轴客户端.rar
+│      TheAncientWorld服务器.rar
+│      TrinityCore魔兽私服MMORPG框架.rar
+│      TZ服务器引擎.rar
+│      wesonth3D网络科幻游戏.rar
+│      Widelands单机客户端.rar
+│      WildMagic5单机客户端.rar
+│      大有棋牌.rar
+│      天下无双客户端.rar
+│      天峰棋牌.rar
+│      天智棋牌.rar
+│      曹操传.rar
+│      棋牌前后端代码.rar
+│      棋牌大厅.rar
+│      棋牌平台代码.rar
+│      泰坦客户端.rar
+│      混乱竞技场客户端服务器.rar
+│      赤壁之战.rar
+│      魔法门之英雄无敌OL客户端服务器.rar
+├─主流语言代码
+│      C#网络游戏飞行岛2.0.rar
+│      freecol_Java写的一个文明类游戏.rar
+│      HeroStats_C#角色扮演游戏.rar
+│      MingQQ+v1.0高仿版_源代码.rar
+├─书籍
+│      C++相关.rar
+│      其他.rar
+│      其他语言.rar
+│      加密解密压缩.rar
+│      图形学.rar
+│      家用机.rar
+│      引擎或库.rar
+│      操作系统.rar
+│      数学.rar
+│      数据库.rar
+│      服务器.rar
+│      汇编反汇编.rar
+│      网络.rar
+├─功能库
+│  ├─C++相关
+│  │      boost-log-1.0.zip
+│  │      boost_1_42_0.rar
+│  │      config解析库Config.tar.gz
+│  │      cpp_unit代码检查库.rar
+│  │      DlMalloc极高效的内存分配管理.rar
+│  │      Json处理库jsoncpp-src-0.5.0.tar.gz
+│  │      Loki库.rar
+│  │      STL库.rar
+│  │      内存泄露检查库vld.rar
+│  │      文本编辑器OpenEditor_SRC_1B-1.tar.bz2
+│  ├─UI
+│  │      CEGUI.rar
+│  │      guichan_GUI库.rar
+│  │      GWEN-master.zip
+│  │      IUP2_4简单的Lua封装的UI库.rar
+│  │      MyGUI_一个结合Ogre的UI库.rar
+│  │      OpenGUI_src_0.8_与Ogre结合的一个UI库.rar
+│  │      UI框架WTL80_7161_Final.zip
+│  │      VC开发的精美UI库.rar
+│  │      wxFormBuilder.zip
+│  │      wxWidgetsUI库.rar
+│  │      曲线图MFC.zip
+│  ├─其他
+│  │      max7sdk.rar
+│  │      max9sdk.zip
+│  ├─加解密
+│  │      300种加密解密算法.rar
+│  │      7Z格式压缩库lzma443.rar
+│  │      des加密解密算法.rar
+│  │      md5加密算法.rar
+│  │      MD5算法封装类.rar
+│  │      miniLzo压缩库.rar
+│  │      OpenSSL.rar
+│  │      RSA文件加密的研究和实现.rar
+│  │      ■多个压缩加密解密库.rar
+│  │      ■多个计算机加密编程.rar
+│  │      加密库_beecrypt-4.2.1.tar.gz
+│  ├─图形格式
+│  │      ATI_Mesh优化库.rar
+│  │      ATL纹理压缩库.rar
+│  │      blepo_图形处理库.rar
+│  │      Develop&rsquo;sImageLibrary.zip
+│  │      JPEG解码库.rar
+│  │      Swf库GameSwf.rar
+│  │      ■FreeImage通用性图形解码库.rar
+│  │      ■图象处理源代码集.rar
+│  │      ■图象支持代码库.rar
+│  │      ■多个读取各类3D模型代码.rar
+│  │      ■多种图象读取类库.rar
+│  │      图片处理库GTL-2.2-August-07.zip
+│  │      所有图形支持库cximage600_full.rar
+│  │      读取3ds文件格式.rar
+│  ├─图形渲染
+│  │      DirectX9forDelphi库和例子.rar
+│  │      DX9forBCB库和例子.rar
+│  │      Freetype字体库.rar
+│  │      凹凸贴图.rar
+│  │      动态天空盒.rar
+│  │      查看显存.rar
+│  │      粒子引擎库SparkParticleEngine.zip
+│  │      阴影卡通渲染例子.rar
+│  │      骨骼例子.rar
+│  ├─游戏基本支持
+│  │      3d地图编辑器.rar
+│  │      3D寻路库3DPathFinder.rar
+│  │      AStar算法.rar
+│  │      CaijunJson.zip
+│  │      memcachepp-0.11.4.zip
+│  │      openpf_寻路库.rar
+│  │      threadpool线程池.rar
+│  │      vld内存泄露捕捉库.rar
+│  │      xml2json.zip
+│  │      ZThread-2.3.2多线程库.rar
+│  │      共享内存封装类.rar
+│  │      快速XML读取库TinyXML.rar
+│  │      有限状态机FSM设计代码.rar
+│  │      脚本代码片段.rar
+│  │      读写ini的C++类.rar
+│  ├─物理
+│  │      GeometryLib.zip
+│  │      Newton物理库.rar
+│  │      ode-0.5.rar
+│  │      ODE_0.9_优秀物理引擎库.rar
+│  │      PhysX物理库.rar
+│  │      Tokamak物理库.rar
+│  │      物理运动模拟_jiggle-0.0.18.rar
+│  ├─网络
+│  │      Ace.rar
+│  │      ACE_wrappers.rar
+│  │      ArkEventPipe网络库.rar
+│  │      HttpMsgIntercepter.zip
+│  │      libevent-1.3e.rar
+│  │      libevent网络库.rar
+│  │      RetNet网络库.rar
+│  │      tnl1.5_touque网络库.rar
+│  │      zig2_AllegoLua的网络库.rar
+│  │      ■多个网络库.rar
+│  ├─脚本相关
+│  │      AngelScript脚本.rar
+│  │      Lua库以及脚本相关LuaPlus_wxLua等.rar
+│  │      RubyCppLib.rar
+│  │      Squirrel松鼠脚本代码.rar
+│  └─音频视频
+│          bass24-osx_音频库.rar
+│          FMOD音频库.rar
+│          irrKlang-1.0.3_音频库_NoSource.rar
+│          mpalyerc_暴风影音源代码.rar
+│          OpenAl.rar
+│          OpenCV.rar
+│          SoundSystem_简单的支持OggWav的音频库系统.rar
+│          ■多个音效模块库.rar
+│          音频处理库audacity-minsrc-2.0.0.tar.bz2
+│          音频处理库lmms-0.4.13.tar.bz2
+│          音频处理库SpeedyMidiSrc-1.0.zip
+├─大型引擎
+│  │  Allegro.rar
+│  │  Ark.rar
+│  │  BigWorld.rar
+│  │  Cocos2d.rar
+│  │  Gamebryo.rar
+│  │  Genesis.rar
+│  │  Godot.rar
+│  │  Gosu.rar
+│  │  HGE.rar
+│  │  Irrlicht.rar
+│  │  Ogre.rar
+│  │  SDL.rar
+│  │  TGB.rar
+│  │  Touque.rar
+│  │  Unreal2.rar
+│  └─Unreal3
+│         04.06.09UnrealEngine3虚幻3(Available).rar
+│          avd-ut3.iso
+│          Build_UE3.rar
+│          Development.rar
+│         UDKInstall-2010-11-BETA.exe
+│          Unreal3 SN.txt
+├─大型游戏代码
+│      QQ西游客户端.rar
+│      RF完整资源以及服务器.rar
+│      SUN客户端服务器.rar
+│      WOW服务器和部分工具.rar
+│      传奇和传奇2和传奇3.rar
+│      保全服务器.rar
+│      凤舞天骄服务器.rar
+│      剑侠情缘三客户端和引擎.rar
+│      半条命2客户端.rar
+│      华夏1客户端.rar
+│      华夏2客户端服务器.rar
+│      大唐豪侠客户端引擎和工具.rar
+│      天机客户端服务器.rar
+│      天源客户端服务器.rar
+│      天龙八部.rar
+│      征途服务器.rar
+│      战棋类游戏wesnoth客户端服务器编辑器.rar
+│      永恒OL客户端服务器.rar
+│      热血江湖服务器.rar
+│      爆爆堂客户端服务器.rar
+│      猎人mm服务器.rar
+│      疯狂弹头客户端服务器.rar
+│      石器时代2服务器.rar
+│      网狐游戏平台.rar
+│      自动压缩文件夹.bat
+│      英雄王座客户端服务器.rar
+│      魔兽争霸3.rar
+│      魔域引擎服务器.rar
+├─小型学习演示代码
+│  ├─ASM代码
+│  │      Asm.rar
+│  ├─CodeSampler
+│  │      C++ STL例子Code.rar
+│  │      Code1.rar
+│  │      D3D.rar
+│  │      D3D9.0CodeSimple.rar
+│  │      D3D基础代码Code.rar
+│  │      D3D模块设计Code.rar
+│  │      dx8.rar
+│  │      dx9.rar
+│  │      OGL.rar
+│  │      RayTrace.rar
+│  │      STL.rar
+│  │      tutors.rar
+│  │      URL.txt
+│  │      vc.rar
+│  │      算法.rar
+│  │      网络通信类.rar
+│  │      脚本类Code.rar
+│  ├─Network
+│  │      ACE-Docs-0306.rar
+│  │      asynsocket.zip
+│  │      ChanSheng_src.zip
+│  │      ChuanSheng1.1.zip
+│  │      cnetworking.zip
+│  │      inetprog.zip
+│  │      IOCP-FrameWork.zip
+│  │      mynetchat.rar
+│  │      PublicNetSoft.zip
+│  │      Socket.txt
+│  │      socket网络编程.txt
+│  │      socket网络编程.txt.bak
+│  │      tnl-1.5.0-source.tar.gz
+│  │      VC游戏开发.rar
+│  │      windows网络编程技术.rar
+│  │      winsocket.zip
+│  │      WsBook_ChineseEdtion.DOC
+│  │      完成端口.zip
+│  │      简单的IOCPServer.rar
+│  │      网络协议[VC][SRC].rar
+│  ├─书籍配套代码
+│  │      iOS游戏编程代码.rar
+│  │      VC++网络编程》源代码.rar
+│  │      VC—数据库及图形图像代码.rar
+│  │      VC游戏开发.rar
+│  │      [Strategy Game Programming with DirectX9.0 Source Code].rar
+│  │      《Delphi 数字图像处理及高级应用》附书源码.rar
+│  │      《DirectShow实务精选》光盘源代码.rar
+│  │      《Windows图形编程》的随书源码.rar
+│  │      《游戏编程精粹1》光盘源代码.rar
+│  │      《游戏编程精粹2》光盘源代码.rar
+│  │      《游戏编程精粹3》光盘源代码.rar
+│  │      《游戏编程精粹》AI程序设计源代码.rar
+│  │      使用DirectX 9.0进行3D游戏高级编程.rar
+│  │      使用DX_8.0_进行角色扮演类游戏编程随书源代码.rar
+│  │      学3D编游戏配套代码.rar
+│  │      学OpenGL编3D游戏_代码.rar
+│  │      汇编源代码大全.rar
+│  │      精通D3D配套代码.rar
+│  │      计算机图形学实验教程（OpenGl）.rar
+│  └─小Demo代码
+│          3DARPG类游戏模式Demo.rar
+│          3D轩辕剑DemoB.rar
+│          3D魔方游戏源代码.rar
+│          arctic_BT下载工具带代码.rar
+│          Ares_一个强大的P2P下载聊天播放工具.rar
+│          ArikaInSoapland.rar
+│          BCB_网络Demo.rar
+│          BCB的文件传输通信例子.rar
+│          BT客户端源码.rar
+│          CSDemo.rar
+│          DCPlusPlus-0.672-src很强的网络通信传输代码.rar
+│          DXUTEmptyProject例子代码.rar
+│          DX下弹出对话框Demo.rar
+│          DX制作的Diablo2.rar
+│          eMule电驴代码.rar
+│          fmod音频全面测试代码.rar
+│          from turorials.rar
+│          Game ProgrammingGems 5 (CDROM).rar
+│          GGEMS4.rar
+│          IOCP.rar
+│          MiniSpy代码.rar
+│          mynetchat网络聊天工具IM.rar
+│          octree.rar
+│          p2pudp_P2P打洞传输.rar
+│          PublicNetSoft_简单的IM实现.rar
+│          S.M神魔游戏源代码.rar
+│          Simple_IOCP.rar
+│          TestLua(2).rar
+│          War3ModelEditor魔兽3模型编辑器.rar
+│          WebGet0.9_华丽UI代码.rar
+│          winsocket封装库.rar
+│          wowmapviewer.rar
+│          一个RPG游戏源代码.rar
+│          一个简单的Arpg.rar
+│          传圣网络通讯源代码.rar
+│          俄罗斯方块游戏+代码.rar
+│         半成品引擎Shader.rar
+│          单机泡泡_程序及源代码.rar
+│          又一份坦克大战游戏源代码.rar
+│          吉安娜之远征.rar
+│          向上冲VC6+MFC源代码.rar
+│          圣剑英雄传代码.rar
+│          地球仪.rar
+│          坦克3D.rar
+│          坦克大战.rar
+│          大量Mail通讯例子.rar
+│          孤帆远影碧空尽.rar
+│          局域网中传输文件的封装类.rar
+│          恶魔猎手code.rar
+│          战斗机DX代码.rar
+│          是男人就坚持20秒游戏+代码.rar
+│          横版rpgDemo与介绍.rar
+│          永远的宜苏demo带编辑器.rar
+│          第一人称射击.rar
+│          简单的MapEdit.rar
+│          英雄救美游戏+源码.rar
+│          超级Column2.0代码.rar
+│          高级着色制作的WaterDemo.rar
+├─小型引擎
+│      3dExplorer引擎_一般的3DOpenGL引擎.rar
+│      3dgameengine_有些工具的3DOpenGL引擎.rar
+│      ASL引擎_2DWinGDI简单引擎.rar
+│      ATL_DX引擎_一个简单的ATL模式引擎.rar
+│      BGL_极其简单的2D引擎.rar
+│      cal3d.rar
+│     CPW_使用OpenGL的简单2D引擎库.zip
+│      DiamondEngine_中等3D引擎.rar
+│      DX2D小引擎PhoenixCore-0.2-Release.zip
+│      Easy2D_0.0.8_超级简单的2D底层引擎.zip
+│      EE_2DGameEngine.7z
+│      EziaEngine95_D3D9编写的一个2D引擎.zip
+│     FreeTumbleV1.0_src.tar.gz
+│      GameCore_3D引擎库.rar
+│      GameEngine_简单的3D引擎.rar
+│      GoodLianEngineGame_简单的2D引擎.rar
+│      gosu_2D引擎_使用Boost.rar
+│      hoho2_简单的3D引擎.rar
+│      icerengine_极简单的2D引擎.rar
+│      JAVA编写的Andiro系统2D引擎rokon_src_2-0-3.zip
+│      KGE_3D引擎雏形.rar
+│      MetalCore引擎_3D简单引擎.rar
+│      mk_3d引擎.rar
+│      OpenGL下的小型3D引擎tbe-12-20110209-sources.7z
+│      orx-dev-vs2010-1.5.zip
+│      orx-src-1.5.zip
+│      plib-1.8.5.tar.gz
+│      SDL封装的2D引擎.rar
+│      tubras_3D引擎.rar
+│      V3SDK060101_2D小引擎.rar
+│      Windsoul风魂.rar
+│      wotwar_2DRTS引擎.rar
+│      zfxcengine-0.1.0_简单的3D引擎.rar
+│      基础的一个服务器架构src.1.1.0.zip
+│      棋牌Share.rar
+├─手机游戏代码
+│  │  HeroBox_ver_1_5_0_cocos2dxGame.rar
+│  │  MMORPG_IPHONE_ANDROID_Demo.rar
+│  │  TowerDefend_cocos2dx.zip
+│  └─cocos2dx龙将代码_C&amp;S
+│          竉之传说.part1.rar
+│          竉之传说.part2.rar
+│          竉之传说.part3.rar
+│          竉之传说.part4.rar<br />
+├─特殊小代码
+│      100个ASP初学者必研究的小程序.rar
+│      64K代码.rar
+│      C#数据库编程从入门到精通.rar
+│      C#案例开发代码.rar
+│      IDE的C++设计代码.rar
+│      MyShop0617_Web商城代码.rar
+├─编辑器代码
+│      Audacity_SoundEditor.zip
+│     AutoGenerateAndroidMKTools.zip
+│      Box2DEditor.zip
+│     CardEditor_CPP_Sourceforge.zip
+│      cocos2dx粒子编辑器ParticleDesigner.rar
+│     GameEditor_CPP_Sourceforge.zip
+│      JpegViewEditor.zip
+│      MadTextEditot.zip
+│      MusicSorceEditor.zip
+│     openrpgmaker-0.2.3-source.tar.bz2
+│      openrpgmaker_0.1.1.zip
+│     Praetorians3DMapEditor.zip
+│      RecordEditor_JAVA.zip
+│     Rospell_CPPEditorMerger.zip
+│      Simple2DMapEditor.zip
+│     SQLiteDatabaseBrowser.zip
+│     SQLiteDatabaseBrowserNew.zip
+│      Tegal_2DMapEditor.zip
+│      VideoEditor.zip
+│     WaveShop_SoundWaveEditor.zip
+│      wxHexEditor.zip
+│      XMLEditor.zip
+└─网页游戏代码
+       10套网页游戏.rar
+       CGE引擎.rar
+       DOTK网页游戏引擎.rar
+       HTML5传奇.rar
+       HTML5游戏引擎.rar
+       Kallen.rar
+       Mozilla.rar
+       Phantom引擎.rar
+       Q版武侠世界.rar
+       SliverLight.rar
+       九州世界.rar
+       光明世界.rar
+       卡片战争.rar
+       御剑江湖.rar
+       热血三国.rar
+       百炼成仙.rar
+       第六世界.rar
+       诸神降临.rar<br />
+       龙与地下城.rar</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2014/">2014</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E6%9C%88%E8%AE%B0201406/" data-tooltip="月记201406">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%A8%8B%E5%BA%8F%E5%91%98%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/" data-tooltip="读书笔记《程序员编程之道》">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2014/06/%E6%89%8B%E5%A4%B4%E7%9A%84%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E6%9C%88%E8%AE%B0201406/" data-tooltip="月记201406">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E7%A8%8B%E5%BA%8F%E5%91%98%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%81%93/" data-tooltip="读书笔记《程序员编程之道》">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2014/06/%E6%89%8B%E5%A4%B4%E7%9A%84%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2014%2F06%2F%25E6%2589%258B%25E5%25A4%25B4%25E7%259A%2584%25E9%2583%25A8%25E5%2588%2586%25E4%25BB%25A3%25E7%25A0%2581%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2014\/06\/%E6%89%8B%E5%A4%B4%E7%9A%84%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81\/';
+          
+            this.page.identifier = '\/2014\/06\/%E6%89%8B%E5%A4%B4%E7%9A%84%E9%83%A8%E5%88%86%E4%BB%A3%E7%A0%81\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

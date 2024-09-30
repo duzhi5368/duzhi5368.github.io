@@ -1,0 +1,814 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>蒙皮骨骼动画准备知识</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="SUN代码现看到了骨骼蒙皮动画模块，为防止自己记忆混淆，故记下文。（注：本文不涉及任何高级骨骼动画技术）
+
+">
+    <meta property="og:description" content="SUN代码现看到了骨骼蒙皮动画模块，为防止自己记忆混淆，故记下文。（注：本文不涉及任何高级骨骼动画技术）
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="蒙皮骨骼动画准备知识">
+    <meta property="og:url" content="/2007/03/%E8%92%99%E7%9A%AE%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="SUN代码现看到了骨骼蒙皮动画模块，为防止自己记忆混淆，故记下文。（注：本文不涉及任何高级骨骼动画技术）
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      蒙皮骨骼动画准备知识
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-03-05T00:00:00Z">
+        
+  三月 5, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2009">2009</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>SUN代码现看到了骨骼蒙皮动画模块，为防止自己记忆混淆，故记下文。（注：本文不涉及任何高级骨骼动画技术）</p>
+
+<p></p>
+
+<h1 id="一-模型动画分类">一:模型动画分类。</h1>
+
+<p>1：渐变动画。
+这是个最基本的动画方式。它将动作每一关键帧所有顶点位置全部记录，其他帧数据按关键帧插值取得，没有可解释的价值。</p>
+
+<p>2：关节动画。
+这是一种特殊的渐变动画。它将一个实体对象拆分为多个Mesh，按照父子层次结构将这些Mesh统一组织为一个实体。
+以Mesh为单位，每个子Mesh记录其父Mesh的权重影响比，父Mesh的运动带动其子Mesh的运动。
+在关键帧中记录了每个子Mesh相对其父Mesh的变换比，从子到父层层累加矩阵变换，得到实体Mesh中每个组成Mesh在关键帧中的相对位置，然后转换为世界矩阵，然后以Mesh为单位Render。
+这样做法最大问题是，由于各Mesh拥有自己的本地坐标系，在计算时稍加不注意，将会在Mesh连接处出现裂缝。</p>
+
+<p>3：骨骼蒙皮动画。
+这是一种现在最常用的Mesh动画方式。它是关节动画的一个优化方式，它将关节动画中的Mesh组整合为单一顶点，各自不再独立本地坐标系。
+在关键帧中记录其子骨骼点相对父骨骼点的运动比，通过父子骨骼点累加矩阵变换，可得到一个在关键帧时的骨骼点各顶点位置。
+然后，根据顶点混合动态计算蒙皮网格顶点的方式得到完整数据。
+其他帧的数据也需要对骨骼节点进行插值计算后，再对蒙皮Mesh进行顶点混合。</p>
+
+<h1 id="二-骨骼蒙皮动画">二：骨骼蒙皮动画。</h1>
+
+<p>骨骼蒙皮重点包括两大部分，骨骼Bone和蒙皮SkinnedMesh。
+其中骨骼方面要记录骨骼层次结构和骨骼在关键帧的数据信息，而蒙皮方面要记录蒙皮网格数据。
+我们可以这样理解，我们每一帧让骨骼按照骨骼关键帧进行运动，蒙皮顶点受到多个骨骼影响拉伸改变位置，形成动作。每个骨骼记录着骨骼偏移矩阵，将蒙皮顶点从蒙皮空间转换为骨骼空间坐标。
+例如：我们现在希望一个骨骼蒙皮动画的Mesh对象改变其世界坐标中的位置和朝向，我们只需要更改其根骨骼点的位置和朝向，那么，子骨骼点受到影响，计算得到其世界坐标位置，子骨骼又对其管理的蒙皮顶点进行影响，得到整个Mesh的新的世界坐标。</p>
+
+<p>1：Bones
+我们通常用以个4*4的矩阵来表示一个骨骼点，这样，我们不仅可记录骨骼的平移位置，又可记录骨骼的缩放和旋转。
+下面是SUN骨骼点的基本信息结构</p>
+
+<pre><code class="language-cpp">typedef struct
+{
+   WzVector m_vecPos;         // 骨骼点相对父骨骼的坐标
+   union                      // 骨骼点相对世界的坐标
+   {
+      WxVector m_vecRot;
+      WzQuaternion m_vecQuat;
+   }
+}WzTransform;
+
+typedef struct
+{
+   int m_nParentNodeID;        // 父骨骼点唯一ID
+   WzTransform m_wzCurrentTransform;
+}WxNode;
+</code></pre>
+
+<p>该结构记录了骨骼点的层次关系和骨骼点的坐标。我们将骨骼按照层级关系摆放好之后，就获得了初始帧的骨骼点位置信息。但是我们依旧要将骨骼组放置到世界坐标中，此时我们会以根骨骼点做为世界坐标中的一个标准点。
+即，假设我们将一个骨骼蒙皮Mesh看成一个点的话，那么这个点的坐标就是根骨骼点的坐标。通常这个点在人的盆骨附近，因为它居为人体骨骼的中心点，便于减少子骨骼点的层层计算。</p>
+
+<p>2：BonesTransform
+通过上面的说明，我们可以创建一套静态的骨骼和骨骼层次。但是我们需要动画，需要骨骼进行变化，这就需要更新骨骼矩阵。
+因为骨骼的变换都是相对于父节点的变换，但是变换Mesh顶点，又是必须使用世界矩阵的变换，所以我们需要根据骨骼点的骨骼矩阵求出每个骨骼点的世界变换矩阵。而父骨骼点的变换又实时影响到了子骨骼点的世界坐标矩阵位置，所以，这里一定需要用递归，将每个骨骼点的世界矩阵坐标求到。</p>
+
+<p>3：SkinMesh
+我们之前获得了可以顺利动画的骨骼，但我们还需要Mesh根据骨骼进行运动才能真正产生一个动画。
+我们知道Mesh是由一个个顶点构成的，在建模的时候，Mesh顶点是相对于本地矩阵的位置，和骨骼坐标完全没有关系，而在世界坐标系中，只有根骨骼坐标系才是蒙皮骨骼动画的标准位置，我们就需要一种途径将Mesh的本地矩阵转换为骨骼点的骨骼矩阵，再通过骨骼偏移矩阵求出整个Mesh在世界矩阵中的坐标。
+下面是SUN中的蒙皮顶点信息，我们先来看下
+#define MAX_BONE_FOR_SKINNING ( 4)   // 每个蒙皮顶点最大接受4个骨骼影响，因为使用硬件加速，需要设置上限。</p>
+
+<pre><code class="language-cpp">// 蒙皮顶点信息
+typedef struct
+{
+BYTE m_byNumBlended;           // 影响到本蒙皮顶点的骨骼个数
+int m_iNode[MAX_BONE_FOR_SKINNING];        // 每个骨骼点编号索引
+float m_fWeight[MAX_BONE_FOR_SKINNING];       // 每个骨骼权重
+
+WzVector m_wvOffset[MAX_BONE_FOR_SKINNING];      // 每个骨骼点偏移位置
+} WzSkinningInfo;
+</code></pre>
+
+<p>我们可以看出SkinInfo中包含了影响这个MeshVectex的骨骼数目和骨骼ID以及这些骨骼分别对本顶点的权重（影响程度）。
+这个结构的作用是使用各个骨骼点自身的变换矩阵对Mesh顶点进行变换（变换时需乘以权重），这样的话这个顶点就会受到多个骨骼的影响而发生位移。影响一个顶点的骨骼点权重和应当为1.
+这样我们就获得了每帧与骨骼一同变换世界坐标系的蒙皮Mesh了。</p>
+
+<p>4：骨骼偏移矩阵。
+刚才我无意中提到了骨骼偏移矩阵，我想这里重复强调一下Mesh顶点变换过程分为2步：
+（1）Mesh顶点的本地坐标 * 骨骼偏移矩阵 -&gt; Mesh点的骨骼空间坐标
+（2）Mesh点的骨骼空间坐标 * 根骨骼（骨骼组）和世界的变换矩阵 -&gt; Mesh点的世界空间坐标
+此时我们又产生了一个问题，我们如何才能拿到骨骼偏移矩阵呢？
+首先我们需要明白3DMAX下建模的时候，我们建Mesh模型的时候，假设将Mesh本地矩阵的原点设置为人的盆骨附近，同时Bone的骨骼矩阵原点也设为人的盆骨附近和Mesh矩阵原点设置在一起的话，那么根骨骼矩阵将与Mesh的矩阵达成一致，我们假设在这种条件下进行的运算（实际上美术也的确是这么做的）。
+因为根骨骼点和Mesh本地矩阵原点坐标达成一致，那么他们在世界中的坐标也是一致，我们只需要解决掉根骨骼和其他子骨骼之间的变换就可以了，这样我们可以轻易得到一个公式。
+Mesh本地坐标转为骨骼坐标偏移矩阵 = 子(本)骨骼变换矩阵 * 父骨骼变换矩阵 * 爷骨骼变换矩阵 * &hellip; * 根骨骼变换矩阵。
+用Mesh本地坐标乘以上面的矩阵，则得到Mesh顶点在当前骨骼矩阵中的位置，再和根骨骼在世界坐标的变换矩阵，则能顺利获得了Mesh顶点在世界坐标中的坐标信息。
+子骨骼和父骨骼的坐标关系在上面已经记录了相对坐标，这里就缺少一个Mesh顶点和影响它的骨骼顶点之间的位置关系了，于是我们还需要在Mesh顶点信息中加入相对于这些骨骼点的位置信息，即上面代码中的WzVector m_wvOffset[MAX_BONE_FOR_SKINNING];</p>
+
+<p>5：总结
+我们来回忆一下整个骨骼蒙皮动画的顶点转换过程：
+Mesh世界坐标 = (Mesh本地坐标 * Mesh相对影响骨骼点1的偏移矩阵 * 骨骼点1相对父骨骼的偏移矩阵 * 权重1) + (Mesh本地坐标 * Mesh相对影响骨骼点2的偏移矩阵 * 骨骼点2相对父骨骼的偏移矩阵 * 权重2) + &hellip;（所有影响该顶点的骨骼点）</p>
+
+<h1 id="三-总结">三:总结</h1>
+
+<p>从上面叙述来看，一个完整的骨骼蒙皮动画包括：骨骼数据(层次数据)，骨骼每关键帧的位置数据，Mesh顶点数据，骨骼相对世界坐标的偏移矩阵。
+在程序运行开始，我们从资源中读取到骨骼层级结构数据，读取Mesh顶点数据，和骨骼每关键帧的位置数据，在运行时，实时计算骨骼相对世界坐标的偏移矩阵，求出所有Mesh在世界坐标系中的坐标。</p>
+
+<p>……呼，搞定……明天开始SUN的骨骼蒙皮部分查阅和详细分析。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2009/">2009</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" data-tooltip="建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2/" data-tooltip="设置BCB中ListView中的Item控件颜色">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%92%99%E7%9A%AE%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" data-tooltip="建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E8%AE%BE%E7%BD%AEbcb%E4%B8%ADlistview%E4%B8%AD%E7%9A%84item%E6%8E%A7%E4%BB%B6%E9%A2%9C%E8%89%B2/" data-tooltip="设置BCB中ListView中的Item控件颜色">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%92%99%E7%9A%AE%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E8%2592%2599%25E7%259A%25AE%25E9%25AA%25A8%25E9%25AA%25BC%25E5%258A%25A8%25E7%2594%25BB%25E5%2587%2586%25E5%25A4%2587%25E7%259F%25A5%25E8%25AF%2586%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E8%92%99%E7%9A%AE%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86\/';
+          
+            this.page.identifier = '\/2007\/03\/%E8%92%99%E7%9A%AE%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%87%86%E5%A4%87%E7%9F%A5%E8%AF%86\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

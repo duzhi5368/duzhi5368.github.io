@@ -1,0 +1,851 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>卡马克与自由骑士</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="卡马克，估计是个程序员就知道的人吧。然而很糟糕，我是前天才知道这个家伙的，之前有与其他程序员谈论时听提到，也没有放在心上。
+
+">
+    <meta property="og:description" content="卡马克，估计是个程序员就知道的人吧。然而很糟糕，我是前天才知道这个家伙的，之前有与其他程序员谈论时听提到，也没有放在心上。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="卡马克与自由骑士">
+    <meta property="og:url" content="/2007/07/%E5%8D%A1%E9%A9%AC%E5%85%8B%E4%B8%8E%E8%87%AA%E7%94%B1%E9%AA%91%E5%A3%AB/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="卡马克，估计是个程序员就知道的人吧。然而很糟糕，我是前天才知道这个家伙的，之前有与其他程序员谈论时听提到，也没有放在心上。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      卡马克与自由骑士
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-07-08T00:00:00Z">
+        
+  七月 8, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e5%bf%83%e6%83%85%e6%84%9f%e6%82%9f">心情感悟</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>卡马克，估计是个程序员就知道的人吧。然而很糟糕，我是前天才知道这个家伙的，之前有与其他程序员谈论时听提到，也没有放在心上。</p>
+
+<p></p>
+
+<p>然而在稍微一了解他之后，立刻迷恋上了这家伙，我花了超过五个小时的时间去Google他的事迹和资料。是的，五个小时对我来说，并不是很舍得轻易拿出来乱耗的小数目了，然而我依旧要花一些时间来写这个东西，以示我对他的尊敬。</p>
+
+<p>他很象一个骑士。自由的骑士。哦，这不是在说我。是卡马克。</p>
+
+<p>他执着。</p>
+
+<p>看看这段话吧，在前文中我拿红色大字标示了出来：“在信息时代,客观障碍已不复存在,所谓障碍都是主观上的.如果你想研发什么新的技术,你不需要几百万美元的资金,你只需要在冰箱里放满比萨和可乐,再有一台便宜的计算机,和与之献身的决心,你即可拥有任何你想拥有的编程深度! ”，哈，这种疯狂正是我想要的！我讨厌所谓的“理智”，那是阻碍技术的进步的，我想，最最起码在编程这一行是这样的。</p>
+
+<p>我11月要去日本，有位在日本的朋友告诉我：“日本人很笨，不撞南墙不死心”，没明白，什么意思？“就是说，在中国，假如一个项目到了后期，发现可能行不通，中国人就立刻放弃，转换个方法去解决，绕过阻碍。而日本人远远看到前面有个墙了，不会想着绕道，死要向前撞，直到撞上了，知道走不动了，才想办法”哦，可能是比较笨。“笨？恩，可能吧，但我觉得也不是纯笨了，他们撞到墙后，是想办法，但是想的办法不是如何饶过去，却是如何把墙推倒走过去。除非头破血流，否则绝不改道”…… 恩，是不是很笨？不，是不是很蠢？</p>
+
+<p>那么我告诉你。编程这行，特别是逻辑部分，原本做的就是这样的工作：到达某一目的地，中间会有一个又一个的困难。我们的工作就是解决这些困难，实现某些功能和目标。</p>
+
+<p>那么我们假设换道走，其结果通常是&mdash;&ndash;更加的不顺。这句话我想做过逻辑程序的朋友会深有体会，看到墙，饶条路去走，结果开始很顺利，</p>
+
+<p>一会又是一道墙，再饶……递归。。。。死循环。。。最后要么发现离目标越来越远了，要么就是发现直直的路被我们饶的象迷宫一样，没有任何条理性可言。至于可维护性，可扩展性。。管他呢，到了目标就行了。&mdash;这就是中国人，中国普遍存在的程序员现象。</p>
+
+<p>日本人是蠢，然而蠢的背后也是很伟大的智慧，走直路能避免多少的问题？时间，之后的思维逻辑复杂度，维护性，扩展性，可阅读性等等。。。无意说日本人好话，然而事实的确是这样残酷的摆着。（愤青闪开）中国游戏比日本落后的不是一点两点。</p>
+
+<p>然而换个词汇来说，这也是日本人的执着，日本漫画中《圣斗士》那五小强为代表，一次一次倒一次一次起来，可以说是恶心之极，但也反映了一些东西吧。</p>
+
+<p>卡马克更是如此，每天14小时编程。恩，您可以尝试下，选择个最有兴趣的东西，玩14小时，不说多，坚持三个月吧。。。</p>
+
+<p>骑士也是执着的，为了心爱的“公主”，为了自己所信奉的“公正和真理”，会忍受常人之所不能，所以，我说卡马克是骑士。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他善良。</p>
+
+<p>实话说，我没有得到他办什么教育基金会，残疾人保障会什么的好消息。然而在中国这片土壤上，我很难去善意的理解一些慈善家，当然我承认他们之间会有很多被我冤枉的。很幸运的是，他们不知道别人这么想，或者不计较我这号思想不纯洁者，或者他们只能抱怨社会了，是美好的社会给我这样的思想。</p>
+
+<p>扯远了，回来。我说卡马克善良是有根据的。崇拜欣赏卡马克的不是我一个人，而是很多人，除了因为他的成就，他的努力之外，更多的应该是受了他好处的家伙们吧。</p>
+
+<p>恩？你没受过？那么OK，请把你显卡上的DX去掉，把玩过的CS，Queek,盟军敢死队忘掉。哦，这些你都没用过，那么好吧，以后请永远不要接触计算机3D东西，包括此类的产品也不行。这里面都有着卡马克的汗水和努力。</p>
+
+<p>恩，我是卡fans，极端主义家伙？NONO，可以很肯定的说，没有卡马克，计算机3D图形需要倒退好几年。那么Bill呢？没他的话，计算机发展可能都要推迟好几年，呃，我不否认，那么让我来告诉你为什么我尊敬卡马克远胜过Bill Gates吧。</p>
+
+<p>卡马克大部分作品开源。Bill，恩，见过Windows开源还是见过Office开源？ 要比钱的话，我不相信卡马克比Bill更有钱，Bill的钱可能足够他重重重&hellip;.孙子吃不完了。他依旧在敛财，还对中国盗版Windows个人用户进行了一些措施，您的电脑上Windows系统更新后有没有“盗版提示”？ Bill开公司后，很少打代码了，转行管理了，这本身是没有错误的，然而尊崇技术的我，无法去尊敬他，或者管理者们可以更加喜欢他吧。 卡马克的Queek3开源了，恩，请列举一些已卖出如此多商业授权的成熟引擎进行开源例子。善良的举动不是仅仅给老乞丐1毛钱或是慰问了某残疾人保健会，无私的促进社会进步算不算？</p>
+
+<p>所以，卡马克是善良的，遵循了骑士善良的原则。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他勇敢。</p>
+
+<p>我发现大学翘学是成功人的一大通病。</p>
+
+<p>恩，我见过网上中国大学生写的一个文章，“十种不配做大学生的人”，其中就把Oracle的那位CEO抓来做典型，说他不懂得理解母校，鼓动学生辍学，实在不配做大学生XX云。</p>
+
+<p>恩，我想写这文章的哥们一定是位优秀的学生。我没资格批评他，而他可能也是对的。可是很遗憾的是，我不能理解他的说法。原因很简单，我大学，屁知识都没学到。要说白活了四年倒也不对，一些修养思想也是有所改变的，具体是大学给我的还是年龄增长获得的，也没有慢慢去考证的时间，然而用四年来换这些东西，终究是亏大发了。</p>
+
+<p>所以，我支持大学辍学，当然是你有了明确的目标之后。</p>
+
+<p>卡马克辍学了，比Oracle和Bill还个性的是，给老师留了个条，“你为什么不给我个项目做呢,你要我做什么我就能给你什么”。哈哈，很有味道的一个家伙。比起那两位，他更加的勇敢，并且给了其老师一个很有建设性的提议，虽然这个提议现在中国大学也没有懂得去珍惜。</p>
+
+<p>辍学后，他与父母闹的很僵，那段日子很不好过。。深有体会。大学后，我也有这么一段时间，父母让我去做商船上的维修技师，钱不少。可我坚持不去，要选择游戏开发这行，老爸老妈觉得这孩子真不听话，对我基本放弃了，同学也都散了，独自来到北京，除了孤单还能找到什么呢？然而现在，我非常骄傲当时的选择，这是到现在而言，最成功最正确的一次选择，当然也是最勇敢的一次选择。若选择错了，我还有什么路可走呢？回去找父母的接济再去找个办公室看报纸的工作？我宁可选择自杀。</p>
+
+<p>这个选择卡马可一定也是很辛苦的，这种勇敢的抉择并不亚于与疯狂的敌人进行一次战斗。</p>
+
+<p>卡马可也很以这点为傲，就如他所说“当时我感到非常沮丧，因为自己清楚知道要做什么，却无法实现。那时候人们习惯地认为，如果你要从事计算机工作，那么就进入MIT，再到一家公司工作，成为一名工程师，但是我从大学辍学了，随后创建了自己的公司。我弟弟则选择了我父母所希望的道路，获得了学位，成为股票经纪人，他干得不错，但并不能像我这样拥有很多辆法拉利跑车来让父母感到自豪”</p>
+
+<p>卡马克是位勇敢的骑士。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他荣耀。</p>
+
+<p>荣耀可是骑士八大准则之二的。经常听到某骑士主角作战前挥剑大吼一声“为荣耀而战！”- -这是有来由的。</p>
+
+<p>荣耀NOT虚荣。它是积极的，我不认为一个人连面子都不要却能获得十足的成功。然而如何处理这张“面子”与实力则是荣耀和虚荣的区别。有实力的人，加强自己的实力来获得自己应得的荣耀，虚荣的人获得自己不应得的荣耀，就是这么简单。我肯定卡马克是有实力的，而且相信他的荣耀是他实力换取的。原因是，在3D图形领域，还没有听说谁出其右，也没有听说哪位3D图形软件高人不尊敬卡马克，并表示能在技术上胜其一筹的。</p>
+
+<p>他捍卫着自己的荣耀，并且认定自己是个“聪明人”，可能没有人知道他的智商是否真的聪明，然而他领导着计算机3D软件技术客观上维护了他的荣耀，他的行动维护了他的荣耀。</p>
+
+<p>珍惜并捍卫自己的荣耀吧，骑士卡马克。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他谦卑。</p>
+
+<p>很饶口是不是，又荣耀又谦卑的。然而人原本就是这样矛盾的存在。许多人在评价一个人时常常会这么说“这家伙很狂妄！。。那个人太缺乏自信”这是很错误的。首先，你无法完全的了解一个人，甚至你自己。对人的了解永远是其中的一面或几面，你不可能同时兼任对方的所有关系。我对朋友是一个面孔，对陌生人是一个面孔，我不认为这就意味着我善变。事实就是这样的，世界，社会这些东西都是矛盾的融合体。所以，请不要太相信所谓的“和谐”。中国动漫被文化局和谐了，结果如何？BT之家被森蓝和谐了，如何？真的人人觉得不错的话，现在早世界大同，和谐之致了。</p>
+
+<p>不好意思，总爱跑题。继续卡马克。</p>
+
+<p>他正式从事游戏编程已经十几年了，然而极少露面，做为程序负责人，据说Q1，Q2的发布会他都没有出台。他认为没有必要，或者认为自己做的不够好。本应如此。在游戏开发产业现在出现一些很奇怪的现象，公司出了一款游戏，上会台上介绍产品演讲的不是项目负责人，也不是主策总监之类，而是公司老总或者主程。OTL。我怀着极大的疑问，他们到底比谁更熟悉这款游戏？策划能够熟知游戏的可玩性，可以对每块功能模块如数家珍，BOSS做了什么？告诉大家，我们游戏投入了多少多少钱，计划赚多少多少钱，准备如何如何骗玩家腰包？或是主程上台告诉大家，我们的游戏使用了如何如何引擎，用的什么什么语言，什么什么构架思想？我们玩家不关心这个，谢谢，请您下台。</p>
+
+<p>卡马克谦卑还表现出对同事的尊敬。采访中他说过，他的许多技术得益于他的同事和朋友，例如有位朋友就使他更加重视了const的用法。这点我估计非程序界的朋友会很有体会，三人行必有我师嘛。然而，程序界中有一种很奇特的现象，大家都认为自己很了不起，不愿承认自己的问题，不愿意拉下架子去向别人学习。其实，我们是什么？不过是会打点代码的家伙嘛？有什么可骄傲的？毫无根据的傲气是高级程序员进步的一大阻碍。这一点值得很多程序员去反思，去向卡马克学习。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他正直，诚实。</p>
+
+<p>他质疑自己公司的产品，并且说了出来。他批评过当时吹的很响的X显卡，指出其中的不足，也褒奖过一度很没人看好的Y显卡。</p>
+
+<p>然而不同于国内一些故意抄作的某些“批判大师”一般，他的批评仅是以不为人知的信件形式直接通知该厂商负责人，不象某些人，发现一些问题就恨不得全世界人都认为自己是正义大使一样，台湾也喊，大陆也叫叫，在中国闹翻天了还不爽，现在又跑美国去嚷嚷，真当自己是独一无二的味道。</p>
+
+<p>而卡马克值得人尊敬的就在这里，他对东西的批评或赞赏是出于内心的，对东西本身的一种尊敬，不带一丝杂质。就象我们在看到一部好的电影或是听到一曲优美的音乐一样，情不自禁的说出来“哦，非常好！我喜欢死了”，这句话我们是没有目的的，无意给谁去听。很可惜，不少“名人”失去了这种本能，取而代之的是一种叫抄作的玩意。</p>
+
+<p>程序员对自己的代码作品就象母亲对待自己的孩子一样。那些把自己代码文件弄的一团糟，不加整理的人并不多，即使他从不给自己代码加注释。然而就是这种宠爱之心，以至于很多程序员无法接受其他人对自己程序的批评，更不要说自己站出来说自己代码的问题了，这种行为就象母亲听到自己的孩子被别人指责是个“愚蠢的家伙”时本能的反对一样，即使自己的孩子真的很笨，她也无法接受，并且愿意进行自我欺骗。</p>
+
+<p>我相信执着于程序的卡马克也是一样，然而他站出来了，说出了自己代码产品的问题。只有一种解释，他有足够的诚实和勇敢，对事业的献身精神使他无法放任自己的瑕疵而不管。</p>
+
+<p>所以说卡马克是足够正直的骑士。</p>
+
+<p>卡马克是骑士。</p>
+
+<p>因为他勇于牺牲。</p>
+
+<p>就如我另外那日志上所说一样。做程序员这行的，不要期盼有女性能理解你，反之也一样，甚至说，男性都很难理解你。就象我前一阵闭关学习，电话不断，三言两语你还根本解释不通。我说“对不起，我在闭关学习”，结果对方来句“是我啊，你兄弟啊”，“&hellip;..知道，但是我在闭关学习，连老爸老妈都不联系了”“真不孝顺，行了，你忙吧，以后别联系我了，无非是想叫你出来吃顿饭聚聚嘛，摆什么臭架子”“&hellip;”</p>
+
+<p>恩，帮我想想该怎么办？出去吃？那么有这一次就一定有下一次，有这一家就一定有下一家。不去，解释？你真的认为很容易解释清楚么？人的环境不同，心态不同，没有人会这么轻松的理解你。</p>
+
+<p>所以很简单，按if..else程序员逻辑原则，不解释，断绝联系闭关，不过这将失去大量的朋友是必然的。没有人愿意和一个常年联系不到的人做朋友，更没有女性愿意和一个几个月在屋里打代码不陪着出门逛街的人打交道。</p>
+
+<p>然而事实是，所有带着荣耀的人背后都有一道寂寞的伤痕。请去看看吧，那些看起来很自由很轻松的“名士”的个人经历，没有一个小时候是好过的。若他们有一个天天玩耍的童年，那就不可能存在他们的成功。中国古话早说，忍常人之不能忍，才会成常人之不能成。</p>
+
+<p>卡马克成功的开始无疑来自于他辞职后在木屋内的磨练，然而他必将失去一些东西，例如他父母的理解，结婚后他以后是爱程序如命，可以想象他的妻子会与他完全没有隔阂么？这都是为了自己的理想所做出的牺牲，我并不认为这比牺牲自己生命来的容易。</p>
+
+<p>卡马克是位值得尊敬的骑士。</p>
+
+<p>然而不尽如此，他还有这许多中世纪骑士所不拥有的新鲜精神，如叛逆，自由。</p>
+
+<p>相信自己是正确的，他就会走下去。辍学，辞职都体现着他的叛逆和自由。可能也正是如此，他受到的美国人掌声比中国人掌声来的多，那是个崇尚自由的国家，起码人民是如此。</p>
+
+<p>中国新一代青少年也崇尚叛逆和自由，而且味道却极大的不同。鼻环，纹身能说明什么？仅能证明你的愚蠢和令人质疑的审美观。摇滚乐在美国是一种艺术，创造他的人通常怀着对音乐的热情，对社会问题的控诉，国内青少年你们真的能体会？抑或是蠢笨的耍酷+跟流行。</p>
+
+<p>向着自己的目标，踏出非常人的一步，即使失败了，我也尊敬。盲目的耍个性，我无法理解。应当学习正确的实时的叛逆，将离成功更近一步。</p>
+
+<p>说了也很多，而基本没有谈论卡马克太多的技术，因为我坚信：做一名出色的程序员，技术还是其次，最重要的是你的性格思想，它左右一个人的一生，在任何事情上，这些优秀的品质都带领人们获得成功。</p>
+
+<p>努力做一名有思想的程序员。</p>
+
+<p>《题外话：我想到最近在Gameres里遇见的一家伙，发了个3DDemo代码，连个碰撞判断都没有，仅仅是代码优化的不错，我在索要代码学习时，竟提出这样的要求“你不给我顶帖，才不给你代码呢！”，加QQ后，来句“I&rsquo;m working!Wait!顶My帖子去!”丝毫不犹豫，拖黑，之后又发现其在帖中说“等我这帖子到410层时候就给你们看代码吧”，OTL，可能在某些领域您的技术高超，但是，就您的虚荣心，实在难以让人恭维。》</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E5%BF%83%E6%83%85%E6%84%9F%E6%82%9F/">心情感悟</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/07/%E8%BD%AC%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%AC%91%E8%AF%9D%E5%87%A0%E5%88%99/" data-tooltip="[转]程序相关笑话几则">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/07/%E7%AE%80%E5%8E%86/" data-tooltip="简历">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/07/%E5%8D%A1%E9%A9%AC%E5%85%8B%E4%B8%8E%E8%87%AA%E7%94%B1%E9%AA%91%E5%A3%AB/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/07/%E8%BD%AC%E7%A8%8B%E5%BA%8F%E7%9B%B8%E5%85%B3%E7%AC%91%E8%AF%9D%E5%87%A0%E5%88%99/" data-tooltip="[转]程序相关笑话几则">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/07/%E7%AE%80%E5%8E%86/" data-tooltip="简历">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/07/%E5%8D%A1%E9%A9%AC%E5%85%8B%E4%B8%8E%E8%87%AA%E7%94%B1%E9%AA%91%E5%A3%AB/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F07%2F%25E5%258D%25A1%25E9%25A9%25AC%25E5%2585%258B%25E4%25B8%258E%25E8%2587%25AA%25E7%2594%25B1%25E9%25AA%2591%25E5%25A3%25AB%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/07\/%E5%8D%A1%E9%A9%AC%E5%85%8B%E4%B8%8E%E8%87%AA%E7%94%B1%E9%AA%91%E5%A3%AB\/';
+          
+            this.page.identifier = '\/2007\/07\/%E5%8D%A1%E9%A9%AC%E5%85%8B%E4%B8%8E%E8%87%AA%E7%94%B1%E9%AA%91%E5%A3%AB\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

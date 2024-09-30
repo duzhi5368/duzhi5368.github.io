@@ -1,0 +1,863 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]安装MS SQL Server 2008</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="在XP下，安装MS SQL Server 2008.
+
+">
+    <meta property="og:description" content="在XP下，安装MS SQL Server 2008.
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]安装MS SQL Server 2008">
+    <meta property="og:url" content="/2013/04/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="在XP下，安装MS SQL Server 2008.
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]安装MS SQL Server 2008
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2013-04-19T00:00:00Z">
+        
+  四月 19, 2013
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2013">2013</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>在XP下，安装MS SQL Server 2008.</p>
+
+<p></p>
+
+<p>现在装的是MS SQL Server 2008，一样子在XP系统，一样子保留多个版本的数据库，觉得2008比2005好装好多，就是，如果知道一开始机器要满足什么东东才可以装的话，真的好装好多的，最少，2008里，每一步安装都有帮助提示，帮助文档写得好清楚的</p>
+
+<p>我安装的是Microsoft SQL Server 2008 Enterprise Evaluation：开发人员试用体验。此版本中的文件与 Microsoft SQL Server 2008 Enterprise Evaluation：IT 专业人员试用体验相同。这两个版本的唯一区别在于，您将从 Microsoft 收到的后续电子邮件的内容不同。</p>
+
+<p>本机环境是：Windows XP Professional SP3、vs.net 2005、vs.net 2008、MS SQL Server 2000、MS SQL Server 2005。</p>
+
+<p>需要下载的软件是：</p>
+
+<p>vs.net2008 sp1的下载地址：</p>
+
+<p>sql 2008 下载地址：</p>
+
+<p>sql 2008 示例数据库(SQL2008.AdventureWorksLT2008_Only_Database.zip)下载地址：</p>
+
+<p>安装基本过程是：停止Machine Debug Manager服务，把xp的防火墙关闭，安装vs.net 2008 sp1，安装MS SQL Server 2008，附加示例数据库。</p>
+
+<p>记录网址SQL Server 开发人员中心：</p>
+
+<p>以下是我的安装记录：</p>
+
+<p>使用daemon虚拟SQLFULL_CHS.iso后，安装sql 2008，要求先安装asp.net 3.5，点击“确定”，自动下载并安装，安装完后，又自动安装wndows xp修补程序KB942288-v3，安装完要求重新启动。重启后，我又重新运行 sql server 2008安装程序。</p>
+
+<p>重新运行安装程序后，有一个dos窗口，最后结果是成功。显示SQL Server 安装中心。</p>
+
+<p>默认是在计划页面的，我点击了“系统配置检查器”，结果：操作完成，已通过13，失败0，警告0，已跳过1。我没有运行“安装升级顾问”，因为我想保留sql 2000和2005，我是想安装独立的sql 2008</p>
+
+<p>点击安装，进入安装页面。使用“全新SQL Server 独立安装或向现有安装添加功能”</p>
+
+<p>安装过程记录：</p>
+
+<p>1.安装程序支持规则，显示操作完成。已通过6，失败0，警告0，已跳过0
+　点击“确定”</p>
+
+<p>2.产品密钥，选择“输入产品密钥”，输入：PTTFM-X467G-P7RH2-3Q6CG-4DMYB
+　点击“下一步”</p>
+
+<p>3.许可条款，勾选“我接受许可条款”，点击“下一步”</p>
+
+<p>4.安装程序支持文件，点击“安装”</p>
+
+<p>　安装结果：操作完成：已通过9，失败0，警告1，已跳过1。</p>
+
+<p>　警告的是Windows防火墙：Windows防火墙已启用，请确保相应的端口已打开，以启用远程访问。有关每项功能打开的端口信息，请参阅 上的规则文档。</p>
+
+<p>　暂时不管，安装过程里，应该不需要这种远程访问的——这个想法在我后来安装vs.net2008sp1的时候证明是错误的</p>
+
+<p>　点击“下一步”</p>
+
+<p>5.选择功能。点击了“全选”。共享功能目录好像不能修改一样，不知道和2000、2005有没有冲突。。。</p>
+
+<p>　点击“下一步”</p>
+
+<p>6.实例配置
+　已安装实例里列出了2000和2005的实例。如果选择“默认实例”，实例ID会是“MSSQLSERVER”，实例根目录是“C:\Program Files\Microsoft SQL Server\”，这和2000完全相同。看了一下“C:\Program Files\Microsoft SQL Server”，这个目录下有四个文件夹：80、90、10、MSSQL.1。修改实例ID，下面的三个目录也会随着修改，估计这个实例ID是对应着C:\Program Files\Microsoft SQL Server\里的安装目录。</p>
+
+<p>　选择“默认实例”，点击“下一步”。此时出现错误：该实例名称已经使用，和2000重复了。</p>
+
+<p>　改为选择“命名实例”，输入：MSSQLSERVER2008，实例ID也自动修改成“MSSQLSERVER2008”了，默认这两个是取相同的，一个实例安装在一个同名文件夹里</p>
+
+<p>7.磁盘空间要求，系统驱动器需要1256MB，共享安装需要784MB，实例目录644MB，一共需要2684MB</p>
+
+<p>　因为上面没有修改实例目录，所以都装在C盘了，点击“下一步”</p>
+
+<p>8.服务器配置
+　这里弄不懂。。。好像是和windows帐户有关系，帮助中建议每种服务单独使用帐户，我选择了“对所有SQL Server服务使用相同的帐户”了。帐户名中只有两个：NT AUTHORITY\NETWORK SERVICE、NT AUTHORITY\SYSTEM，我选择了第一个。</p>
+
+<p>　我是在想，在Windows server 2003中，ASP.NET的运行帐号是Network Service，就是，我是XP系统，在XP里，ASP.NET的运行帐号是ASPNET，我是不是应该使用ASPNET更好呢？</p>
+
+<p>　在“对所有SQL Server服务使用相同的帐户”对话框里，点击浏览查找ASPNET用户后，确定返回时，所有服务都要求重新输入密码</p>
+
+<p>　如果选择使用NT AUTHORITY\NETWORK SERVICE帐户，则不需要输入密码，我想这里的密码可能是默认为windows登录时的密码</p>
+
+<p>　我最后选择了“NT AUTHORITY\NETWORK SERVICE”。</p>
+
+<p>9.数据库引擎配置
+　帮助里说“请尽可能使用 Windows 身份验证”，就是，如果使用windows身份验证，如果程序文件和数据库文件不在同一个机器上，甚至不在同一个局域网内，怎么连接数据库呢？我决定使用混合身份验证，我只是猜想服务器可能会用混合模式，我想和服务器一样子设置，如果以后装服务器的时候用windows身份验证，我也可以修改验证模式的。使用混合身份时输入的密码，是sa的登录密码。</p>
+
+<p>　指定SQL Server管理员里，我使用了“添加当前用户”。</p>
+
+<p>　数据目录，我设置到D盘了，不可以再装在C盘了，有的数据库是很大的</p>
+
+<p>　FILESTREAM我不启用，关于这个，我现在用不上，而且查过了，以后要启用也很容易。</p>
+
+<p>　《FILESTREAM 存储入门》：</p>
+
+<p>　《如何启用 FILESTREAM》：</p>
+
+<p>　三个标签页设置完，点击“下一步”。</p>
+
+<p>10.Analysis Services 配置，我使用了当前用户，数据目录全部设在D盘，点击“下一步”。</p>
+
+<p>11.Reporting Services配置，选择“安装本机模式默认配置”，点击“下一步”。</p>
+
+<p>12.错误和使用情况报告</p>
+
+<p>13.安装规则
+　这里出问题了：操作完成，已通过10，失败1，警告0，已跳过0。</p>
+
+<p>　错误在“以前版本的Microsoft Visual Studio 2008”，提示：本计算机安装了以前版本的Microsoft Visual Studio 2008。请先将Microsoft Visual Studio 2008升级到 SP1 再安装 SQL Server。</p>
+
+<p>　“下一步”按钮不可用了，这里只可以“取消”，惨啊。。。</p>
+
+<p>　　找到vs.net2008 sp1的下载地址：</p>
+
+<p>　　大小是898.1MB，还有这一句：如果以前安装了 Visual Studio 2008 修补程序或 Visual Studio 2008 SP1 预发行版本，则必须在安装 Visual Studio 2008 SP1 之前运行 Service Pack 准备工具。</p>
+
+<p>　　安装vs.net2008 sp1里，在安装vs90sp1-kb945140-x86-chs里卡了很久，卡了多久不清楚</p>
+
+<p>　　查了一下网络，有的说是要禁用Machine Debug Manager服务，我停止了这个服务后，360就报一个要增加什么了，具体是什么不记得了，过了一会儿，NetLimiter也报有程序访问网络，具体是什么程序也不记得了，我全部选择通过，于是又卡住了。。。</p>
+
+<p>　　继续百度，有人说是防火墙的问题，我就进控制面板把防火墙禁用了</p>
+
+<p>　　防火墙一禁用，马上转为正在安装KB949258-x86，安装继续中。。。装得好快了</p>
+
+<p>　　vs.net 2008 sp1安装完，需要重启。重启后，重新启动sql 2008的安装程序，直接进入安装中心，按上面的步骤一路设置。。。</p>
+
+<p>14.装备安装，这里显示出所有要安装的东西，直接点击“安装”。</p>
+
+<p>15.安装进度
+　安装完显示：一个或多个受影响的文件具有挂起的操作。必须重新启动计算机才能完成此过程。点击“确定”。发现所有功能名称对应的状态都是“成功”，那个提示应该是重启就没事的吧？装到现在，差不多装完了，就害怕了。</p>
+
+<p>　点击“下一步”。</p>
+
+<p>16.SQL Server 2008安装已成功完成。</p>
+
+<p>　补充信息里有这一段：</p>
+
+<p>默认情况下，示例数据库和示例代码不作为 SQL Server 安装程序的一部分进行安装。对于 SQL Server 2008 Express Edition 以外的其他 SQL Server 2008 版本，若要安装示例数据库和示例代码，请访问 CodePlex 网站 &lt;&gt;，网址为 。若要了解对 SQL Server Express 的 SQL Server 示例数据库和示例代码的支持，请参阅 CodePlex 网站上的 Databases and Samples Overview &lt;&gt;（数据库和示例概述），网址为 。
+　点击“关闭”，要求重启，点击“确定”，手动重新启动机器。</p>
+
+<p>17.测试登录
+　从开始菜单启动SQL Server Management Studio，身份验证如果选择Windows身份验证，不需要输入用户名和密码直接登录，如果使用SQL Server身份验证，登录名是sa，密码是在第9步数据库引擎配置里设置的密码。</p>
+
+<p>18.附加示例数据库，测试在vs.net 2008中的连接。
+　把下载的SQL2008.AdventureWorksLT2008_Only_Database.zip解压后有AdventureWorksLT2008数据库的两个数据库文件，把它们复制到我的数据库目录，在SQL Server Management Studio中附加。</p>
+
+<p>　新建一个查询，随便写一个sql语句测试一下，哇，上下文菜单好丰富，连存储过程、@@常量、表名、字段名好多好多，全部可以直接从上下文菜单里选择了，好方便</p>
+
+<p>　打开vs.net 2008，新建一个网站，新建一个页面，连接代码和别的版本数据库一样子，测试好顺利。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2013/">2013</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2013/07/%E6%9C%88%E8%AE%B0201307/" data-tooltip="月记201307">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2013/03/%E6%9C%88%E8%AE%B0201303/" data-tooltip="月记201303">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2013/04/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2013/07/%E6%9C%88%E8%AE%B0201307/" data-tooltip="月记201307">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2013/03/%E6%9C%88%E8%AE%B0201303/" data-tooltip="月记201303">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2013/04/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2013%2F04%2F%25E8%25BD%25AC%25E5%25AE%2589%25E8%25A3%2585ms-sql-server-2008%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2013\/04\/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008\/';
+          
+            this.page.identifier = '\/2013\/04\/%E8%BD%AC%E5%AE%89%E8%A3%85ms-sql-server-2008\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

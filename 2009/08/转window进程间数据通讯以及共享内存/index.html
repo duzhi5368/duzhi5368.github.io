@@ -1,0 +1,888 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]WINDOW进程间数据通讯以及共享内存</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="WINDOW进程间数据通讯以及共享内存
+
+转自 http://blog.csdn.net/A_KIM/archive/2008/02/18/2102444.aspx
+
+">
+    <meta property="og:description" content="WINDOW进程间数据通讯以及共享内存
+
+转自 http://blog.csdn.net/A_KIM/archive/2008/02/18/2102444.aspx
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]WINDOW进程间数据通讯以及共享内存">
+    <meta property="og:url" content="/2009/08/%E8%BD%ACwindow%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="WINDOW进程间数据通讯以及共享内存
+
+转自 http://blog.csdn.net/A_KIM/archive/2008/02/18/2102444.aspx
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]WINDOW进程间数据通讯以及共享内存
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-08-05T00:00:00Z">
+        
+  八月 5, 2009
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2009">2009</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>WINDOW进程间数据通讯以及共享内存</p>
+
+<p>转自 <a href="http://blog.csdn.net/A_KIM/archive/2008/02/18/2102444.aspx">http://blog.csdn.net/A_KIM/archive/2008/02/18/2102444.aspx</a></p>
+
+<p></p>
+
+<h1 id="1-引言">1、引言</h1>
+
+<p>　　在Windows程序中，各个进程之间常常需要交换数据，进行数据通讯。WIN32 API提供了许多函数使我们能够方便高效地进行进程间的通讯，通过这些函数我们可以控制不同进程间的数据交换，就如同在WIN16中对本地进程进行读写操作一样。
+　　典型的WIN16两进程可以通过共享内存来进行数据交换：（1）进程A将GlobalAlloc（GMEM_SHARE&hellip;）API分配一定长度的内存；（2）进程A将GlobalAlloc函数返回的句柄传递给进程B（通过一个登录消息）；（3）进程B对这个句柄调用GlobalLock函数，并利用GlobalLock函数返回的指针访问数据。这种方法在WIN32中可能失败，这是因为GlobalLock函数返回指向的是进程A的内存，由于进程使用的是虚拟地址而非实际物理地址，因此这一指针仅与A进程有关，而于B进程无关。
+　　本文探讨了几种WIN32下进程之间通讯的几种实现方法，读者可以使用不同的方法以达到程序运行高效可靠的目的。</p>
+
+<h1 id="2-windows95中进程的内存空间管理">2、Windows95中进程的内存空间管理</h1>
+
+<p>　　WIN32进程间通讯与Windows95的内存管理有密切关系，理解Windows95的内存管理对我们如下的程序设计将会有很大的帮助，下面我们讨论以下Windows95中进程的内存空间管理。
+　　在WIN16下，所有Windows应用程序共享单一地址，任何进程都能够对这一空间中属于共享单一的地址空间和属于其他进程的内存进行读写操作，甚至可以存取操作系统本身的数据，这样就可能破坏其他程序的数据段代码。
+　　在WIN32下，每个进程都有自己的地址空间，一个WIN32进程不能存取另一个地址的私有数据，两个进程可以用具有相同值的指针寻址，但所读写的只是它们各自的数据，这样就减少了进程之间的相互干扰。另一方面，每个WIN32进程拥有4GB的地址空间，但并不代表它真正拥有4GB的实际物理内存，而只是操作系统利用CPU的内存分配功能提供的虚拟地址空间。在一般情况下，绝大多数虚拟地址并没有物理内存与它对应，在真正可以使用这些地址空间之前，还要由操作系统提供实际的物理内存（这个过程叫&ldquo;提交&rdquo;commit）。在不同的情况下，系统提交的物理内存是不同的，可能是RAM，也可能是硬盘模拟的虚拟内存。</p>
+
+<h1 id="3-win32中进程间的通讯">3、WIN32中进程间的通讯</h1>
+
+<p>　　在Windows 95中，为实现进程间平等的数据交换，用户可以有如下几种选择：
+　　* 使用内存映射文件
+　　* 通过共享内存DLL共享内存
+　　* 向另一进程发送WM_COPYDATA消息
+　　* 调用ReadProcessMemory以及WriteProcessMemory函数，用户可以发送由GlobalLock(GMEM_SHARE,&hellip;)函数调用提取的句柄、GlobalLock函数返回的指针以及VirtualAlloc函数返回的指针。</p>
+
+<ul>
+<li>3.1、利用内存映射文件实现WIN32进程间的通讯</li>
+</ul>
+
+<p>　　Windows95中的内存映射文件的机制为我们高效地操作文件提供了一种途径，它允许我们在WIN32进程中保留一段内存区域，把目标文件映射到这段虚拟内存中。在程序实现中必须考虑各进程之间的同步。具体实现步骤如下：
+　　首先我们在发送数据的进程中需要通过调用内存映射API函数CreateFileMapping创建一个有名的共享内存：
+　　HANDLE CreateFileMapping(
+　　HANDLE hFile, // 映射文件的句柄，
+　　//设为0xFFFFFFFF以创建一个进程间共享的对象
+　　LPSECURITY_ATTRIBUTES lpFileMappingAttributes, // 安全属性
+　　DWORD flProtect, // 保护方式
+　　DWORD dwMaximumSizeHigh, //对象的大小
+　　DWORD dwMaximumSizeLow,
+　　LPCTSTR lpName // 必须为映射文件命名
+　　);
+　　与虚拟内存类似，保护方式可以是PAGE_READONLY或是PAGE_READWRITE。如果多进程都对同一共享内存进行写访问，则必须保持相互间同步。映射文件还可以指定PAGE_WRITECOPY标志，可以保证其原始数据不会遭到破坏，同时允许其他进程在必要时自由地操作数据的拷贝。
+　　在创建文件映射对象后使用可以调用MapViewOfFile函数映射到本进程的地址空间内。
+　　下面说明创建一个名为MySharedMem的长度为4096字节的有名映射文件：
+　　HANDLE hMySharedMapFile=CreateFileMapping((HANDLE)0xFFFFFFFF)，
+　　NULL，PAGE_READWRITE，0，0x1000，&ldquo;MySharedMem&rdquo;)；
+　　并映射缓存区视图：
+　　LPSTR pszMySharedMapView=(LPSTR)MapViewOfFile(hMySharedMapFile，
+　　FILE_MAP_READ|FILE_MAP_WRITE，0，0，0)；
+　　其他进程访问共享对象，需要获得对象名并调用OpenFileMapping函数。
+　　HANDLE hMySharedMapFile=OpenFileMapping(FILE_MAP_WRITE，
+　　FALSE，&ldquo;MySharedMem&rdquo;);
+　　一旦其他进程获得映射对象的句柄，可以像创建进程那样调用MapViewOfFile函数来映射对象视图。用户可以使用该对象视图来进行数据读写操作，以达到数据通讯的目的。
+　　当用户进程结束使用共享内存后，调用UnmapViewOfFile函数以取消其地址空间内的视图：
+　　if (!UnmapViewOfFile(pszMySharedMap
+　　View))
+　　{ AfxMessageBox(&ldquo;could not unmap view of file&rdquo;); }</p>
+
+<ul>
+<li>3.2、利用共享内存DLL</li>
+</ul>
+
+<p>　　共享数据DLL允许进程以类似于Windows 3.1 DLL共享数据的方式访问读写数据，多个进程都可以对该共享数据DLL进行数据操作，达到共享数据的目的。在WIN32中为建立共享内存，必须执行以下步骤：
+　　首先创建一个有名的数据区。这在Visual C＋＋中是使用data_seg pragma宏。使用data_seg pragma宏必须注意数据的初始化：
+　　#pragma data_seg(&ldquo;MYSEC&rdquo;)
+　　char MySharedData[4096]={0};
+　　#pragma data_seg()
+　　然后在用户的DEF文件中为有名的数据区设定共享属性。
+　　LIBRARY TEST
+　　DATA READ WRITE
+　　SECTIONS
+　　.MYSEC READ WRITE SHARED
+　　这样每个附属于DLL的进程都将接受到属于自己的数据拷贝，一个进程的数据变化并不会反映到其他进程的数据中。
+　　在DEF文件中适当地输出数据。以下的DEF文件项说明了如何以常数变量的形式输出MySharedData。
+　　EXPORTS
+　　MySharedData CONSTANT
+　　最后在应用程序（进程）按外部变量引用共享数据。
+　　extern extern __declspec(dllimport) char MySharedData[];
+　　进程中使用该变量应注意间接引用。
+　　m_pStatic=(CEdit*)GetDlgItem(IDC_SHARED);
+　　m_pStatic－&gt;GetLine(0,*MySharedData,80);</p>
+
+<ul>
+<li>3.3、用于传输只读数据的WM_COPYDATA</li>
+</ul>
+
+<p>　　传输只读数据可以使用Win32中的WM_COPYDATA消息。该消息的主要目的是允许在进程间传递只读数据。Windows95在通过WM_COPYDATA消息传递期间，不提供继承同步方式。SDK文档推荐用户使用SendMessage函数，接受方在数据拷贝完成前不返回，这样发送方就不可能删除和修改数据：
+　　SendMessage(hwnd,WM_COPYDATA,wPara
+　　m,lParam);
+　　其中wParam设置为包含数据的窗口的句柄。lParam指向一个COPYDATASTRUCT的结构：
+　　typedef struct tagCOPYDATASTRUCT{
+　　DWORD dwData;//用户定义数据
+　　DWORD cbData;//数据大小
+　　PVOID lpData;//指向数据的指针
+　　}COPYDATASTRUCT;
+　　该结构用来定义用户数据。</p>
+
+<ul>
+<li>3.4、直接调用ReadProcessMemory和WriteProcessMemory函数实现进程间通讯</li>
+</ul>
+
+<p>　　通过调用ReadProcessMemory以及WriteProcessMemory函数用户可以按类似与Windows3.1的方法实现进程间通讯，在发送进程中分配一块内存存放数据，可以调用GlobalAlloc或者VirtualAlloc函数实现：
+　　pApp&rarr;m_hGlobalHandle=GlobalAlloc(GMEM_SHARE,1024);
+　　可以得到指针地址：pApp&rarr;mpszGlobalHandlePtr=(LPSTR)GlobalLock(pApp&rarr;m_hGlobalHandle);
+　　在接收进程中要用到用户希望影响的进程的打开句柄。为了读写另一进程，应按如下方式调用OpenProcess函数：
+　　HANDLE hTargetProcess=OpenProcess(
+　　STANDARD_RIGHTS_REQUIRED|
+　　PROCESS_VM_REDA|
+　　PROCESS_VM_WRITE|
+　　PROCESS_VM_OPERATION,//访问权限
+　　FALSE,//继承关系
+　　dwProcessID);//进程ID
+　　为保证OpenProcess函数调用成功，用户所影响的进程必须由上述标志创建。
+　　一旦用户获得一个进程的有效句柄，就可以调用ReadProcessMemory函数读取该进程的内存：
+　　BOOL ReadProcessMemory(
+　　HANDLE hProcess, // 进程指针
+　　LPCVOID lpBaseAddress, // 数据块的首地址
+　　LPVOID lpBuffer, // 读取数据所需缓冲区
+　　DWORD cbRead, // 要读取的字节数
+　　LPDWORD lpNumberOfBytesRead
+　　);
+　　使用同样的句柄也可以写入该进程的内存：
+　　BOOL WriteProcessMemory(
+　　HANDLE hProcess, // 进程指针
+　　LPVOID lpBaseAddress, // 要写入的首地址
+　　LPVOID lpBuffer, // 缓冲区地址
+　　DWORD cbWrite, // 要写的字节数
+　　LPDWORD lpNumberOfBytesWritten
+　　 );
+　　如下所示是读写另一进程的共享内存中的数据：
+　　ReadProcessMemory((HANDLE)hTargetProcess,(LPSTR)lpsz,m_strGlobal.GetBuffer(_MAX_FIELD),
+　　_MAX_FIELD,&amp;cb);
+　　WriteProcessMemory((HANDLE)hTargetProcess,(LPSTR)lpsz,(LPSTR)STARS,
+　　m_strGlobal.GetLength(),&amp;cb);</p>
+
+<h1 id="4-进程之间的消息发送与接收">4、进程之间的消息发送与接收</h1>
+
+<p>　　在实际应用中进程之间需要发送和接收Windows消息来通知进程间相互通讯，发送方发送通讯的消息以通知接收方，接收方在收到发送方的消息后就可以对内存进行读写操作。
+　　我们在程序设计中采用Windows注册消息进行消息传递，首先在发送进程初始化过程中进行消息注册：
+　　m_nMsgMapped=::RegisterWindowsMessage(&ldquo;Mapped&rdquo;);
+　　m_nMsgHandle=::RegisterWindowsMessage(&ldquo;Handle&rdquo;);
+　　m_nMsgShared=::RegisterWindowsMessage(&ldquo;Shared&rdquo;);
+　　在程序运行中向接收进程发送消息：
+　　CWnd* pWndRecv=FindWindow(lpClassName,&ldquo;Receive&rdquo;);
+　　pWndRecv&rarr;SendMessage(m_MsgMapped,0,0);
+　　pWndRecv&rarr;SendMessage(m_nMsgHandle,(UINT)GetCurrentProcessID(),(LONG)pApp&rarr;m_hGlobalHandle);
+　　pWndRecv&rarr;SendMessage(m_nMsgShared,0,0);
+　　可以按如下方式发送WM_COPYDATA消息：
+　　static COPYDATASTRUCT cds;//用户存放数据pWnd&rarr;SendMessage(WM_COPYDATA,NULL,(LONG)&amp;cds);
+　　接收方进程初始化也必须进行消息注册：
+　　UNIT CRecvApp:: m_nMsgMapped=::RegisterWindowsMessage(&ldquo;Mapped&rdquo;);
+　　UNIT CRecvApp::m_nMsgHandle=::RegisterWindowsMessage(&ldquo;Handle&rdquo;);
+　　UNIT CRecvApp::m_nMsgShared=::RegisterWindowsMessage(&ldquo;Shared&rdquo;);
+　　同时映射消息函数如下:
+　　ON_REGISTERED_MASSAGE(CRecvApp::m_nMsgMapped,OnRegMsgMapped)
+　　ON_REGISTERED_MASSAGE(CRecvApp::m_nMsgHandle,OnRegMsgHandle)
+　　ON_REGISTERED_MASSAGE(CRecvApp::m_nMsgShared,OnRegMsgShared)
+　　有这些消息函数我们就可以采用上述技术实现接收进程中数据的读写操作了。</p>
+
+<h1 id="5-结束语">5、结束语</h1>
+
+<p>　　从以上分析中我们可以看出Windows95的内存管理对进程之间的通讯有较为严格的限制。这就确保了任何故障程序无法意外地写入用户的地址空间，而用户则可根据实际情况灵活地进行进程间的数据通讯，从这一点上来讲Windows95增强了应用程序的强壮性。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2009/">2009</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/08/%E6%9C%88%E8%AE%B0200908/" data-tooltip="月记200908">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/%E6%9C%88%E8%AE%B0200907/" data-tooltip="月记200907">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/08/%E8%BD%ACwindow%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/08/%E6%9C%88%E8%AE%B0200908/" data-tooltip="月记200908">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/%E6%9C%88%E8%AE%B0200907/" data-tooltip="月记200907">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/08/%E8%BD%ACwindow%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2009%2F08%2F%25E8%25BD%25ACwindow%25E8%25BF%259B%25E7%25A8%258B%25E9%2597%25B4%25E6%2595%25B0%25E6%258D%25AE%25E9%2580%259A%25E8%25AE%25AF%25E4%25BB%25A5%25E5%258F%258A%25E5%2585%25B1%25E4%25BA%25AB%25E5%2586%2585%25E5%25AD%2598%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2009\/08\/%E8%BD%ACwindow%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98\/';
+          
+            this.page.identifier = '\/2009\/08\/%E8%BD%ACwindow%E8%BF%9B%E7%A8%8B%E9%97%B4%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF%E4%BB%A5%E5%8F%8A%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

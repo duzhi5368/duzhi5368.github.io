@@ -1,0 +1,747 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]金融危机对网游行业影响分析</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="金融危机横扫全球，各个行业都程度不同的受到了影响，IT互联网领域同样难逃劫数。作为互联网产业的一支，网络游戏在此次危机之中，究竟遭遇如何？业界人士见仁见智，但是一个比较主流的声音是，网游之花在此次金融危机中依旧迎风怒放，还有观察人士甚至认为网游是金融危机中资本的唯一避风港，是网游产业发展的一次良机，应该说这是一种比较乐观的看法。
+
+">
+    <meta property="og:description" content="金融危机横扫全球，各个行业都程度不同的受到了影响，IT互联网领域同样难逃劫数。作为互联网产业的一支，网络游戏在此次危机之中，究竟遭遇如何？业界人士见仁见智，但是一个比较主流的声音是，网游之花在此次金融危机中依旧迎风怒放，还有观察人士甚至认为网游是金融危机中资本的唯一避风港，是网游产业发展的一次良机，应该说这是一种比较乐观的看法。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]金融危机对网游行业影响分析">
+    <meta property="og:url" content="/2009/03/%E8%BD%AC%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E5%AF%B9%E7%BD%91%E6%B8%B8%E8%A1%8C%E4%B8%9A%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="金融危机横扫全球，各个行业都程度不同的受到了影响，IT互联网领域同样难逃劫数。作为互联网产业的一支，网络游戏在此次危机之中，究竟遭遇如何？业界人士见仁见智，但是一个比较主流的声音是，网游之花在此次金融危机中依旧迎风怒放，还有观察人士甚至认为网游是金融危机中资本的唯一避风港，是网游产业发展的一次良机，应该说这是一种比较乐观的看法。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]金融危机对网游行业影响分析
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-03-11T00:00:00Z">
+        
+  三月 11, 2009
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e8%a1%8c%e4%b8%9a">游戏行业</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2009">2009</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>金融危机横扫全球，各个行业都程度不同的受到了影响，IT互联网领域同样难逃劫数。作为互联网产业的一支，网络游戏在此次危机之中，究竟遭遇如何？业界人士见仁见智，但是一个比较主流的声音是，网游之花在此次金融危机中依旧迎风怒放，还有观察人士甚至认为网游是金融危机中资本的唯一避风港，是网游产业发展的一次良机，应该说这是一种比较乐观的看法。</p>
+
+<p></p>
+
+<p>这样一种乐观态度，在当下无疑能够传递出积极的信号。这种论调，对于网游企业来说，能够发挥两个方面作用，对外，能够维系资本市场对于网游的兴趣和热情不减，对于上市网游公司来说，有利于稳定股价，给市场注入强心剂，对于非上市网游企业来说，对其融资具有一定帮助和心理铺垫作用；对内，有利于提振公司员工的信心，使得企业在金融危机之中，依然能够保持昂扬斗志和蓬勃士气。所以，客观来看，这种乐观的态度，是有利网游行业整体发展的。</p>
+
+<p>但是，笔者认为，在保持乐观情绪的同时，网游企业必须做到头脑清醒，因为这场不知何时见底，不知还将持续多久的金融危机，对网游行业的整体影响，可能还需要一段时间才逐渐显现。笔者对于金融危机对网游产业的影响，一直持审慎的态度，认为金融危机之中，网游行业是危与机并存，并重。</p>
+
+<p>一，网游之危</p>
+
+<p>笔者认为，金融危机中，网游之危主要表现在两个方面：</p>
+
+<p>其一，玩家个体消费能力减弱。网游乐天派之所以持乐观态度，一个重要原因是金融危机下，失业下岗人群增加，收入减少的同时，是时间的充裕，这和上世纪30年代经济大萧条时期情况相似，根据口红效应的原理推导，网游这样相对廉价的娱乐消费，能够将人们从失业的重压中解脱出来，成为精神娱乐和情绪宣泄的港湾，因此必然能够吸引更多人群加入玩家行列，应该说，这个观点没有错，而且事实上也是如此，据有关媒体报道，在美国经济出现严重滑坡后的几个月里，网络游戏、赌博游戏及其他形式的网络娱乐节目的用户量迅速攀升，据美国知名互联网流量监测机构comScore公布的统计数据显示，2008年第四季度，网游玩家数量猛增29.9%。国内这块，虽然没有权威的统计数字，但是玩家增加，是一个不争的事实。但是，另一个事实也必须看到，那就是口红效应的范畴是廉价娱乐消费，这对于国内网游以CSP为主流的盈利模式来看，必然产生影响，价格不菲的道具装备销售，在当前玩家收入预期打折的情势下，其对于网络企业的现金贡献，比例下降幅度应该不小，那么增加的玩家数量所带来的消费额度，能否填补玩家消费能力下降带来的损失？恐怕有一定难度。笔者一直认为，如果当前的经济危机持续一到两年，乃至更长时间，CSP模式受到的冲击可能就更加明显。</p>
+
+<p>其二，资本市场依然谨慎。金融危机蔓延以来，互联网企业IPO数量迅速下降，资本市场的大门开始收紧，这对于那些希望借助IPO融资的网游企业来说，无疑是一个坏消息，久游网IPO一再受挫，就印证了这一趋势，虽然最近久游网再次提出09年IPO的计划，但是能否顺利实现，还是个未知数，其他希望上市融资的网游企业，同样面临着上市无门的困境；另一个方面，IPO大门收紧，也导致风险投资退出的后路被截断，这对于喜欢快进快出的风投来说，显然是个打击，也必然影响到风投投资的热情，创业企业获得风险投资的几率要比前两年小了许多。这两个方面因素的存在，对于那些需要通过融资快速发展的网游企业来说，特别是一些处于创业期的网游企业，如果自身还没有形成造血机制，那么资金瓶颈制约将成为难以承受之重，这对于国内网游行业的整体发展，也势必造成影响。</p>
+
+<p>二，网游之机</p>
+
+<p>主要有两个方面，行业整合和跨国扩张的机会：</p>
+
+<p>其一，行业整合之机。最近媒体上报道比较频繁的盛大18基金，以及巨人公司的赢在巨人计划，从某种意义上看，就是看到了当前金融危机对网游行业造成的冲击和影响，从而利用自身的资金和平台优势，对国内网游行业展开了规模收编与横向整合。的确如此，金融危机给中小网游企业带来的融资困难和资金压力，使得中小网游企业需要盛大、巨人这样的航母领航与保护，以避免在危机的风暴之中沉没，这对于现金充裕的上市网游企业来说，是一个低成本整合的良机，因此，在未来一段时间内，国内网游行业极有可能展开新一轮的洗牌整合。</p>
+
+<p>其二，跨国扩张之机。国内网游走出国门，已经渐成气候，此次全球性金融危机，国外网游企业和国内网游企业面临着大同小异的市场与资本环境，一样的玩家人群激增，一样的融资困境，在这样的情况下，对于弹药充足、兵强马壮的国内网游企业，特别是已经建立输出管道和国际影响的上市网游企业来说，在国内整合的同时，也是跨国征战的契机。笔者认为，这种跨国扩张主要是两个方面，一是产品走出国门，二是收购走出国门。前者，国内网游企业已经早有实践，并且取得了不错的成绩，如盛大、金山、完美时空等，率先吃到了国外市场这只螃蟹；完美时空CEO池宇锋前不久提出的抱团出海的概念，也就是这一理念的延展，应该说，国内规模网游企业走出国门，采取抱团的方法，一方面，能够丰富自己的产品线，使国外玩家有更多选择，另一方面，也能够使得拥有好作品的中小网游企业借船出海，借势做大，无疑是共赢之举；后者，收购国外网游企业，如同收编国内网游团队一样，在金融危机之际，借助资本和品牌优势，注资或者收购国外优秀网游团队、中小网游企业，也是适逢其时。</p>
+
+<p>总体来看，金融危机对于网游行业的影响，相对于其他行业来说，要轻微得多，但是，覆巢之下安有完卵，网游企业必须居危思危，用危机的心态，捕捉到市场可能存在的变数，才能在寒风劲吹之下，继续迎风招展。（陆建国）</p>
+
+<p>附：您若有兴趣，可参见 抵抗力并不是免疫力_闲谈金融危机下的网游业</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/">游戏行业</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2009/">2009</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/03/bcb-2009-%E5%8F%91%E5%B8%83%E7%89%88%E7%BC%BA%E5%B0%91rtl120.bpl%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-tooltip="bcb 2009 发布版缺少rtl120.bpl解决方法">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/03/vs2008%E8%AF%95%E7%94%A8%E7%89%88%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" data-tooltip="VS2008试用版解决方式">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/03/%E8%BD%AC%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E5%AF%B9%E7%BD%91%E6%B8%B8%E8%A1%8C%E4%B8%9A%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/03/bcb-2009-%E5%8F%91%E5%B8%83%E7%89%88%E7%BC%BA%E5%B0%91rtl120.bpl%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" data-tooltip="bcb 2009 发布版缺少rtl120.bpl解决方法">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/03/vs2008%E8%AF%95%E7%94%A8%E7%89%88%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" data-tooltip="VS2008试用版解决方式">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/03/%E8%BD%AC%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E5%AF%B9%E7%BD%91%E6%B8%B8%E8%A1%8C%E4%B8%9A%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2009%2F03%2F%25E8%25BD%25AC%25E9%2587%2591%25E8%259E%258D%25E5%258D%25B1%25E6%259C%25BA%25E5%25AF%25B9%25E7%25BD%2591%25E6%25B8%25B8%25E8%25A1%258C%25E4%25B8%259A%25E5%25BD%25B1%25E5%2593%258D%25E5%2588%2586%25E6%259E%2590%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2009\/03\/%E8%BD%AC%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E5%AF%B9%E7%BD%91%E6%B8%B8%E8%A1%8C%E4%B8%9A%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90\/';
+          
+            this.page.identifier = '\/2009\/03\/%E8%BD%AC%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E5%AF%B9%E7%BD%91%E6%B8%B8%E8%A1%8C%E4%B8%9A%E5%BD%B1%E5%93%8D%E5%88%86%E6%9E%90\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

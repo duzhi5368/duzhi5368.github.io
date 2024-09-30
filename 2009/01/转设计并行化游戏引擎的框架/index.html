@@ -1,0 +1,989 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]设计并行化游戏引擎的框架</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="设计一个功能可分解的、数据可分解的系统可以提供大规模的并行化执行，同时保证发挥多核处理器的性能。
+
+">
+    <meta property="og:description" content="设计一个功能可分解的、数据可分解的系统可以提供大规模的并行化执行，同时保证发挥多核处理器的性能。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]设计并行化游戏引擎的框架">
+    <meta property="og:url" content="/2009/01/%E8%BD%AC%E8%AE%BE%E8%AE%A1%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%9A%84%E6%A1%86%E6%9E%B6/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="设计一个功能可分解的、数据可分解的系统可以提供大规模的并行化执行，同时保证发挥多核处理器的性能。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]设计并行化游戏引擎的框架
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-01-18T00:00:00Z">
+        
+  一月 18, 2009
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2009">2009</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>设计一个功能可分解的、数据可分解的系统可以提供大规模的并行化执行，同时保证发挥多核处理器的性能。</p>
+
+<p></p>
+
+<p>作者: Jeff Andrews</p>
+
+<p>译者：百年孤寂</p>
+
+<p>设计一个功能可分解的、数据可分解的系统可以提供大规模的并行化执行，同时保证发挥多核处理器的性能。</p>
+
+<p>随着多核心处理器的降临，对可并行计算游戏引擎的需求已经变得越来越重要了。尽管仅仅依靠GPU和单线程游戏引擎依然是可行的，但是在一个系统上使用多核处理器所具有的优势会给用户带来更深刻的体验。譬如，使用多核CPU一个游戏可以增加更多的物理刚体对象来提升效果，或者开发出更加智慧的类人化的AI。</p>
+
+<p>并行化游戏引擎框架，或者称为多线程引擎，目的是在开发平台上利用所有的处理器来提升性能。（引擎）通过并行化处理，各个功能模块可以利用所有可用的处理器。当然，说比做要容易，毕竟在游戏引擎中很多东西是互相交叉的，这通常会引起线程错误。因此，需要设计一套系统来合适地处理数据同步问题，同时避免被同步锁所限制。此外，也需要一套方法来保证在并行方式下处理数据同步时使串行处理消耗尽可能小。本文要求读者需要对现代计算机游戏发展以及游戏引擎线程编程有很好的理解和工作经验。</p>
+
+<p>2.并行处理态</p>
+
+<p>并行处理态的概念对于一个高效的具有多线程运行时态的引擎来说是非常重要的。引擎如果要实现真正意义上的并行处理——即尽可能少的同步损耗，则需要引擎内部各个系统在运行时坐到尽量少的交互。尽管数据需要共享，但是现在每个系统都应该有自己的一份数据拷贝，而不是通过一个公共的方式来访问数据。这样各个系统之间将不再有数据依赖关系。任何一个共享数据的变化都会被送到一个状态管理器那里，并且被加入一个变化队列，不妨称作消息提示队列。一旦各个系统完成处理任务，他们将会被提示改变自己的状态，同时更新各自内部的数据结构（作为消息队列的一部分）。使用这一机制将会大大减少同步损耗，使得各个系统能更加独立地工作。</p>
+
+<p>2.1执行模式</p>
+
+<p>当各个系统同步运行时（即各系统的操作被限制在同一个时钟内），对于执行状态的管理将会达到最优。这个时钟的频率可以等于帧速率，当然这并不是绝对的。这个时钟的频率甚至可以不是一个固定的值，然而若使这个跨度等于处理一帧所需要的时间——无论这一帧有多么长，我们就可以完全不考虑频率了。你对执行态的管理的实现将会决定这个时钟跨度。图示1描绘了不同系统在使用自由的时钟步进时的状态，这种状态下这些系统并非在同一个时钟内完成执行。除此之外，图示2描绘了所有系统在同一个锁定的时钟下是如何执行的。</p>
+
+<p>图示1. 自由步进模式下的执行态</p>
+
+<p>2.1.1 自由步进模式</p>
+
+<p>在这一模式下系统的运行时间取决于任务所需要的时间。这里的自由并非指系统在完成任务之前是不自由的，而是指系统可以自由选择需要使用的时钟数。</p>
+
+<p>在这个方式下，一个普通的对于状态变化的提示对于状态管理器来说是不够的，相关的数据也需要被包含在该提示中。这是因为当一个系统修改了共享数据时它仍有可能还在执行，而这时别的系统也需要更新这些数据。这就需要越来越多的内存做备份，这种方式显然不是最理想的。</p>
+
+<p>2.1.2 锁定步进模式</p>
+
+<p>这一模式要求所有的系统在同一个跨度内完成各自的处理。这样既易于实现同时又不需要将数据附加在提示中，因为系统的状态发生变化时可以在运行周期的结尾简单地通过访问别的系统来获取数据。</p>
+
+<p>锁定步进模式可以通过在多个步骤中进行交叉执行来实现一个假的自由步进模式。譬如当AI在第一个时钟计算出它初始的“宏观视角”下的目标后，在下一个时钟内它可以在宏观目标下关注更具体的目标，而不仅仅是重复上一个宏观目标。</p>
+
+<p>图示2. 锁定步进下的执行态</p>
+
+<p>2.2 数据同步</p>
+
+<p>基于多个系统可以对同一个共享数据做出改变，那么就需要确定在这些变化中到底那个值才是正确且可以使用的。有两种机制来解决这个问题：</p>
+
+<p>时间，最后一个做出变化的系统的值是正确的。</p>
+
+<p>权限，具有更高权限的系统的值是正确的。当多个系统拥有相同权限时可以与时间机制结合使用。</p>
+
+<p>在这两种机制下，那些被认为是旧的数据将会被覆盖或者从提示队列中抛弃掉。</p>
+
+<p>因为数据是共享的，那么在给数据赋相对值时可能因为这些数据是没有顺序的而变得难以掌握。为了消除这一障碍，当系统更新数据时使用绝对值来赋值以达到新旧交替。绝对值和相对值的结合使用是比较理想的，但是这也要根据情况而定。譬如，像位置，朝向这种公共数据，应该用绝对值来标识，这是因为在创建一个变换矩阵时需要考虑接收数据的顺序。然而，一个创建粒子的系统，在完全拥有粒子信息的情况下，可以只做相对值的更新。</p>
+
+<p>3.引擎</p>
+
+<p>设计引擎时应关注结构的弹性，以使得在扩展功能时更加简便。基于此，引擎在各种受到限制（譬如内存）的平台上应用时可以很好地做出调整。</p>
+
+<p>引擎由两部分组成，一部分是框架，另一部分是管理器。框架（章节3.1）包含了游戏中会重复出现的拥有多个实例的那些部分，同时也包含那些出现在主循环的东西。管理器（章节3.2）作为单件存在并且独立于游戏逻辑。</p>
+
+<p>下面的图描述了组成引擎的各个部分：</p>
+
+<p>图示 3：引擎的高级框架</p>
+
+<p>值得注意的是，处理游戏的功能，即某个系统，是与引擎区别对待的。基于模块化的目的，将引擎作为一种“胶水”将各个功能联结起来。模块化使得系统可以按照需要进行加载或者卸载。</p>
+
+<p>接口是引擎和系统之间进行通信的途径。在系统实现了接口之后引擎就可以使用系统的功能了，相反在引擎实现了接口之后系统也可以访问引擎中的管理器。</p>
+
+<p>附录A对这一概念做出了更加清晰的解释，“引擎示例图”。正如章节2所言，“并行执行态”的概念使得系统在本质上是离散的。这样系统在并行运行时就不会互相干扰。然而这种并行在系统之间需要通信时无法保证数据的稳定。系统间通信的理由有两个：</p>
+
+<p>通知另一个系统共享数据已经发生了变化。（譬如位置，朝向）</p>
+
+<p>请求一些自身并不包含的功能。（譬如AI系统要求地形/物理系统执行一次射线碰撞检测）</p>
+
+<p>第一个通信问题通过实现前一章所述的状态管理器来解决。状态管理器将在章节3.2.3“状态管理器”进行更详细的讨论。</p>
+
+<p>要解决第二个问题，需要在系统中加入一个用来给不同系统提供服务的机制。章节3.2.3“服务管理器”将会进行深入的解释。</p>
+
+<p>3.1 框架</p>
+
+<p>框架的作用是把引擎中不同的部分联结起来。引擎的初始化将在框架内完成，但是管理器的初始化是全局的，不受框架影响。场景的信息同样也保存在框架内部。基于弹性的考量，场景，或者称为通用场景，等于仅仅作为容器组成整个场景的通用对象。章节3.1.2对此提供了更详细的信息。</p>
+
+<p>游戏循环同样在框架内执行，下面是游戏循环的流程：</p>
+
+<p>图示 4：游戏主循环</p>
+
+<p>由于引擎运行在一个窗口环境，那么游戏循环的第一步就是处理来自操作系统的窗口消息。如果这些消息没有被处理那么引擎也不需要做额外的工作。下一步是由调度器向任务管理器发布系统的任务。这一部分将在章节3.1.1进行更详细的讨论。接下来，由状态管理器（章节3.2.2）跟踪的消息被分发给需要做出响应的部分。最后，由框架来确认执行的状态并决定引擎是否退出，还是继续执行其他的任务，譬如进入下一个场景。引擎的执行态由环境管理器负责，这一部分将在章节3.2.4进行讨论。</p>
+
+<p>3.1.1 调度器</p>
+
+<p>调度器管理主时钟供执行时使用，主时钟频率应该是事先设置好的。时钟频率也可以是没有限制的，譬如在基准测试模式下需要时钟可以在运行结束前就停止。调度器通过任务管理器在一个时钟长度内将系统进行注册。在自由步进模式下（章节2.1.1）调度器和系统进行通信来决定系统完成执行所需要的时钟数，以及哪些系统做好了执行的准备或者在某一个时钟后完成执行。锁定步进模式（章节2.1.2）下所有的系统的起始和结束都分别在同一个时钟内，因此调度器只需要等待系统完成执行即可。</p>
+
+<p>3.1.2 通用场景和对象</p>
+
+<p>通用场景和对象作为某些功能的容器存在于系统之中。通用场景和对象自身并不拥有任何功能，除了与引擎进行交互的功能。然而它们可以被扩展成包含系统功能的容器。由此这些容器可以在松耦合关系下接管可用系统的属性，而不必与某个特定的系统进行粘合。松耦合这一特点使得系统之间可以互相独立，从而使得并行执行成为可能。下面的图标描述了通用场景和对象在系统内的扩展：</p>
+
+<p>图示 5：通用场景和对象的扩展</p>
+
+<p>扩展的工作实例如下：一个通用场景被扩展成可以包含图形、物理，以及其他属性的容器。图形场景扩展用来初始化屏幕和其他渲染对象，物理场景扩展用来设置刚体世界，譬如重力等等。场景包含对象，因此，一个通用场景会拥有若干通用对象。一个通用场景也可以被扩展成为包含图形、物理，以及其他属性的容器。图形对象扩展用来具体渲染屏幕上的某一对象，物理对象扩展用来进行刚体之间的碰撞交互。引擎与系统之间的进一步的关系可以在附录B的图示“引擎与系统关系图”中查看。</p>
+
+<p>另一点需要指出的是，通用场景和通用对象需要将各自的扩展通过状态管理器进行注册，以此来响应其他扩展（譬如系统）造成的由变化产生的提示。譬如，某个图形扩展在注册后，可以捕获由物理扩展造成的位置和朝向的变化所产生的提示。</p>
+
+<p>更多的关于系统组件的信息可以在章节5.2“系统组件”找到。</p>
+
+<p>3.2 管理器</p>
+
+<p>管理器在引擎中作为单件提供全局的功能，这意味着每一种管理器只有一个实例存在。这是由于它们管理的资源不应该被复制，否则将会造成冗余以及给性能带来潜在的影响。管理器同时也提供一些跨系统的通用功能。</p>
+
+<p>3.2.1 任务管理器</p>
+
+<p>任务管理器用自己的线程池来调度系统的任务。线程池为每一个处理器分配一个线程来实现最优的n路处理，这样做避免过度使用线程资源以及不必要的操作系统内的任务切换。</p>
+
+<p>任务管理器从调度器接收需要处理的和需要等待的任务列表。调度器从各个系统获得需要处理的任务列表。每一个系统只有一个主要任务，这个主要的任务根据自身需要处理的数据可以分成若干子任务。以上两个特点可以被称为功能分解和数据分解。</p>
+
+<p>下面的图示描绘了任务管理器如何在一个四核系统上给线程分配任务：</p>
+
+<p>图示6：任务管理器和线程池实例</p>
+
+<p>撇开调度器和主任务不说，任务管理器拥有一个初始化模式，凭借各系统所在的线程来串行调用该系统，以此使得系统可以初始化由它储存的本地线程。附录D“关于实现任务的提示”可以帮助你一步步实现任务管理器。</p>
+
+<p>3.2.2 状态管理器</p>
+
+<p>状态管理是消息机制的一部分，它用来跟踪由某一系统的变化产生的提示，并且将这些提示分配给其他需要响应的系统。为了减少不必要的广播提示，系统必须注册那些自己感兴趣的提示。这个机制是基于观察者模式的，这一模式可以在附录C“观察者设计模式”得到更详细的解释。简单地讲，观察者模式就是：观察者观察任何感兴趣的变化，控制者作为传递者将这个变化传递给观察者。</p>
+
+<p>这一机制的工作原理如下：
+1.观察者向控制者（状态管理器）注册自己感兴趣的对象。
+2.当对象的某一属性发生变化时，它将这一变化传递给控制者。
+3.当控制者收到来自框架的提示时，它将这一提示转交给观察者。
+4.观察者访问这一对象来获得具体发生变化的数据。</p>
+
+<p>自由步进模式（章节2.1.1）会给这一机制带来额外的复杂性。首先，当提示产生时相关的数据需要被包含，这是由于产生这一提示的系统也许会因为还在运行中，从而使得通过访问该系统获得共享数据无法实现。接下来，如果某个需要接收提示的系统在时钟结束时还不能做好接收提示的准备，那么状态管理器需要保留该提示直到系统做好准备。</p>
+
+<p>这一框架实现了两个状态管理器，分别在场景层面和对象层面来处理变化。这样做的原因是：大多数情况下，场景和对象的消息是不同的，所以将它们分开可以减少不必要的消息处理。然而，任何跟场景有关的对象的变化都应该注册给场景，以此使得场景可以收到这些提示。为了减少同步消耗，状态管理器将会为每一个由任务管理器创建的线程准备一个变化队列。这样当访问这些队列时就不会造成同步。这些队列在执行完毕后可以使用章节2.2中提到的方法来合并。</p>
+
+<p>图示7：内部的通用对象变化提示</p>
+
+<p>当你认为这些变化的提示应该被串行地分发时，事实上将之并行化处理也是可行的。当系统处理各自的任务时它们会在所有的对象上进行操作。譬如，如果对象之间发生了交互，物理系统会移动对象，检测碰撞，设置新的作用力等等。在变化提示的过程中某个系统的对象将不再和本系统内的对象发生交互，但是却会和自身所关联的其他扩展对象发生交互。这意味着该系统内的通用对象在此时是互相独立的，从而可以并行地被更新。注意，尽管在少数情况下需要同步处理，然而，从前一些看上去必须串行处理的东西现在可以被并行化了。</p>
+
+<p>3.2.3 服务管理器</p>
+
+<p>服务管理器为系统提供了自身所不具备的功能的访问途径。需要注意的是，服务管理器并不直接为系统提供服务，而是通过预定义的接口来实现。任何实现了这些暴露的接口的系统可以将自身注册给服务管理器来获得服务。</p>
+
+<p>由于引擎的设计目的是为了使系统之间尽可能保持离散，因此可以提供的服务事实上是很少的。同时，系统自身不能提供任何需要的服务，而只能通过服务管理器来选择。</p>
+
+<p>图示8：服务管理器实例</p>
+
+<p>服务管理器的另外一个角色是给各个系统提供互相访问属性的途径。属性是一些系统专有的不通过消息系统传递的值。譬如图形系统的窗口分辨率，或者物理系统的重力值。服务管理器提供的访问途径不允许系统进行直接访问。这样做也可以保证属性发生的变化可以串行被地加入队列和分发出去。注意访问系统属性这件事是极少发生的，因此这不需要被当作一个普遍的应用。在控制窗口打开/关闭线框模式，或者玩家通过界面系统改变屏幕分辨率时这些访问才会发生，因此基本上这些访问不会每一帧都出现。</p>
+
+<p>6 总结</p>
+
+<p>由于各章节之间相互交叉，想要一次性吸收这些信息比较困难。引擎的工作流程可以被分解成如下的几个部分。</p>
+
+<p>6.1 初始化阶段</p>
+
+<p>引擎从初始化管理器和框架开始：</p>
+
+<ul>
+<li>框架调用场景加载器来加载场景。</li>
+<li>加载器决定该场景将会使用到哪些系统，然后通知平台管理器来加载这些模块。</li>
+<li>平台管理器加载模块，通过管理器接口命令管理器创建新的系统。</li>
+<li>模块返回系统实例的指针。</li>
+<li>系统模块向服务管理器注册自己能够提供的服务。</li>
+</ul>
+
+<p>图示10：引擎管理器和系统初始化</p>
+
+<p>6.2 场景加载阶段</p>
+
+<p>这一阶段将控制权交给场景加载器：</p>
+
+<ul>
+<li>加载器创建一个通用场景，然后通过所有系统的接口来实例化系统场景，接着将这些系统场景成为这个通用场景的扩展。</li>
+<li>通用场景检查系统场景来确认它们如何改变共享数据，以及自身可能收到的关于共享数据的变化。</li>
+<li>通用场景向状态管理器注册与变化相匹配的系统场景使得未来这些场景可以收到对变化的提示。</li>
+<li>加载器为每一个场景中的对象创建一个通用对象，然后确定这个通用对象应该成为哪些系统的扩展。对通用对象的注册方式与通用场景相类似。</li>
+<li>加载器通过系统场景的接口将系统对象实例化，然后让这些系统对象成为通用对象的扩展。</li>
+<li>调度器通过系统场景接口来确定它们的主要任务，然后将这些任务发布给任务管理器。</li>
+</ul>
+
+<p>图示11：通用场景和对象的初始化</p>
+
+<p>6.3 游戏循环阶段</p>
+
+<ul>
+<li>调用平台管理器处理所有窗口消息，以及其他跟平台相关的操作。</li>
+<li>操作被传递给调度器，调度器等待时钟结束。</li>
+<li>调度器在自由步进模式下检查在上一个时钟内哪些系统任务完成了。然后把所有准备好的任务发布给任务管理器。</li>
+<li>调度器确定在当前时钟内哪些任务将要结束，并做好结束准备。</li>
+<li>在锁定步进模式下，调度器将所有任务发布出去，然后在每一个时钟步进都检查是否有完成的任务。</li>
+</ul>
+
+<p>6.3.1 任务的执行</p>
+
+<p>执行操作被传递给任务管理器。</p>
+
+<ul>
+<li>任务管理器将任务进行排列，然后开始将任务分配给可用的线程。</li>
+<li>任务在执行过程中会修改整个场景或者某个具体的对象的内部数据结构。</li>
+<li>任何共享数据，譬如位置和朝向，都应该在其他系统中有复本。系统任务通过命令产生变化的系统场景或者系统对象通知给各自的观察者来实现这个目的。在这个情形下观察者事实上就是状态管理器内部控制变化的那个控制器。</li>
+<li>变化控制器将变化信息进行排列以便进行后续的处理，那些观察者不感兴趣的变化类型通常是可以忽略的。</li>
+<li>任务可以命令服务管理器提供需要的服务。服务管理器还可以用来改变某些没有暴露在消息机制中的系统的属性。（譬如玩家通过输入系统改变了图形系统内部的屏幕分辨率）</li>
+<li>任务也可以调用环境管理器来获取环境变量，以及更改运行时状态。（譬如暂停运行，进入下一个场景等等）</li>
+</ul>
+
+<p>图示12：任务管理器和任务</p>
+
+<p>6.3.2 分发</p>
+
+<p>一旦当前时钟周期内所有任务都结束了，主循环就会命令状态管理器来分发变化：</p>
+
+<ul>
+<li>状态管理器命令变化控制器分发在队列中的变化。这个过程通过检查每一个变化的观察者来完成。</li>
+<li>变化控制器将变化告知观察者（产生该变化的对象的指针同时也被传给观察者）。在自由步进模式下，观察者通过控制器或者发生改变的数据，在锁定步进模式下观察者可以直接访问对象来获得数据。</li>
+<li>对某个系统对象的变化感兴趣的观察者可能是跟这个对象粘连在同一个通用对象的系统对象。这样就可以将变化分发给并行运行的任务。为了减少同步，可以将产生自同一个通用对象的任务打包进行处理。</li>
+</ul>
+
+<p>6.3.3 运行时检查与退出</p>
+
+<p>主循环的最后一步就是检查运行时状态。像运行，暂停，进入下一个场景等等都可以被当作运行时状态。如果运行时状态是运行态那么整个游戏循环会不断重复。如果运行时被设定为退出那么游戏就会退出，释放资源，然后结束程序。</p>
+
+<p>最后的考量</p>
+
+<p>整个文章的关键是章节2“并行执行态”。设计可以分解功能，分解数据的系统可以提供大规模的并行运算，同时保证了发挥未来更多核心处理器的性能。需要记住的是，要在消息机制下使用状态管理器来尽量减小数据同步消耗。</p>
+
+<p>观察者模式是一种利用消息机制的模式，为了满足引擎对这方面的需求，需要花费一定的时间来学习和实现它。毕竟，是系统之间的通信机制来完成共享数据同步的工作。</p>
+
+<p>任务机制在处理负载平衡上扮演了重要的角色。附录D可以帮助你的引擎创建一个高效的任务管理器。</p>
+
+<p>正如你所看到的，利用定义明晰的消息和架构，设计一个高度并行化的引擎是可行的。适度的并行化可以使得你的游戏引擎在使用现在和未来的处理器时获得可观的性能提升。</p>
+
+<p>附录A 引擎图示</p>
+
+<p>游戏主循环开始运行（参阅图示4，“主游戏循环”）</p>
+
+<p>附录B 引擎和系统关系图</p>
+
+<p>附录C 观察者模式</p>
+
+<p>观察者模式可以在《设计模式：可复用面向对象软件的基础》一书中找到。</p>
+
+<p>这一模式的基本理念就是对某些数据或状态变化感兴趣的东西没有必要无时无刻去查询这些变化是否发生。这一模式定义了一个对象和一个观察者来处理变化提示。工作原理是：观察者观察这一对象是否发生了变化。变化控制器在这二者之间扮演一个传递者的角色。下图描述了这个关系：</p>
+
+<p>图示13：观察者模式</p>
+
+<p>下面是整个事件的流程：</p>
+
+<p>1.观察者将自己和希望观察的对象注册给变化控制器。</p>
+
+<p>2.变化控制器事实上也是一个观察者。与其他观察者不同，它不需要将自己和对象进行注册，相反，它自身拥有一个列表用来记录哪个观察者和哪个对象被注册了。</p>
+
+<p>3.对象（事实上也是变化控制器）将观察者插入自己的一个观察者列表。通常你也可以给变化分类供观察者使用，这样可以提高变化提示的分发速度。</p>
+
+<p>4.当对象的数据或者状态发生变化时，它通过回调机制将变化类型的信息告知观察者。</p>
+
+<p>5.变化控制器将变化排队，等待分发的信号。</p>
+
+<p>6.在分发过程中控制器调用对应的观察者。</p>
+
+<p>7.观察者向对象查询来获得发生变化的数据和状态（或者直接在消息中获得数据）。</p>
+
+<p>8.当观察者不再对对象感兴趣，或者该对象已经被销毁，观察者就告知变化控制器将自己与该对象的关系注销。</p>
+
+<p>附录D。实现任务机制的建议</p>
+
+<p>实现任务分发的方法有很多，然而最佳的一种就是让工作着的线程数等于平台上可用的处理器数。如果将雷同的任务指派给一个线程，那么就会导致线程内部的负载不平衡，因为各个系统并不会在同一时刻完成任务，这样将会大大地削弱并行性。建议你研究一下任务库，譬如Intel的Threading Building Blocks，它会大大地简化这一过程。</p>
+
+<p>为保证CPU可以友好地工作，可以对任务管理器进行一些优化：</p>
+
+<ul>
+<li><p>反向发布，如果要发布的主要任务的顺序是相对静态的，那么每一帧就可以有选择地反向发布这些任务。上一帧执行的任务的数据很有可能在缓存中驻留，因此在下一帧反向发布任务可以保障CPU缓存中数据是正确的，不需要被更新。</p></li>
+
+<li><p>缓存共享，有些多核处理器会将共享缓存分成几个部分，这样两个处理器就可以共享同一块缓存。如果来自同一个系统的多个子任务被分配给了拥有共享缓存的处理器，那么任务的数据在这一共享缓存中的可能性就会增加。</p></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2009/">2009</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/01/%E6%9C%88%E8%AE%B0200901/" data-tooltip="月记200901">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/%E6%9C%88%E8%AE%B0200811/" data-tooltip="月记200811">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/01/%E8%BD%AC%E8%AE%BE%E8%AE%A1%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%9A%84%E6%A1%86%E6%9E%B6/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/01/%E6%9C%88%E8%AE%B0200901/" data-tooltip="月记200901">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/%E6%9C%88%E8%AE%B0200811/" data-tooltip="月记200811">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/01/%E8%BD%AC%E8%AE%BE%E8%AE%A1%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%9A%84%E6%A1%86%E6%9E%B6/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2009%2F01%2F%25E8%25BD%25AC%25E8%25AE%25BE%25E8%25AE%25A1%25E5%25B9%25B6%25E8%25A1%258C%25E5%258C%2596%25E6%25B8%25B8%25E6%2588%258F%25E5%25BC%2595%25E6%2593%258E%25E7%259A%2584%25E6%25A1%2586%25E6%259E%25B6%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2009\/01\/%E8%BD%AC%E8%AE%BE%E8%AE%A1%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%9A%84%E6%A1%86%E6%9E%B6\/';
+          
+            this.page.identifier = '\/2009\/01\/%E8%BD%AC%E8%AE%BE%E8%AE%A1%E5%B9%B6%E8%A1%8C%E5%8C%96%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E7%9A%84%E6%A1%86%E6%9E%B6\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

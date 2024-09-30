@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>游戏 on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F/</link>
+    <description>Recent content in 游戏 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 26 Oct 2008 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/%E6%B8%B8%E6%88%8F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>魔力宝贝2外挂功能已大部分实现如下……</title>
+      <link>https://duzhi5368.github.io/2008/10/%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D2%E5%A4%96%E6%8C%82%E5%8A%9F%E8%83%BD%E5%B7%B2%E5%A4%A7%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B/</link>
+      <pubDate>Sun, 26 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/10/%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D2%E5%A4%96%E6%8C%82%E5%8A%9F%E8%83%BD%E5%B7%B2%E5%A4%A7%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B/</guid>
+      <description>&lt;p&gt;做了个魔力宝贝2的外挂。客户端脱壳完毕，寻路基址Call，已经找到。消息加密和分析已完成，与之前内测时记录数据一致。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>久违!魔力宝贝</title>
+      <link>https://duzhi5368.github.io/2008/02/%E4%B9%85%E8%BF%9D%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D/</link>
+      <pubDate>Fri, 01 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/02/%E4%B9%85%E8%BF%9D%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D/</guid>
+      <description>&lt;p&gt;久游获得《魔力宝贝2》大陆运营权&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

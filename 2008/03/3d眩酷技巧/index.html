@@ -1,0 +1,821 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>3D眩酷技巧</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="一些常见的3D渲染技巧
+
+">
+    <meta property="og:description" content="一些常见的3D渲染技巧
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="3D眩酷技巧">
+    <meta property="og:url" content="/2008/03/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="一些常见的3D渲染技巧
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      3D眩酷技巧
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-03-11T00:00:00Z">
+        
+  三月 11, 2008
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2008">2008</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>一些常见的3D渲染技巧</p>
+
+<p></p>
+
+<h1 id="动态模糊-motion-blur">动态模糊（Motion Blur）</h1>
+
+<p>3D游戏玩家会问这么个问题：为什么每秒24帧的速度对于电影来说已经足以获得很流畅的视觉效果，而对于电脑游戏来说却非常不流畅？原因很简单，摄像机在工作的时候并非一帧一帧绝对静止地拍摄，它所摄下的每一帧图像已经包含了1/24秒以内的所有视觉信息，包括物体在这1/24秒内的位移。如果在看电影的时候按下暂停键，我们得所到的并不是一幅清晰的静止画面，而是一张模糊的图像。</p>
+
+<p>传统的电脑3D图像做不到这一点，游戏里的每一帧就是一幅静止画面，如果你在运动的过程中抓一张图片下来，得到的肯定是一幅清晰的静态图。所以，动态模糊技术的目的就在于增强快速移动场景的真实感，这一技术并不是在两帧之间插入更多的位移信息，而是将当前帧同前一帧混合在一起所获得的一种效果.</p>
+
+<p>极品飞车：卡本峡谷》采用的动态模糊，但效果不好，表现太夸张，时间长很容易让人感到不适</p>
+
+<p>《孤岛危机》的动态模糊改善了很多，表现效果也好了很多，据称是得益于DX10引入了几何渲染器</p>
+
+<h1 id="景深-depth-of-field">景深（Depth Of Field）</h1>
+
+<p>有摄影基础的朋友一定都熟悉“景深”这个词。如果非要解释这个词的话就是“在摄影机镜头或其他成像器前，沿着能够取得清晰图像的成像器轴线所测定的物体距离范围”。说得再简单一些，就是距离不同的景物，呈现出有些地方清楚有些地方模糊的效果。这种效果能够更加突出需要反应的焦点，让画面的主题更加鲜明。</p>
+
+<p>我们观察下面的两张图片，就能非常明显的看出景深的效果。在第一张图片中，手持长棍的忍者是清楚的，后面的景物时模糊的。而在第二张图片中，焦点移到了后面的景物上，前景的忍者反而变成了模糊的效果了。这样的效果更符合人肉眼对自然环境观察的结果，也就因此令玩家的感受更真实</p>
+
+<p>在FPS游戏中景深效果往往用在枪械的瞄具上。在游戏中使用机械瞄具的时候，人的注意力必然高度集中，准心以外的区域都模糊。</p>
+
+<h1 id="软阴影-soft-shadow">软阴影（Soft Shadow）</h1>
+
+<p>从字面上直译过来就是“软阴影”，不过叫“柔和阴影”似乎更合适。我们知道生活中很多阴影的过渡都是有渐变，而软阴影的作用就是要模拟这种效果，在阴影周边制造虚化的效果。软阴影本身并不是指一种技术，而是指通过采用某种技术达到的效果。</p>
+
+<p>在说软阴影前先说说阴影的生成方法。一般在游戏中采用的阴影生成方法有两种：Shadow Mapping（阴影映射）和Shadow Volumes（体积阴影）。</p>
+
+<p>Shadow Mapping（阴影映射）是一种图像空间的技术，它是在以光源位置作为视点的情况下渲染整个场景的深度信息，然后再使用这些深度信息去决定场景的哪一部分是处于阴影之中。它有锯齿并且依赖z-缓冲技术。由于可以在不减少帧率的情况下达到真实感光照和阴影效果，编辑器允许在场景中放置任意数目的静态光源，它会为每个面预计算光流量（light flow）和静态阴影，因此现代商业3D游戏中多数都会使用到阴影映射。阴影映射效果的一个影响因素是Shadow Map Size，如果size（尺寸）小，会导致阴影边缘模糊不清、闪烁、出现大型锯齿。增大size能提高阴影质量，但帧速会受到影响。</p>
+
+<p>对于在阴影映射下实现软阴影，通常是在阴影边界进行高精度超级采样的方法，如虚幻3引擎就是进行16X的超级采样，这就是软阴影消耗系统资源大的原因。</p>
+
+<p>Shadow Volumes（体积阴影）是一种基于几何形体的技术，它需要几何体在一定方向的灯光下的轮廓去产生一个封闭的容积，然后通过光线的投射就可以决定场景的阴影部分（常常使用模板缓冲去模拟光线的投射）。这项技术是像素精确的，不会产生任何的锯齿现象，但是与其他的技术一样，它也有缺点。最主要的两个问题一是极度依赖几何形体，二是需要非常高的填充率。同时，体积阴影也相当依赖CPU，视觉效果方面是产生的阴影比较“硬”。</p>
+
+<p>目前使用体积阴影的游戏不多，《DOOM3》和《F.E.A.R.》就是典型，在游戏中仔细观察你会发现它们的阴影和其他游戏的明显不同</p>
+
+<h1 id="高动态光照-high-dynamic-range">高动态光照（High Dynamic Range）</h1>
+
+<p>很多人对HDR的第一感觉就是“太亮了、好刺眼、受不了”。其实HDR并不是像许多玩家理解的那样就是简单的“高亮”，不是让画面有更大的亮度或是对比度。大家都知道，当人从黑暗的地方走到阳光下时，我们的眼睛会不由自主的眯起来，那是因为在黑暗的地方，人为了更好的分辨物体，瞳孔张开很大，以便吸收光线；而突然到了光亮处瞳孔来不及收缩，视网膜上的视神经无法承受如此多的光线，人自然会眯上眼睛阻止大量光线冲击视神经。</p>
+
+<p>我们的眼睛非常敏感，而电脑就不具备这种功能，因此就通过HDR技术在一瞬间将光线渲染得非常亮，然后亮度逐渐降低。所以，HDR的最终效果应该是亮处的效果是鲜亮的，而黑暗处你也可以清晰的分辨物体的轮廓，位置和深度，而不是以前的一团黑。动态、趋近真实的物理环境是HDR的特效表现原则。</p>
+
+<p>HDR并不仅仅是反射的光强度要高。在游戏中，如果你盯着一个面向阳光直射的物体，物体表面会出现丰富的光反射；如果盯着不放，物体表面的泛光会渐渐淡出，还原出更多的细节。HDR特效是变化的，因此称做高动态光照。</p>
+
+<p>HDR是分种类的，一般按可精度分为：Int16（整数）、FP16（浮点）、FP32等等，数字越大精度越高，运算量当然也越大。其中Int格式的HDR在SM2.0下即可实现（如半条命2：失落的海岸线、第一章、第二章），FP格式要SM3.0或以上才能实现（目前有HDR的游戏基本都是FP格式），在DX10中HDR的精度已经提升到FP128。</p>
+
+<p>说到HDR不得不提另外一个特效：BLOOM。BLOOM也能实现和HDR类似的效果，但BLOOM的是静态的，HDR是动态渐变的，BLOOM在细节表现、明暗对比不如HDR，这是BLOOM与HDR的重要区别。实现HDR效果的系统资源开销也比BLOOM大。</p>
+
+<p>游戏中贴图是2D的，如果在游戏中换个角度看的话，很容易就会发现墙面没有任何立体感，砖纹看上去非常假！为了让2D贴图看上去也有3D立体效果，就诞生了多种贴图技术，比如凹凸贴图、法线贴图、位移贴图、视察映射贴图等。</p>
+
+<h1 id="凹凸贴图-bump-mapping">凹凸贴图（Bump Mapping）</h1>
+
+<p>凹凸贴图技术简单说起来是一种在3D场景中模拟粗糙表面的技术，将带有深度变化的凹凸材质贴图赋予3D物体，经过光线渲染处理后，这个物体的表面就会呈现出凹凸不平的感觉，而无需改变物体的几何结构或增加额外的点面。例如，把一张碎石的贴图赋予一个平面，经过处理后这个平面就会变成一片铺满碎石、高低不平的荒原。当然，使用凹凸贴图产生的凹凸效果其光影的方向角度是不会改变的，而且不可能产生物理上的起伏效果。</p>
+
+<p>凹凸贴图在今天看来已经是老的不能再老的一种技术了，虽然能够获得凹凸的效果，但是凹凸的程度非常受限制，基本上只能做出一些简单的浮雕效果来。这种技术通常用在一些观察视角变化很小的情况上，例如地面，墙壁，远处的一些模型等等，如果角度稍微一大，你就会发现那些凹坑其实是根本不存在的。</p>
+
+<h1 id="法线贴图-normal-mapping">法线贴图（Normal Mapping）</h1>
+
+<p>法线贴图技术通过计算高细节度模型的法线信息并将其保存在一张高压缩比(3DC/DC5)的法线贴图之中，然后将这张法线贴图贴用于低细节模型上代替原型的多边形曲面的光照计算，从而等到一个低多边形、高细节的3D模型。这样做就能在保证模型细节的情况下，大幅度降低场景的多边形数目。法线贴图目前已经广泛应用于3D游戏中。</p>
+
+<p>视觉效果达到1亿多边形的场景，通过线框显示发现只用了50万多边形。（虚幻3引擎场景）</p>
+
+<p>在3D Max中渲染一个相同的高精度模型需要200万多边形，而采用Normal Map后的效果. 模型本身只有5287面。（虚幻3引擎的怪物模型，兰姆将军？）</p>
+
+<h1 id="视差贴图-parallax-mapping">视差贴图（Parallax Mapping）</h1>
+
+<p>视差贴图技术我们其实应该称之为视差遮蔽贴图技术，因为在这一技术中，会对纹理的坐标做变换，一些凸出的纹理会遮蔽到其他的纹理，这样就会看起来具备更好的凹凸的感觉了。视差贴图技术的实现原理，其实和法线贴图是一样的，都是根据法线贴图进行的处理。视差贴图比法线贴图提供更好的视觉效果，而且跟法线贴图有同一个目的：在保证模型细节的情况下，大幅度降低场景的多边形数目。</p>
+
+<p>《S.T.A.L.K.E.R.》中的视差贴图效果，砖块和石板上的凹痕表现十分生动</p>
+
+<h1 id="次表面散射-subsurface-scattering-简称3s">次表面散射（SubSurface Scattering，简称3S）</h1>
+
+<p>目前使用次表面散射效果的游戏极少，似乎就只有《孤岛危机》。它主要用于模拟不完全透明材质内部表现出的一种真实光影特效。当灯光照射到玻璃或清澈的液体表面时，灯光会穿透这些介质，3S效果可用来模拟灯光进入介质内部后发生的散射。</p>
+
+<p>《孤岛危机》中树叶的透光性</p>
+
+<p>3S的另一个重要用处在于表现光源照射下的人物皮肤，换句话说，要想表现真实的皮肤材质，3S效果必不可少。目前的许多游戏在人物皮肤的渲染上就因为缺乏3S效果而显得塑料化、橡胶化。</p>
+
+<p>《F.E.A.R.》、失落的星球（还是原生dx10游戏）人物缺乏3S效果，塑胶感较大。</p>
+
+<h1 id="体积云-体积雾-volumetric-clouds-fog">体积云/体积雾（Volumetric Clouds/Fog）</h1>
+
+<p>简单地说，在游戏中的体积云就是使用图像引擎来模拟真实云雾半透明、无规则的表现效果。</p>
+
+<p>在早期游戏中，实现云雾烟火效果的方式常常使用贴图的方法。CS中可以很清楚的看到这一点。将烟雾品质改为“低”时，CS中烟雾的表现如同灰白色的墙壁一般。采用云雾烟火贴图的游戏经常会降低透过云雾贴图之后远景效果，甚至替换远景贴图，仔细观察就会发现，而体积云则不会。</p>
+
+<p>CS的烟雾弹效果，可以看到层状的材质</p>
+
+<p>事实上，体积云本身的定义就比较模糊，欧美业界的观点是：通过3D引擎实时生成的、能够随时间流逝而自动改变的、能够和物力引擎互动产生变化的（比如飞机飞过云雾散开），才能称为体积云/体积雾。</p>
+
+<p>《孤岛危机》中采用的就是体积云效果</p>
+
+<h1 id="积光-volumetric-light">积光（Volumetric Light）</h1>
+
+<p>先来看下面一个现实世界的光线图，在3D图形中要实现这种效果就是体积光（Volumetric Light）。目前的游戏都是在DX10下才有体积光效果，看来是得益于DX10的渲染架构的改进，使体积光这种高级特效得以更容易地在游戏中实现。</p>
+
+<h1 id="speedtree">SpeedTree</h1>
+
+<p>SpeedTree是一个专门的植被引擎。其技术最大的特征就是可以在使用极少多边形的情况下创造出高度逼真的树木和植物，并且可以调整风速效果，使得这些植物随着风的吹动而真实地摇动。游戏开发者就可以直接在特定地形上生成整个森林，无需将树一棵一棵地设置在相应地点上，大大提高了工作效率。并且通过SpeedTree的代码优化技术，画面上数量繁多的枝叶不会对画面帧数造成太大影响。</p>
+
+<p>虚幻3引擎整合了SpeedTree技术，虚幻3引擎制作的游戏都可以用SpeedTree技术快速生成大量高品质的植被</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2008/">2008</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/03/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%BF%9B%E9%98%B6/" data-tooltip="软件开发程序之进阶">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/03/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/" data-tooltip="网络游戏程序员新手入门">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/03/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/03/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%BF%9B%E9%98%B6/" data-tooltip="软件开发程序之进阶">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/03/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/" data-tooltip="网络游戏程序员新手入门">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/03/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2008%2F03%2F3d%25E7%259C%25A9%25E9%2585%25B7%25E6%258A%2580%25E5%25B7%25A7%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2008\/03\/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7\/';
+          
+            this.page.identifier = '\/2008\/03\/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

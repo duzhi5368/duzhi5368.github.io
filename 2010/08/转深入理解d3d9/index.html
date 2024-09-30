@@ -1,0 +1,814 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]深入理解D3D9</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="深入理解D3D9对图形程序员来说意义重大，我把以前的一些学习笔记都汇总起来，希望对朋友们有些所帮助，因为是零散笔记，思路很杂，还请包涵。
+
+">
+    <meta property="og:description" content="深入理解D3D9对图形程序员来说意义重大，我把以前的一些学习笔记都汇总起来，希望对朋友们有些所帮助，因为是零散笔记，思路很杂，还请包涵。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]深入理解D3D9">
+    <meta property="og:url" content="/2010/08/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="深入理解D3D9对图形程序员来说意义重大，我把以前的一些学习笔记都汇总起来，希望对朋友们有些所帮助，因为是零散笔记，思路很杂，还请包涵。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]深入理解D3D9
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-08-10T00:00:00Z">
+        
+  八月 10, 2010
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>深入理解D3D9对图形程序员来说意义重大，我把以前的一些学习笔记都汇总起来，希望对朋友们有些所帮助，因为是零散笔记，思路很杂，还请包涵。</p>
+
+<p></p>
+
+<p>其实只要你能完美理解D3DLOCK、D3DUSAGE、D3DPOOL、LOST DEVICE、QUERY、Present（）、BeginScene（）、EndScene（）等概念，就算是理解D3D9了， 不知道大家有没有同感。有如下几个问题，如果你能圆满回答就算过关：）。
+1、       D3DPOOL_DEFAULT、D3DPOOL_MANAGED、D3DPOOL_SYSTEMMEM和D3DPOOL_SCRATCH到底有何本质区别？
+2、       D3DUSAGE的具体怎么使用？
+3、       什么是Adapter？什么是D3D Device？HAL Device和Ref Device有何区别？Device的类型又和Vertex Processing类型有什么关系？
+4、       APP（CPU）、RUNTIME、DRIVER、GPU是如何协同工作的？D3D API是同步函数还是异步函数？
+5、        Lost Device到底发生了什么？为什么在设备丢失后D3DPOOL_DEFAULT类型资源需要重新创建？</p>
+
+<p>在D3D中有三大对象，他们是D3D OBJECT、D3D ADAPTER和D3D DEVICE。D3D OBJECT很简单，就是一个使用D3D功能的COM对象，其提供了创建DEVICE和枚举ADAPTER的功能。ADAPTER是对计算机图形硬件和软件性能的一个抽象，其包含了DEVICE。DEVICE则是D3D的核心，它包装了整个图形流水管线，包括变换、光照和光栅化（着色），根据D3D版本不同，流水线也有区别，比如最新的D3D10就包含了新的GS几何处理。图形管线的所有功能由DRIVER提供，而DIRVER分两类，一种是GPU硬件DRIVER，另一种是软件DRIVER，这就是为什么在D3D中主要有两类DEVICE， REF和HAL，使用REF DEVICE时，图形管线的光栅化功能由软件DRIVER在CPU上模拟的，REF DEVICE从名字就可以看出这个给硬件厂商做功能参考用的，所以按常理它应该是全软件实现，具备全部DX标准功能。而使用HAL DEVICE时，RUNTIME则将使用HAL硬件层控制GPU来完成变换、光照和光栅化，而且只有HAL DEVICE中同时实现了硬件顶点处理和软件顶点处理（REF DEVICE一般不能使用硬件顶点处理，除非自己在驱动上做手脚，比如PERFHUD）。另外还有个一个不常用的SOFTWARE DEVICE，用户可以使用DDI编写自己的软件图形驱动，然后注册进系统，之后便可在程序中使用。</p>
+
+<p>检查系统软件硬件性能。
+在程序的开始我们就要判断目标机的性能，其主要流程是：
+确定要用的缓冲格式
+GetAdapterCount()
+GetAdapterDisplayMode</p>
+
+<p>GetAdapterIdentifier //得到适配器描述
+CheckDeviceType //判断指定适配器上的设备是否支持硬件加速
+GetDeviceCaps //指定设备的性能，主要判断是否支持硬件顶点处理(T&amp;L)
+GetAdapterModeCount //得到适配器上指定缓冲格式所有可用的显示模式
+EnumAdapterModes //枚举所有显示模式
+CheckDeviceFormat
+CheckDeviceMultiSampleType
+详细使用请参考DX文档。</p>
+
+<p>WINDOWS图形系统的主要分为四层：图形应用程序、D3D RUNTIME、SOFTWARE DRIVER和GPU。此四层是按功能来分的，实际上他们之间界限并不如此明确，比如RUNTIME中其实也包含有USER MODE的SOFTWARE DRIVER，详细结构这里不再多说。而在RUNTIME里有一个很重要的结构，叫做command buffer，当应用程序调用一个D3D API时，RUNTIME将调用转换成设备无关的命令，然后将命令缓冲到这个COMMAND BUFFER中，这个BUFFER的大小是根据任务负载动态改变的，当这个BUFFER满员之后，RUNTIME会让所有命令FLUSH到KERNEL模式下的驱动中，而驱动中也是有一个BUFFER的，用来存储已被转换成的硬件相关的命令，D3D一般只允许其缓冲最多3个帧的图形指令，而且RUNTIME和DRIVER都会被BUFFER中的命令做适当优化，比如我们在程序中连续设置同一个RENDER STATE，我们就会在调试信息中看到如下信息“Ignoring redundant SetRenderState - X”，这便是RUNTIME自动丢弃无用的状态设置命令。在D3D9中可以使用QUERY机制来与GPU进行异步工作，所谓QUERY就是查询命令，用来查询RUNTIME、DRIVER或者GPU的状态，D3D9中的QUERY对象有三种状态，SIGNALED、BUILDING和ISSUED，当他们处于空闲状态后会将查询状态置于SIGNALED STATE，查询分开始和结束，查询开始表示对象开始记录应用程序所需数据，当应用程序指定查询结束后，如果被查询的对象处于空闲状态，则被查询对象会将查询对象置于SIGNALED状态。GetData则是用来取得查询结果，如果返回的是D3D_OK则结果可用，如果使用D3DGETDATA_FLUSH标志，表示将COMMAND BUFFER中的所有命令都发送到DRIVER。现在我们知道D3D API绝大部分都是同步函数，应用程序调用后，RUNTIME只是简单的将其加入到COMMAND BUFFER，可能有人会疑惑我们如何测定帧率？又如何分析GPU时间呢？对于第一个问题我们要看当一帧完毕，也就是PRESENT()函数调用是否被阻塞，答案是可能被阻塞也可能不被阻塞，要看RUNTIME允许缓冲中存在的指令数量，如果超过额度，则PRESENT函数会被阻塞下来，如何PRESENT完全不被阻塞，当GPU执行繁重的绘制任务时，CPU工作进度会大大超过GPU，导致游戏逻辑快于图形显示，这显然是不行的。测定GPU工作时间是件很麻烦的事，首先我们要解决同步问题，要测量GPU时间，首先我们必须让CPU与GPU异步工作，在D3D9中可以使用QUERY机制做到这点，让我们看看Accurately Profiling Driect3D API Calls中的例子:
+IDirect3DQuery9* pQueryEvent;</p>
+
+<p>//1.创建事件类型的查询事件
+m_pD3DDevice-&gt;CreateQuery( D3DQUERYTYPE_EVENT, &amp;pQueryEvent);
+//2.在COMMAND BUFFER中加入一个查询结束的标记，此查询默认开始于CreateDevice
+pQueryEvent-&gt;Issue(D3DISSUE_END);
+//3.将COMMAND BUFFER中的所有命令清空到DRIVER中去，并循环查询事件对象转换到SIGNALED状态，当GPU完成CB中所有命令后会将查询事件状态进行转换。
+while(S_FALSE == pQueryEvent-&gt;GetData( NULL, 0, D3DGETDATA_FLUSH) )
+      ;
+LARGE_INTEGER start, stop;
+QueryPerformanceCounter(&amp;start);
+SetTexture();
+DrawPrimitive();
+pQueryEvent-&gt;Issue(D3DISSUE_END);
+while(S_FALSE == pQueryEvent-&gt;GetData( NULL, 0, D3DGETDATA_FLUSH) )
+      ;
+QueryPerformanceCounter(&amp;stop);</p>
+
+<p>1.第一个GetData调用使用了D3DGETDATA_FLUSH标志，表示要将COMMAND BUFFER中的绘制命令都清空到DRIVER中去，当GPU处理完所有命令后会将这个查询对象状态置SIGNALED。
+2.将设备无关的SETTEXTURE命令加入到RUNTIME的COMMAND BUFFER中。
+3.将设备无关的DrawPrimitive命令加入到RUNTIME的COMMAND BUFFER中。
+4.将设备无关的ISSUE命令加入到RUNTIME的COMMAND BUFFER中。
+5.GetData会将BUFFER中的所有命令清空到DRIVER中去，注意这是GETDATA不会等待GPU完成所有命令的执行才返回。这里会有一个从用户模式到核心模式的切换。
+6.等待DRIVER将所有命令都转换为硬件相关指令，并填充到DRIVER BUFFER中后，调用从核心模式返回到用户模式。
+7.GetData循环查询 查询对象 状态。当GPU完成所有DRIVER BUFFER中的指令后会改变查询对象的状态。</p>
+
+<p>如下情况可能清空RUNTIME COMMAND BUFFER，并引起一个模式切换：
+1.Lock method（某些条件下和某些LOCK标志）</p>
+
+<p>2.创建设备、顶点缓冲、索引缓冲和纹理
+3.完全释放设备、顶点缓冲、索引缓冲和纹理资源
+4.调用ValidateDevice
+5.调用Present
+6.COMMAND BUFFER已满
+7.用D3DGETDATA_FLUSH调用GetData函数</p>
+
+<p>对于D3DQUERYTYPE_EVENT的解释我不能完全理解（Query for any and all asynchronous events that have been issued from API calls）明白的朋友一定告诉我，只知道当GPU处理完D3DQUERYTYPE_EVENT类型查询在CB中加入的D3DISSUE_END标记后，会将查询对象状态置SIGNALED状态，所以CPU等待查询一定是异步的。为了效率所以尽量少在PRESENT之前使用BEGINSCENE ENDSCENE对，为什么会影响效率？原因只能猜测，可能EndScene会引发Command buffer flush这样会有一个执行的模式切换，也可能会引发D3D RUNTIME对MANAGED资源的一些操作。而且ENDSCENE不是一个同步方法，它不会等待DRIVER把所有命令执行完才返回。</p>
+
+<p>D3D RUTIME的内存类型，分为3种，VIDEO MEMORY（VM）、AGP MEMORY（AM）和SYSTEM MEMORY（SM），所有D3D资源都创建在这3种内存之中，在创建资源时，我们可以指定如下存储标志，D3DPOOL_DEFAULT、D3DPOOL_MANAGED、D3DPOOL_SYSTEMMEM和D3DPOOL_SCRATCH。VM就是位于显卡上的显存，CPU只能通过AGP或PCI-E总线访问到，读写速度都是非常慢的，CPU连续写VM稍微快于读，因为CPU写VM时会在CACHE中分配32或64个字节（取决于CACHE LINE长度）的写缓冲，当缓冲满后会一次性写入VM；SM就是系统内存，CPU读写都非常快，因为SM是被CACHE到2级缓冲的，但GPU却不能直接访问到系统缓冲，所以创建在SM中的资源，GPU是不能直接使用的；AM是最麻烦的一个类型，AM实际也存在于系统内存中，但这部分MEM不会被CPU CACHE，意味着CPU读写AM都会写来个CACHE MISSING然后才通过内存总线访问AM，所以CPU读写AM相比SM会比较慢，但连续的写会稍微快于读，原因就是CPU写AM使用了“write combining”，而且GPU可以直接通过AGP或PCI-E总线访问AM。</p>
+
+<p>如果我们使用D3DPOOL_DEFAULT来创建资源，则表示让D3D RUNTIME根据我们指定的资源使用方法来自动使用存储类型，一般是VM或AM，系统不会在其他地方进行额外备份，当设备丢失后，这些资源内容也会被丢失掉。但系统并不会在创建的时候使用D3DPOOL_SYSTEMMEM或D3DPOOL_MANAGED来替换它，注意他们是完全不同的POOL类型，创建到D3DPOOL_DEFAULT中的纹理是不能被CPU LOCK的，除非是动态纹理。但创建在D3DPOOL_DEFAULT中的VB IB RENDERTARGET BACK BUFFERS可以被LOCK。当你用D3DPOOL_DEFAULT创建资源时，如果显存已经使用完毕，则托管资源会被换出显存来释放足够的空间。 D3DPOOL_SYSTEMMEM和D3DPOOL_SCRATCH都是位于SM中的，其差别是使用D3DPOOL_SYSTEMMEM时，资源格式受限于Device性能，因为资源很可能会被更新到AM或VM中去供图形系统使用，但SCRATCH只受RUNTIME限制，所以这种资源无法被图形系统使用。 D3DRUNTIME会优化D3DUSAGE_DYNAMIC 资源，一般将其放置于AM中，但不敢完全保证。另外为什么静态纹理不能被LOCK，动态纹理却可以，都关系到D3D RUNTIME的设计，在后面D3DLOCK说明中会叙述。</p>
+
+<p>D3DPOOL_MANAGED表示让D3D RUNTIME来管理资源，被创建的资源会有2份拷贝，一份在SM中，一份在VM/AM中，创建的时候被放置L在SM，在GPU需要使用资源时D3D RUNTIME自动将数据拷贝到VM中去，当资源被GPU修改后，RUNTIME在必要时自动将其更新到SM中来，而在SM中修改后也会被UPDATE到VM去中。所以被CPU或者GPU频发修改的数据，一定不要使用托管类型，这样会产生非常昂贵的同步负担。当LOST DEVICE发生后，RESET时RUNTIME会自动利用SM中的COPY来恢复VM中的数据，因为备份在SM中的数据并不是全部都会提交到VM中，所以实际备份数据可以远多于VM容量，随着资源的不断增多，备份数据很可能被交换到硬盘上，这是RESET的过程可能变得异常缓慢，RUNTIME给每个MANAGED资源都保留了一个时间戳，当RUNTIME需要把备份数据拷贝到VM中时，RUNTIME会在VM中分配显存空间，如果分配失败，表示VM已经没有可用空间，这样RUNTIME会使用LRU算法根据时间戳释放相关资源，SetPriority通过时间戳来设置资源的优先级，最近常用的资源将拥有高的优先级，这样RUNTIME通过优先级就能合理的释放资源，发生释放后马上又要使用这种情况的几率会比较小，应用程序还可以调用EvictManagedResources强制清空VM中的所有MANAGED资源，这样如果下一帧有用到MANAGED资源，RUNTIME需要重新载入，这样对性能有很大影响，平时一般不要使用，但在关卡转换的时候，这个函数是非常有用的，可以消除VM中的内存碎片。LRU算法在某些情况下有性能缺陷，比如绘制一帧所需资源量无法被VM装下的时候（MANAGED），使用LRU算法会带来严重的性能波动，如下例子：</p>
+
+<p>BeginScene();
+Draw(Box0);
+Draw(Box1);
+Draw(Box2);
+Draw(Box3);
+Draw(Circle0);
+Draw(Circle1);
+EndScene();
+Present();</p>
+
+<p>假设VM只能装下其中5个几何体的数据，那么根据LRU算法，在绘制Box3之前必须清空部分数据，那清空的必然是Circle0……，很显然清空Box2是最合理的，所以这是RUNTIME使用MRU算法处理后续Draw Call能很好的解决性能波动问题，但资源是否被使用是按FRAME为单位来检测的，并不是每个DRAW CALL都被记录，每个FRAME的标志就是BEGINSCENE/ENDSCENE对，所以在这种情况下合理使用BEGINSCENE/ENDSCENE对可以很好的提高VM不够情况下的性能。根据DX文档的提示我们还可以使用QUERY机制来获得更多关于RUNTIME MANAGED RESOURCE信息，但好像只在RUNTIME DEBUG模式下有用，理解RUNTIME如何MANAGE RESOURCE很重要，但编写程序的时候不要将这些细节暴露出来，因为这些东西都是经常会变的。最后还要提醒的是，不光RUNTEIME会MANAGE RESOURCE，DRIVER也很可能也实现了这些功能，我们可以通过D3DCAPS2_CANMANAGERESOURCE标志取得DRIVER是否实现资源管理功能的信息，而且也可以在CreateDevice的时候指定D3DCREATE_DISABLE_DRIVER_MANAGEMENT来关闭DRIVER资源管理功能。</p>
+
+<p>D3DLOCK探索D3D RUNTIME工作</p>
+
+<p>如果LOCK DEFAULT资源会发生什么情况呢？DEFAULT资源可能在VM或AM中，如果在VM中，必须在系统内容中开辟一个临时缓冲返回给数据，当应用程序将数据填充到临时缓冲后，UNLOCK的时候，RUNTIME会将临时缓冲的数据传回到VM中去，如果资源D3DUSAGE属性不是WRITEONLY的，则系统还需要先从VM里拷贝一份原始数据到临时缓冲区，这就是为什么不指定WRITEONLY会降低程序性能的原因。CPU写AM也有需要注意的地方，因为CPU写AM一般是WRITE COMBINING，也就是说将写缓冲到一个CACHE LINE上，当CACHE LINE满了之后才FLUSH到AM中去，第一个要注意的就是写数据必须是WEAK ORDER的（图形数据一般都满足这个要求），据说D3DRUNTIME和NV DIRVER有点小BUG，就是在CPU没有FLUSH到AM时，GPU就开始绘制相关资源产生的错误，这时请使用SFENCE等指令FLUSH CACHE LINE。第二请尽量一次写满一个CACHE LINE，否则会有额外延迟，因为CPU每次必须FLUSH整个CACHE LINE到目标，但如果我们只写了LINE中部分字节，CPU必须先从AM中读取整个LINE长数据COMBINE后重新FLUSH。第三尽可能顺序写，随机写会让WRITE COMBINING反而变成累赘，如果是随机写资源，不要使用D3DUSAGE_DYNAMIC创建，请使用D3DPOOL_MANAGED，这样写会完全在SM中完成。</p>
+
+<p>普通纹理（D3DPOOL_DEFAULT）是不能被锁定的，因为其位于VM中，只能通过UPDATESURFACE和UPDATETEXTURE来访问，为什么D3D不让我们锁定静态纹理，却让我们锁定静态VB IB呢？我猜测可能有2个方面的原因，第一就是纹理矩阵一般十分庞大，且纹理在GPU内部已二维方式存储；第二是纹理在GPU内部是以NATIVE FORMAT方式存储的，并不是明文RGBA格式。动态纹理因为表明这个纹理需要经常修改，所以D3D会特别存储对待，高频率修改的动态纹理不适合用动态属性创建，在此分两种情况说明，一种是GPU写入的RENDERTARGET，一种是CPU写入的TEXTURE VIDEO，我们知道动态资源一般是放置在AM中的，GPU访问AM需要经过AGP/PCI-E总线，速度较VM慢许多，而CPU访问AM又较SM慢很多，如果资源为动态属性，意味着GPU和CPU访问资源会持续的延迟，所以此类资源最好以D3DPOOL_DEFAULT和D3DPOOL_SYSTEMMEM各创建一份，自己手动进行双向更新更好。千万别 RENDERTARGET以D3DPOOL_MANAGED 属性创建，这样效率极低，原因自己分析。而对于改动不太频繁的资源则推荐使用DEFAULT创建，自己手动更新，因为一次更新的效率损失远比GPU持续访问AM带来的损失要小。</p>
+
+<p>不合理的LOCK会严重影响程序性能，因为一般LOCK需要等待COMMAND BUFFER前面的绘制指令全部执行完毕才能返回，否则很可能修改正在使用的资源，从LOCK返回到修改完毕UNLOCK这段时间GPU全部处于空闲状态，没有合理使用GPU和CPU的并行性，DX8.0引进了一个新的LOCK标志D3DLOCK_DISCARD，表示不会读取资源，只会全写资源，这样驱动和RUNTIME配合来了个瞒天过海，立即返回给应用程序另外块VM地址指针，而原指针在本次UNLOCK之后被丢弃不再使用，这样CPU LOCK无需等待GPU使用资源完毕，能继续操作图形资源（顶点缓冲和索引缓冲），这技术叫VB IB换名（renaming）。</p>
+
+<p>很多困惑来源于底层资料的不足，相信要是MS开放D3D源码，开放驱动接口规范，NV / ATI显示开放驱动和硬件架构信息，这些东西就很容易弄明白了。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B/" data-tooltip="数据加密数字签名简介">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E5%85%AC%E5%8F%B8%E5%BC%95%E6%93%8E%E5%AE%A3%E4%BC%A0%E6%96%87%E6%A1%A3/" data-tooltip="公司引擎宣传文档">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/08/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B/" data-tooltip="数据加密数字签名简介">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E5%85%AC%E5%8F%B8%E5%BC%95%E6%93%8E%E5%AE%A3%E4%BC%A0%E6%96%87%E6%A1%A3/" data-tooltip="公司引擎宣传文档">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/08/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2010%2F08%2F%25E8%25BD%25AC%25E6%25B7%25B1%25E5%2585%25A5%25E7%2590%2586%25E8%25A7%25A3d3d9%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2010\/08\/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9\/';
+          
+            this.page.identifier = '\/2010\/08\/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

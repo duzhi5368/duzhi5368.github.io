@@ -1,0 +1,751 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>初接触Unity3D的一些想法</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="个人和Unity3D早在07年就有一面之缘，当时似乎它还是1.5左右的版本，源代码通过某种途径得到过，但当时我还从事端游开发，对于CryEngine,Gamebryo,Unreal这些高大上的引擎兴趣更浓厚。另外当时它还不支持手机平台（那时候手游也没这么火，06年时候还是基于J2ME-NokiaAPI，MotorolaAPI开发128*128屏），甚至拿它和Torque这种引擎比较也没找到什么特点出来，当时就给放弃了。最近几年其声势如火如荼，加上工作关系，于是对其进行一些接触。
+
+">
+    <meta property="og:description" content="个人和Unity3D早在07年就有一面之缘，当时似乎它还是1.5左右的版本，源代码通过某种途径得到过，但当时我还从事端游开发，对于CryEngine,Gamebryo,Unreal这些高大上的引擎兴趣更浓厚。另外当时它还不支持手机平台（那时候手游也没这么火，06年时候还是基于J2ME-NokiaAPI，MotorolaAPI开发128*128屏），甚至拿它和Torque这种引擎比较也没找到什么特点出来，当时就给放弃了。最近几年其声势如火如荼，加上工作关系，于是对其进行一些接触。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="初接触Unity3D的一些想法">
+    <meta property="og:url" content="/2014/07/%E5%88%9D%E6%8E%A5%E8%A7%A6unity3d%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="个人和Unity3D早在07年就有一面之缘，当时似乎它还是1.5左右的版本，源代码通过某种途径得到过，但当时我还从事端游开发，对于CryEngine,Gamebryo,Unreal这些高大上的引擎兴趣更浓厚。另外当时它还不支持手机平台（那时候手游也没这么火，06年时候还是基于J2ME-NokiaAPI，MotorolaAPI开发128*128屏），甚至拿它和Torque这种引擎比较也没找到什么特点出来，当时就给放弃了。最近几年其声势如火如荼，加上工作关系，于是对其进行一些接触。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      初接触Unity3D的一些想法
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2014-07-03T00:00:00Z">
+        
+  七月 3, 2014
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>个人和Unity3D早在07年就有一面之缘，当时似乎它还是1.5左右的版本，源代码通过某种途径得到过，但当时我还从事端游开发，对于CryEngine,Gamebryo,Unreal这些高大上的引擎兴趣更浓厚。另外当时它还不支持手机平台（那时候手游也没这么火，06年时候还是基于J2ME-NokiaAPI，MotorolaAPI开发128*128屏），甚至拿它和Torque这种引擎比较也没找到什么特点出来，当时就给放弃了。最近几年其声势如火如荼，加上工作关系，于是对其进行一些接触。</p>
+
+<p></p>
+
+<pre><code>先吐槽一句，从骨子里来说，依然不喜欢这种封装性过强的引擎，和C++一样，充满陷阱又容易入手，引得无数人自称高手出来嘚瑟，想着隐隐蛋疼。
+这次接触Unity3D只有一个月时间，记录下自己的一些感觉。
+</code></pre>
+
+<p>先说优点：
+    1：编辑器化。 首先接触它的时候，我就觉得整个一个编辑器，这点和RpgMake,UnrealEdit都有些类似。对于编辑器化，毫无疑问是未来的一个趋势，从最早期的直接编程，到卡马克那代制造出“游戏引擎”，然后冒出的大量的第三方库，程序的复用性总在尝试进一步提高。当复用性提高到一个层级之后，可视化的编辑器也势在必然，从一般用户更喜欢界面系统，而不擅长命令行也可见一斑（再吐槽：程序员的最终境界之一似乎就是让别的程序员无路可走，笑~）。而U3D在编辑器这里做的更加极致，它将多个编辑器巧妙的组合起来，例如你在场景编辑器里右键选择材质就会直接弹出材质编辑器，而不需要枯燥的点Edit-&gt;Tools-&gt;MaterialEditor再选择指定的材质这么复杂操作。加强编辑器间的直接联系的确是个很不错的主意，想下之前ArkEngine，FKOgreWorldEdit的编辑器各自分离的做法还是不可取的。</p>
+
+<pre><code>2： 组件式架构。记得开始学习C++时候，就无限被强调C++是面向对象的，面向对象OO的特点是封装，继承，多态。当时觉得A：public B碉堡了，恨不得把世界万象抽象为继承类。结果后来逐渐发现钻石继承的坑，逐渐了解虚函数表的维护代价，逐渐对这玩意儿开始怀疑起来。后来看Effect C++又明文看到这本“圣经”提出，“尽量考虑使用组合，而不是继承。聚合优先。”，于是有一段时间颇有三观尽毁的感觉袭来。之后学习DX了解到com机制，模块强封装，其内部除IUnknown之外大部分依然是使用组合，又一次对组件式有了强烈好感。当然，在做游戏逻辑的工作中，考虑到团队的整体能力限制，组合式设计也是最容易被大家理解和接受的，反而这种想法也一直在脑海中。当然Unity刚开始接触的时候，各种组件拖拽到节点组件的这种方式，我直接就理解成AttackComponentNode( NodeType* p );了，也更适合没有强OO思想的人员使用（特别是非程序人员），无形中进一步降低了其入门难度。
+
+3： WYSIWYG。What you see is what you get （所见即所得）。似乎第一次接触这个概念是在CryEngine还是Unreal2的讲座上已经忘记了，当时觉得碉堡了，也就直接促使我在Ogre进行游戏开发过程中，极其重视WorldEdit，编写漫游插件，事件预览插件花费了相当大的精力。这个东西似乎颇为受大家欢迎，特别是那些策划和经验不足的程序们，直接见到可视化的结果，且不说其他价值，光在团队士气的鼓舞上就颇有加分。当然U3D做的相对更加极致，它甚至允许在游戏运行过程中，实时编辑（结束预览后数据会丢失），这一点的确需要好好研究下怎么学到。
+
+4：简单的跨平台发布。 游戏的发展史很有趣，页游用五年时间就把端游十几年的流程走快走完了，而手游又用一两年就走了前两者的一大半，对于如此频繁的平台迭代，游戏开发人员都要付出强大的学习力。然而，Unity的确帮了大忙，脑残式的一件跨平台发布，优势极大。何况大部分人开发都在Windows,Linux,MacOS下，而执行却要在Android,iOS上，不能跨平台的引擎受伤不轻啊，把握时代脉搏还真是个重要的活^ ^。
+
+5： 强大的生态圈规划。国内从来不是一线程序员的聚集地，强大的2G_2F_2W阻挡技术获得，加上国人原本不擅长的“交流分享”的本性，所以国内想出个什么碉堡的大型开源引擎，因为无法合作，这种事几乎是不可能的（呵呵，企鹅你行么）。而看国外的开源牛X项目层出不穷，而从之前sourceforge,googlecode到现在github，我们都会发现任何一个强大的项目都会有很强的一个社群，好的项目从来不是一个人自己做出来的，之前的卡马克时代已经一去不复返了（请原谅我这里吐槽很多，弄了几年个人引擎失败，怨念太大，没办法）。所以，常常翻墙获取海量最新资讯的人都应该得到一个很简单判断一个项目是否能引领未来的能力：如何看出一个项目是否有前景？看他的社区是否有人气，代码是否有较多的分支和版本更新基本就清楚了。那么U3D的强大之处就不言而喻了，我曾google几个关键字，例如&quot;Prewitt Edge shader&quot;和“Prewitt Edge shader NOT Unity”得到的搜索结果数之差就说明了一切，网上的Unity资料实在太多了。当然，社区,wiki这些是每个引擎都具备的。但Unity的AssetStore的出现，直接巩固了Unity的整个生态圈，实在太绝妙了。最近Unity又出了资格认证，对于一些中低层程序员也是一种福音。有时候购买一些插件，就能帮你解决很多问题；搜索一些问题，得到针对性的解决问题的思路；考些证，明确自己的目标，进一步了解自己，这些能够使得未接触Unity的人可以快速上手并且喜爱上它。
+</code></pre>
+
+<p>6： Unity的奇特脚本。这个东西依然让我觉得是褒贬参半，这模块我先只说优点。首先，因为C/C++的效率较高，对于早期硬件限制下，C/C++无疑是游戏开发的主力军。后来出现引擎，分离逻辑和功能（例如图形），由于逻辑常常更变，而且C++的坑多的令人发指，一不小心就带来内存问题，提高了研发能力要求和人力成本，加上可怜的标准库，于是就出现了将UI，AI，部分逻辑丢到Lua,Python等脚本的开发模式。当然也出现了一些自定义脚本，例如典型UnrealScript。那么我们先来吐槽下US这种东西，首先一个新鲜的语法，程序员适应需要有一定代价，另外作为脚本如果没有一定的基础库支持，那么写逻辑时其优势又将降低。如果给自定义脚本做很多基础功能支持，那么随着功能的扩充，将不得不开放更多的特性和接口扩充，其结果要么是自定义脚本背负的一个庞大的支持，变的复杂和低效，其优势之一“容易上手”就愈加不明显，而高级特性的开放……呵呵，那和C++又有什么区别了呢？于是悲剧的Unreal4似乎已经取消了UnrealScript，直接开放了C++，很是嘲讽不是么~^ ^。嘛，回到正题，那么Lua这种依附性语言呢？首先Lua的OO就无力吐槽了，加上原生程序库的可怜，完全依附寄主提供接口，而更遗憾的是，Lua原本效率就一般，而性能最大瓶颈又是和寄主（例如C++）的交互上，Lua_state堆栈操作始终是性能消耗最大的地方。那怎么办，用Lua做更多？它又丧失了灵活小巧的优点。真是无解。再次回到正题，U3D使用了C#和Js，当然据说还有个奇怪的Boo。Boo完全不懂，不提。js不熟也先放一边。说说最常见的C#开发，那首先说下C#本身，它的默认支持库相当全面，也有典型的OO支持，自己处理了C++最蛋疼的内存安全问题，执行效率不低，编译速度还很快（你妹，说好的编译时候让我去抽根烟的呢），另外其本身的反射机制，也极合适做编辑器。但它有个很致命的缺点，它是微软ms的.NET私生子产物，意味着Linix,MacOS对它没有兴趣，它原生无法跨平台。于是Unity就去找了成熟的mono帮忙做桥梁，解决了这一问题。原本混合式编程最蛋疼的几件事：更多知识，调试困难这些又被其隐藏源代码的方式给解决了，你只需要知道C#就能搞定，算是也帮了开发者一点忙。加上顺道整个了半成品的Mono编辑器也一定程度上方便了脚本开发。对于这点，我依然想吐槽几句，留之后吧。</p>
+
+<p>缺点：// TODO:
+   价格比Unreal4,CryEngine都贵，Unreal4 19美元给全部源代码，Unity闭源。
+   半残品：网络半残，PhysX和简单物理半残，预设系统半残，声音系统半残，输入管理半残，Level层级管理半残，GUI半残。更适合当前国内大众化量产游戏。
+   成批出现不懂程序的程序。
+   失分的渲染能力和效率。
+   脚本。你真是脚本？
+   看起来很美，做大型项目依然逃不开编码，逃不开自己的场景管理，自己的网络，自己的脚本等。
+   社区人多，但沉淀深度不如UDK。
+   天生的独立游戏引擎脸。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/07/%E8%BD%AC%E5%A6%82%E4%BD%95%E4%BD%9C%E5%87%BA%E4%B8%80%E6%AC%BE%E7%B2%BE%E5%93%81%E6%B8%B8%E6%88%8F/" data-tooltip="[转]如何作出一款精品游戏">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E6%9C%88%E8%AE%B0201406/" data-tooltip="月记201406">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2014/07/%E5%88%9D%E6%8E%A5%E8%A7%A6unity3d%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/07/%E8%BD%AC%E5%A6%82%E4%BD%95%E4%BD%9C%E5%87%BA%E4%B8%80%E6%AC%BE%E7%B2%BE%E5%93%81%E6%B8%B8%E6%88%8F/" data-tooltip="[转]如何作出一款精品游戏">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2014/06/%E6%9C%88%E8%AE%B0201406/" data-tooltip="月记201406">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2014/07/%E5%88%9D%E6%8E%A5%E8%A7%A6unity3d%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2014%2F07%2F%25E5%2588%259D%25E6%258E%25A5%25E8%25A7%25A6unity3d%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259B%25E6%2583%25B3%25E6%25B3%2595%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2014\/07\/%E5%88%9D%E6%8E%A5%E8%A7%A6unity3d%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95\/';
+          
+            this.page.identifier = '\/2014\/07\/%E5%88%9D%E6%8E%A5%E8%A7%A6unity3d%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

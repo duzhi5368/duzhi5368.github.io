@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2015 on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/2015/</link>
+    <description>Recent content in 2015 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 30 Dec 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/2015/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>月记201512</title>
+      <link>https://duzhi5368.github.io/2015/12/%E6%9C%88%E8%AE%B0201512/</link>
+      <pubDate>Wed, 30 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/12/%E6%9C%88%E8%AE%B0201512/</guid>
+      <description>&lt;p&gt;2015年12月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>快速FloatSin函数</title>
+      <link>https://duzhi5368.github.io/2015/12/%E5%BF%AB%E9%80%9Ffloatsin%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Tue, 15 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/12/%E5%BF%AB%E9%80%9Ffloatsin%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;就是一个快速实现求 float 的 Sin 函数。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>用C&#43;&#43;理解OpenGLES_多线程编译shader</title>
+      <link>https://duzhi5368.github.io/2015/12/%E7%94%A8c--%E7%90%86%E8%A7%A3opengles_%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E8%AF%91shader/</link>
+      <pubDate>Sat, 12 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/12/%E7%94%A8c--%E7%90%86%E8%A7%A3opengles_%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E8%AF%91shader/</guid>
+      <description>&lt;p&gt;下面是前几天开发过程中的记录：
+问题：
+当前游戏Loading时间过慢，经过检查PreWarmShader消耗过多。其中定点到glCompileShader函数阻塞。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201511</title>
+      <link>https://duzhi5368.github.io/2015/11/%E6%9C%88%E8%AE%B0201511/</link>
+      <pubDate>Mon, 30 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/11/%E6%9C%88%E8%AE%B0201511/</guid>
+      <description>&lt;p&gt;2015年11月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201509</title>
+      <link>https://duzhi5368.github.io/2015/09/%E6%9C%88%E8%AE%B0201509/</link>
+      <pubDate>Wed, 30 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/09/%E6%9C%88%E8%AE%B0201509/</guid>
+      <description>&lt;p&gt;2015年9月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>二叉树和事务</title>
+      <link>https://duzhi5368.github.io/2015/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E4%BA%8B%E5%8A%A1/</link>
+      <pubDate>Wed, 26 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/08/%E4%BA%8C%E5%8F%89%E6%A0%91%E5%92%8C%E4%BA%8B%E5%8A%A1/</guid>
+      <description>&lt;p&gt;马上要面试了，再复习下面试常见的基础概念。&lt;/p&gt;
+
+&lt;p&gt;二叉树，事务，TCP/UDP区别，线程调度算法，Hash和HashMap，排序建议&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201507</title>
+      <link>https://duzhi5368.github.io/2015/07/%E6%9C%88%E8%AE%B0201507/</link>
+      <pubDate>Thu, 30 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/07/%E6%9C%88%E8%AE%B0201507/</guid>
+      <description>&lt;p&gt;2015年7月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201506</title>
+      <link>https://duzhi5368.github.io/2015/06/%E6%9C%88%E8%AE%B0201506/</link>
+      <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/06/%E6%9C%88%E8%AE%B0201506/</guid>
+      <description>&lt;p&gt;2015年6月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201505</title>
+      <link>https://duzhi5368.github.io/2015/05/%E6%9C%88%E8%AE%B0201505/</link>
+      <pubDate>Sat, 30 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/05/%E6%9C%88%E8%AE%B0201505/</guid>
+      <description>&lt;p&gt;2015年5月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201504</title>
+      <link>https://duzhi5368.github.io/2015/04/%E6%9C%88%E8%AE%B0201504/</link>
+      <pubDate>Thu, 30 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/04/%E6%9C%88%E8%AE%B0201504/</guid>
+      <description>&lt;p&gt;2015年4月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Android开发配置JDK_SDK_NDK</title>
+      <link>https://duzhi5368.github.io/2015/04/android%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AEjdk_sdk_ndk/</link>
+      <pubDate>Mon, 27 Apr 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/04/android%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AEjdk_sdk_ndk/</guid>
+      <description>&lt;p&gt;开发Android时必须的安装JDK,SDK, NDK的流程记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201503</title>
+      <link>https://duzhi5368.github.io/2015/03/%E6%9C%88%E8%AE%B0201503/</link>
+      <pubDate>Mon, 30 Mar 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/03/%E6%9C%88%E8%AE%B0201503/</guid>
+      <description>&lt;p&gt;2015年3月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201502</title>
+      <link>https://duzhi5368.github.io/2015/02/%E6%9C%88%E8%AE%B0201502/</link>
+      <pubDate>Sat, 28 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/02/%E6%9C%88%E8%AE%B0201502/</guid>
+      <description>&lt;p&gt;2015年2月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[计划]展望2015</title>
+      <link>https://duzhi5368.github.io/2015/02/%E8%AE%A1%E5%88%92%E5%B1%95%E6%9C%9B2015/</link>
+      <pubDate>Fri, 27 Feb 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/02/%E8%AE%A1%E5%88%92%E5%B1%95%E6%9C%9B2015/</guid>
+      <description>&lt;p&gt;记得有句话说“和别人比较，越比越容易虚荣；和自己比较，才有进步”。我是抱着辩证怀疑的角度来看这句话的，然而今天反思一下：若从20岁开算，那么整体来说还是顺利进步的；若从11年开算，这三年则真的是比不过别人，也难说服自己 &amp;mdash; 这三年技术进步和深层次的修养的进步，的确都太缓慢了，似乎看到的只有包容力和一些生活中的情商有所提升，显然让我很不安。于是有了这篇凌晨4点爬起来的文章。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201501</title>
+      <link>https://duzhi5368.github.io/2015/01/%E6%9C%88%E8%AE%B0201501/</link>
+      <pubDate>Fri, 30 Jan 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2015/01/%E6%9C%88%E8%AE%B0201501/</guid>
+      <description>&lt;p&gt;2015年1月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,1635 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>图片纹理格式转换和压缩代码</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="DXT5 DXT1 D3DFMT_A8R8G8B8 转换
+
+">
+    <meta property="og:description" content="DXT5 DXT1 D3DFMT_A8R8G8B8 转换
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="图片纹理格式转换和压缩代码">
+    <meta property="og:url" content="/2007/01/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="DXT5 DXT1 D3DFMT_A8R8G8B8 转换
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      图片纹理格式转换和压缩代码
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-01-27T00:00:00Z">
+        
+  一月 27, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2008">2008</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>DXT5 DXT1 D3DFMT_A8R8G8B8 转换</p>
+
+<p></p>
+
+<pre><code class="language-C++">// Author: FreeKnightDuzhi
+
+// http://hi.baidu.com/freedomknightduzhi
+
+#include &quot;stdafx.h&quot;
+
+// 线形渐进次数
+int    g_nLinePerPitch[ETF_Count] = { 4,      4,     1,
+1,      1,     1 };
+// 平均每象素单次占用位数表
+// (DXT压缩时会将4*4的16位RGB纹理256字节压缩为2个16位R5G6B5值和16个2位索引。)
+int    g_nPerPixelBit[ETF_Count] = { 4,      8,     24,
+32,      16,     16 };
+// 实际上平均每象素占用的内存字节数表
+// 补：实际内存字节数 = （单象素占用位数 * 渐进次数） / 8
+int    g_nPerPixelSpace[ETF_Count] = { 2,      4,     3,
+4,      2,     2 };
+// 数据格式类型表
+D3DFORMAT g_eDataFormat[ETF_Count] = { D3DFMT_DXT1,   D3DFMT_DXT5, D3DFMT_R8G8B8,
+D3DFMT_A8R8G8B8, D3DFMT_R5G6B5, D3DFMT_A4R4G4B4 };
+// 实际保存的格式类型
+D3DFORMAT g_eSaveFormat[ETF_Count] = { D3DFMT_DXT1,   D3DFMT_DXT5, D3DFMT_X8R8G8B8,
+D3DFMT_A8R8G8B8, D3DFMT_R5G6B5, D3DFMT_A4R4G4B4 };
+
+//-------------------------------------------------------------------
+
+CTexture::CTexture()
+: m_pTextures ( NULL )
+, m_pD3DDev   ( NULL )
+{
+m_tagHead = TAG_FKTHeadInfo();
+m_szTextureName = string(&quot;&quot;);
+}
+
+//-------------------------------------------------------------------
+
+CTexture::~CTexture()
+{
+Release();
+}
+
+//-------------------------------------------------------------------
+
+// 释放本贴图    
+void CTexture::Release()
+{
+if ( m_pTextures != NULL)
+{
+   // 释放所有桢
+   for ( unsigned int i = 0; i &lt; m_tagHead.unFrameCount ; ++i )
+   {
+    if ( m_pTextures[i] )
+    {
+     m_pTextures[i]-&gt;Release();
+     m_pTextures[i] = NULL;
+    }
+   }
+   delete [] m_pTextures;
+}
+
+m_tagHead    = TAG_FKTHeadInfo();
+m_szTextureName   = string(&quot;&quot;);
+m_pTextures    = NULL;
+m_pD3DDev    = NULL;
+}
+
+//-------------------------------------------------------------------
+
+// 载入指定图片
+bool CTexture::LoadTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName )
+{
+// 希望名称合法
+assert( szTextureName != NULL );
+assert( strlen( szTextureName ) &gt;= 4 );
+
+// 取文件尾四位后缀
+LPCTSTR szExt = szTextureName + strlen( szTextureName ) - 4;
+
+if ( _stricmp(&quot;.fkt&quot;, szExt) )
+{
+   return _LoadNormalTexture( pD3DDev, szTextureName );
+}
+else
+{
+   return _LoadFKTexture( pD3DDev, szTextureName );
+}
+}
+
+//-------------------------------------------------------------------
+
+// 载入普通图片
+bool CTexture::_LoadNormalTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName )
+{
+LPDIRECT3DTEXTURE9 pTempTexture;
+
+// 使用D3DX库载入
+if ( FAILED( D3DXCreateTextureFromFile( pD3DDev, szTextureName, &amp;pTempTexture )))
+{
+   return false;
+}
+
+// 获取文件信息
+D3DSURFACE_DESC tagDesc;
+pTempTexture-&gt;GetLevelDesc( 0 , &amp;tagDesc );
+if ( pTempTexture )
+{
+   pTempTexture-&gt;Release();
+   pTempTexture = NULL;
+}
+
+// 设置新图片的格式信息
+TAG_FKTHeadInfo tagTempHeadInfo;
+memset( &amp;tagTempHeadInfo, 0, sizeof(TAG_FKTHeadInfo));
+// 将原图大小设置为2的次方大小
+for ( tagTempHeadInfo.unWidth = 1; tagTempHeadInfo.unWidth &lt; tagDesc.Width ; )
+{
+   tagTempHeadInfo.unWidth *= 2;
+}
+for ( tagTempHeadInfo.unHeight = 1; tagTempHeadInfo.unHeight &lt; tagDesc.Height ; )
+{
+   tagTempHeadInfo.unHeight *= 2;
+}
+tagTempHeadInfo.eTextureFormat = ETF_A8R8G8B8;
+tagTempHeadInfo.unFrameCount = 1;
+
+// 创建新图(该图大小为2的次方，格式为D3DFMT_A8R8G8B8)
+if ( FAILED(D3DXCreateTextureFromFileEx( pD3DDev, szTextureName,
+   tagTempHeadInfo.unWidth, tagTempHeadInfo.unHeight, 0, 0, D3DFMT_A8R8G8B8,
+   D3DPOOL_MANAGED, D3DX_FILTER_NONE, D3DX_FILTER_NONE, 0, NULL, NULL, &amp;pTempTexture)) )
+{
+   return false;
+}
+// 纹理过滤一下
+if ( FAILED( D3DXFilterTexture( pTempTexture, NULL, 0, D3DX_FILTER_TRIANGLE )))
+{
+   return false;
+}
+
+// 重新保存信息
+pTempTexture-&gt;GetLevelDesc( 0 , &amp;tagDesc );
+// 做最后一次成功判断,确保创建无误
+if (( tagDesc.Format != D3DFMT_A8R8G8B8 ) || ( tagDesc.Width != tagTempHeadInfo.unWidth )
+   || ( tagDesc.Height != tagTempHeadInfo.unHeight ))
+{
+   if ( pTempTexture )
+   {
+    pTempTexture-&gt;Release();
+    pTempTexture = NULL;
+   }
+   return false;
+}
+
+// OK，先清空自身其他信息再保存，完成
+Release();
+
+m_szTextureName   = szTextureName;
+m_pD3DDev    = pD3DDev;
+m_tagHead    = tagTempHeadInfo;
+m_pTextures    = new LPDIRECT3DTEXTURE9[1];
+m_pTextures[0]   = pTempTexture;
+
+return true;
+}
+
+//-------------------------------------------------------------------
+
+// 载入FKT图片
+bool CTexture::_LoadFKTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName )
+{
+// 清空自身数据
+Release();
+
+m_pD3DDev   = pD3DDev;
+m_szTextureName = szTextureName;
+
+// 读入文件头
+ifstream FileStream( szTextureName, ios::binary | ios::in );
+unsigned long ulRes;
+unsigned long ulVersion;
+FileStream.read( (char*)&amp;ulRes, sizeof(unsigned long) );
+FileStream.read( (char*)&amp;ulVersion, sizeof(unsigned long) );
+
+// 若信息不合法
+if (( ulRes != MAKEFOURCC('F', 'K', 'T', 0) ) || ( ulVersion &gt; TEXTURE_VERSION ))
+{
+   return false;
+}
+
+if ( ulVersion &lt; TEXTURE_VERSION )
+{
+   // TODO: 若版本比当前版本低，则在这里进行进一步处理
+}
+
+// 读取图象头信息
+FileStream.read( (char*)&amp;m_tagHead, sizeof(TAG_FKTHeadInfo) );
+
+unsigned int unTextureSpace   = m_tagHead.unWidth * g_nPerPixelSpace[m_tagHead.eTextureFormat];
+unsigned int unPerPixelBit   = g_nPerPixelBit[m_tagHead.eTextureFormat];
+D3DFORMAT eFormat     = g_eDataFormat[m_tagHead.eTextureFormat];
+
+// 将FKT格式每桢转换为D3DFMT_A8R8G8B8格式进行读入
+m_pTextures = new LPDIRECT3DTEXTURE9[m_tagHead.unFrameCount];
+
+// 逐桢循环
+for ( unsigned int i = 0; i &lt; m_tagHead.unFrameCount ; ++i )
+{
+   // 创建D3DFMT_A8R8G8B8
+   if ( D3D_OK != D3DXCreateTexture( pD3DDev, m_tagHead.unWidth, m_tagHead.unHeight,
+    1, 0, D3DFMT_A8R8G8B8, D3DPOOL_MANAGED, &amp;m_pTextures[i]) )
+   {
+    FileStream.close();
+    Release();
+    return false;
+   }
+   // 获取转换后的图片信息
+   D3DSURFACE_DESC tagTempDesc;
+   m_pTextures[i]-&gt;GetLevelDesc( 0 , &amp;tagTempDesc );
+
+   // 求得本图片本桢最大的一个MipMap图所需的内存大小
+   unsigned int unSize = (m_tagHead.unWidth * m_tagHead.unHeight * g_nPerPixelBit[m_tagHead.eTextureFormat]) / 8;
+   // 求得本图片本桢所有的MipMap图所需的内存大小
+   unsigned int unWholeSize = 0;
+   for ( unsigned int j = 0; j &lt; m_tagHead.unMipMapLevel ; unSize &gt;&gt; 2, ++j )
+   {
+    unWholeSize += unSize;
+   }
+
+   // 分配足够空间并将数据填充内存
+   unsigned char* pBuf = new unsigned char[unWholeSize];
+   FileStream.read((char*)pBuf, unWholeSize);
+
+   // 从内存中载入图片数据
+   LPDIRECT3DSURFACE9 pTempSur;
+   m_pTextures[i]-&gt;GetSurfaceLevel( 0, &amp;pTempSur );
+   RECT tagRect = { 0, 0, m_tagHead.unWidth, m_tagHead.unHeight };
+
+   if ( FAILED( D3DXLoadSurfaceFromMemory( pTempSur, NULL, NULL, pBuf, eFormat,
+    unTextureSpace, NULL, &amp;tagRect, D3DX_FILTER_NONE, 0)))
+   {
+    if ( pTempSur )
+    {
+     pTempSur-&gt;Release();
+     pTempSur = NULL;
+    }
+    FileStream.close();
+    Release();
+    return false;
+   }
+   // 纹理过滤一下
+   if ( FAILED( D3DXFilterTexture(m_pTextures[i], NULL, 0, D3DX_FILTER_TRIANGLE ) ) )
+   {
+    return false;
+   }
+   // 释放内存
+   delete []pBuf;
+}
+FileStream.close();
+return true;
+}
+
+//-------------------------------------------------------------------
+
+// 为本图片加入新的桢
+bool CTexture::AddFrame( LPCTSTR szFrameFileName )
+{
+// 读入图片并标准化
+CTexture tagTempDestTexture;
+if ( FAILED (tagTempDestTexture.LoadTexture(m_pD3DDev, szFrameFileName) ) )
+{
+   return false;
+}
+// 强制要求插入新桢的大小需要和原图大小一致
+if (( tagTempDestTexture.m_tagHead.unWidth != m_tagHead.unWidth ) ||
+   ( tagTempDestTexture.m_tagHead.unWidth != m_tagHead.unWidth ))
+{
+   return false;
+}
+// 增加桢计数，分配新内存空间( 这里要考虑到原图和新加桢图都可能是多桢图的可能 )
+m_tagHead.unFrameCount++;
+LPDIRECT3DTEXTURE9 * pTempTextures = new LPDIRECT3DTEXTURE9
+     [ m_tagHead.unFrameCount + tagTempDestTexture.m_tagHead.unFrameCount ];
+// 拷贝原图指针
+unsigned int i = 0;
+for ( i = 0; i &lt; m_tagHead.unFrameCount ; ++i )
+{
+   pTempTextures[i] = m_pTextures[i];
+}
+// 拷贝新图指针( 这里i不要清0，因为我们需要保存pTempTextures[i]指针 )
+for ( ; i &lt; m_tagHead.unFrameCount + tagTempDestTexture.m_tagHead.unFrameCount ; ++i )
+{
+   pTempTextures[i] = tagTempDestTexture.m_pTextures[ i - m_tagHead.unFrameCount ];
+   pTempTextures[i]-&gt;AddRef();
+}
+// 保存新指针
+delete [] m_pTextures;
+m_pTextures = pTempTextures;
+
+return true;
+}
+
+//-------------------------------------------------------------------
+
+// 保存图片
+bool CTexture::SaveTexture( ENUM_SaveTextureFormat eSaveTextureFormat, LPCTSTR szSaveTextureName, LPDIRECT3DDEVICE9 pD3DDev,
+         ENUM_TextureFormat eFormat, unsigned int unMipMap, unsigned int unFrameCircle )
+{
+if ( szSaveTextureName == NULL )
+{
+   return false;
+}
+if ( eSaveTextureFormat == ESTF_TGA )
+{
+   return _SaveTextureAsTGA( szSaveTextureName );
+}
+if ( eSaveTextureFormat == ESTF_FKTexture )
+{
+   return _SaveTextureAsFKT ( szSaveTextureName, eFormat, unMipMap, unFrameCircle, pD3DDev );
+}
+return false;
+}
+
+//-------------------------------------------------------------------
+
+// 将图片保存为tga格式
+bool CTexture::_SaveTextureAsTGA( LPCTSTR szSaveTextureName )
+{
+// 声明TGA文件头和文件类型
+TAG_TGAHeadInfo tagTGAHeadInfo = { 0, 0, 2, 0, 0, 32, 0, 0, m_tagHead.unWidth, m_tagHead.unHeight, 32, 32 };
+SetFileAttributes( szSaveTextureName, FILE_ATTRIBUTE_NORMAL | FILE_ATTRIBUTE_ARCHIVE );
+
+// 若有多桢，需逐桢处理
+for ( unsigned int i = 0; i &lt; m_tagHead.unFrameCount ; ++i )
+{
+   // 去后缀
+   CString szRealSaveTextureName = szSaveTextureName;
+   for (int j = 0; j &lt; szRealSaveTextureName.GetLength(); ++j )
+   {
+    if ( szRealSaveTextureName[j] == '.' )
+    {
+     szRealSaveTextureName.Delete( j, szRealSaveTextureName.GetLength() );
+     break;
+    }
+   }
+   // 若多桢，则需在文件名尾加以编号
+   if ( m_tagHead.unFrameCount &gt; 1 )
+   {
+    char szBuf[256];
+    sprintf( szBuf, &quot;_%d&quot;, i );
+    szRealSaveTextureName += szBuf;
+   }
+   // 重加后缀
+   szRealSaveTextureName += &quot;.tga&quot;;
+
+   // 写入文件头
+   ofstream File( szRealSaveTextureName, ios::binary | ios::out );
+   unsigned long ulRes = MAKEFOURCC( 'F', 'K', 'T', 0 );
+   unsigned long ulVersion = TEXTURE_VERSION;
+   File.write( (char*)&amp;tagTGAHeadInfo, sizeof(TAG_TGAHeadInfo) );
+
+   // 保存图片数据
+   D3DLOCKED_RECT tagRect;
+   m_pTextures[i]-&gt;LockRect( 0, &amp;tagRect, NULL, 0 );
+   File.write( (char*)tagRect.pBits, m_tagHead.unWidth * m_tagHead.unHeight * 4 );
+   m_pTextures[i]-&gt;UnlockRect(0);
+}
+
+return true;
+}
+
+//-------------------------------------------------------------------
+
+// 将图片保存为fkt格式
+bool CTexture::_SaveTextureAsFKT( LPCTSTR szSaveTextureName, ENUM_TextureFormat eFormat,
+          unsigned int unMipMap, unsigned int unFrameCircle, LPDIRECT3DDEVICE9 pD3DDev)
+{
+// 声明文件类型
+SetFileAttributes( szSaveTextureName, FILE_ATTRIBUTE_NORMAL | FILE_ATTRIBUTE_ARCHIVE );
+// 声明FKTexture格式头
+TAG_FKTHeadInfo tagSaveHead;
+tagSaveHead = m_tagHead;
+if ( ETF_Unknown == eFormat )
+{
+   eFormat = GetTextureFormat();
+}
+tagSaveHead.eTextureFormat = eFormat;
+tagSaveHead.unMipMapLevel = unMipMap;
+tagSaveHead.unFrameCircle = unFrameCircle &gt; 65535 ? 65535 : unFrameCircle;
+
+// 若希望进行DXT压缩,强制要求图象大小要大于4 * 4象素
+if (( eFormat == ETF_DXT1) || ( eFormat == ETF_DXT5 ))
+{
+   if (( m_tagHead.unWidth &lt; 4 ) || ( m_tagHead.unHeight &lt; 4 ))
+   {
+    return false;
+   }
+}
+// 若未指定MipMap层级,则自行计算
+if ( tagSaveHead.unMipMapLevel == 0 )
+{
+   for ( unsigned int unWidth = tagSaveHead.unWidth,unHeight = tagSaveHead.unHeight;
+    (unWidth &gt;= 4) &amp;&amp; (unHeight &gt;= 4) ;
+    unWidth = unWidth &gt;&gt; 1, unHeight = unHeight &gt;&gt; 1 )
+   {
+    tagSaveHead.unMipMapLevel++;
+   }
+}
+
+// 创建DXT格式贴图
+int nPerPixelBit = g_nPerPixelBit[tagSaveHead.eTextureFormat];
+LPDIRECT3DTEXTURE9 pCompressTexture = NULL;
+if ( FAILED( D3DXCreateTexture( pD3DDev, tagSaveHead.unWidth, tagSaveHead.unHeight, 0, 0,
+   g_eDataFormat[tagSaveHead.eTextureFormat], D3DPOOL_MANAGED, &amp;pCompressTexture) ) )
+{
+   return false;
+}
+
+// 填充描述字符格式
+D3DSURFACE_DESC tagDesc;
+pCompressTexture-&gt;GetLevelDesc( 0, &amp;tagDesc );
+
+// 保存文件头
+ofstream File( szSaveTextureName, ios::binary | ios::out );
+unsigned int unRes = MAKEFOURCC( 'F', 'K', 'T', 0 );
+unsigned int unVersion = TEXTURE_VERSION;
+File.write( (char*)&amp;unRes, sizeof(unsigned int) );
+File.write( (char*)&amp;unVersion, sizeof(unsigned int) );
+File.write( (char*)&amp;tagSaveHead, sizeof(TAG_FKTHeadInfo) );
+
+// 逐桢写入文件数据
+for ( unsigned int i = 0; i &lt; m_tagHead.unFrameCount; ++i )
+{
+   D3DLOCKED_RECT tagRect;
+   m_pTextures[i]-&gt;LockRect( 0, &amp;tagRect, NULL, 0 );
+   char* pcBuf = (char*) tagRect.pBits;
+
+   IDirect3DSurface9* pSurface;
+   pCompressTexture-&gt;GetSurfaceLevel( 0, &amp;pSurface );
+   RECT tagTempRect = { 0, 0, tagSaveHead.unWidth, tagSaveHead.unHeight };
+
+   // 将内存中的图片数据载入
+   if ( FAILED( D3DXLoadSurfaceFromMemory( pSurface, NULL, NULL, pcBuf, D3DFMT_A8R8G8B8,
+    tagRect.Pitch, NULL, &amp;tagTempRect, D3DX_FILTER_NONE, 0 ) ) )
+   {
+    if (pSurface != NULL)
+    {
+     pSurface-&gt;Release();
+     pSurface = NULL;
+    }
+    if (pCompressTexture != NULL)
+    {
+     pCompressTexture-&gt;Release();
+     pCompressTexture = NULL;
+    }
+    File.close();
+    return false;
+   }
+   // 不再使用Surface释放.
+   if (pSurface != NULL)
+   {
+    pSurface-&gt;Release();
+    pSurface = NULL;
+   }
+
+   // 检查并压缩
+   pCompressTexture-&gt;LockRect( 0, &amp;tagRect, NULL, 0 );
+   _CheckCompress( (unsigned char*)tagRect.pBits, g_eDataFormat[tagSaveHead.eTextureFormat],
+    (unsigned char*)pcBuf, D3DFMT_A8R8G8B8, tagSaveHead.unWidth, tagSaveHead.unHeight );
+   pCompressTexture-&gt;UnlockRect( 0 );
+
+   m_pTextures[i]-&gt;UnlockRect( 0 );
+
+   // 纹理过滤
+   if ( FAILED( D3DXFilterTexture( pCompressTexture, NULL, 0, D3DX_FILTER_TRIANGLE ) ) )
+   {
+    return false;
+   }
+
+   // 创建每一桢的MIPMAP
+   for (unsigned int unWidth = tagSaveHead.unWidth, unHeight = tagSaveHead.unHeight, i = 0;
+    i &lt; tagSaveHead.unMipMapLevel;
+    unWidth = unWidth &gt;&gt; 1, unHeight = unHeight &gt;&gt; 1, ++i)
+   {
+    unsigned int unSize = unWidth * g_nPerPixelSpace[tagSaveHead.eTextureFormat];
+    pCompressTexture-&gt;LockRect( i, &amp;tagRect, NULL, 0 );
+    // 根据格式去保存文件
+    if ( tagSaveHead.eTextureFormat == ETF_R8G8B8 )
+    {
+     unsigned int * pBuf = (unsigned int *)tagRect.pBits;
+     for (unsigned int n = 0 ; n &lt; unHeight; ++n, pBuf += (tagRect.Pitch / 4))
+     {
+      for (unsigned int m = 0; m &lt; unWidth; ++m)
+      {
+       File.write( (char*)&amp;pBuf[m], 3 );
+      }
+     }
+    }
+    else
+    {
+     char* pBuf = (char*)tagRect.pBits;
+     for (unsigned int n = 0; n &lt; unHeight; n += g_nLinePerPitch[tagSaveHead.eTextureFormat], pBuf += tagRect.Pitch )
+     {
+      File.write( pBuf, unSize );
+     }
+    }
+    pCompressTexture-&gt;UnlockRect( i );
+   }
+}
+
+File.close();
+pCompressTexture-&gt;Release();
+
+return true;
+}
+
+//-------------------------------------------------------------------
+
+// 将图片进行检查压缩
+void CTexture::_CheckCompress(unsigned char* pcDestBuf, D3DFORMAT eDestFormat,
+     unsigned char* pcSrcBuf, D3DFORMAT eSrcFormat, unsigned int unWidth, unsigned int unHeight )
+{
+if (( eSrcFormat == D3DFMT_A8R8G8B8 ) &amp;&amp; (( eDestFormat == D3DFMT_DXT4) || ( eDestFormat == D3DFMT_DXT5 )))
+{
+   unsigned long * pTempSrcBuf = (unsigned long *)pcSrcBuf;
+   unsigned char * pTempDestBuf = pcDestBuf;
+   unsigned long ulTempVector[16];
+   unsigned int i = 0;
+   unsigned int j = 0;
+   unsigned int n = 0;
+   unsigned int m = 0;
+   int nSpace = ( eDestFormat == D3DFMT_DXT1 ) ? 2 : 4;
+   int nSize = nSpace * 4;
+   // DXT格式是以 4 * 4 象素做为一个单元的,我们逐单元块处理
+   for ( i = 0; i &lt; unHeight / 4; ++i )
+   {
+    for ( j = 0; j &lt; unWidth / 4; ++j )
+    {
+     for ( m = 0; m &lt; 4; ++m )
+     {
+      for ( n = 0; n &lt; 4; ++n )
+      {
+       ulTempVector[ m * 4 + n ] = pTempSrcBuf[ ( i * 4 + m ) * unWidth + j * 4 + n ];
+      }
+     }
+     _CheckARGB2DXT( pTempDestBuf, ulTempVector, eSrcFormat );
+     pTempDestBuf += nSize;
+    }
+   }
+}
+}
+
+//-------------------------------------------------------------------
+
+// 单位区域重复压缩( 修正压缩时Alpha错误 )
+void CTexture::_CheckARGB2DXT(unsigned char* pcCompressBuf, unsigned long* pNoCompressBuf, D3DFORMAT eFormat)
+{
+unsigned char ucAlpha[8];
+unsigned char ucCompress[16];
+unsigned char ucNoCompress[16];
+
+for (unsigned int i = 0; i &lt; 16; ++i)
+{
+   ucNoCompress[i] = (unsigned char)(pNoCompressBuf[i] &gt;&gt; 24);
+}
+
+// 首先解压缩统计偏差
+ucAlpha[0] = pcCompressBuf[0];
+ucAlpha[1] = pcCompressBuf[1];
+if ( ucAlpha[0] &gt; ucAlpha[1] )
+{
+   ucAlpha[2] = ( 6 * ucAlpha[0] + 1 * ucAlpha[1] + 3 ) / 7; // 010
+   ucAlpha[3] = ( 5 * ucAlpha[0] + 2 * ucAlpha[1] + 3 ) / 7; // 011
+   ucAlpha[4] = ( 4 * ucAlpha[0] + 3 * ucAlpha[1] + 3 ) / 7; // 100
+   ucAlpha[5] = ( 3 * ucAlpha[0] + 4 * ucAlpha[1] + 3 ) / 7; // 101
+   ucAlpha[6] = ( 2 * ucAlpha[0] + 5 * ucAlpha[1] + 3 ) / 7; // 110
+   ucAlpha[7] = ( 1 * ucAlpha[0] + 6 * ucAlpha[1] + 3 ) / 7; // 111
+}
+else
+{
+   ucAlpha[2] = ( 4 * ucAlpha[0] + 1 * ucAlpha[1] + 2 ) / 5; // 010
+   ucAlpha[3] = ( 3 * ucAlpha[0] + 2 * ucAlpha[1] + 2 ) / 5; // 011
+   ucAlpha[4] = ( 2 * ucAlpha[0] + 3 * ucAlpha[1] + 2 ) / 5; // 100
+   ucAlpha[5] = ( 1 * ucAlpha[0] + 4 * ucAlpha[1] + 2 ) / 5; // 101
+   ucAlpha[6] = 0;             // 110
+   ucAlpha[7] = 255;            // 111
+}
+
+for (unsigned int i = 0, j = 0; i &lt; 16; ++i )
+{
+   int nTemp1 = j / 8;
+   int nTemp2 = j % 8;
+   unsigned char ucTemp;
+   if ( nTemp2 &lt; 6 )
+   {
+    ucTemp = ( (pcCompressBuf[ 2 + nTemp1 ]) &gt;&gt; nTemp2 ) &amp; 0x7 ;
+   }
+   else if ( nTemp2 == 6 )
+   {
+    ucTemp = ( ( (pcCompressBuf[ 2 + nTemp1 ]) &gt;&gt; nTemp2 ) &amp; 0x7 ) |
+     ( ( (pcCompressBuf[ 3 + nTemp1 ]) &gt;&gt; 2 ) &amp; 0x7 ) ;
+   }
+   else if ( nTemp2 == 7 )
+   {
+    ucTemp = ( ( (pcCompressBuf[ 2 + nTemp1 ]) &gt;&gt; nTemp2 ) &amp; 0x7 ) |
+     ( ( (pcCompressBuf[ 3 + nTemp1 ]) &gt;&gt; 1 ) &amp; 0x7 ) ;
+   }
+
+   ucCompress[i] = ucAlpha[ucTemp];
+   j += 3;
+}
+
+// 获取偏差
+int nWarp = 0;
+for ( unsigned int i = 0; i &lt; 16; ++i )
+{
+   nWarp += abs( ucCompress[i] - ucNoCompress[i] );
+}
+
+// 若偏差很小,则不再处理,否则则重新压缩
+if ( nWarp &lt;= 256 )
+{
+   return;
+}
+
+ucAlpha[0] = ucNoCompress[0];
+ucAlpha[1] = ucNoCompress[1];
+// 选出Alpha最大的两个值
+for (unsigned int i = 0; i &lt; 16; ++i )
+{
+   if ( ucNoCompress[i] &gt; ucAlpha[0] )
+   {
+    ucAlpha[0] = ucNoCompress[i];
+   }
+   if ( ucNoCompress[i] &lt; ucAlpha[1] )
+   {
+    ucAlpha[1] = ucNoCompress[i];
+   }
+}
+
+pcCompressBuf[0] = ucAlpha[0];
+pcCompressBuf[1] = ucAlpha[1];
+pcCompressBuf[2] = 0;
+pcCompressBuf[3] = 0;
+pcCompressBuf[4] = 0;
+pcCompressBuf[5] = 0;
+pcCompressBuf[6] = 0;
+pcCompressBuf[7] = 0;
+
+// 线形插值出其他六个Alpha值
+if ( ucAlpha[0] &gt; ucAlpha[1] )
+{
+   ucAlpha[2] = ( 6 * ucAlpha[0] + 1 * ucAlpha[1] + 3 ) / 7; // 010
+   ucAlpha[3] = ( 5 * ucAlpha[0] + 2 * ucAlpha[1] + 3 ) / 7; // 011
+   ucAlpha[4] = ( 4 * ucAlpha[0] + 3 * ucAlpha[1] + 3 ) / 7; // 100
+   ucAlpha[5] = ( 3 * ucAlpha[0] + 4 * ucAlpha[1] + 3 ) / 7; // 101
+   ucAlpha[6] = ( 2 * ucAlpha[0] + 5 * ucAlpha[1] + 3 ) / 7; // 110
+   ucAlpha[7] = ( 1 * ucAlpha[0] + 6 * ucAlpha[1] + 3 ) / 7; // 111
+}
+else
+{
+   ucAlpha[2] = ( 4 * ucAlpha[0] + 1 * ucAlpha[1] + 2 ) / 5; // 010
+   ucAlpha[3] = ( 3 * ucAlpha[0] + 2 * ucAlpha[1] + 2 ) / 5; // 011
+   ucAlpha[4] = ( 2 * ucAlpha[0] + 3 * ucAlpha[1] + 2 ) / 5; // 100
+   ucAlpha[5] = ( 1 * ucAlpha[0] + 4 * ucAlpha[1] + 2 ) / 5; // 101
+   ucAlpha[6] = 0;             // 110
+   ucAlpha[7] = 255;            // 111
+}
+
+// 为 4 * 4 个点选择合适的Alpha值,并将索引重新写入
+for ( unsigned int i = 0, j = 0; i &lt; 16; ++i )
+{
+   int nTemp1 = j / 8;
+   int nTemp2 = j % 8;
+   int nAlin = 0;
+   int nMax = 255;
+
+   for ( unsigned int k = 0; k &lt; 8; ++k )
+   {
+    if ( abs( ucAlpha[k] - ucNoCompress[i] ) &lt; nMax )
+    {
+     nMax = abs( ucAlpha[k] - ucNoCompress[i] );
+     nAlin = k;
+    }
+   }
+
+   pcCompressBuf[ 2 + nTemp1 ] |= nAlin &lt;&lt; nTemp2;
+   if ( nTemp2 == 6 )
+   {
+    pcCompressBuf[ 3 + nTemp1 ] |= nAlin &gt;&gt; 2;
+   }
+   else if ( nTemp2 == 7)
+   {
+    pcCompressBuf[ 3 + nTemp1 ] |= nAlin &gt;&gt; 1;
+   }
+
+   j += 3;
+
+}
+}
+
+//-------------------------------------------------------------------
+
+// 获取当前贴图指针
+LPDIRECT3DTEXTURE9 CTexture::GetTexture() const
+{
+if ( m_tagHead.unFrameCount &gt; 1 )
+{
+   return m_pTextures[ (GetTickCount() / max( m_tagHead.unFrameCircle, 1)) % m_tagHead.unFrameCount ];
+}
+else
+{
+   return m_pTextures ? m_pTextures[0] : NULL;
+}
+}
+
+//-------------------------------------------------------------------
+
+CTexture.h
+
+//-------------------------------------------------------------------
+
+#pragma once
+
+
+// 定义组合4CC宏
+#ifndef MAKEFOURCC
+#define MAKEFOURCC (ch0, ch1, ch2, ch3)      \
+   (((unsigned long)(unsigned char)(ch0)) |   \
+   ((unsigned long)(unsigned char)(ch1) &lt;&lt; 8) | \
+   ((unsigned long)(unsigned char)(ch2) &lt;&lt; 16) | \
+   ((unsigned long)(unsigned char)(ch3) &lt;&lt; 24)))
+#endif
+
+
+// 枚举可识别的纹理图片格式(注意，这里的枚举值需与下面全局常量组对应起来)
+enum ENUM_TextureFormat
+{
+ETF_Unknown   = -1,
+
+ETF_DXT1   = 0,
+ETF_DXT5,
+ETF_R8G8B8,
+ETF_A8R8G8B8,
+ETF_R5G6B5,
+ETF_A4R4G4B4,
+
+ETF_Count,
+};
+
+// 枚举可保存的纹理图片格式
+enum ENUM_SaveTextureFormat
+{
+ESTF_TGA   = 0x0010,
+ESTF_FKTexture = 0x0100,
+};
+
+// 定义当前贴图版本(该版本向下兼容)
+const unsigned int TEXTURE_VERSION = 10000;
+
+
+#pragma pack(push,1)    
+// FKT贴图头结构信息
+struct TAG_FKTHeadInfo
+{
+   ENUM_TextureFormat eTextureFormat; // 贴图文件格式
+   unsigned int   unWidth;   // 贴图宽
+   unsigned int   unHeight;   // 贴图高
+   unsigned int   unMipMapLevel; // MipMap层数
+   unsigned int   unFrameCount; // 贴图桢数
+   unsigned int   unFrameCircle; // 贴图桢周期
+};
+
+// TGA贴图头结构信息
+struct TAG_TGAHeadInfo
+{
+   unsigned char   ucImageInfoBlockSize; // 图象信息大小
+   unsigned char   ucTableType;    // 颜色表类型
+   unsigned char   ucImageType;    // 图象类型
+   unsigned short   usTableAddress;    // 颜色表首地址
+   unsigned short   usTableLength;    // 颜色表长度
+   unsigned char   ucTableBitSize;    // 颜色表表项位数
+   unsigned short   usStartX;     // 图象X坐标起始位置
+   unsigned short   usStartY;     // 图象Y坐标起始位置
+   unsigned short   usWidth;     // 图象宽度
+   unsigned short   usHeight;     // 图象高度
+   unsigned char   ucPixelBitSize;    // 图象中每象素所占用的位数
+   unsigned char   ucImageScript;    // 图象描述符字节
+};
+#pragma pack(pop)
+
+// 贴图类
+class CTexture
+{
+public:
+CTexture();
+~CTexture();
+
+public:
+// 释放本贴图
+void Release();
+// 载入指定图片
+bool LoadTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName );
+// 为本图片加入新的桢
+bool AddFrame( LPCTSTR szFrameFileName );
+// 保存图片
+bool SaveTexture( ENUM_SaveTextureFormat eSaveTextureFormat, LPCTSTR szSaveTextureName, LPDIRECT3DDEVICE9 pD3DDev = NULL,
+   ENUM_TextureFormat eFormat = ETF_Unknown, unsigned int unMipMap = 0, unsigned int unFrameCircle = 0);
+public:
+// 是否有数据
+bool IsValid()         const
+{ return m_pTextures != NULL ; }
+// 获取图片宽度
+unsigned int GetWidth()       const
+{ return m_tagHead.unWidth; }
+// 获取图片高度
+unsigned int GetHeight()      const
+{ return m_tagHead.unHeight; }
+// 获取图片格式
+ENUM_TextureFormat GetFormat()     const
+{ return m_tagHead.eTextureFormat; }
+// 获取贴图文件类型
+ENUM_TextureFormat GetTextureFormat()   const
+{ return m_tagHead.eTextureFormat; }
+// 获取文件名称
+const std::string GetName()      const
+{ return m_szTextureName; }
+// 获取图片MipMap数量
+unsigned int GetMipMapLevel()     const
+{ return m_tagHead.unMipMapLevel; }
+// 获取图片桢数
+unsigned int GetFrameCount()     const
+{ return m_tagHead.unFrameCount; }
+// 获取图片桢周期
+unsigned int GetFrameCircle()     const
+{ return m_tagHead.unFrameCircle; }
+// 获取当前贴图指针
+LPDIRECT3DTEXTURE9 GetTexture()     const;
+private:
+// 载入普通图片
+bool _LoadNormalTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName );
+// 载入FKT图片
+bool _LoadFKTexture( LPDIRECT3DDEVICE9 pD3DDev, LPCTSTR szTextureName );
+// 将图片保存为tga格式
+bool _SaveTextureAsTGA( LPCTSTR szSaveTextureName );
+// 将图片保存为fkt格式
+bool _SaveTextureAsFKT( LPCTSTR szSaveTextureName, ENUM_TextureFormat eFormat,
+   unsigned int unMipMap, unsigned int unFrameCircle, LPDIRECT3DDEVICE9 pD3DDev );
+// 将图片进行检查压缩
+// param pcDestBuf 目标压缩缓冲区
+// param eDestFormat 目标压缩缓冲区格式
+// param pcSrcBuf 未压缩源缓冲区
+// param eSrcFormat 未压缩源缓冲区格式
+// param unWidth 需压缩图片宽
+// param unHeight 需压缩图片高
+void _CheckCompress(unsigned char* pcDestBuf, D3DFORMAT eDestFormat,
+   unsigned char* pcSrcBuf, D3DFORMAT eSrcFormat, unsigned int unWidth, unsigned int unHeight );
+// 单位区域压缩
+// param pcCompressBuf 压缩缓冲区
+// param pNoCompressBuf 未压缩缓冲区
+// param eFormat 压缩缓冲区格式
+inline void _CheckARGB2DXT(unsigned char* pcCompressBuf, unsigned long* pNoCompressBuf, D3DFORMAT eFormat);
+private:
+TAG_FKTHeadInfo    m_tagHead;          // 文件头
+std::string     m_szTextureName;    // 文件名称
+LPDIRECT3DTEXTURE9*   m_pTextures;        // 贴图表的指针
+LPDIRECT3DDEVICE9   m_pD3DDev;    // D3D环境指针
+};
+
+//-------------------------------
+
+#include &lt;windows.h&gt;
+#include &lt;iostream&gt;
+#include &lt;tchar.h&gt;
+#include &lt;d3d9.h&gt;
+#include &lt;d3dx9.h&gt;
+#include &lt;string&gt;
+#include &lt;assert.h&gt;
+#include &lt;fstream&gt;
+#include &lt;atlstr.h&gt;
+
+#include &quot;CTexture.h&quot;
+
+using namespace std;
+
+#pragma comment(lib, &quot;d3d9.lib&quot;)
+#pragma comment(lib, &quot;d3dx9.lib&quot;)
+
+
+LPDIRECT3D9             g_pD3D       = NULL; // Used to create the D3DDevice
+LPDIRECT3DDEVICE9       g_pd3dDevice = NULL; // Our rendering device
+
+   if( NULL == ( g_pD3D = Direct3DCreate9( D3D_SDK_VERSION ) ) )
+    return FALSE;
+   D3DPRESENT_PARAMETERS d3dpp;
+   ZeroMemory( &amp;d3dpp, sizeof(d3dpp) );
+   d3dpp.Windowed = TRUE;
+   d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+   d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
+   if( FAILED( g_pD3D-&gt;CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_REF, hWnd,
+    D3DCREATE_SOFTWARE_VERTEXPROCESSING,
+    &amp;d3dpp, &amp;g_pd3dDevice ) ) )
+   {
+    return FALSE;
+   }
+
+CTexture pTex;
+
+   pTex.LoadTexture( g_pd3dDevice, &quot;E:\\4.tex&quot; );
+   pTex.SaveTexture( ESTF_TGA, &quot;E:\\4.tga&quot; );
+
+//-------------------------------
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2008/">2008</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0_%E5%86%85%E5%AD%98/" data-tooltip="专题复习_内存">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%94%E5%AF%BC%E5%85%A5.x%E6%96%87%E4%BB%B6/" data-tooltip="3D游戏编程入门(二十五)导入.x文件">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/01/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/%E4%B8%93%E9%A2%98%E5%A4%8D%E4%B9%A0_%E5%86%85%E5%AD%98/" data-tooltip="专题复习_内存">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/01/3d%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E4%BA%8C%E5%8D%81%E4%BA%94%E5%AF%BC%E5%85%A5.x%E6%96%87%E4%BB%B6/" data-tooltip="3D游戏编程入门(二十五)导入.x文件">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/01/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F01%2F%25E5%259B%25BE%25E7%2589%2587%25E7%25BA%25B9%25E7%2590%2586%25E6%25A0%25BC%25E5%25BC%258F%25E8%25BD%25AC%25E6%258D%25A2%25E5%2592%258C%25E5%258E%258B%25E7%25BC%25A9%25E4%25BB%25A3%25E7%25A0%2581%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/01\/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81\/';
+          
+            this.page.identifier = '\/2007\/01\/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

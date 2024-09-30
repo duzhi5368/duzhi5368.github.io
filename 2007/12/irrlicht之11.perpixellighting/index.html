@@ -1,0 +1,1164 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>irrlicht之11.PerPixelLighting</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="这个例子告诉我们如何使用Irr引擎中更加复杂的技术：逐象素光照处理的 法线映射和视差映射。
+
+">
+    <meta property="og:description" content="这个例子告诉我们如何使用Irr引擎中更加复杂的技术：逐象素光照处理的 法线映射和视差映射。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="irrlicht之11.PerPixelLighting">
+    <meta property="og:url" content="/2007/12/irrlicht%E4%B9%8B11.perpixellighting/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="这个例子告诉我们如何使用Irr引擎中更加复杂的技术：逐象素光照处理的 法线映射和视差映射。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      irrlicht之11.PerPixelLighting
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-12-01T00:00:00Z">
+        
+  十二月 1, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这个例子告诉我们如何使用Irr引擎中更加复杂的技术：逐象素光照处理的 法线映射和视差映射。</p>
+
+<p></p>
+
+<pre><code class="language-C++">/*
+
+译：FK_Duzhi
+
+这个例子告诉我们如何使用Irr引擎中更加复杂的技术：逐象素光照处理的 法线映射和视差映射。
+
+另外我们还需要使用 雾 以及 运动的粒子系统。别害怕！在Irr引擎中，你做这些工作，不需要太多的Shaders经验。
+
+注意：因为我们使用视差映射，我们需要使用32位纹理。
+
+首先，我们象以往一样，包含Irr头文件，定义库链接，定义命名空间。
+*/
+#include &lt;irrlicht.h&gt;
+#include &lt;iostream&gt;
+
+
+using namespace irr;
+
+#pragma comment(lib, &quot;Irrlicht.lib&quot;)
+
+
+/*
+这个例子中，我们需要一个事件接收器，因为我们准备为用户提供三个不同类型的材质风格，
+这需要用户交互，获得他们的输入。另外，事件接受器还将创建一些小的GUI，用这些GUI来
+显示用户现在选择的哪种材质。在这个类中没有什么特殊的东西，所以你在详细研究的时候可以跳过它。
+*/
+class MyEventReceiver : public IEventReceiver
+{
+public:
+
+MyEventReceiver(scene::ISceneNode* room,
+   gui::IGUIEnvironment* env, video::IVideoDriver* driver)
+{
+   // 存储一些指针以方便我们更改它的绘制模式
+   Room = room;
+   Driver = driver;
+
+   // 设置一个漂亮的字体
+   gui::IGUISkin* skin = env-&gt;getSkin();
+   gui::IGUIFont* font = env-&gt;getFont(&quot;../../media/fonthaettenschweiler.bmp&quot;);
+   if (font)
+    skin-&gt;setFont(font);
+
+   // 增加一个窗口和一个ListBox列表单
+   gui::IGUIWindow* window = env-&gt;addWindow(
+    core::rect&lt;s32&gt;(460,375,630,470), false, L&quot;Use 'E' + 'R' to change&quot;);
+
+   ListBox = env-&gt;addListBox(
+    core::rect&lt;s32&gt;(2,22,165,88), window);
+
+   ListBox-&gt;addItem(L&quot;Diffuse&quot;);
+   ListBox-&gt;addItem(L&quot;Bump mapping&quot;);
+   ListBox-&gt;addItem(L&quot;Parallax mapping&quot;);
+   ListBox-&gt;setSelected(1);
+
+   // 当硬件不支持Shaders时创建错误提示信息
+   ProblemText = env-&gt;addStaticText(
+    L&quot;Your hardware or this renderer is not able to use the &quot;\
+    L&quot;needed shaders for this material. Using fall back materials.&quot;,
+    core::rect&lt;s32&gt;(150,20,470,80));
+
+   ProblemText-&gt;setOverrideColor(video::SColor(100,255,255,255));
+
+   // 设置初始材质（若硬件支持的话，我们优先显示视差映射）
+   video::IMaterialRenderer* renderer =
+    Driver-&gt;getMaterialRenderer(video::EMT_PARALLAX_MAP_SOLID);
+   if (renderer &amp;&amp; renderer-&gt;getRenderCapability() == 0)
+    ListBox-&gt;setSelected(2);
+
+   // 根据用户在列表单中的选择设置不同的材质
+   setMaterial();
+}
+
+bool OnEvent(SEvent event)
+{
+   // 如果用户按下E或R
+   if (event.EventType == irr::EET_KEY_INPUT_EVENT &amp;&amp;
+    !event.KeyInput.PressedDown &amp;&amp; Room &amp;&amp; ListBox)
+   {
+    // 更改列表单中的子控件选项
+
+    int sel = ListBox-&gt;getSelected();
+    if (event.KeyInput.Key == irr::KEY_KEY_R)
+     ++sel;
+    else
+    if (event.KeyInput.Key == irr::KEY_KEY_E)
+     --sel;
+    else
+     return false;
+
+    if (sel &gt; 2) sel = 0;
+    if (sel &lt; 0) sel = 2;
+    ListBox-&gt;setSelected(sel);
+   
+    // 根据用户在列表单中的选择设置不同的材质
+    setMaterial();
+   }
+
+   return false;
+}
+
+private:
+
+// 根据ListBox列表单设置房子Mesh的材质
+void setMaterial()
+{
+   video::E_MATERIAL_TYPE type = video::EMT_SOLID;
+
+   // 更改材质设置
+   switch(ListBox-&gt;getSelected())
+   {
+   case 0: type = video::EMT_SOLID;
+    break;
+   case 1: type = video::EMT_NORMAL_MAP_SOLID;
+    break;
+   case 2: type = video::EMT_PARALLAX_MAP_SOLID;
+    break;
+   }
+
+   Room-&gt;setMaterialType(type);
+
+   /*
+   我们先简单检测一下硬件是否能够完善的进行这种材质渲染方式。
+   如果材质不能够被100%正确显示，我们将汇报一个错误，然后使用差一级别的材质，
+   最少也要让用户知道使用这种法线映射或视差映射能使画面更加漂亮。
+   */
+   video::IMaterialRenderer* renderer = Driver-&gt;getMaterialRenderer(type);
+
+   // 当硬件不支持，则进行错误汇报。
+   if (!renderer || renderer-&gt;getRenderCapability() != 0)
+    ProblemText-&gt;setVisible(true);
+   else
+    ProblemText-&gt;setVisible(false);
+}
+
+private:
+
+gui::IGUIStaticText* ProblemText;
+gui::IGUIListBox* ListBox;
+
+scene::ISceneNode* Room;
+video::IVideoDriver* Driver;
+};
+
+
+/*
+现在我们创建一个Irr设备并且建立好场景
+*/
+int main()
+{
+// 让用户选择设备类型
+
+video::E_DRIVER_TYPE driverType = video::EDT_DIRECT3D9;
+
+printf(&quot;Please select the driver you want for this example:\n&quot;\
+   &quot; (a) Direct3D 9.0c\n (b) Direct3D 8.1\n (c) OpenGL 1.5\n&quot;\
+   &quot; (d) Software Renderer\n (e) Burning's Software Renderer\n&quot;\
+   &quot; (f) NullDevice\n (otherKey) exit\n\n&quot;);
+
+char i;
+std::cin &gt;&gt; i;
+
+switch(i)
+{
+   case 'a': driverType = video::EDT_DIRECT3D9;break;
+   case 'b': driverType = video::EDT_DIRECT3D8;break;
+   case 'c': driverType = video::EDT_OPENGL;   break;
+   case 'd': driverType = video::EDT_SOFTWARE; break;
+   case 'e': driverType = video::EDT_BURNINGSVIDEO;break;
+   case 'f': driverType = video::EDT_NULL;     break;
+   default: return 0;
+}
+
+// 创建设备
+
+IrrlichtDevice* device = createDevice(driverType, core::dimension2d&lt;s32&gt;(640, 480));
+
+if (device == 0)
+   return 1;
+
+
+/*
+在我们开始进行有趣的材质渲染设置之前，我们做一些简单的事情：
+1：存贮一些引擎重要部分的指针，（图形驱动器，场景管理器，GUI环境）。
+2：在窗口增加一个Irr引擎Logo
+3：增加一个用户控制FPS风格的摄象机
+*/  
+
+video::IVideoDriver* driver = device-&gt;getVideoDriver();
+scene::ISceneManager* smgr = device-&gt;getSceneManager();
+gui::IGUIEnvironment* env = device-&gt;getGUIEnvironment();
+
+driver-&gt;setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT, true);
+
+// 增加一个Irr的Logo
+env-&gt;addImage(driver-&gt;getTexture(&quot;../../media/irrlichtlogo2.png&quot;),
+   core::position2d&lt;s32&gt;(10,10));
+  
+// 增加摄象机
+scene::ICameraSceneNode* camera =
+   smgr-&gt;addCameraSceneNodeFPS(0,100.0f,300.0f);
+camera-&gt;setPosition(core::vector3df(-200,200,-200));
+
+// 屏蔽鼠标图标显示
+device-&gt;getCursorControl()-&gt;setVisible(false);
+
+
+/*
+因为我们希望整个场景看起来更加恐怖一些，所以我们增加一些雾。
+增加雾的方法是IVideoDriver::setFog()。通过这个函数你可以设置不同类型的雾。
+在本例中，我们使用象素雾，因为它更适合本例中的材质风格。
+请注意，你必须在每个你需要雾特效影响的场景节点中开启雾特效，默认的它是为关闭的。
+*/
+driver-&gt;setFog(video::SColor(0,138,125,81), true, 250, 1000, 0, true);
+
+/*
+我们读取一个a.3ds文件中的Mesh，那是我使用Anim8or软件建立的一个房子模型。
+和SpecialFX那个例子中的模型是一样的，哈哈，你可能会想起那个例子吧，
+我不是一个优秀的模型设计师，所以我简单的把这个模型加了个糟糕的纹理，
+但是我可以使用IMeshManipulator::makePlanarTextureMapping()这个函数把
+纹理变的漂亮起来。
+*/
+
+scene::IAnimatedMesh* roomMesh = smgr-&gt;getMesh(
+   &quot;../../media/room.3ds&quot;);
+scene::ISceneNode* room = 0;
+
+if (roomMesh)
+{
+   smgr-&gt;getMeshManipulator()-&gt;makePlanarTextureMapping(
+     roomMesh-&gt;getMesh(0), 0.003f);
+
+   /*
+   现在开始我们的第一个有意思的事情：如果我顺利的读取模型Mesh，我们现在就为它
+   增加一个纹理。因为我想房子看起来更加真实，所以我们需要为纹理材质做一点事情。
+   不同于往常简单的读取一个彩色纹理那么简单，我们读取一个灰白高度图。
+  
+   这个高度图使用图象设备的makeNormalMapTexture()函数去创建成法线图。第二个参数
+   是说明高度图中的图素高度差，如果你把这个值设置大一些的话，你看墙壁会更有凹凸感。
+
+   除了法线图外，再为房子贴上一层普通的纹理图就可以了。
+   */  
+
+   video::ITexture* colorMap = driver-&gt;getTexture(&quot;../../media/rockwall.bmp&quot;);
+   video::ITexture* normalMap = driver-&gt;getTexture(&quot;../../media/rockwall_height.bmp&quot;);
+  
+   driver-&gt;makeNormalMapTexture(normalMap, 9.0f);
+
+   /*
+   但是仅仅设置了法线纹理和颜色纹理还是不够的。我们还需要对材质信息进行一些设置，
+   使每个顶点拥有切线信息。因为我们懒得去计算这些信息，所以我们让Irr帮我们来做这些工作。
+   这就是我为什么调用IMeshManipulator::createMeshWithTangents()这个函数的原因。
+   这个函数创建了一个Mesh的Copy，并为其计算了切线信息。
+   在做完这个之后，我们使用这个MeshCopy做了一个简单场景节点，设置它的颜色，纹理以及一些材质属性。
+   注意，我们这里设置了EMF_FOG_ENABLE为true,这样我们为房间开启了雾化效果。
+   */
+
+   scene::IMesh* tangentMesh = smgr-&gt;getMeshManipulator()-&gt;createMeshWithTangents(
+    roomMesh-&gt;getMesh(0));
+
+   room = smgr-&gt;addMeshSceneNode(tangentMesh);
+   room-&gt;setMaterialTexture(0, colorMap);
+   room-&gt;setMaterialTexture(1, normalMap);
+
+   room-&gt;getMaterial(0).SpecularColor.set(0,0,0,0);
+
+   room-&gt;setMaterialFlag(video::EMF_FOG_ENABLE, true);
+   room-&gt;setMaterialType(video::EMT_PARALLAX_MAP_SOLID);
+   // 调整视差特效的高度
+   room-&gt;getMaterial(0).MaterialTypeParam = 0.035f;
+
+   // 因为这个Mesh是我们创建的Copy版，之后我们也用不到，所以我们要删除它。
+   tangentMesh-&gt;drop();
+}
+
+/*
+在我们为房间增加了一个逐象素光照（法线映射和视差映射）效果之后，我们在其中
+设置了一个圆球体，并为其设置了相同的材质，但是我们设置它为半透明的。
+另外，为了使圆球看起来更象我们的地球，我们让旋转起来。
+这些程序和我们之前的程序差不多，不同的是我们读取的mesh文件中已经包含了颜色纹理，
+所以我们没必要再设置它的颜色纹理了。但是因为这个球体有点小了，所以我们把它放大一些。
+*/
+
+// 增加一个地球球体。
+
+scene::IAnimatedMesh* earthMesh = smgr-&gt;getMesh(&quot;../../media/earth.x&quot;);
+if (earthMesh)
+{
+   // 获取Mesh操控器，之后我们将使用它进行一些操作
+   scene::IMeshManipulator *manipulator = smgr-&gt;getMeshManipulator();
+
+   // 为Mesh创建一个带切线信息的Copy
+   scene::IMesh* tangentSphereMesh =
+    manipulator-&gt;createMeshWithTangents(earthMesh-&gt;getMesh(0));
+
+   // 设置Mesh所有顶点的Alpha透明度为80
+   manipulator-&gt;setVertexColorAlpha(tangentSphereMesh, 80);
+  
+   // 放大模型
+   core::matrix4 m;
+   m.setScale ( core::vector3df(50,50,50) );
+   manipulator-&gt;transformMesh( tangentSphereMesh, m );
+
+   scene::ISceneNode *sphere = smgr-&gt;addMeshSceneNode(tangentSphereMesh);
+
+   sphere-&gt;setPosition(core::vector3df(-70,130,45));
+
+   // 读取高度图，并用它生成法线图
+   video::ITexture* earthNormalMap = driver-&gt;getTexture(&quot;../../media/earthbump.bmp&quot;);
+   driver-&gt;makeNormalMapTexture(earthNormalMap, 20.0f);
+   sphere-&gt;setMaterialTexture(1, earthNormalMap);
+
+   // 调整材质的属性
+   sphere-&gt;setMaterialFlag(video::EMF_FOG_ENABLE, true);
+   sphere-&gt;setMaterialType(video::EMT_NORMAL_MAP_TRANSPARENT_VERTEX_ALPHA);
+
+   // 增加一个旋转控制器
+   scene::ISceneNodeAnimator* anim =
+    smgr-&gt;createRotationAnimator(core::vector3df(0,0.1f,0));
+   sphere-&gt;addAnimator(anim);
+   anim-&gt;drop();
+
+   // 删除Mesh的Copy
+   tangentSphereMesh-&gt;drop();
+}
+
+/*
+逐象素光照材质只有在移动的灯光效果下才会看起来很真实很酷，所以我们添加一些移动的光源。
+但是因为仅仅有移动光源的话，看起来会很让人困惑郁闷，所以我们为每个光源添加一个公告版，
+来告诉用户我们的光源位置。另外，我还为其中一个光源设置了一个完整的粒子系统，让它看起来象有尾巴一样。
+
+好，我们开始设置第一个光照，我们设置它为红色，而且不加粒子特效。
+*/
+
+// 添加第一个光照（接近红色）
+scene::ILightSceneNode* light1 =
+   smgr-&gt;addLightSceneNode(0, core::vector3df(0,0,0),
+   video::SColorf(0.5f, 1.0f, 0.5f, 0.0f), 200.0f);
+
+
+// 为其增加一个飞行控制器
+scene::ISceneNodeAnimator* anim =
+   smgr-&gt;createFlyCircleAnimator (core::vector3df(50,300,0),190.0f, -0.003f);
+light1-&gt;addAnimator(anim);
+anim-&gt;drop();
+
+// 再为其设置一个公告板
+scene::ISceneNode* bill =
+   smgr-&gt;addBillboardSceneNode(light1, core::dimension2d&lt;f32&gt;(60, 60));
+
+bill-&gt;setMaterialFlag(video::EMF_LIGHTING, false);
+bill-&gt;setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+bill-&gt;setMaterialTexture(0, driver-&gt;getTexture(&quot;../../media/particlered.bmp&quot;));
+
+/*
+一样的，我们设置另一个光照，不同的是，我们需要对它添加一个粒子系统。
+因为光源是移动的，粒子系统需要对其进行跟随。如果想知道粒子系统如何使用，请看一下
+SpecialFx的例子。
+或许你会发现，我们仅仅添加了两个灯光，我们这么简单处理的原因是：在低版本的ps1.1和vs1.1
+硬件环境下，不允许我们使用更多的灯光。当然，你可以为场景再增加一个灯光，但是它就不会参加
+对墙壁阴影的计算。当然，在更高级的Pixel/Vertex Shader中这个问题将会改善解决。
+*/
+
+// 增加2号灯光（灰色）
+scene::ISceneNode* light2 =
+   smgr-&gt;addLightSceneNode(0, core::vector3df(0,0,0),
+   video::SColorf(1.0f, 0.2f, 0.2f, 0.0f), 200.0f);
+
+// 为2号灯光设置一个飞行控制器
+anim = smgr-&gt;createFlyCircleAnimator (core::vector3df(0,150,0),200.0f, 0.001f, core::vector3df ( 0.2f, 0.9f, 0.f ));
+light2-&gt;addAnimator(anim);
+anim-&gt;drop();
+
+// 为灯光绑定一个公告版
+bill = smgr-&gt;addBillboardSceneNode(light2, core::dimension2d&lt;f32&gt;(120, 120));
+bill-&gt;setMaterialFlag(video::EMF_LIGHTING, false);
+bill-&gt;setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+bill-&gt;setMaterialTexture(0, driver-&gt;getTexture(&quot;../../media/particlewhite.bmp&quot;));
+
+// 增加一个粒子系统场景节点
+scene::IParticleSystemSceneNode* ps =
+   smgr-&gt;addParticleSystemSceneNode(false, light2);
+
+ps-&gt;setParticleSize(core::dimension2d&lt;f32&gt;(30.0f, 40.0f));
+
+// 设置粒子发射器
+scene::IParticleEmitter* em = ps-&gt;createBoxEmitter(
+   core::aabbox3d&lt;f32&gt;(-3,0,-3,3,1,3),
+   core::vector3df(0.0f,0.03f,0.0f),
+   80,100,
+   video::SColor(0,255,255,255), video::SColor(0,255,255,255),
+   400,1100);
+ps-&gt;setEmitter(em);
+em-&gt;drop();
+
+// 为粒子系统节点设置一个淡出特效器
+scene::IParticleAffector* paf = ps-&gt;createFadeOutParticleAffector();
+ps-&gt;addAffector(paf);
+paf-&gt;drop();
+
+// 调整一些材质的设置
+ps-&gt;setMaterialFlag(video::EMF_LIGHTING, false);
+ps-&gt;setMaterialTexture(0, driver-&gt;getTexture(&quot;../../media/fireball.bmp&quot;));
+ps-&gt;setMaterialType(video::EMT_TRANSPARENT_VERTEX_ALPHA);
+
+
+MyEventReceiver receiver(room, env, driver);
+device-&gt;setEventReceiver(&amp;receiver);
+
+/*
+最后，绘制一切，这样就完成了。
+*/
+
+int lastFPS = -1;
+
+while(device-&gt;run())
+if (device-&gt;isWindowActive())
+{
+   driver-&gt;beginScene(true, true, 0);
+
+   smgr-&gt;drawAll();
+   env-&gt;drawAll();
+
+   driver-&gt;endScene();
+
+   int fps = driver-&gt;getFPS();
+
+   if (lastFPS != fps)
+   {
+    core::stringw str = L&quot;Per pixel lighting example - Irrlicht Engine [&quot;;
+    str += driver-&gt;getName();
+    str += &quot;] FPS:&quot;;
+    str += fps;
+
+    device-&gt;setWindowCaption(str.c_str());
+    lastFPS = fps;
+   }
+}
+
+device-&gt;drop();
+
+return 0;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8B10.shaders/" data-tooltip="irrlicht之10.Shaders">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/%E6%9C%88%E8%AE%B0200711/" data-tooltip="月记200711">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8B11.perpixellighting/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8B10.shaders/" data-tooltip="irrlicht之10.Shaders">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/%E6%9C%88%E8%AE%B0200711/" data-tooltip="月记200711">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8B11.perpixellighting/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F12%2Firrlicht%25E4%25B9%258B11.perpixellighting%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/12\/irrlicht%E4%B9%8B11.perpixellighting\/';
+          
+            this.page.identifier = '\/2007\/12\/irrlicht%E4%B9%8B11.perpixellighting\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

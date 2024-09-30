@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2008 on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/2008/</link>
+    <description>Recent content in 2008 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 30 Nov 2008 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/2008/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>月记200811</title>
+      <link>https://duzhi5368.github.io/2008/11/%E6%9C%88%E8%AE%B0200811/</link>
+      <pubDate>Sun, 30 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/%E6%9C%88%E8%AE%B0200811/</guid>
+      <description>&lt;p&gt;2008年11月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ACE网络库分析</title>
+      <link>https://duzhi5368.github.io/2008/11/ace%E7%BD%91%E7%BB%9C%E5%BA%93%E5%88%86%E6%9E%90/</link>
+      <pubDate>Thu, 27 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/ace%E7%BD%91%E7%BB%9C%E5%BA%93%E5%88%86%E6%9E%90/</guid>
+      <description>&lt;p&gt;ACE是个功能强大的网络库，我们现在使用的是Ace5.3.0b版本做为网络通讯底层的，在不修改ACE原有代码的原则上，在其上封装了一个中间层，下面是实现的大致原理和过程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2D几何</title>
+      <link>https://duzhi5368.github.io/2008/11/2d%E5%87%A0%E4%BD%95/</link>
+      <pubDate>Fri, 21 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/2d%E5%87%A0%E4%BD%95/</guid>
+      <description>&lt;p&gt;仅适用于2D面的几何判断，在游戏程序的渲染，鼠标拣选，UI，逻辑判断以及2D物理方面有些用处。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>悼念伟大的KID之死两周年</title>
+      <link>https://duzhi5368.github.io/2008/11/%E6%82%BC%E5%BF%B5%E4%BC%9F%E5%A4%A7%E7%9A%84kid%E4%B9%8B%E6%AD%BB%E4%B8%A4%E5%91%A8%E5%B9%B4/</link>
+      <pubDate>Tue, 18 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/%E6%82%BC%E5%BF%B5%E4%BC%9F%E5%A4%A7%E7%9A%84kid%E4%B9%8B%E6%AD%BB%E4%B8%A4%E5%91%A8%E5%B9%B4/</guid>
+      <description>&lt;p&gt;2006年11月30日，全年龄GalGame王座KID宣布倒闭。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;偏门怪字记录_静态构造_写入注册表</title>
+      <link>https://duzhi5368.github.io/2008/11/c--%E5%81%8F%E9%97%A8%E6%80%AA%E5%AD%97%E8%AE%B0%E5%BD%95_%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0_%E5%86%99%E5%85%A5%E6%B3%A8%E5%86%8C%E8%A1%A8/</link>
+      <pubDate>Mon, 17 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/c--%E5%81%8F%E9%97%A8%E6%80%AA%E5%AD%97%E8%AE%B0%E5%BD%95_%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0_%E5%86%99%E5%85%A5%E6%B3%A8%E5%86%8C%E8%A1%A8/</guid>
+      <description>&lt;p&gt;一些CPP的偏门怪字记录_静态构造_写入注册表&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>《道德经》乱译</title>
+      <link>https://duzhi5368.github.io/2008/11/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B9%B1%E8%AF%91/</link>
+      <pubDate>Thu, 06 Nov 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/11/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B9%B1%E8%AF%91/</guid>
+      <description>&lt;p&gt;注：文是自编改后默写，译为自加，请勿学习研究，否则后果自负。作者不对本文负任何责任。未经作者许可，严禁转载。&lt;/p&gt;
+
+&lt;p&gt;PS：持续听着 初音未来 的甩葱歌中……循环再循环……&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200810</title>
+      <link>https://duzhi5368.github.io/2008/10/%E6%9C%88%E8%AE%B0200810/</link>
+      <pubDate>Thu, 30 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/10/%E6%9C%88%E8%AE%B0200810/</guid>
+      <description>&lt;p&gt;2008年10月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>整理的一些策划的东西</title>
+      <link>https://duzhi5368.github.io/2008/10/%E6%95%B4%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%96%E5%88%92%E7%9A%84%E4%B8%9C%E8%A5%BF/</link>
+      <pubDate>Wed, 29 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/10/%E6%95%B4%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AD%96%E5%88%92%E7%9A%84%E4%B8%9C%E8%A5%BF/</guid>
+      <description>&lt;p&gt;哈,很喜欢D&amp;amp;D,但是也没有十分系统的整理和学习过，更多的是靠自己玩游戏的直觉吧。所以，写了下面这些东西，勉强算是怪物卡？嘛，慢慢来，之后对武器防具，编年史，人物传这些慢慢补充吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>魔力宝贝2外挂功能已大部分实现如下……</title>
+      <link>https://duzhi5368.github.io/2008/10/%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D2%E5%A4%96%E6%8C%82%E5%8A%9F%E8%83%BD%E5%B7%B2%E5%A4%A7%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B/</link>
+      <pubDate>Sun, 26 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/10/%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D2%E5%A4%96%E6%8C%82%E5%8A%9F%E8%83%BD%E5%B7%B2%E5%A4%A7%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0%E5%A6%82%E4%B8%8B/</guid>
+      <description>&lt;p&gt;做了个魔力宝贝2的外挂。客户端脱壳完毕，寻路基址Call，已经找到。消息加密和分析已完成，与之前内测时记录数据一致。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单的智能指针</title>
+      <link>https://duzhi5368.github.io/2008/10/%E7%AE%80%E5%8D%95%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</link>
+      <pubDate>Fri, 17 Oct 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/10/%E7%AE%80%E5%8D%95%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</guid>
+      <description>&lt;p&gt;TO 蕾：实际上智能指针，不定参，模板这些东西没有你想象中的那么难……简化一下是否清晰很多：）一起慢慢加油吧。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200809</title>
+      <link>https://duzhi5368.github.io/2008/09/%E6%9C%88%E8%AE%B0200809/</link>
+      <pubDate>Tue, 30 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/09/%E6%9C%88%E8%AE%B0200809/</guid>
+      <description>&lt;p&gt;2008年9月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>优化3D图形流水线</title>
+      <link>https://duzhi5368.github.io/2008/09/%E4%BC%98%E5%8C%963d%E5%9B%BE%E5%BD%A2%E6%B5%81%E6%B0%B4%E7%BA%BF/</link>
+      <pubDate>Thu, 25 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/09/%E4%BC%98%E5%8C%963d%E5%9B%BE%E5%BD%A2%E6%B5%81%E6%B0%B4%E7%BA%BF/</guid>
+      <description>&lt;p&gt;在使用NVIDIA PerfHUD 5 Launcher的时候，明显发现现在的CPU时间和GPU时间不均衡，于是考虑优化。
+下面是参考NVIDIA的OGP开始总结。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CPP的字符转换函数</title>
+      <link>https://duzhi5368.github.io/2008/09/cpp%E7%9A%84%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Thu, 11 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/09/cpp%E7%9A%84%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0/</guid>
+      <description>&lt;p&gt;wchar_t&lt;em&gt;,wchar_t,wchat_t数组,char,char&lt;/em&gt;,char数组,std::string,std::wstring,CString&amp;hellip;.PK&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Irrlicht不定期分析</title>
+      <link>https://duzhi5368.github.io/2008/09/irrlicht%E4%B8%8D%E5%AE%9A%E6%9C%9F%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 01 Sep 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/09/irrlicht%E4%B8%8D%E5%AE%9A%E6%9C%9F%E5%88%86%E6%9E%90/</guid>
+      <description>&lt;p&gt;仔细背诵日语的三小时中，时间过的很慢，效率异常之高，学了不少东西，很高兴，拿Irrlicht放松放松。好久没看它了：）&lt;/p&gt;
+
+&lt;p&gt;Irrlicht最核心的部分就是Device以及其下几个管理器。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200808</title>
+      <link>https://duzhi5368.github.io/2008/08/%E6%9C%88%E8%AE%B0200808/</link>
+      <pubDate>Sat, 30 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/08/%E6%9C%88%E8%AE%B0200808/</guid>
+      <description>&lt;p&gt;2008年8月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>剑道有感</title>
+      <link>https://duzhi5368.github.io/2008/08/%E5%89%91%E9%81%93%E6%9C%89%E6%84%9F/</link>
+      <pubDate>Sun, 24 Aug 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/08/%E5%89%91%E9%81%93%E6%9C%89%E6%84%9F/</guid>
+      <description>&lt;p&gt;真是糟糕的一天呢，刚搬新家第一天，还没整理房间呢，就把新房子的钥匙弄丢了 T T 老房间也进不去，索性到网吧继续蹲。。。。再高级的打工仔还是打工仔，连自己的房子都没有，完全没有存在感呢。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]很喜欢《棋魂》的GetOver</title>
+      <link>https://duzhi5368.github.io/2008/07/%E8%BD%AC%E5%BE%88%E5%96%9C%E6%AC%A2%E6%A3%8B%E9%AD%82%E7%9A%84getover/</link>
+      <pubDate>Thu, 31 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/07/%E8%BD%AC%E5%BE%88%E5%96%9C%E6%AC%A2%E6%A3%8B%E9%AD%82%E7%9A%84getover/</guid>
+      <description>&lt;p&gt;《棋魂》的主题曲GetOver歌词真赞&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200807</title>
+      <link>https://duzhi5368.github.io/2008/07/%E6%9C%88%E8%AE%B0200807/</link>
+      <pubDate>Wed, 30 Jul 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/07/%E6%9C%88%E8%AE%B0200807/</guid>
+      <description>&lt;p&gt;2008年7月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200806</title>
+      <link>https://duzhi5368.github.io/2008/06/%E6%9C%88%E8%AE%B0200806/</link>
+      <pubDate>Mon, 30 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/06/%E6%9C%88%E8%AE%B0200806/</guid>
+      <description>&lt;p&gt;2008年6月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]剑道初心之中段击面自我审核表</title>
+      <link>https://duzhi5368.github.io/2008/06/%E8%BD%AC%E5%89%91%E9%81%93%E5%88%9D%E5%BF%83%E4%B9%8B%E4%B8%AD%E6%AE%B5%E5%87%BB%E9%9D%A2%E8%87%AA%E6%88%91%E5%AE%A1%E6%A0%B8%E8%A1%A8/</link>
+      <pubDate>Wed, 25 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/06/%E8%BD%AC%E5%89%91%E9%81%93%E5%88%9D%E5%BF%83%E4%B9%8B%E4%B8%AD%E6%AE%B5%E5%87%BB%E9%9D%A2%E8%87%AA%E6%88%91%E5%AE%A1%E6%A0%B8%E8%A1%A8/</guid>
+      <description>&lt;p&gt;下面是剑道练习的一些要点&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>小议游戏场景管理设计</title>
+      <link>https://duzhi5368.github.io/2008/06/%E5%B0%8F%E8%AE%AE%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Thu, 12 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/06/%E5%B0%8F%E8%AE%AE%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E7%AE%A1%E7%90%86%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;本文主要讨论了游戏，特别是2D SLG和AVG类游戏的场景管理设计，包括场景对象、引用计数、对象继承和场景管理的几个关键方面。通过引入COM机制的IUnknown基类来管理对象的生命周期，以及利用场景层级关系、对象容器和格子管理器来优化游戏逻辑。文章强调了灵活的设计和组件模式的重要性，以应对不断变化的游戏需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>WinCVS中文版下载以及使用完全手册</title>
+      <link>https://duzhi5368.github.io/2008/06/wincvs%E4%B8%AD%E6%96%87%E7%89%88%E4%B8%8B%E8%BD%BD%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E5%85%A8%E6%89%8B%E5%86%8C/</link>
+      <pubDate>Tue, 03 Jun 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/06/wincvs%E4%B8%AD%E6%96%87%E7%89%88%E4%B8%8B%E8%BD%BD%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%AE%8C%E5%85%A8%E6%89%8B%E5%86%8C/</guid>
+      <description>&lt;p&gt;最近查找一些日本代码资料,发现在日本非常流行使用CVS,实际上,个人更倾向于使用SVN,虽然在这家公司也尝试用了用VSS,依旧感觉SVN更舒服些: )嘛,可能更多感情色彩吧,本文计划说明的是WinCVS的使用,所以不废话了.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200805</title>
+      <link>https://duzhi5368.github.io/2008/05/%E6%9C%88%E8%AE%B0200805/</link>
+      <pubDate>Fri, 30 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/%E6%9C%88%E8%AE%B0200805/</guid>
+      <description>&lt;p&gt;2008年5月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]日本旅游预备信息</title>
+      <link>https://duzhi5368.github.io/2008/05/%E8%BD%AC%E6%97%A5%E6%9C%AC%E6%97%85%E6%B8%B8%E9%A2%84%E5%A4%87%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Thu, 29 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/%E8%BD%AC%E6%97%A5%E6%9C%AC%E6%97%85%E6%B8%B8%E9%A2%84%E5%A4%87%E4%BF%A1%E6%81%AF/</guid>
+      <description>&lt;p&gt;某志的华丽的粗略旅游安排Version1.0&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]赴日准备信息</title>
+      <link>https://duzhi5368.github.io/2008/05/%E8%BD%AC%E8%B5%B4%E6%97%A5%E5%87%86%E5%A4%87%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Wed, 28 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/%E8%BD%AC%E8%B5%B4%E6%97%A5%E5%87%86%E5%A4%87%E4%BF%A1%E6%81%AF/</guid>
+      <description>&lt;p&gt;准备去日本工作，当时记录的一些日本生活注意事项。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ogre第三人称摄象机系统例子</title>
+      <link>https://duzhi5368.github.io/2008/05/ogre%E7%AC%AC%E4%B8%89%E4%BA%BA%E7%A7%B0%E6%91%84%E8%B1%A1%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%BE%8B%E5%AD%90/</link>
+      <pubDate>Wed, 14 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/ogre%E7%AC%AC%E4%B8%89%E4%BA%BA%E7%A7%B0%E6%91%84%E8%B1%A1%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%BE%8B%E5%AD%90/</guid>
+      <description>&lt;p&gt;Ogre是一款优秀的3D图形渲染引擎，在国内，很多前辈从04年甚至更早就对它有了深入的了解，并留了许多译文和心得，极大的便利了我的学习。虽然我起步比较晚，但仍希望自己学习间的这些记录和翻译能够帮助到他人，如您对Ogre有所心得和资料，望提供至Ogre中文Wiki &lt;a href=&#34;http://ogre3d.cn/wiki&#34;&gt;http://ogre3d.cn/wiki&lt;/a&gt; 中大家共享交流。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>读书笔记《BeYourPersonalBest》</title>
+      <link>https://duzhi5368.github.io/2008/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0beyourpersonalbest/</link>
+      <pubDate>Tue, 13 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0beyourpersonalbest/</guid>
+      <description>&lt;p&gt;这本书翻译成中文意思是《做最好的自己》，我非常喜欢这本书。&lt;/p&gt;
+
+&lt;p&gt;大概是个人很重视素质修养人品这种东西的缘故，工作之前就买了不少这类书籍来看，包括我所喜爱的动漫，小说大部分也都有很浓厚的这种教育励志味道。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序泛型相关说明</title>
+      <link>https://duzhi5368.github.io/2008/05/%E7%A8%8B%E5%BA%8F%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Mon, 12 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/%E7%A8%8B%E5%BA%8F%E6%B3%9B%E5%9E%8B%E7%9B%B8%E5%85%B3%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;今天将音频的部分代码给同事,希望获得意见,结果他指出代码中有一块完全无法理解.&lt;/p&gt;
+
+&lt;p&gt;个人觉得这块的确值得说明一下,对于学习C++,STL,Boost的朋友都会有些好处吧.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ogre音频库设计思路</title>
+      <link>https://duzhi5368.github.io/2008/05/ogre%E9%9F%B3%E9%A2%91%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Thu, 08 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/ogre%E9%9F%B3%E9%A2%91%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF/</guid>
+      <description>&lt;p&gt;Ogre音频部分设计思路&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ogre命令行工具包使用说明</title>
+      <link>https://duzhi5368.github.io/2008/05/ogre%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%8C%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</link>
+      <pubDate>Tue, 06 May 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/05/ogre%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E5%8C%85%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/</guid>
+      <description>&lt;p&gt;这个工具包包含了一些对Ogre资源文件进行操作的预处理命令行工具。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200804</title>
+      <link>https://duzhi5368.github.io/2008/04/%E6%9C%88%E8%AE%B0200804/</link>
+      <pubDate>Wed, 30 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E6%9C%88%E8%AE%B0200804/</guid>
+      <description>&lt;p&gt;2008年4月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>在MSN的佳缘交友做题结果</title>
+      <link>https://duzhi5368.github.io/2008/04/%E5%9C%A8msn%E7%9A%84%E4%BD%B3%E7%BC%98%E4%BA%A4%E5%8F%8B%E5%81%9A%E9%A2%98%E7%BB%93%E6%9E%9C/</link>
+      <pubDate>Thu, 24 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E5%9C%A8msn%E7%9A%84%E4%BD%B3%E7%BC%98%E4%BA%A4%E5%8F%8B%E5%81%9A%E9%A2%98%E7%BB%93%E6%9E%9C/</guid>
+      <description>&lt;p&gt;一口气在MSN的佳缘交友做了70道题&amp;hellip;.累..累死了&amp;hellip;结果是这样滴,个人觉得还算准确吧&amp;hellip;- - 呃,我怎么也开始相信算命的了.&lt;/p&gt;
+
+&lt;p&gt;有兴趣的可以去&lt;a href=&#34;http://www.jiayuan.com/ques&#34;&gt;http://www.jiayuan.com/ques&lt;/a&gt; 这里测测看.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BCB图表绘制工具代码</title>
+      <link>https://duzhi5368.github.io/2008/04/bcb%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Wed, 23 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/bcb%E5%9B%BE%E8%A1%A8%E7%BB%98%E5%88%B6%E5%B7%A5%E5%85%B7%E4%BB%A3%E7%A0%81/</guid>
+      <description>&lt;p&gt;BCB 图表绘制工具代码&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏开发中常用的设计模式</title>
+      <link>https://duzhi5368.github.io/2008/04/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Tue, 22 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>&lt;p&gt;使用设计模式来提高程序库的重复利用性是大型程序项目开发必须的。但是在“四人帮”的设计模式概述中提到了23种标准设计模式，不但难以记住，而且有些设计模式更多的适用于应用程序开发，对游戏项目引擎设计并没有很多的利用价值。根据经验，精挑细选后，笃志在这里记录一些自认为有利用价值的设计模式，以便之后自己设计时使用。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ogre学习记录</title>
+      <link>https://duzhi5368.github.io/2008/04/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Mon, 21 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;本文详细记录了学习Ogre 3D渲染引擎的过程，涵盖了从基本的场景管理、网格加载到复杂的材质编辑、脚本应用等方面。通过实例探讨了如何使用Ogre创建动态边框效果，并深入研究了汇编级别的图形优化，同时讨论了滚动视图的实现技巧。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>恶心的VS2005</title>
+      <link>https://duzhi5368.github.io/2008/04/%E6%81%B6%E5%BF%83%E7%9A%84vs2005/</link>
+      <pubDate>Mon, 21 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E6%81%B6%E5%BF%83%E7%9A%84vs2005/</guid>
+      <description>&lt;p&gt;用VC2003一直很爽,到新公司要用2005,早听说其检查严格,没想到,完全是没事找事型的编译器.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序中进行命令行处理</title>
+      <link>https://duzhi5368.github.io/2008/04/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%84%E7%90%86/</link>
+      <pubDate>Sat, 19 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E7%A8%8B%E5%BA%8F%E4%B8%AD%E8%BF%9B%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%A4%84%E7%90%86/</guid>
+      <description>&lt;p&gt;程序中进行命令行处理,同时修改了控制台默认的输入输出管道,并将控制台隐藏. 本文以BCB6做为例子,调用了一个Win32API CreateProcess(),比较简单,不明白的部分可以在日志下提出. 通过本文加以上一篇的.bat说明,我们可以进行可视化的批量编译.免去了开启大量VC项目一一编译的痛苦.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>大型项目批处理编译</title>
+      <link>https://duzhi5368.github.io/2008/04/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%89%B9%E5%A4%84%E7%90%86%E7%BC%96%E8%AF%91/</link>
+      <pubDate>Fri, 18 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E6%89%B9%E5%A4%84%E7%90%86%E7%BC%96%E8%AF%91/</guid>
+      <description>&lt;p&gt;看懂的就看吧,看不懂的我也不解释了.&lt;/p&gt;
+
+&lt;p&gt;这里留一份以后好抄.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]标准键盘VK虚拟键值表</title>
+      <link>https://duzhi5368.github.io/2008/04/%E8%BD%AC%E6%A0%87%E5%87%86%E9%94%AE%E7%9B%98vk%E8%99%9A%E6%8B%9F%E9%94%AE%E5%80%BC%E8%A1%A8/</link>
+      <pubDate>Wed, 16 Apr 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/04/%E8%BD%AC%E6%A0%87%E5%87%86%E9%94%AE%E7%9B%98vk%E8%99%9A%E6%8B%9F%E9%94%AE%E5%80%BC%E8%A1%A8/</guid>
+      <description>&lt;p&gt;键盘VK值列表.资料性质保留,省得以后查找.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200803</title>
+      <link>https://duzhi5368.github.io/2008/03/%E6%9C%88%E8%AE%B0200803/</link>
+      <pubDate>Sun, 30 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/03/%E6%9C%88%E8%AE%B0200803/</guid>
+      <description>&lt;p&gt;2008年3月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>程序设计10个小技巧</title>
+      <link>https://duzhi5368.github.io/2008/03/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A110%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Thu, 27 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/03/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A110%E4%B8%AA%E5%B0%8F%E6%8A%80%E5%B7%A7/</guid>
+      <description>&lt;p&gt;一些程序实用的小技巧&lt;/p&gt;
+
+&lt;p&gt;Author: 自由骑士Duzhi&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>软件开发程序之进阶</title>
+      <link>https://duzhi5368.github.io/2008/03/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%BF%9B%E9%98%B6/</link>
+      <pubDate>Sun, 16 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/03/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E7%A8%8B%E5%BA%8F%E4%B9%8B%E8%BF%9B%E9%98%B6/</guid>
+      <description>&lt;p&gt;做程序也有不少时间了,一直感觉自己能力驻足不前,分析又分析,得到此文.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>3D眩酷技巧</title>
+      <link>https://duzhi5368.github.io/2008/03/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Tue, 11 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/03/3d%E7%9C%A9%E9%85%B7%E6%8A%80%E5%B7%A7/</guid>
+      <description>&lt;p&gt;一些常见的3D渲染技巧&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络游戏程序员新手入门</title>
+      <link>https://duzhi5368.github.io/2008/03/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Tue, 11 Mar 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/03/%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E6%96%B0%E6%89%8B%E5%85%A5%E9%97%A8/</guid>
+      <description>&lt;p&gt;本是为公司新人准备的一个培训稿,因为也没有什么商业秘密可言,索性放到这里,为一些希望进入游戏程序开发行业的朋友提供一些信息吧.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200802</title>
+      <link>https://duzhi5368.github.io/2008/02/%E6%9C%88%E8%AE%B0200802/</link>
+      <pubDate>Wed, 27 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/02/%E6%9C%88%E8%AE%B0200802/</guid>
+      <description>&lt;p&gt;2008年2月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>久违!魔力宝贝</title>
+      <link>https://duzhi5368.github.io/2008/02/%E4%B9%85%E8%BF%9D%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D/</link>
+      <pubDate>Fri, 01 Feb 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/02/%E4%B9%85%E8%BF%9D%E9%AD%94%E5%8A%9B%E5%AE%9D%E8%B4%9D/</guid>
+      <description>&lt;p&gt;久游获得《魔力宝贝2》大陆运营权&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记200801</title>
+      <link>https://duzhi5368.github.io/2008/01/%E6%9C%88%E8%AE%B0200801/</link>
+      <pubDate>Wed, 30 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/01/%E6%9C%88%E8%AE%B0200801/</guid>
+      <description>&lt;p&gt;2008年1月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>游戏服务器引擎设计</title>
+      <link>https://duzhi5368.github.io/2008/01/%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sat, 26 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/01/%E6%B8%B8%E6%88%8F%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/</guid>
+      <description>&lt;p&gt;当前网络游戏服务器设计分类和特点&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>D3D入门---基本构架篇</title>
+      <link>https://duzhi5368.github.io/2008/01/d3d%E5%85%A5%E9%97%A8---%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%9E%B6%E7%AF%87/</link>
+      <pubDate>Wed, 23 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/01/d3d%E5%85%A5%E9%97%A8---%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%9E%B6%E7%AF%87/</guid>
+      <description>&lt;p&gt;当自己是白痴啦,从初心者复习D3D&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>D3D入门---纹理混合,多流</title>
+      <link>https://duzhi5368.github.io/2008/01/d3d%E5%85%A5%E9%97%A8---%E7%BA%B9%E7%90%86%E6%B7%B7%E5%90%88%E5%A4%9A%E6%B5%81/</link>
+      <pubDate>Wed, 23 Jan 2008 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2008/01/d3d%E5%85%A5%E9%97%A8---%E7%BA%B9%E7%90%86%E6%B7%B7%E5%90%88%E5%A4%9A%E6%B5%81/</guid>
+      <description>&lt;p&gt;想使用D3D读入一个图片，我们需要做以下步骤。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>图片纹理格式转换和压缩代码</title>
+      <link>https://duzhi5368.github.io/2007/01/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Sat, 27 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/01/%E5%9B%BE%E7%89%87%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E5%92%8C%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81/</guid>
+      <description>&lt;p&gt;DXT5 DXT1 D3DFMT_A8R8G8B8 转换&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]诺达咨询2008手机网游报告--发展与竞争</title>
+      <link>https://duzhi5368.github.io/2006/01/%E8%BD%AC%E8%AF%BA%E8%BE%BE%E5%92%A8%E8%AF%A22008%E6%89%8B%E6%9C%BA%E7%BD%91%E6%B8%B8%E6%8A%A5%E5%91%8A--%E5%8F%91%E5%B1%95%E4%B8%8E%E7%AB%9E%E4%BA%89/</link>
+      <pubDate>Sun, 01 Jan 2006 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2006/01/%E8%BD%AC%E8%AF%BA%E8%BE%BE%E5%92%A8%E8%AF%A22008%E6%89%8B%E6%9C%BA%E7%BD%91%E6%B8%B8%E6%8A%A5%E5%91%8A--%E5%8F%91%E5%B1%95%E4%B8%8E%E7%AB%9E%E4%BA%89/</guid>
+      <description>&lt;p&gt;诺达咨询:手机网游市场收入与用户规模增长迅速&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

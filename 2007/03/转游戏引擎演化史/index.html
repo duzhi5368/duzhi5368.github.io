@@ -1,0 +1,831 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]游戏引擎演化史</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, 游戏引擎, 引擎发展史, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。
+
+">
+    <meta property="og:description" content="在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]游戏引擎演化史">
+    <meta property="og:url" content="/2007/03/%E8%BD%AC%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]游戏引擎演化史
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-03-05T00:00:00Z">
+        
+  三月 5, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>在阅读各种游戏介绍的时候我们常常会碰见“引擎”（Engine）这个单词，引擎在游戏中究竟起着什么样的作用？它的进化对于游戏的发展产生了哪些影响？希望下面这篇文章能为大家释疑。</p>
+
+<p></p>
+
+<h2 id="一-什么是引擎">一、什么是引擎</h2>
+
+<p>我们可以把游戏的引擎比作赛车的引擎，大家知道，引擎是赛车的心脏，决定着赛车的性能和稳定性，赛车的速度、操纵感这些直接与车手相关的指标都是建立在引擎的基础上的。游戏也是如此，玩家所体验到的剧情、关卡、美工、音乐、操作等内容都是由游戏的引擎直接控制的，它扮演着中场发动机的角色，把游戏中的所有元素捆绑在一起，在后台指挥它们同时、有序地工作。简单地说，引擎就是“用于控制所有游戏功能的主程序，从计算碰撞、物理系统和物体的相对位置，到接受玩家的输入，以及按照正确的音量输出声音等等。”</p>
+
+<p>可见，引擎并不是什么玄乎的东西，无论是2D游戏还是3D游戏，无论是角色扮演游戏、即时策略游戏、冒险解谜游戏或是动作射击游戏，哪怕是一个只有1兆的小游戏，都有这样一段起控制作用的代码。经过不断的进化，如今的游戏引擎已经发展为一套由多个子系统共同构成的复杂系统，从建模、动画到光影、粒子特效，从物理系统、碰撞检测到文件管理、网络特性，还有专业的编辑工具和插件，几乎涵盖了开发过程中的所有重要环节，以下就对引擎的一些关键部件作一个简单的介绍。</p>
+
+<p>首先是光影效果，即场景中的光源对处于其中的人和物的影响方式。游戏的光影效果完全是由引擎控制的，折射、反射等基本的光学原理以及动态光源、彩色光源等高级效果都是通过引擎的不同编程技术实现的。</p>
+
+<p>其次是动画，目前游戏所采用的动画系统可以分为两种：一是骨骼动画系统，一是模型动画系统，前者用内置的骨骼带动物体产生运动，比较常见，后者则是在模型的基础上直接进行变形。引擎把这两种动画系统预先植入游戏，方便动画师为角色设计丰富的动作造型。</p>
+
+<p>引擎的另一重要功能是提供物理系统，这可以使物体的运动遵循固定的规律，例如，当角色跳起的时候，系统内定的重力值将决定他能跳多高，以及他下落的速度有多快，子弹的飞行轨迹、车辆的颠簸方式也都是由物理系统决定的。</p>
+
+<p>碰撞探测是物理系统的核心部分，它可以探测游戏中各物体的物理边缘。当两个3D物体撞在一起的时候，这种技术可以防止它们相互穿过，这就确保了当你撞在墙上的时候，不会穿墙而过，也不会把墙撞倒，因为碰撞探测会根据你和墙之间的特性确定两者的位置和相互的作用关系。</p>
+
+<p>渲染是引擎最重要的功能之一，当3D模型制作完毕之后，美工会按照不同的面把材质贴图赋予模型，这相当于为骨骼蒙上皮肤，最后再通过渲染引擎把模型、动画、光影、特效等所有效果实时计算出来并展示在屏幕上。渲染引擎在引擎的所有部件当中是最复杂的，它的强大与否直接决定着最终的输出质量。</p>
+
+<p>引擎还有一个重要的职责就是负责玩家与电脑之间的沟通，处理来自键盘、鼠标、摇杆和其它外设的信号。如果游戏支持联网特性的话，网络代码也会被集成在引擎中，用于管理客户端与服务器之间的通信。</p>
+
+<p>通过上面这些枯燥的介绍我们至少可以了解到一点：引擎相当于游戏的框架，框架打好后，关卡设计师、建模师、动画师只要往里填充内容就可以了。因此，在3D游戏的开发过程中，引擎的制作往往会占用非常多的时间，《马科斯·佩恩》的MAX-FX引擎从最初的雏形Final Reality到最终的成品共花了四年多时间，LithTech引擎的开发共花了整整五年时间，耗资700万美元，Monolith公司（LithTech引擎的开发者）的老板詹森·霍尔甚至不无懊悔地说：“如果当初意识到制作自己的引擎要付出这么大的代价的话，我们根本就不可能去做这种傻事。没有人会预料得到五年后的市场究竟是怎样的。”</p>
+
+<p>正是出于节约成本、缩短周期和降低风险这三方面的考虑，越来越多的开发者倾向于使用第三方的现成引擎制作自己的游戏，一个庞大的引擎授权市场已经形成。</p>
+
+<h2 id="二-引擎的进化">二、引擎的进化</h2>
+
+<p>曾经有一段时期，游戏开发者关心的只是如何尽量多地开发出新的游戏并把它们推销给玩家。尽管那时的游戏大多简单粗糙，但每款游戏的平均开发周期也要达到8到10个月以上，这一方面是由于技术的原因，另一方面则是因为几乎每款游戏都要从头编写代码，造成了大量的重复劳动。渐渐地，一些有经验的开发者摸索出了一条偷懒的方法，他们借用上一款类似题材的游戏中的部分代码作为新游戏的基本框架，以节省开发时间和开发费用。根据马老先生的生产力学说，单位产品的成本因生产力水平的提高而降低，自动化程度较高的手工业者最终将把那些生产力低下的手工业者淘汰出局，引擎的概念就是在这种机器化作业的背景下诞生的。</p>
+
+<p>每一款游戏都有自己的引擎，但真正能获得他人认可并成为标准的引擎并不多。纵观九年多的发展历程，我们可以看出引擎最大的驱动力来自于3D游戏，尤其是3D射击游戏。尽管像Infinity这样的2D引擎也有着相当久远的历史，从《博德之门》（Baldur’s Gate）系列到《异域镇魂曲》（Planescape：Torment）、《冰风谷》（Icewind Dale）直至今年夏天将要发布的《冰风谷2》，但它的应用范围毕竟局限于“龙与地下城”风格的角色扮演游戏，包括颇受期待的《夜在绝冬城》（Neverwinter Nights）所使用的Aurora引擎，它们都有着十分特殊的使用目的，很难对整个引擎技术的发展起到推动作用，这也是为什么体育模拟游戏、飞行模拟游戏和即时策略游戏的引擎很少进入授权市场的原因，开发者即便使用第三方引擎也很难获得理想的效果，采用《帝国时代2》（Age of Empires）引擎制作的《星球大战：银河战场》（Star Wars：Galactic Battleground）就是一个最好的例子。</p>
+
+<p>因此，下面对引擎的历史回顾将主要围绕动作射击游戏的变迁展开，动作射击游戏同3D引擎之间的关系相当于一对孪生兄弟，它们一同诞生，一同成长，互相为对方提供着发展的动力。</p>
+
+<h3 id="引擎的诞生-1992年-1993年">引擎的诞生（1992年~1993年）</h3>
+
+<p>1992年，3D Realms公司/Apogee公司发布了一款只有2兆多的小游戏——《德军司令部》（Wolfenstein 3D），稍有资历的玩家可能都还记得初接触它时的兴奋心情，用“革命”这一极富煽动色彩的词语也无法形容出它在整个电脑游戏发展史上占据的重要地位。这部游戏开创了第一人称射击游戏的先河，更重要的是，它在X轴和Y轴的基础上增加了一根Z轴，在由宽度和高度构成的平面上增加了一个向前向后的纵深空间，这根Z轴对那些看惯了2D游戏的玩家造成的巨大冲击可想而知。</p>
+
+<p>Wolfenstein 3D引擎的作者是大名鼎鼎的约翰·卡马克，这位id Software公司的首席程序师正是凭借这款Wolfenstein 3D引擎在游戏圈里站稳了脚跟。事实上，《德军司令部》并非第一款采用第一人称视角的游戏，在它发售前的几个月，Origin公司就已经推出了一款第一人称视角的角色扮演游戏——《创世纪：地下世界》（Ultima Underworld），这款角游戏采用了类似的技术，但它与Wolfenstein 3D引擎之间有着相当大的差别，举例来说，《地下世界》的引擎支持斜坡，地板和天花板可以有不同的高度，分出不同的层次，玩家可以在游戏中跳跃，可以抬头低头，这些特性Wolfenstein 3D引擎都无法做到，而且从画面上看，《德军司令部》更接近漫画风格而不是传统的像素画面。</p>
+
+<p>尽管从技术细节上看，Wolfenstein 3D引擎比不上《创世纪：地下世界》的引擎，但它却更好地利用了第一人称视角的特点，快速火爆的游戏节奏使人们一下子记住了“第一人称射击游戏”这个单词，而不是“第一人称角色扮演游戏”。《德军司令部》后来还发布过一款名义上的续集——《三元的崛起》（Rise of the Triad），这款游戏在Wolfenstein 3D引擎的基础上增加了许多重要特性，包括跳跃和抬头低头等动作。</p>
+
+<p>引擎诞生初期的另一部重要游戏同样是出自id Software公司的一款非常成功的第一人称射击游戏——《毁灭战士》（Doom）。Doom引擎在技术上大大超越了Wolfenstein 3D引擎，《德军司令部》中的所有物体大小都是固定的，所有路径之间的角度都是直角，也就是说你只能笔直地前进或后退，这些局限在《毁灭战士》中都得到了突破。尽管游戏的关卡还是维持在2D平面上进行制作，没有“楼上楼”的概念，但墙壁的厚度可以为任意，并且路径之间的角度也可以为任意，这使得楼梯、升降平台、塔楼和户外等各种场景成为可能。</p>
+
+<p>由于Doom引擎本质上依然是二维的，因此可以做到同时在屏幕上显示大量角色而不影响游戏的运行速度，这一特点为游戏创造出了一种疯狂刺激的动作风格，在这方面迄今为止大约只有《英雄萨姆》（Serious Sam）系列能与之相比，除此之外还没有哪款3D引擎能在大批敌人向你涌来的时候依然保持游戏的流畅，这也是为什么如今市面上的大部分第一人称射击游戏都在积极地培养玩家的战术运用能力、提高玩家的射击准确率而拒绝滥砍滥杀的主要原因之一。值得一提的是，尽管Doom引擎缺乏足够的细节度，但开发者仍然在《毁灭战士》中表现出了惊人的环境效果，其纯熟的设计技巧实在令人赞叹。</p>
+
+<p>不过更值得纪念的是，Doom引擎是第一个被用于授权的引擎。1993年底，Raven公司采用改进后的Doom引擎开发了一款名为《投影者》（ShadowCaster）的游戏，这是游戏史上第一例成功的嫁接手术。1994年Raven公司采用Doom引擎开发《异教徒》（Heretic），为引擎增加了飞行的特性，成为跳跃动作的前身。1995年Raven公司采用Doom引擎开发《毁灭巫师》（Hexen），加入了新的音效技术、脚本技术以及一种类似集线器的关卡设计，使你可以在不同关卡之间自由移动。Raven公司与id Software公司之间的一系列合作充分说明了引擎的授权无论对于使用者还是开发者来说都是大有裨益的，只有把自己的引擎交给更多的人去使用才能使引擎不断地成熟起来。</p>
+
+<p>《毁灭战士》系列本身就相当成功，大约卖了350万套，而授权费又为id Software公司带来了一笔可观的收入。在此之前引擎只是作为一种自产自销的开发工具，从来没有哪家游戏商考虑过依靠引擎赚钱，Doom引擎的成功无疑为人们打开了一片新的市场。</p>
+
+<h3 id="引擎的转变-1994年-1997年">引擎的转变（1994年~1997年）</h3>
+
+<p>在引擎的进化过程中，肯·西尔弗曼于1994年为3D Realms公司开发的Build引擎是一个重要的里程碑，Build引擎的“肉身”就是那款家喻户晓的《毁灭公爵》（Duke Nukem 3D）。《毁灭公爵》已经具备了今天第一人称射击游戏的所有标准内容，如跳跃、360度环视以及下蹲和游泳等特性，此外还把《异教徒》里的飞行换成了喷气背包，甚至加入了角色缩小等令人耳目一新的内容。在Build引擎的基础上先后诞生过14款游戏，例如《农夫也疯狂》（Redneck Rampage）、《阴影武士》（Shadow Warrior）和《血兆》（Blood）等，还有台湾艾生资讯开发的《七侠五义》，这是当时（至今依然是）国内不多的几款3D射击游戏之一。Build引擎的授权业务大约为3D Realms公司带来了一百多万美元的额外收入，3D Realms公司也由此而成为了引擎授权市场上的第一个“暴发户”。不过从总体来看，Build引擎并没有为3D引擎的发展带来任何质的变化，突破的任务最终由id Software公司的《雷神之锤》（Quake）完成了。</p>
+
+<p>《雷神之锤》紧跟在《毁灭公爵》之后发售，两者孰优孰劣一时之间成为玩家的热门话题。从内容的精彩程度来看《毁灭公爵》超过《雷神之锤》不少，但从技术的先进与否来看，《雷神之锤》是毫无疑问的赢家。Quake引擎是当时第一款完全支持多边形模型、动画和粒子特效的真正意义上的3D引擎，而不是Doom、Build那样的2.5D引擎。此外Quake引擎还是连线游戏的始作俑者，尽管几年前的《毁灭战士》也能通过调制解调器连线对战，但最终把网络游戏带入大众的视野之中的是《雷神之锤》，是它促成了电子竞技产业的发展。</p>
+
+<p>一年之后，id Software公司推出《雷神之锤2》，一举确定了自己在3D引擎市场上的霸主地位。《雷神之锤2》采用了一套全新的引擎，可以更充分地利用3D加速和OpenGL技术，在图像和网络方面与前作相比有了质的飞跃，Raven公司的《异教徒2》（Heretic II）和《军事冒险家》（Soldier of Fortune）、Ritual公司的《原罪》（Sin）、Xatrix娱乐公司的《首脑：犯罪生涯》（Kingpin：Life of Crime）以及离子风暴工作室去年夏天刚刚发布的《安纳克朗诺克斯》（Anachronox）都采用了Quake II引擎。</p>
+
+<p>Quake II引擎的授权模式大致如下：基本许可费从40万美元到100万美元不等，版税金视基本许可费的多少而定，40万美元的许可费大约需提取10%以上的版税金，100万美元的许可费则提取很少一部分版税金。这样算下来，《雷神之锤2》通过引擎授权所获得的收入至少有一千万美元，尽管游戏本身的销售业绩比起《毁灭战士》来要差很多，大约卖了110多万套，收入在4500万美元左右，但在授权金这一块它所获得的盈利显然要远远高于《毁灭战士》，此时的引擎已经从一种单纯的工具变成了一块令人垂涎欲滴的肥肉。</p>
+
+<p>俗话说“一个巴掌拍不响”，没有实力相当的竞争者，任何市场都无法发展起来的。正当Quake II独霸整个引擎市场的时候，Epic Megagames公司（即现在的Epic游戏公司）的《虚幻》（Unreal）问世了。毫不夸张，第一次运行这款游戏的时候，我的确被眼前的画面惊呆了，尽管当时只是在300x200的分辨率下运行的这款游戏（四大悲事之一：玩游戏机器不够劲）。除了精致的建筑物外，游戏中的许多特效即便在今天看来依然很出色，荡漾的水波，美丽的天空，庞大的关卡，逼真的火焰、烟雾和力场等效果。从单纯的画面效果来看，《虚幻》是当之无愧的佼佼者，其震撼力完全可以与人们第一次见到《德军司令部》时的感受相比。</p>
+
+<p>Unreal引擎可能是使用最广的一款引擎，在推出后的两年之内就有18款游戏与Epic公司签订了许可协议，这还不包括Epic公司自己开发的《虚幻》资料片《重返纳帕利》，其中比较近的几部作品如第三人称动作游戏《北欧神符》（Rune）、角色扮演游戏《杀出重围》（Deus Ex）以及永不上市的第一人称射击游戏《永远的毁灭公爵》（Duke Nukem Forever），这些游戏都曾经或将要获得不少好评。</p>
+
+<p>Unreal引擎的应用范围不限于游戏制作，还涵盖了教育、建筑等其它领域。Digital Design公司曾与联合国教科文组织的世界文化遗产分部合作采用Unreal引擎制作过巴黎圣母院的内部虚拟演示，Zen Tao公司采用Unreal引擎为空手道选手制作过武术训练软件，另一家软件开发商Vito Miliano公司也采用Unreal引擎开发了一套名为“Unrealty”的建筑设计软件，用于房地产的演示。</p>
+
+<p>这款与《雷神之锤2》同时代的引擎经过不断的更新，至今依然活跃在游戏市场上，丝毫没有显出老迈的迹象，实属难得。</p>
+
+<h3 id="引擎的革命-1998年-2000年">引擎的革命（1998年~2000年）</h3>
+
+<p>游戏的图像发展到《虚幻》这里已经达到了一个天花板的高度，接下去的发展方向很明显不可能再朝着视觉方面进行下去。前面说过，引擎技术对于游戏的作用并不仅局限于画面，它还影响到游戏的整体风格，例如，所有采用Doom引擎制作的游戏，无论是《异教徒》还是《毁灭巫师》，都有着相似的内容，甚至连情节设定都如出一辙。玩家开始对端着枪跑来跑去的单调模式感到厌倦，开发者们不得不从其它方面寻求突破，由此掀起了第一人称射击游戏的一个新的高潮。</p>
+
+<p>两部划时代的作品同时出现在1998年——Valve公司的《半条命》（Half-Life）和LookingGlass工作室的《神偷：暗黑计划》（Thief：The Dark Project），尽管此前的《系统震撼》（System Shock）等游戏也为引擎技术带来过许多新的特性，但没有哪款游戏能像《半条命》和《神偷》那样对后来的作品以及引擎技术的进化造成如此深远的影响。</p>
+
+<p>曾获得无数大奖的《半条命》采用的是Quake和Quake II引擎的混合体，Valve公司在这两部引擎的基础上加入了两个很重要的特性：一是脚本序列技术，这一技术可以令游戏以合乎情理的节奏通过触动事件的方式让玩家真实地体验到情节的发展，这对于诞生以来就很少注重情节的第一人称射击游戏来说无疑是一次伟大的革命；第二个特性是对人工智能引擎的改进，敌人的行动与以往相比明显有了更多的狡诈，不再是单纯地扑向枪口。这两个特点赋予了《半条命》引擎鲜明的个性，在此基础上诞生的《要塞小分队》、《反恐精英》和《毁灭之日》等优秀作品又通过网络代码的加入令《半条命》引擎焕发出了更为夺目的光芒。</p>
+
+<p>在人工智能方面真正取得突破的游戏是Looking Glass工作室的《神偷：暗黑计划》，游戏的故事发生在中古年代，玩家扮演一名盗贼，任务是进入不同的场所，在尽量不引起别人注意的情况下窃取物品。《神偷》采用的是Looking Glass工作室自行开发的Dark引擎，Dark引擎在图像方面比不上《雷神之锤2》或《虚幻》，但在人工智能方面它的水准却远远高于后两者，游戏中的敌人懂得根据声音辨认你的方位，能够分辨出不同地面上的脚步声，在不同的光照环境下有不同的目力，发现同伴的尸体后会进入警戒状态，还会针对你的行动做出各种合理的反应，你必须躲在暗处不被敌人发现才有可能完成任务，这在以往那些纯粹的杀戮游戏中是根本见不到的。如今的绝大部分第一人称射击游戏都或多或少地采用了这种隐秘的风格，包括新近发布的《荣誉勋章：盟军进攻》（Medal of Honor：Allied Assault）。遗憾的是，由于Looking Glass工作室的过早倒闭，Dark引擎未能发扬光大，除了《神偷：暗黑计划》外，采用这一引擎的只有《神偷2：金属时代》（Thief 2：The Metal Age）和《系统震撼2》等少数几款游戏。</p>
+
+<p>受《半条命》和《神偷：暗黑计划》两款游戏的启发，越来越多的开发者开始把注意力从单纯的视觉效果转向更具变化的游戏内容，其中比较值得一提的是离子风暴工作室出品的《杀出重围》，《杀出重围》采用的是Unreal引擎，尽管画面效果十分出众，但在个体的人工智能方面它无法达到《神偷》系列的水准，游戏中的敌人更多的是依靠预先设定的场景脚本做出反应，例如砸碎弹药盒可能会引起附近敌人的警惕，但这并不代表他听到了什么，打死敌人后周围的同伙可能会朝你站立的位置奔过来也可能会无动于衷，这些不真实的行为即便在《荣誉勋章：盟军进攻》里也依然存在。图像的品质抵消了人工智能方面的缺陷，而真正帮助《杀出重围》在众多射击游戏中脱颖而出的则是它的独特风格，游戏含有浓重的角色扮演成分，人物可以积累经验、提高技能，还有丰富的对话和曲折的情节。同《半条命》一样，《杀出重围》的成功说明了叙事对第一人称射击游戏的重要性，能否更好地支持游戏的叙事能力成为了衡量引擎的一个新标准。</p>
+
+<p>从2000年开始3D引擎朝着两个不同的方向分化，一是如《半条命》、《神偷》和《杀出重围》那样通过融入更多的叙事成分和角色扮演成分以及加强游戏的人工智能来提高游戏的可玩性，二是朝着纯粹的网络模式发展，在这一方面，id Software公司再次走到了整个行业的最前沿，他们意识到与人斗才是其乐无穷，于是在Quake II出色的图像引擎的基础上加入更多的网络成分，破天荒推出了一款完全没有单人过关模式的纯粹的网络游戏——《雷神之锤3竞技场》（Quake III Arena），它与Epic公司稍后推出的《虚幻竞技场》（Unreal Tournament）一同成为引擎发展史上的一个转折点。</p>
+
+<p>随着Quake III引擎的大获成功，id Software公司在引擎授权市场上也大赚了一笔。Raven公司再次同id Software公司合作，采用Quake III引擎制作了第一人称射击游戏《星际迷航：精英部队》（Star Trek Voyager：Elite Force），此外这部引擎还被用于制作第三人称动作游戏《重金属F.A.K.K. 2》（Heavy Metal F.A.K.K 2）和《艾丽丝漫游魔境》（American McGee’s Alice）、最近的两款二战题材的射击游戏《重返德军总部》（Return to Castle Wolfenstein）和《荣誉勋章：盟军进攻》，以及开发中的《绝地放逐者：绝地武士2》（Jedi Outcast：Jedi Knight II）。从地牢到外太空，从童话世界到二战年代，从第一人称视角到第三人称视角，充分显示了Quake III引擎的强大潜力。</p>
+
+<p>Epic公司的《虚幻竞技场》虽然比《雷神之锤3竞技场》落后了一步，但如果仔细比较一下的话，你就会发现它的表现要略高出后者一筹。从画面方面看两者差不多打成平手，但在联网模式上，它不仅提供有死亡竞赛模式，还提供有团队合作等多种激烈火爆的对战模式，而且Unreal Tournament引擎不仅可以应用在动作射击游戏中，还可以为大型多人游戏、即时策略游戏和角色扮演游戏提供强有力的3D支持。Unreal Tournament引擎在许可业务方面的表现也超过了Quake III，迄今为止采用Unreal Tournament引擎制作的游戏大约已经有20多款，其中包括《星际迷航深度空间九：坠落》（Star Trek Deep Space Nine：The Fallen）、《新传说》（New Legend）和《塞拉菲姆》（Seraphim）等。</p>
+
+<p>在1998年到2000年期间迅速崛起的另一款引擎是Monolith公司的LithTech引擎，这款引擎最初是用在机甲射击游戏《升刚》（Shogo）上的。前面说过，LithTech引擎的开发共花了整整五年时间，耗资700万美元，功夫不负有心人，1998年LithTech引擎的第一个版本推出之后立即引起了业界的主意，为当时处于白热化状态下的《雷神之锤2》vs.《虚幻》之争泼了一盆冷水。</p>
+
+<p>正是由于过于高昂的开发代价，2002年Monolith公司决定单独成立一个LithTech公司，以LithTech引擎的授权许可作为主要业务，希望借此捞回一些成本。采用LithTech第一代引擎制作的游戏包括《血兆2》和《清醒》（Sanity）等。2000年LithTech公司推出了引擎的2.0版本和2.5版本，加入了骨骼动画和高级地形系统，给人留下深刻印象的《无人永生》（No One Lives Forever）以及即将上市的《全球行动》（Global Operations）采用的就是LithTech 2.5引擎，此时的LithTech已经从一名有益的补充者变成了一款同Quake III和Unreal Tournament平起平坐的引擎。如今LithTech引擎的3.0版本也已经发布，并且衍生出了“木星”（Jupiter）、“鹰爪”（Talon）、“深蓝”（Cobalt）和“探索”（Discovery）四大系统，其中“鹰爪”被用于开发《异形大战掠夺者2》（Alien Vs. Predator 2），“木星”将用于《无人永生2》的开发，“深蓝”用于开发PS2版《无人永生》，“探索”则将被用来制作一款尚未公布的大型网络游戏。</p>
+
+<p>LithTech引擎除了本身的强大性能外，最大的卖点在于详尽的服务，除了LithTech引擎的源代码和编辑器外，购买者还可以获得免费的升级、迅捷的电子邮件和电话技术支持，LithTech公司甚至还会把购买者请到公司进行手把手的培训。而且LithTech引擎的平均价格也不算很高，大约在25万美元左右，同Quake III引擎的70万美元相比已经是相当低廉了。</p>
+
+<h3 id="引擎的明天-2001年">引擎的明天（2001年~）</h3>
+
+<p>2001年有许多优秀的3D射击游戏陆续发布，其中一部分采用的是Quake III和Unreal Tournament等现成引擎，如《星际迷航深度空间九：坠落》、《重返德军总部》和《荣誉勋章：盟军进攻》，而更多的则采用的是自己开发的引擎，比较有代表性的包括网络射击游戏《部落2》（Tribes 2）、第一人称射击游戏《马科斯·佩恩》、《红色派系》（Red Faction）和《英雄萨姆》等。</p>
+
+<p>《部落2》采用的是V12引擎，这款引擎虽然无法同Quake III和Unreal Tournament相提并论，但开发者为它制定的许可模式却相当新颖，你只需花上100美元就可以获得引擎的使用权，不过天下没有免费的午餐，随之而来的一系列规定相当苛刻，例如，开发者不能把该引擎用于为其它游戏发行商、其它商业游戏站点等竞争对手制作游戏，开发出来的游戏必须在发行前交给GarageGames公司（V12引擎的所有者），不能交给任何第三方，GarageGames公司将拥有这些游戏五年的独家发行权等等。尽管如此，对于那些规模较小的独立开发者来说，这个超低价引擎仍然具有非常大的吸引力。</p>
+
+<p>《马科斯·佩恩》采用的是MAX-FX引擎，这是第一款支持辐射光影渲染技术（Radiosity Lighting）的引擎，这种技术以往只在一些高级的建筑设计软件中出现过，它能够结合物体表面的所有光源效果，根据材质的物理属性及其几何特性，准确地计算出每个点的折射率和反射率，让光线以更自然的方式传播过去，为物体营造出十分逼真的光影效果。MAX-FX引擎的另一个特点是所谓的“子弹时间”（Bullet Time），这是一种《黑客帝国》风格的慢动镜头，在这种状态下甚至连子弹的飞行轨迹都可以看得一清二楚。MAX-FX引擎的问世把游戏的视觉效果推向了一个新的高峰。</p>
+
+<p>《红色派系》采用的是Geo-Mod引擎，这是第一款可任意改变几何体形状的3D引擎，也就是说，你可以使用武器在墙壁、建筑物或任何坚固的物体上炸开一个缺口，穿墙而过，或者在平地上炸出一个弹坑躲进去。Geo-Mod引擎的另一个特点是高超的人工智能，敌人不仅仅是在看见同伴的尸体或听见爆炸声后才会做出反应，当他们发现你留在周围物体上的痕迹如弹孔时也会警觉起来，他们懂得远离那些可能对自己造成伤害而自己又无法做出还击的场合，受伤的时候他们会没命地逃跑，而不会冒着生命危险继续作战。</p>
+
+<p>《英雄萨姆》采用的是Serious引擎，这款引擎最大的特点在于异常强大的渲染能力，面对大批涌来的敌人和一望无际的开阔场景，你丝毫不会感觉到画面的停滞，而且游戏的画面效果也相当出色。此外值得一提的还有《海底惊魂》（AquaNox）所用的Krass引擎，这款引擎被作为GeForce 3的官方指定引擎，专门用于宣传、演示GeForce 3的效果，视觉方面的表现无可挑剔。</p>
+
+<p>可以看出，2001年问世的几部引擎依旧延续了两年多来的发展趋势，一方面不断地追求真实的效果，例如MAX-FX引擎追求画面的真实，Geo-Mod引擎追求内容的真实，《军事冒险家》（Soldier of Fortune）的GHOUL引擎追求死亡的真实；另一方面则继续朝着网络的方向探索，如《部落2》、《要塞小分队2》（Team Fortress 2），以及Monolith公司那款尚未公布的大型网络游戏。</p>
+
+<p>不过，由于受到技术方面的限制，把第一人称射击游戏放入大型网络环境中的构想至少在目前还很难实现。众所周知，一般的大型网络游戏多为节奏较慢的角色扮演游戏，这些游戏所使用的引擎，无论是《卡米洛特的黑暗年代》（Dark Age of Camelot）使用的NetImmerse引擎，还是《地平线：伊斯塔里亚大陆》（Horizons：Empires of Istaria）使用的Horizons引擎，或是“据说可以保证50万人在同一虚拟世界中尽情游戏而不会有任何滞后感”的Big World引擎，都无法支持一个供数百名玩家同时战斗的大型团队动态环境。正是基于这样的考虑，id Software公司重新把目光放在了单人模式上，去年年底公布的《雷神之锤4》和《毁灭战士3》将重新建构一个以单人游戏为主的引擎。与此同时，老对手Epic游戏公司也在紧锣密鼓地开发新一代Unreal引擎和《虚幻竞技场2》的引擎。尽管目前关于这几款引擎的具体资料并不多，但从已展示的几段采用新引擎实时渲染的动画片段来看，它们的确完全超越了市面上的其它引擎，预示着一个新的引擎时代的到来。</p>
+
+<h2 id="最后">最后</h2>
+
+<p>需要指出的是，许多优秀的游戏开发者正在退出游戏开发市场，转而进入引擎授权市场，仅靠开发引擎吃饭，这是个危险的信号。尽管引擎的不断进化使游戏的技术含量越来越高，但最终决定一款游戏是否优秀的因素在于使用技术的人而不是技术本身。如前所述，引擎相当于游戏的框架，框架打好后，你只需往里填充内容即可，在这里，框架只是提供了一种可能性，游戏的精彩与否取决于内容如何而非框架如何。正如《无人永生》开发小组所说：“所有问题最终都会归结为一点——你的游戏是否好玩。”</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/" data-tooltip="DX10的改进">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" data-tooltip="建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%BD%AC%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/dx10%E7%9A%84%E6%94%B9%E8%BF%9B/" data-tooltip="DX10的改进">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/03/%E5%BB%BA%E7%AB%8B%E7%B1%BB%E4%BC%BC%E6%B3%A1%E6%B3%A1%E5%A0%82%E5%8F%8C%E4%BA%BA%E6%88%98%E4%B8%80%E6%A0%B7%E7%9A%84%E5%A4%9A%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" data-tooltip="建立类似&lt;泡泡堂&gt;双人战一样的多键盘事件处理">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/03/%E8%BD%AC%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F03%2F%25E8%25BD%25AC%25E6%25B8%25B8%25E6%2588%258F%25E5%25BC%2595%25E6%2593%258E%25E6%25BC%2594%25E5%258C%2596%25E5%258F%25B2%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/03\/%E8%BD%AC%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2\/';
+          
+            this.page.identifier = '\/2007\/03\/%E8%BD%AC%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E6%BC%94%E5%8C%96%E5%8F%B2\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

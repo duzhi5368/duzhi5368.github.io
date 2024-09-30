@@ -1,0 +1,899 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>小型MMORPG研发公司成立分析</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="和朋友到北京创业开公司，做的一些分析总结。
+
+">
+    <meta property="og:description" content="和朋友到北京创业开公司，做的一些分析总结。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="小型MMORPG研发公司成立分析">
+    <meta property="og:url" content="/2010/06/%E5%B0%8F%E5%9E%8Bmmorpg%E7%A0%94%E5%8F%91%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%88%86%E6%9E%90/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="和朋友到北京创业开公司，做的一些分析总结。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      小型MMORPG研发公司成立分析
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-06-15T00:00:00Z">
+        
+  六月 15, 2010
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e8%a1%8c%e4%b8%9a">游戏行业</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>和朋友到北京创业开公司，做的一些分析总结。</p>
+
+<p></p>
+
+<p>本文欢迎探讨，禁止未经许可转载。</p>
+
+<p>公司成立不短时间了，却一直忙着，许多东西没来得及整理下来。好记性不如烂笔头，记录在此，以备他日他人可借鉴。</p>
+
+<p>其实成立公司来说，当确定了行业，商业模式之后，所有问题终究是在三点：时间，人，钱。</p>
+
+<p>我们这个公司与普通公司不同，开始因为经过一些挫折，导致成立流程有些问题，之后详叙述。</p>
+
+<p>通常的小型游戏研发公司开发时间如下：（考虑情况为2010年北京3DMMORPG游戏研发公司，单一项目组，有比较成熟的引擎          注：本文内所有数据不代表本公司实际数据。）</p>
+
+<p>组建团队</p>
+
+<p>时间：？？月。</p>
+
+<p>资金投入：？？</p>
+
+<p>最少人员需求：6-8人（可进行原工作）</p>
+
+<p>这个阶段可长可短，首先需要拥有行业内足够的人脉，核心人员首先要确定下来，最起码有以下人员：主策划，主美术，主程序，市场运营联系人员，项目管理人员。这些人员在业内起码要4年以上经验1个完整成功项目才能拿的出去和投资方谈。</p>
+
+<p>立项</p>
+
+<p>时间：1个半月。</p>
+
+<p>资金投入：？？</p>
+
+<p>最少人员需求：6-8人（可进行原工作）</p>
+
+<p>根据市场确定游戏类型，预计游戏开发周期，开销，运营思路。选择引擎，根据引擎和市场进行立项，编写立项书和商业投资书。这个时候，主要核心人员在下班时间几乎要全部用在立项的交流磨合上面。</p>
+
+<p>拉天使投资</p>
+
+<p>时间：1个月。</p>
+
+<p>资金投入：？？ 吃饭N顿 * 300 + 打车 = 5K以内</p>
+
+<p>最少人员需求：3人（必须离职，有充分时间）</p>
+
+<p>顺利的话，一个月的确可能，若引擎有DEMO成功上市作品的前提，成功概率则更大，中间起码要有两个核心人员以上，从技术和市场以及资金运作方面进行分析，以说服投资方。该步可与上一步后期并行进行。</p>
+
+<p>前期准备</p>
+
+<p>时间：半个月。</p>
+
+<p>资金投入：办公地点： 250平米 = 22000/月 * 12 = 30W （北京朝阳3环内）</p>
+
+<pre><code>             办公桌，办公地点装修： 5W
+
+             部分办公工具投入：25个电脑 * 5000 = 12.5W 打卡机，复印机，布线，墙饰，纸本笔，水等 1W
+
+               约可控制在40W以内。
+</code></pre>
+
+<p>最少人员需求：网管，人事，行政，主要负责人员3-5人。</p>
+
+<p>高新行业的政府扶持，办公场所的租赁，办公物品的购买，布线，行政人事人员的招聘，规章条例确定，人事管理。</p>
+
+<p>招人立项阶段</p>
+
+<p>时间：1个月。</p>
+
+<p>资金：部分人员薪资1个月约 20W，清洁水电，办公物品消耗 5K</p>
+
+<p>人员：总经理，主美术，主程序x3，主策划，项目经理，美术各部门组长x5，系统策划x3，普通美术x5，行政人事人员x4。</p>
+
+<p>根据主要人员的人脉而有所调整。期间，详细的项目案，引擎的测试，游戏美术风格的确定都要准备完毕，熟悉程序工具。策划再次明确游戏题材背景架构，主要玩法明确，熟悉程序工具。</p>
+
+<p>实际开发阶段：</p>
+
+<pre><code> DEMO阶段。
+
+ 时间：2-3个月
+
+ 人员：策划5人，美术12人，程序4-5人。
+
+ 无论对于投资方还是开发人员本身，DEMO是一个很好的定心丸，在成熟引擎的支持下，这个阶段应当控制在3个月以内。
+
+ 策划：确定美术资源列表，根据项目提案进行基础细案制作，包括登陆，角色，UI，关卡，初步战斗系统。
+
+ 美术：对美术资源列表进行工作评估和任务拆解，进行前期场景角色物件原画制作。
+
+ 程序：修改完善引擎和编辑器，搭建客户端服务器框架，实现基本登陆，角色行走同步和基本战斗。
+
+1-20级前期版本
+
+  时间：3个月
+
+ 人员：策划7人，美术20人，程序7人
+
+ 稳定游戏的基本功能系统，美术逐渐进入量产阶段，程序保证框架稳定安全，逻辑框架基本结合完毕。市场运营人员开始对外进行交谈，拉取第2批运营方的投资。
+</code></pre>
+
+<p>策划：完成游戏内核心玩法。包括任务，PK战斗，交互，物品等核心常规系统模块定案。</p>
+
+<pre><code>  美术：确定美术风格前提下，对20级以前角色，场景，动作，特效，UI等进行确定。
+
+  程序：稳定游戏基本功能，进行基本的打怪，道具处理，换装等核心模块的逻辑编写。
+
+  a版本
+
+  时间：4个月
+
+ 人员：策划7名，美术30名，程序7名
+
+   对游戏进行审评，审核游戏品质，根据运营方需求进行部分修改。扩展游戏系统用，实现特色系统，美术进入完全量产阶段。
+
+  策划：对各系统进行检查跟进，对特色功能系统进行设计，进行数值初步平衡处理，对各模块进行丰富性的调整。
+
+  程序：完成游戏整体逻辑，进行内部的稳定性压力测试，兼容测试，安全测试。进行初步DEBUG工作。
+
+   美术：进入完整量产阶段。完成70%以上地图，角色，动作特效。
+
+  市场：该阶段完毕期间，准备进行初步封闭测试。与各运营厂商和广告公司做好联系。
+</code></pre>
+
+<p>测试阶段：</p>
+
+<pre><code>  时间：2个月
+
+  人员：可相对上一阶段适当减少。可调整准备下一个项目。
+
+  对游戏进行评审，根据运营方以及玩家反馈对游戏进行细节调整。
+
+  策划：根据测试反馈情况进行数值和细节玩法调整。
+
+  程序：细节BUG修整，对运营工具，数据分析工具，GM工具编写以及相关运营文档编写。
+
+  美术：根据用户反馈进一步品质修整。
+
+   市场：对游戏进行大力宣传。
+</code></pre>
+
+<hr />
+
+<p>从立项拉投资开始计算，累计大约13-16个月。</p>
+
+<p>资金消耗大部分为人员薪资：</p>
+
+<p>总经理+副总经理+技术总监+项目经理 = 7W/月</p>
+
+<p>策划部门： 主策划 * 1 = 10K    数值策划 * 1 = 6-7K    文案策划 * 1 = 4-5K   系统策划 * 2 = 12K 执行策划 * 2 = 8K   关卡策划 * 1 = 5K   约为5W以内。</p>
+
+<p>程序部门：客户端主程序 + 服务器主程序 = 24K   3D图形引擎程序 = 10K    高级逻辑程序 * 3 = 21K 普通逻辑程序 * 2 = 8K   约为 6W5以内</p>
+
+<p>美术部门：主美术 * 1 = 13K   原画组长 + 角色组长 + 场景组长 + 特效组长 + 动作组长 = 35-45K</p>
+
+<p>原画 * 4 = 20K 3D角色 * 5 = 30K 3D场景 * 8 = 50K   动作 * 2 + 特效 * 2 = 24K 约为17W5以内。</p>
+
+<p>人事行政财务网管等约4-6人，约在1W5以内。</p>
+
+<p>测试4名，约在1W以内。</p>
+
+<p>累计人数为 55 人左右，薪资约为 40 W。</p>
+
+<p>55人占用办公空间约需要150 - 250 左右。月租约2W。每月水电保洁办公用品消耗，细节支出约 1W以内。</p>
+
+<p>月累计消耗 43W 。</p>
+
+<p>虽然开发周期是13-16个月，但部分时间人员并不齐全，加以1个月试用期0.8薪资，故可归在12月。</p>
+
+<p>约需消耗 43 * 12 = 520W左右。</p>
+
+<p>对于公司员工补贴，保险，各公司不固定，故不再额外计算。</p>
+
+<p>一次性消耗：55人电脑 * 5000 = 28W   其他办公用品 1W 办公间装修 1W， 约 30W。</p>
+
+<p>故2010年，在北京，成立一家开发常规品质3D MMORPG资金起码需要550W。 考虑到其他一些因素，600W为比较合适稳妥的启动资金。在开发到a版本后，建议去拉动第2笔运营方资金。考虑到腾讯盛大等大型公司的修改反馈周期较长，约需8个月左右，约需400W维持。</p>
+
+<p>故拉运营资金时，约需谈到1500W以上。其中500W为首付，在游戏上市时追补300-500W作为下一个项目的启动资金，在游戏运营半-1年左右，将剩余的500-700W收回。通常分红比例应当达到3：7左右。部分很恶劣的公司，例如TX，也应当努力达到2：8分红。</p>
+
+<p>这种时间和薪资配备的人员，若运营方为TX这样的知名大公司，可达到30W左右人在线，按照ARPU值为60元计算，月收入可达1800W，研发公司可拿350W左右，起码可持续时间为8个月。累计2800W。</p>
+
+<p>……</p>
+
+<p>最后补两句：</p>
+
+<p>1：若上升到资本运作层面，还是看好新的商业模式，网游已经不再是昔日的大蛋糕了。</p>
+
+<p>2：本文所有数据薪资皆为个人近年行内工作所获信息，内部各项内容均属个人YY娱乐，个人不对其正确性负任何责任。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E8%A1%8C%E4%B8%9A/">游戏行业</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/06/%E6%9C%88%E8%AE%B0201006/" data-tooltip="月记201006">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/05/%E8%BD%ACfd_write-%E6%9C%BA%E5%88%B6/" data-tooltip="[转]FD_WRITE 机制">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/06/%E5%B0%8F%E5%9E%8Bmmorpg%E7%A0%94%E5%8F%91%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%88%86%E6%9E%90/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/06/%E6%9C%88%E8%AE%B0201006/" data-tooltip="月记201006">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/05/%E8%BD%ACfd_write-%E6%9C%BA%E5%88%B6/" data-tooltip="[转]FD_WRITE 机制">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/06/%E5%B0%8F%E5%9E%8Bmmorpg%E7%A0%94%E5%8F%91%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%88%86%E6%9E%90/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2010%2F06%2F%25E5%25B0%258F%25E5%259E%258Bmmorpg%25E7%25A0%2594%25E5%258F%2591%25E5%2585%25AC%25E5%258F%25B8%25E6%2588%2590%25E7%25AB%258B%25E5%2588%2586%25E6%259E%2590%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2010\/06\/%E5%B0%8F%E5%9E%8Bmmorpg%E7%A0%94%E5%8F%91%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%88%86%E6%9E%90\/';
+          
+            this.page.identifier = '\/2010\/06\/%E5%B0%8F%E5%9E%8Bmmorpg%E7%A0%94%E5%8F%91%E5%85%AC%E5%8F%B8%E6%88%90%E7%AB%8B%E5%88%86%E6%9E%90\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2012 on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/2012/</link>
+    <description>Recent content in 2012 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 30 May 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/2012/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>月记201205</title>
+      <link>https://duzhi5368.github.io/2012/05/%E6%9C%88%E8%AE%B0201205/</link>
+      <pubDate>Wed, 30 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/05/%E6%9C%88%E8%AE%B0201205/</guid>
+      <description>&lt;p&gt;2012年5月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]如何配置editplus中直接运行php程序</title>
+      <link>https://duzhi5368.github.io/2012/05/%E8%BD%AC%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEeditplus%E4%B8%AD%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8Cphp%E7%A8%8B%E5%BA%8F/</link>
+      <pubDate>Tue, 01 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/05/%E8%BD%AC%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEeditplus%E4%B8%AD%E7%9B%B4%E6%8E%A5%E8%BF%90%E8%A1%8Cphp%E7%A8%8B%E5%BA%8F/</guid>
+      <description>&lt;p&gt;环境是windowXP+apache+php5.0，如何配置editplus，在editplus中直接运行php程序？&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201204</title>
+      <link>https://duzhi5368.github.io/2012/04/%E6%9C%88%E8%AE%B0201204/</link>
+      <pubDate>Mon, 30 Apr 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/04/%E6%9C%88%E8%AE%B0201204/</guid>
+      <description>&lt;p&gt;2012年4月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201203</title>
+      <link>https://duzhi5368.github.io/2012/03/%E6%9C%88%E8%AE%B0201203/</link>
+      <pubDate>Fri, 30 Mar 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/03/%E6%9C%88%E8%AE%B0201203/</guid>
+      <description>&lt;p&gt;2012年3月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201202</title>
+      <link>https://duzhi5368.github.io/2012/02/%E6%9C%88%E8%AE%B0201202/</link>
+      <pubDate>Tue, 28 Feb 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/02/%E6%9C%88%E8%AE%B0201202/</guid>
+      <description>&lt;p&gt;2012年2月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201201</title>
+      <link>https://duzhi5368.github.io/2012/01/%E6%9C%88%E8%AE%B0201201/</link>
+      <pubDate>Mon, 30 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/01/%E6%9C%88%E8%AE%B0201201/</guid>
+      <description>&lt;p&gt;2012年1月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]八款开源 Android 游戏引擎</title>
+      <link>https://duzhi5368.github.io/2012/01/%E8%BD%AC%E5%85%AB%E6%AC%BE%E5%BC%80%E6%BA%90-android-%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Mon, 16 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2012/01/%E8%BD%AC%E5%85%AB%E6%AC%BE%E5%BC%80%E6%BA%90-android-%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/</guid>
+      <description>&lt;p&gt;初学Android游戏开发的朋友，往往会显得有些无所适从，他们常常不知道该从何处入手，每当遇到自己无法解决的难题时，又往往会一边羡慕于 iPhone下有诸如Cocos2d-iphone之类的免费游戏引擎可供使用，一边自暴自弃的抱怨Android平台游戏开发难度太高，又连个像样的游 戏引擎也没有，甚至误以为使用Java语言开发游戏是一件费力不讨好且没有出路的事情。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

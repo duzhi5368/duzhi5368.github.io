@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2017 on The lost island</title>
+    <link>https://duzhi5368.github.io/categories/2017/</link>
+    <description>Recent content in 2017 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 27 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/categories/2017/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>全栈开发学习之HTML</title>
+      <link>https://duzhi5368.github.io/2017/12/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E4%B9%8Bhtml/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/12/%E5%85%A8%E6%A0%88%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0%E4%B9%8Bhtml/</guid>
+      <description>&lt;p&gt;全栈开发复习之 HTML&lt;/p&gt;
+
+&lt;p&gt;学习自 &lt;a href=&#34;https://www.freecodecamp.com&#34;&gt;https://www.freecodecamp.com&lt;/a&gt; 和 &lt;a href=&#34;https://www.w3schools.com&#34;&gt;https://www.w3schools.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201712</title>
+      <link>https://duzhi5368.github.io/2017/12/%E6%9C%88%E8%AE%B0201712/</link>
+      <pubDate>Wed, 27 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/12/%E6%9C%88%E8%AE%B0201712/</guid>
+      <description>&lt;p&gt;2017即将结束，这一年与往年最大不同就是全年在国外。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[计划]总结2017展望2018</title>
+      <link>https://duzhi5368.github.io/2017/12/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932017%E5%B1%95%E6%9C%9B2018/</link>
+      <pubDate>Tue, 19 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/12/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932017%E5%B1%95%E6%9C%9B2018/</guid>
+      <description>&lt;p&gt;总结2017，展望2018 [80分]&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201711</title>
+      <link>https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201711/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201711/</guid>
+      <description>&lt;p&gt;这半个月没有怎么学习和提高，但之前想法上的种种纠结思考，最终结了个果。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>[转]人需要出走</title>
+      <link>https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/</link>
+      <pubDate>Fri, 03 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/</guid>
+      <description>&lt;p&gt;其實我不太講旅行或旅遊，我常常用的一個字是「出走」。人在一個環境太久了、太熟悉了，就失去他的敏銳度，也失去了創作力的激發，所以需要出走。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201710</title>
+      <link>https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201710/</link>
+      <pubDate>Thu, 02 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201710/</guid>
+      <description>&lt;p&gt;从12号开始弄新空间基本完毕，到现在已经20天了，修复了部分BUG之外，大部分在做老日志迁徙工作，确实有些枯燥；在整理过程中重新审视之前的东西，也确有一点感触。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Markdown语法以及Hugo部分标签</title>
+      <link>https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/</link>
+      <pubDate>Fri, 13 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/10/markdown%E8%AF%AD%E6%B3%95%E4%BB%A5%E5%8F%8Ahugo%E9%83%A8%E5%88%86%E6%A0%87%E7%AD%BE/</guid>
+      <description>&lt;p&gt;使用Markdown语法让你的网页更加漂亮，字体，列表，表单，引用，图片等；使用Hugo定义标签支持更多功能：图片，相集，YouTube，代码高亮，音频等&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>使用Hugo自动生成静态网页</title>
+      <link>https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/</link>
+      <pubDate>Thu, 12 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/10/%E4%BD%BF%E7%94%A8hugo%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E9%A1%B5/</guid>
+      <description>&lt;p&gt;使用HUGO自动生成静态网页的方法&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201707</title>
+      <link>https://duzhi5368.github.io/2017/07/%E6%9C%88%E8%AE%B0201707/</link>
+      <pubDate>Sun, 30 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/07/%E6%9C%88%E8%AE%B0201707/</guid>
+      <description>&lt;p&gt;2017年7月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201706</title>
+      <link>https://duzhi5368.github.io/2017/06/%E6%9C%88%E8%AE%B0201706/</link>
+      <pubDate>Fri, 30 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/06/%E6%9C%88%E8%AE%B0201706/</guid>
+      <description>&lt;p&gt;2017年6月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201705</title>
+      <link>https://duzhi5368.github.io/2017/05/%E6%9C%88%E8%AE%B0201705/</link>
+      <pubDate>Tue, 30 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/05/%E6%9C%88%E8%AE%B0201705/</guid>
+      <description>&lt;p&gt;2017年5月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>移民哪个国家好</title>
+      <link>https://duzhi5368.github.io/2017/02/%E7%A7%BB%E6%B0%91%E5%93%AA%E4%B8%AA%E5%9B%BD%E5%AE%B6%E5%A5%BD/</link>
+      <pubDate>Tue, 21 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/02/%E7%A7%BB%E6%B0%91%E5%93%AA%E4%B8%AA%E5%9B%BD%E5%AE%B6%E5%A5%BD/</guid>
+      <description>&lt;p&gt;如果有人问，“到底需要多少钱我才有机会移民国外？” 其实是有两层含义的，“拿绿卡要花多少钱？”、“在国外要有多少钱才能活下去？” 问题的答案有很多种。。。。。。 哪些国家移民门槛适中、社会福利好、生活成本低、环境还宜居呢？&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>月记201701</title>
+      <link>https://duzhi5368.github.io/2017/01/%E6%9C%88%E8%AE%B0201701/</link>
+      <pubDate>Mon, 30 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/01/%E6%9C%88%E8%AE%B0201701/</guid>
+      <description>&lt;p&gt;2017年1月日志&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>为何选择移民智利</title>
+      <link>https://duzhi5368.github.io/2017/01/%E4%B8%BA%E4%BD%95%E9%80%89%E6%8B%A9%E7%A7%BB%E6%B0%91%E6%99%BA%E5%88%A9/</link>
+      <pubDate>Mon, 09 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2017/01/%E4%B8%BA%E4%BD%95%E9%80%89%E6%8B%A9%E7%A7%BB%E6%B0%91%E6%99%BA%E5%88%A9/</guid>
+      <description>&lt;p&gt;答小众问题：为啥我要去智利&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（一）IDE与基础知识</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%80ide%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>&lt;p&gt;本人下载使用的是CSDN中的Delphi7企业版，其注册号为：6AMD-PDJ686-APME9D-9CDR Key为：YVX-27C
+运行环境为WindowsXP Pro SP2&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Delphi复习（三）ObjectPascal数据类型下</title>
+      <link>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</link>
+      <pubDate>Wed, 14 Feb 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/02/delphi%E5%A4%8D%E4%B9%A0%E4%B8%89objectpascal%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8B/</guid>
+      <description>&lt;h3 id=&#34;二-字符串类型string&#34;&gt;二：字符串类型String&lt;/h3&gt;
+
+&lt;p&gt;在OP中，我们通常是使用单引号来括住字符串的，如&amp;rsquo;Duzhi is a TianCai!&amp;lsquo;，注意，非双引号。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

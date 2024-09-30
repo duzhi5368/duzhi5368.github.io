@@ -1,0 +1,1175 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>《FreeType Glyph Conventions》中译版</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="《FreeType Glyph Conventions》中译版
+
+官方文档： http://www.freetype.org/freetype2/documentation.html
+
+">
+    <meta property="og:description" content="《FreeType Glyph Conventions》中译版
+
+官方文档： http://www.freetype.org/freetype2/documentation.html
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="《FreeType Glyph Conventions》中译版">
+    <meta property="og:url" content="/2009/07/freetype-glyph-conventions%E4%B8%AD%E8%AF%91%E7%89%88/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="《FreeType Glyph Conventions》中译版
+
+官方文档： http://www.freetype.org/freetype2/documentation.html
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      《FreeType Glyph Conventions》中译版
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-07-06T00:00:00Z">
+        
+  七月 6, 2009
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>《FreeType Glyph Conventions》中译版</p>
+
+<p>官方文档： <a href="http://www.freetype.org/freetype2/documentation.html">http://www.freetype.org/freetype2/documentation.html</a></p>
+
+<p></p>
+
+<p>FreeType字形约定</p>
+
+<p>一、基本印刷概念
+1、字体文件、格式和信息
+字体是一组可以被显示和打印的多样的字符映像，在单个字体中共享一些共有的特性，包括外表、风格、衬线等。按印刷领域的说法，它必须区别一个字体家族和多种字体外观，后者通常是从同样的模板而来，但是风格不同。例如，Palatino Regular 和 Palatino Italic是两种不同的外观，但是属于同样的家族Palatino。</p>
+
+<p>单个字体术语根据上下文既可以指家族也可指外观。例如，大多文字处理器的用户用字体指不同的字体家族，然而，大多这些家族根据它们的格式会通过多个数据文件实现。对于 TrueType来讲，通常是每个外观一个文件（arial.ttf对应Arial Regular外观，ariali.ttf对应Arial Italic外观）这个文件也叫字体，但是实际上只是一个字体外观。</p>
+
+<p>数字字体是一个可以包含一个和多个字体外观的数据文件，它们每个都包含字符映像、字符度量，以及其他各种有关文本布局和特定字符编码的重要信息。对有些难用的格式，像Adobe的Type1，一个字体外观由几个文件描述（一个包含字符映象，一个包含字符度量等）。在这里我们忽略这种情况，只考虑一个外观一个文件的情况，不过在FT2.0中，能够处理多文件字体。</p>
+
+<p>为了方便说明，一个包含多个外观的字体文件我们叫做字体集合，这种情况不多见，但是多数亚洲字体都是如此，它们会包含两种或多种表现形式的映像，例如横向和纵向布局。</p>
+
+<p>2、字符映象和图
+字符映象叫做字形，根据书写、用法和上下文，单个字符能够有多个不同的映象，即多个字形。多个字符也可以有一个字形（例如Roman？？）。字符和字形之间的关系可能是非常复杂，本文不多述。而且，多数字体格式都使用不太难用的方案存储和访问字形。为了清晰的原因，当说明FT时，保持下面的观念</p>
+
+<ul>
+<li><p>一个字体文件包含一组字形，每个字形可以存成位图、向量表示或其他结构（更可缩放的格式使用一种数学表示和控制数据/程序的结合方式）。这些字形可以以任意顺序存在字体文件中，通常通过一个简单的字形索引访问。</p></li>
+
+<li><p>字体文件包含一个或多个表，叫做字符图，用来为某种字符编码将字符码转换成字形索引，例如ASCII、Unicode、Big5等等。单个字体文件可能包含多个字符图，例如大多TrueType字体文件都会包含一个Apple特定的字符图和Unicode字符图，使它在Mac和Windows平台都可以使用。</p></li>
+</ul>
+
+<p>3、字符和字体度量
+每个字符映象都关联多种度量，被用来在渲染文本时，描述如何放置和管理它们。在后面会有详述，它们和字形位置、光标步进和文本布局有关。它们在渲染一个文本串时计算文本流时非常重要。</p>
+
+<p>每个可缩放的字体格式也包含一些全局的度量，用概念单位表示，描述同一种外观的所有字形的一些特性，例如最大字形外框，字体的上行字符、下行字符和文本高度等。</p>
+
+<p>虽然这些度量也会存在于一些不可缩放格式，但它们只应用于一组指定字符维度和分辨率，并且通常用象素表示。</p>
+
+<p>二、字形轮廓
+1、象素、点和设备解析度
+当处理计算机图形程序时，指定象素的物理尺寸不是正方的。通常，输出设备是屏幕或打印机，在水平和垂直方向都有多种分辨率，当渲染文本是要注意这些情况。</p>
+
+<p>定义设备的分辨率通常使用用dpi（每英寸点(dot)数）表示的两个数，例如，一个打印机的分辨率为300x600dpi表示在水平方向，每英寸有300 个象素，在垂直方向有600个象素。一个典型的计算机显示器根据它的大小，分辨率不同（15’’和17’’显示器对640x480象素大小不同），当然图形模式分辨率也不一样。</p>
+
+<p>所以，文本的大小通常用点（point）表示，而不是用设备特定的象素。点是一种简单的物理单位，在数字印刷中，一点等于1/72英寸。例如，大多罗马书籍使用10到14点大小印刷文字内容。</p>
+
+<p>可以用点数大小来计算象素数，公式如下：</p>
+
+<p>象素数 = 点数*分辨率/72</p>
+
+<p>分辨率用dpi表示，因为水平和垂直分辨率可以不同，单个点数通常定义不同象素文本宽度和高度。</p>
+
+<p>2、向量表示
+字体轮廓的源格式是一组封闭的路径，叫做轮廓线。每个轮廓线划定字形的外部或内部区域，它们可以是线段或是Bezier曲线。</p>
+
+<p>曲线通过控制点定义，根据字体格式，可以是二次(conic Beziers)或三次(cubic Beziers)多项式。在文献中，conic Bezier通常称为quadratic Beziers。因此，轮廓中每个点都有一个标志表示它的类型是一般还是控制点，缩放这些点将缩放整个轮廓。</p>
+
+<p>每个字形最初的轮廓点放置在一个不可分割单元的网格中，点通常在字体文件中以16位整型网格坐标存储，网格的原点在(0,0)，它的范围是-16384到-16383（虽然有的格式如Type1使用浮点型，但为简便起见，我们约定用整型分析）。</p>
+
+<p>网格的方向和传统数学二维平面一致，x轴从左到右，y轴从下到上。</p>
+
+<p>在创建字形轮廓时，一个字体设计者使用一个假想的正方形，叫做EM正方形。他可以想象成一个画字符的平面。正方形的大小，即它边长的网格单元是很重要的，原因是</p>
+
+<ul>
+<li>它是用来将轮廓缩放到指定文本尺寸的参考，例如在300x300dpi中的12pt大小对应12*<sup>300</sup>&frasl;<sub>72</sub>=50象素。从网格单元缩放到象素可以使用下面的公式</li>
+</ul>
+
+<p>象素数 ＝ 点数 × 分辨率/72
+象素坐标＝ 网格坐标*象素数/EM大小</p>
+
+<ul>
+<li>EM尺寸越大，可以达到更大的分辨率，例如一个极端的例子，一个4单元的EM，只有25个点位置，显然不够，通常TrueType字体之用2048单元的EM；Type1 PostScript字体有一个固定1000网格单元的EM，但是点坐标可以用浮点值表示。</li>
+</ul>
+
+<p>注意，字形可以自由超出EM正方形。网格单元通常交错字体单元或EM单元。上边的象素数并不是指实际字符的大小，而是EM正方形显示的大小，所以不同字体，虽然同样大小，但是它们的高度可能不同。</p>
+
+<p>3、Hinting和位图渲染
+存储在一个字体文件中的轮廓叫“主”轮廓，它的点坐标用字体单元表示，在它被转换成一个位图时，它必须缩放至指定大小。这通过一个简单的转换完成，但是总会产生一些不想要的副作用，例如像字母E和H，它们主干的宽度和高度会不相同。</p>
+
+<p>所以，优秀的字形渲染过程在缩放“点”是，需要通过一个网格对齐(grid-fitting)的操作（通常叫hinting），将它们对齐到目标设备的象素网格。这主要目的之一是为了确保整个字体中，重要的宽度和高度能够一致。例如对于字符I和T来说，它们那个垂直笔划要保持同样象素宽度。另外，它的目的还有管理如stem和overshoot的特性，这在小象素字体会引起一些问题。</p>
+
+<p>有若干种方式来处理网格对齐，多数可缩放格式中，每种字形轮廓都有一些控制数据和程序。</p>
+
+<ul>
+<li>显式网格对齐</li>
+</ul>
+
+<p>TrueType格式定义了一个基于栈的虚拟机（VM），可以借助多于200中操作码（大多是几何操作）来编写程序，每个字形都由一个轮廓和一个控制程序组成，后者可以处理实际的网格对齐，他由字体设计者定义。</p>
+
+<ul>
+<li>隐式网格对齐（也叫hinting）</li>
+</ul>
+
+<p>Type1格式有一个更简单的方式，每个字形由一个轮廓以及若干叫hints的片断组成，后者用来描述字形的某些重要特性，例如主干的存在、某些宽度匀称性等诸如此类。没有多少种hint，要看渲染器如何解释hint来产生一个对齐的轮廓。</p>
+
+<ul>
+<li>自动网格对齐</li>
+</ul>
+
+<p>有些格式很简单，没有包括控制信息，将字体度量如步进、宽度和高度分开。要靠渲染器来猜测轮廓的一些特性来实现得体的网格对齐。</p>
+
+<p>下面总结了每种方案的优点和缺点</p>
+
+<p>方案 优点 缺点</p>
+
+<p>显式 质量：对小字体有很好的结果，这对屏幕显示非常重要。 速度：如果程序很复杂，解释字节码很慢
+一致性：所有渲染器产生同样的字形位图。 大小：字形程序会很长。
+技术难度：编写优秀的hinting程序非常难，没有好的工具支持。</p>
+
+<p>隐式 大小：Hint通常比显式字形程序小的多 质量：小字体不好，最后结合反走样
+速度：网格对齐会非常快 不一致：不同渲染器结果不同，甚至同一引擎不同版本也不同。</p>
+
+<p>自动 大小：不需要控制信息，导致更小的字体文件 质量：小字体不好，最后结合反走样
+速度：依赖对齐算法，通常比显式对齐快。 速度：依赖算法
+不一致：不同渲染器结果不同，甚至同一引擎不同版本也不同。</p>
+
+<p>三、字形度量
+1、基线(baseline)、笔(pen)和布局(layout)
+基线是一个假想的线，用来在渲染文本时知道字形，它可以是水平（如Roman）和是垂直的（如中文）。而且，为了渲染文本，在基线上有一个虚拟的点，叫做笔位置（pen position）或原点（origin），他用来定位字形。</p>
+
+<p>每种布局使用不同的规约来放置字形：</p>
+
+<ul>
+<li>对水平布局，字形简单地搁在基线上，通过增加笔位置来渲染文本，既可以向右也可以向左增加。</li>
+</ul>
+
+<p>两个相邻笔位置之间的距离是根据字形不同的，叫做步进宽度（advance width）。注意这个值总是正数，即使是从右往左的方向排列字符，如Arabic。这和文本渲染的方式有些不同。</p>
+
+<p>笔位置总是放置在基线上。</p>
+
+<ul>
+<li>对垂直布局，字形在基线上居中放置：</li>
+</ul>
+
+<p>2、印刷度量和边界框
+在指定字体中，定义了多种外观度量。</p>
+
+<ul>
+<li><p>上行高度（ascent）。从基线到放置轮廓点最高/上的网格坐标，因为Y轴方向是向上的，所以它是一个正值。</p></li>
+
+<li><p>下行高度（descent）。从基线到放置轮廓点最低/下的网格坐标，因为Y轴方向是向上的，所以它是一个负值。</p></li>
+
+<li><p>行距（linegap）。两行文本间必须的距离，基线到基线的距离应该计算成</p></li>
+</ul>
+
+<p>上行高度 － 下行高度 ＋ 行距</p>
+
+<ul>
+<li><p>边界框（bounding box，bbox）。这是一个假想的框子，他尽可能紧密的装入字形。通过四个值来表示，叫做xMin、yMin、xMax、yMax，对任何轮廓都可以计算，它们可以是字体单元（测量原始轮廓）或者整型象素单元（测量已缩放的轮廓）。注意，如果不是为了网格对齐，你无需知道这个框子的这个值，只需知道它的大小即可。但为了正确渲染一个对齐的字形，需要保存每个字形在基线上转换、放置的重要对齐。</p></li>
+
+<li><p>内部leading。这个概念从传统印刷业而来，他表示字形出了EM正方形空间数量，通常计算如下</p></li>
+</ul>
+
+<p>internal leading = ascent – descent – EM_size</p>
+
+<ul>
+<li>外部leading。行距的别名。</li>
+</ul>
+
+<p>3、跨距（bearing）和步进
+每个字形都有叫跨距和步进的距离，它们的定义是常量，但是它们的值依赖布局，同样的字形可以用来渲染横向或纵向文字。</p>
+
+<ul>
+<li><p>左跨距或bearingX。从当前笔位置到字形左bbox边界的水平距离，对水平布局是正数，对垂直布局大多是负值。</p></li>
+
+<li><p>上跨距或bearingY。从基线到bbox上边界的垂直距离，对水平布局是正值，对垂直布局是负值。</p></li>
+
+<li><p>步进宽度或advanceX。当处理文本渲染一个字形后，笔位置必须增加（从左向右）或减少（从右向左）的水平距离。对水平布局总是正值，垂直布局为null。</p></li>
+
+<li><p>步进高度或advanceY。当每个字形渲染后，笔位置必须减少的垂直距离。对水平布局为null，对垂直布局总是正值。</p></li>
+
+<li><p>字形宽度。字形的水平长度。对未缩放的字体坐标，它是bbox.xMax-bbox.xMin，对已缩放字形，它的计算要看特定情况，视乎不同的网格对齐而定。</p></li>
+
+<li><p>字形高度。字形的垂直长度。对未缩放的字体坐标，它是bbox.yMax-bbox.yMin，对已缩放字形，它的计算要看特定情况，视乎不同的网格对齐而定。</p></li>
+
+<li><p>右跨距。只用于水平布局，描述从bbox右边到步进宽度的距离，通常是一个非负值。</p></li>
+</ul>
+
+<p>advance_width – left_side_bearing – (xMax-xMin)</p>
+
+<p>下图是水平布局所有的度量</p>
+
+<p>下图是垂直布局的度量</p>
+
+<p>4、网格对齐的效果
+因为hinting将字形的控制点对齐到象素网格，这个过程将稍稍修改字符映象的尺寸，和简单的缩放有所区别。例如，小写字母m的映象在主网格中有时是一个正方形，但是为了使它在小象素大小情况下可以辨别，hinting试图扩大它已缩放轮廓，以让它三条腿区分开来，这将导致一个更大的字符位图。</p>
+
+<p>字形度量也会受网格对齐过程的影响：</p>
+
+<ul>
+<li><p>映象的宽度和高度改变了，即使只是一个象素，对于小象素大小字形区别都很大；</p></li>
+
+<li><p>映象的边界框改变了，也改变了跨距；</p></li>
+
+<li><p>步进必须更改，例如如果被hint的位图比缩放的位图大时，必须增加步进宽度，来反映扩大的字形宽度。</p></li>
+</ul>
+
+<p>这有一些含义如下，</p>
+
+<ul>
+<li><p>因为hinting，简单缩放字体上行或下行高度可能不会有正确的结果，一个可能的方法时保持被缩放上行高度的顶和被缩放下行高度的底。</p></li>
+
+<li><p>没有容易的方法去hint一个范围内字形并步进它们宽度，因为hinting对每个轮廓工作都不一样。唯一的方法时单独hint每个字形，并记录返回值。有些格式，如TrueType，包含一些表对一些通用字符预先计算出它们的象素大小。</p></li>
+
+<li><p>hinting依赖最终字符宽度和高度的象素值，意味着它非常依赖分辨率，这个特性使得正确的所见即所得布局非常难以实现。</p></li>
+</ul>
+
+<p>在FT 中，对字形轮廓处理2D变换很简单，但是对一个已hint的轮廓，需要注意专有地使用整型象素距离（意味着FT_Outline_Translate() 函数的参数应该都乘以64，因为点坐标都是26.6固定浮点格式），否则，变换将破坏hinter的工作，导致非常难看的位图。</p>
+
+<p>5、文本宽度和边界框
+如上所示，指定字形的原点对应基线上笔的位置，没有必要定位字形边界框的某个角，这不像多数典型的位图字体格式。有些情况，原点可以在边界框的外边，有时，也可以在里边，这要看给定的字形外形了。</p>
+
+<p>同样，字形的步进宽度是在布局时应用于笔位置的增量，而不是字形的宽度，那是字形边界的宽度。对文本串，具有相同的规约，这意味着：</p>
+
+<ul>
+<li><p>指定文本串的边界框没有必要包含文本光标，也不需要后边的字形放置在它的角上。</p></li>
+
+<li><p>字符串的步进宽度和它的边界框大小无关，特别时它在开始和最后包含空格或tab。</p></li>
+
+<li><p>最后，附加的处理如间距调整能够创建文本串，它的大小不直接依赖单独字形度量并列排列。例如，VA的步进宽度不是V和A各自的步进之和。</p></li>
+</ul>
+
+<p>四、字距调整
+字距调整这个术语指用来在一个文本串中调整重合字形的相对位置的特定信息。</p>
+
+<p>1、字距调整对
+字距调整包括根据相邻字形的轮廓修改它们之间的距离。例如T和y可以贴得更近一点，因为y的上缘正好在T的右上角一横的下边。</p>
+
+<p>当仅仅根据字形的标准宽度来布局文本，一些连续的字符看上去有点太挤和太松，例如下图中A和V的就显得距离太远。</p>
+
+<p>比较一下下图，同样的单词，A和V的距离拉近些</p>
+
+<p>可以看到，这个调整可以导致很大的区别。有的字体外观包含一个表，它包含文本布局所需的指定字形对的字距距离。</p>
+
+<ul>
+<li><p>这个对是顺序的，AV对的距离和VA对不一定一致；</p></li>
+
+<li><p>依据布局或书写，字距可以表示水平或垂直方向。</p></li>
+
+<li><p>字距表示成网格单元，它们通常是X轴方向的，意味着负值表示两个字形需要在水平方向放的更近一点。</p></li>
+</ul>
+
+<p>2、应用字距调整
+在渲染文本时应用字据调整是一个比较简单的过程，只需要在写下一个字形时，将缩放的字距加到笔位置即可。然而，正确的渲染器要考虑的更细一点。</p>
+
+<p>“滑动点”问题是一个很好的例子：很多字体外观包括一个大写字符（如T、F）和一个点.之间的字距调整，以将点正好放置在前者的主腿的右侧。</p>
+
+<p>根据字符的外形，有时候需要在点和随后的字符间作附加的调整，当应用“标准”的字距调整，上面的句子如下</p>
+
+<p>这显然太紧凑了。一个方案是，只在需要时滑动点，当然这需要对文本的意思有了解。如果当我们在渲染特定段落的最后一个点时，上面的调整就不适合了。这只是一个例子，还有很多其他例子显示一个真正的印刷工人需要恰当地布局文本。</p>
+
+<p>有一个很简单地算法，可以避免滑动点问题。</p>
+
+<ol>
+<li>在基线上放置第一个字形；</li>
+<li>将笔位置保存到pen1；</li>
+<li>根据第一个和第二个字形的字距距离调整笔位置；</li>
+<li>放置第二个字形，并计算下个笔位置，放到pen2；</li>
+<li>如果pen1大于pen2，使用pen1作为下个笔位置，否则使用pen2。</li>
+</ol>
+
+<p>五、文本处理
+1、书写简单文本串
+在第一个例子中，我们将生成一个简单的Roman文字串，即采用水平的自左向右布局，使用专有的象素度量，这个过程如下：</p>
+
+<ol>
+<li>将字符串转换成一系列字形索引；</li>
+<li>将笔放置在光标位置；</li>
+<li>获得或装入字形映象；</li>
+<li>平移字形以使它的原点匹配笔位置；</li>
+<li>将字形渲染到目标设备；</li>
+<li>根据字形的步进象素增加笔位置；</li>
+<li>对剩余的字形进行第三步；</li>
+<li>当所有字形都处理了，在新的笔位置设置文本光标。</li>
+</ol>
+
+<p>注意字距调整不在这个算法中。</p>
+
+<p>2、子象素定位
+在渲染文本时使用子象素定位有时很有用。这非常重要，例如为了提供半所见即所得的文本布局，文本渲染的算法和上一节很相似，但是有些区别：</p>
+
+<ul>
+<li>笔位置表示成小数形式的象素；</li>
+<li>因为将一个已经hint过的轮廓平移一个非整型距离将破坏网格对齐，字形原点的位置在渲染字符映象前必须取整；</li>
+<li>步进宽度表示成小数形式的象素，没有必要是整型。</li>
+</ul>
+
+<p>这里是算法的改进版本：</p>
+
+<ol>
+<li>将字符串转换成一系列字形索引；</li>
+<li>将笔放置在光标位置，这可以是一个非整型点；</li>
+<li>获得或装入字形映象；</li>
+<li>平移字形以使它的原点匹配取整后的笔位置；</li>
+<li>将字形渲染到目标设备；</li>
+<li>根据字形的步进象素宽度增加笔位置，这个宽度可以是小数形式；</li>
+<li>对剩余的字形进行第三步；</li>
+<li>当所有字形都处理了，在新的笔位置设置文本光标。</li>
+</ol>
+
+<p>注意使用小数象素定位后，两个指定字符间的空间将不是固定的，它右先前的取整操作堆积的数决定。</p>
+
+<p>3、简单字距调整
+在基本文本渲染算法上增加字距调整非常简单，当一个字距调整对发现了，简单地在第4步前，将缩放后的调整距离增加到笔位置即可。淡然，这个距离在算法1需要被取整，算法2不必要。</p>
+
+<p>4、自右向左布局
+布局Arabic或Heberw文字的过程非常相似，区别只是在字形渲染前，笔位置需要减少（记住步进宽度总是正值）</p>
+
+<p>5、垂直布局
+布局垂直文字也是同样的过程，重要的区别如下：</p>
+
+<ul>
+<li>基线是垂直的，使用垂直的度量而不是水平度量；</li>
+<li>左跨距通常是负的，但字形原点必须在基线上；</li>
+<li>步进高度总是正值，所以笔位置必须减少以从上至下书写；</li>
+</ul>
+
+<p>6、所见即所得布局</p>
+
+<p>六、FT轮廓
+1、FT轮廓描述和结构
+a. 轮廓曲线分解
+一个轮廓是2D平面上一系列封闭的轮廓线。每个轮廓线由一系列线段和Bezier弧组成，根据文件格式不同，曲线可以是二次和三次多项式，前者叫quadratic或conic弧，它们在TrueType格式中用到，后者叫cubic弧，多数用于Type1格式。</p>
+
+<p>每条弧由一系列起点、终点和控制点描述，轮廓的每个点有一个特定的标记，表示它用来描述一个线段还是一条弧。这个标记可以有以下值：</p>
+
+<p>FT_Curve_Tag_On 当点在曲线上，这对应线段和弧的起点和终点。其他标记叫做“Off”点，即它不在轮廓线上，但是作为Bezier弧的控制点。
+FT_Curve_Tag_Conic 一个Off点，控制一个conic Bezier弧
+FT_Curve_Tag_Cubic 一个Off点，控制一个cubic Bezier弧</p>
+
+<p>下面的规则应用于将轮廓点分解成线段和弧</p>
+
+<ul>
+<li>两个相邻的“on”点表示一条线段；</li>
+<li>一个conic Off点在两个on点之间表示一个conic Bezier弧，off点是控制点，on点是起点和终点；</li>
+<li>两个相邻的cubic off点在两个on点之间表示一个cubic Bezier弧，它必须有两个cubic控制点和两个on点。</li>
+<li>最后，两个相邻的conic off点强制？？在它们正中间创建一个虚拟的on点。这大大方便定义连续的conic弧。TrueType规范就是这么定义的。</li>
+</ul>
+
+<p>注意，在单个轮廓线中可以混合使用conic和cubic弧，不过现在没有那种字体驱动产生这样的轮廓。</p>
+
+<p>b. 轮廓描述符
+FT轮廓通过一个简单的结构描述</p>
+
+<p>FT_Outline
+n_points 轮廓中的点数
+n_contours 轮廓中轮廓线数
+points 点坐标数组
+contours 轮廓线端点索引数组
+tags 点标记数组</p>
+
+<p>这里，points是一个FT_Vector记录数组的指针，用来存储每个轮廓点的向量坐标。它表示为一个象素1/64，也叫做26.6固定浮点格式。</p>
+
+<p>contours是一组点索引，用来划定轮廓的轮廓线。例如，第一个轮廓线总是从0点开始，以contours[0]点结束。第二个轮廓线从contours[0]+1点开始，以contours[1]结束，等等。</p>
+
+<p>注意，每条轮廓线都是封闭的，n_points应该和contours[n_controus-1]+1相同。最后，tags是一组字节，用来存放每个轮廓的点标记。</p>
+
+<p>2、边界和控制框计算
+边界框（bbox）是一个完全包含指定轮廓的矩形，所要的是最小的边界框。因为弧的定义，bezier的控制点无需包含在轮廓的边界框中。例如轮廓的上缘是一个Bezier弧，一个off点就位于bbox的上面。不过这在字符轮廓中很少出现，因为大多字体设计者和创建工具都会在每个曲线拐点处放一个on点，这会使hinting更加容易。于是我们定义了控制框（cbox），它是一个包含轮廓所有点的最小矩形，很明显，它包含bbox，通常它们是一样的。不想 bbox，cbox计算起来非常快。</p>
+
+<p>控制框和边界框可以通过函数FT_Outline_Get_CBox()和 FT_Outline_Get_BBox()自动计算，前者总是非常快，后者在有外界控制点的情况下会慢一点，因为需要找到conic和cubic弧的末端，如果不是这种情况，它和计算控制框一样快。</p>
+
+<p>注意，虽然大多字形轮廓为易于hint具有相同的cbox和bbox，这在它们进行变换以后，如旋转，就不再是这种情况了。</p>
+
+<p>3、坐标、缩放和网格对齐
+轮廓点的向量坐标表示为26.6格式，即一个象素的1/64。因此，坐标（1.0,-2.5）存放整型对（x:64,y:-192）。</p>
+
+<p>在主字形轮廓从EM网格缩放到当前字符大小后，hinter负责对齐重要的轮廓点到象素网格。虽然这个过程很难几句话说清楚，但是它的目的也就是取整点的位置，以保持字形重要的特性，如宽度、主干等。下面的操作可以用来将26.6格式的向量距离取整到网格：</p>
+
+<p>round(x) == (x + 32) &amp; -64
+floor(x) == x &amp; -64
+ceiling(x) == (x + 63) &amp; -64</p>
+
+<p>一旦一个字形轮廓经过对齐或变换，在渲染之前通常要计算字形的映象象素大小。做到这一点，必须考虑如下：</p>
+
+<p>扫描线转换器画出所有中心在字形形状中的象素，他也可以检测drop-outs？？？</p>
+
+<p>这导致如下的计算：</p>
+
+<ul>
+<li>计算bbox；</li>
+<li>对齐bbox如下：
+xmin = floor(bbox.xMin)
+xmax = ceiling(bbox.xMax)
+ymin = floor(bbox.yMin)
+ymax = ceiling(bbox.yMax)</li>
+<li>返回象素尺寸，即
+width = (xmax-xmin) / 64
+和
+height = (ymax-ymin) / 64</li>
+</ul>
+
+<p>通过对齐bbox，可以保证所有的象素中心将画到，包括那些从drop-out控制来的，将在调整后的框子之中。接着，框子的象素尺寸可以计算出来。</p>
+
+<p>同时注意，当平移一个对齐的轮廓，应该总是使用整型距离来移动。否则，字形的边缘将不再对齐象素网格，hinter的工作将无效，产生非常难看的位图。</p>
+
+<p>七、FT位图
+1、向量坐标和象素坐标对比
+这里阐述了向量坐标的象素坐标的区别，为了更清楚的说明，使用方括号来表示象素坐标，使用圆括号表示向量坐标。</p>
+
+<p>在象素坐标中，我们使用Y轴向上的规约，坐标[0,0]总是指位图左下角象素，坐标[width-1, rows-1]是右上角象素。在向量坐标中，点坐标用浮点单位表示，如(1.25, -2.3)，这个位置并不是指一个特定象素，而是在2D平面上一个非实质性的点。</p>
+
+<p>象素其实在2D平面上是一个方块，它的中心是象素坐标值的一半，例如位图的左下角象素通过方块(0,0)-(1,1)界定，它的中心位于 (0.5,0.5)。注意这儿用的是向量坐标表示。这对计算距离就会发生一些区别。例如，[0,0]-[10.0]一条线的象素长度是11，然而， (0,0)-(10,0)的向量程度覆盖了10个象素，因此它的长度是10。</p>
+
+<p>2、FT位图和象素图描述符
+一个位图和象素图通过一个叫FT_Bitmap的单一结构描述，他定义在<freetype/ftimage.h>中，属性如下</p>
+
+<p>FT_Bitmap
+rows 行数，即位图中的水平线数
+width 位图的水平象素数
+pitch 它的绝对值是位图每行占的字节数，根据位图向量方向，可以是正值或是负值
+buffer 一个指向位图象素缓冲的无类型指针
+pixel_mode 一个枚举值，用来表示位图的象素格式；例如ft_pixel_mode_mono表示1位单色位图，ft_pixel_mode_grays表示8位反走样灰度值
+num_grays 这只用于灰度象素模式，它给出描述反走样灰度级别的级数，FT缺省值为255。</p>
+
+<p>pitch 属性值的正负符号确定象素缓冲中的行是升序还是降序存放。上面说道FT在2D平面上使用Y轴向上的规约，这意味着(0,0)总是指向位图的左下角。如果 picth是正值，按照向量减少的方向存储行，即象素缓冲的第一个字节表示位图最上一行的部分。如果是负值，第一个字节将表示位图最下一行的部分。对所有的情况，pitch可以看作是在指定位图缓冲中，跳到下一个扫描行的字节增量。</p>
+
+<p>通常都使用正pitch，当然有的系统会使用负值。</p>
+
+<p>3、轮廓转换到位图和象素图
+使用FT从一个向量映象转换到位图和象素图非常简单，但是，在转换前，必须理解有关在2D平面上放置轮廓的一些问题：</p>
+
+<ul>
+<li><p>字形转载器和hinter在2D平面上放置轮廓时，总将(0,0)匹配到字符原点，这意味着字形轮廓，及对应的边界框，可以在平面中放置于任何地方。</p></li>
+
+<li><p>目标位图映射到2D平面上，左下角在(0,0)上，这就是说一个[w,h]大小的位图和象素图将被映射到(0,0)-(w,h)界定的2D矩形窗口。</p></li>
+
+<li><p>当扫描转换轮廓，所有在这个位图窗口的部分将被渲染，其他的被忽略。</p></li>
+</ul>
+
+<p>很多使用FT的开发者都会有个误解，认为一个装入的轮廓可以直接渲染成一个适当大小的位图，下面的图像表明这个问题。</p>
+
+<ul>
+<li><p>第一个图表明一个2D平面上一个装入的轮廓；</p></li>
+
+<li><p>第二个表示一个任意大小[w,h]维护的目标窗口；</p></li>
+
+<li><p>第三个表示在2D平面上轮廓和窗口的合并；</p></li>
+
+<li><p>最后一个表示位图实际被渲染的部分。</p></li>
+</ul>
+
+<p>实际上，几乎所有的情况，装入或变换过的轮廓必须在渲染成目标位图之前作平移操作，以调整到相对目标窗口的位置。</p>
+
+<p>例如，创建一个单独的字形位图正确的方法如下：</p>
+
+<ul>
+<li><p>计算字形位图的大小，可以直接从字形度量计算出来，或者计算它的边界框（这在经过变换后非常有用，此时字形度量不再有效）。</p></li>
+
+<li><p>根据计算的大小创建位图，别忘了用背景色填充象素缓冲；</p></li>
+
+<li><p>平移轮廓，使左下角匹配到(0,0)。别忘了为了hinting，应该使用整型。通常，这就是说平移一个向量（-ROUND(xMin), -ROUND(yMin)）。</p></li>
+
+<li><p>调用渲染功能，例如FT_Outline_Render()函数。</p></li>
+</ul>
+
+<p>在将字形映象直接写入一个大位图的情况，轮廓必须经过平移，以将它们的向量位置对应到当前文本光标/字符原点上。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/%E6%9C%88%E8%AE%B0200907/" data-tooltip="月记200907">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/the-freetype-2-tutorial%E4%B8%AD%E8%AF%91%E7%89%88/" data-tooltip="《The FreeType 2 Tutorial》中译版">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/07/freetype-glyph-conventions%E4%B8%AD%E8%AF%91%E7%89%88/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/%E6%9C%88%E8%AE%B0200907/" data-tooltip="月记200907">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/07/the-freetype-2-tutorial%E4%B8%AD%E8%AF%91%E7%89%88/" data-tooltip="《The FreeType 2 Tutorial》中译版">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/07/freetype-glyph-conventions%E4%B8%AD%E8%AF%91%E7%89%88/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2009%2F07%2Ffreetype-glyph-conventions%25E4%25B8%25AD%25E8%25AF%2591%25E7%2589%2588%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2009\/07\/freetype-glyph-conventions%E4%B8%AD%E8%AF%91%E7%89%88\/';
+          
+            this.page.identifier = '\/2009\/07\/freetype-glyph-conventions%E4%B8%AD%E8%AF%91%E7%89%88\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

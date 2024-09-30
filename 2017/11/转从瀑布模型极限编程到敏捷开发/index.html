@@ -1,0 +1,851 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]从瀑布模型、极限编程到敏捷开发</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="从瀑布模型、极限编程到敏捷开发&mdash;软件开发管理者思维的变化
+
+">
+    <meta property="og:description" content="从瀑布模型、极限编程到敏捷开发&mdash;软件开发管理者思维的变化
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]从瀑布模型、极限编程到敏捷开发">
+    <meta property="og:url" content="/2017/11/%E8%BD%AC%E4%BB%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E5%88%B0%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="从瀑布模型、极限编程到敏捷开发&mdash;软件开发管理者思维的变化
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]从瀑布模型、极限编程到敏捷开发
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2017-11-03T00:00:00Z">
+        
+  十一月 3, 2017
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>从瀑布模型、极限编程到敏捷开发&mdash;软件开发管理者思维的变化</p>
+
+<p></p>
+
+<p>Jack zhai 软件开发是一种对人类智慧的管理，对人大脑思维的“工厂化”管理。人是有感情的、有情绪的、变化的、相对独立的工作单元，这与冰冷的机器是不可比的，所以在中国的历史上，管理人是最难的工作；“学而优则仕”的观点就是让最聪明的人应该选出来做官，做官就是管理人的。软件开发不仅是代码编程，而是人员的有效组织，如何既发挥人的主观能动性，避免情绪变化对工作的影响，又可以让大家有效的交流，让多个大脑的思路统一，快速完成目标呢？多年来软件企业的管理者一直在不断地探索。另外有一个问题一直是软件开发管理人员的心病：软件是工具，开发的是客户业务的应用，但客户不了解软件，开发者不了解业务，如何有效沟通是软件质量的重大障碍。把开发者变成客户业务的专家是个没有办法的办法，让软件企业付出的代价也是昂贵的。瀑布模型、极限编程、敏捷开发是有代表性的开发模式，在对开发者、客户、最终的产品的关注上的变化，体现了软件开发管理者在管理模式上的变化。</p>
+
+<p>一、瀑布开发瀑布模型(Waterfall Model)是Royce在1970年提出的，他把大型软件开发分为：分析与编程，象工厂流水线一样把软件开发过程分成各种工序，并且每个工序可以根据软件产品的规模、参与人员的多少进一步细分成更细的工序。该模型非常符合软件工程学的分层设计思路，所以成为软件开发企业使用最多的开发模型。 瀑布模型的特点：</p>
+
+<p>1、               强调文档，</p>
+
+<p>前一个阶段的输出就是下一个阶段的输入，文档是个阶段衔接的唯一信息。所以很多开发人员好象是在开发文档，而不是开发软件，因为要到开发的后期，才可以看到软件的“模样”。</p>
+
+<p>2、               没有迭代与反馈。</p>
+
+<p>瀑布模型对反馈没有涉及，所以对变化的客户需求非常不容易适应，瀑布就意味着没有回头路。</p>
+
+<p>3、               管理人员喜欢瀑布模型的原因是把文档理解为开发的速度，可以方便地界定不同阶段的里程碑。</p>
+
+<p>瀑布模型的用户很多，也有一些反对的意见：</p>
+
+<p>第一、瀑布模型不适合客户需求不断变化的软件开发，尤其是客户的业务管理的软件，业务随着市场变化，而软件初期的设计可能已经大大变化，而后期的需求更改成本是开始的10倍基数。在ERP盛行的软件市场里，一方面市场带动需求变化，另一方面初期客户对需求描述不清楚，都为瀑布模型的使用团队带来困难。</p>
+
+<p>第二、瀑布模型是一种软件文档的开发，把开发者变成流水线上的机器，大量重复性的工作让编程人员提不起兴趣，工作很枯燥，没有激情，编程成了一种没有创意的机械劳动，这让一向以高科技为标志的高级程序人员大为恼火。在这种背景下，极限编程(extreme Programming, XP)带来了新鲜的空气。</p>
+
+<p>二、极限编程极限编程诞生于一种加强开发者与用户的沟通需求，让客户全面参与软件的开发设计，保证变化的需求及时得到修正。要让客户能方便地与开发人员沟通，一定要用客户理解的语言，先测试再编码就是先给客户软件的外部轮廓，客户使用的功能展现，让客户感觉到未来软件的样子，先测试再编码与瀑布模型显然是背道而驰的。同时，极限编程注重用户反馈与让客户加入开发是一致的，让客户参与就是随时反馈软件是否符合客户的要求。有了反馈，开发子过程变短，迭代也就很自然出现了，快速迭代，小版本发布都让开发过程变成更多的自反馈过程，有些象更加细化的快速模型法。当然极限编程还加入了很多激励开发人员的“措施”，如结队编程、40小时工作等。</p>
+
+<p>极限编程是一种开发管理模式，它强调的重点是：</p>
+
+<p>1、              角色定位：</p>
+
+<p>极限编程把客户非常明确地加入到开发的团队中，并参与日常开发与沟通会议。客户是软件的最终使用者，使用是否合意一定以客户的意见为准。不仅让客户参与设计讨论，而且让客户负责编写拥护故事(User Story)，也就是功能需求，包括软件要实现的功能以及完成功能的业务操作过程。用户在软件开发过程中的责任被提到与开发者同样的重要程度。</p>
+
+<p>2、              敏捷开发：</p>
+
+<p>敏捷开发追求合作与响应变化。迭代就是缩短版本的发布周期，缩短到周、日，完成一个小的功能模块，可以快速测试、并及时展现给客户，以便及时反馈。小版本加快了客户沟通反馈的频率，功能简单，在设计、文挡环节大大简化。极限编程中文挡不再重要的原因就是因为每个版本功能简单，不需要复杂的设计过程。极限编程追求设计简单，实现客户要求即可，无需为扩展考虑太多，因为客户的新需求随时可以添加。</p>
+
+<p>3、              追求价值：</p>
+
+<p>极限编程把软件开发变成自我与管理的挑战，追求沟通、简单、反馈、勇气，体现开发团队的人员价值，激发参与者的情绪，最大限度地调动开发者的积极性，情绪高涨，认真投入，开发的软件质量就大大提高。结对编程就是激发队员才智的一种方式。</p>
+
+<p>极限编程把软件开发过程重新定义为聆听、测试、编码、设计的迭代循环过程，确立了测试-&gt;编码-&gt;重构(设计)的软件开发管理思路。</p>
+
+<p>极限编程的12个实践是极限编程者总结的实践经典，是体现极限编程管理的原则，对极限编程具有指导性的意义，但并非一定要完全遵守12个实践，主要看它给软件过程管理带来的价值。</p>
+
+<p>1、              小版本。</p>
+
+<p>为了高度迭代，与客户展现开发的进展，小版本发布是一个可交流的好办法，客户可以针对性提出反馈。但小版本把模块缩得很小，会影响软件的整体思路连贯，所以小版本也需要总体合理的规划。</p>
+
+<p>2、              规划游戏。</p>
+
+<p>就是客户需求，以客户故事的形式，由客户负责编写。极限编程不讲求统一的客户需求收集，也不是由开发人员整理，而是采取让客户编写，开发人员进行分析，设定优先级别，并进行技术实现。当然游戏规则可进行多次，每次迭代完毕后再行修改。客户故事是开发人员与客户沟通的焦点，也是版本设计的依据，所以其管理一定是有效的、沟通顺畅的。</p>
+
+<p>3、              现场客户。</p>
+
+<p>极限编程要求客户参与开发工作，客户需求就是客户负责编写的，所以要求客户在开发现场一起工作，并为每次迭代提供反馈。</p>
+
+<p>4、              隐喻。</p>
+
+<p>隐喻是让项目参与人员都必须对一些抽象的概念理解一致，也就是我们常说的行业术语，因为业务本身的术语开发人员不熟悉，软件开发的术语客户不理解，因此开始要先明确双方使用的隐喻，避免歧异。</p>
+
+<p>5、              简单设计。</p>
+
+<p>极限编程体现跟踪客户的需求变化，既然需求是变化的，所以对于目前的需求就不必过多地考虑扩展性的开发，讲求简单设计，实现目前需求即可。简单设计的本身也为短期迭代提供了方便，若开发者考虑“通用”因素较多，增加了软件的复杂度，开发的迭代周期就会加长。</p>
+
+<p>简单设计包括四方面含义：</p>
+
+<p>1、通过测试。
+2、避免重复代码。
+3、明确表达每步编码的目的，代码可读性强。
+4、尽可能少的对象类和方法。由于采用简单设计，所以极限编程没有复杂的设计文档要求。</p>
+
+<p>6、              重构。</p>
+
+<p>重构是极限编程先测试后编码的必然需求，为了整体软件可以先进行测试，对于一些软件要开发的模块先简单模拟，让编译通过，到达测试的目的。然后再对模块具体“优化”，所以重构包括模块代码的优化与具体代码的开发。重构是使用了“物理学”的一个概念，是在不影响物体外部特性的前提下，重新优化其内部的机构。这里的外部特性就是保证测试的通过。</p>
+
+<p>7、              测试驱动开发。</p>
+
+<p>极限编程是以测试开始的，为了可以展示客户需求的实现，测试程序优先设计，测试是从客户实用的角度出发，客户实际使用的软件界面着想，测试是客户需求的直接表现，是客户对软件过程的理解。测试驱动开发，也就是客户的需求驱动软件的开发。</p>
+
+<p>8、              持续集成。</p>
+
+<p>集成的理解就是提交软件的展现，由于采用测试驱动开发、小版本的方式，所以不断集成(整体测试)是与客户沟通的依据，也是让客户提出反馈意见的参照。持续集成也是完成阶段开发任务的标志。</p>
+
+<p>9、              结对编程。</p>
+
+<p>这是极限编程最有争议的实践。就是两个程序员合用一台计算机编程，一个编码，一个检查，增加专人审计是为了提供软件编码的质量。两个人的角色经常变换，保持开发者的工作热情。这种编程方式对培养新人或开发难度较大的软件都有非常好的效果。</p>
+
+<p>10、           代码共有。</p>
+
+<p>在极限编程里没有严格文档管理，代码为开发团队共有，这样有利于开发人员的流动管理，因为所有的人都熟悉所有的编码。</p>
+
+<p>11、           编码标准。</p>
+
+<p>编码是开发团队里每个人的工作，又没有详细的文档，代码的可读性是很重要的，所以规定统一的标准和习惯是必要的，有些象编码人员的隐喻。</p>
+
+<p>12、           每周40小时工作。</p>
+
+<p>极限编程认为编程是愉快的工作，不轻易加班，今天的工作今天做，小版本的设计也为了单位时间可以完成的工作安排。</p>
+
+<p>三、敏捷开发极限编程的思想体现了适应客户需求的快速变化，激发开发者的热情，也是目前敏捷开发思维的重要支持者。</p>
+
+<p>2001年，17名编程大师分别代表极限编程、Scrum(“棒球”团队开发模式)、特征驱动开发、动态系统开发方法、自适应软件开发、水晶方法、实用编程等开发流派，发表“敏捷软件开发”宣言。敏捷软件开发是一个开发软件的管理新模式，用来替代以文件驱动开发的瀑布开发模式。敏捷方式也称轻量级开发方法。</p>
+
+<p>敏捷软件开发宣言内容：
+- 个体和交互胜过过程和工具
+- 可以工作的软件胜过面面具到的文档
+- 可户合作胜过合同谈判
+- 响应变化胜过遵循计划敏捷开发集成了新型开发模式的共同特点，它重点强调：
+  - 1.         以人为本，注重编程中人的自我特长发挥。
+  - 2.         强调软件开发的产品是软件，而不是文档。文档是为软件开发服务的，而不是开发的主体。
+  - 3.         客户与开发者的关系是协作，不是合约。开发者不是客户业务的“专家”，要适应客户的需求，是要客户合作来阐述实际的需求细节，而不是为了开发软件，把开发人员变成客户业务的专家，这是传统开发模式或行业软件开发企业的最大面临问题。
+  - 4.         设计周密是为了最终软件的质量，但不表明设计比实现更重要，要适应客户需求的不断变化，设计也要不断跟进，所以设计不能是“闭门造车”、“自我良好”，能不断根据环境的变化，修改自己的设计，指导开发的方向是敏捷开发的目标。敏捷开发避免了传统瀑布方式的弊端，主要是吸收了各种新型开发模式的“动态”特性，关注点从文档到开发者，管理方式也从工厂的流水线到团队的自我放松式的组织。总结敏捷开发与瀑布模式的不同，主要是下面几个“敏捷”的关注点：
+- 迭代。软件的功能是客户的需求，界面的操作是客户的“感觉”，对迭代的强调是缩短了软件版本的周期
+- 客户参与。以人为本，客户是软件的使用者，是业务理解的专家，没有客户的参与，开发者很难理解客户的真实需求
+- 小版本。快速功能的展现，看似简单，但对于复杂的客户需求，合理地分割与总体上的统一，要很好地二者兼顾是不容易的。</p>
+
+<p>敏捷就是“快”，快才可以适应目前社会的快节奏；要快就要发挥个人的个性思维多一些，个性思维的增多，虽然通过结队编程、代码共有、团队替补等方式减少个人对软件的影响力，但也会造成软件开发继承性的下降，因此敏捷开发是一个新的思路，但不是软件开发的终极选择。对于长时间、人数众多的大型软件应用的开发，文档的管理与衔接作用还是不可替代的。如何把敏捷的开发思路与传统的“流水线工厂式”管理有机地结合，是软件开发组织者面临的新课题。</p>
+
+<p>对企业软件开发能力衡量的理解&mdash;CMM学习经验 大型软件的开发需要很好的管理与组织能力，来保证软件开发的质量。从软件工程的角度来说，不存在没有Bug的软件，但尽量减少致命性的Bug是所有软件开发组织者所追求的。那么如何衡量一个组织具备了大型软件的开发能力呢？CMM提供了一种衡量的方法，尤其是CMM的认证已经成为国际上认可的软件能力标签，所以很多大的企业都组织通过该认证，提供自己的知名度，提升自己在客户心目重点形象。</p>
+
+<p>一、组织能力在于团队的“战斗力”CMM模型注重的是软件开发组织对软件开发过程的管理，是从团队的角度，对软件最终质量的保障。软件的质量就是在完成客户需求的同时，尽量少的留下Bug，减少业务服务的中断与故障。既然是团队能力的衡量，就不是个人天才的展现，所以CMM对一个软件组织的意义远不只认证这么简单。</p>
+
+<p>1、               团队开发能力的保障，就象工厂的流水线一样，每个环节都有严格的输入与输出，并且配置有效的测试检验，软件的开发就象流水线上的汽车，走下流水线的就应该是成品。所以制度、操作流程定义、成套的检测手段都是流水线上必备的。</p>
+
+<p>2、               个人的能力强，往往体现在经验而不是文档，而团队的能力就很大程度地体现了文档的管理，因为在一个“加工”过程中，较为头痛的首先就是人员的流动，组织的能力就是在任何职位的人员调动，都不影响整个项目的进行，能很好地衔接开发的继续，一般只有两种方法：言传身教的师傅带徒弟，完整的文档让新人可以彻底了解过去的经过。所以CMM模型注重的是组织的内部协调，组织执行力对软件开发过程的控制，确保开发过程中的每个环节都得到测试与规划。软件开发组织目前使用最多的是瀑布开发模型与极限编程管理，无论采用那种方式，其目标都是保证开发的软件高质量。CMM衡量的是整个组织的开发能力，用什么管理方式并不重要。</p>
+
+<p>二、瀑布模式与极限编程对组织的影响瀑布模型非常适合流水线的管理，把软件设计变成软件工厂。瀑布模型管理方式：注重开发过程的文档，保证规划的功能的高质量实现，但忽视了客户应用的经常变化，瀑布模型的缺点是开发周期长，要实现迭代非常困难。但瀑布模型能很好地保证设计的功能的实现，尤其是初期设计非常充分，程序重用、类提取都非常精练，所以都年来，瀑布模型一直是主要的开发方式。极限编程更加注重客户需求的变化，采取快速看到结果的开发方式，有些象早期的快速模型开发方式，能看到结果，客户就可以尽早感觉系统，提出最切合的改革建议，避免开发后期的更改。极限编程还有一个程序员喜欢的地方，就是以编码为主，文档次之。极限编程关注程序员的感觉，把编程变成一种乐趣，与瀑布模型的大量烦琐文档相比更有吸引力，大大提供了开发人员的积极性。但是，极限编程设计部分相对较弱，先测试再编程的思想是否可以消除这些缺陷还有待于进一步实践。采用那种开发模式，是组织根据自己团队的侧重与开发产品的特点选择的，对于方式的选择有下面的建议：</p>
+
+<p>1、               软件产品比较程式化，也就是说客户需求比较明确，开发重复性强，好比流水线的生产，每个汽车的工序与工艺要求一致。建议采用瀑布模型方式，文档的完备特别适合重复性的开发。</p>
+
+<p>2、               软件产品创新性强，客户需求不明确，甚至要在开发的过程中不断重新确认，同时要求开发人员有足够的敏捷思维，发挥开发者的想象思维，建议采用极限编程。极限编程中的结对编程非常适合能力差不多的开发人员发挥创造性思维。开发模式的选择，直接影响团队的组织与管理，对CMM的评定也息息相关。CMM更关心软件产品的质量，对组织来说，还要注意对团队人员工作积极性的调动，人在心情舒畅的情况下往往能发挥的能力是通常状态下的数倍。很多团队领导都强调队员的无障碍沟通，但要实现无障碍沟通不是靠领导的命令，而是发自队员的内心。团队的能力与个人天才的本质不同应该是：1+1&gt;2。也许这才是CMM评价的真实意图吧。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/" data-tooltip="[转]人需要出走">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201710/" data-tooltip="月记201710">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BB%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E5%88%B0%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BA%BA%E9%9C%80%E8%A6%81%E5%87%BA%E8%B5%B0/" data-tooltip="[转]人需要出走">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2017/11/%E6%9C%88%E8%AE%B0201710/" data-tooltip="月记201710">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2017/11/%E8%BD%AC%E4%BB%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E5%88%B0%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2017%2F11%2F%25E8%25BD%25AC%25E4%25BB%258E%25E7%2580%2591%25E5%25B8%2583%25E6%25A8%25A1%25E5%259E%258B%25E6%259E%2581%25E9%2599%2590%25E7%25BC%2596%25E7%25A8%258B%25E5%2588%25B0%25E6%2595%258F%25E6%258D%25B7%25E5%25BC%2580%25E5%258F%2591%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2017\/11\/%E8%BD%AC%E4%BB%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E5%88%B0%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91\/';
+          
+            this.page.identifier = '\/2017\/11\/%E8%BD%AC%E4%BB%8E%E7%80%91%E5%B8%83%E6%A8%A1%E5%9E%8B%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B%E5%88%B0%E6%95%8F%E6%8D%B7%E5%BC%80%E5%8F%91\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

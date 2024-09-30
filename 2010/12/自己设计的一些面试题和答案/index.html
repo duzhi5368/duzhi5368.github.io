@@ -1,0 +1,1671 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>自己设计的一些面试题和答案</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="在大有时空时任职CTO时面试题和答案。
+
+">
+    <meta property="og:description" content="在大有时空时任职CTO时面试题和答案。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="自己设计的一些面试题和答案">
+    <meta property="og:url" content="/2010/12/%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E7%AD%94%E6%A1%88/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="在大有时空时任职CTO时面试题和答案。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      自己设计的一些面试题和答案
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-12-29T00:00:00Z">
+        
+  十二月 29, 2010
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>在大有时空时任职CTO时面试题和答案。</p>
+
+<p></p>
+
+<p>一：基础题目</p>
+
+<p>1：现有2000个橘子，11个包装箱，现应当如何对橘子进行分配装箱，才能使客户要购买1-2000内随意个橘子，都能按多个整箱顺利卖给他？（不是智力急转弯，假设橘子装箱后不可以再拆箱）</p>
+
+<p>2：用变量a给出下面的定义：（前两题给出例子）
+1) 一个整数                       （答案例如： int a; ）
+2) 一个指向整形的指针      （答案例如： int* a; ）
+3) 一个指向指针的指针，它指向的指针是指向一个整形。
+4）一个有10个整形的数组。
+5）一个10个指针的数组，该指针是指向一个整形数的。
+6）一个指向有10个整形数数组的指针。
+7）一个指向函数的指针，该函数有一个整形的参数，并且返回一个整形。
+8）一个有10个指针的数组，该指针指向一个函数，该函数有一个整形的参数，并且返回一个整形。</p>
+
+<p>3：请查看下列代码段：（假设包含库，头文件，命名空间均正确）</p>
+
+<pre><code class="language-cpp">int   main()
+{
+     char cArray[128];
+     char c = 128;
+     printf(&quot;%d/n&quot;, c);
+     printf(&quot;%d/n&quot;, sizeof(cArray));
+     printf(&quot;%d/n&quot;, strlen(cArray));
+     return 0;
+}
+</code></pre>
+
+<p>这段代码会输出什么？</p>
+
+<p>4：请看下列代码段：（假设包含库，头文件，命名空间均正确）
+这段代码会输出什么？</p>
+
+<pre><code class="language-cpp">struct SFKStruct1
+{
+     char a:1;
+     int b:5;
+     char c;
+     short d;
+     int e;
+};
+
+struct SFKStruct2
+{
+     int a:1;
+     char c;
+     int b:5;
+     short d;
+     int e;
+};
+
+int   main()
+{
+     cout &lt;&lt; sizeof(SFKStruct1) &lt;&lt; endl;
+     cout &lt;&lt; sizeof(SFKStruct2) &lt;&lt; endl;
+     return   0;
+}
+</code></pre>
+
+<p>5：请查看下列代码段，（假设包含库，头文件，命名空间均正确）</p>
+
+<pre><code class="language-cpp">class CFKTest
+{
+public:
+     CFKTest ( void ) { ++ ms_nNum; }
+     ~ CFKTest ( void ) { -- ms_nNum; }
+     int GetNum( void ) const
+     {
+         return ms_nNum;
+     }
+private:
+     static int ms_nNum;
+
+}; 
+
+int main( int argc,char *argv[] )
+{
+     CFKTest *tmp = new CFKTest ();
+     delete tmp;
+     std::cout &lt;&lt; tmp-&gt;GetNum() &lt;&lt; std::endl;
+
+     CFKTest* tmp2 = (CFKTest*)malloc( sizeof(CFKTest) );
+     tmp2 = new CFKTest();
+     free( tmp2 );
+     std::cout &lt;&lt; tmp2-&gt;GetNum() &lt;&lt; std::endl;
+
+     CFKTest* tmp3 = (CFKTest*)malloc( sizeof(CFKTest) );
+     tmp3 = new CFKTest();
+     free( tmp3 );
+     std::cout &lt;&lt; tmp3-&gt;GetNum() &lt;&lt; std::endl;
+     return 0;
+}
+</code></pre>
+
+<p>假设包含库正确，请：
+1：添加代码使 ms_nNum 初始化为0。
+2：若正确初始化 ms_nNum 为0，该程序是否可以正常运行？若崩溃，原因为什么？若正确执行，则输出什么？</p>
+
+<p>6：请查看下列代码段。（假设包含库，头文件，命名空间均正确，假设main函数正确）</p>
+
+<pre><code class="language-cpp">class FKTest1
+{
+public:
+     int GetInt( void ) const
+     {
+         return 0;
+     }
+};
+
+class FKTest2 : public FKTest1
+{
+public:
+     static int GetInt( void ) const
+     {
+         return 1;
+     }
+};
+</code></pre>
+
+<p>这段代码是否可通过编译？是否可通过链接？若不行，请说明原因。</p>
+
+<p>7：现在需要实现一个可变参数的函数，该函数应声明为哪种调用规范。（提示：__stdcall,</p>
+
+<p>__cdecl, __fastcall ）为什么？</p>
+
+<p>8：请谈一下你对编译阶段的静态断言的理解，它的原理和意义是？若有可能，请编写一份静态断言代码？（若有余力，可考虑编写一份有正确错误提示的静态断言代码。提示：可考虑模板特化）</p>
+
+<p>9：请查看下列代码段</p>
+
+<pre><code class="language-cpp">class CFKEmptyClientApp
+{
+     CFKEmptyClientApp() : m_bWakeFlag( false ){}
+     ~CFKEmptyClientApp(){}
+
+public:
+     void Wait()
+     {
+         while( !m_bWakeFlag )
+         {
+              Sleep( 1000 );
+         }
+         Break;
+     }
+
+     void WakeUp()
+     {
+         m_bWakeFlag = true;
+     }
+private:
+     bool m_bWakeFlag;
+};
+</code></pre>
+
+<p>该段代码设计意图是，主线程持续Wait,每一秒进行一次检查，若flag被其他线程唤醒，则继续执行其他，否则继续每一秒一次的检查。其中WakeUp()函数是提供给其他线程调用的。</p>
+
+<p>问题：1：当前代码是否有安全隐患？若有，则隐患是？
+    2：如何最小性能代价避免该隐患？（提示：考虑C++关键字）</p>
+
+<p>10：请查看下段代码：（假设包含库，头文件，命名空间均正确）</p>
+
+<pre><code class="language-CPP">int main(void)
+{
+     int i;
+     int name[10];
+     for(i=0;i&lt;=12;i++)
+         name[i]=0;
+     printf(&quot;done!&quot;);
+     return 0;
+}
+</code></pre>
+
+<p>不考虑多线程的情况下，若上述代码在VC2003下，VC2005下分别执行，结果会是什么情况？原因为什么？</p>
+
+<p>11：请回答下列问题</p>
+
+<p>1)      STL内deque是否是大段的连续内存空间存储？若是，请说明它与STL的vector区别。若不是，请额外讲述其内存空间存储原理。</p>
+
+<p>2）STL中set 和 map 区别是？ set 和 multiset 区别不同点是？</p>
+
+<p>3）STL中，已知一个数据，需要对set, vector, list 三个容器进行查找它是否存在，哪个最快？为什么？（容器大小均为10000元素）</p>
+
+<p>4) 这段代码是否正确？若错误，请指明错误原因并给出修改建议。</p>
+
+<p>vector<bool> v;
+bool *pb = &amp;v[0];</p>
+
+<p>12：请回答下列问题：</p>
+
+<p>1）  二叉树中深度优先搜索和广度优先搜索原理是？若进行非递归遍历，则通常进行搜索时辅助使用的数据结构为？</p>
+
+<p>2）  二叉树先序遍历，后序遍历，层次遍历的概念区别为？</p>
+
+<p>13：请说明你所了解的内部排序方式有几种，分别描述其基本原理，稳定性，平均时间复杂度。(基本原理说明，可使用伪代码)</p>
+
+<p>对一个100个数据单元有序的数组，在不要求稳定性的前提下，仅考虑时间复杂度，不考虑空间代价的前提下，哪种排序最合适？</p>
+
+<p>对一个10000个数据单元无序的数组，在不要求稳定性的前提下，仅考虑时间复杂度，不考虑空间代价的前提下，哪种排序最合适？</p>
+
+<p>14：请回答下列问题：</p>
+
+<p>1）  临界区和互斥量的区别有哪些？各自优缺点和适用情况是？</p>
+
+<p>2）  自旋锁和信号量的区别是什么？各自优缺点和适用情况是？</p>
+
+<p>3）  多线程下，Singleton单件模式和静态变量是否有不安全性，可能引发的结果是？如何解决该安全问题？</p>
+
+<p>4）  WaitForSingleObject和WaitForMultipleObjects函数对Windows特定内核对象有副作用，其副作用是？其中，WaitForMultipleObjects函数中的bWaitAll参数的意义是？</p>
+
+<p>15：请回答下列问题：（均是在WindowsNT系统下）</p>
+
+<p>1）  C++中内存管理的三种方式？C++中内存的五种分区为？各自主要功能？</p>
+
+<p>2）  VC7.1, DEBUG模式下，请问什么情况时，内存监视发现栈内存均为以下值，0xfdfdfdfd…, 0xcdcdcdcd…, 0xdddddddd….（注，分别是三种情况，请逐个说明）</p>
+
+<p>3）  Windows内存碎片是如何产生的？如何减少内存碎片？</p>
+
+<p>4）  VC7.1，DEBUG模式下，编写的一个程序运行时IDE输出窗口输出下段提示，你从提示中可以得到哪些讯息？</p>
+
+<p>c:/FKTest/FKTestCRTMemory20101125.cpp(552) : {44} normal block at 0x00441BD0, 33 bytes long.</p>
+
+<p>Data: &lt; C &gt; 00 43 00 CD CD CD CD CD CD CD CD CD CD CD CD CD</p>
+
+<p>5）  内存池，对象池，线程池各自的基本实现方式和意义是？</p>
+
+<p>16：设计模式根据功能分为哪三大类？下面三段话分别说明的是哪三种模式，分别属于哪类？</p>
+
+<p>1）_____该模式注重统一接口，将“一对多”的关系转化为“一对一”的关系，屏蔽对象容器内部实现结构，实现对象和对象容器使用的一致性。将对象组合成树形结构以表示部分整体的关系，该模式使得用户对单个对象和组合对象的使用具有一致性。</p>
+
+<p>2）_____该模式用原型实例指定创建对象的种类，并且通过拷贝这些原型来创建新的对象。它不需要实例化对象。</p>
+
+<p>3）_____该模式将一个请求封装为一个对象，从而使你可以用不同的请求对客户进行参数化，对请求排队和记录请求日志，以及支持可撤销的操作。 注重将请求封装为对象，支持请求的变化，通过将一组行为抽象为对象，实现行为请求者和行为实现者之间的解耦。</p>
+
+<p>二：选做题网络部分
+1:请回答下列问题：</p>
+
+<p>1）  OSI的7层网络模型中，IOCP/Epoll等I/O网络模型属于哪一层？将消息包分割为微小的数据帧的操作在哪一层？TCP协议是哪一层的协议服务？</p>
+
+<p>2）  服务器网络开发中基于TCP协议的服务器应用程序经常使用到环形缓冲区，请问它的优势是什么？若你使用过环形缓冲，那么你认为他是FIFO还是FILO？</p>
+
+<p>2:请回答下列问题：</p>
+
+<p>1)      WindowsI/O模型分为几种，请简述它的实现特点，优势和不足。
+2)      阻塞模式和非阻塞模式的概念，优势，不足。
+3)      对于常规MMORPG客户端和服务器建议使用哪种I/O模型，为什么？</p>
+
+<p>三：选做题数据库部分</p>
+
+<p>1：有位数据库工程师在抱怨他的游戏数据库压力很大，说了以下一段话：“我们游戏啊，用的是SQLServer2000的数据库，所有GameServer就一个DB，偏偏策划又很复杂，一个角色记录平均都达到了50K大小，光是任务信息这个varchar类型字段就占了10K，我们为提高并行效率，GameServer为每个用户创建了一个DB的链接，上次测试时候，几十个GS都爆满，算起来一起能有30W人在线，你想啊，30W乘以50K那就是15G内存占用啦！DB服务器压力好大啊！”</p>
+
+<p>现假设，带下划线的话均为真，请从技术上分析他说谎和错误分析有几处？请指出错误原因。另外，作为数据库工程师，他少考虑了什么问题？</p>
+
+<p>2：若现有一个需求，“一个帮会允许有大量玩家，但是，由于玩法需求，又允许一个玩家加入大量帮会。通过玩家查找他所在的帮会列表以及通过帮会查找其容纳的成员列表 这两个操作都是很频繁的”这样的需求情况下，你需要定几张表？各自关系和主键如何？为什么？</p>
+
+<p>3：请比较说明ODBC和ADO的优缺点。</p>
+
+<p>四：选做题Lua脚本部分</p>
+
+<p>1：请查看下列代码</p>
+
+<pre><code class="language-lua">max_i=200
+
+function loopme(i)
+    while i&lt;max_i do
+        i=i+1
+       loopme(i)
+    end
+    return i
+end
+
+print(loopme(0))
+
+-----------------------------------------------------
+
+max_i=20000
+
+function loopme(i)
+    if i&gt;max_i then return i end
+    i=i+1
+    return loopme(i)
+end
+
+print(loopme(0))
+</code></pre>
+
+<p>已知第一段代码执行消耗时间为287ms,而第二段代码执行消耗时间为4.92ms。请问为什么？</p>
+
+<p>五：选做题客户端引擎凌杂题部分</p>
+
+<p>1：现需要开发一款即时性很高的游戏，玩家每秒DPS可达200次，此时你会选择Dinput还是Windows消息机制做为键盘鼠标响应？为什么？Windows里双击事件是WM_DBLCLK, Dinput里鼠标左键双击的消息是？</p>
+
+<p>2：包围盒碰撞判断中经常使用OBB和AABB，他们分别的优缺点和实现方式为？</p>
+
+<p>3：A*算法中，核心估价函数表示为 f(n) = g(n) + h(n)，请简单解释其中 f(n), g(n), h(n) 的意义？为提高性能，其中哪个函数是可以省略的？</p>
+
+<p>六：选作题逻辑模块部分</p>
+
+<p>1：你所经历的MMORPG项目中，服务器是基于四叉树管理还是基于地图格子管理？你认为为什么不基于BSP或者OctTree进行管理？若为四叉树管理，则最小单元是多大？若为地图格子管理，则最小单元格为多大？请说明为什么选择这样的Size。客户端静态场景可视范围为多大，动态对象可视范围为多大，同样，请说明为什么选择这样的一个Size。</p>
+
+<p>2：你是否编写过角色的行为状态机，现在请你设计一个可扩展的高性能的角色行为状态机。</p>
+
+<p>请用图示表示核心类的静态关系，要求：类内有核心函数，函数名意义明确。</p>
+
+<p>请用伪代码表示核心函数动态调用关系。</p>
+
+<p>七：选作题图形渲染模块部分</p>
+
+<p>1：D3D9中创建资源时，我们可指定下列存储标志D3DPOOL_DEFAULT，D3DPOOL_MANAGED, D3DPOOL_SYSTEMMEM, D3DPOOL_SCRATCH ，各自意义和区别是什么，请简要概述。提示：D3D RunningTime的内存分为几种，各自由谁管理。</p>
+
+<p>2：请按照顺序说明D3D固定渲染流水线管道9个步骤和基本功能。</p>
+
+<p>3：我们知道大部分常规渲染引擎同时最多支持8个动态光源，并且，即使在8个光源内，光源数量越多，效率也会很大幅度的下降，你认为是为什么原因？使用延迟光照技术可以非常完美的解决这个问题，请简述该技术的实现方式。</p>
+
+<p>4：通常我们游戏中生成阴影的方式有哪两种？它们各自的实现方式，优缺点，效率影响因素是？动态软阴影的实现使用的是哪种阴影实现方式?它额外做了什么？</p>
+
+<h1 id="答案部分">答案部分</h1>
+
+<p>一：基本题目
+A1：</p>
+
+<pre><code>   1,2,4,8,16,32,64,128,256,512, 2000-1024 = 976 答案可能有轻微调整，是允许的，思路正确即可。
+</code></pre>
+
+<p>A2：
+       Int a;
+       Int* a;
+       Int **a;
+       Int a[10];
+       Int *a[10];
+       Int (*a)[10];
+       Int (*a)(int);
+       Int (*a[10])(int);</p>
+
+<p>A3：
+       -128
+       128
+       139或其他不确定值</p>
+
+<p>A4：
+       16
+       20</p>
+
+<p>A5：</p>
+
+<pre><code>   初始化代码为，注意，应在main函数之上。
+   Int CFKTest::ms_nNum = 0;
+   若单线程，内存未被修改，则这段代码可正常运行。结果为 0， 1， 1
+   若为多线程，内存被修改，则这段代码仍可运行，结果为未知值（寻址错误）。
+</code></pre>
+
+<p>A6：</p>
+
+<pre><code>   无法通过编译。原因是static 函数不允许也无需const关键字，因为static函数没有this指针参数，它属于整个类，而不属于任何一个对象，所以也就不可能属于一个const对象，去掉const可以进行正常编译。
+</code></pre>
+
+<p>A7：</p>
+
+<pre><code>   __cdecl。因为__cdecl是由调用者将参数弹出栈，这个传送参数的内存栈是由调用者来维护的，所以可变参只能使用该约定。
+</code></pre>
+
+<p>A8：</p>
+
+<pre><code>   通常的断言是在执行期被诊断的，而执行期间每个分支都被执行的可能性不高，我们希望能够在编译器就提示出断言错误，这是编译期的静态断言存在意义。
+   静态断言的原理是，让编译器在编译阶段将断言结果视为一种非法编译，编译器将会发出一个编译期的错误信息。
+   简单的静态断言如下：
+</code></pre>
+
+<pre><code class="language-cpp">       #define FK_STATIC_ASSERT(p) { char szFKAssertBuffer[ (p) ? 1 : 0 ]; }
+
+       //带错误信息提示的模板特化静态断言如下：(使用的是模板不支持bool类别参数特性)
+
+        Template&lt; bool &gt; struct FKStaticAssert
+        {
+            FKStaticAssert( … );
+        }
+
+        Template &lt;&gt; struct FKStaticAssert&lt; false &gt;{};
+        #define FK_STATIC_ASSERT(p, msg) /
+        { /
+            Class Error_##msg{}; /
+            (void)sizeof(FKStaticAssert&lt;(p)&gt; Error_##msg())); /
+        }
+</code></pre>
+
+<p>A9：</p>
+
+<pre><code>   该代码有安全隐患。m_bWakeFlag由于被高频检查，很可能被CPU放置寄存器中，而在多核CPU的情况下，线程可能存在于不同的CPU内，副线程修改了内存中的变量值，但主线程CPU很可能并没有及时同步 内存 和 寄存器 中的变量值，导致内存和寄存器中的同一变量值不同，无法及时WakeUp。
+
+   解决方法，标志m_bWakeFlag 变量为 volitale 是代价最为微小的。
+
+   (注： 若回答出volitale 的人员将进行下一个提问，一个变量可以同时被修饰为const 和volitale 吗？volitale 可以修饰一个指针吗？下面这个代码有什么错误?
+
+    ```cpp
+    Int square( volitale int* ptr )
+    {
+        Return *ptr * *ptr;
+    }
+    ```
+</code></pre>
+
+<p>A10：</p>
+
+<pre><code>   该代码在VC2003下执行，会死循环。由于ESP是向下压栈的,所以我们声明的局部变量i, name存放顺序虽然是先i 后name,但是name 会处于内存地址的高阶,i 处于低阶.2003
+</code></pre>
+
+<p>的约定是连个连续变量中间加8个字节进行边界保护，此时name[10]和i地址是相差8个字节的存放,所以,name[12]时,编译器写入的是i 所在的内存块值,所以就相当于一个</p>
+
+<p>for(i=0;i&lt;=12;i++)
+if(读取到name[12]) ;</p>
+
+<p>伪码    i = 0;</p>
+
+<pre><code>   该代码在VC2005下执行，DEBUG模式下会因访问越界而异常中断。RELEASE模式下表现正常，但可能出现不可预估的错误。
+</code></pre>
+
+<p>A11：</p>
+
+<p>1：deque是小段内存连续组成小片，每个小片间又使用链表进行连接，其实内部有一个map指针。它是一个双队列。
+可以快速进行前面后面的插入和删除，而vector只能从后面快速插入删除。
+两个都可以直接访问任何元素。
+分配空间比vector快，无需拷贝元素。
+2：set 和 map 本没有实质联系关系。Set是一个平衡树保存数据，排序保存。Map是一对一的映射结合。Multiset允许内部元素不唯一，允许重复。但set内元素唯一。
+3：查找速度 set &gt; vector &gt; list，因为set是有序的，vector地址连续，list地址不连续。但若自己进行遍历查找，则vector &gt; set &gt; list，因为vector地址全部连续，set地址部分连续。
+4：vector<bool> 是伪容器，vector是不支持bool的，建议可使用deque<bool>替代。</p>
+
+<p>A12：</p>
+
+<pre><code>   1：深度优先是从Tree任意一节点出发，访问N0自身，然后访问与N0相邻的顶点之一N1，再从N1按通常规则找到N1一个相邻节点N2，重复，访问过的做特殊标记。若某一节点N相邻节点全部被访问，则退回上一节点，检查上一节点周围节点是否全被访问，若是，则继续重复上一节点。直至有一节点周围节点未被完全访问，此时，对该节点按照一种规则访问其未访问节点……直至图中所有节点被访问。
+
+   广度优先是从图中一个初始点N0开始对其所有临接点N1,N2……Nx进行访问，再按照N1-&gt;N2-&gt; …… Nx 的次序，访问每个节点的所有未访问临接点，，类推，直到图中所有节点被访问为止。
+   深度优先遍历非递归通常使用栈，广度优先非递归遍历通常使用队列。
+
+   2：先序，后序以及中序遍历均是遍历时选择相邻节点的一种规则，与深度遍历广度遍历概念无关，而层次遍历就是广度优先遍历。
+</code></pre>
+
+<p>A13:</p>
+
+<pre><code>   插入排序：时间复杂度O(n^2)，它是稳定的。
+
+   对数组【0，n-1】首先分割为【0..i -1】【i..n – 1】，其中，前半部分为有序的，后半部分为无序的。然后将无序区的第一个记录【i】遍历插入到有序区的一个适当位置上，使有序区继续有序，然后i++，逐步将无序区全部填充到有序区。
+</code></pre>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void InsertSort( RecType R[], int n )
+{
+     int i, j = 0;
+     RecType temp;
+     for( i = 0; i &lt; n, ++i )
+     {
+         temp = R[i];
+         j = i - 1;
+         while( j &gt;= 0 &amp;&amp; temp &lt; R[j] )
+         {
+              R[j+1] = R[j];
+              j--;
+         }
+         R[j+1] = temp;
+     }
+}
+</code></pre>
+
+<pre><code>   有序插入排序：时间复杂度O(n^2)，它是稳定的。
+</code></pre>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void HalfInsertSort( RecType R[], int n )
+{
+     int low, high, m = 0;
+     int i, j = 0;
+     for( i = 2; i &lt;= length; ++i )
+     {
+         R[0] = R[i];
+         low = 1;
+         high = i - 1;
+         while( low &lt;= high )
+         {
+              m = ( low + high ) / 2;
+              if( R[0] &lt; R[m] )
+              {
+                   high = m - 1;
+              }
+              else
+              {
+                   low = m + 1;
+              }
+         }
+ 
+         for( j = i - 1; j &gt;= high + 1; --j )
+         {
+              R[j+1] = R[j];
+         }
+         R[high+1] = R[0];
+     }
+}
+</code></pre>
+
+<p>Shell排序/希尔排序：时间复杂度为O(nLog2n)，它不稳定的。
+取一个小于N的整数的d1做为增量，将表分成(N/d1)+1个组，然后再各组内进行直接插入排序，然后取第2个增量d2，要求d2 &lt; d1，重复上述分组排序，直到dt = 1为止，此时所有记录就等于将所有记录放在同一组进行插入排序。</p>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void ShellSort( RecType R[], int n )
+{
+     int i, j, d = n / 2;
+     RecType temp;
+     while( d &gt; 0 )
+     {
+         for( i = d; i &lt; n; ++i )
+         {
+              j = i - d;
+              while( j &gt;= 0 )
+              {
+                   if( R[j] &gt; R[j+d] )
+                   {
+                       temp = R[j];
+                       R[j] = R[j+d];
+                       R[j+d] = temp;
+                       j -= d;
+                   }
+                   else
+                   {
+                       j -= 1;
+                   }
+              }
+         }
+         d = d / 2;
+     }
+}
+</code></pre>
+
+<p>冒泡排序：时间复杂度O(n^2),它是稳定的。
+从头结点N0开始，比较N0和N1，将较大的数放置N1处，然后N1和N2比较，较大的放置N2处，循环一次，则获得最大数放置在Nn-1处，然后再从N0开始到Nn-1个结点进行比较循环，最后一直到所有记录有序为止。</p>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void BubbleSort( RecType R[], int n )
+{
+     int i, j = 0;
+     RecType temp;
+     for( i = 0; j &lt; n - 1; ++i )
+     {
+         for( j = n - 1; j &gt; i; --j )
+         {
+              if( R[j] &lt; R[j-1] )
+              {
+                   temp = R[j];
+                   R[j] = R[j-1];
+                   R[j-1] = temp;
+              }
+         }
+     }
+}
+</code></pre>
+
+<p>快速排序：时间复杂度为O( nLog2n ) ，它是不稳定的。</p>
+
+<p>随机从数组中取一个记录为K，该值作为标准值，将数组分割为两部分，第一部分元素均小于或等于K，第二部分记录均大于或等于K，并将K填充到两个队列之间，这被称为一次快速排序。之后，对两部分内部数据重复进行随机选值2次分割，直至每个子序列只有一个记录为止。</p>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void QuickSort( RecType R[], int s, int t )
+{
+     int i = s, j = t;
+     RecType temp;
+     if( i &lt; j )
+     {
+         temp = R[s];
+         while( i != j )
+         {
+              while( j &gt; i &amp;&amp; R[j] &gt; temp )
+              {
+                   j--;
+              }
+              if( i &lt; j )
+              {
+                   R[i] = R[j];
+                   ++i;
+              }
+              while( i &lt; j &amp;&amp; R[i] &lt; temp )
+              {
+                   ++i;
+              }
+              if( i &lt; j )
+              {
+                   R[j] = R[i];
+                   j--;
+              }
+         }
+     }
+     R[i] = temp;
+     QuickSort( R, s, i - 1 );
+     QuickSort( R, i + 1, t );
+}
+</code></pre>
+
+<pre><code>   选择排序：时间复杂度O(n^2)，它是不稳定的。
+</code></pre>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void SelectSort( RecType R[], int n )
+{
+     int i,j,k = 0;
+     RecType temp;
+     for( i = 0; i &lt; n - 1; ++i )
+     {
+         k = i;
+         for( j = i + 1; j &lt; n; ++j )
+         {
+              if( R[j] &lt; R[k] )
+              {
+                   k = j;
+              }
+              if( k != i )
+              {
+                   temp = R[i];
+                   R[i] = R[k];
+                   R[k] = temp;
+              }
+         }
+     }
+}
+</code></pre>
+
+<p>堆排序时一个树形选择排序，它的时间复杂度是O(nLog2n)，它是不稳定的。</p>
+
+<pre><code class="language-cpp">template&lt; typename RecType &gt;
+void HeapSort( RecType R[], int n )
+{
+     int i = 0;
+     RecType temp;
+     for( i = n / 2; i &gt;= 1; --i )
+     {
+         sift( R, i, n );
+     }
+
+     for( i = n; i &gt;= 2; --i )
+     {
+         temp = R[1];
+         R[1] = R[i];
+         R[i] = temp;
+         sift( R, 1, i-1 );
+     }
+}
+</code></pre>
+
+<p>其他还有归并排序，基数排序等。</p>
+
+<p>A14：</p>
+
+<pre><code>   临界区只能用于同一进程，互斥体可用于进程间或线程间。
+
+   临界区是非内核对象，只能用户态进行锁操作，速度快；互斥体是内核对象，可以在核心态进行锁操作，速度慢。
+
+   临界区不可在Linux平台下使用，互斥体可在Windows和Linux两种平台下使用。
+
+   自旋锁与互斥锁比较类似，但是自旋锁不会引起调用者进入休眠。若自旋锁期待访问的对象已经被别的执行单元锁住，调用者则不停的循环检查锁是否释放。
+
+   因为自旋锁不需要唤醒调用者线程，所以自旋锁效率高于互斥锁。
+
+   自旋锁会一直占用CPU，若不能在很短时间内获得锁的话，那么CPU效率会降低。
+
+   自旋锁很容易制造死锁，当递归调用时更容易引发死锁。
+
+   假设锁不能被获取时，使用信号量开销是进程上下文的切换时间，使用自旋锁的开销是锁的等待获取。
+
+   信号量锁保护的区域允许有可能引起阻塞的代码，而自旋锁则绝对避免包含这样的代码区，因为阻塞就意味着进程切换，若进程被切换，另一进程企图获取本自旋锁，则一定出现死锁。
+
+   信号量存在于进程上下文，因此，若被保护的区域需要中断使用，则只能选择自旋锁。
+
+   自旋锁在单CPU情况下更容易发生死锁，多CPU情况会好一些。
+
+   自旋锁很要注意线程优先级的问题，若受保护资源线程优先级比自旋锁调用者线程优先级低很多的话，很容易产生无谓的大量CPU消耗。
+
+   多线程模式下，单件和静态变量有不安全性。因为若存在多个线程首次访问其构造函数。如果构造函数中包含了内存的分配或者包含了资源的分配，则这些内存将发生泄漏，导致程序崩溃。
+
+   解决方法有：1：在构造函数中加入原子锁。2：避免使用全局静态对象，将对象改变到线程内部，作为线程内部局部变量存在。
+
+   WaitForSingleObject和WaitForMultipleObjects对于互斥量，自动重置事件等计时器对象，这两个函数将自动在唤醒该线程后，立刻将它们状态设置为无信号。一旦这些对象变为有信号且有一个线程被唤醒后，对象将重新被设置为无信号状态。于是，对于这些对象来说，它们永远只能有一个醒来的等待线程，其余线程将长期处于休眠。
+
+   bWaitAll参数为TRUE时，除非所有的等待对象全部有信号，否则等待信号均不会被重置为无信号状态，即使先醒来的等待对象也无法正常进入休眠，目的是防止死锁。
+</code></pre>
+
+<p>A15：</p>
+
+<pre><code>   1：自动存储（函数内申请的变量，函数离开时自动结束生命周期）
+
+          静态存储（static修饰变量，在程序的整个生命周期内存在）
+
+          动态存储（用户手动分配的变量，使用后，需要手动收回内存）
+
+   栈（自动释放的内存，例如，函数参数，局部变量）
+
+   堆（new出的内存块，需要用户手动释放，若用户不释放，操作系统在程序结束后去回收）。
+
+   自由存储区（和堆非常类似，个人感觉是由于堆内内存额外加了其他保护机制，而自由存储区则没有，这是和堆的区别。）
+
+   全局/静态存储区（全局变量和静态变量的内存区）
+
+   常量存储区（存储一些不允许被修改的常量）
+
+   程序代码区（存储函数体的二进制代码）
+
+   可能出现内存泄露，内存碎片的只会是堆，VC中栈的默认最大大小是2M。栈上读取数据比堆访问快。栈是线程唯一的。
+
+   2：0xfd FenceMemory 动态申请后的内存值，没有初始化。用来检测数组下标边界的，防止越界。
+
+   0xdd DeadMemory 释放后的内存。检查垂悬指针的。
+
+   0xcd CleanMemory 申请的内存，未初始化。
+
+   3：内存碎片是说一个系统中不可用的空闲内存。引发原因是这些空闲内存太小而且不连续出现在不同位置，而负责内存分配的分配器无法有效利用该内存空间。
+
+   内存碎片分三种，一种叫额外开销，是说内存分配程序要额外存储一些数据记录分配的内存信息，（例如错误行号，边界保护内存）这个标准来说不算碎片。一种叫内部碎片，分配器分配的内存必须被操作系统位数整除，若申请一个13字节的内存，32位系统可能就会分配16字节的内存，剩余3字节内存就是内部碎片。一种是外部碎片，当我们分配三块连续内存，使中间一块闲置，操作系统虽然会重新使用中间的内存，但不可能使用需求内存和空间内存正好一样大，于是就产生了外部碎片。外部碎片是系统失效的杀手。
+
+   避免内存碎片方法很多也很复杂，大致可以考虑避免新内存分配，而复用原有闲置内存的方法，使邻接闲置内存组合为大内存等方式。就需要使用到了对象池和内存池。
+
+   4：可以得知文件路径，文件名，行号，内存分配序号，泄露内存位置，泄露内存大小，泄露的前16字节内容。
+
+   5：内存池。提高分配内存速度，减少内存碎片，添加额外的自己的泄露越界检查和提示信息。分配大量内存后，然后自己对不定长的内存分配和回收进行控制。
+</code></pre>
+
+<p>对象池。提高分配内存速度，减少内存碎片。一开始生成一堆对象，由管理器控制分配和回收。它是定长对象的。</p>
+
+<p>线程池就是一种线程的对象池。因为线程创建销毁代价太高了。</p>
+
+<p>连接SQLServer时候，它会自动生成一个连接池，就是一个“连接”的对象池。</p>
+
+<p>A16:</p>
+
+<pre><code>   创建型，结构型，行为型。
+
+   组合模式，原型模式，命令模式。
+</code></pre>
+
+<p>_____该模式保证一个类只有一个实例，并提供一个访问它的全局访问点.解决的是实例化对象的个数的问题，比如抽象工厂中的工厂、对象池等，除了该模式之外，其他创建型模式解决的都是 new 所带来的耦合关系。</p>
+
+<p>_____该模式提供一个创建一系列相关或相互依赖对象的接口，其接口在运行时可以改变系列，而无须指定它们的具体类。</p>
+
+<p>_____该模式定义一个用于创建对象的接口，让子类决定实例化哪一个类，该模式使一个类的实例化延迟到了子类。 创建单个对象，在Abstract Factory有使用到。</p>
+
+<p>_____该模式将一个复杂对象的构建与他的表示相分离，使得同样的构建过程可以创建不同的表示。</p>
+
+<p>_____该模式用原型实例指定创建对象的种类，并且通过拷贝这些原型来创建新的对象。它不需要实例化对象。</p>
+
+<p>_____该模式提供一个方法顺序访问一个聚合对象的各个元素，而又不需要暴露该对象的内部表示。 注重封装特定领域变化，支持集合的变化，屏蔽集合对象内部复杂结构，提供客户程序对它的透明遍历。</p>
+
+<p>_____该模式定义对象间一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知自动更新。 注重封装对象通知，支持通信对象的变化，实现对象状态改变，通知依赖它的对象并更新。</p>
+
+<p>_____该模式封装算法结构，定义一个操作中的算法的骨架，而将一些步骤延迟到子类中，该模式使得子类可以不改变一个算法的结构即可以重定义该算法得某些特定步骤。</p>
+
+<p>_____该模式将一个请求封装为一个对象，从而使你可以用不同的请求对客户进行参数化，对请求排队和记录请求日志，以及支持可撤销的操作。 注重将请求封装为对象，支持请求的变化，通过将一组行为抽象为对象，实现行为请求者和行为实现者之间的解耦。</p>
+
+<p>_____该模式允许对象在其内部状态改变时改变他的行为，对象看起来似乎改变了他的类。注重封装与状态相关的行为，支持状态的变化，通过封装对象状态，从而在其内部状态改变时改变它的行为。</p>
+
+<p>_____该模式注重封装算法,定义一系列的算法，把他们一个个封装起来，并使他们可以互相替换，本模式使得算法可以独立于使用它们的客户,从而可以随时独立于客户替换算法。</p>
+
+<p>_____该模式注重封装对象责任，支持责任的变化，通过动态构建职责链，实现事务处理。使多个对象都有机会处理请求，从而避免请求的送发者和接收者之间的耦合关系。</p>
+
+<p>_____该模式用一个中介对象封装一些列的对象交互。注重封装对象间的交互，通过封装一系列对象之间的复杂交互，使他们不需要显式相互引用，实现解耦。</p>
+
+<p>_____该模式注重封装对象操作变化，表示一个作用于某对象结构中的各元素的操作，支持在运行时为类结构添加新的操作，在类层次结构中，它使你可以在不改变各元素类的前提下定义作用于这个元素的新操作。</p>
+
+<p>_____该模式给定一个语言，定义他的文法的一个表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。注重封装特定领域变化，支持领域问题的频繁变化，将特定领域的问题表达为某种语法规则下的句子，然后构建一个解释器来解释这样的句子，从而达到解决问题的目的。</p>
+
+<p>_____该模式是在不破坏对象的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。注重封装对象状态变化，支持状态保存、恢复。</p>
+
+<p>_____该模式注重统一接口，将“一对多”的关系转化为“一对一”的关系，屏蔽对象容器内部实现结构，实现对象和对象容器使用的一致性。将对象组合成树形结构以表示部分整体的关系，该模式使得用户对单个对象和组合对象的使用具有一致性。</p>
+
+<p>_____该模式注重简化接口，屏蔽各子系统的复杂性，提供更高层接口供客户访问。为子系统中的一组接口提供一致的界面，该模式提供了一高层接口，这个接口使得子系统更容易使用。</p>
+
+<p>_____该模式为其他对象提供一种代理以控制对这个对象的访问。注重假借接口，通过增加间接代理，实现更多控制，屏蔽复杂性。</p>
+
+<p>_____该模式注重转换接口，将不吻合的接口适配对象，用于旧代码复用、类库迁移等。它将一类的接口转换成客户希望的另外一个接口，该模式使得原本由于接口不兼容而不能一起工作那些类可以一起工作。</p>
+
+<p>_____该模式注重稳定接口，在此前提下为对象扩展功能，实现对象功能的扩展，避免子类膨胀。动态地给一个对象增加一些额外的职责，就增加的功能来说，该模式相比生成子类更加灵活。</p>
+
+<p>_____该模式将抽象部分与它的实现部分相分离，使他们可以独立的变化，支持对象多维度的变化。</p>
+
+<p>_____该模式注重保留接口，在内部使用共享技术对对象存储进行优化（通过共享大量细粒度对象，提供系统性能）。</p>
+
+<p>创建式：Singleton(单例模式)Abstract Factory(抽象工厂)Factory Method（工厂方法）Builder（建造模式）Prototype（原型模式）</p>
+
+<p>行为式：Iterator（迭代器模式）Observer(观察者模式)Template Method（模板方法）Command（命令模式）State（状态模式）Strategy(策略模式)China of Responsibility（职责链模式）Mediator（中介者模式）Visitor（访问者模式）</p>
+
+<pre><code>   Interpreter（解释器模式）Memento（备忘录模式）
+</code></pre>
+
+<p>结构型：Composite(组合模式)Facade（外观模式）Proxy（代理模式）Adapter（适配器模式）Decrator（装饰模式）Bridge（桥接模式）Flyweight（享元模式）</p>
+
+<p>二：选做题网络部分
+A1：</p>
+
+<pre><code>   应用层，数据链路层，传输层
+
+   因为TCP传输，拼包过程需要从接受缓存中分解出一个个逻辑数据包，通常会进行内存拷贝，将降低系统性能。采用环形缓冲，则可以不将数据拷贝到缓冲区后等待数据拼装，只需根据记录下的队列首部和尾部指针，I/O线程在前面写，逻辑线程在后面取即可，无需两个队列。另外，重复的利用同一段内存，也避免了内存占用过多，内存碎片等问题。
+
+   它是FIFO的队列。
+</code></pre>
+
+<p>A2:</p>
+
+<pre><code>   WindowsI/O模型分为5种，select, AsyncSelect,EventSelect,OverlappedI/O,IOCP
+
+   Select: 每间隔一段时间对Socket进行一次轮询。核心函数select()。
+
+   优势：可以同时等待多个Socket，同时对多个Socket进行有序管理。可以防止在一次I/O操作中，使阻塞模式的Socket进入阻塞状态。
+
+   缺点：使用该模式将使效率受损，每一个WindowsSocketI/O都会经过该函数，严重导致CPU负担，不合适高效率的程序。连接数有上限限制。
+
+   现实例子：老李每10天下楼一次去邮箱查看是否有自己的邮件。
+
+   AsyncSelect: 它是一种事件模式。它可以在一个Socket上注册Windows网络事件，当有关心事件时,Windows将进行消息提示。
+
+   注意：异步Select模型是非阻塞的Socket，当程序调用AsyncSelect()函数后，将自动将套接字设置为非阻塞模式。异步Select当有注册的关心的网络事件发生后，系统将对应用程序发送消息，它基与Windows环境下，使用时必须创建窗口。多次调用AsyncSelect()函数注册关心网络事件的话，仅最后一次调用有效。
+
+   优点：简单易用。通过注册FD_CLOSE网络事件也可简单关闭连接。
+
+   不足：基于Windows消息机制，必须创建窗口。自动将Socket全部设置为非阻塞，使用也有一定难度。
+
+   现实例子：老李购买了一份优秀的邮箱，当邮箱有新邮件时，就有人电话通知老李，于是老李就不用上下楼了。
+
+   EventSelect: 和异步Socket基本类似，但异步Socket是将网络事件作为一种Windows消息通知应用程序，但是事件Select是将网络事件作为一种Event事件通知给应用程序。它可以将一个事件与网络事件进行绑定起来，若网络事件发生，则以事件形式通知应用程序。它的Socket也是非阻塞的。
+
+   优点：它可以创建在一个非窗口的WinSocket应用程序中。可以同时实现对多个套接字的管理。
+
+   缺点：一个线程最多管理64个Socket，当Socket多余64个时候，需要额外创建线程。
+
+   现实例子：后来这个邮箱越来越多的人喜欢去使用，制造邮箱的人忙不过来，于是他对邮箱添加了一个新装置，当有新邮件来了之后，该装置就会发出一个声音通知老李，遗憾的是这个装置一个只能监视64个不同用户邮箱。
+
+   重叠I/O：应用程序可以在一个重叠结构上一次性投递多个I/O请求，当系统完成I/O操作后通知应用程序。利用该模型，应用程序在调用输入或输出函数后，只要等待I/O操作完的通知即可。它是一个标准的异步I/O。系统向应用程序发送通知形式有两种：事件通知和完成例程。
+
+   优点：更高效的CPU利用。
+   不足：需要提供系统一个缓冲以便自动投递。实现复杂。依然一个线程只能负责64个Scoket.
+
+   现实举例：老李不喜欢下楼去取信，于是他把钥匙给了邮箱设计者，当有新的邮件时，邮箱装置就会自动取信，并且送到老李屋子里。
+
+   IOCP：和重叠Socket类似，I/O操作依然是交由系统去处理，当I/O完成后应用程序得到通知。
+
+   额外说明：建议应用程序创建CPU*2 数量个服务线程。
+
+   优点：可以管理极大量Socket，可以达到最好的系统性能。
+   不足：仅有发起重叠I/O请求的线程才可以提供完成例程。
+
+   现实举例：对于老李这样的用户，重叠I/O已经足够了，但是大公司每秒可能几千几万的邮件，用户依然繁琐，于是邮箱设计者直接派出机器人进行I/O的全程操作，仅在完成后通知用户。但是机器人少的情况下，该模式依旧没有意义，于是可以在开始派出大量机器人进行等待，当邮件来了，大量机器人可以并行进行邮件处理。这些机器人就是服务线程，开始可以HoldOn，然后等邮件来了，从一个邮件队列中取邮件进行处理，处理过程是可以并行的。
+
+   阻塞模式Socket适用于少量的数据接收和发送的简单网络程序开发。在阻塞模式的Socket中，调用任何一个WindowsSocketAPI将消耗不确定的等待时间。而且，阻塞模式下的Socket也全将是阻塞的。
+
+   优势：开发简单。
+   不足：在大量建立好的Socket线程间进行通信很困难。
+   非阻塞模式，即通知系统内核，在调用WindowsSocketAPI时不要让线程休眠，而应当让函数立刻返回。通过roctlsocket()函数可将Socket设置为非阻塞模式。由于使用非阻塞Socket在调用函数时，会经常返回WSAEWOULDBLOCK错误，所以，在任何时候都应当仔细对函数返回代码进行检查处理。
+
+   优势：控制多个连接时，在数据吞吐和CPU时间消耗上，均有优势。
+   不足：使用复杂。
+   客户端建议使用AsyncSelect，它没有大量连接，异步选择也容易理解和编写。服务器建议使用IOCP，因为满足大量连接的需要，吞吐，CPU占用均接近最优。
+</code></pre>
+
+<p>三：选作题数据库部分
+       A1:
+              1：SQLServer2000一条varchar记录最大限制为8K，不可能达到50K。
+              2：DB数据的存储不是在内存中的，15G的数据信息是硬盘上，不算消耗。
+            3：若每个用户一个DB链接，那么30W人则建立30W个DB连接，这是不可能的，SQL最大链接池数量为65535.
+              他没有考虑不在线玩家带来的性能开销和代价。
+              他没有考虑庞大数据量带来的CPU性能开销。</p>
+
+<pre><code>   A2：
+          建立三张表。
+          角色表，内部角色ID为主键。与帮会表不要有任何联系。
+          帮会表，内部帮会ID为主键。与角色表不要有任何联系。
+          角色帮会表，内部需要使用角色ID和帮会ID的整合主键。
+
+   A3：
+          ODBC对数据库操作不依赖任何DBMS，所以，通用于所有的数据库。它属于底层组件，能够使用ODBC的API处理所有的数据库。但是ODBC性能略低，另外ODBC易用性差，可扩展性差，也无法访问非关系数据源，但可以进行底层控制。
+
+          ADO不支持远程通信，不支持无OLE-DB特性的数据库，属于高层结构。但是效率高，易用，容易扩展，可访问非关系数据源。
+</code></pre>
+
+<p>四：选做题脚本部分</p>
+
+<p>A1：Lua默认的栈最大值是20，超过20后栈将重置其最大值，所以会有明显的效率降低。
+而第二段代码使用了尾调用，不需要额外放大栈，所以虽然循环次数多，但效率却高了。</p>
+
+<p>A2：会输出
+    1: foo1 received value 0
+　　1: foo2 received value 10
+　　1: main received value 20
+　　2: foo2 received value 30
+　　2: foo1 received value 40
+　　2: main received value 50
+　　3: foo1 received value 60
+    3: main received value 70</p>
+
+<p>线程是抢占式的，由操作系统决定进行哪个任务。协程是协作式的，它将决定权交给任务，让它自己选择合适的时候放弃执行。</p>
+
+<p>代码里做的就是在主线程的transfer中不停的对另外两个协程进行主动权更变。</p>
+
+<p>五：选作题客户端引擎凌杂题</p>
+
+<p>A1：选择Dinput，因为Windows消息机制是队列缓冲机制，无法进行迅速的消息处理，而且，Windows每秒可以接受处理键盘鼠标消息大约50个，对于DPS200的操作一定会有操作消息的丢失。Dinput里没有鼠标双击事件，必须用户自己记录上一次按键消息，根据自定义间隔事件然后判断并组装该消息。</p>
+
+<p>A2：AABB是轴对齐矩形包围盒，它的优点是简单，缺点是因为它要对齐世界坐标轴，所以无法旋转。OBB是方向包围盒，它比AABB检测要慢，但它可以进行旋转。</p>
+
+<p>A3：其中f(n)是节点N的估价函数。g(n)是在空间内从初始节点到节点n的实际代价，h(n)是总n到目标节点最佳路径的估计代价。因为g(n)已知，当h(n) &gt;&gt; g(n) 的时候，g(n)是可以忽略的。</p>
+
+<p>六：选做题逻辑模块题</p>
+
+<p>A1：BSP适用于室内场景，OctTree进行八叉管理没有必要性，且节点过多。</p>
+
+<p>一般角色模型为2米，移动速度为8米/s，地图支持通常大小为1024*1024米以内是程序容易处理并且可以勉强满足策划需求的，比较强大的引擎技术可以支持到4096*4096米足够了。</p>
+
+<p>若为四叉管理，那么最小单元大约为2米左右比较合适，因为考虑到分割节点的数量CPU代价以及内存代价。若为地图格子管理，考虑到节点数量以及同步的便利，64cm ~ 16m内均是合适的。</p>
+
+<p>若为灵活摄像机，则客户端静态场景大约可视200M ~ 500M是合适的，因为考虑同屏面熟和用户感受。动态场景同步大约可为60M ~ 150M 是合适的，因为考虑同步信息数据量大小。若可以在回答时连服务器的场景管理都考虑到则更佳。</p>
+
+<p>A2: 无标准答案。注意代码的扩展性，是否使用了工厂，抽象继承等。注意状态切换时，核心函数是否写入：例如：进入状态的行为，退出状态的行为，中断状态的行为，状态切换的行为，以及持续一个状态时的主循环处理是否完整。</p>
+
+<p>七：选做题渲染模块题</p>
+
+<pre><code>   A1：D3D RunningTime的内存分为三种，VidelMemory( VM ), AGPMemory( AM ), System Memory( SM )，所有的D3D资源都创建在这三种内存里。
+
+   其中VM就是显存，CPU只能通过AGP或者PCI-E总线访问到，CPU对其进行读写都非常慢，（但连续写比连续读略快）
+
+   其中SM是内存，CPU读写很快，但是GPU是无法对其进行访问，所以创建在内存中的资源，GPU是无法直接使用的。
+
+   其中AM实际也存在于系统内存中，但是这部分不会被CPU进行Cache到2级缓冲，所以CPU对其进行读写会比读写SM慢一些，但这块内存，GPU是可以通过AGP或PCI-E总线进行访问。
+
+   当我们使用D3DPOOL_DEFAULT创建资源的话，资源将会被D3D RunningTime按照我们对资源使用方法的指定去分配到VM或AM中，系统不会在其他部分进行额外备份，当设备丢失后，这些资源将完全丢失。另外，创建在D3DPOOL_DEFAULT中的纹理是不能被CPU Lock的，除非是动态纹理。但创建在D3DPOOL_DEFAULT中的VB,IB,BackBuffer都可以被CPU Lock。
+
+   D3DPOOL_MANAGER表示让D3DrunningTime来管理资源，被创建的资源会有两份拷贝，一份在SM里一份在VM/AM中。当GPU需要使用资源的时候，D3DrunningTime将会自动将数据拷贝到VM中，当资源被GPU修改后，D3DrunningTime又会在必要的时候将其自动更新到SM中,而若当CPU对SM内数据进行了修改，也会被同步到VM中去。所以，如果资源是频繁被CPU和GPU进行修改的，尽量不要用D3DPOOL_MANAGER，会造成昂贵的同步代价。但，当LostDevice后，Reset时，D3DrunningTime又会自动将SM中的数据拷贝到VM中以回复数据，但VM一般都小于SM，部分SM的备份数据可能被拷贝到AM中，AM访问不通过2级缓冲，所以Reset会比较缓慢。另外，D3DrunningTime会给每份D3DPOOL_MANAGER的资源加一个时间戳，当SM数据拷贝到VM中时，若VM中没有空间了，D3DruningTime将按照时间戳以及一个LRU算法进行部分资源的释放。我们可以调用EvicManagedResource强制清空一个VM内的MANAGER资源。这样做的话，若下一帧渲染时使用到MANAGER资源则D3DrunningTime又要重新从SM里拷贝，代价很大，平时不要这么做。但是！在切换地图关卡的时候，建议这样处理一下，因为可以消除VM里的内存碎片。
+
+   D3DPOOL_SYSTEMMEM和D3DPOOL_SCRATCH都是将资源放置到显存中的，值得注意的是D3DPOOL_SCRATCH是完全不允许被图形系统使用的，但是SYSTEMMEM还是可能被更新到AM/VM提供给图形系统使用的。
+
+   A2：
+
+   本地空间 – 世界空间 – 视图空间 – 背面拣选 – 光照 – 视口裁剪 – 投影 – 视口变换 – 光栅化。
+
+   A3：
+
+   每多一个灯光就要多一次对其影响的三角形进行多一次的渲染。假若有一个5000面的物体受4个灯光影响，就需要渲染25000个三角面。（5000*（1次环境渲染 + 4次光照渲染））。
+
+   延迟光照是这样做的，在一次固定渲染管道处理时，将几何信息处理为一个缓冲，这个缓冲中包括了漫反射率，法线，像素和镜头之间的距离，高光强度，自发光信息等，此时尚不进行光照计算。在像素着色时，再根据几何信息进行处理，获得该像素的光照颜色和衰减等，同时处理阴影映射。所以，延迟光照是无法进行逐顶点渲染的，只能逐像素。另外，光照类型也和普通光照不同，它将点光源视为12面三角形组成的立体空间，同时也支持了各种复杂的体积光源，无论有多少发光体，均是进行一次渲染，所以效率大幅上升。但是延迟光照是像素着色时处理的，它对半透明体有严重硬伤，无法支持。所以对半透明体还是要正常的光照渲染。
+
+   A4：
+
+   游戏中常见阴影是 ShadowMapping阴影映射和ShadowVolumes体积阴影。
+
+   阴影映射是它在以光源位置作为视点的情况下渲染整个场景的深度信息，然后再使用这个深度信息去决定场景哪些部分在阴影下。它有锯齿并且依赖Z-Buffer。它的效率瓶颈在于ShadowMap的大小。若太小，则阴影边界模糊不清，有大型锯齿，但增大ShadowMap大小，就会影响帧速。
+
+   体积阴影是让几何体在一定灯光的轮廓下生成一个密闭的容积，然后根据光线投射决定其阴影部分，它是像素精确的，不会有锯齿。但是不能支持复杂几何体，边界也过“硬”，不柔和。若几何体过于复杂，则影响性能。
+
+   动态软阴影使用的是阴影映射，它只是不直接将计算出的阴影渲染出来，而是渲染到一个阴影缓冲图中，再用高斯模糊对边缘进行一个模糊柔化，再贴出就得到了动态软阴影。
+
+   A5:
+
+   VS中计算了光照。
+   PS中进行了纹理混合。
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/%E6%9C%88%E8%AE%B0201012/" data-tooltip="月记201012">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/c---%E5%B0%8F%E9%97%AE%E9%A2%98/" data-tooltip="C&#43;&#43; 小问题">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/12/%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E7%AD%94%E6%A1%88/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/%E6%9C%88%E8%AE%B0201012/" data-tooltip="月记201012">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/c---%E5%B0%8F%E9%97%AE%E9%A2%98/" data-tooltip="C&#43;&#43; 小问题">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/12/%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E7%AD%94%E6%A1%88/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2010%2F12%2F%25E8%2587%25AA%25E5%25B7%25B1%25E8%25AE%25BE%25E8%25AE%25A1%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259B%25E9%259D%25A2%25E8%25AF%2595%25E9%25A2%2598%25E5%2592%258C%25E7%25AD%2594%25E6%25A1%2588%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2010\/12\/%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E7%AD%94%E6%A1%88\/';
+          
+            this.page.identifier = '\/2010\/12\/%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E7%9A%84%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98%E5%92%8C%E7%AD%94%E6%A1%88\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

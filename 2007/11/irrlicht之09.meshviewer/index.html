@@ -1,0 +1,1366 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>irrlicht之09.MeshViewer</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="这个例子告诉我们如何使用引擎去创建一个更加复杂的应用程序。我们使用Irr的场景管理器和用户界面API创建一个简单的Mesh查看器。
+
+">
+    <meta property="og:description" content="这个例子告诉我们如何使用引擎去创建一个更加复杂的应用程序。我们使用Irr的场景管理器和用户界面API创建一个简单的Mesh查看器。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="irrlicht之09.MeshViewer">
+    <meta property="og:url" content="/2007/11/irrlicht%E4%B9%8B09.meshviewer/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="这个例子告诉我们如何使用引擎去创建一个更加复杂的应用程序。我们使用Irr的场景管理器和用户界面API创建一个简单的Mesh查看器。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      irrlicht之09.MeshViewer
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-11-27T00:00:00Z">
+        
+  十一月 27, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这个例子告诉我们如何使用引擎去创建一个更加复杂的应用程序。我们使用Irr的场景管理器和用户界面API创建一个简单的Mesh查看器。</p>
+
+<p></p>
+
+<pre><code class="language-C++">/*
+
+这个例子告诉我们如何使用引擎去创建一个更加复杂的应用程序。我们使用Irr的场景管理器和用户界面API创建一个简单的Mesh查看器。
+
+这个例子告诉我们如何去创建按钮，窗口，工具栏，菜单，下拉列表，编辑框，图象，消息窗口，天空盒，以及如何去使用Irr引擎中完善的XML阅读器进行解析一个XML文件。
+
+我们依旧象其他的例子一样：包含所有必要的头文件，为编译器一个commment命令要求它链接正确的lib.之后我们定义了一些全局变量。同样的，我们还使用了两个&quot;using namespace&quot;声明来减少麻烦。
+
+在本例中，我们使用了大量的GUI命名空间内的函数。
+*/
+#include &lt;irrlicht.h&gt;
+#include &lt;iostream&gt;
+
+
+using namespace irr;
+using namespace gui;
+
+#pragma comment(lib, &quot;Irrlicht.lib&quot;)
+
+
+IrrlichtDevice *Device = 0;
+core::stringc StartUpModelFile;
+core::stringw MessageText;
+core::stringw Caption;
+scene::IAnimatedMeshSceneNode* Model = 0;
+scene::ISceneNode* SkyBox = 0;
+
+scene::ICameraSceneNode* Camera[2] = { 0, 0};
+
+/*
+切换两种不同的摄象机
+*/
+void setActiveCamera ( scene::ICameraSceneNode* newActive )
+{
+if ( 0 == Device )
+   return;
+
+scene::ICameraSceneNode* active = Device-&gt;getSceneManager()-&gt;getActiveCamera ();
+
+newActive-&gt;setInputReceiverEnabled ( true );
+Device-&gt;getSceneManager()-&gt;setActiveCamera ( newActive );
+}
+
+/*
+下面的三个函数做了几个Mesh查看器的功能。
+第一个showAboutText()函数简单的显示了一个消息框，其标题和内容都在XML文件中进行动态读取。
+这个文本将在启动时候被存储在MessageText，Caption两个变量中。
+*/
+void showAboutText()
+{
+// 创建一个模态消息窗口，其中信息从XML文件中读取
+Device-&gt;getGUIEnvironment()-&gt;addMessageBox(
+   Caption.c_str(), MessageText.c_str());
+}
+
+
+/*
+第二个函数是loadModel()，它能读取一个模型并且使用场景管理器addAnimatedMeshSceneNode再将它显示出来。
+这并不复杂是吧。当然，在模型无法读取时，会显示一个简单的警告消息窗口。
+*/
+void loadModel(const c8* fn)
+{
+// 根据文件格式进行区分处理
+
+core::stringc filename ( fn );
+
+core::stringc extension;
+// 获取extension的后缀名
+core::getFileNameExtension ( extension, filename );
+// 把extension变成小写字母
+extension.make_lower();
+
+// 支持下列格式的纹理文件
+if ( extension == &quot;.jpg&quot; ||
+    extension == &quot;.png&quot; ||
+    extension == &quot;.tga&quot; ||
+    extension == &quot;.pcx&quot; ||
+    extension == &quot;.psd&quot; ||
+    extension == &quot;.bmp&quot;
+   )
+{
+   video::ITexture * texture = Device-&gt;getVideoDriver()-&gt;getTexture( filename.c_str() );
+   if ( texture &amp;&amp; Model )
+   {
+    // 重新加载纹理
+    Device-&gt;getVideoDriver()-&gt;removeTexture ( texture );
+    texture = Device-&gt;getVideoDriver()-&gt;getTexture( filename.c_str() );
+
+    Model-&gt;setMaterialTexture ( 0, texture );
+   }
+   return;
+}
+
+// 如果是一个压缩文件，则将它放置到文件管理器系统中进行处理
+if ( extension == &quot;.pk3&quot; ||
+    extension == &quot;.zip&quot;
+   )
+{
+   Device-&gt;getFileSystem()-&gt;addZipFileArchive( filename.c_str () );
+   return;
+}
+
+// 将模型读取到引擎中
+
+if (Model)
+   Model-&gt;remove();
+
+Model = 0;
+
+scene::IAnimatedMesh* m = Device-&gt;getSceneManager()-&gt;getMesh( filename.c_str() );
+
+if (!m)
+{
+   // 如果模型Load失败，则弹出警告窗口
+
+   if (StartUpModelFile != filename)
+    Device-&gt;getGUIEnvironment()-&gt;addMessageBox(
+    Caption.c_str(), L&quot;The model could not be loaded. &quot; \
+    L&quot;Maybe it is not a supported file format.&quot;);
+   return;
+}
+
+// 设置默认材质参数
+
+Model = Device-&gt;getSceneManager()-&gt;addAnimatedMeshSceneNode(m);
+Model-&gt;setMaterialFlag(video::EMF_LIGHTING, false);
+// Model-&gt;setMaterialFlag(video::EMF_BACK_FACE_CULLING, false);
+Model-&gt;setDebugDataVisible(scene::EDS_OFF);
+Model-&gt;setAnimationSpeed(30);
+}
+
+
+/*
+最后，第三个函数创建了一个工具栏窗口。在这个简单的Mesh查看器中，
+这个工具栏窗口仅仅包含一个制表子窗口，在其上包含三个改变模型缩放显示的编辑框。
+*/
+void createToolBox()
+{
+IGUIEnvironment* env = Device-&gt;getGUIEnvironment();
+IGUIElement* root = env-&gt;getRootGUIElement();
+IGUIElement* e = root-&gt;getElementFromId(5000, true);
+// 为防止重复创建工具箱窗口，所以先进行安全删除
+if (e) e-&gt;remove();
+
+// 创建工具箱窗口
+IGUIWindow* wnd = env-&gt;addWindow(core::rect&lt;s32&gt;(600,25,800,480),
+   false, L&quot;Toolset&quot;, 0, 5000);
+
+// 创建制表窗口以及其中的制表
+IGUITabControl* tab = env-&gt;addTabControl(
+   core::rect&lt;s32&gt;(2,20,800-602,480-7), wnd, true, true);
+
+IGUITab* t1 = tab-&gt;addTab(L&quot;Scale&quot;);
+IGUITab* t2 = tab-&gt;addTab(L&quot;Test&quot;);
+
+// 在一号制表上增加三个输入框和一个按钮
+env-&gt;addEditBox(L&quot;1.0&quot;, core::rect&lt;s32&gt;(40,50,130,70), true, t1, 901);
+env-&gt;addEditBox(L&quot;1.0&quot;, core::rect&lt;s32&gt;(40,80,130,100), true, t1, 902);
+env-&gt;addEditBox(L&quot;1.0&quot;, core::rect&lt;s32&gt;(40,110,130,130), true, t1, 903);
+
+env-&gt;addButton(core::rect&lt;s32&gt;(10,150,100,190), t1, 1101, L&quot;set&quot;);
+
+// 增加一个无效的选择框
+env-&gt;addCheckBox(true, core::rect&lt;s32&gt;(10,220,200,240), t1, -1, L&quot;Senseless Checkbox&quot;);
+
+// 增加一个透明度滚动条以及说明文字
+env-&gt;addStaticText(L&quot;Transparent Control:&quot;, core::rect&lt;s32&gt;(10,240,150,260), true, false, t1);
+IGUIScrollBar* scrollbar = env-&gt;addScrollBar(true, core::rect&lt;s32&gt;(10,260,150,275), t1, 104);
+scrollbar-&gt;setMax(255);
+
+// 将Irr引擎Logo放置在最前方，因为，此时它可能被新创建的工具箱窗口遮挡住了。
+// 译者注：作者原意是如上所说，将Irr引擎Logo移到顶层，防止被新建工具箱遮盖，然而其参数设置错误，
+//         666并非Irr引擎Logo所在窗口ID编号，所以，实际上该效果没有被实现。
+root-&gt;bringToFront(root-&gt;getElementFromId(666, true));
+}
+
+
+/*
+为了获取GUI管理器的所有消息，我们需要创建一个事件接收器，这件事情很容易，如果有事件发生了，
+根据事件呼叫者ID和事件类型进行处理就可以了。例如，一个ID为1000的Menu控件被选择到了，
+则开启一个文件选择框。
+*/
+class MyEventReceiver : public IEventReceiver
+{
+public:
+virtual bool OnEvent(SEvent event)
+{
+   // Esc键进行摄象机控制权更变
+   if (event.EventType == EET_KEY_INPUT_EVENT &amp;&amp;
+    event.KeyInput.Key == irr::KEY_ESCAPE &amp;&amp;
+    event.KeyInput.PressedDown == false)
+   {
+    if ( Device )
+    {
+     scene::ICameraSceneNode * camera = Device-&gt;getSceneManager()-&gt;getActiveCamera ();
+     if ( camera )
+     {
+      camera-&gt;setInputReceiverEnabled ( !camera-&gt;isInputReceiverEnabled() );
+     }
+     return true;
+    }
+   }
+
+   if (event.EventType == EET_GUI_EVENT)
+   {
+    s32 id = event.GUIEvent.Caller-&gt;getID();
+    IGUIEnvironment* env = Device-&gt;getGUIEnvironment();
+
+    switch(event.GUIEvent.EventType)
+    {
+    case EGET_MENU_ITEM_SELECTED:
+     {
+      // 如果菜单中一个控件被点击
+
+      IGUIContextMenu* menu = (IGUIContextMenu*)event.GUIEvent.Caller;
+      s32 id = menu-&gt;getItemCommandId(menu-&gt;getSelectedItem());
+     
+      switch(id)
+      {
+      case 100: // File -&gt; Open Model
+       env-&gt;addFileOpenDialog(L&quot;Please select a model file to open&quot;);
+       break;
+      case 101: // File -&gt; Set Model Archive
+       env-&gt;addFileOpenDialog(L&quot;Please select your game archive/directory&quot;);
+       break;
+      case 200: // File -&gt; Quit
+       Device-&gt;closeDevice();
+       break;
+      case 300: // View -&gt; Skybox
+       SkyBox-&gt;setVisible(!SkyBox-&gt;isVisible());
+       break;
+      case 400: // View -&gt; Debug Information
+       if (Model)
+        Model-&gt;setDebugDataVisible(Model-&gt;isDebugDataVisible() ? scene::EDS_OFF : scene::EDS_FULL);
+       break;
+      case 500: // Help-&gt;About
+       showAboutText();
+       break;
+      case 610: // View -&gt; Material -&gt; Solid
+       if (Model)
+        Model-&gt;setMaterialType(video::EMT_SOLID);
+       break;
+      case 620: // View -&gt; Material -&gt; Transparent
+       if (Model)
+        Model-&gt;setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR);
+       break;
+      case 630: // View -&gt; Material -&gt; Reflection
+       if (Model)
+        Model-&gt;setMaterialType(video::EMT_SPHERE_MAP);
+       break;
+
+      case 1000: // Camera -&gt; Maya Style
+       setActiveCamera ( Camera[0] );
+       break;
+      case 1100: // Camera -&gt; First Person
+       setActiveCamera ( Camera[1] );
+       break;
+
+      }
+                    break;
+     }
+
+    case EGET_FILE_SELECTED:
+     {
+      // 在文件展开对话框中进行选择，读取一个模型文件
+      IGUIFileOpenDialog* dialog =
+       (IGUIFileOpenDialog*)event.GUIEvent.Caller;
+      loadModel(core::stringc(dialog-&gt;getFilename()).c_str());
+     }
+
+    case EGET_SCROLL_BAR_CHANGED:
+
+     // 控制UI的皮肤透明度
+     if (id == 104)
+     {
+      s32 pos = ((IGUIScrollBar*)event.GUIEvent.Caller)-&gt;getPos();
+      for (s32 i=0; i&lt;irr::gui::EGDC_COUNT ; ++i)
+      {
+       video::SColor col = env-&gt;getSkin()-&gt;getColor((EGUI_DEFAULT_COLOR)i);
+       col.setAlpha(pos);
+       env-&gt;getSkin()-&gt;setColor((EGUI_DEFAULT_COLOR)i, col);
+      }
+     }
+     break;
+
+    case EGET_COMBO_BOX_CHANGED:
+
+     // 控制反锯齿/纹理过滤模式
+     if (id == 108)
+     {
+      s32 pos = ((IGUIComboBox*)event.GUIEvent.Caller)-&gt;getSelected();
+      switch (pos)
+      {
+       case 0:
+       if (Model)
+       {
+        Model-&gt;setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
+        Model-&gt;setMaterialFlag(video::EMF_TRILINEAR_FILTER, false);
+        Model-&gt;setMaterialFlag(video::EMF_ANISOTROPIC_FILTER, false);
+       }
+       break;
+       case 1:
+       if (Model)
+       {
+        Model-&gt;setMaterialFlag(video::EMF_BILINEAR_FILTER, true);
+        Model-&gt;setMaterialFlag(video::EMF_TRILINEAR_FILTER, false);
+       }
+       break;
+       case 2:
+       if (Model)
+       {
+        Model-&gt;setMaterialFlag(video::EMF_BILINEAR_FILTER, false);
+        Model-&gt;setMaterialFlag(video::EMF_TRILINEAR_FILTER, true);
+       }
+       break;
+       case 3:
+       if (Model)
+       {
+        Model-&gt;setMaterialFlag(video::EMF_ANISOTROPIC_FILTER, true);
+       }
+       break;
+       case 4:
+       if (Model)
+       {
+        Model-&gt;setMaterialFlag(video::EMF_ANISOTROPIC_FILTER, false);
+       }
+       break;
+      }
+     }
+     break;
+
+    case EGET_BUTTON_CLICKED:
+
+     switch(id)
+     {
+     case 1101:   // “set”按纽
+      {
+       // 设置缩放比例
+       gui::IGUIElement* root = env-&gt;getRootGUIElement();
+       core::vector3df scale;
+       core::stringc s;
+
+       s = root-&gt;getElementFromId(901, true)-&gt;getText();
+       scale.X = (f32)atof(s.c_str());
+       s = root-&gt;getElementFromId(902, true)-&gt;getText();
+       scale.Y = (f32)atof(s.c_str());
+       s = root-&gt;getElementFromId(903, true)-&gt;getText();
+       scale.Z = (f32)atof(s.c_str());
+
+       if (Model)
+        Model-&gt;setScale(scale);
+      }
+      break;
+     case 1102: // 菜单上的快捷按钮Open a model
+      env-&gt;addFileOpenDialog(L&quot;Please select a model file to open&quot;);
+      break;
+     case 1103: // 菜单上的快捷按钮Open Help
+      showAboutText();
+      break;
+     case 1104: // 菜单上的快捷按钮Open ToolSet
+      createToolBox();
+      break;
+     case 1105: // 菜单上的快捷按钮OSet module archive
+      env-&gt;addFileOpenDialog(L&quot;Please select your game archive/directory&quot;);
+      break;
+     }
+
+     break;
+    }
+   }
+
+   return false;
+}
+};
+
+
+/*
+最简单的工作已经做完了，我们仅需要创建一个Irr设备，再创建所有的按钮，菜单，工具拦就OK了。
+我们象平常一样开动引擎，首先创建一个Irr设备。为了让我们的应用程序获取到消息，我们必须把
+自己的事件接收器作为一个参数传入。
+#ifdef WIN32这个预处理命令不是必要的，但是我包含了这句，目的是使我们的例子能够在非Windows
+平台上也顺利使用DirectX.
+译者注：本例中并未包含#ifdef WIN32该句，另外作者在本例中错误单词也较多，怀疑是喝高了或是心情不好吧。
+如你所见，例子中使用了一个不常见的函数IrrlichtDevice::setResizeAble(). 这个函数允许
+渲染窗口被拉伸缩短，这点在Mesh浏览器中是非常有用的。
+*/
+int main()
+{
+// 让用户选择设备类型
+video::E_DRIVER_TYPE driverType = video::EDT_DIRECT3D8;
+
+printf(&quot;Please select the driver you want for this example:\n&quot;\
+   &quot; (a) Direct3D 9.0c\n (b) Direct3D 8.1\n (c) OpenGL 1.5\n&quot;\
+   &quot; (d) Software Renderer\n (e) Burning's Software Renderer\n&quot;\
+   &quot; (f) NullDevice\n (otherKey) exit\n\n&quot;);
+
+char key;
+std::cin &gt;&gt; key;
+
+switch(key)
+{
+   case 'a': driverType = video::EDT_DIRECT3D9;break;
+   case 'b': driverType = video::EDT_DIRECT3D8;break;
+   case 'c': driverType = video::EDT_OPENGL;   break;
+   case 'd': driverType = video::EDT_SOFTWARE; break;
+   case 'e': driverType = video::EDT_BURNINGSVIDEO;break;
+   case 'f': driverType = video::EDT_NULL;     break;
+   default: return 1;
+}
+
+// 创建设备，如果失败则直接返回。
+
+MyEventReceiver receiver;
+Device = createDevice(driverType, core::dimension2d&lt;s32&gt;(800, 600),
+   16, false, false, false, &amp;receiver);
+
+if (Device == 0)
+   return 1;
+
+Device-&gt;setResizeAble(true);
+
+Device-&gt;setWindowCaption(L&quot;Irrlicht Engine - Loading...&quot;);
+
+video::IVideoDriver* driver = Device-&gt;getVideoDriver();
+IGUIEnvironment* env = Device-&gt;getGUIEnvironment();
+scene::ISceneManager* smgr = Device-&gt;getSceneManager();
+
+driver-&gt;setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT, true);
+
+smgr-&gt;addLightSceneNode();
+smgr-&gt;addLightSceneNode(0, core::vector3df(50,-50,100), video::SColorf(1.0f,1.0f,1.0f),20000);
+// 设置我们的媒体目录，方便搜索
+Device-&gt;getFileSystem()-&gt;addFolderFileArchive ( &quot;../../media/&quot; );
+
+/*
+   下一步就是读取配置文件了。它以XML格式存放着，恩，就象这样子：
+
+   &lt;?xml version=&quot;1.0&quot;?&gt;
+   &lt;config&gt;
+    &lt;startUpModel file=&quot;some filename&quot; /&gt;
+    &lt;messageText caption=&quot;Irrlicht Engine Mesh Viewer&quot;&gt;
+     Hello!
+    &lt;/messageText&gt;
+   &lt;/config&gt;
+
+   我们需要在StartUpModelFile，MessageText，Caption这些全局变量中的数据，
+   现在我们开始使用Irr引擎对XML文件进行解析读取
+*/
+
+// 从XML文件中读取配置
+
+io::IXMLReader* xml = Device-&gt;getFileSystem()-&gt;createXMLReader(
+   &quot;config.xml&quot;);
+
+while(xml &amp;&amp; xml-&gt;read())
+{
+   switch(xml-&gt;getNodeType())
+   {
+   case io::EXN_TEXT:
+    // 在这个XML文件中，只有唯一的正文信息，就是messageText
+    MessageText = xml-&gt;getNodeData();
+    break;
+   case io::EXN_ELEMENT:
+    {
+     if (core::stringw(&quot;startUpModel&quot;) == xml-&gt;getNodeName())
+      StartUpModelFile = xml-&gt;getAttributeValue(L&quot;file&quot;);
+     else
+     if (core::stringw(&quot;messageText&quot;) == xml-&gt;getNodeName())
+      Caption = xml-&gt;getAttributeValue(L&quot;caption&quot;);
+    }
+    break;
+   }
+}
+
+if (xml)
+   xml-&gt;drop(); // 别忘记最后需要删除XML读取器
+
+/*
+   这些并不难是吧，现在我们将要设置一个好看的字体，并且创建一个菜单。
+   我们必须为每个菜单项目创建一个子菜单，例如menu-&gt;addItem(L&quot;File&quot;, -1, true, true);
+   这样我们就创建了一个名叫File的子菜单，其ID为-1表示使用默认ID编号规则，其余的参数表意为
+   这个子菜单控件是否可用，最后一个参数是说它本身也有自己的子控件，子菜单
+   能够被menu-&gt;getSubMenu(0)这个函数获取，因为&quot;File&quot;这个子菜单的编号为0。
+   注意：子菜单的默认编号规则是从0开始递增的。
+*/
+
+// 设置一个好看的字体
+
+IGUISkin* skin = env-&gt;getSkin();
+IGUIFont* font = env-&gt;getFont(&quot;fonthaettenschweiler.bmp&quot;);
+if (font)
+   skin-&gt;setFont(font);
+
+// 创建菜单
+gui::IGUIContextMenu* menu = env-&gt;addMenu();
+menu-&gt;addItem(L&quot;File&quot;, -1, true, true);
+menu-&gt;addItem(L&quot;View&quot;, -1, true, true);
+menu-&gt;addItem(L&quot;Camera&quot;, -1, true, true);
+menu-&gt;addItem(L&quot;Help&quot;, -1, true, true);
+
+gui::IGUIContextMenu* submenu;
+submenu = menu-&gt;getSubMenu(0);
+submenu-&gt;addItem(L&quot;Open Model File &amp; Texture...&quot;, 100);
+submenu-&gt;addItem(L&quot;Set Model Archive...&quot;, 101);
+submenu-&gt;addSeparator();
+submenu-&gt;addItem(L&quot;Quit&quot;, 200);
+
+submenu = menu-&gt;getSubMenu(1);
+submenu-&gt;addItem(L&quot;toggle sky box visibility&quot;, 300);
+submenu-&gt;addItem(L&quot;toggle model debug information&quot;, 400);
+submenu-&gt;addItem(L&quot;model material&quot;, -1, true, true );
+
+submenu = submenu-&gt;getSubMenu(2);
+submenu-&gt;addItem(L&quot;Solid&quot;, 610);
+submenu-&gt;addItem(L&quot;Transparent&quot;, 620);
+submenu-&gt;addItem(L&quot;Reflection&quot;, 630);
+
+submenu = menu-&gt;getSubMenu(2);
+submenu-&gt;addItem(L&quot;Maya Style&quot;, 1000);
+submenu-&gt;addItem(L&quot;First Person&quot;, 1100);
+
+submenu = menu-&gt;getSubMenu(3);
+submenu-&gt;addItem(L&quot;About&quot;, 500);
+
+/*
+   在菜单之下，我们需要一个工具栏。这个工具栏应该是一些进行贴图的按钮组成。
+   另外我们创建一个下拉选框，恩，其中的选项就没有什么意义啦。
+*/
+
+// 创建工具栏
+
+gui::IGUIToolBar* bar = env-&gt;addToolBar();
+
+video::ITexture* image = driver-&gt;getTexture(&quot;open.png&quot;);
+bar-&gt;addButton(1102, 0, L&quot;Open a model&quot;,image, 0, false, true);
+
+image = driver-&gt;getTexture(&quot;tools.png&quot;);
+bar-&gt;addButton(1104, 0, L&quot;Open Toolset&quot;,image, 0, false, true);
+
+image = driver-&gt;getTexture(&quot;zip.png&quot;);
+bar-&gt;addButton(1105, 0, L&quot;Set Model Archive&quot;,image, 0, false, true);
+
+image = driver-&gt;getTexture(&quot;help.png&quot;);
+bar-&gt;addButton(1103, 0, L&quot;Open Help&quot;, image, 0, false, true);
+
+// 创建一个没有意义文字选项的下拉选框
+
+gui::IGUIComboBox* box = env-&gt;addComboBox(core::rect&lt;s32&gt;(250,4,350,23), bar, 108);
+box-&gt;addItem(L&quot;No filtering&quot;);
+box-&gt;addItem(L&quot;Bilinear&quot;);
+box-&gt;addItem(L&quot;Trilinear&quot;);
+box-&gt;addItem(L&quot;Anisotropic&quot;);
+box-&gt;addItem(L&quot;Isotropic&quot;);
+
+/*
+   为了使编辑器看起来更好一点，我们设置了编辑器GUI的Aplha透明度，让它默认全不透明。
+   并把制表窗口显示出来.另外，我们创建了一个显示当前桢率的文本。最后，
+   改变一下窗口标题文字。
+*/
+
+// 设置编辑器的GUI部分为不透明
+
+for (s32 i=0; i&lt;gui::EGDC_COUNT ; ++i)
+{
+   video::SColor col = env-&gt;getSkin()-&gt;getColor((gui::EGUI_DEFAULT_COLOR)i);
+   col.setAlpha(255);
+   env-&gt;getSkin()-&gt;setColor((gui::EGUI_DEFAULT_COLOR)i, col);
+}
+
+// 创建一个制表窗口并将其显示
+
+createToolBox();
+
+// 创建FPS显示文字
+
+IGUIStaticText* fpstext = env-&gt;addStaticText(L&quot;&quot;, core::rect&lt;s32&gt;(400,4,570,23), true, false, bar);
+
+// 设置窗口标题
+
+Caption += &quot; - [&quot;;
+Caption += driver-&gt;getName();
+Caption += &quot;]&quot;;
+Device-&gt;setWindowCaption(Caption.c_str());
+
+/*
+   这基本是上程序的全部了，我们在程序开始时把About帮助窗口显示出来，
+   再读入一个默认的模型，再创建一个天空盒子，一个用户控制的摄象机，
+   使程序看起来更加生动有趣一些。最后，在一个标准的绘制循环中一切被绘制出来。
+*/
+
+// 显示About这个帮助窗口
+showAboutText();
+// 读取一个默认的模型
+loadModel(StartUpModelFile.c_str());
+
+// 增加一个天空盒
+
+SkyBox = smgr-&gt;addSkyBoxSceneNode(
+   driver-&gt;getTexture(&quot;irrlicht2_up.jpg&quot;),
+   driver-&gt;getTexture(&quot;irrlicht2_dn.jpg&quot;),
+   driver-&gt;getTexture(&quot;irrlicht2_lf.jpg&quot;),
+   driver-&gt;getTexture(&quot;irrlicht2_rt.jpg&quot;),
+   driver-&gt;getTexture(&quot;irrlicht2_ft.jpg&quot;),
+   driver-&gt;getTexture(&quot;irrlicht2_bk.jpg&quot;));
+
+// 增加一个摄象机场景结点
+Camera[0] = smgr-&gt;addCameraSceneNodeMaya();
+Camera[1] = smgr-&gt;addCameraSceneNodeFPS();
+
+setActiveCamera ( Camera[0] );
+
+// 读取Irr引擎Logo
+IGUIImage *img =
+   env-&gt;addImage(driver-&gt;getTexture(&quot;irrlichtlogo2.png&quot;),
+    core::position2d&lt;s32&gt;(10, driver-&gt;getScreenSize().Height - 64));
+
+// 将Logo锁定到屏幕的左下方
+img-&gt;setAlignment(EGUIA_UPPERLEFT, EGUIA_UPPERLEFT, EGUIA_LOWERRIGHT, EGUIA_LOWERRIGHT);
+
+// 绘制一切
+
+while(Device-&gt;run() &amp;&amp; driver)
+{
+   if (Device-&gt;isWindowActive())
+   {
+    driver-&gt;beginScene(true, true, video::SColor(150,50,50,50));
+
+    smgr-&gt;drawAll();
+    env-&gt;drawAll();
+
+    driver-&gt;endScene();
+
+    core::stringw str(L&quot;FPS: &quot;);
+    str.append(core::stringw(driver-&gt;getFPS()));
+    str += L&quot; Tris: &quot;;
+    str.append(core::stringw(driver-&gt;getPrimitiveCountDrawn()));
+    fpstext-&gt;setText(str.c_str());
+   }
+   else
+    Device-&gt;yield();
+}
+
+Device-&gt;drop();
+return 0;
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/%E8%BD%AC%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E6%9C%89%E4%BB%A5%E4%B8%8B%E8%B5%84%E6%96%99/" data-tooltip="[转]想成为一个游戏程序员需要有以下资料">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/irrlicht%E4%B9%8B08.specialfx/" data-tooltip="Irrlicht之08.SpecialFx">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/11/irrlicht%E4%B9%8B09.meshviewer/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/%E8%BD%AC%E6%83%B3%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E6%B8%B8%E6%88%8F%E7%A8%8B%E5%BA%8F%E5%91%98%E9%9C%80%E8%A6%81%E6%9C%89%E4%BB%A5%E4%B8%8B%E8%B5%84%E6%96%99/" data-tooltip="[转]想成为一个游戏程序员需要有以下资料">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/11/irrlicht%E4%B9%8B08.specialfx/" data-tooltip="Irrlicht之08.SpecialFx">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/11/irrlicht%E4%B9%8B09.meshviewer/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F11%2Firrlicht%25E4%25B9%258B09.meshviewer%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/11\/irrlicht%E4%B9%8B09.meshviewer\/';
+          
+            this.page.identifier = '\/2007\/11\/irrlicht%E4%B9%8B09.meshviewer\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

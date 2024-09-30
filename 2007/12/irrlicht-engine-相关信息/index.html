@@ -1,0 +1,1017 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>Irrlicht Engine 相关信息</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="欢迎您从下载最新版的Irrlicht引擎。
+
+">
+    <meta property="og:description" content="欢迎您从下载最新版的Irrlicht引擎。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Irrlicht Engine 相关信息">
+    <meta property="og:url" content="/2007/12/irrlicht-engine-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="欢迎您从下载最新版的Irrlicht引擎。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Irrlicht Engine 相关信息
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-12-04T00:00:00Z">
+        
+  十二月 4, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>欢迎您从下载最新版的Irrlicht引擎。</p>
+
+<p></p>
+
+<p>欢迎您从<a href="http://irrlicht.sourceforge.net">http://irrlicht.sourceforge.net</a> 下载最新版的Irrlicht引擎。</p>
+
+<p>1：SDK目录结构总述
+当您下载Irr引擎SDK解压缩之后，你会看到以下文件夹：</p>
+
+<p>\bin 完全编译好的Irrlicht,DLL以及一些编译好的Demo，你可以通过这些例子来获取Irr的运行状态。（Windows Only）</p>
+
+<p>\doc Irr引擎的一些文档。</p>
+
+<p>\examples 使用C++编写的例子，告诉用户如何使用Irr引擎。</p>
+
+<p>\examples.net 使用.NET语言编写的例子，告诉用户如何使用Irr引擎。</p>
+
+<p>\exporters 一些Irr引擎用到的辅助库和工具。(编者注：部分版本没有此文件夹，该文件夹内容在source中，包括Jpeglib,libpng,MacOSX,zlib等)</p>
+
+<p>\include 引擎包含的头文件。</p>
+
+<p>\lib 当你使用Irr引擎时需要链接的库文件。</p>
+
+<p>\media Demo程序需要的一些图形图象和声音素材。</p>
+
+<p>\source Irr引擎的源代码，必要的话，你可以对其进行编译和Debug以获得新的lib。</p>
+
+<p>\tools 引擎的一些有用的工具。(包含源文件)</p>
+
+<p>2：如何启用引擎
+在Windows环境下启动引擎的话，你需要去\bin\Win32-VisualStudio目录下运行程序。或者你也可以运行一个叫Demo.exe的程序，它会显示一些Irr引擎有意思的功能。</p>
+
+<p>在开始我们自己的程序编写之前，你最好看看\examples目录下的例子，那里也有一个.html格式的文件对例子进行说明，以方便你的理解。(编者注：您也可以到这里获取一些例子相关的帮助)</p>
+
+<p>在Linix环境下，Irr引擎是一个静态库。你可以使用source/Irrlicht中的Makefile文件来生成一个编译好的引擎。之后，你应当可以生成/examples中的例子程序了吧。之后你可以立刻运行这些例子了。</p>
+
+<p>3：SDK编译需求
+你可以使用下列编译器之一来运行Irr应用程序。不过，其他编译器可能也能完美运行，但是我没有做过测试。</p>
+
+<p>l       gcc3.3</p>
+
+<p>l       gcc 3.4</p>
+
+<p>l       gcc</p>
+
+<p>l       Visual Studio 6.0</p>
+
+<p>l       Visual Studio.NET 2003 (7.1)</p>
+
+<p>l       Visual Studio 2005 (8.0)</p>
+
+<p>l       Code::Blocks 1.0 + gcc或Visio Studio Toolkit</p>
+
+<p>l       DevC++ 5.0 + gcc</p>
+
+<p>如果你不想使用编译好的引擎库，你可以自行使用源代码进行编译，你需要以下支持：</p>
+
+<p>l       Windows环境下：</p>
+
+<p>Windows平台SDK（一般IDE里已经包含）</p>
+
+<p>DirectX 9 SDK(可选，进行D3D9支持)</p>
+
+<p>DirectX 8 SDK(可选，进行D3D8支持)</p>
+
+<p>l       Linux环境下：</p>
+
+<p>Xserver以及其包含文件</p>
+
+<p>OpenGL支持库(可选，包括libGL和libGLU)</p>
+
+<p>GLX + XF86视频扩展库 (可选)</p>
+
+<p>4：版本注意
+1： 您可以在changes.txt中查看引擎版本的更改信息。</p>
+
+<p>2： 请注意，那些材质纹理3D模型等素材的版权依旧属于其原作者，而不受本引擎版权声明影响。(笃志注：- -真细心的作者)</p>
+
+<p>5：声明
+这个声明是基于Zlib/libpng的。假若您在项目中使用了Irr引擎，您有权不提及它，但是还是希望您能来封感谢信。(笃志注：外国人这点就是好)</p>
+
+<p>请注意，Irr引擎是基于JPEG库，Zlib，libpng这些库之上的，那就意味着，如果您在自己项目中使用了Irr引擎，您必须在项目文件中提到你使用了这些库，并且声明感谢。当然，若您愿意声明感谢Irr引擎的话自然更好。更详细的声明信息建议您看jpeglib和zlib中的ReadMe文件。</p>
+
+<p>Irr引擎许可声明</p>
+
+<p>禁止使用本引擎进行任何不法行为，违反者后果自负。</p>
+
+<p>在基于下列三项要求前提下，本引擎允许任何人进行随意使用，包括制作商业软件，同样也允许你随意修改源代码。</p>
+
+<p>1：若您在项目中使用了本引擎，您可以在项目说明中声明感谢，不过，您也可以不做感谢声明,但是，本引擎文件来源说明绝对不允许修改删除。</p>
+
+<p>2：若您进行源代码修改，请务必做出明显标注。</p>
+
+<p>3：本份声明不允许被修改或删除。</p>
+
+<p>6：联系方式
+如果你有问题或者建议，欢迎来访Irr官方网页：<a href="http://irrlicht.sourceforge.net">http://irrlicht.sourceforge.net</a></p>
+
+<p>在官方网页您将会看到Irr主题的论坛，补丁，例子和其他一些帮助。</p>
+
+<p>如果您想加入引擎开发组，请发一封邮件至 Nikolaus Gebhardt:</p>
+
+<p>一部分朋友协助进行了部分引擎的编写和修改工作，请在这里查看完整的作者名表。</p>
+
+<p><a href="http://irrlicht.sourceforge.net/author.html">http://irrlicht.sourceforge.net/author.html</a></p>
+
+<p>为了使您在项目或游戏中使用Irr引擎更加方便简单，我们提供了一些外部工具。这些工具和库是完全独立于Irr引擎的，但是这些工具是完全针对Irr引擎兼容的。</p>
+
+<p>1：irrKlang 一个2D和3D音效引擎</p>
+
+<p>irrKlang引擎是一个免费的2D和3D音效引擎库，它提供WAV，MP3，OGG，MOD,XM，IT，S等一些音频格式的播放支持。它是由C++编写的，下面是它的一些特性：</p>
+
+<p>l       它能够与Irr引擎的完美结合，因为它使用了一些Irr简单的API，但是又可以完全独立于Irr引擎使用。</p>
+
+<p>l       跨平台。</p>
+
+<p>l       支持2D和3D的流音频播放。</p>
+
+<p>l       支持回声，失真，多普勒等多种2D3D音频特效。</p>
+
+<p>l       支持多种音频格式：wav, mp3, ogg, mod, xm, it, s3m ….等等。</p>
+
+<p>l       高级资源管理和资源探测。</p>
+
+<p>l       提供了具有可扩展型的音频解码器和plugin系统。</p>
+
+<p>l       免费。</p>
+
+<p>更详细的信息，您可以从这里获得<a href="http://www.ambiera.com/irrklang">http://www.ambiera.com/irrklang</a></p>
+
+<p>2：irrEdit 一个3D地图编辑器</p>
+
+<p>irrEdit是一个免费的3D地图编辑器。它能够进行场景曲线编辑，世界场景编辑，粒子系统设计，Mesh查看等功能。它的文件保存格式为.irr格式，Irr引擎能够支持。它的特征包括：</p>
+
+<p>l       它包括一个高质量的地图产生器</p>
+
+<p>l       它包括一个粒子系统编辑器</p>
+
+<p>l       编辑器中还包括有一个自由完善的脚本系统</p>
+
+<p>l       它包括动画器和数据编辑器</p>
+
+<p>l       免费</p>
+
+<p>因为它是使用Irr引擎编写的，所以它能够读取所有Irr引擎所支持的格式。另外，它能够将一切文件保存输出为COLLADA文件格式。更详细的信息，您可以从这里获得<a href="http://www.ambiera.com/irredit">http://www.ambiera.com/irredit</a></p>
+
+<p>3：irrXML 一个C++编写的最快的开源xml解析器</p>
+
+<p>irrXML是一个C++编写的最快的开源xml解析器。它已经嵌入在Irr引擎中了，例如我们在读取一个.irr或COLLADA格式文件时就是使用它。它非常快，又是轻量级代码，而且不浪费一点内存，是做游戏时很好的一个库。</p>
+
+<p>如果你的项目不使用Irr引擎，你又需要一个快速的XML解析器，建议你使用这个库。它的使用声明和zlib一样。更详细的信息，你可以从这里获得<a href="http://www.ambiera.com/irrxml">http://www.ambiera.com/irrxml</a></p>
+
+<p>8：一些常见问题和解答
+1：Irrlicht引擎是什么？</p>
+
+<p>Irr引擎是一个高性能，跨平台，开源的3D引擎。它能够帮助你进行实时3D程序的开发。它的主要目标是：方便使用，运行速度快，可扩展，线程安全。</p>
+
+<p>这个引擎是一个非常灵活的引擎，可以使用它编写许多不同的应用程序。例如：复杂的3D仿真应用程序，第一和第三人称室内或室外射击游戏，策略游戏，2D游戏等等。</p>
+
+<p>2：我能够在不开源的商业程序中使用这个引擎吗？</p>
+
+<pre><code>   你当然可以。Irr引擎是免费的，而且完全自由的。您可以随意的编辑修改它，但是你必须标注出你的修改部分。这个引擎是基于Zlib的版权声明的，既非GPL也非LGPL。更详细的情况，您可以查看内部的声明。
+</code></pre>
+
+<p>3：我可以用Irr引擎做一款游戏吗？</p>
+
+<p>当然可以，而且这会很简单。</p>
+
+<p>但是，请注意：Irr不是一款游戏引擎，它仅仅进行了图象处理。做为一款游戏，你需要更多的部分，例如声音输出，网络和物理系统，也需要一些游戏相关的编辑器。您当然可以选择自己制作这些编辑器，但是Irr引擎已经有一些现成的编辑器和库可以提供给您使用，例如irrKlang, irrEdit。更详细的情况，您可以查看相关的说明。</p>
+
+<p>4：我可以为引擎做一些贡献吗？</p>
+
+<p>如果你编写了自己的场景节点,图片和Mesh读取器，或者对引擎做出了更多的扩展，请在<a href="http://irrlicht.sourceforge.net/phpBB2/index.php">http://irrlicht.sourceforge.net/phpBB2/index.php</a> 给我们来封论坛短信，我将会查阅您的代码，并会考虑将它发布到Irr主页，甚至加入到引擎sdk之中。</p>
+
+<p>在例子<a href="http://irrlicht.sourceforge.net/tutorials.html">http://irrlicht.sourceforge.net/tutorials.html</a> 这页将会告诉你如何对引擎进行扩展(笃志注：并未发现相关资料啊- -难道所谓的扩展就是写几个Demo?)如果你想加入我们的开发组，请先尝试习惯我们的代码规范。(笃志注：- -并未给直接的联系方式)</p>
+
+<p>5：现在有很多其他的3D引擎可以使用，请问Irr引擎相对于其他3D引擎有什么优势？</p>
+
+<p>l       容易使用。Irr引擎把所有常规的事情和绚丽的特效都已经做好了，您不需要花几天的时间去学习文档。例如：启动引擎，读取并显示一个Quake3的地图仅需要调用引擎6个函数，代码行数不超过10行，有兴趣的话，您可以查看sdk中的例子。</p>
+
+<p>l       灵活性强。虽然引擎很方便使用，但是你能够很容易的修改它。</p>
+
+<p>l       极其稳定。大部分实时程序在用户进行意外操作时会严重当机。但是Irr引擎不同，它会打印出一个警告信息，而应用程序大部分情况会继续运行。</p>
+
+<p>l       快如闪电。(笃志注：真强的形容- -) 因为3D引擎的常见问题在于速度，而影响速度的主要原因在于大量的内置导入解析器，而Irr引擎可以直接的进行文件导入而没有使用任何转换器，节省了大量的编译时间。它支持下列格式(.3ds, .md2, .obj, .pk3, .ms3d, .bsp, .x, .bmp, .tga, .jpg, .psd, .pcx等等)</p>
+
+<p>l       平台独立性。Irr引擎可以在众多平台上使用。</p>
+
+<p>l       独立API。因为有很多种设备类型，Irr引擎支持多种API，当前来说是支持OpenGL,D3D8和D3D9设备，一个空设备和两种软件模拟设备。甚至，在渲染的时候也允许进行设备类型的更换。</p>
+
+<p>l       不依赖其他库。Irr引擎sdk不需要其他库的支持。例如，即使用户系统中没有DirectX,引擎也能顺利运行。</p>
+
+<p>l       完善的文档。（笃志注：这条…有点名不其实了吧，Demo还不少，但文档却难得一见。）大量的例子和Demo，并且提供了一些你在3D程序中常用的工具，于是你无需新建项目来做这些工作。它包括（GUI系统工具，Font生成工具..等）</p>
+
+<p>l       开源。这个引擎是完全免费并且开源的。你可以随意的修改它，但是你必须标注出你的修改部分。这个引擎是基于Zlib的版权声明的，既非GPL也非LGPL。</p>
+
+<p>6：为什么这款引擎这么快？</p>
+
+<p>很多朋友给我写信说：他们使用了一些3D引擎，而Irr引擎是最快的，为什么这款引擎会这么快呢？实话说，我也不知道明确的原因，但是有以下这些可能：</p>
+
+<p>l       Irr引擎没有象其他大部分引擎那样使用保守的拣选运算，而新式的数学拣选更加适合现代的3D硬件。它默认的是使用16位纹理图，引擎在解析和显示这些图片时候会比其他引擎快些。</p>
+
+<p>l       Irr引擎没有使用其他比较慢的库，大部分事情都在引擎核心中实现的。</p>
+
+<p>7：这个引擎能够渲染多少个面？</p>
+
+<p>无限。OK，是接近无限。真正的限制在你的硬件。所以，根据你的需要尽管在程序中加入大量的模型面吧，只要你的游戏不卡。有些朋友问我，为什么教学例子中定义最大面数为10000，原因是我没有必要去做一个巨大的Quake3场景，弄的SDK下载包大的很。如果你想知道引擎能够支持渲染多少个面，那么你换个场景素材，自己看吧。</p>
+
+<p>8：我的代码里出了些问题，能帮我解决下吗？我在论坛中没有获得解答。</p>
+
+<p>抱歉，我没有时间为你的应用程序Debug。很多朋友把他们的代码给我让我来解决，但是我没有时间去为每一个来信的朋友解决问题。大部分情况下都是他们自己的C++代码原因而非引擎的错误。请打开你的Debugger用它去寻找你的程序中的错误。如果你不会使用Debugger,那么请在每一行代码前执行一句命令行打印代码，你就会找到是哪一行导致当机了。</p>
+
+<p>而你在论坛中获得不了帮助的大部分原因是你没有详细的描述你的问题情况。仅仅帖了100行代码然后写句“我这里有错，请帮我解决”这样是不行的。嘿，你是个程序员，应该最少60%时间用在程序Debug上。这个是我Debug所花的时间，其他程序员或多或少，但我想都差不多。当你的程序出现错误后，请尽量自己去解决，你将会比问别人找到bug而获益更多。</p>
+
+<p>9：“Irrlicht”是什么意思？</p>
+
+<p>Irrlicht是德语中的一种会发光，会飞行的神话动物。它通常生活在沼泽旁。我想，正确的英语翻译应该是”will-o-the-wisp”。同样，Irrlicht也可以分割成两个德语单词，“irr”意思是“mad(疯狂的)”,”Licht”意思是”light(灯光)”。Irr引擎发源于奥地利（德国南部），尽管非德语用户可能不知道它的发音，我却认为“Irrlicht”是个好名字。</p>
+
+<p>因为很多用户问我这个词如何发音，我专门上传了一个声音文件，你可以听到一个女孩子说”Irrlicht Engine”的声音，请点<a href="http://irrlicht.sourceforge.net/download/irrlichtengine.wav">http://irrlicht.sourceforge.net/download/irrlichtengine.wav</a></p>
+
+<p>10：我能够加入Irr引擎开发团队吗？</p>
+
+<p>基本上不行。抱歉，我喜欢小型的Irr引擎开发团队，因为这样可以保证每个计划简单的得到执行。</p>
+
+<p>但是，这也有例外。如果你对Irr引擎提供了一个 强大/有用/突破性 的增强功能，而且愿意加入团队，我们也会欢迎。例如：你能够使Irr引擎在Mac平台上顺利运行(现在已经可以了，但仅仅是一个Demo可以)。部分朋友提供了Irr引擎一小部分的修改，但是他们没有通过版本控制器来获得引擎的同步，我们也不能让他加入。</p>
+
+<p>不过现在又改了：如果你创建了一个模块并且按照Irr引擎编写规范(下文有)，并且愿意长期维护并分享它，你可以加入本小组，你只需要将你的代码发给niko就可以了。</p>
+
+<p>请注意，每月总有4-5个朋友希望加入Irr引擎开发团队，我实在难以选择，因为我们总希望团队尽可能的保持简单而工作快速起来。</p>
+
+<p>11：代码规范是什么？</p>
+
+<p>如果你制作了一个Irr引擎的补丁，而且希望它加入到引擎中，请遵循以下原则：</p>
+
+<p>l       除非特别特别特别必要，尽可能的不要依靠其他库</p>
+
+<p>别用STL，请使用Irr引擎中内置的容器类。</p>
+
+<p>别用平台相关函数，必要的话请使用os::命名空间内的函数。</p>
+
+<p>l       请谨记，Irr引擎是可以运行于其他平台和编译器下的。</p>
+
+<p>请不要使用特殊的编译器扩展，尽量使用标准C++</p>
+
+<p>请使用Irr引擎中的类型定义，例如f32, u32</p>
+
+<p>l       请尽量不要修改现有的Irr接口。除非极其必要而且正确。另外，建议您应当下载最新版本的Irr引擎。若你依旧有这种修改需要，最好和niko先商谈一下。</p>
+
+<p>l       尽量使用现有的Irr代码风格。</p>
+
+<p>1：接口以I开头，实现以C开头，仅保存数据的结构体以S开头。</p>
+
+<p>2：函数尽量以小写字母开头，变量尽量以大写字母开头。</p>
+
+<p>3：接口的公共函数，其参数应当给默认值。</p>
+
+<p>4：增加一个函数或修改一个函数，应当按照doxygen规范给予注释。如果你对Irr引擎进行了大量的修改，请在changes.txt中说明。</p>
+
+<p>5：使用C++风格的编码习惯，别使用Java代码习惯，例如</p>
+
+<p>For(foo)</p>
+
+<p>{</p>
+
+<pre><code>    //TODO:
+</code></pre>
+
+<p>}</p>
+
+<pre><code>   For(foo){
+
+          // TODO:
+
+   }
+
+   前一种就比后一种好。
+
+   6：上面的都是比较重要的规则，但是还有一些其他的小规则。例如，尽量使用命名空间，换行和tab键，使你的代码看起来好看一些。
+</code></pre>
+
+<p>l       多检查代码可能出错的地方，预防当机。例如，对一些参数进行判断，检查指针是否为空。另外，发生错误时，输出一个错误log，用其他方式使程序继续运行下去。这些工作除非在软件模拟格式下都是必须做好的。</p>
+
+<p>以上就是基本的代码规范了。</p>
+
+<p>12：没有CVS吗？</p>
+
+<p>Irrlicht是由一个subVersion服务器做主机的，所有CVS服务器的数据都是老版本的。如果你依然希望获得最新版本的CVS，请通过:pserver:anonymous@cvs.sourceforge.net:/cvsroot/irrlicht ，</p>
+
+<p>模块名是”Irrlicht”,更详细的配置请看这里<a href="http://sourceforge.net/cvs/?group_id=74339">http://sourceforge.net/cvs/?group_id=74339</a></p>
+
+<p>13：我如何链接SubVersion服务器？</p>
+
+<p>你能够通过<a href="https://irrlicht.svn.sourceforge.net/svnroot/irrlicht/trunk">https://irrlicht.svn.sourceforge.net/svnroot/irrlicht/trunk</a> 进行访问。</p>
+
+<p>14：下一个版本引擎将有什么功能？</p>
+
+<p>请查看开发主页<a href="http://irrlicht.sourceforge.net/development.html">http://irrlicht.sourceforge.net/development.html</a> 和我的博客<a href="http://www.irrlicht3d.org">http://www.irrlicht3d.org</a> 。我会在上面时时更新最新的开发新闻。你或许能在其中发现下一版本引擎的的预告说明。</p>
+
+<p>15：下一个版本Irr引擎什么时候发布？</p>
+
+<p>等它被完成的时候。这个引擎仅仅是一个开源引擎，我从中没有获得一分钱，所以我不能做出最终期限。一般1-2个月我会发布一个新的小版本更动，可能是从0.4到0.5。平时我会提前1-2星期发布公告并贴出一些截屏和新的特征说明。所以请不要再给我来信询问这个问题，实际上，大部分时候我自己也不知道这个问题的答案。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8Bfreetype%E5%A4%9A%E5%9B%BD%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%E6%96%B9%E6%B3%95/" data-tooltip="Irrlicht之Freetype多国语言支持方法">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E5%BC%95%E6%93%8E%E4%BE%8B%E5%AD%90%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%B8%AD%E6%96%87%E9%93%BE%E6%8E%A5/" data-tooltip="Irrlicht引擎例子说明及中文链接">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/12/irrlicht-engine-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E4%B9%8Bfreetype%E5%A4%9A%E5%9B%BD%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%E6%96%B9%E6%B3%95/" data-tooltip="Irrlicht之Freetype多国语言支持方法">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/12/irrlicht%E5%BC%95%E6%93%8E%E4%BE%8B%E5%AD%90%E8%AF%B4%E6%98%8E%E5%8F%8A%E4%B8%AD%E6%96%87%E9%93%BE%E6%8E%A5/" data-tooltip="Irrlicht引擎例子说明及中文链接">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/12/irrlicht-engine-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F12%2Firrlicht-engine-%25E7%259B%25B8%25E5%2585%25B3%25E4%25BF%25A1%25E6%2581%25AF%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/12\/irrlicht-engine-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF\/';
+          
+            this.page.identifier = '\/2007\/12\/irrlicht-engine-%E7%9B%B8%E5%85%B3%E4%BF%A1%E6%81%AF\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

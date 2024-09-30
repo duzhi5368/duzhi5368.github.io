@@ -1,0 +1,807 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]DirectX11特性简介</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="引言：随着Window 7操作系统的日益临近，DirectX 11也离我们不远了。日前，北美著名IT网站anandtech的资深编辑Derek Wilson为我们带来了一篇关于DirectX 11的分析文章，可以说是截至到目前为止，关于DirectX 11最详细深入的文章。我们进行了编译整理，给大家提供参考。不过文章内容偏重技术层面，读起来比较生涩难懂，以下是原文大致内容（文中可能会有纰漏，望指正，不甚感激）
+
+">
+    <meta property="og:description" content="引言：随着Window 7操作系统的日益临近，DirectX 11也离我们不远了。日前，北美著名IT网站anandtech的资深编辑Derek Wilson为我们带来了一篇关于DirectX 11的分析文章，可以说是截至到目前为止，关于DirectX 11最详细深入的文章。我们进行了编译整理，给大家提供参考。不过文章内容偏重技术层面，读起来比较生涩难懂，以下是原文大致内容（文中可能会有纰漏，望指正，不甚感激）
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]DirectX11特性简介">
+    <meta property="og:url" content="/2009/12/%E8%BD%ACdirectx11%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="引言：随着Window 7操作系统的日益临近，DirectX 11也离我们不远了。日前，北美著名IT网站anandtech的资深编辑Derek Wilson为我们带来了一篇关于DirectX 11的分析文章，可以说是截至到目前为止，关于DirectX 11最详细深入的文章。我们进行了编译整理，给大家提供参考。不过文章内容偏重技术层面，读起来比较生涩难懂，以下是原文大致内容（文中可能会有纰漏，望指正，不甚感激）
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]DirectX11特性简介
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2009-12-29T00:00:00Z">
+        
+  十二月 29, 2009
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2009">2009</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>引言：随着Window 7操作系统的日益临近，DirectX 11也离我们不远了。日前，北美著名IT网站anandtech的资深编辑Derek Wilson为我们带来了一篇关于DirectX 11的分析文章，可以说是截至到目前为止，关于DirectX 11最详细深入的文章。我们进行了编译整理，给大家提供参考。不过文章内容偏重技术层面，读起来比较生涩难懂，以下是原文大致内容（文中可能会有纰漏，望指正，不甚感激）</p>
+
+<p></p>
+
+<p>第1页：开篇之言以及绘图API简介</p>
+
+<p>无论我们电脑桌上的系统是高端产品还是低端货，我们都希望它能不停的进行实时3D渲染，直到一幅幅接近现实的画面呈现在我们眼前。要达到这样的效果受到很多因素的制约，比如说纯粹的硬件性能有多高、相关软件渲染技术有多先进等等，不过除此之外，还有一点同样重要：绘图API（Application Programming interface，应用程序界面）。</p>
+
+<p>之前放出的DirectX 11画质截图</p>
+
+<p>与CPU不同，绘图硬件（GPU）不具备某种不包含某些工具以及软件功能的通用指令集。为了挖掘出硬件性能，我们就需要一种通用的界面，而且无论系统采用什么样的GPU，这一界面都能处于工作状态。这就要求我们的硬件设计者们理解由API（application programming interface）产生的代码，并将这些代码编译成系统芯片们能够利用的东西。因为API是开发人员的单点联系（single point of contact，是指一个负责提供所有重要的服务的人或物，他/它能够将信息和支持服务进行集中式提供，从而确保问题迅速得到解决），graphics API的重要性非同小可。
+某些利用graphics API才能完成的关键任务，比如说记录3D环境里3D对象的脚本（description），并将这些3D对象以及其他数据资源发送给硬件部分，然后告诉相关硬件该怎么处理这些对象及数据资源。这是一种逐步的过程，需要与我们通常所说的管线（pipeline）协同工作。Graphics API管线具有很多不同的阶段，每个阶段又有不同的任务处理。以下就是3D绘图管线的工作流程：
+首先，顶点数据（vertex data，关于shape图形的空间位置的描述）被接纳并被处理。然后，这些shape图形将会在更大程度上进行处理，而且如果有必要的话还可能再次被处理。而后，3D景物模型的数学描述及其色彩信息将会“投射”成我们称之为像素的2D碎片（此过程通常被称之为光栅化rasterization），再然后，这些像素将会通过查找纹理信息以及采用光技术等被逐个处理。所有像素的处理过程完成之后，它们将会被输出并呈现在电脑的显示屏上。当然了，这仅仅是极其复杂的3D绘图工作的小小概要。
+在过去的十年中，3D绘图硬件加速的开发者们的首选API不是DirectX就是OpenGL，两者是最具统治地位的API。</p>
+
+<p>本文我们将重点介绍DirectX。微软的DirectX绘图API应用程序界面被更多的游戏引擎所采用，比OpenGL的应用范围更广阔，因为DirectX的更新速度往往更快些，而且从特性以及弹性方面为硬件和OpenGL设置了更高的、难以逾越的标准。新版DirectX往往是业界乐于谈论的，因为新的DirectX将会界定硬件的潜在性能，而且在某种程度上为游戏开发人员“揭露”出更先进的开发工具。从即将推出的DirectX版本中，我们往往能够看到未来的绘图技术是什么样的。目前，市面上已经有很多DirectX 9和DirectX 10游戏，而且有很多这样的游戏正在开发过程中，尽管如此，DirectX 11的光芒已经隐约闪现在地平线上。</p>
+
+<p>DirectX 11将会与新一代操作系统Windows 7一同发布。目前，Windows 7 Beta版已经准备就绪，并已经免费下载，而正式版也将会在今年正式发布。为了快速下放口碑不太好的Vista，微软对于Windows 7的发布计划可以说是相当重视。
+DirectX 10比DirectX 9足足大4岁多，而Vista发布也已两年有余，也即是说DirectX 10也两岁多了。我们预测，DirectX 11不久将会上位。这种快速过渡对于DirectX 11快速适应非常有利，因为DirectX 10迄今尚未完全普及：很多游戏依然坚守DirectX 9。
+下面就让我们简单了解一下DirectX 11吧！</p>
+
+<p>第2页：DirectX11详解：管线和特性
+以下是DirectX 10架构图：</p>
+
+<p>DirectX 10首次加入Geometry Shader（几何着色器，简称GS单元）设计，不仅有助提升模板阴影特效（Stencil Shadows）、动态法向量图（Dynamic cube maps）及位移贴图（Displacement mapping）的执行效率，并减少处理器介入。此外，Geometry Shader最高可支持1024个Vertices，同时可把部份不必要的vertexes删除，这两项功能使得绘图运算将较以往更具效率。</p>
+
+<p>再来看看DirectX 11架构图：</p>
+
+<p>看上去，DirectX 11比DirectX 10更酷。DirectX 11的很多提升意味着更高的特性性能，而这些特性很少能在DX10中看到。DirectX 11和DirectX 10两者最大的不同之处在于管线，可以说DirectX 11的渲染管线标志着绘图硬件以及软件功能革命性一步。DirectX 11同时加入了对Tessellation（分块）的支持。Tessellation 由外壳着色器（Hull Shader，以下简称HS）、分块器（tessellator）单元以及计算着色器（Computer Shader，以下简称CS）组成。CS计算着色器与DX10中引入的GS不同，CS不是渲染管线的一部分，CS是DirectX 11的重要改进之一，可以很大程度上协助开发人员弥补现实与虚幻之间的差别。</p>
+
+<p>伴随着管线的改变，在DirectX 11中，我们看到了很多全新的功能和调整。DirectX 11实际上就是DirectX 10.1的扩展集，也就是说，DirectX 11将会完全囊括DirectX 10.1的特性。这就意味着所有DirectX 10.1硬件所遵循的API将会包含在DirectX 11硬件中（目前仅涉及AMD的产品）。此外，DirectX 11还包含其他特性：</p>
+
+<p>渲染管线的变化可以让开发者编写相应的程序来完成不同种类的任务，而以上这些细微的特性可以使得编程人员的所编写的程序更加复杂、更加高级，更具性能。此外，对于游戏开发人员而言，在微软的帮助下，并行程序的编写过程也变得更加容易了。
+第3页：DirectX11详解：DX演变和扩展
+去年11月份推出的DirectX SDK开发包中，微软第一次提供了DX11的代码示例，供开发人员提前研究新API的新特性（编者按：包括Dynamic Shader Linking （动态着色器耦合）、HDR-Tone-Mapping （HDR色调贴图）、Multithreaded-Rendering （多线程渲染）以及Subdivision Surfaces (Tesselation) （细分表面/镶嵌））。当然了，到目前为止，市场上尚无DX11硬件，但是在Vista以及beta版Windows 7操作系统下，这些特性是可以在目前市场上的DX10硬件上显现出来的。而且，DX11兼具了Khronos前段时间刚刚发布的最新OpenCL规格的诸多特性。与OpenCL相比，DX11更善于3D实时渲染，而前者在真正的通用目的数据平行编程方面要更在行些，但是这两种编程API将会是未来很长时间内最重要的3D程序接口。</p>
+
+<p>HDR色调贴图</p>
+
+<p>DX11新增了计算着色器(Compute Shader)代码示例，在今年的NVISION大会上，微软就透漏了这点，并通过SIGGRAPH以及GameFest 2008大会上放出的幻灯片，我们可以进行一些深入的研究。此外，DX11特性的提前放出，对于目前DX10以及DX10.1硬件用户而言也大有裨益，因为AMD和NVIDIA可以照此提前开发适当的驱动支持。
+DirectX 11的诸多特性似乎暗示我们，DirectX 11被迅速采用的时机已经成熟，特别是微软的Windows 7发布之后，这一趋势将会势不可挡。而如今，HLSL（High Level Shading Language，高级渲染语言）已经完全成熟，这势必会让DX11在众游戏开发者们眼里变得更加具有吸引力，而且越来越多的人开始认识到DX10其实就是DX11的子集，这对于DirectX 11将来被快速采用也会起到促进作用。另外，DX11可以让平行编程变得更加容易，其独有的特性也会促进开发者们大胆的、迅速采纳这种API。DirectX 11同时可以兼容Vista操作系统，所以用户不用担心不能升级，而Windows 7与生俱来的魅力在很大程度上也会促使Windows XP用户们做出升级的决定，也就是说，对于开发者们而言，市场上将会有足够大的可运行DX11的系统群体。
+微软曾许诺DirectX 10可以带来革命性的视觉体验以及渲染技术，但结果却是仁者见仁，不过可以肯定的是，DirectX 11可能最终将会履行这一承诺。虽然我们现在不可能马上就看到DirectX 11独有的特性所带来的效果，但是这一新版API的普及将会对刺激适时3D绘图技术不断提升大有裨益。
+从DirectX 6到DirectX 9，微软一直在有条不紊的使他们的编程API从一种固定的功能传播介质以及动态的数据结构向一种丰满的、可编程的、可进行绘图硬件深控的环境演变。从DX9到DX10的演变可以说是一种升华：DX9的可编程性得到了进一步扩展和延伸，并在新一代硬件的作用下变得更具深度和弹性。此外，微软还通过各种手段提升了DX10的稳定性以及灵活性。但是，DirectX 11的演变过程则有很多不同。</p>
+
+<p>为了最大限度的提升可编程性，DX11宁可丢掉一些原有的结构效度。微软将DirectX 11构建成DirectX <sup>10</sup>&frasl;<sub>10</sub>.1的精确父集，这让DirectX 11无形中新增了很多奇妙的潜力。特别是，DX10代码将会变成可以选择不去执行某些先进特性的DX11代码，而反过来，DX11又可以在所有同等水平的硬件上运行。当然了，对于DX10而言，并不是所有的DX11特性都是可用的，但是这却意味着开发者可在采用DX11的情况下同时针对DX10和DX11硬件进行开发，而不用考虑两者完全分开对待：因为两者是相同的，只不过，一个是另一个的子集功能而已。但是，如果应用某些DX11独有特效（比如说tessellator或者compute shader）时，区分代码路径是非常必要的，但这完全属于从DX10向DX11过渡过程中的益处所在。
+DX11能不能够应用到低规格硬件上至关重要，因为只有这样，才能保证DX10向DX11过渡的速度足够快。事实上，DX9—DX10蜗牛式的过渡速度（无论是游戏开发商还是用户都如此）、微软迫不及待的公布Windows 7以及Vista的缓慢普及，多少让我们觉得DX10不过就是一款过渡型的API，而不是众人所期待的、前无来者的革命性运算转变。
+第4页：DirectX11详解：支持多线程
+由于DX11所新增的特性甚至可以应用到DX10硬件中，所以我们对于DX11的快速应用都非常期待和乐观。DX11特性还包括很重要一点：支持多线程（multi-threading）。没错，无论是DX10还是DX11，所有的色彩信息最终都将被光栅化并显示在电脑显示屏上（无论是通过线性的方式还是同步的），但是DX11新增了对多线程技术的支持，得益于此，应用程序可以同步创造有用资源或者管理状态，并从所有专用线程中发送提取命令，这样做无疑效率更高。DX11的这种多线程技术可能并不能加速绘图的子系统（特别是当我们的GPU资源受限时），但是这样却可以提升线程启动游戏的效率，并且可以利用台式CPU核心数量不断提高所带来的潜力。</p>
+
+<p>对于场景中的人像和三个镜像，DX11会启动四个单独线程进行并行处理，效率自然要比现在依次进行的做法高很多。</p>
+
+<p>搭载8颗以及16颗逻辑核心的CPU系统已经离我们越来越近，现在游戏开发商们也该赶紧行动起来了，是时候解决有些游戏在双核心系统中运行缓慢的问题了。但是开发一款能够很大程度上促进双核以上系统普及的游戏，所能够获得的利润以及需要的付出目前来讲还很不乐观，所以这一进程进展缓慢。对于大多数游戏而言，充分利用四核心以及超过四核心的多线程优势还非常困难。尽管如此，通过多线程技术让简单的平行运算资源产生并显示出来，确实为采用平行运算代码的游戏提供了走红的机会，这些游戏代码也可以以单线程编码的方式存在。由于DX11系统中并不是采用一条线程处理所有DX state change以及draw call（或者说大量同步线程共同负责某一任务）的方式，所以游戏开发者可以很自然的创造出线程处理某个场景的某一类或者某一群的客体对象，并为将来所有客体对象或者实体为各自的线程处理打下基础（如果逻辑核心最终达到数百颗之后，这种线程处理方式对于提取硬件性能尤为重要）。</p>
+
+<p>此外，DX10硬件也能够在运行DX11游戏时支持多线程，微软的这一计划相当令人兴奋，不过值得一提的是，AMD以及NVIDIA必须为各自的DX10硬件开发出相应的驱动软件才能达到这一效果（因为如果没有相应的驱动支持的话，DX10硬件即便可以运行DX11游戏，对于玩家而言并不会看到真正应有的效果）。当然了，我们希望NVIDIA，特别是AMD（因为他同时也是一家可以生产多核心CPU的厂商）能够对此感兴趣。而且，如果A/N这么做到话，无疑会为游戏开发商们开发DX11游戏提供诱因，即便是A/N的DX11硬件还在襁褓之中。
+说着说着，DX11似乎越来越像是“goto”（dos下的一种命令，转到的意思，不妨理解为未来的）技术。这些DX10新增的特性和扩展功能以及可逆向被应用到低规格硬件上的特点，可能掀起一阵快速升级的完美风暴，我们将会看到无所不在的DX11，但是我们更愿意看到的是，DX11的魅力之处在于能够成为游戏开发商行动起来的动力。
+第5页：DirectX11详解：运算着色器
+很多游戏开发者都对DX11新增的Compute Shader（通常简称为CS）特性啧啧称赞。CS的这一渲染管线能够进行更多的通用目的运算。我们既能在某种可以用来被执行数据的操作中看到这种特性，又能在某种可以用来操作的数据中看到这种特性。
+其他渲染管线阶段，我们会看到某种限制妨碍了通用目的代码。尽管我们可以在一个像素着色程序中强行加入通用算法，但是我们却不能随意利用诸如树形结构之类的数据结构，在像素间共享数据的成本是非常高昂的，而且我们必须绘制三角数据结构，并在这些数据结构中加入贴图方案。</p>
+
+<p>在DirectX11以及CS的帮助下，游戏开发者便可以越过复杂的数据结构，并在这些数据结构中运行更多的通用算法。与其他完整的可编程的DX10和DX11管线阶段一样，CS将会共享一套物质资源（也就是着色处理器）。
+相应的硬件需要在运行CS代码时更灵活些，这些CS代码必须支持随机读写、不规则列阵（而不是简单的流体或者固定大小的2D列阵）、多重输出、可根据程序员的需要直接调用个别或多线程的应用、32k大小的共享寄存空间和线程组管理系统、原子数据指令集、同步建构以及可执行无序IO运算的能力。
+与此同时，CS也将会随之失去一些特性。因为单个线程已经不再被看成是一个像素，所以线程将会丧失几何集合功能。这就意味着，尽管CS程序依然可以利用纹理取样功能，但是自动三线LOD计算将会丧失自动功能（LOD必须被指定）。此外，一些并不重要的普通数据的深度拣选（depth culling）、抗锯齿（anti-aliasing）、α混合（alpha blending）以及其他运算不能在一个CS程序中被执行。
+由CS带来的新型应用实际上是无限的，是取之不竭的，但现在的问题是，很多游戏开发商们的兴趣是如何利用一些先进的技术来增强他们的游戏引擎，而这些技术恰恰不可能用在像素着色器中（Pixel Shader）。其中，这些新型应用就包括A-Buffer (A缓存) 取样技术，该技术可以很大程度上增加抗锯齿以及无规则透明度的性能，可以带来更先进的Deferred Shading（延迟着色）技术、更先进后处理效果（post processing effect）和卷积运算、以及更先进的专为频域运算的快速傅利叶转换(Fast Fourier Transform，FFT)以及区域求和表算法。</p>
+
+<p>除了某些特殊应用的渲染，游戏开发者可能同时也希望做一些诸如IK(inverse kinematics，逆运动学)、物理、人工智能以及其他在GPU上执行的传统的CPU任务之类的运算。用CS算法在GPU上执行这些数据意味着这些数据将会更快的被渲染，而且一些算法可能在GPU上的执行速度更快。如果某些总是产生同样结果的算法既可以出现在CPU上又可以出现在GPU上的话，诸如AI以及物理等运算甚至可以同时在CPU和GPU上运行（这种运算实际上也可以代替带宽）。</p>
+
+<p>即便是这些运算代码在相同的硬件（CPU或者GPU）上运行，PS以及CS代码的执行也是两个截然不同的过程，这主要取决于被执行的算法。有趣的是，暴露数据以及柱状数据经常被用作HDR渲染。用PS代码计算这些数据的话就需要几条通道和几种技巧，以便提取所有像素，从而集中或者平分这些数据。尽管共享数据将会或多或少的减缓处理速度，但是共享数据的方式要比在多通道中计算速度更快，而且这样可以使CS成为这些算法的理想处理阶段。
+第7页：DirectX 11详解：只有GS还不够
+无论DX11何时上位，微软以及AMD对于tessellation（分块处理功能）的热情似乎都不会减退。AMD很久之间就开始使用tessellation技术了，而现在，这种技术也许对于像XBox 360类似的主机游戏平台才有意义。通过新增固定功能硬件，迅速有效的处理一些可能提升显存占用率的任务方法，对于常常在客厅上网的朋友而言具有很大的优势。到目前为止，我们依然没有说服相关方面在台式PC中加入tessellator技术，但是有谁去争论这样做到底是不是一种进步呢？
+或者说，tessellation技术是不是真的很先进、是不是一种进步呢？我们知道，tessellator本身是一种固定功能模块，而不具备可编程性。tessellator的输入和输出从一定程度上讲也可以通过Hull Shader以及Domain Shader模块来操作。Geometry Shader（GS，几何着色渲染）是管线中一种可编程性模块，尽管这种管线不仅兼具tessellation功能，而且还具备其他功能，但是GS却不能在任何一个有用的范围内执行tessellation操作。在渲染管线中大举向可编程性进军基本上已经成为业界的前进方向，而现在我们却后退了一步，为什么会这样呢？
+固定功能硬件与可编程硬件之间的争论，一直主要是性能对特性以及性能对实用性孰重孰轻的问题。起初，固定功能模块对于硬件性能的高低至关重要。随着时间的推移，人们开始认识到在绘图芯片中植入固定功能模块根本不切实际。比如说，如果开发者不能编出一套能充分挖掘硬件性能的程序的话，在这种硬件中加入再多的晶体管也是徒劳的。这就促使开发者们设法在核心架构上做文章，让这种架构不断扩展运算源，这种运算源可以被共享，而且可以被大量不同的任务采用，但是这并不意味着固定功能硬件就失去了存在的意义。
+现在我们依然面临着一个问题：除非开发者能够尽可能的挖掘硬件的潜力，否则在tessellator中加入晶体管是没有用的。但是让其有意义的理由是：如果开发者可以充分利用硬件的话，ROI（投资回报比）是非常高的：这样可以轻松的从一种固定功能硬件tessellator中获得巨大的tessellation性能，这样做要比把必要的资源加入几何渲染单元以便获得同样的可编程tessellation性能要来得容易。当然了，这并不意味着我们将会看到固定功能模块可以在绘图硬件中出现“文艺复兴”的状况，因为这一先进的特性如果要继续向前发展的话，这一特性早期应用就得以牺牲可编程性能为代价。目前，绝大部任务将会继续以灵活的编程性途径处理，而且在不久的将来，我们可能看到tessellator将会加入越来越多特性，直到tessellator具备完全的可编程性。</p>
+
+<p>以上所有这些关于固定功能tessellation的技术性评价并不代表我们就对tessellator的优势漠不关心。现在让我们来了解一下tessellator的优势。目前，美工需要做的就是为某一物体的不同LOD（Level of Detail，随着物体或近或远的移动，物体的复杂性降低或者增加）制作不同的图像，而每个LOD里通过纹理渲染的几何模拟由像素着色器负责。这样的话，对于美工和编程人员而言就有了额外的工作要做，而且会在性能方面下很多功夫。</p>
+
+<p>Tessellation是创造更多纹理细节、阴影以及平滑边缘的几何图形的最佳途径之一。而且，高级几何图形同时也需要真正的、完美的位移贴图。当前，大部分几何图形都是通过纹理渲染和某些诸如凹凸贴图、视差贴图之类的技术模拟实现的。即便是高质量几何图形，我们还是想用大量的普通贴图技术，以便可以利用光学算法，但是这样的话，使最终画面出现裂缝、爆炸、山脊等效果就变得不那么难了。这是一种快速、有效的方案，而且还可以产生非常细微的图像效果，并解放像素着色器资源以供他用。在tessellation技术的帮助下，美工便可以创造出一个细分表面图像，这种细分表面图像具有一个动态的LOD；将一个简单的hull shader单元以及一个移位贴图应用到domain shader单元的话，不仅可以减轻相关的工作负担，而且还可以提升画面的质量，促进性能提升。</p>
+
+<p>如果开发者们采用tessellation技术的话，我们可以看到非常酷的效果，而且随着DX11标准的临近，NVIDIA以及AMD最终将会从tessellation技术中获益。但是，渴望开发者们立即开始采用tessellation技术（或者CS技术）是不现实的，因为DirectX 11将会在低一等级的硬件上运行，而且DX11发布之后，市场上将会存在大量可支持DX11子集（DX10.1以下）的硬件产品，将来首款DX11游戏完全可能在DX10上硬件运行。
+第8页：HLSL 5.0以及最后总结
+最后我们来了解一下DX11的组件之一：HLSL (MS&rsquo;s High Level Shader Language，微软的高级程序语言)。这里我们要介绍的是升级版HLSL 5.0。我们知道，HLSL和C语言比较相似，而HLSL 5.0新增了对类（Class）和接口（interface）的支持，可以让开发者的开发界面更加友好。尽管如此，我们依然不能利用pointer（高级语言函数中的一种指针功能）。</p>
+
+<p>shade代码体积越来越小促使了HLSL做出了这种改变，或者说是升级。对于任何一款游戏，编程人员和美工要做的就是要么构建一种单一的大型shader，要么编写大量的小型shader程序。这些代码资源是非常巨大的，而且如果没有OOP (Object Oriented Programming，面向对象程序设计的) 指令的话是很难管理的。但是这与某种代码是如何与其他OOP协同工作是存在区别的。比如说，对于内存管理（因为哪里没有pointer）或者HLSL的构造函数而言，就并不需要OOP。类似初始化之类的任务是通过不间断的缓冲升级实现的，这种缓存通常可以反射数据成员。</p>
+
+<p>总结：DX11众多特性预示其将快速普及</p>
+
+<p>综上所述，DX11的无序存储器存取、多线程、tessellation以及Compute Shader等功能相当不错。而且，向DX11过渡的进程也不会那么艰巨，至少不会像DX9向DX10过渡那样让很多人觉得很麻烦，因为DX11就是DX10父集，这使得DX11的特性也可以在DX10硬件上运行。
+公平来讲，操作系统升级需要也应该早做准备了。不过这点问题不大，因为尽管Vista不怎么流行，但是却同样可以支持DX11，而对于XP用户们而言，Windows 7看起来很有诱惑力，升级很自然。对于开发者们而言，如果仍然坚守DX9的话，显卡可以考虑跳过DX10了。开发者们有足够的时间来熟悉DX11，而且通过OOP指令以及对多线程的支持，DX11代码将会变得更加容易理解和掌握，而如果这些特性都不能说服一些固执的开发者的话，DX11可以在低一级别硬件上运行的特点肯定会让他们决心动摇的。
+种种迹象表明，DX11前途一片光明，快速普及可谓大势所趋。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2009/">2009</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/12/%E6%9C%88%E8%AE%B0200912/" data-tooltip="月记200912">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/12/%E8%BD%AC2009%E4%B8%AD%E5%9B%BD%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E5%8E%82%E5%95%86%E5%B9%B4%E7%BB%88%E5%A4%A7%E7%9B%98%E7%82%B9/" data-tooltip="[转]2009中国网络游戏厂商年终大盘点">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/12/%E8%BD%ACdirectx11%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/12/%E6%9C%88%E8%AE%B0200912/" data-tooltip="月记200912">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2009/12/%E8%BD%AC2009%E4%B8%AD%E5%9B%BD%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E5%8E%82%E5%95%86%E5%B9%B4%E7%BB%88%E5%A4%A7%E7%9B%98%E7%82%B9/" data-tooltip="[转]2009中国网络游戏厂商年终大盘点">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2009/12/%E8%BD%ACdirectx11%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2009%2F12%2F%25E8%25BD%25ACdirectx11%25E7%2589%25B9%25E6%2580%25A7%25E7%25AE%2580%25E4%25BB%258B%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2009\/12\/%E8%BD%ACdirectx11%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B\/';
+          
+            this.page.identifier = '\/2009\/12\/%E8%BD%ACdirectx11%E7%89%B9%E6%80%A7%E7%AE%80%E4%BB%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

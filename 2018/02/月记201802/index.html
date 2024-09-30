@@ -1,0 +1,913 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>月记201802</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="看了Rect的日志，也有一肚子的话想说，上周学习深度学习也确实榨干了脑汁，想偷懒一下，于是决定花一些时间来写点什么。
+
+其实最近接触的东西也挺多的，脑子还是丝毫没有停歇，不管是技术还是思想。只是似乎知道的越多，越容易陷入怀疑和迷茫，更不知道写些什么了，反而需要更多的“引子”来开启话题。
+
+">
+    <meta property="og:description" content="看了Rect的日志，也有一肚子的话想说，上周学习深度学习也确实榨干了脑汁，想偷懒一下，于是决定花一些时间来写点什么。
+
+其实最近接触的东西也挺多的，脑子还是丝毫没有停歇，不管是技术还是思想。只是似乎知道的越多，越容易陷入怀疑和迷茫，更不知道写些什么了，反而需要更多的“引子”来开启话题。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="月记201802">
+    <meta property="og:url" content="/2018/02/%E6%9C%88%E8%AE%B0201802/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="看了Rect的日志，也有一肚子的话想说，上周学习深度学习也确实榨干了脑汁，想偷懒一下，于是决定花一些时间来写点什么。
+
+其实最近接触的东西也挺多的，脑子还是丝毫没有停歇，不管是技术还是思想。只是似乎知道的越多，越容易陷入怀疑和迷茫，更不知道写些什么了，反而需要更多的“引子”来开启话题。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      月记201802
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-02-28T00:00:00Z">
+        
+  二月 28, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%9c%88%e8%ae%b0">月记</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2018">2018</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>看了Rect的日志，也有一肚子的话想说，上周学习深度学习也确实榨干了脑汁，想偷懒一下，于是决定花一些时间来写点什么。</p>
+
+<p>其实最近接触的东西也挺多的，脑子还是丝毫没有停歇，不管是技术还是思想。只是似乎知道的越多，越容易陷入怀疑和迷茫，更不知道写些什么了，反而需要更多的“引子”来开启话题。</p>
+
+<p></p>
+
+<p>或许这也是其他几位小基友好久不写东西的原因吧？我不知道。</p>
+
+<h2 id="移民">移民</h2>
+
+<p>总之先谈谈移民。</p>
+
+<p>去年在这个上面花费了不少时间，调查了很多国家的移民政策。</p>
+
+<ul>
+<li>老牌知名移民国家加拿大澳洲美国新西兰显然是去不了的，技术移民要抢破头，程序员在国外并没有什么优势，反而一些厨师理发师焊工等职业更适合过去，收入也相当不错。我都想介绍些朋友过去了，可惜圈子太窄，并不认识这类人士。而投资移民去这些国家简直是天方夜谭，价格离谱，我又没有公司开设和管理经验，游戏开发行业动辄数千万的资金根本不是适合自己投资创业的第一步，所以放弃。</li>
+<li>欧洲各种国债，希腊匈牙利，还有什么马耳他葡萄牙西班牙购房移民，大部分资产要求不少，自己只能勉强过关，但这些国家给的绿卡都是受限的。毕竟这些国家最近经济不景气，卖护照绿卡也是希望自身国家发展，不是希望我们去抢工作的，所以个人觉得没个80万欧过去还是太不稳妥。</li>
+<li>非洲太惨烈，实在没兴趣。</li>
+<li>加勒比海有一堆小国家卖护照，又快又有保障，价格一家人大概25W刀。花销也不小，可以拿来做应急，都是3-6个月直接拿护照，要是真住那里也不知道干点啥。数字游牧也不能保证一定生活无忧，小孩学费也是个大头。</li>
+<li>于是真正值得考虑的也就只有中南美和亚洲的。中南美那边除巴拉圭乌拉圭智利哥斯达黎加巴拿马之外，大部分经济也不太好，治安，贫富差距，贪污等事情更是头疼。</li>
+<li>亚洲呢，泰国马来印尼都还算不错的，消费不高风景好，养老顶呱呱，人口多依然难本地找工作。马来第二家园菲律宾SRRV都是绿卡，别想护照，也别想工作。</li>
+<li>曲线移民的路行不通，西班牙属英属殖民地原籍人士都可以两年入西班牙籍/英籍，但中国出生入籍的不享受同等待遇。</li>
+<li>北欧四国都超级棒棒哒，但是人家不需要移民。想进去除非先当地工作几年，英语并不占优。</li>
+</ul>
+
+<p>所以，简而言之，就中南美几个发达国家以及东南亚两三个国家了。还必须要有良好的被动收入，或者创业，或者有灵活工作的方式。</p>
+
+<p>*注：<strong>灵活工作</strong> 是我自己创造的词，概念大约就是说，不需要去求职打工的收入，例如你在网上接个单子，网上做在线老师都是可以的，它也不是被动收入，也不属于创业。*</p>
+
+<h2 id="收入">收入</h2>
+
+<p>可惜的是，我在被动收入，创业，灵活工作上面一直没有深入理解，也没有足够多的尝试。</p>
+
+<p>原因很简单，没钱。</p>
+
+<p>即使始终东南亚和中南美的国家也好，去了依然要能定居吧，小孩子要读书的，也要一些收入底子，我预算过，想过的还可以的，到了不会太难过的，依然要准备50W刀比较安全。我的心理底线是最少30W刀吧。</p>
+
+<p>但是我当前没这么多钱，所以，乖乖打工。</p>
+
+<p>英语也不行，中南美又是西班牙语的，所以学语言怎么着也要2-3年的业余时间。我的语言天赋似乎已经被日语耗尽了，学英语的痛苦真不亚于难产的孕妇；而西班牙语大舌音，变形，阴阳性简直比日语的敬语自谦语还难，我已经看到了苦难的未来。</p>
+
+<p>加上一些健身，所以三年内基本上是什么都不用考虑了。</p>
+
+<h4 id="被动收入">被动收入</h4>
+
+<p>这个我也曾纸上谈兵研究过：</p>
+
+<ul>
+<li>房地产收入。我觉得这个最靠谱，相对简单粗暴，虽然要求资金，我也不富有，但中国人的储蓄精神比起老外还是占优的，可以搞搞。</li>
+<li>股票期权黄金等等这些需要本金的风险投资，我完全没头脑。金融领域的概念和程序逻辑简直是背道相驰，隐约和政治有点像，我除了放弃只有放弃。</li>
+<li>版权类的收入。我也要考虑，写点小说做点音乐卖点照片的版权来获得收入也是不错的，毕竟还属于技术活，虽然没有沉淀，慢慢来还是有戏的。</li>
+<li>广告宣传类的收入。一些吸睛的小博客神马的搭点广告骗流量赚钱，这本是国内最流行和擅长的。可惜我自视甚高，颇会装逼，不屑于大众为伍，搞不来。不过之后如有某些兴趣点，或者一些技术层面的东西能莫名其妙踩进去一些，也是可以尝试做做的。</li>
+</ul>
+
+<p>然而，都还没有执行，犹豫状态。</p>
+
+<h4 id="创业">创业</h4>
+
+<p>这东西我真心不擅长，但我老婆似乎很有兴趣，她想开个花店或者陶瓷店宠物店这些东西，不知道能不能赚钱维持生计。</p>
+
+<p>我对这块也是毫不熟悉，之后更多可能是赚点小钱让她做尝试吧。</p>
+
+<h4 id="灵活工作">灵活工作</h4>
+
+<p>这是我认为相对最靠谱的，我是很喜欢自由风的，能背个笔记本满世界跑，到个星巴克开始敲代码也是酷的不行，但现实肯定会教会我做人，我知道的。</p>
+
+<p>网上一些数字游牧哥们，大部分收入月均1W人民币，也就能刚够糊口，而我也不觉得他们会比我缺乏经验或者技术。考虑到妻子消费和儿子的消费，这个肯定是不够的。</p>
+
+<p>不过我有个巨大优势，那就是中文的复杂度以及中国人口红利，所以，能利用好这一点的话，还是能自己活下去。所以我也在考虑这个事。</p>
+
+<p>*注：<strong>数字游牧</strong> 不是我造的词，是网上的。就是指一些人，像游牧民族一样满地图跑，接网上的单子进行工作维持生活，工作时间自主决定。他们大多临时居住在消费低的国家，例如东南亚中南美，但网上接的是欧美的单子获得不错的收入，这样生活叫数字游牧。数字游牧多从事在线教育，软件外包等方面打工工作。*</p>
+
+<h2 id="小总结">小总结</h2>
+
+<p>就现阶段来说，主要考虑还是想以房租等方式作为被动收入，打工做主职慢慢转向灵活工作这方面。</p>
+
+<p>但不管移民费用也好，语言限制也好，明确被动收入细节也好，都需要3年以上的稳定期。所以我还是“乖一点”的好。</p>
+
+<p>所以我觉得这一段就回复了Rect对于行业，未来的全部问题。我还是很狡猾的。</p>
+
+<h2 id="技术">技术</h2>
+
+<p>我也说下技术。</p>
+
+<p>之前有记录过，去年我基本都在搞C#软件开发这块。实际上，和网页网站方面的配合工作相当之多，从开始入职连http消息结构都搞不清楚，到现在各种B/S开发架设都了解一些，也算是在工作中学到了不少。</p>
+
+<p>但真正成长的不是在工作。</p>
+
+<p>和之前国内游戏开发公司不同的是，之前的压强很大，我怀疑可能是行业原因也可能是之前的公司过小的原因，不自夸的来讲，感觉之前公司少了我，都要好好喘一口气才能缓回来的感觉（EA除外）。</p>
+
+<p>但这个公司不是，我可有可无。</p>
+
+<p>虽然工资不低，但做出来的东西总不是核心，而且每次我做出来的东西，公司都敢一而再再而三的全面推翻了重做…… 这点真是我之前完全不敢尝试的事情。一方面证明公司的上层决策确实有问题，一方面也确实证明了我在这公司的重要性不强。</p>
+
+<p>于是我会有更多的机会去试错和学习。</p>
+
+<p>于是去年我从完全不会C#（之前我很讨厌Unity的），到项目全是C#搭建。今年又在项目中直接用Go和Node.js。</p>
+
+<p>嗯，然后前一阵自学完全栈（没有做大型项目，仅仅学完），现在又弄了弄Python，在自学机器学习，下一步考虑了解下区块链。</p>
+
+<p>我并没有瞎开炮，两年前我就弄了挺长一段时间的深度学习的，我再边学边做大约一年，自己做几个稍大点的项目就可以尝试去应聘了。</p>
+
+<p>而全栈我是先放在这里，一方面我老婆从UI转WEB前端设计，我能帮点忙，一方面之后数字游牧的时候，真正最容易接活的还是全栈，作为一个C++游戏程序，到哪儿去接外包呢？</p>
+
+<p>所以，很明显的，我现在技术面和Rect，Kira一样，都开始发散，之前也有过从客户端到服务器，从端游到页游到手游，从逻辑程序到图形技术引擎，都是受限在游戏开发领域，大多也都受限在C++和Lua。</p>
+
+<p>现在终于完全迈出来了。</p>
+
+<p>不过这些都是权宜之计，我知道自己喜欢什么，游戏和程序都不会丢。只是遗憾的是终究只是走的曲线。</p>
+
+<h2 id="日记">日记</h2>
+
+<p>终究要顺道写日记，反正主要目的还是打算写给自己看。</p>
+
+<ul>
+<li>最近英语学习还在按道就班，每天1个半小时硬学，一个半小时休闲学。做得挺好了，时间也难挤出更多了，就这样吧。</li>
+<li>健身有点缺，主要原因是晚上睡的挺早，早上却就是起不来，计划6点半起床总要赖到7点半，这让我有点烦躁。要想点办法。</li>
+<li>自学控制的很好，继Html,CSS,bootstrap, jQuery之后，node.js, express.js, mangoDB也弄完了，一方面原本有程序和服务器底子，一方面freecodecamp上的题目比较少了。这些部分学习的并不深入，也没有大型项目，所以之后还要偶尔没事回来抓抓，争取移民前后能再提升1-2层，就可以愉快的做外包了。</li>
+<li>因为freecodecamp和w3school学完，现在目标调到<a href="https://www.coursera.org/learn/machine-learning">coursera的人工智能课程</a>了，Andrew Ng讲的，真心不错，强烈推荐。就是英文的吃的挺累，还有该死的偏积分线代概率论这些，底子不是太牢，吃的比较辛苦。但没有关系，继续努力在这个点上。</li>
+<li>其他没什么动弹的，摄影画画写作的时间实在给不出来。年纪不小了，也不能熬夜来抢时间了，真是令人大不幸的事情。</li>
+</ul>
+
+<p>写了蛮长时间，继续干活了先。</p>
+
+<h1 id="20180228">20180228</h1>
+
+<p>二月份还是比较努力的，在英语和机器学习上都还可以，健身比较不足，工作强度略大。于是这里做一些优化。</p>
+
+<!--more-->
+
+<h2 id="业余生活">业余生活</h2>
+
+<p>前一阵子主要重心还是在英语上，每天接近两小时。不算一三五额外上课的。</p>
+
+<p>每天早九晚六还有两小时路程，偶尔加加班的状况能做到这一步，我已经对自己很满意了。</p>
+
+<p>我已经不敢休息短于八小时了，现在12点之后睡就一定会偏头疼，所以都是乖乖的11点上床，7点半起床，精神状况没有出过太大问题。</p>
+
+<p>公司加班太凶，接连四五周都是单休了，还要购买家具和加班，感觉一个半月没真正休息出去玩了。</p>
+
+<p>春节是什么？这边没有的。</p>
+
+<p>因为搬新家，健身不是原先那么方便了，运动量下降，我应该<strong>考虑如何好好利用楼下的游泳池</strong>。</p>
+
+<h2 id="工作时间">工作时间</h2>
+
+<p>最近用Go写了些东西，熟悉了不少，它确实挺好玩，简单方便，我坚定的继续折腾一年以熟悉。</p>
+
+<p>当前感觉Go</p>
+
+<ul>
+<li>面向对象不是那么便利，导致我很难开发巨大型的框架级软件</li>
+<li>对WindowsUI支持不美好，所以开发用户客户端不算优势</li>
+<li>对Web开发支持很好</li>
+<li>底层支持很好，不像C,C++那样连个字符串类型都要折腾半天</li>
+<li>更适合做控制台，命令行式的服务器</li>
+<li>嵌入C函数真是非常便利</li>
+<li>线程使用很便利，但复杂的流程控制也没那么愉快</li>
+</ul>
+
+<p>一点都不深刻，但就是当前我的感受。</p>
+
+<p>另外还在学斯坦福Andrew的机器学习课程，线性回归，逻辑回归，前馈神经网络学完了，按照这个进度，大概要到5月1号学完他的课，学完的话，应该可以算机器学习专业小学毕业了。就可以扩展开来去学去弄了。</p>
+
+<p>现在最大问题就是感觉工作时间过多投入工作，自学时间不足，闲暇时间的利用也不好，特别是抽烟太花费时间。</p>
+
+<p>我需要<strong>腾出点时间丢到扇贝全家桶</strong>里。</p>
+
+<h2 id="计划">计划</h2>
+
+<ul>
+<li>英语私教课程还有42课，按照一周6小时的计划，假设个别事情耽搁，可以在5月1日学完。</li>
+<li>机器学习课程还有8周，正好也是5月1日学完。</li>
+</ul>
+
+<p>我打算机器学习课程小学毕业后，去了解点区块链，这两块螺旋学习或者和网页全栈开发螺旋。到时候丢哪一个还没决定。</p>
+
+<p>英语私教完了之后，可以报1个轻松点的西班牙语课程，作为明年的前戏。</p>
+
+<p>余下的时间丢健身里。</p>
+
+<h2 id="其他计划总结">其他计划总结</h2>
+
+<p>攒钱这个还在稳定状态，基本没有任何变化。</p>
+
+<p>锻炼健身不足，需加强。</p>
+
+<p>摄影有点挂机，那就先挂着吧，这个不算重心。</p>
+
+<p>也有不少时间砸在了移民事情上，也好，这东西早了解点也不错。*(推荐下厄瓜多尔的这个移民公司 <a href="http://ecuadorvisas.com/zh/">http://ecuadorvisas.com/zh/</a> 真的很不错，不坑骗，答复很细致。)
+*</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%9C%88%E8%AE%B0/">月记</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2018/">2018</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/07/%E6%9C%88%E8%AE%B0201807/" data-tooltip="月记201807">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/01/%E6%9C%88%E8%AE%B0201801/" data-tooltip="月记201801">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2018/02/%E6%9C%88%E8%AE%B0201802/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/07/%E6%9C%88%E8%AE%B0201807/" data-tooltip="月记201807">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2018/01/%E6%9C%88%E8%AE%B0201801/" data-tooltip="月记201801">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2018/02/%E6%9C%88%E8%AE%B0201802/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2018%2F02%2F%25E6%259C%2588%25E8%25AE%25B0201802%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2018\/02\/%E6%9C%88%E8%AE%B0201802\/';
+          
+            this.page.identifier = '\/2018\/02\/%E6%9C%88%E8%AE%B0201802\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

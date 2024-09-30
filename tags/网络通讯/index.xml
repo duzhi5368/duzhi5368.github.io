@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络通讯 on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF/</link>
+    <description>Recent content in 网络通讯 on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 03 Apr 2007 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>网络编程（三）</title>
+      <link>https://duzhi5368.github.io/2007/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%89/</link>
+      <pubDate>Tue, 03 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%B8%89/</guid>
+      <description>&lt;p&gt;多线程,重叠I/O,异步读写 命名通道服务器源码&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络编程（二）</title>
+      <link>https://duzhi5368.github.io/2007/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%BA%8C/</link>
+      <pubDate>Tue, 03 Apr 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/04/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E4%BA%8C/</guid>
+      <description>&lt;h3 id=&#34;netbios-最基础的网络api&#34;&gt;NetBIOS&amp;mdash;最基础的网络API&lt;/h3&gt;
+
+&lt;p&gt;传统的网络接口NetBIOS,他和Winsock类似，是一种与协议无关的网络API。&lt;/p&gt;
+
+&lt;p&gt;重定向器提供了与传输无关的文件I/O方式。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>网络编程</title>
+      <link>https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Thu, 29 Mar 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/03/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</guid>
+      <description>&lt;p&gt;近来在做P2P下载工具，复习一下网络编程。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

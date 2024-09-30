@@ -1,0 +1,994 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>[转]虚函数表指针，虚函数表</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="虚函数表指针和虚函数表机制的说明
+
+">
+    <meta property="og:description" content="虚函数表指针和虚函数表机制的说明
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[转]虚函数表指针，虚函数表">
+    <meta property="og:url" content="/2010/12/%E8%BD%AC%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E6%8C%87%E9%92%88%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="虚函数表指针和虚函数表机制的说明
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      [转]虚函数表指针，虚函数表
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-12-27T00:00:00Z">
+        
+  十二月 27, 2010
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e8%bd%ac%e8%bd%bd">转载</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>虚函数表指针和虚函数表机制的说明</p>
+
+<p></p>
+
+<h1 id="虚函数表">虚函数表</h1>
+
+<p>对C++ 了解的人都应该知道虚函数（Virtual Function）是通过一张虚函数表（Virtual Table）来实现的。简称为V-Table。 在这个表中，主是要一个类的虚函数的地址表，这张表解决了继承、覆盖的问题，保证其容真实反应实际的函数。这样，在有虚函数的类的实例中这个表被分配在了 这个实例的内存中，所以，当我们用父类的指针来操作一个子类的时候，这张虚函数表就显得由为重要了，它就像一个地图一样，指明了实际所应该调用的函数。</p>
+
+<p>这里我们着重看一下这张虚函数表。在C++的标准规格说明书中说到，编译器必需要保证虚函数表的指针存在于对象实例中最前面的位置（这是为了保证正确取到虚函数的偏移量）。 这意味着我们通过对象实例的地址得到这张虚函数表，然后就可以遍历其中函数指针，并调用相应的函数。</p>
+
+<p>听我扯了那么多，我可以感觉出来你现在可能比以前更加晕头转向了。 没关系，下面就是实际的例子，相信聪明的你一看就明白了。</p>
+
+<p>假设我们有这样的一个类：</p>
+
+<pre><code class="language-cpp">class Base {
+public:
+    virtual void f() { cout &lt;&lt; &quot;Base::f&quot; &lt;&lt; endl; }
+    virtual void g() { cout &lt;&lt; &quot;Base::g&quot; &lt;&lt; endl; }
+    virtual void h() { cout &lt;&lt; &quot;Base::h&quot; &lt;&lt; endl; }
+};
+</code></pre>
+
+<p>按照上面的说法，我们可以通过Base的实例来得到虚函数表。 下面是实际例程：</p>
+
+<pre><code class="language-cpp">typedef void(*Fun)(void);
+Base b;
+Fun pFun = NULL;
+cout &lt;&lt; &quot;虚函数表地址：&quot; &lt;&lt; (int*)(&amp;b) &lt;&lt; endl;
+cout &lt;&lt; &quot;虚函数表 — 第一个函数地址：&quot; &lt;&lt; (int*)*(int*)(&amp;b) &lt;&lt; endl;
+// Invoke the first virtual function
+pFun = (Fun)*((int*)*(int*)(&amp;b));
+pFun();
+</code></pre>
+
+<p>实际运行经果如下：(Windows XP+VS2003, Linux 2.6.22 + GCC 4.1.3)</p>
+
+<p>虚函数表地址：0012FED4</p>
+
+<p>虚函数表 — 第一个函数地址：0044F148</p>
+
+<p>Base::f</p>
+
+<p>通过这个示例，我们可以看到，我们可以通过强行把&amp;b转成int<em>，取得虚函数表的地址，然后，再次取址就可以得到第一个虚函数的地址了，也就是Base::f()，这在上面的程序中得到了验证（把int</em> 强制转成了函数指针）。通过这个示例，我们就可以知道如果要调用Base::g()和Base::h()，其代码如下：</p>
+
+<pre><code class="language-cpp">(Fun)*((int*)*(int*)(&amp;b)+0); // Base::f()
+(Fun)*((int*)*(int*)(&amp;b)+1); // Base::g()
+(Fun)*((int*)*(int*)(&amp;b)+2); // Base::h()
+</code></pre>
+
+<p>这个时候你应该懂了吧。什么？还是有点晕。也是，这样的代码看着太乱了。没问题，让我画个图解释一下。如下所示：</p>
+
+<p>注意：在上面这个图中，我在虚函数表的最后多加了一个结点，这是虚函数表的结束结点，就像字符串的结束符“\0”一样，其标志了虚函数表的结束。这个结束标志的值在不同的编译器下是不同的。在WinXP+VS2003下，这个值是NULL。而在Ubuntu 7.10 + Linux 2.6.22 + GCC 4.1.3下，这个值是如果1，表示还有下一个虚函数表，如果值是0，表示是最后一个虚函数表。</p>
+
+<p>下面，我将分别说明“无覆盖”和“有覆盖”时的虚函数表的样子。没有覆盖父类的虚函数是毫无意义的。我之所以要讲述没有覆盖的情况，主要目的是为了给一个对比。在比较之下，我们可以更加清楚地知道其内部的具体实现。</p>
+
+<p>一般继承（无虚函数覆盖）
+下面，再让我们来看看继承时的虚函数表是什么样的。假设有如下所示的一个继承关系：</p>
+
+<p>请注意，在这个继承关系中，子类没有重载任何父类的函数。那么，在派生类的实例中，其虚函数表如下所示：</p>
+
+<p>对于实例：Derive d; 的虚函数表如下：</p>
+
+<p>我们可以看到下面几点：</p>
+
+<p>1）虚函数按照其声明顺序放于表中。
+2）父类的虚函数在子类的虚函数前面。</p>
+
+<p>我相信聪明的你一定可以参考前面的那个程序，来编写一段程序来验证。</p>
+
+<p>一般继承（有虚函数覆盖）
+覆盖父类的虚函数是很显然的事情，不然，虚函数就变得毫无意义。下面，我们来看一下，如果子类中有虚函数重载了父类的虚函数，会是一个什么样子？假设，我们有下面这样的一个继承关系。</p>
+
+<p>为了让大家看到被继承过后的效果，在这个类的设计中，我只覆盖了父类的一个函数：f()。那么，对于派生类的实例，其虚函数表会是下面的一个样子：</p>
+
+<p>我们从表中可以看到下面几点，</p>
+
+<p>1）覆盖的f()函数被放到了虚表中原来父类虚函数的位置。
+2）没有被覆盖的函数依旧。</p>
+
+<p>这样，我们就可以看到对于下面这样的程序，</p>
+
+<p>Base *b = new Derive();
+b-&gt;f();</p>
+
+<p>由b所指的内存中的虚函数表的f()的位置已经被Derive::f()函数地址所取代，于是在实际调用发生时，是Derive::f()被调用了。这就实现了多态。</p>
+
+<p>多重继承（无虚函数覆盖）
+下面，再让我们来看看多重继承中的情况，假设有下面这样一个类的继承关系。注意：子类并没有覆盖父类的函数。</p>
+
+<p>对于子类实例中的虚函数表，是下面这个样子：</p>
+
+<p>我们可以看到：</p>
+
+<p>1） 每个父类都有自己的虚表。
+2） 子类的成员函数被放到了第一个父类的表中。（所谓的第一个父类是按照声明顺序来判断的）</p>
+
+<p>这样做就是为了解决不同的父类类型的指针指向同一个子类实例，而能够调用到实际的函数。</p>
+
+<p>多重继承（有虚函数覆盖）
+下面我们再来看看，如果发生虚函数覆盖的情况。</p>
+
+<p>下图中，我们在子类中覆盖了父类的f()函数。</p>
+
+<p>下面是对于子类实例中的虚函数表的图：</p>
+
+<p>以上内容来自：<a href="http://hi.baidu.com/smart_bee/blog/item/163e2c23e54d23ac4623e85d.html">http://hi.baidu.com/smart_bee/blog/item/163e2c23e54d23ac4623e85d.html</a></p>
+
+<p>1:虚表(虚函数表)是for类的
+2:基类和派生类是各有各的表,也就是说他们的物理地址是分开的,基类和派生类的虚表的唯一关联是:当派生类没有实现基类虚函数的重载时,派生类会直接把自己表的该函数地址值写为基类的该函数地址值.
+3:任何一个有虚表的类,在实例化时不允许其虚表内有项为空-&gt;纯虚类不能初始化对象
+4:带虚表的类在对象构造函数中,会把一个指针指向该类虚表地址,我在这给它起个名字叫vp;
+5:仅对于VC和BC两种编译器论,如果该类带有虚表,那么该类的对象的首地址就是虚表地址,也是this指针指向虚表</p>
+
+<p>我们可以看见，三个父类虚函数表中的f()的位置被替换成了子类的函数指针。这样，我们就可以任一静态类型的父类来指向子类，并调用子类的f()了。如：</p>
+
+<pre><code class="language-cpp">Derive d;
+Base1 *b1 = &amp;d;
+Base2 *b2 = &amp;d;
+Base3 *b3 = &amp;d;
+b1-&gt;f(); //Derive::f()
+b2-&gt;f(); //Derive::f()
+b3-&gt;f(); //Derive::f()
+b1-&gt;g(); //Base1::g()
+b2-&gt;g(); //Base2::g()
+b3-&gt;g(); //Base3::g()
+</code></pre>
+
+<h1 id="安全性">安全性</h1>
+
+<p>每次写C++的文章，总免不了要批判一下C++。这篇文章也不例外。通过上面的讲述，相信我们对虚函数表有一个比较细致的了解了。水可载舟，亦可覆舟。下面，让我们来看看我们可以用虚函数表来干点什么坏事吧。</p>
+
+<h2 id="一-通过父类型的指针访问子类自己的虚函数">一、通过父类型的指针访问子类自己的虚函数</h2>
+
+<p>我们知道，子类没有重载父类的虚函数是一件毫无意义的事情。因为多态也是要基于函数重载的。虽然在上面的图中我们可以看到Base1的虚表中有Derive的虚函数，但我们根本不可能使用下面的语句来调用子类的自有虚函数：</p>
+
+<p>Base1 *b1 = new Derive();
+b1-&gt;f1(); //编译出错</p>
+
+<p>任何妄图使用父类指针想调用子类中的未覆盖父类的成员函数的行为都会被编译器视为非法，所以，这样的程序根本无法编译通过。但在运行时，我们可以通过指针的方式访问虚函数表来达到违反C++语义的行为。（关于这方面的尝试，通过阅读后面附录的代码，相信你可以做到这一点）</p>
+
+<h2 id="二-访问non-public的虚函数">二、访问non-public的虚函数</h2>
+
+<p>另外，如果父类的虚函数是private或是protected的，但这些非public的虚函数同样会存在于虚函数表中，所以，我们同样可以使用访问虚函数表的方式来访问这些non-public的虚函数，这是很容易做到的。</p>
+
+<p>如：</p>
+
+<pre><code class="language-cpp">class Base {
+private:
+    virtual void f() { cout &lt;&lt; &quot;Base::f&quot; &lt;&lt; endl; }
+};
+
+class Derive : public Base{
+};
+
+typedef void(*Fun)(void);
+
+void main() {
+    Derive d;
+    Fun pFun = (Fun)*((int*)*(int*)(&amp;d)+0);
+    pFun();
+}
+</code></pre>
+
+<p>以下内容来自：<a href="http://blog.163.com/anklean/blog/static/176296062008035734675/">http://blog.163.com/anklean/blog/static/176296062008035734675/</a></p>
+
+<p>在进入主题之前先介绍一下联编的概念。联编就是将模块或者函数合并在一起生成可 执行代码的处理过程，同时对每个模块或者函数调用分配内存地址，并且对外部访问也分配正确的内存地址。按照联编所进行的阶段不同，可分为两种不同的联编方法：静态联编和动态联编。在编译阶段就将函数实现和函数调用关联起来称之为静态联编，静态联编在编译阶段就必须了解所有的函数或模块执行所需要检测的信息，它对函数的选择是基于指向对象的指针（或者引用）的类型。反之在程序执行的时候才进行这种关联称之为动态联编，动态联编对成员函数的选择不是基于指针或者引用，而是基于对象类型，不同的对象类型将做出不同的编译结果。C语言中，所有的联编都是静态联编。C++中一般情况下联编也是静态联编，但是一旦涉及到多态性和虚函数就必须使用动态联编。
+多态性是面向对象的核心，它的最主要的思想就是可以采用多种形式的能力，通过一个用户名字或者用户接口完成不同的实现。通常多态性被简单的描述为&rdquo;一个接口，多个实现。在C++里面具体的表现为通过基类指针访问派生类的函数和方法。
+下面我们看一个静态联编的例子，这种静态联编导致了我们不希望的结果。</p>
+
+<pre><code class="language-cpp">//1.cpp1. #include &lt;iostream.h&gt;2. class shape{3. public:4. void draw(){cout&lt;&lt;&quot;I am shape&quot;&lt;&lt;endl;}5. void fun(){draw();}6. };7. class circle:public shape{8. public:9. void draw(){cout&lt;&lt;&quot;I am circle&quot;&lt;&lt;endl;}10. };11. main(){12. class circle oneshape;13. oneshape.fun();14. }
+</code></pre>
+
+<p>程序的输出结果我们希望是&rdquo;I am circle&rdquo;，但事实上却输出了&rdquo;I am shape&rdquo;的结果，造成这个结果的原因是静态联编。静态联编需要在编译时候就确定函数的实现，但事实上编译器在仅仅知道shape的地址时候无法获取正确的调用函数，它所知道的仅是shape::draw()，最终结果只能是draw操作束缚到shape类上。产生&rdquo;I am shape&rdquo;的结果就不足为奇了。
+为了能够引起动态联编，我们只需要将需要动态联编的函数声明为虚函数即可。动态联编只对虚函数起作用。我们在通过基类而且只有通过基类访问派生类的时候，只要这个基类中直接的或者间接（从上上层继承）的包含虚函数，动态联编将自动唤醒。下面我们将上面的程序稍微改一下。</p>
+
+<pre><code class="language-cpp">//2.cpp1. #include &lt;iostream.h&gt;2. class shape{3. public:4. virtual void draw(){cout&lt;&lt;&quot;I am shape&quot;&lt;&lt;endl;}5. void fun(){draw();}6. };7. class circle:public shape{8. public:9. void draw(){cout&lt;&lt;&quot;I am circle&quot;&lt;&lt;endl;}10. };11. main(){12. class circle oneshape;13. fun(&amp;oneshape);14. }
+</code></pre>
+
+<p>程序执行得到了正确的结果&rdquo;I am circle&rdquo;。代码在VC6.0中执行。</p>
+
+<p>到目前为止我们不清楚动态联编的执行机制，但我们可以做个猜测。正如上面所说，对于函数的实际的对象类型不同，联编结果也应该不同。在静态联编中，执行的困难在于无法通过基类知道需要联编的子对象的确切类型。在1.cpp中shape的派生类既可能是circle,也可能是其余的rectangle或者square等等，到底应该静态联编哪一个呢。迷惑正在于此。动态联编在编译的时候应该也是不知道联编的确切对象类型的，（如果知道的话就成了静态联编了），因此它只能通过一定的机制，使得在执行时候能够找到和调用正确的函数体。可以想象，为了达到这个目的，一些相关信息应该封装在对象自身中。这些信息有点象身份证明，标识自己，这样在动态联编的时候，编译器可以根据这些标记找到相应的函数体，&rdquo;不要跑，就是你了&rdquo;。
+实际上的动态联编过程是什么样的呢。</p>
+
+<h2 id="二-对象类型信息">二 对象类型信息</h2>
+
+<p>为了证明我们的猜想，我们用下面的一个程序进行测试，下面的程序将获取普通的类和包含虚函数的类的字节大小。程序代码如下。</p>
+
+<pre><code class="language-cpp">//3.cpp1. #include &lt;iostream.h&gt;2. class shape_novirtual{3. int a;4. public:5. void draw(){cout&lt;&lt;&quot;shape_novirtual::draw()&quot;&lt;&lt;endl;}6. };7. class shape_virtual1{8. int a;9. public:10. virtual void draw(){cout&lt;&lt;&quot;shape_virtual::draw()&quot;&lt;&lt;endl;}11. };12. class shape_virtual2{13. int a;14. public:15. virtual void draw(){cout&lt;&lt;&quot;shape_virtual2::draw()&quot;&lt;&lt;endl;}16. virtual void draw1(){cout&lt;&lt;&quot;shape_virtual2::draw1()&quot;&lt;&lt;endl;}17. };18. main(){19. cout&lt;&lt;&quot;sizeof(int)&quot;&lt;&lt;sizeof(int)&lt;&lt;endl;20. cout&lt;&lt;&quot;sizeof(class shape_novirtual):&quot;&lt;&lt;sizeof(shape_novirtual)&lt;&lt;endl;21. cout&lt;&lt;&quot;sizeof(void*):&quot;&lt;&lt;sizeof(void*)&lt;&lt;endl;22. cout&lt;&lt;&quot;sizeof(class shape_virtual):&quot;&lt;&lt;sizeof(shape_virtual)&lt;&lt;endl;23. cout&lt;&lt;&quot;sizeof(class shape_virtual2):&quot;&lt;&lt;sizeof(shape_virtual2)&lt;&lt;endl;24. }
+</code></pre>
+
+<p>VC6.0中运行结果如下：</p>
+
+<pre><code class="language-cpp">sizeof(int)4sizeof(class shape_novirtual):4sizeof(void*):4sizeof(class shape_virtual1):8sizeof(class shape_virtual2):8Press any key to continue
+</code></pre>
+
+<p>从上面可以看出，没有虚函数的类shape_novirtual的大小为4，正好为int a的大小。而带有虚函数的类shape_virtual1和shape_virtual2的大小除了int a的大小还多出了4格个字节的大小，这个大小正好是void*指针的大小。到现在为止我们基本上可以说带有虚函数的对象自身确实插入了一些指针信息，而且这个指针信息并不随着虚函数的增加而增大。
+如果我们将每个类的成员变量int a去掉，VC6.0运行结果就会变成下面的情况。</p>
+
+<pre><code class="language-cpp">sizeof(int)4sizeof(class shape_novirtual):1sizeof(void*):4sizeof(class shape_virtual1):4sizeof(class shape_virtual2):4Press any key to continue
+</code></pre>
+
+<p>上面的运行结果应该让人感到例外。既然size(int)为4，现在没有了这个成员变量，类shape_novirtual应该字节大小为0，但事实上C++编译器不允许对象为零长度。试想一个长度为0的对象在内存中怎么存放？怎么获取它的地址？为了避免这种情况，C++强制给这种类插入一个缺省成员，长度为1。如果有自定义的变量，变量将取代这个缺省成员。</p>
+
+<h2 id="三-虚函数表vtable">三 虚函数表VTABLE</h2>
+
+<p>动态联编过程跟我们猜测的大致相同。编译器在执行过程中遇到virtual关键字的时候，将自动安装动态联编需要的机制，首先为这些包含virtual函数的类（注意不是类的实例）&ndash;即使是祖先类包含虚函数而本身没有&ndash;建立一张虚拟函数表VTABLE。在这些虚拟函数表中，编译器将依次按照函数声明次序放置类的特定虚函数的地址。同时在每个带有虚函数的类中放置一个称之为vpointer的指针，简称vptr，这个指针指向这个类的VTABLE。</p>
+
+<p>关于虚拟函数表，有几点必须声明清楚：</p>
+
+<ol>
+<li><p>每一个类别只能有一个虚拟函数表，如果该类没有虚拟函数，则不存在虚拟函数表。</p></li>
+
+<li><p>C++编译时候编译器会在含有虚函数的类中加上一个指向虚拟函数表的指针vptr。</p></li>
+
+<li><p>从一个类别诞生的每一个对象，将获取该类别中的vptr指针，这个指针同样指向类的VTABLE。</p></li>
+</ol>
+
+<p>因此类、对象、VTABLE的层次结构可以用下图表示。其中X类和Y类的对象的指针 都指向了X,Y的虚拟函数表，同时X,Y类自身也包含了指向虚拟函数的指针。</p>
+
+<p>为了方便问题说明，我们将2.cpp例子进行扩展，扩展程序如下。</p>
+
+<pre><code class="language-cpp">#include &lt;iostream.h &gt;
+16. class shape{
+17. public:
+18. virtual void draw(){cout&lt;&lt;&quot;shape::draw()&quot;&lt;&lt;endl;}
+19. virtual void area(){cout&lt;&lt;&quot;shape::area()&quot;&lt;&lt;endl;}
+20. void fun(){draw();area();}
+21. };
+22. class circle:public shape{
+23. public:
+24. void draw(){cout&lt;&lt;&quot;circle::draw()&quot;&lt;&lt;endl;}
+25. void adjust(){cout&lt;&lt;&quot;circle::adjust()&quot;&lt;&lt;endl;}
+26. };
+27. main(){
+28. shape oneshape;
+29. oneshape.fun();
+30.
+31. circle circleshape;
+32. shape&amp; baseshape=circleshape;
+33. baseshape.fun();
+34. }
+</code></pre>
+
+<p>编译器在编译上面这段代码的时候将为这shape和circle两个对象分别建立一个VTABLE表，这些表依次填充派生类对象和基类对象中声明的所有的虚函数地址。如果派生类本身没有重新定义基类的虚函数，那么填充的就是基类的虚函数地址。这样一旦如果函数调用一个派生类不存在的方法时候能够自动调用基类方法。然后编译器在每个类中放置一个vptr，一般置于对象的起始位置，继而在对象的构造函数中将vptr初始化为本类的VTABLE的地址。整个结果布局如下。</p>
+
+<p>这张图有点问题</p>
+
+<p>图一</p>
+
+<p>图一中的rectangle的VTABLE中的area() 和triangle的VTABLE的adjust()都是填充的基类的虚函数地址。 C++ 编译程序时候按下面的步骤进行工作:</p>
+
+<p>①为各类建立虚拟函数表，如果没有虚函数则不建立。</p>
+
+<p>②暂时不连接虚函数，而是将各个虚函数的地址放入虚拟函数表中。</p>
+
+<p>③直接连接各静态函数。</p>
+
+<p>这些工作做完之后，模块图如图二：</p>
+
+<p>执行时候，诞生了oneshape和circleshape两个对象，oneshape对象的vptr指针指向shape的VTABLE，circleshape对象的vptr指针指向circleshape的VTABLE，在执行oneshape.fun()的时候，fun函数的this指针指向了oneshape对象，进入fun()之后程序继续执行this-&gt;draw()，由于this指向oneshape对象，oneshape的vptr又指向shape类的VTABLE，这样就从VTABLE中得到需要绑定的函数的地址，并连接起来。同样，this-&gt; area()也经由oneshape对象而连接到相应的函数上，如图三。</p>
+
+<p>图三</p>
+
+<p>现在我们执行baseshape.fun()函数。</p>
+
+<p>circle circleshape;shape&amp; baseshape=circleshape;baseshape.fun();函数进入fun函数之后，函数的this指针将指向basefun对象，另一方面basefun指向一个circleshape，因此this指针指向的实际上为circleshape对象，而circleshape的vptr指针指向circle类的虚拟函数表，这样编译器将从虚拟表中取出circle::draw()和circle::area()的地址，进行连接。因为circle本身没有重新定义area()方法，因此编译器使用shape的area()方法。如图四。</p>
+
+<p>图四</p>
+
+<p>遵循上面的思路，基于基类的指针总能找到正确的子类对象的实现。但是象上面的 this-&gt;draw是怎么编译的呢。</p>
+
+<h2 id="四-编译内幕">四 编译内幕</h2>
+
+<p>在上面的程序中，this指针不同，从而连接到不同的fun函数。那么C++如何编译这些指令呢。道理在于：所有的基类的派生类的虚拟函数表的顺序与基类的顺序是一样的，对于基类中不存在方法再按照声明次序进行排放。这样不管是shape还是circle或者从shape又继承出来的其余的类它们的虚拟函数表的第一项总是draw函数的地址，然后是area的地址。对于circle类，下面的才是adjust的地址。因此不管对于shape还是circle，this-&gt;draw总是编译成 call this-&gt;VTABLE[0]; this-&gt;area()总是翻译成 call this-&gt;VTABLE[1]; 程序到真正运行时候将会发现this的真正指向的对象，如果是shape,则调用shape-&gt;VTABLE[0]，如果是circle，则调用circle-&gt;VTABLE[1]。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E8%BD%AC%E8%BD%BD/">转载</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/c---%E5%B0%8F%E9%97%AE%E9%A2%98/" data-tooltip="C&#43;&#43; 小问题">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/hash%E7%AE%97%E6%B3%95%E8%AF%B4%E6%98%8E/" data-tooltip="Hash算法说明">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/12/%E8%BD%AC%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E6%8C%87%E9%92%88%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/c---%E5%B0%8F%E9%97%AE%E9%A2%98/" data-tooltip="C&#43;&#43; 小问题">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/12/hash%E7%AE%97%E6%B3%95%E8%AF%B4%E6%98%8E/" data-tooltip="Hash算法说明">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/12/%E8%BD%AC%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E6%8C%87%E9%92%88%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2010%2F12%2F%25E8%25BD%25AC%25E8%2599%259A%25E5%2587%25BD%25E6%2595%25B0%25E8%25A1%25A8%25E6%258C%2587%25E9%2592%2588%25E8%2599%259A%25E5%2587%25BD%25E6%2595%25B0%25E8%25A1%25A8%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2010\/12\/%E8%BD%AC%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E6%8C%87%E9%92%88%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8\/';
+          
+            this.page.identifier = '\/2010\/12\/%E8%BD%AC%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8%E6%8C%87%E9%92%88%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Irrlicht on The lost island</title>
+    <link>https://duzhi5368.github.io/tags/irrlicht/</link>
+    <description>Recent content in Irrlicht on The lost island</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 31 May 2007 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://duzhi5368.github.io/tags/irrlicht/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用C&#43;&#43;实现跨平台游戏开发之Irrlicht引擎</title>
+      <link>https://duzhi5368.github.io/2007/05/%E7%94%A8c--%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B9%8Birrlicht%E5%BC%95%E6%93%8E/</link>
+      <pubDate>Thu, 31 May 2007 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2007/05/%E7%94%A8c--%E5%AE%9E%E7%8E%B0%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B9%8Birrlicht%E5%BC%95%E6%93%8E/</guid>
+      <description>&lt;p&gt;Irrlicht引擎是一个用C++书写的高性能实时的3D引擎，可以应用于C++程序或者.NET语言中。通过使用Direct3D（Windows平台），OpenGL 1.2或它自己的软件着色程序，可以实现该引擎的完全跨平台。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

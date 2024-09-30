@@ -1,0 +1,905 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>引擎核心结构</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="引擎的核心框架。
+
+">
+    <meta property="og:description" content="引擎的核心框架。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="引擎核心结构">
+    <meta property="og:url" content="/2008/11/%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="引擎的核心框架。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      引擎核心结构
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-11-10T00:00:00Z">
+        
+  十一月 10, 2008
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e6%b8%b8%e6%88%8f%e5%bc%80%e5%8f%91">游戏开发</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>引擎的核心框架。</p>
+
+<p></p>
+
+<p>一:引擎篇
+1 Core
+   1.1 Common
+    1.1.1 Timer    : 计时器(注意精确计时和非精确计时)
+    1.1.2 Thread    : 线程对象
+    1.1.3 DumpCatcher   : Dump信息捕获器
+    1.1.4 TypeDefine   : 自定义基本类型
+    1.1.5 IUnknown( IObj ) : 所有对象的基类，自带引用计数
+    1.1.6 SystemInfo   : 程序起始时检查硬件设备和软件信息
+    1.1.7 String    : 重载的String类以及方法
+    1.1.8 Platform   : 运行环境(根据运行环境对不同的Manager进行优化或参数调整)
+   1.2 DataStruct
+    1.2.1 HashSet    : Hash集合
+    1.2.2 Array    : 数组
+    1.2.3 HashMap    : Hash表
+    1.2.4 List    : 链表
+    1.2.5 CircleQueue   : 环状队列
+    1.2.6 HashList   : Hash链表
+   1.3 BaseFile
+    1.3.1 ExcelFile   : 读Excel表
+    1.3.2 IniFile    : 读标准Ini表
+    1.3.3 ConsoleHelper   : 管理Console输出
+    1.3.4 DumpHelper   : 管理Dump时文件输出(与DumpCatch协作)
+    1.3.5 LogHelper   : 普通的Log文件输出
+    1.3.6 XMLFile    : XML文件输入
+   1.4 Math
+    1.4.1 CRC    : CRC循环校验加密
+    1.4.2 LZSS    : LZSS压缩算法
+    1.4.3 MD5    : MD5加密算法
+    1.4.4 Sort    : 排序( 大量排序查找算法，快速，二分等 )
+    1.4.5 DES    : DES加密算法
+    1.4.6 Random    : 随机数( 真伪随机 )
+    1.4.7 QuadTree   : 四叉树
+    1.4.8 FindRoad   : 寻路算法( 直线+A* )
+    1.4.9 AABB    : AABB碰撞
+   1.5 RTTI
+    1.5.1 RuntimeObject   :
+    1.5.2 RuntimeClass   :
+   1.6 Event
+    1.6.1 EventObj   : 事件对象
+    1.6.2 EventSet   : 事件表
+   1.7 Memory
+    1.7.1 MemoryChunk   : 内存块
+    1.7.2 MemoryManager   : 内存管理器
+    1.7.3 MemoryPool   : 内存池
+    1.7.4 Allocator   : 内存分配器
+    1.7.5 Stream    : 内存流
+    1.7.6 StreamManager   : 内存流管理器
+    1.7.7 File    : 内存文件块
+    1.7.8 FileManager   : 内存文件块管理器
+   1.8 Struct
+    1.8.1 Point2    : 2维的点
+    1.8.2 Point3    : 3维的点
+    1.8.3 Color    : 颜色
+    1.8.4 Matrix3x3   : 3*3矩阵
+    1.8.5 Matrix4x4   : 4*4矩阵
+    1.8.6 Line2    : 2维直线
+    1.8.7 Line3( Ray )   : 3维直线（射线）
+    1.8.8 Vector2    : 2维向量
+    1.8.9 Vector3    : 3维向量
+    1.8.10 Vector4    : 4维向量
+    1.8.11 Rect    : 2维矩形区
+    1.8.12 Box    : 3维盒形区
+    1.8.13 UV2    : 点的UV
+    1.8.14 UV4    : 矩形UV
+    1.8.15 Quaternion   : 四元数
+    1.8.16 Segment2   : 2维线段
+    1.8.17 Segment3   : 3维线段
+    1.8.18 Triangle   : 三角形
+    1.8.19 Circle    : 圆
+    1.8.20 Sphere    : 球
+   1.9 Resource
+    1.9.1 Font    : 字体
+    1.9.2 Image    : 图片资源(包括常规图片读写jpg,gif.bmp,tga,png,dds)
+    1.9.3 File    : 文件类
+    1.9.4
+    1.9.5 Resource   : 资源类统一抽象基类
+    1.9.6 ResourceTable   : 资源表
+   1.10 Audio
+    1.10.1 AudioObj   : 声音播放抽象对象
+    1.10.1 AudioBuffer   : 声音播放缓冲区
+    1.10.2 OggStreamObj   : Ogg流式播放音频对象
+    1.10.3 OggObj    : Ogg播放音频对象
+    1.10.4 WavObj    : Wav播放音频对象
+    1.10.5 Mp3Obj    : Mp3播放音频对象
+    1.10.6 AudioManager   : 音频资源管理器
+    1.10.7 AudioPlayer   : 音频资源播放器
+   1.11 Video
+    1.11.1 SwfObj    : SWF格式视频对象
+    1.11.2 AviObj    : AVI格式视频对象
+    1.11.3
+   1.8 Other
+    1.8.1 Signleton   : 单键设计模式( 可通过template实现通用的，以便多线程和输出DEBUG信息方面 )
+2 GUISystem
+   2.1 Base
+    2.1.1 Widget    : 组件( 所有UI对象的基类 )
+    2.1.2 GUIEvent   : GUI事件抽象类
+    2.1.3 FocusControl   : 焦点管理器
+   2.2 Element
+    2.2.1 Button    : 按钮
+    2.2.2 Label    : 静态文本
+    2.2.3 CanvasMesh   : 带Mesh动画的渲染框( 当UI中需要嵌入3DMesh对象时使用 )
+    2.2.4 HyperText   : 超链接文本
+    2.2.5 CheckBox   : 选择框(同组单选，多选)
+    2.2.6 ComboBox   : 下拉框
+    2.2.7 ListBox    : 列表框
+    2.2.8 Progress   : 进度条
+    2.2.9 Edit    : 输入框
+    2.2.10 Panel    : 空面版(单纯的组件容器)
+    2.2.11 ScrollBar   : 滚动条
+    2.2.12 TreeCtrl   : 树状列表
+   2.3 Other
+    2.3.1 WidgetManager   : UI组件管理器
+3 InputSystem
+   3.1
+    3.1.1 InputHandler<br />
+    3.1.2 InputManager
+   3.2
+    3.2.1 MousePoint   : 鼠标位置点
+    3.2.2 Hotkey    : 快捷键
+    3.2.3 HotkeyTable   : 快捷键表
+    3.2.4 MouseMessage   : 鼠标信息(继承EventObj)
+    3.2.5 KeyMessage   : 键盘信息(继承EventObj)
+4 Graphics
+   4.1 Base
+    4.1.1 RenderState   : 全局渲染状态( 包括深度渲染状态 )
+    4.1.2 RnederObj   : 渲染对象的抽象基类
+    4.1.3 Frustum    : 视锥体
+    4.1.4 IndexBuffer   : 顶点缓冲区
+    4.1.5 Texture    : 纹理对象
+    4.1.5 Material   : 材质对象
+    4.1.5 Animator   : 动画对象
+    4.1.6 VertexBuffer   : 顶点缓冲区
+    4.1.7 TextureBuffer   : 纹理缓冲区
+    4.1.8 Mesh    : 基本渲染网格
+    4.1.9 IndexShader   : 顶点着色器
+    4.1.10 PixelShader   : 象素着色器
+    4.1.11 Skeleton   : 骨骼
+   4.1 RenderObj
+    4.1.1 Camera    : 摄象机
+    4.1.2 SkyBox    : 天空盒
+    4.1.3 Light    : 光照源
+    4.1.4 StaticModel   : 静态模型
+    4.1.5 DynamicModel   : 动态模型( 蒙皮骨骼，刚性骨骼 )
+    4.1.6 Terrain    : 地形( 地形表，高度图 )
+    4.1.7 Canvas    : 渲染面画布(重点提供UI使用)
+    4.1.8 Fog    : 雾
+   4.3 Effect
+    4.3.1 EffectCompiler   : 特效编译器
+    4.3.2 EffectObj   : 特效单元( 可继承实现部分特效，如 粒子，公告版，HDR，镜头震动，水面，火焰，凹凸贴图，多边形轨迹等……)
+    4.3.3 EffectPass   : 特效通道
+    4.3.4 EffectTechnique   : 特效技术
+   4.4 Render
+    4.4.1 RenderObj   : 渲染对象的抽象基类
+    4.4.2 RenderQueue   : 渲染队列
+    4.4.3 RenderEquipment   : 渲染器
+5 Scene
+   5.1
+    5.1.1 SceneNode   : 场景节点( 不仅包括渲染的RenderObj和EffectObj，也包括不可渲染对象 )
+    5.1.2 SceneManager   : 场景节点管理器
+    5.1.3 TerrainPiont   : 场景中点信息
+    5.1.4 TerrainGrid   : 场景小块信息(小，通常是64*64，一个渲染单元)
+    5.1.5 TerrainBlock   : 场景块信息(中，通常是一定的Grid组成，以便信息同步等逻辑事件)
+    5.1.6 TerrainArea   : 场景区域信息(大，通常为用户可以感受到的一个场景区)
+    5.1.7 TriggerNode   : 触发器节点
+6 DB
+   6.1
+    6.1.1 DBCommand   : 访问数据库的命令
+    6.1.2 DBDataReader   : 数据库数据读取器
+    6.1.3 DBManager   : 数据库管理器
+7 Physics
+   7.1
+    7.1.1 BoundingVolume   : 包围体(Height为0则为包围盒)
+    7.1.2 BoundingVolumeTree : 包围体树
+    7.1.3 BoundingSphere   : 包围球
+    7.1.4 BoundingSphereTree : 包围球树
+8 Net
+二:客户端篇
+三:服务器篇
+四:工具篇
+五:附属库篇</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/c--%E5%81%8F%E9%97%A8%E6%80%AA%E5%AD%97%E8%AE%B0%E5%BD%95_%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0_%E5%86%99%E5%85%A5%E6%B3%A8%E5%86%8C%E8%A1%A8/" data-tooltip="C&#43;&#43;偏门怪字记录_静态构造_写入注册表">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B9%B1%E8%AF%91/" data-tooltip="《道德经》乱译">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/11/%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/c--%E5%81%8F%E9%97%A8%E6%80%AA%E5%AD%97%E8%AE%B0%E5%BD%95_%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0_%E5%86%99%E5%85%A5%E6%B3%A8%E5%86%8C%E8%A1%A8/" data-tooltip="C&#43;&#43;偏门怪字记录_静态构造_写入注册表">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/11/%E9%81%93%E5%BE%B7%E7%BB%8F%E4%B9%B1%E8%AF%91/" data-tooltip="《道德经》乱译">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/11/%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2008%2F11%2F%25E5%25BC%2595%25E6%2593%258E%25E6%25A0%25B8%25E5%25BF%2583%25E7%25BB%2593%25E6%259E%2584%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2008\/11\/%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84\/';
+          
+            this.page.identifier = '\/2008\/11\/%E5%BC%95%E6%93%8E%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

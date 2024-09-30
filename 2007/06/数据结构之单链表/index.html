@@ -1,0 +1,1300 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>数据结构之单链表</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="SingleList单链表学习代码
+
+">
+    <meta property="og:description" content="SingleList单链表学习代码
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="数据结构之单链表">
+    <meta property="og:url" content="/2007/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8D%95%E9%93%BE%E8%A1%A8/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="SingleList单链表学习代码
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      数据结构之单链表
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2007-06-09T00:00:00Z">
+        
+  六月 9, 2007
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2007">2007</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>SingleList单链表学习代码</p>
+
+<p></p>
+
+<pre><code class="language-C++">//*****************************************************************
+//
+//      SingleList单链表学习代码
+//    FreedomKnight_Duzhi 转载并添加注释
+//
+//*****************************************************************/
+// 本文件为SingleList全文件
+// 附注: 遍历时间复杂度为O(N),查询结点时间复杂度为O(N/2)
+
+#ifndef __SINGLE_LIST_H__
+#define __SINGLE_LIST_H__
+
+#include &lt;assert.h&gt;          // 用以支持断言
+#include &lt;crtdbg.h&gt;          // 用以支持内存泄露检测
+
+// DEBUG模式下,定义获得错误信息,文件名,行数
+#ifdef _DEBUG
+      #define DEBUG_NEW new ( _NORMAL_BLOCK, THIS_FILE, __LINE__ )
+#endif
+
+#ifdef _DEBUG
+      #define new DEBUG_NEW
+#undef THIS_FILE
+// 节省空间,没必要生成大量的错误信息,仅保存一个常量,
+// 出现错误其他指针指向这里则可
+static char THIS_FILE[] = __FILE__;
+#endif
+
+// 若是DEBUG模式,则断言有效,否则使其无效
+#ifdef _DEBUG
+      #ifndef ASSERT
+      #define ASSERT assert
+      #endif
+#else
+      #ifndef ASSERT
+      #define ASSERT
+      #endif
+#endif
+
+// 单链表每一个结点结构
+template &lt; typename T &gt;
+class CNode
+{
+public:
+      T data;
+      // 因为是单链表，结点中除了数据,就仅有一个next指针了
+      CNode&lt; T &gt; *next;
+      // 构造函数初始化表
+      CNode() : data( T() ), next(NULL){};
+      // 重载构造函数
+      CNode(const T &amp;initdata) : data(initdata), next(NULL){};
+      // 重载构造函数2
+      CNode(const T &amp;initdata, CNode&lt; T &gt; *p) : data(initdata), next(p)){};
+};
+
+// 整个单链表结构
+template &lt; typename T &gt;
+class CSList
+{
+protected:
+      // 因为是单链表,仅仅需要知道链表长度和首指针就可以了
+      int m_nCount;
+      CNode&lt; T &gt; *m_pNodeHead;
+public:
+      CSList();
+      CSList(const T &amp;initdata);
+      ~CSList();
+public:          // 常用方法对外接口
+      /* 注意该部分的const用法,修饰参数,修饰成员函数
+      修饰成员函数时,此函数中不允许调用非const函数,且不许修改成员变量
+      所以,这部分函数中都自定义了一套临时变量nCount而没有使用m_nCount
+      */
+      /* 关于T与T&amp;返回值的说明.该部分的所有获取函数都实现了两次,
+      目的是,返回值为T的,允许修改,即读写操作均允许.
+      返回值为T&amp;的,是其内存地址所写的常量值,不允许进行写操作,进行了保护
+      const的目的在于进行函数重载,若不加的话,编译器认为是相同的函数
+      */
+
+      // 判断单链表是否为空
+      bool      IsEmpty() const;
+      // 获取单链表结点个数
+      int          GetCount() const;
+      // 在指定位置之前添加结点
+      int          InsertBefore(const int pos, const T data);
+      // 在指定位置之后添加结点
+      int          InsertAfter(const int pos, const T data);
+      // 在链表头部添加结点
+      int          AddHead(const T data);
+      // 在链表尾部添加结点
+      int          AddTail(const T data);
+      // 删除指定位置结点
+      void      RemoveAt(const int pos);
+      // 删除头结点
+      void      RemoveHead();
+      // 删除尾结点
+      void      RemoveTail();
+      // 删除所有结点
+      void      RemoveAll();
+      // 获取头结点数据
+      T&amp;          GetHead();
+      // 获取头结点数据
+      T          GetHead() const;
+      // 获取尾结点数据
+      T&amp;          GetTail();
+      // 获取尾结点数据
+      T          GetTail() const;
+      // 获取指定位置结点
+      T&amp;          GetAt(const int pos);
+      // 获取指定位置结点
+      T          GetAt(const int pos) const;
+      // 更改指定位置结点数据
+      void      SetAt(const int pos, T data);
+      // 查询指定数据位置
+      int          Find(const T data) const;
+};
+
+/* 由于模版类不支持.h和.cpp分离,故实现也写在头文件中
+除非编译器支持export关键字,而实际上基本没有编译器支持\(-_-)/ */
+/* 代码短小常用的函数使用内联比较迅速 */
+//-----------------------------------
+
+template&lt; typename T&gt;
+inline CSList&lt; T &gt;::CSList()
+      : m_nCount              (0),
+       m_pNodeHead          (NULL)
+{
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline CSList&lt; T &gt;::CSList(const T &amp;initdata)
+      : m_nCount              (0),
+       m_pNodeHead          (NULL)
+{
+      AddHead(initdata);
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline CSList&lt; T &gt;::~CSList()
+{
+      RemoveAll();
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline bool CSList&lt; T &gt;::IsEmpty() const
+{
+      if( m_nCount == 0 )
+      {
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline int CSList&lt; T &gt;::AddHead(const T data)
+{
+      CNode&lt; T &gt; *pNewNode;
+      pNewNode = new CNode&lt; T &gt;;
+
+      if( pNewNode == NULL )
+      {
+          return 0;
+      }
+
+      pNewNode-&gt;data = data;
+      pNewNode-&gt;next = m_pNodeHead;
+
+      m_pNodeHead = pNewNode;
+      ++m_nCount;
+
+      return 1;
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline int CSList&lt; T &gt;::AddTail(const T data)
+{
+      if( InsertAfter(GetCount(), data) )
+      {
+          return 1;
+      }
+      else
+      {
+          return 0;
+      }
+}
+
+//-----------------------------------
+
+// 返回值说明:若返回0,则代表插入失败.若返回数字大于0,则记录插入结点的当前位置
+template&lt; typename T &gt;
+inline int CSList&lt; T &gt;::InsertBefore(const int pos, const T data)
+{
+      /* 将结点插入指定位置之前的操作要分为三种可能
+      1:      空链表插入,头指针需要添加,新结点的指针无效
+      2:    插入链表头部,头指针需要改变,新结点的指针赋值
+      3:    插入链表中间,头指针不改变,改变位置前结点指针,自身指针赋值
+      */
+      int i;
+      int nRetPos;                  // 结点实际所在位,0代表插入失败
+      CNode&lt; T &gt; *pTmpNode;          // 目标位置前结点
+      CNode&lt; T &gt; *pNewNode;          // 想插入的目标结点
+
+      // 若创建结点失败
+      pNewNode = new CNode&lt; T &gt;;
+      if( pNewNode == NULL )
+      {
+          return 0;            
+      }
+
+      pNewNode-&gt;data = data;
+
+      // 若表为空,则相当于将数据结点设置为首结点
+      if(m_pNodeHead == NULL)
+      {
+          pNewNode-&gt;next = NULL;
+          m_pNodeHead = pNewNode;
+          nRetPos = 1;
+          ++m_nCount;
+          return nRetPos;
+      }
+    
+      // 断言:传的参数必须在合理范围内
+      ASSERT((1 &lt;= pos) &amp;&amp; (pos &lt;= m_nCount));
+
+      // 若插入的是链表头位置
+      if(pos == 1)
+      {
+          pNewNode-&gt;next = m_pNodeHead;
+          m_pNodeHead = pNewNode;
+          nRetPos = 1;
+          ++m_nCount;
+          return nRetPos;
+      }
+
+      // 一般情况的处理
+      pTmpNode = m_pNodeHead;
+      for(i = 1; i &lt; pos - 1; ++i)
+      {    
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      // 通过循环获得的指定位置原来的结点的前一个结点pTmpNode
+      pNewNode-&gt;next = pTmpNode-&gt;next;
+      pTmpNode-&gt;next = pNewNode;
+
+      nRetPos = pos;
+      ++m_nCount;
+      return nRetPos;
+}
+
+//-----------------------------------
+
+template&lt; typename T &gt;
+inline int CSList&lt; T &gt;::InsertAfter(const int pos, const T data)
+{
+      /* 比起InsertBefore来说, InsertAfter少了一种特殊情况处理
+      1: 链表为空时依旧需要处理
+      2: 插入点不可能为最前,若为最后的话,也可按照一般情况,所以仅
+         需两种处理方式.
+      */
+      int i;
+      int nRetPos;
+      CNode&lt; T &gt; *pTmpNode;
+      CNode&lt; T &gt; *pNewNode;
+
+      pNewNode = new CNode&lt; T &gt;;
+      if (pNewNode == NULL)
+      {
+          return 0;
+      }
+
+      pNewNode-&gt;data = data;
+
+      if (m_pNodeHead == NULL)
+      {
+          m_pNodeHead = pNewNode;
+          pNewNode-&gt;next = NULL;
+          m_nCount++;
+          nRetPos = 1;
+          return nRetPos;
+      }
+
+      ASSERT((pos &gt;= 1) &amp;&amp; (pos &lt;= m_nCount));
+
+      pTmpNode = m_pNodeHead;
+      /* 注意! 和InsertInsertBefore不同,此处循环多了一次
+      InsertInsertBefore获得的是目标位置原结点的前一个结点
+      InsertInsertAfter获得的是目标位置原结点
+      */
+      for (i = 1; i &lt; pos; i++)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      // 通过循环获得的指定位置原结点pTmpNode
+      pNewNode-&gt;next = pTmpNode-&gt;next;
+      pTmpNode-&gt;next = pNewNode;
+      ++m_nCount;
+      nRetPos = pos + 1;      /* 注意: 此处加1 */
+      return nRetPos;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline int CSList&lt; T &gt;::GetCount() const
+{
+      return m_nCount;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline void CSList&lt; T &gt;::RemoveAt(const int pos)
+{
+      // 判断合法性
+      ASSERT(pos &gt;= 1 &amp;&amp; pos &lt;= m_nCount);
+
+      int i;
+      CNode&lt; T &gt; *pTmpNode;          // 目标结点的前一个结点
+      CNode&lt; T &gt; *pDestNode;          // 目标位置结点    
+      pTmpNode = m_pNodeHead;
+
+      // 如果删除的是头结点
+      if (pos == 1)
+      {
+          m_pNodeHead = m_pNodeHead-&gt;next;
+          delete pTmpNode;
+          --m_nCount;
+          return ;
+      }
+
+      // 一般情况
+      for (i = 1; i &lt; pos - 1; ++i)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      pDestNode = pTmpNode-&gt;next;
+      pTmpNode-&gt;next = pDestNode-&gt;next;
+      delete pDestNode;
+      --m_nCount;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline void CSList&lt; T &gt;::RemoveHead()
+{
+      ASSERT(m_nCount != 0);
+      RemoveAt(1);
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline void CSList&lt; T &gt;::RemoveTail()
+{
+      ASSERT(m_nCount != 0);
+      RemoveAt(m_nCount);
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline void CSList&lt; T &gt;::RemoveAll()
+{
+      int i;
+      int nCount;
+      CNode &lt; T &gt; *pTmpNode;
+
+      nCount = m_nCount;
+      for (i = 0; i &lt; nCount; ++i)
+      {
+          /* 从链表头部开始删除 */
+          pTmpNode = m_pNodeHead-&gt;next;
+          delete m_pNodeHead;
+          m_pNodeHead = pTmpNode;
+      }
+      m_nCount = 0;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T&amp; CSList&lt; T &gt;::GetTail()
+{
+      ASSERT(m_nCount != 0);
+
+      int i;
+      int nCount;
+      CNode &lt; T &gt; *pTmpNode;
+
+      pTmpNode = m_pNodeHead;
+      nCount = m_nCount;
+      for (i = 0; i &lt; nCount; ++i)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      return pTmpNode-&gt;data;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T CSList&lt; T &gt;::GetTail() const
+{
+      ASSERT(m_nCount != 0);
+
+      int i;
+      int nCount;
+      CNode &lt; T &gt; *pTmpNode;
+
+      pTmpNode = m_pNodeHead;
+      nCount = m_nCount;
+      for (i = 0; i &lt; nCount; ++i)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      return pTmpNode-&gt;data;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T&amp; CSList&lt; T &gt;::GetHead()
+{
+      ASSERT(m_nCount != 0);
+      return m_pNodeHead-&gt;data;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T CSList&lt; T &gt;::GetHead() const
+{
+      ASSERT(m_nCount != 0);
+      return m_pNodeHead-&gt;data;    
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T&amp; CSList&lt; T &gt;::GetAt(const int pos)
+{
+      ASSERT(pos &gt;= 1 &amp;&amp; pos &lt;= m_nCount);
+
+      int i;
+      CNode&lt; T &gt; *pTmpNode;
+      pTmpNode = m_pNodeHead;
+
+      for (i = 1; i &lt; pos; i++)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      return pTmpNode-&gt;data;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline T CSList&lt; T &gt;::GetAt(const int pos) const
+{
+      ASSERT(pos &gt;= 1 &amp;&amp; pos &lt;= m_nCount);
+
+      int i;
+      CNode&lt; T &gt; *pTmpNode;
+      pTmpNode = m_pNodeHead;
+
+      for (i = 1; i &lt; pos; i++)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      return pTmpNode-&gt;data;
+}
+
+//-----------------------------------
+
+template&lt;typename T&gt;
+inline void CSList&lt;T&gt;::SetAt(const int pos, T data)
+{
+      ASSERT(1 &lt;= pos &amp;&amp; pos &lt;= m_nCount);
+
+      int i;
+      CNode&lt;T&gt; *pTmpNode = m_pNodeHead;
+
+      for (i = 1; i &lt; pos; ++i)
+      {
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      pTmpNode-&gt;data = data;
+}
+
+//-----------------------------------
+
+template &lt; typename T &gt;
+inline int CSList&lt; T &gt;::Find(const T data) const
+{
+      int i;
+      int nCount;
+      CNode&lt; T &gt;    *pTmpNode;
+
+      pTmpNode = m_pNodeHead;
+      nCount = m_nCount;
+
+      // 遍历所有的结点
+      for (i = 0; i &lt; nCount; ++i)
+      {
+          if (data = pTmpNode-&gt;data)
+          {
+              return i + 1;      // 结点号和索引号差1
+          }
+          pTmpNode = pTmpNode-&gt;next;
+      }
+      // 若未找到则返回空
+      return 0;
+}
+
+//-----------------------------------
+
+#endif
+
+
+
+
+
+//*****************************************************************
+//
+//      SingleList单链表学习代码
+
+//    FreedomKnight_Duzhi 转载并添加注释
+//
+//*****************************************************************/
+// 本文件用以测试SinList
+
+
+#include &lt;iostream&gt;
+#include &quot;SinList.h&quot;
+using namespace std;
+
+int main(void)
+{
+      int i;
+      int nCount;
+      CSList&lt; int &gt; sList;
+
+#ifdef _DEBUG
+      /* 如果是DEBUG模式下,若main函数运行完毕,还有内存没有释放,则会将其信息反馈
+      到编译器下方的调试窗口有提示(注:但是这句不进行错误位置的提示,所以若需要错误定位
+      依旧需要依靠头文件中的__FILE__那一行) */
+      _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
+      sList.InsertAfter(sList.InsertAfter(sList.AddHead(1), 2), 3);      /* 1,2,3 */
+      sList.InsertAfter(sList.InsertAfter(sList.GetCount(), 4), 5);      /* 1,2,3,4,5 */
+      sList.InsertAfter(sList.GetCount(), 6);                              /* 1,2,3,4,5,6 */
+      sList.AddTail(10);                                                  /* 1,2,3,4,5,6,10 */
+      sList.InsertAfter(sList.InsertBefore(sList.GetCount(), 7), 8);    /* 1,2,3,4,5,6,7,8,10 */
+      sList.SetAt(sList.GetCount(), 9);                                  /* 1,2,3,4,5,6,7,8,9    */
+      sList.RemoveHead();                                                  /* 2,3,4,5,6,7,8,9    */
+      sList.RemoveTail();                                                  /* 2,3,4,5,6,7,8    */
+
+      nCount = sList.GetCount();
+      for (i = 0; i &lt; nCount; ++i)
+      {
+          cout &lt;&lt; sList.GetAt(i + 1) &lt;&lt; endl;
+      }
+      // 等待输入才退出
+      getchar();
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2007/">2007</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/06/%E7%AE%97%E6%B3%95%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" data-tooltip="算法：快速排序">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E9%93%BE%E8%A1%A8/" data-tooltip="数据结构之双链表">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8D%95%E9%93%BE%E8%A1%A8/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/06/%E7%AE%97%E6%B3%95%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/" data-tooltip="算法：快速排序">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2007/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8F%8C%E9%93%BE%E8%A1%A8/" data-tooltip="数据结构之双链表">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2007/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8D%95%E9%93%BE%E8%A1%A8/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2007%2F06%2F%25E6%2595%25B0%25E6%258D%25AE%25E7%25BB%2593%25E6%259E%2584%25E4%25B9%258B%25E5%258D%2595%25E9%2593%25BE%25E8%25A1%25A8%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2007\/06\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8D%95%E9%93%BE%E8%A1%A8\/';
+          
+            this.page.identifier = '\/2007\/06\/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B%E5%8D%95%E9%93%BE%E8%A1%A8\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

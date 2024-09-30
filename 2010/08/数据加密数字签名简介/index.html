@@ -1,0 +1,909 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>数据加密数字签名简介</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="本文说明数据加密和数字签名的原理和算法。
+
+">
+    <meta property="og:description" content="本文说明数据加密和数字签名的原理和算法。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="数据加密数字签名简介">
+    <meta property="og:url" content="/2010/08/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="本文说明数据加密和数字签名的原理和算法。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      数据加密数字签名简介
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2010-08-17T00:00:00Z">
+        
+  八月 17, 2010
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2010">2010</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>本文说明数据加密和数字签名的原理和算法。</p>
+
+<p></p>
+
+<p>数据加密发展：</p>
+
+<p>计算机出现之前：置换表，多置换表，置换数据位置。
+计算机出现之后：字节循环移位，xor或异或操作。</p>
+
+<p>名词解释：
+       密码：           一组含有参数的变换。
+       明文：           加密前的原始数据。
+       密文：           加密后的数据。
+       密钥：           参与变换的参数。
+       加密算法：    进行数据变换的函数。</p>
+
+<p>校验码：       有些时候我们需要知道数据是否被修改或被破坏，那么我们就需要产生一些校验码，然后将这些校验码填充到真正的数据流中，每次我们进行数据操作之前，可以对这些校验码进行检查，这样就可以保证其安全性。例如：病毒感染的文件可以有效防治。</p>
+
+<p>CRC：           循环冗余校验。它对每一个数据块进行位循环移位和XOR操作产生得到一个16位或32位的一个校验和。这样的话，无论有数据丢失还是改变都一定会导致校验码出错，对于病毒感染也很有效。现在已成了一种标准。</p>
+
+<p>基本说明：</p>
+
+<p>一个数据加密算法应当有这样一个能力：制定一个密码或密钥，用它可以加密明文，不同的密码或者密钥，可以产生不同的密文（暗文）。密钥都是可以被破译的，仅是时间上的不可能性。</p>
+
+<p>一个数据加密算法，需要考虑的是进行算法变换，密钥子密钥（公钥私钥）的计算消耗，计算时的空间占用，安全性，密钥长度，密文大小 这些方面。</p>
+
+<p>数据加密技术分类：</p>
+
+<p>古典算法，对称算法，非对称算法</p>
+
+<p>古典算法：替代密码，换位密码。</p>
+
+<p>对称算法：就是加密和解密都用同一套密钥。</p>
+
+<p>对称算法可分为序列密码和分组密码。其中序列密码每次加密一位或者以字节的明文，也称为流密码。分组密码是将明文分组为固定长度的组，然后使用密钥算法对每一块进行加密，结果，输出的也将是固定长度的密文。</p>
+
+<p>非对称算法：加密和解密时使用不同的密钥。加密的密钥为公钥，解密时需使用公钥对应的私钥。若发送方希望只有收信方可解密，那么发信方必须先知道收信方的公钥，然后使用收信方的公钥对数据进行加密，收信方使用自己的私钥进行解密密文。公钥私钥并不明确，都可进行加密，而使用另外一个进行解密。</p>
+
+<p>不可逆算法。不需要密钥，可直接将数据经过算法处理得到密文，密文不可能被解密。</p>
+
+<p>分别常见的有：    对称DES,ADEA,后来的AES。</p>
+
+<p>非对称RSA，DSA，ECC。</p>
+
+<p>不可逆MD5,SHS，SHA。</p>
+
+<p>特殊分类方式：</p>
+
+<p>若明文和密钥确定，则密文确定，则称为确定型密码体制。</p>
+
+<p>若明文和密钥确定，密文不唯一确定，然后根据客观随机因素从一个密文集合中选择一个，则称为概率密码体制。</p>
+
+<p>常见数据加密技术：</p>
+
+<p>DES：对称加密算法。全称是Data Encryption Standard 美国数据加密标准。</p>
+
+<p>S-盒：算法结晶所在。推导过程未知。</p>
+
+<p>弱密钥：几个减弱DES安全系数的密钥。避免使用。</p>
+
+<p>它是一种对二元数据进行的加密算法。数组分组长度为64位。密文分组的长度也是64位。密钥长度为64位（其中有效长度为56位，剩余8位作为奇偶校验）DES的整个体系是公开的，其安全性完全靠密钥的保密。</p>
+
+<p>加密解密速度快。其扩展算法有 三重DES，IDEA，RC5，RC6，Blowfish，CAST，RC2</p>
+
+<p>1：将明文分割为64位的一个单元，然后，对每个单元进行处理，若不足64位，则填充0
+2：将明文单元进行一个初始IP置换
+3：将置换后的单元分割为左右半部分，每部分32位。
+4：对每个部分进行16轮迭代的乘积变换。（将数据和密钥结合起来，注意，密钥会在每一轮迭代时生成一个对应的子密钥进行乘积变换）
+5：16轮迭代之后，两个部分再连接起来，进行一个初始逆置换IP-1，得到密文。</p>
+
+<p>AES：比DES更安全高效。对称加密算法。效率比3DES高，安全性略高于3DES。全称为 Advance Data Encryption Standard</p>
+
+<p>是基于128位（16字节）分组的对称加密算法。密钥可分为128.192，256位三种。密钥轮数分别为10，12，14次。一开始，我们预准备一个替换表，用于中途对密钥进行替换。</p>
+
+<p>加密步骤为：</p>
+
+<p>1：将明文拷贝到4*4字节的矩阵State中。
+2：用第一轮的密钥与State进行异或运算。
+3：使用替换表对密钥进行替换。
+4：对State进行移位操作。
+5：对State进行混合操作。
+6：用下一轮的密钥对State进行异或操作。返回第3步。直至使用完所有轮数。
+7：输出State.</p>
+
+<p>特殊点：</p>
+
+<p>若明文字节数除以16字节不为0，剩余n字节，则填充16-n个字节，每个字节内填充的数也为 16-n ;</p>
+
+<p>若明文字节数除以16字节正好为0，则必须增加一个16字节的组，该组内每个字节内容必须填写16.</p>
+
+<p>AES安全系数总结：</p>
+
+<pre><code>   密钥长度 密钥数量   知密文后所需要时间  知明文和密文后所需要时间
+
+   32           4.3*10E9               35.8分                         2.15毫秒
+
+   56           7.2*10E16             1142年                        10小时
+
+   128         3.4*10E38             10E24年                      5.4*10E18年
+
+   168         3.7*10E50             5.9*10E36年                5.9*10E30年
+</code></pre>
+
+<p>RSA：非对称加密算法。它使用了两个非常大的素数来生成公钥和私钥。加密算法比慢，不适合进行大量数据的加密。</p>
+
+<p>它的密钥是两个非常大的素数相乘得到其中一个密钥，通过这两个素数进行其他一些算法得到另外一个密钥。将公布一个密钥作为公钥，留一个作为私钥。</p>
+
+<p>若一个密钥被分解出得到两个素数，则RSA被击破。</p>
+
+<p>为安全起见，建议两个素数相差不大。</p>
+
+<p>椭圆曲线ECC算法：非对称加密算法。</p>
+
+<p>它的密钥是通过一个椭圆曲线运算得到的。它的加密强度，执行速度都更好，并且密钥长度小，计算空间小，比RSA和DSA强。</p>
+
+<p>PGP：非对称加密算法。使用公钥来加密一个随机生成的密钥，然后使用该密钥再去加密数据。所以要解密数据要先用私钥解密得到该密钥。</p>
+
+<p>背包密码：非对称加密算法。</p>
+
+<p>McEliece密码：非对称加密算法。</p>
+
+<p>Rabin：非对称加密算法。</p>
+
+<p>三重DES：使用三个（或两个）不同密钥对数据块进行三次（或两次）加密。强度系数高，但效率降低。</p>
+
+<p>它分为四种方式：</p>
+
+<p>DES-EEE3，使用三个密钥，顺序对数据进行三次加密变换。</p>
+
+<p>DES-EDE3，使用三个密钥，对数据进行加密，错误解密，加密变换。</p>
+
+<p>DES-EEE2，使用三个密钥，其中K1=K3（相当于两个密钥）对数据进行顺序三次加密。</p>
+
+<p>DES-EDE2，使用三个密钥，其中K1=K3（相当于两个密钥）对数据进行加密，错误解密，加密变换。</p>
+
+<p>RC5: 它是一种将明文分组长（W位，W必须为2的倍数次），密钥长（R字节），迭代轮数（B次）进行分组迭代的密码。它以RC5-w/r/b表示。推荐使用RC5-32/12/16</p>
+
+<p>1：算法形式简单，运算速度快。
+2：能适应不同字长的明文
+3：加密轮数可变化，可调整加密速度和安全性。
+4：密钥长度可变化，可调节安全性。
+5：空间消耗度低。
+6：对数据进行了位循环移位，增强了抗攻击能力。</p>
+
+<p>IDEA：它使用了128位密钥，安全性更高，实现上也快了很多。</p>
+
+<p>它将64位明文分割为4个子单元，一个子单元大小为16位。</p>
+
+<p>它进行了8轮的重复运算，每轮运算有6个不同的子密钥参与运算，最后又进行了一次变换运算。</p>
+
+<p>它将128位的密钥分割为8份子密钥，每份16位，再进行位移运算得到新的子密钥。</p>
+
+<p>散列和数字签名</p>
+
+<p>散列很类似于加密，不同的是，散列不需要密钥。散列的目的是将一个接近无穷空间内的信息映射到一个有维空间内。虽然可能出现散列值碰撞，但这个概率应当小到接近不存在。</p>
+
+<p>散列函数的要求：</p>
+
+<p>1：散列函数必须能够对任意长度的明文产生一个固定长度的密文值。
+2：不允许任何一个明文在散列后得到的密文和原明文一致。
+3：任意两个不同的明文，散列后得到的密文必须不一致。</p>
+
+<p>数字签名就是对数据进行密码变换后得到的一些数据，这些数据负责让接受方确认数据的来源以及确认数据的完整性。</p>
+
+<p>注意！数字签名和加密是不冲突的。</p>
+
+<p>举例：Wang 要给 FK 一个信件，不希望被别人看到，那么FK要开放一个公钥给Wang，Wang拿到公钥进行加密，密文由FK收到后使用私钥进行解密，就得到了明文，这是加密。</p>
+
+<p>若Wang发送给FK的信件，FK需要确认是由Wang发送的，并且要保证数据的完整性，那么就需要Wang在发送信件前，使用密钥进行信件签名，并且先将公钥提供给FK，FK使用公钥解密文件，检查签名是否又由Wang所发，虽然两个从加密技术上可以完全一致，均使用非对称加密即可，但意义和用途不同。</p>
+
+<p>MD5：（Message-digest algorithm 5）消息摘要算法
+是比MD4更安全的散列。</p>
+
+<p>MD5进行4轮的运算。计算后得到的散列摘要为128位。</p>
+
+<p>1：补位。
+       将明文长度补充到 length() 除以 512 得到 448 位。若不足，则先补1个1，其余位补0.</p>
+
+<p>2：补数据
+       将明文原始长度以一个64位数表示，填充到最后，则明文长度将成为512位倍数。</p>
+
+<p>3：初始化MD5参数
+       MD5的部分默认标志参数。</p>
+
+<p>4：主要变换过程
+       4次循环，进行位与或异或等操作得到结果。</p>
+
+<p>SHA：
+Secure Hash Fuction 安全散列函数。也是进行4轮的运算，计算后得到的散列摘要为160位，保存在5个32位的数据中。</p>
+
+<p>计算方式过程与MD5极其类似，但变换过程略有不同，默认标志参数也有不同。</p>
+
+<p>数字签名的算法和非对称加密算法通常一致。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2010/">2010</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E6%9C%88%E8%AE%B0201008/" data-tooltip="月记201008">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9/" data-tooltip="[转]深入理解D3D9">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/08/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E6%9C%88%E8%AE%B0201008/" data-tooltip="月记201008">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2010/08/%E8%BD%AC%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3d3d9/" data-tooltip="[转]深入理解D3D9">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2010/08/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2010%2F08%2F%25E6%2595%25B0%25E6%258D%25AE%25E5%258A%25A0%25E5%25AF%2586%25E6%2595%25B0%25E5%25AD%2597%25E7%25AD%25BE%25E5%2590%258D%25E7%25AE%2580%25E4%25BB%258B%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2010\/08\/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B\/';
+          
+            this.page.identifier = '\/2010\/08\/%E6%95%B0%E6%8D%AE%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%80%E4%BB%8B\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

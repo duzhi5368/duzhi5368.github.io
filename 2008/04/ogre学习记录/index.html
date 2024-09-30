@@ -1,0 +1,1550 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>Ogre学习记录</title>
+    <meta name="author" content="Frankie Wong">
+    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="本文详细记录了学习Ogre 3D渲染引擎的过程，涵盖了从基本的场景管理、网格加载到复杂的材质编辑、脚本应用等方面。通过实例探讨了如何使用Ogre创建动态边框效果，并深入研究了汇编级别的图形优化，同时讨论了滚动视图的实现技巧。
+
+">
+    <meta property="og:description" content="本文详细记录了学习Ogre 3D渲染引擎的过程，涵盖了从基本的场景管理、网格加载到复杂的材质编辑、脚本应用等方面。通过实例探讨了如何使用Ogre创建动态边框效果，并深入研究了汇编级别的图形优化，同时讨论了滚动视图的实现技巧。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Ogre学习记录">
+    <meta property="og:url" content="/2008/04/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+    <meta property="og:site_name" content="The lost island">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:description" content="本文详细记录了学习Ogre 3D渲染引擎的过程，涵盖了从基本的场景管理、网格加载到复杂的材质编辑、脚本应用等方面。通过实例探讨了如何使用Ogre创建动态边框效果，并深入研究了汇编级别的图形优化，同时讨论了滚动视图的实现技巧。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        
+          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Ogre学习记录
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2008-04-21T00:00:00Z">
+        
+  四月 21, 2008
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2008">2008</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>本文详细记录了学习Ogre 3D渲染引擎的过程，涵盖了从基本的场景管理、网格加载到复杂的材质编辑、脚本应用等方面。通过实例探讨了如何使用Ogre创建动态边框效果，并深入研究了汇编级别的图形优化，同时讨论了滚动视图的实现技巧。</p>
+
+<p></p>
+
+<p>1： 设计初衷
+它设计初衷是完全跨平台的。抽象的接口隐藏了平台相关的细节。
+它设计初衷是大幅度支持扩展的。支持多种场景类型，独立出平台和3D接口限制。</p>
+
+<p>2： 基本类结构关系
+Roo：对象为一切的入口，它负责创建Ogre的所有基础元素，三大基础元素大致包括：场景管理器，绘制系统，资源管理器。
+场景管理器：场景节点，动态对象。
+资源管理器：资源组管理，资源管理
+渲染模块：硬件缓冲区管理，渲染系统，渲染窗口</p>
+
+<p>3：关键词
+Root:：Ogre系统入口，程序一开始就应当创建，最后释放，它帮助我们获得其他元素的指针。甚至包括StartRender()
+RenderSystem:：渲染系统。是对3D渲染API的一个封装。一般来说无需手工调用，场景管理器对对其进行控制，只有在实现一些特殊需要的时候，可以获取使用。
+SceneManager：负责对整个场景中内容的创建和管理。包括静态地形场景，摄象机，动态对象，光线，材质等都归属其管理。场景管理器根据室内室外等渲染管理进行了不同类型的优化，在创建时可以传参进行选择。
+ResourceGroupManager：资源组管理器包含多种的资源管理器，例如纹理，网格Mesh等的资源加载管理器，他们各司其职管理其所负责的资源数据对象。和渲染系统一样，大多数情况下他们会被自动调用的进行资源加载，我们仅需要做的就是Root::getSingleton().addRessourceLocation()告诉Ogre从哪儿加载资源即可，除非个别特殊需求，我们动态的手工控制时候可以TextureManager::getSingleton()获取相应的资源管理器进行处理。
+Mesh 对象：就是一个具体的模型，而在一些情况下，Mesh对象仅指那些能够移动的对象，那些静态对象即不属于Mesh对象之列。Ogre有自己的一套定义的Mesh结构，即.mesh，该文件格式可以被网格工具编辑。
+Entity 实体：是一个可移动的对象实例。和Mesh的不同是，实体包括网格，但若网格未和场景结点绑定起来，则不可使用该实体。我们可以修改场景结点来获得实体的修改，但此时Mesh实际是没有变化的。注意：实体是允许有子实体的，网格也一样有子网格。每一个子网格可以有自己的材质。相关函数如下：SceneManager::CreateEntity()由场景管理器去创建实体对象，Entity::GetSubEntity()获取子实体指针，再SetMaterialName()修改材质。
+材质：它是由资源管理器管理，但在场景管理器中也保存着一份材质的列表。它的属性有默认的，SceneManager::GetDefaultMaterialSetting()函数可以获取其默认属性，当然也可以修改。值得注意的是，OGRE允许在程序运行时，通过材质脚本对材质进行设置。
+Overlays 层：一般是拿来做一些不接收用户交互信息的UI面层的。当然游戏中也可以设置一些层元素作为游戏内容，例如飞机驾驶舱，不接受任何用户交互信息，并且要求最前端显示。层有一个专门的层管理器，它负责层的创建释放等工作。每个层有自己的一个Z深度信息，通过它进行遮挡关系的计算。另外，每几个层可以分为一个小组进行统一控制，这个在Ogre中被称为层容器OverlayContainer。每个层可以进行独立的旋转缩放等功能。它允许是2D或3D。OverlayManager::getSingleton().createOverlayElement(“Panel”, “myNewPanel”)。</p>
+
+<p>4：Ogre的脚本
+1 ：材质脚本。在资源组管理器初始化完毕时，装载材质脚本，OGRE会自动的在组相关的资源位置查找”.materal”扩展名的文件，并对这些脚本进行语法解析。手动解析也可以MaterialSerializer::parseScript()但是注意的是：解析脚本时并没有对脚本中定义的全部纹理等资源进行加载。所以，在我们访问一个材质的时候，一定要确保它已经装载，或者，我们手动将此材质Load()一次再进行访问。另外，材质名必须唯一，且不可有”：”号。
+格式：以{}，空格，//作为标识符。
+// 后跟注释，不支持多行注释。
+{} 之间代表为一个解析单元
+每一个material XXX 代表是一个材质单元。其中，每一个technique代表一个材质渲染手法，pass是每个渲染通路模式，texture_unit则是一个纹理单元。
+一个材质脚本允许有多个渲染手法技术，一个渲染手法技术中允许有多个渲染通路模式，一个渲染通道允许有多个纹理单元。</p>
+
+<p>渲染手法技术Techinique ：
+一个“渲染手法技术”就是一个单独的渲染物体的方法。多个技术的存在原因是为适用不同的显卡以及根据远近关系对一个物体进行不同的渲染。
+技术的排列需要一定顺序，一般来说，最常用最的技术放在脚本最前面，
+格式为：         Techinique 技术名
+不命名的技术默认会以其序列号进行命名，注意，技术名不可重复。</p>
+
+<p>方案技术scheme ：
+因为我们对不同的显卡标准或根据某中不同的需求，设计出不同的技术，每种技术所适用的环境方案需要我们指出。
+格式为：             scheme 方案名
+默认的方案是default,若我们某一个技术适用于开启hdr,Shader3.0的方案，我们只需对该技术设置方案为 scheme hdr_open_shader_3_0 即可。</p>
+
+<p>细节层次索引 lod_index ：
+每一个技术都必须对应一个细节层次索引。一般来说，默认的都是0，即最近最优秀的渲染技术，当我们需要对远处细节进行渲染时，则设置这个值吧。
+格式为：               lod_index 数值层级
+虽说lod的数值层级是从0-65535，一般设置2-4层就差不多了吧。因为技术有一定的排列顺序，所以，我们一般是将index大的技术放在后面。</p>
+
+<p>细节层次距离 lod_distances ：
+这里指定使用不同的细节层次的距离值，注意，该属性必须在所有的技术块外面进行声明指定。
+如例子中所标识：lod_distance 200 就代表，在0-200这个距离内，我们使用细节层次为0的技术，在200以上的则使用细节层次为1的技术
+Lod_distance 200 700.5 则表示在0-200时我们使用细节0，200-700.5这段距离使用细节1的材质技术，700.5以上使用细节2的材质技术。200和700.5间使用空格间隔。</p>
+
+<p>所以技术的排列顺序通常为这样</p>
+
+<pre><code class="language-sh">Material MyTestMaterial
+{
+lod_distances 200
+       Technique Lod_0_Hdr_Open_Shader_3_0
+       {
+Lod_index 0
+              Pass 0
+{
+       Texture_unit
+       {
+              //…..
+}
+       Texture_unit
+       {
+              //…..
+}
+              }
+Pass 1
+{
+       Texture unit
+{
+       // ….
+}
+}
+}
+       Technique Lod_0_Hdr_Close_Shader_1_0
+       {
+Lod_index 0
+              Pass
+{
+       Texture_unit
+       {
+              //…..
+}
+       Texture_unit
+       {
+              //…..
+}
+              }
+}
+       Technique Lod_1_Hdr_Open_Shader_3_0
+       {
+Lod_index 1
+              Pass
+{
+       Texture_unit
+       {
+              //…..
+}
+       Texture_unit
+       {
+              //…..
+}
+              }
+}
+       Technique Lod_1_Hdr_Close_Shader_1_0
+       {
+Lod_index 1
+              Pass
+{
+       Texture_unit
+       {
+              //…..
+}
+       Texture_unit
+       {
+              //…..
+}
+              }
+}
+}
+</code></pre>
+
+<p>Pass 渲染通路：
+再次强调一个概念： 一个材质脚本，为了适应不同的显卡和 LOD 细节层次技术，我们允许有多个技术，为了加速充分的使用 GPU ，每个技术中同时又支持多通道的渲染，每个渲染通道内，同时又允许有多个纹理单元。首先这个改变必须明确理解才能顺利的进行材质脚本的设计。
+我们在“渲染通路”这层可以设置以下属性：
+·   ambient       材质的环境光反射系数
+格式是 ambient red green blue alpha
+每个值要求为0.0-1.0之间，例如ambient 0.2 0.2 1.0 1.0代表每个顶点对环境光的反射系数。注意：若关闭了动态光照和纹理层的光照色彩混合的话，该项就不起作用了。默认值为全白
+·   diffuse       材质的漫反射系数
+格式是 diffuse red green blue alpha 其他同上。
+·   specular      材质的镜面反射系数
+格式是 specular red green blue alpha Shininess ，最后多了一个参数，是闪耀值，该值处于1-128之间。注意：若该值较大则会令人感到耀眼的反射。
+·   emissive      材质自发光系数
+格式是 emissive red green blue alpha
+·   scene_blend
+设置渲染通道和现有的渲染层内容混合方式。有预设的四种方式
+格式为scene_blend add或scene_blend modulate/alpha_blend/colour_blend
+Add 是将渲染出的颜色和亮度一起叠加到渲染场景中，相当于“scene_blend one one”
+Modulate 是将渲染输出的颜色叠加到渲染场景中，相当于”scene_blend dest_colour zero”
+alpha_blend 是将渲染输出的亮度叠加到渲染场景中，相当于”scene_blend src_colour one_minus_src_colour”
+colour_blend 是将渲染输出的alpha值进行遮罩缓和。相当于”scene_blend src_alpha one_minus_src_alpha”
+当然，我们也可以不使用预设的方式，进行自定义源和目标的混合因数
+格式为 scene_blend src_factor dest_factor
+这样最终渲染出的颜色就是 (渲染通道的结果 * src_factor) + (渲染场景的颜色 * dest_factor)，其中src_factor dest_factor两个参数可选以下值
+one
+常数值1.0
+zero
+常数值0.0
+dest_colour
+已存在的像素颜色
+src_colour
+纹理像素颜色
+one_minus_dest_colour
+1 - （dest_colour）
+one_minus_src_colour
+1 - （src_colour）
+dest_alpha
+已存在的像素alpha值
+src_alpha
+纹理像素alpha值
+one_minus_dest_alpha
+1 - （dest_alpha）
+one_minus_src_alpha
+1 - （src_alpha）
+例如：scene_blend one zero (代表渲染出的纹理完全覆盖其后的渲染场景，即渲染管道出来的纹理是完全不透明的) ß 默认的混合模式也正是这种。
+·   depth_check
+是否开启深度缓冲检测 格式为 depth_check on 或 depth_check off
+·   depth_write
+是否打开深度缓冲写入。 格式为 depth_write on 或 depth_write off
+默认的时候深度缓冲是打开的，个别时候我们需要渲染一系列透明物体的关系时候，则将其关闭。
+·   depth_func
+写入象素前的深度比较函数。 格式为 depth_func compareFun
+其中compareFun可以取下面值之一。
+always_fail
+永远不向渲染目标写入像素
+always_pass
+总是将像素写入渲染目标
+less
+如果将要写入的像素的深度小于现在缓冲区内容的深度，则写入
+less_equal
+如果将要写入的像素的深度小于等于现在缓冲区内容的深度，则写入
+equal
+如果将要写入的像素的深度等于现在缓冲区内容的深度，则写入
+not_equal
+如果将要写入的像素的深度不等于现在缓冲区内容的深度，则写入
+greater_equal
+如果将要写入的像素的深度大于等于现在缓冲区内容的深度，则写入
+greater
+如果将要写入的像素的深度大于现在缓冲区内容的深度，则写入
+默认值是 depth_func less_equal ，注意：当我们关闭深入缓冲检测的话，该函数无效。
+·   depth_bias
+无法理解。不会用。
+·   alpha_rejection
+对渲染管道的材质纹理进行alpha信息剪裁。 格式为 alpha_rejection compareFun value
+其中value取值范围是0-255，例如 alpha_rejection less_equal 122 则代表抛弃渲染管道中alpha值大于等于122的象素。附注：考虑到硬件兼容，Value最好是0-128之间。
+·   cull_hardware
+硬件剪裁方式。 格式为 cull_hardware HCutFun
+HCutFun 枚举下列三种方式：clockwise / anticlockwise/ none
+clockwise 将逆时针的三角型都cut掉（即CUT镜头反面）
+anticlockwise 将顺时针的三角型都cut掉（即CUT镜头正面）
+none 不做任何剪切。
+默认为 clockwise
+·   cull_software
+软件剪裁方式。 格式为 cull_software SCutFun
+SCutFun 枚举以下三种格式：back / front / none
+实际上，这个和硬件裁减是类似的，不过，对于一些动态的物件建议不要开启该项，消耗很大。默认是 back 剪裁。
+·   lighting
+是否开启动态光照。 格式为 lighting on / off
+注意：使用了顶点程序，此属性无效。动态光照一旦关闭，环境光反射，镜面反射光，放射光，阴影等属性均无效。默认为on
+·   shading
+Ogre 阴影模式。 格式为 shading flat/ gouraud/ phong
+Flat 不进行插值，每个平面的阴影都由该平面的第一个顶点色决定。
+Gouraud 对平面上每个顶点颜色进行线形插入计算。
+Phong 全平面使用顶点法线向量。效果好，代价高，部份硬件无法支持此属性。
+默认为 ： gouraud
+·   polygon_mode
+栅格化方式。   格式为 polygon_mode solid/ wireframe/ points
+面，线，点的栅格化。默认当然是面solid模式。
+·   fog_override
+是否开启雾化。 fog_override true/false
+当fog_override true的时候就需要顺序跟出以下参数
+雾的type: none 无雾。 相当于fog_override false
+           Linear 线性雾。 从 start到end之间有雾
+           Exp 几何方次性雾。 受浓度 density 影响
+           Exp2 几何二次方增加。 受浓度 density 影响
+雾的颜色 color: RGB三种颜色值。0.0-1.0之间
+雾的浓度 density：设置几何方次性雾的浓度。对线形雾不影响，但也必须写上进行占位。
+雾的起始位置 start ：对非线性雾无效，但必须写上占位。
+雾的结束位置 end : 对非线性雾无效，但必须写上占位。
+例如：fog_override true exp 1 1 1 0.002 100 10000 开启几何次方雾。颜色为1，1，1白色，浓度为0.002（若是线性则代表，离镜头100至10000之间的距离有雾）
+·   colour_write
+是否关闭渲染通路的颜色写入功能。 colour_write on/off
+该功能一旦关闭，则代表渲染通路不可输入任何的颜色渲染。仅在初期初始化深度缓冲区时个别时间有用。默认为开on
+·   max_lights
+此渲染通路最大光源数量。一般使用默认为8 格式为 max_lights 8
+·   start_light
+·   iteration
+是否对渲染通路进行迭代渲染。 默认为仅渲染一次，格式为Iteration once
+Iteration 5 代表本渲染通路将被重复执行5次渲染。
+Iteration once per_light point 则代表本渲染通道将每个光源点进行一次渲染。
+Iteration 5 per_light point 则代表本渲染通道将每个光源点进行5次渲染。
+·   point_size
+·   point_sprites
+·   point_size_attenuation
+·   point_size_min
+·   point_size_max</p>
+
+<p>Texture_unit 纹理单元
+我们在PASS渲染通道处已经进行了一次整体的渲染环境设置，然而，在每个纹理单元，我们还可以对单独的纹理进行渲染属性设置。
+·   texture_alias
+设置一个纹理的别名。类似于技术的别名。格式: texture_alias 纹理别名
+默认该别名就是纹理单元的名字。
+·   texture
+本层要使用的静态纹理图象名字。可以简单的格式为
+Texture xxx.jpg （注意：纹理文件名禁止有空格）也可对其属性进行详细的设置。如下
+Texture xxx.jpg 2d 8 none PF_A8R8G8B8
+2d 是装载的纹理类型，类型实际上包括1d(1象素的纹理点),2d（纹理面，默认也是该项）,3d(3D带深度的纹理),cubic(有些类似天空盒式的贴在立方体内侧6个2D纹理，但是仅可贴同一种纹理，不如使用cubic_texture)
+8 是MipMap的层级，默认是unlinited，代表可以无限的对纹理进行mipmap，我们这里设置为8代表生成8个层级递减的MIPMAP。注意：若多个材质脚本中使用同一个纹理，切记他们的mipmap数量必须一致。
+None 这项是我们指定的单独的透明通道做为alpha进行装载，默认的为 none，表示以红色作为alpha通道。
+PF_A8R8G8B8 纹理格式，常用的有PF_R5G6B5,PF_A4R4G4B4,PF_A8R8G8B8,PF_X8R8G8B8等。
+·   anim_texture
+与上面的texture对应，是用于活动的纹理层，即动态图象。注意，这里不是使用默认的保存好的.gif动画，而是导入多桢图，设置好桢之间的间隔时间。这里我们有两种方法。
+一种是按照Ogre内部规定对动画的纹理命名：xxx_0.jpg xxx_1.jpg xxx_2.jpg这样以0为首，加下划线递增命名，这样我们调用时会比较方便，这样便可以了
+Anim_texture xxx.jpg 3 2.2 即代表xxx_0.jpg这样命名的纹理有3张，间隔时间为2.2秒。
+另一种是非标准的纹理命名，则需要我们如下写：
+Anim_texture 1.jpg flame2.jpg xxx_3.png hit4.tga 2.2 直接以空格间隔标示逐个标示出每一桢的纹理即可。
+注意：2.2是每桢间的间隔时间，若设置为0，则不会自动进行桢画面切换，需要我们代码中手工控制了。
+·   cubic_texture
+创建一个立方体纹理。这个一般用于反射映射和天空盒中。其格式和动态纹理一样，有两种方式，一种是Ogre制定的规范，我们调用就更加简单，如下
+Cubic_texture skybox.jpg combinedUVW
+我们仅提供一个基础的纹理名，此时OGRE会默认的去查找skybox_fr.jpg, skybox_bk.jpg, skybox_up.jpg, skybox_dn.jpg, skybox_lf.jpg, skybox_rt.jpg这些纹理。
+第二中方式则是按照“前后上下左右”的顺序将这些纹理罗列出来。
+最后一个参数需要设置为combinedUVW或separateUV, combinedUVW会将纹理组合到一个立方体纹理映射中，带有UVW三维纹理坐标，适合做反射映射。而separateUV仅仅保存2D的UV坐标，适用于天空盒。
+·   tex_coord_set
+因为一个Mesh网格允许有多套纹理坐标集，我们在这里设置使用哪套坐标集。格式为 tex_coord_set 3 （使用编号为3的坐标集）
+默认为 tex_coord_set 0
+·   tex_address_mode
+纹理寻址模式。即当纹理UV值大于1.0时的纹理处理方法。参数有以下几种枚举选择：
+Wrap 会将所有UV值大于1.0的值设置为0.0，纹理会被重复连续绘制。
+Clamp 会将所有UV值大于1.0的值设置为1.0，这样的话就相当于在模糊边界。
+Mirror 会当UV值等于1.0的时候，将纹理反转后连续绘制。
+Border 超过1.0的UV都会被设置为边界色，就是描边效果。此项可设置tex_border_colour属性。
+·   tex_border_colour
+和上一属性对应，设置纹理边界色，仅对Border纹理寻址有效。
+格式 ： tex_border_colour RGBA(0.0 – 1.0取值)
+·   filtering
+纹理过滤形式：我们可以使用其预定的四种基本类型，包括
+None 不进行纹理过滤
+Bilinear 进行双线性纹理过滤。就是对mipmap进行挑选过滤，但是不对mipmap各个级别之间进行过滤
+Trilinear 进行三线性纹理过滤。将最近的两个mipmap一起进行过滤。
+Anisotropic 各向异性纹理过滤。使用该项，则你必须设置其max_anisotropy值。
+默认为bilinear。
+·   max_anisotropy
+最大各相异性程度偏差值。根据硬件不同一般限制为8或者16
+默认为 max_anisotropy 1
+·   mipmap_bias
+我们在Pass通道时已经允许设置mipmap纹理Lod运用层级以及适用的距离。在纹理单元这层级我们可以重新对其进行调整。格式为
+Mipmap_bias -3 后面的整数代表在所有的范围内强制使用增大或缩小的mip级别。-3代表，在所有范围内强制使用更大3级的mip纹理。
+默认是不进行层级偏移：mipmap_bias 0
+·   colour_op
+简单的纹理混合方式，我们可以使用预定义的4项枚举：
+Replace 不处理，用当前的纹理直接替换掉后面的所有颜色。覆盖式。
+Add 将当前纹理色和后面的渲染颜色进行加法处理。
+Modulate 将当前纹理色和后面的渲染颜色进行乘法处理。
+Alpha_blend 将当前纹理和后面的纹理进行alpha颜色混合。
+默认为 colour_op modulate 当前纹理色和后面颜色进行乘法混合。
+·   colour_op_ex
+高级的纹理混合模式，可以详细的指定混合系数和效果，但个人不推荐使用。效率消耗较大，且受不用的硬件限制性大，使用默认支持的4种混合模式可以了。
+·   colour_op_multipass_fallback
+当上面一个colour_op_ex设置要求过高，硬件无法支持多纹理混合时，则不得不调用该项进行多通路混合渲染。若我们使用的是colour_op预设置的4种纹理混合模式，则无需在此处理，OGRE底层已经做了完善的处理。
+·   alpha_op_ex
+同colour_op_ex，不推荐使用。
+·   env_map
+设置环境映射效果。该项可以使用预定义的五个选项
+Off 关闭环境映射反射。 默认即本项。
+Spherical 开启球面环境映射。 它需要一个单独的纹理，该纹理进行周围反射的记录。
+Cubic_reflection 开启平面环境映射。
+·   scroll
+静态纹理偏移。 个人感觉这个函数的存在意义完全是拿来弥补美术的小BUG。或者是个别情况下，事件响应时调用对纹理的修改？
+格式如下：scroll x y
+·   scroll_anim
+动态纹理偏移。 ……针对上一功能的补足。给纹理层一个移动速度进行偏移。
+格式为 scroll_anim xspeed yspeed
+·   rotate
+以固定角度静态旋转一个纹理。和scroll没什么区别。格式如下 rotate angle
+注： angle是逆时针旋转的角度数
+·   rotate_anim
+动态旋转一个纹理。 格式为 rotate_anim 3 代表每秒旋转3次360度。
+·   scale
+静态缩放一个纹理。 格式为 scale x_scale y_scale。
+·   wave_xform
+制作类似于水面波纹性质的专用函数。可以制造出一个类似于波状的动态纹理变化形式。
+格式: wave_xform <xform_type> <wave_type> <base> <frequency> <phase> <amplitude>
+示例: wave_xform scale_x sine 1.0 0.2 0.0 5.0
+xform_type
+scroll_x
+变动x滚动值
+scroll_y
+变动y滚动值
+rotate
+变动旋转值
+scale_x
+变动x比例值
+scale_y
+变动y比例值
+wave_type
+sine
+典型的正弦波，在最小值和最大值之间平稳地循环。
+triangle
+以恒定的速度增加减少的有角度的波，在极值时立即改变。
+square
+最大是波长的一半，最小是瞬时转换之间的停止时间。
+sawtooth
+经过一段时间，从最小逐渐持续增加到最大，最后立即回到最小。
+inverse_sawtooth
+经过一段时间，从最大逐渐持续减少到最小，最后又立即返回最大。::base
+基值，如果amplitude &gt; 0就是指最小值，amplitdue &lt; 0就是指最大值。
+frequency
+波每秒重复的次数，即速度。
+phase
+波开始的偏移量。
+amplitude
+波的大小。
+波的输出范围在{base, base+amplitude}。所以，以在x方向调整纹理为例，沿正弦波方向从1（标准值）调整到5，即表示每5秒一个周期（每秒0.2个波）。</p>
+
+<p>·   transform
+为纹理提供一个4*4矩阵以直接替代上面的旋转，缩放，移动等一系列变化。
+格式为 transform m00 m01 m02 m03 m10 m11 m12 m13 m20 m21 m22 m23 m30 m31 m32 m33
+·   binding_type
+设置绑定类型。该纹理是绑定到片断处理单元还是顶点处理单元。格式为：
+Binding_type fragment / vertex
+默认为绑定片断处理单元。
+·   content_type
+设置纹理内容的来源类型。格式为 content_type named / shadow
+默认是为named，表示纹理单元图片来源于texture,cubic_texture,anim_texture之一，但个别时候我们需要使用阴影纹理，则此时可以设置为shadow
+注： 除去上面的纹理属性设置之外，假若我们需要更高级的纹理属性支持，可以使用外部纹理源。
+顶点程序和片断程序声明：
+假设我们在材质脚本中需要使用顶点程序或者片段程序，那么，类似于函数声明调用一样，我们必须在调用它之前先对其进行声明定义。
+假若调用点都在一个.meterial脚本内还好，我们只需要在调用处的上面进行声明定义，但，假若多个脚本都调用一段顶点程序，我们就需要将这段顶点片断程序独立出任何的.meterial脚本之外，独立编写一个 .program 格式的脚本，在这个脚本中进行定义，这样的话，这个外部定义的顶点片断程序就会顺利的在任何位置上被调用读取。
+个人推荐所有的顶点程序都独立为一个脚本，可以更大程度上方便我们整理。</p>
+
+<p>顶点程序本身既可以是一些低级语言，例如vs_1_1语法规格写的汇编代码，也可以是HLSL,GLSL,CG，个人更推荐使用后者。</p>
+
+<p>一个最基本的片断程序要求有以下几个要点说明：
+ vertex_program myVertexProgram asm
+{
+    source myVertexProgram.asm
+    syntax vs_1_1
+}
+1：在头部给出程序名字，之后说明程序类型。“asm”
+2：指示出资源来自何处。” source ”
+3：指示出语法规则。“vs_1_1”
+我们可以通过Ogre的GPU管理器来获取当前显卡支持的语法列表。
+GpuProgramManager::GetSingleton().getSupportedSyntax()来获得。
+一般显卡支持的语法规则如下：
+vs_1_1
+这是一种 DirectX顶点渲染器汇编语法。
+支持显卡有： ATI Radeon 8500，nVidia GeForce 3。
+vs_2_0
+另一种 DirectX顶点渲染器汇编语法。
+支持显卡有： ATI Radeon 9600，nVidia GeForce FX 5系列。
+vs_2_x
+另一种 DirectX顶点渲染器汇编语法。
+支持显卡有： ATI Radeon X系列，nVidia GeForce FX 6系列。
+vs_3_0
+另一种 DirectX顶点渲染器汇编语法。
+支持显卡有： nVidia GeForce FX 6系列。
+arbvp1
+这是 OpenGL标准顶点程序汇编格式。大体上相当于DirectX vs_1_1。
+vp20
+这是一种 nVidia特有的OpenGL顶点渲染器语法，是vs 1.1的一个超集。
+vp30
+另一种 nVidia特有的OpenGL顶点渲染器语法。它是vs 2.0的一个超集，被nVidia GeForce FX 5系及以上系列支持。
+vp40
+另一种 nVidia特有的OpenGL顶点渲染器语法。它是vs 3.0的一个超集，被nVidia GeForce FX 6系及以上系列支持。
+ps_1_1, ps_1_2, ps_1_3
+DirectX像素渲染器（例如片断程序）汇编语法。
+支持显卡： ATI Radeon 8500，nVidia GeForce 3。
+注解：对于 ATI 8500，9000，9100，9200硬件，也可用于OpenGL。ATI 8500到9200不支持arbfp1但是确实支持OpenGL的atifs扩展，非常类似DirectX的ps_1_4。OGRE有针对atifs编译器的ps_1_x模块，当在ATI硬件上使用ps_1_x时，它会自动执行。
+ps_1_4
+DirectX像素渲染器（片断程序）汇编语法。
+支持显卡有： ATI Radeon 8500，nVidia GeForce FX 5系列。
+注解：对于 ATI 8500，9000，9100，9200硬件，此项也可用于OpenGL。ATI 8500到9200不支持arbfp1但是支持OpenGL的atifs扩展，功能上非常类似于DirectX中的ps_1_4。OGRE有针对atifs编译器的ps_1_x模块，当在ATI硬件上使用ps_1_x时，它会自动执行。
+ps_2_0
+DirectX像素渲染器（片断程序）汇编语法。
+支持显卡有： ATI Radeon 9600，nVidia GeForce FX 5系列。
+ps_2_x
+DirectX像素渲染器（片断程序）汇编语法。基本上是带有更多指令的 ps_2_0。
+支持显卡有： ATI Radeon X系列，nVidia GeForce FX 6系列。
+ps_3_0
+DirectX像素渲染器（片断程序）汇编语法。
+支持显卡有： nVidia GeForce FX 6系列。
+ps_3_x
+DirectX像素渲染器（片断程序）汇编语法。
+支持显卡有： nVidia GeForce FX 7系列。
+arbfp1
+这是 OpenGL标准片断程序汇编格式。大体上相当于ps_2_0，意味着不是所有支持DirectX下的基本像素渲染器都支持arbfp1（例如GeForce3和GeForce4就都不支持arbfp1，但是它们都支持ps_1_1）。
+fp20
+这是一个 nVidia特有的OpenGL片断程序语法，是ps 1.3的一个超集。它允许你为基本片断程序使用&rsquo;nvparse&rsquo;格式。实际上，它使用NV_texture_shader和NV_register_combiners在GL下提供相当于DirectX&rsquo;s ps_1_1的功能，但是仅限于nVidia显卡。然而，因为ATI显卡比nVidia早一步采用arbfp1，所以它主要用于像GeForce3和GeForce4系列的nVidia显卡。你可以在<a href="http://developer.nvidia.com/object/nvparse.html找到更多有关nvparse的信息。">http://developer.nvidia.com/object/nvparse.html找到更多有关nvparse的信息。</a>
+fp30
+另一种 nVidia特有的OpenGL片断渲染语法。它是ps 2.0的一个超集，被nVidia GeForce FX 5系列或更高级的显卡支持。
+fp40
+另一种 nVidia特有的OpenGL片断渲染语法。它是ps 3.0的一个超集，被nVidia GeForce FX 6系列或更高级的显卡支持。</p>
+
+<p>详细的语法编写，实在没有兴趣详细研究下去了。所以这里略过，我们需要知道的是，除了HLSL，GLSL，CG以外，还有一个Ogre自动识别处理的类型，unified可以统一的对程序定义，这样就可以依赖于渲染系统和硬件支持自动的选择渲染程序。</p>
+
+<p>另外， 材质拷贝技巧。
+一般来说，我们游戏中大量的材质是雷同性很强的，假若大段的复制材质渲染模式，实在是非常不值得的体力劳动，所以对于一些只有微小改变的材质设置，推荐使用材质拷贝。</p>
+
+<p>材质拷贝技巧1：
+当两个材质完全一致时。直接类似于C++的继承的写法即可：</p>
+
+<p>Material met1
+{
+Technique
+{
+              Pass 0
+{ … }
+Pass 1
+{ … }
+}
+}</p>
+
+<p>Material met2 : met1
+{</p>
+
+<p>}
+我们不需要做任何事情，met2就已经过去了met1的材质属性。</p>
+
+<p>材质拷贝技巧2：
+当我们向一个拷贝材质中添加新技术时。直接在新的材质脚本中声明新的技术即可。例：
+Material met2 : met1
+{
+       Technique new
+{</p>
+
+<p>}
+}
+此时new这个技术就会默认的在其父类的默认命名为0的技术之后产生。不过值得注意的是，新创建的这个技术尽量命名，避免与父源类的技术名称发生冲突。</p>
+
+<p>材质拷贝技巧3：
+当我们想对拷贝材质已有的属性做一点点的改动时候，需要声明原有技术和通道，直接声明需要改动的属性即可。例：
+Material met2 : met1
+{
+       Technique 0    // 父类的技术并没有命名，默认是以索引为名，索引为0，所以这里填0，但是注意的是，一定要把这个0表示说明出来
+       {
+              Pass 1     // 父类中的0号技术中的命名为0的一个通道
+              {
+                     max_lights 2 //修改该 Pass中的最大光源属性为2
+}
+}
+}
+最常用的是修改一个渲染材质中的某一个纹理文件。我们可以这么做
+Material met2 : met1
+{
+       Technique 0    // 父类的技术并没有命名，默认是以索引为名，索引为0，所以这里填0，但是注意的是，一定要把这个0表示说明出来
+       {
+              Pass 1     // 父类中的0号技术中的命名为0的一个通道
+              {
+                     Texture_unit TreeTexture
+            {
+                Texture NewTreeTexture.png
+}
+}
+}
+}
+这样我们就将treetexture纹理单元中的纹理图片替换了，而其他的一切渲染属性都没有更改。</p>
+
+<p>材质拷贝技巧4：
+记得我们之前说纹理单元时候有强调过纹理有一个属性叫纹理别名吧。texture_alias。
+我们看上面的例子，假若我们材质 met1,和met2仅差一个纹理的区别的话，那么上面的写法也比较麻烦，我们有个更简单的方法，就是，在初次定义的时候，为纹理定义一个别名，之后我们假若需要换纹理，仅告诉Ogre脚本解释器，别名现在代表另一张纹理便可以了。
+例如：我们要渲染一张“漂亮的图“，在材质 1中，“漂亮的图”代表 1.png,材质2中，“漂亮的图”代表2.png，我们只要告诉Ogre，“漂亮的图”是哪张便可以了。例子如下：
+Material met1
+{
+       Pass 0
+       {
+              Texture_unit testTex
+              {
+         texture_alias DiffuseMap
+         texture defaultDiff.png
+        filtering trilinear
+        tex_coord_set 1
+}
+}
+}
+那么我们假若需要使用同样的技术和通道，仅修改纹理图片，我们可以简单到如下：
+Material met2
+{
+       Set_texture_alias DiffuseMap NewChangedDiff.png
+}
+一句话便更换了别名DiffuseMap所指代的对象。直接达到更换纹理贴图的效果。</p>
+
+<p>所以， 我们尽量可能的为技术，通道，纹理单元手动设置名字，纹理资源尽量设置别名。</p>
+
+<p>合成器Compositor
+虽然在Ogre说明书上占了一定篇幅来说明他，很遗憾的是依旧无法理解这个概念名词，它的作用也很值得斟酌，在现有的资料来看，它的使用率极低，故不再加以研究。暂时，放弃。</p>
+
+<p>粒子脚本
+非常熟悉，不赘述。格式完全类似材质脚本，仅修改了属性关键字。
+注意的是，Ogre中的粒子脚本中允许设置一些力学信息。</p>
+
+<p>字体定义脚本
+Ogre中字体最终就是一个Meterial对象，我们要获得这个对象可以有2种方法：
+1：利用一个字体生成工具自己设计字体纹理
+2：让Ogre生成一个基于trueType字体的字体纹理
+无论使用哪种，都需要在 .fontdef 文件中对字体进行定义。</p>
+
+<p>当我们使用现有的一个字体纹理，那么该脚本声明格式为：
+MyFont           // 字体名称，程序中调用时使用，自定义
+{
+       Type image                   // 告知Ogre，我们使用的是字体纹理，不是tureType
+       Source XXX.png          // 字体纹理文件名
+       Glyph A 1 3 14 14         // 告知Ogre，A这个字符在纹理中的位置是(1,3)到(14,14)之间。
+       ……                             // 对我们所需要的每一个字符都进行纹理位置的通知
+}
+从上面可以看出……对中文适用性之低。</p>
+
+<p>当我们使用truetype生成一个字体纹理，那么脚本声明格式为
+MyNewFont // 字体名称，程序中调用时使用，自定义
+{
+       Type truetype                // 告知Ogre我们将从一个字体中生成纹理
+       Source XXX.ttf            // 要加载的. ttf文件名
+       Size 16                        // 生成字体纹理的大小，若过小，则贴到大的面上就显示很粗糙，若过大，则贴到小的面上就会模糊不清。
+       Resolution 96                // 每英寸计算的清晰度，一般是72或96
+       Antialias_colour true      // 关闭默认的字体抗锯齿，这样的话我们就会在渲染时手动的对字体边进行抗锯齿处理。该项默认为false, 即不使用手动的抗锯齿，使用Ogre默认的抗锯齿功能。一般，false即可。
+       Code_pionts 33-166       // 该项是表示哪一段的unicode编码应当被生成字体纹理，默认是33-166的字符。
+}</p>
+
+<p>Overlay 覆盖层脚本
+这个的作用重点表现在UI方面了，它就是将3D的按Z轴深度进行分割出的层平面，这个脚本默认在Root初始化时会自动搜寻所有的 .overlay 层脚本并且装载分析。当然我们也可以手动去加载OverlayManager::GetSingleton().parseAllSource()或者手动加载单独一个脚本OverlayManager::GetSingleton().parseSource().</p>
+
+<p>我们看一个样板式的层脚本
+MyNewOverlays     // 该层的唯一标识命名
+{
+       Zorder 200     // 该层的Z轴深度，越大代表越接近屏幕
+       Container Panel (MyNewOverlays/FirstPanel)      // Container对应的是element，这两者都是对Panel的修饰词，当该面上有新的子面时就使用Container，若是一个完全无子面的面，则可使用element进行修饰。Panel是注册过的本面板元素的类型，Ogre提供了三种基本类型Panel,BorderPanel,TextArea.     括号中的是该元素的唯一识别名称。我们在程序中就可以使用OverlayManager::GetSingleton().getOverlayElement(唯一识别名称);来获得此元素的指针。在该句最后我们还可以加入继承模版，接下来再说。
+{
+              Left 0
+              Top 0
+              Width 0.02
+              Height 0.3
+              Material ThisPanelMaterial     // 这些都是该面板元素的属性
+}
+}</p>
+
+<p>这里我们遗留了三个问题：
+1：Ogre提供的三个基本元素类型有什么区别和作用？
+2：什么是面版元素继承的模版，作用有什么？
+3：面板元素都有什么属性有什么作用？</p>
+
+<p>答1：Ogre提供了三个基本表层元素类型。包括Panel,BorderPanel,TextArea。实际上，一般来说，这三种是完全不够的，是需要我们进行扩展的。扩展后的类型拥有独特的功能和属性。
+例如：
+Panel 面版
+它就是一个矩形的区域，重点作用就是做一个其他元素的容器。所以一般来说，它更多时候是没有背景的透明的。他的专有属性有：
+Transparent true / false 是否透明，若为true则代表本面板透明，自己是不参与渲染的。
+Tiling 0 1 2 实现多重贴图。本例说明使用第0层材质纹理在面板上X轴方向重复贴一次，Y轴方向上重复贴两次。
+Uv_coords topleft_u topleft_v bottomright_u bottomright_v 设置这个面版上的纹理UV坐标。
+这三个属性是Panel专属的，这意味着其他的表层元素是不具有这些功能和属性的。</p>
+
+<p>BorderPanel边框面版
+它和Panel区别仅有一个，就是多个一套边框。这个边框会随着BorderPanel的大小自动的调节其纹理大小。它的构成由9部分：一个中心区，4个角，4个边。它的专属属性是
+       Border_size left right top bottom 边框按屏幕大小的比例尺寸。我们可以发现到Ogre在记录UI大小时是很喜欢记录UI与屏幕长度之间的比例，而非实际的象素大小。这样做的好处是，当屏幕大小有变换时，是很容易实现缩放功能的。
+       Border_material materialName 因为边框面板有独特的边框，所以，我们需要对它指示出其边框使用的材质纹理。
+       Border_topleft_uv topleft_U uv_topleft_V buttomRight_U buttomRight_V
+Border_top_uv topleft_U uv_topleft_V buttomRight_U buttomRight_V
+       …… 总共八块边缘都需要指定其UV信息。这里我们需要注意，我们美术资源制作时，要求左右两边的材质纹理应该允许被垂直拉伸，上下两块的材质纹理应该允许被水平拉伸。</p>
+
+<p>TextArea文本区
+用来渲染文本的一个表层元素。它转有属性包括：
+Font_name name 要使用的渲染字体名，我们必须保证这个字体在 .fontdef 里面并且可用。
+Char_height 字母高度占用整个屏幕告诉的百分比。
+Colour RGB 渲染字体的颜色，默认是使用一般的黑白字体。RGB是0.0-1.0之间的浮点数。
+Colour_bottom RGB / colour_top RGB 实现文本从上到下的颜色渐变。</p>
+
+<p>答2：
+模板实际上就是类似于材质拷贝时的那个父类，实际作用是当几个比较类似属性的表层元素，我们可以直接定义一个模板，其他元素继承于该模板就节约了一些复制粘贴的操作而已。
+我们看下例：
+Template container BordPanel ( MyTemplate/BasicBorderPanel ) // template表示该Panle是模板面版，本身它是不进行渲染的，类似于C++的抽象父类，制定一套属性样版提供其他渲染面板直接套用使用。Container也是Panel的一个属性，表明它是允许有子表层元素的。后面括号里是模板面板名称。
+{
+       Left 0
+       ……
+       Material MyPanelMaterialName
+       Border_size 0.05 0.05 0.06 0.06
+       Border_material MyBorderPanelMaterialName
+       ……
+}</p>
+
+<p>Template container Button (MyTemplate/BasicButton) : MyTemplate/BasicBorderPanel
+// 表明该Button是上面的层的子层，Button是开发人员注册的一个层元素类型
+{
+       Font_name BlackStyle
+       Char_height 0.09
+       Color_top 1 1 0
+       Color_bottom 1 0.5 0.5
+}</p>
+
+<p>上面定义了一套模板边框面和一套模板按钮，下面我们将对其实现
+MyOverlays            // 层名称
+{
+       Zorder 490     // 层深度
+       Container BorderPanel (ChatBackPanel ) : MyTemplate/BasicBorderPanel         // 实现一个进行渲染的背景面层元素，它套用模板边框面
+       {
+              Container Button (JionButton) : MyTemplate/BasicButton           // 实现一个进行渲染的按钮，它套用模板按钮的各项属性
+              {
+                     Left 0.8
+                     Top 0.4
+}
+              Container Button (ExitButton) : MyTemplate/BasicButton           // 实现另一个进行渲染的按钮，它套用模板按钮的各项属性
+              {
+                     Left 0.6
+                     Top 0.4
+}</p>
+
+<p>}
+}
+这样，我们就得到了一个渲染出来的边框面板和上面的两个按钮，我们新创建的按钮就可以省去很多属性的设置了，仅对部分独特的属性进行设置即可。
+可见，模板的作用和抽象Pass通道，技术，纹理单元 是一样的作用，减少我们属性设置而创建的。</p>
+
+<p>答3：
+层元素属性是对层的各项渲染指数进行调整的东西。我们也看到了，不同的元素因功能特性不同，会有独特的属性，但下列通用属性是每个元素必须有的：
+Metrics_mode pixels / relative 属性参数解释方式。默认是relative相对模式，这就意味着之后我们设置top 0.8 代表着这个0.8是针对屏幕宽高得到的比例值。若我们设置为pixels则代表我们设置 top 8 是从第8个象素开始的，是一个绝对的象素偏移量。显而易见，我们再设置为top 0.8 这样明显是不合理的了。
+默认该项为 metrics_mode relative
+Horz_align left/center/right 设置此元素水平起点位置。例如，horz_align left 则代表本元素会自动的居左对齐，当然我们再设置left xxx可以再次对其位置进行调整。
+默认该项为 horz_align left
+       Vert_align top/center.button 同上不再解释。
+默认该项为 vert_align top
+       Left 0.3 设置元素相对于它上一层的水平位置。后面的参数跟metrics_mode属性参数解释方式挂钩。
+默认该项为 left 0
+       Top 同上不再解释。
+默认该项为 top 0
+       Width 0.2 设置元素大小。这里0.2是针对整个屏幕的大小而言，并非针对其父元素的大小。所以当我们设置width 0.5时则意味着这个元素会占屏幕的一半宽。
+默认该项为 width 1
+       Height 同上不再解释
+默认该项为height 1
+       Material XXX 设置该层元素使用的基本材质。值得注意的是：一个表层元素的材质会默认的禁止其上材质的光照和深度检测。所以，我们不应当在表层上使用与3D物体相同的材质。另外，该项在不同的元素中解释意义也是不同的，在Panel中他是整个面版的背景材质，但是在BorderPanel中它仅仅是中心区域的材质。
+       Caption XXX 设置该层元素的标题。因为部分元素是没有标题属性的，所以有些元素可以忽略掉该元素。
+       Rotation 30 0 0 1 设置该层的旋转角度，第一个参数是旋转的角度，第2，3，4属性分别表示在x,y,z轴的旋转。本例就说明是该层元素需要围绕z轴旋转30度。</p>
+
+<h1 id="4-mesh-网格工具">4 ： Mesh 网格工具</h1>
+
+<p>Ogre自带的网格工具包括三种：
+1：导出器Exporters    用于从绘图软件中导出固定格式的数据提供Ogre使用
+       Ogre这个导出插件能够导出两个文件，一个 .mesh 结尾的网格模型，一个是 .skeleton 后缀的骨骼模型。值得注意的是，当我们需要创建一个模型动画时候请注意：
+·每个顶点必须没有超过4的加权骨骼赋值。
+·所有的顶点都必须被分配到至少一个骨骼点上，静态顶点就分配到根部骨骼点上
+·动画开始和结束时候每个骨骼点上最少要有一个关键桢
+2：Xml转换器              能够将xml格式的数据转换为Mesh数据和骨骼数据
+       ·因为很多模型工具导出的Mesh都是xml格式的，这时使用该转换器就可以直接将 xml格式的mesh网格转换为 .mesh 文件。其中的语法非常简单。
+格式为： OgreXMLConverter 文件名<br />
+这样就可以了。不过在转换时，你可以有一次机会对Mesh中的Lod信息进行处理。
+3：Mesh网格更新器     能够对网格的数据进行更新修改功能。
+       未能顺利使用。故不做介绍。</p>
+
+<h1 id="5-硬件缓冲区-硬件缓存">5 ：硬件缓冲区（硬件缓存）</h1>
+
+<p>·定义
+实际上这个缓冲区就是一块 malloc 出来的存储区域，不过它不如 malloc 是在内存中申请的区域，而这个缓冲区是在 gpu/agp 中，它的写读速度更快。通常硬件缓冲区作用有拿来做顶点缓冲区，索引缓冲区，和象素缓冲区。</p>
+
+<p>·使用
+硬件缓冲区的管理是交由一个硬件缓存管理器负责的HardwareBufferManager，他负责缓冲区的创建和释放，它是几何体创建工厂，单键在Root初始化时就会被创建，所以，当我们需要一块内存的时候，一定不要直接New或malloc操作，而应当是这样
+VerBuf = HardwareBufferManager::GetSingleton().CreateVertexBuffer()</p>
+
+<p>·类型
+       我们在分配一块硬件缓冲区时，需要传一个参数，来指明这块缓冲区的类型，是否需要频繁读写？这样对底层的硬件缓存区域分配管理提供很大的便利。我们来看一下硬件缓冲区的类型有哪些，我们分配它的时候应该做何选择。（HBU是HarewareBufferUsage简写）
+       HBU_STATIC 静态硬件缓冲区，它意味着我们很少写入更新缓冲区，偶尔会从中进行数据读取。
+       HBU_STATIC_WRITE_ONLY 只写静态硬件缓冲区。它意味着我们很少更新缓冲区，并且绝对不从该缓冲区进行数据读取。但是，当我们创建了一个备份缓冲的话，我们依旧可以对其读取。
+       HBU_DYNAMIC 动态硬件缓冲区。它意味着我们会经常性的更新缓冲区中的数据，并且也希望能从其中读取数据，这一个效率最低的缓冲区使用方法。
+       HBU­_DYNAMIC_WRITE_ONLY 只写动态硬件缓冲区，这个是个只许写入的硬件缓冲区，但当我们创建了一个备份缓冲的话，还是允许读取的。
+       HBU_DYNAMIC_WRITE_ONLY_DISCARDABLE 这个参数指明这个硬件缓冲区是一个需要频繁更新的缓冲区，大多数是每桢更新的数据存放在这里。但是需要注意的是，向该数据缓冲写入数据时记得加缓存锁。</p>
+
+<p>建议：多使用WRITE_ONLY为后缀的缓冲区类型。即使必须进行读取，也建议使用备份缓冲，而非时刻可写的缓冲。</p>
+
+<p>·备份缓冲
+当我们创建一个WRITE_ONLY的硬件缓冲区后，我们有些时候假若非要从中读取数据，我们可以在创建缓冲区时传参，这样我们在内存中就会创建一个备份的缓冲区。每当我们向显存中写入一份数据的时候，Ogre会自动的先将这份数据拷贝到内存缓冲区后，再将其更新到显存中的硬件缓冲区。当然，这个技术会带来更多的开销，所以，非必要时不要用它。</p>
+
+<p>·缓存锁
+当我们更新写入缓冲或者在读取缓冲的时候，都应该先“锁”住它，以免它被修改。当然，之后记得解锁。pBuffer-&gt;Lock(begin , length , lockType)一般来说，锁的范围越小越便捷快速。但是锁的类型lockType也可以对读取的效率产生影响。
+锁的类型包括：
+·HBL_NORMAL 这种锁支持从缓冲区读取数据，但是效率很低下，因为它允许我们从硬件缓冲区进行数据读取。但是，当我们使用备份缓冲的话，这种影响会得到一些改善。
+·HBL_READ_ONLY 这种锁意味着我们只能从缓冲区中进行内容的读取，禁止写入。此时建议我们使用备份缓冲，会提高我们效率。而且，此时我们实际上读取到的并非硬件缓冲区，而是内存中的数据。
+·HBL_DISCARD 这种锁意味着我们每次操作都会将硬件缓冲区中的所有内容丢弃，一般这种操作也是会在每桢都处理的环境下才会使用，它是禁止读出的。但是一旦我们如此声明，也就基本上是向引擎宣称我们不会对硬件缓冲区的内容感兴趣，那么就不应当创建备份缓冲区。在我们没有使用备份缓冲区时尽量使用这种锁，它的效率很高，但若有了内存备份缓冲区的话，它就没有必要了。
+·HBL_NO_OVERWRITE 当我们有些时候需要更新部分缓冲区而非全部缓冲区时，使用HBL_DISCARD就显的不适合了。此时我们就需要使用这种锁了，它的效率依旧很高，但是也仅是没有备份缓冲的时候才有作用。</p>
+
+<p>·硬件缓冲区和缓冲锁使用经验
+       1：因为最快最优秀的缓冲自然是通过 HBU_STATIC_WRITE_ONLY类型创建，不创建备份缓存，并且仅进行一次HBL_DISCARD的锁操作永不再额外处理的缓冲。
+       2：当我们需要频繁更新的缓冲，可以用HBU_DYNAMIC_WRITE_ONLY来创建，不创建备份缓存，之后使用HBL_DISCARD加锁，若不想全部更新，则使用HBL_NO_OVERWRITE进行锁操作。
+       3：若我们必须从缓冲区中读取数据的话，那么我们可以创建一个备份缓冲，用HBL_READ_ONLY将其锁住。可能的话，尽量声明缓冲区为静态的。
+       4：在我们对顶点的不同元素需要使用不同模式的时候，我们不要通过指针大量更新缓冲区的全部顶点结构，应该分块更新。例如，我们假设只需要经常更新纹理坐标信息，那么我们应当将纹理坐标信息保存在一个单独的缓冲区区域，而其他的不经常更新的元素拆分保存在HBU_STATIC_WRITE_ONLY缓冲区中。</p>
+
+<p>·顶点缓冲区
+       VertexData中有几个重要成员：
+       ·VertexStart                 顶点起始位置信息
+       ·VertexCount               顶点个数
+       ·VertexDeclaration        一个指向顶点数据个数的指针
+       ·VertexBufferBinding    一个指向顶点缓冲区绑定的指针
+       其中顶点类型描述中我们需要强调一个顺序问题，为了支持DX9以前的版本，我们有必要按如下顺序声明和数据保存:
+       1：顶点位置信息
+       2：顶点绑定权重
+       3：顶点法线信息
+       4：顶点环境光颜色信息
+       5：顶点镜面光颜色信息
+       6：顶点纹理坐标信息
+       除了上面的顺序需要注意以外，我们还需要注意的是顶点缓冲区中，是绝对不允许有空隙存在的。
+       我们创建了一个顶点缓冲区后，我们还需要将起和指定的资源进行绑定。
+       格式如下 verterBufferBinding-&gt;setBinding(0, vertexBuffer);
+       之后，我们在运行时将顶点缓冲区绑定起来，循环的将其信息更新填充进入，Ogre提供了临接点与点之间的间隔长度和起始点信息，以便我们进行数据更新。</p>
+
+<p>·索引缓冲区
+       与顶点缓冲区基本都是一致的。创建后更新。唯一的区别就是创建时有些属性不同而已。</p>
+
+<p>·象素缓冲区
+       这里是保存纹理象素信息的。但是和顶点缓冲和索引缓冲不同的是，我们不能手动创建象素缓冲区，只有在我们创建一个纹理的时候，象素缓冲会自动被创建出来。
+       象素缓冲区中支持的纹理类型：
+              TEX_TYPE_1D 一维的纹理，通过1D纹理坐标来索引
+              TEX_TYPE_2D 二维的纹理，通过2D文理坐标来索引
+TEX_TYPE_3D 三维的纹理，通过3D文理坐标来索引
+TEX_TYPE_CUBE_MAP 一个立方体的六个表面纹理，通过3D纹理进行索引。
+象素缓冲区的内存分配格式
+       Ogre中的图象数据的信息都被封装在一个个的PixelBox对象之中，我们需要注意的是PixelBox本身是保存在GPU中，但是真正的纹理都是保存在内存中，并非读到GPU中。GPU中的PixelBox保存着内存中象素的格式位置内容信息的描述，但是PixelBox并没有内存管理的功能，它只能通过保存的内存指针来操作数据。象素盒中提供了通过深度，高度，宽度来索引象素的方法，若一维纹理没有高度和深度时，就将其参数补1。如下：(width, 1, 1)，二维的纹理(width, height, 1)
+象素缓冲区的更新
+       Ogre提供了两种更新象素缓冲区的方法。
+1：手动建立一个纹理并将一个图片放入这个纹理中。我们可以如下代码Image img; img.load(“xxx.jpg”, “General”); Texture pTex = Texture::getSingleton().createManual( …. ); pTex-&gt;GetBuffer(0,0)-&gt;blitFromMemory( );
+2：对一个象素缓冲区加锁之后对其进行读取和写入。
+Buffer-&gt;Lock(HarewareBuffer::HBL_DISCARD);
+const PixelBox &amp;pb = buffer-&gt;getCurrentLock();               // 锁好了之后进行处理
+for (int I = 0; I &lt; pb.GetWindth(); ++I)
+{
+       For( int j = 0; j &lt; GetHeight(); ++j)
+       {
+        Static_cast<unit32*>(pb.data) // 数据获得，随便处理
+}
+}
+Buffer-&gt;unlock(); //最后记得解锁。</p>
+
+<h1 id="6-外部纹理源">6 ：外部纹理源</h1>
+
+<p>·定义。
+       我们读取一个纹理，通常是从一个.jpg.png.bmp等格式的图形文件中进行读取，但有些时候我们需要从avi.mpeg等电影格式文件，flv文件，实时渲染产生的来源中读取纹理，这些渠道来源就被称为外部纹理源。
+·处理外部纹理源。
+       我们如何处理外部纹理源？本身Ogre是没有写的。不过它提供了方法的接口，以便我们写出需要的插件。
+·外部纹理源插件编写方法
+       我们构建的插件必须继承于ExternalTextureSource类。它提供了一个通用的框架。另外，当我们开始需要获取外部纹理源的时候可以使用ExternalTextureSourceManager类中的函数来获得。典型的函数可以如下：AdvanceTextureManager::GetSingleton().GetCurrentPlugIn()
+-&gt;CreateDefinedTexture(sMaterialName);
+·外部纹理源脚本
+       Material Example/MyVideoExample
+       {
+              Technique
+              {
+                     Pass
+                     {
+                            Texture_unit
+                            {
+                                   Texture_source video
+                                   {
+                                          Filename MyMovie.avi
+                                          Play_mode play
+                                          Sound_mode Off    // 注意：这些属性根据插件不同而且不同
+}
+}
+}
+}
+}</p>
+
+<h1 id="7-阴影">7 ：阴影</h1>
+
+<p>·启动阴影
+       1：默认时阴影是被关闭的。我们要使用阴影就必须使阴影有效，而这个操作必须极其优先处理，因为，是否开启阴影会影响模型读取的方式。如：
+       M_SceneMgr-&gt;SetShadowTechnique( SHADOWTYPE_STENCIL_ADDITIVE ); //开启一个模板阴影。
+2：关闭部分不支持投射阴影的光源。（有些光源并不支持投影）
+       Light::SetCastsShadow(false)
+3：关闭那些不需要投射阴影的物体。（有些透明物体可能不需要投影）
+MovableObject::SetCastsShadow(false)
+4：设置投影的最远距离。（为了性能考虑，需要设置）
+5：关闭那些不需要接受阴影的物体。（透明材质，自发光材质通常是不能接收投影的）
+Material::SetReciveShadow(false )</p>
+
+<h1 id="8-动画">8 ：动画</h1>
+
+<pre><code>   Ogre默认支持四种脚本动画。
+</code></pre>
+
+<p>1） 骨骼动画。使用骨骼结构来定义网格数据。
+a)         Ogre的骨骼和动画信息被保存在 .skeleton 的脚本文件中。
+b)        我们进行动画操作时，需要创建一个叫动画状态的对象来控制该动画的状态。我们可以通过Entity::getAnimationState()来获得一个指向动画状态的指针，之后我们在frameStarted时间中，通过动画状态指针来进行动画更新。
+2） 顶点动画。保存顶点快照来决定网格数据如何改变。
+3） 场景节点动画。按照预先定义的路径，来操作场景节点上挂接的实体进行移动产生动画。
+a)         我们可以为每个SceneNode创建一个对应的NodeAnimationTrack
+4） 数值动画。使用Ogre的接口类AnimableObject来继承扩展。这样就可以自定义其对象属性。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2008/">2008</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/04/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-tooltip="游戏开发中常用的设计模式">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/04/%E6%81%B6%E5%BF%83%E7%9A%84vs2005/" data-tooltip="恶心的VS2005">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/04/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/04/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-tooltip="游戏开发中常用的设计模式">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2008/04/%E6%81%B6%E5%BF%83%E7%9A%84vs2005/" data-tooltip="恶心的VS2005">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2008/04/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2008%2F04%2Fogre%25E5%25AD%25A6%25E4%25B9%25A0%25E8%25AE%25B0%25E5%25BD%2595%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie Wong</h4>
+    
+      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Full-time solo indie game developer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2008\/04\/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95\/';
+          
+            this.page.identifier = '\/2008\/04\/ogre%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
