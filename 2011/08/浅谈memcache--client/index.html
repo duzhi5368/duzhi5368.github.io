@@ -1,0 +1,964 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>浅谈Memcache&#43;&#43;Client</title>
+    <meta name="author" content="Frankie">
+    <meta name="keywords" content="FreeKnight, duzhi5368, IndieGameDev, IndieGame, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="_images/favicon.png">
+    
+
+    
+    <meta name="description" content="Author: FreeKnightDuzhi
+
+Memcached 是一个高性能的分布式的内存对象缓存系统，用于动态Web应用以缓冲数据库负载，减少数据库访问次数，提升访问速度。
+
+">
+    <meta property="og:description" content="Author: FreeKnightDuzhi
+
+Memcached 是一个高性能的分布式的内存对象缓存系统，用于动态Web应用以缓冲数据库负载，减少数据库访问次数，提升访问速度。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="浅谈Memcache&#43;&#43;Client">
+    <meta property="og:url" content="/2011/08/%E6%B5%85%E8%B0%88memcache--client/">
+    <meta property="og:site_name" content="IndieGameDev-Frankie">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IndieGameDev-Frankie">
+    <meta name="twitter:description" content="Author: FreeKnightDuzhi
+
+Memcached 是一个高性能的分布式的内存对象缓存系统，用于动态Web应用以缓冲数据库负载，减少数据库访问次数，提升访问速度。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">IndieGameDev-Frankie</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie</h4>
+        
+          <h5 class="sidebar-profile-bio">Full-time solo indie game developer.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/@indiegamedev-frankie" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">YouTube</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      浅谈Memcache&#43;&#43;Client
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-08-01T00:00:00Z">
+        
+  
+  
+  
+  
+    八月 1, 2011 
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2011">2011</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Author: FreeKnightDuzhi</p>
+
+<p>Memcached 是一个高性能的分布式的内存对象缓存系统，用于动态Web应用以缓冲数据库负载，减少数据库访问次数，提升访问速度。</p>
+
+<p></p>
+
+<h1 id="1-memcached-是什么">1：Memcached 是什么？</h1>
+
+<p>Memcached 是一个高性能的分布式的内存对象缓存系统，用于动态Web应用以缓冲数据库负载，减少数据库访问次数，提升访问速度。
+它通过在内存里维护一个巨大的统一的Hash表来存储各种格式的数据，包括文件，数据库检索结果，甚至图像视频等。
+Memcached使用了LibEvent(Linux下使用epoll)来均衡任何数量的链接，使用非阻塞网络I/O，对内部对象使用了引用计数，并使用自己的内存页块分配器和哈希表，所以其虚拟内存不会产生碎片且内存分配的时间复杂度为O(1)。
+Memcached相比共享内存，特点是可以让不同主机的多个用户同时访问，而共享内存只能单机应用。
+Memcached相比数据库，特点是解决了数据库的磁盘开销，SQL解析开销和阻塞带来的麻烦。
+注意的是，Memcached自身没有认证和安全机制，意味着Memcached服务器需要放置在防火墙之后。
+Memcached服务器下载点：<a href="http://memcached.org/">http://memcached.org/</a>
+如果你需要一个轻量级的，类型安全的，简单易用的Memcache客户端，请从 <a href="http://sourceforge.net/projects/memcachepp/">http://sourceforge.net/projects/memcachepp/</a> 下载，它是使用C++编写的Memcache客户端。</p>
+
+<h1 id="2-memcached-特点">2：Memcached 特点？</h1>
+
+<p>1&gt; 基于LibEvent事件处理。即使对服务器的连接数增加，也是O（1）性能。
+2&gt; 内置内存存储方式。自己的内存分页管理，减少碎片。基于LRU方式管理缓存，更为高效。自己的Hash算法。
+3&gt; 客户端独立，服务器独立。客户端之间没有通讯，完全独立。服务器之间也没有通讯，完全独立。
+4&gt; 跨平台。支持Linux，FreeBSD, MacOS，Windows</p>
+
+<h1 id="3-简介memcache">3：简介Memcache++</h1>
+
+<p>这个项目是开源的，它开发了大约一年，现被多个项目中使用。
+但请注意，该项目使用Boost库，所以其中受到Boost的License额外限制。请参考 <a href="http://www.boost.org/LICENSE_1_0.txt">http://www.boost.org/LICENSE_1_0.txt</a></p>
+
+<h1 id="4-作者简述">4：作者简述</h1>
+
+<p>作者Deam Michael Berris是一个从事多年C++软件开发的工程师，在2007年2月到2009年6月期间，他在 Friendster( <a href="http://www.friendster.com/">http://www.friendster.com/</a> ) 编写的该项目。当时他在菲律宾电信系统从事软件开发工作。</p>
+
+<h1 id="5-项目概述">5：项目概述</h1>
+
+<p>编译Memcache++客户端必须Boost C++库支持。
+Memcache++客户端项目编译平台为Linux，编译环境为GCC。
+该项目在 Linux(32bit 和 64bit ) GCC4.1.2 GCC4.3.3 均测试通过。
+该项目在Windows( 32bit 和 64bit )Ms VC++ 2008 上测试通过。
+该项目是一个只有头文件的Lib，意味着它的所有实现均在头文件中。
+该项目没有过于特殊的编译要求和配置单，但有以下要求：
+ 1&gt;在你的项目中，除包含本项目头之外，必须包含以下Boost头：Boost.Asio, Boost.Date_Time, Boost.Fusion, Boost.Regex, Boost.Serialization, Boost.Spirit, Boost.System, Boost.Thread
+ 2&gt;若希望该项目为线程安全模式，必须定义 _REENTRANT 宏。这个宏是受到 Boost.Thread 内限制的。</p>
+
+<h1 id="6-简易演示demo">6：简易演示Demo</h1>
+
+<p>下面是个简单的Demo，告诉我们如何去使用Memcache++Client去连接Memcached服务器，并从服务器获取数据，删除数据，设置数据的操作。</p>
+
+<pre><code class="language-cpp">#include &lt;memcachepp/memcache.hpp&gt; // 该头文件是Memcache++Client唯一对外需要包含的头文件。
+#include &lt;string&gt;
+#include &lt;iostream&gt;
+
+int main( int argc, char* argv[] )
+{
+ // Memcache服务器句柄
+ memcache::handle mc;
+ // Memcache服务器默认开启11211端口。下面连接服务器
+ mc &lt;&lt; memcache::server(&quot;localhost&quot;, 11211 ) &lt;&lt; memcache::connect;
+
+ // 首先删除Memcache服务器的指定Key的Node
+ try
+ {
+  mc &lt;&lt; memcache::delete_(&quot;FKKey&quot;);
+ }
+ catch( ... ) { }
+
+ std::string szMyString(&quot;FreeKnightValue&quot;);
+ std::string szCachedMsg;
+
+ try
+ {
+  mc &lt;&lt; memcache::set(&quot;FKKey&quot;, szMyString )   // 设置Memcache服务器内FKKey的Value
+   &lt;&lt; memcache::get(&quot;FKKey&quot;, szCachedMsg )  // 然后从Memcache服务器内取出FKKey的Value
+   &lt;&lt; memcache::delete_(&quot;FKKey&quot;);    // 删除Memcache服务器内FKKey所在Node
+
+  std::cout &lt;&lt; szCachedMsg &lt;&lt; std::endl;
+ }
+ catch( std::runtimer_error &amp; e )
+ {
+  std::cerr &lt;&lt; &quot;Unknown error: &quot; &lt;&lt; e.what();
+ }
+
+ return 0;
+}
+</code></pre>
+
+<p>我们可以看出在使用Memcache++时，很类型标准C++流操作，当然，在早期版本，我们还有一种方式如下</p>
+
+<p>using namespace memcache::fluent;
+key( mc, &ldquo;FKKey&rdquo; ) = szMyString;
+warp( szCachedMsg ) = get( mc, &ldquo;FKKey&rdquo; );
+remove( mc, &ldquo;FKKey&rdquo; );</p>
+
+<p>这种方式完全等同于上面的</p>
+
+<p>mc &lt;&lt; memcache::set(&ldquo;FKKey&rdquo;, szMyString )
+ &lt;&lt; memcache::get(&ldquo;FKKey&rdquo;, szCachedMsg )
+ &lt;&lt; memcache::delete_(&ldquo;FKKey&rdquo;);</p>
+
+<p>现在的Memcache版本可以支持任意一种，我们可以根据自己习惯自由选择。</p>
+
+<h1 id="7-核心对象解释">7：核心对象解释</h1>
+
+<p>Memcache++Client中，memcache::handle是非常重要的对外对象，它是NonCopyable(禁止拷贝构造)的。
+它有如下核心成员
+connection_ptr
+server_info
+pool_info
+server_container
+pool_container
+它有如下核心函数
+void add_server( serverHostName, serverInfo );  // 增加一个或多个Memcache服务器连接
+void add_pool( serverPoolName, serverInfo );  // 增加一个服务器池连接
+void connect();        // 连接所有的Memcache服务器（在addServer的参数中被定义）
+string version( size<em>t );      // 获取Memcache服务器版本
+void delete</em>( size_t, Key, time );     // 删除一个Key的Node（参数Time意义请看下文具体补充）
+void get<D>( size_t, Key, DateType );   // 获取一个Key的Value填充到DateType内
+void get_raw( size_t, Key, szDate );    // 获取一个Key的Value并保存为string填充刚到szDate内
+bool is_connect( serverHostName );    // 判断是否和一个Memcache服务器连接
+size_t pool_count();       // 获取Handle内的池子数量
+size_t server_count();       // 获取Handle内连接的Memcache服务器数量
+void set<D>( size_t, Key, DateType, Time &hellip; );
+void set_raw( size_t, Key, szDateRaw, Time&hellip; );
+void add<D>( size_t, Key, DateType, Time &hellip; );
+void add_raw( size_t, Key, szDateRaw, Time&hellip; );
+void replace<D>( size_t, Key, DateType, Time &hellip; );
+void replace_raw( size_t, Key, szDateRaw, Time&hellip; );
+void append_raw( size_t, Key, szDateRaw, Time&hellip; );
+void prepend_raw( size_t, Key, szDateRaw, Time&hellip; );
+void incr( size_t, Key, int , int );
+其中值得说明的是：
+1&gt; 向Memcache内保存数据可以指定期限（秒），过了这个期限，该数据将被丢弃。若不指定期限，则自动按照LRU算法保存数据。
+2&gt; 函数中add,replace,set均是向Memcache服务器保存一个数据，区别是：
+ add  仅当存储空间内不存在指定健的时候，数据才进行保存。
+ replace 仅当存储空间内已存在指定键的时候，数据才进行保存。
+ set  无论存储空间是否有指定键，数据均进行保存。
+3&gt; Memcached可以使用get方法获取一个键键值，同时也可以使用get_mutil非同步的获取多个键的键值，比循环单个get效率高。这点在Memcache++Client里暂未找到相关接口。
+4&gt; 删除数据时候指定的Time是禁止在指定的单位时间内不再允许该Key保存新数据，该功能可以防止缓冲数据的不完整。但是，set函数可能忽视该阻塞，照常保存。</p>
+
+<p>Memcache++Client中，”命令“是个很重要的概念。
+Demo中的 memcache::set ,memcache::get 均是”命令“。每个命令均存在的函数有以下三个：
+HandleInstance&amp; HandleInstance &lt;&lt; Directive; // 将一个命令填充到Handle内。
+D( Directive );
+D&lt; T1, T2 &hellip;. Tn &gt;( t1, t2 &hellip; tn );     // 对多个命令进行构造。
+void Directive( HandleInstance );    // 对一个Handle执行指定命令。
+我们可以定义自己的命令，但是强制要求实现三个函数，一个构造函数一个是operator &lt;&lt; 和operator ().我们看一下Memcache++Client里的get_directive命令源代码：
+template&lt; typename T &gt;
+struct get_directive
+{
+ explicit get_directive( std::string const &amp; key, T &amp; holder )
+   : _key( key ), _holder( holder ){};
+ template&lt; typename T &gt;
+ void operator()  ( T &amp; handle ) const
+ {
+  size_t pools = handle.pool_count();
+  assert( pools != 0 );
+  handle.get( handle.hash( _key, pools ), _key, _holder );
+ }
+private:
+ mutable std::string _key;
+ mutable T &amp; <em>holder;
+}
+Memcache++Client中，默认命令有如下：
+get,set,add,replace,delete</em>,raw_get,raw_set,raw_append,raw_prepend,incr,decr,server,pool,connet.
+每个C++流式命令对应的均有一个fluent格式的函数调用。
+例如：
+mc &lt;&lt; memcache::set( &ldquo;key&rdquo;, value );  完全等同于 key( mc, &ldquo;key&rdquo;) = value;
+mc &lt;&lt; memcache::get( &ldquo;key&rdquo;, value ); 完全等同于 wrap( value ) = get( mc, &ldquo;key&rdquo; );
+其中后面的调用被称为 fluent 格式函数调用。这些API的详细描述这里不再给出，若有不清晰，可直接邮件联系
+这里只给出核心的命令
+connect:  打开一个到Memcache的连接
+pconnect:  打开一个到Memcache的长连接
+close:  关闭一个到Memcache的连接
+set,get,repalce:  保存，提取，替换 一个Memcache服务器的数据
+delete:  删除一个Memcache服务器的数据
+getStats:  获取当前Memcache服务器运行状态</p>
+
+<p>Memcache++Client中，Handle中保存了三种策略。
+其中包括：ThreadPolicy线程策略 ， DateInterchangePolicy数据交换策略，HashPolicy哈希策略。
+其中线程策略，使我们可以定义Handle在如何协调线程的合作，默认状态下线程策略是使用一个嵌套的ScopedLock，而且也未必是单线程，这取决于_REENTRANT宏对Boost.Thread的控制。
+其中数据交换策略，默认为binary_interchange策略，我们可以修正为以下三种 binary_interchange, text_interchange, string_interchange .</p>
+
+<h1 id="8-某志补充">8：某志补充</h1>
+
+<p>通常一个Memcached服务器进程一个会占用2GB内存空间。
+虽然Memcached服务器是网络通讯，理论上是可以支持无限多链接，但和Apache不同之处是，它更多时候面对的稳定的连接，根据Linux线程连接并发能力考虑，保守认为Memcached最大同时连接数250左右，但已足够常规游戏服务器组使用了。
+Memcached是自己的内存管理方式，和APC不同，没有基于共享内存和MMAP，所以也就没有共享内存的限制，两者是两回事。
+Memcached服务器是使用预分配内存的方式，其内存分配最小单位为Slab。其中Slab可以理解为一个内存块，大小为1048576字节，正好是1MB，所以Memcached始终是整MB的使用内存。一个Slab内会分配若干个Chunk，每个Chunk会有一个Item（内部包含Item结构体以及Key,Value）.Slab会有自己的ID，又会被挂接在SlabClass数据中。
+Memcached服务器对内存要求相对略高，对CPU基本不做要求，在硬件配置时可考虑该点。
+辅助监视Memcached可以使用Nagios开源监视软件。</p>
+
+<h1 id="9-细说memcached-内存存储机制">9：细说MemCached 内存存储机制</h1>
+
+<p>MemCached是使用SlabAllocator进行内存管理的。它是将原本预先分配的内存，分割为各种不同尺寸长度的块，并且将相同长度的内存块分成组进行管理。
+这里我们需要解释几个名词概念：
+1：Page 是一次分配给Slab的内存空间，如我总结所说，其大小默认为1MB。之后这1MB会交由SlabAllocator的需要切割为大小不同的chunk。
+2：Chunk 是实际的内存空间，大小未必一致。
+3：SlabClass 是对Chunk进行管理的，每一个SlabClass内的Chunk大小是完全一致的。</p>
+
+<p>当客户端或者数据库要求添加一条数据时，Memcached根据收到的数据大小（假设为100bytes）其寻则最合适数据大小的SlabChunk（假设为112bytes的SlabClass里），填充其中，并通知所属Slab，这个chunk已被占用，由Slab维护一个空闲chunk列表。</p>
+
+<p>但是值得注意的是，内存的Chunk分割是在MemCached启动时便进行的，是固定长度，那么我们就如上例可知，假设Slab分割Chunk有以下几种规格的大小：88bytes, 112bytes, 144bytes, 184bytes, 512bytes &hellip; 那么我们100bytes的数据写入时，只能填充到112bytes的Chunk内，即浪费了12bytes。
+若我们需要存储的对象大小均为600bytes以上，则浪费了大量的小Chunk。此时我们可以用 grown factor 进行调节。
+默认时这个值为1.25。我们通过verbose查看$ memcached -f 1.25 -vv 可得知如下结果
+slab class 1: chunk size 88 bytes  perslab 11915
+slab class 2: chunk size 112 bytes  perslab 9362
+slab class 3: chunk size 144 bytes  perslab 7281
+&hellip;.
+slab class 10: chunk size 744 bytes  perslab 1409
+&hellip;.
+可知每个slab class内的chunk大小是1.25倍递增的（个别时候有误差，是为了字节对齐设置的）。
+我们同样可以设置为2倍。$memcached -f 2 -vv 可得知如下结果
+slab class 1: chunk size 128 bytes  perslab 8192
+slab class 2: chunk size 256 bytes  perslab 4096
+&hellip;..
+slab class 10: chunk size 65536 bytes perslab 16
+slab class 11: chunk size 131072 bytes perslab 8
+&hellip;..
+当然这个状态可以通过Perl脚本进行监察，得知 Chunk大小，LRU内最旧的记录生存时间，分配给Slab的页数，Slab内的记录数等信息。</p>
+
+<p>Memcached是内存缓存机制，没有对磁盘操作，所以，其大小受到内存制约，在优化内存使用方面，Memcached有以下手段：
+1&gt; 不释放内存。Memcached是不会释放内存的，当我们delete_命令后，服务器只会将指定记录设置为不可见，之后进行重复使用，而不会真正的free归还内存，避免了内存碎片问题。
+2&gt; 惰性释放。Memcached内部不会频繁的刷新以删除过期记录，而是在get时检查记录时间戳，这是被动的检查，所以Memcached不会在监视刷新上消耗CPU时间。
+3&gt; 使用LRU删除记录。LRU全称为Least Recently Used，就意味着，当Memcached内存不足时（从slabClass里获取未使用空间失败时），就会从最近未被使用的记录中进行搜索，查找使用最近最少使用的记录进行删除标志，重复利用内存。</p>
+
+<h1 id="10-memcached通讯数据交换机制">10：MemCached通讯数据交换机制</h1>
+
+<p>MemCached当前更多的是使用binary_interchange协议，它是由16字节的包头和Key以及不定长数据组成的。包头内包含了标准的Magic字节，命令种类，键长，值长等信息。
+二进制协议解决了文本协议可能出现的平台问题，以及XML等格式带来的复杂度。</p>
+
+<h1 id="11-memcached的分布式">11：MemCached的分布式</h1>
+
+<p>我们上面了解了许多，却无法发现MemCached的分布式在哪儿，而其实Memcached的分布式不存在于服务器，而是完全由客户端实现的。
+假设我们要保存三个Key。分别为&rdquo;Free&rdquo;&ldquo;Knight&rdquo;&ldquo;Duzhi&rdquo;，另有Memcached服务器两台。
+我们Memcached客户端会通过一个算法，将Key分类，假设我们设定Key第一个字母在&rsquo;G&rsquo;之前的数据保存在第一个Memcached服务器上，&rsquo;G&rsquo;之后的数据保存在第二个Memcached服务器上。
+在get,set,replace等操作时，也先在算法这一层做出服务器责任分割，则可以实现Memcached的分布式。
+这里，就是Memcache++Client替我们去做到的事情。</p>
+
+<p>常规的余数Hash是最容易想到的，它会根据Memcached服务器个数和键的整数哈希值范围进行分布，用键的哈希值除以服务器台数得到的余数，就是所选择的服务器编号。这样是相对均衡合理的。
+但这种方式的一大问题就是，当服务器个数发生更变时，代价相当昂贵。余数的变更将改变全部数据的服务器分配。此时，我们有个更好的解决方法就是ConsistentHash.</p>
+
+<p>ConsistentHash的基本概念就是
+首先求出Memcached服务器节点的哈希值，将其配置到0-2^32的一个圆上。
+然后用同样的算法求出Key的哈希值，并映射到圆上，然后从Key哈希映射的位置开始顺时针查找，将数据保存到第一个找到的服务器节点上。
+若超过了2^32仍然找不到服务器，就将其保存在第一台Memcached服务器上。
+当我们增加一个Memcached服务器节点后，ConsistentHash内只有部分数据存储受到影响，而这些数据是 上一个Memcached服务器节点顺时针到新添加的Memcached服务器节点之间的KeyHash映射数据。
+但是这样的话，ConsistenHash可以看的出来，在添加Memcached服务器时，它很大限度上抑制了键的重新分布，但它的哈希分布更可能没有余数法均匀，此时，有的ConsistentHash使用了虚拟节点方法，即，每个Memcached服务器视为多个虚拟的节点，在圆上分配多个点交由其负责，则更大限度的抑制分布不均匀。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2011/">2011</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/%E8%BD%ACmysql-grant-%E5%91%BD%E4%BB%A4/" data-tooltip="[转]MySQL GRANT 命令">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/07/%E6%9C%88%E8%AE%B0201107/" data-tooltip="月记201107">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/08/%E6%B5%85%E8%B0%88memcache--client/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/%E8%BD%ACmysql-grant-%E5%91%BD%E4%BB%A4/" data-tooltip="[转]MySQL GRANT 命令">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/07/%E6%9C%88%E8%AE%B0201107/" data-tooltip="月记201107">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/08/%E6%B5%85%E8%B0%88memcache--client/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2011%2F08%2F%25E6%25B5%2585%25E8%25B0%2588memcache--client%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie</h4>
+    
+      <div id="about-card-bio">Full-time solo indie game developer.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        freelancer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2011\/08\/%E6%B5%85%E8%B0%88memcache--client\/';
+          
+            this.page.identifier = '\/2011\/08\/%E6%B5%85%E8%B0%88memcache--client\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

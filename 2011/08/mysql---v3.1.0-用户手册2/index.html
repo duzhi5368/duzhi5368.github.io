@@ -1,0 +1,1022 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>MySQL&#43;&#43; V3.1.0 用户手册2</title>
+    <meta name="author" content="Frankie">
+    <meta name="keywords" content="FreeKnight, duzhi5368, IndieGameDev, IndieGame, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="_images/favicon.png">
+    
+
+    
+    <meta name="description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    <meta property="og:description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="MySQL&#43;&#43; V3.1.0 用户手册2">
+    <meta property="og:url" content="/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C2/">
+    <meta property="og:site_name" content="IndieGameDev-Frankie">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IndieGameDev-Frankie">
+    <meta name="twitter:description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">IndieGameDev-Frankie</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie</h4>
+        
+          <h5 class="sidebar-profile-bio">Full-time solo indie game developer.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/@indiegamedev-frankie" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">YouTube</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      MySQL&#43;&#43; V3.1.0 用户手册2
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-08-11T00:00:00Z">
+        
+  
+  
+  
+  
+    八月 11, 2011 
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2011">2011</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>MySQL++是一个针对MySQL C API的C++封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。</p>
+
+<p></p>
+
+<p>3.指导</p>
+
+<p>前面的章节简要概述了MySQL++的基本情况。接下来我们将深入一些讲一些例子。我们从每个MySQL++必须处理的模块进行讲解，之后将一些更加复杂的模块。你可以读完本章节就停止了，因为后面我会只会将更多的复杂的高级特性。</p>
+
+<p>3.1. 运行例子</p>
+
+<p>如果你通过库源代码编译，那么当你编译完毕，例子也都应该被编译完毕了。如果你下载的是RPM格式，那么例子代码和一个makefile文件可能被安装在 /usr/share/doc/mysql++devel-<em>/examples 里，当然，根据Linuxes不同也可能有些不同。
+  在你开始前，请根据平台，先阅读以下库内的 README</em>.txt ，我们在本文档不再重复。
+我们的许多例子需要一个 test 数据库，我们可以通过 resetdb  创建它。你可以输入如下命令：</p>
+
+<p>resetdb [-s server_addr] [-u user] [-p password]</p>
+
+<p>通常来说，MySQL++库应当已经编译完成，放置在操作系统动态链接器可以查找到的一个目录下了。（通常MySQL++不编译为静态的）如果你是下载的RPM格式，则需要根据Source编译一个Lib，然后建议你运行部分例子以保证库运行顺利。如果你的操作系统动态链接器无法找到MySQL++库，我们创建了一些脚本协助你运行这些例子。
+ MySQL++为Unix相关系统编写了一个 exrun 的Shell脚本，为Windows系统编写了一个 exrun.bat 批处理文件。你可以通过
+exrun 脚本为这些例子创建一个环境。</p>
+
+<p>./exrun resetdb [-s server_addr] [-u user] [-p password]</p>
+
+<p>当然，如果在Windows里执行exrun.bat，可以去掉上述命令中的 ‘./’ 符号。
+参数里 server_addr 可以填写
+? localhost   - 本地（默认的）
+? 192.168.1.224:3306  - 数据库IP和TCP端口
+? ServerName:SvcName  - 这会优先从你的系统网络中查找指定名称的TCP服务，例如Unix下 /etc/services ,Windows下的C:\Windows\system32\drivers\etc\services, 然后从服务中查找到端口和你所建议的服务器名称。</p>
+
+<p>如果参数里没有冒号和指定的端口，那么默认将使用3306端口。
+如果参数里没有 –u 指定数据库用户名，则默认使用你当前的登录本机用户名。
+如果参数没有 –p 指定数据库密码，则假设MySQL没有密码。</p>
+
+<p>注意，我们要运行 resetdb, 用户名要求能够有足够权限创建 test 数据库。一旦这个数据库创建成功，你就可以运行多个例子去尝试DELETE，INSERT，SELECT，UPDATE 数据库。当然，或许你希望创建一个单独的用户去执行这些在 test 数据库上的测试操作，那么可以执行下述命令。</p>
+
+<p>CREATE USER mysqlpp_test@&lsquo;%&rsquo; IDENTIFIED BY ’nunyabinness&rsquo;;
+GRANT ALL PRIVILEGES ON mysql_cpp_data.* TO mysqlpp_test@&lsquo;%&rsquo;;</p>
+
+<p>这样你就创建一个用户，用户名 mysqlpp_test ，密码为 nunyabinness .
+然后你可以继续执行</p>
+
+<p>./exrun resetdb -u mysqlpp_test -p nunyabinness</p>
+
+<p>实际运行 resetdb 这个例子，这个例子会为你创建一个 mysql_cpp_data 数据库，内有四个表。
+之后，你可以看看 README-examoles.txt 来获取更多信息，运行其他例子看看吧.</p>
+
+<p>3.2. 一个简单的例子 simple1.cpp</p>
+
+<p>这个简单例子教我们如何去创建一个连接，执行一个查询并将结果显示出来。这个文件在 examples/simple1.cpp 中，代码如下:</p>
+
+<p>#include &ldquo;cmdline.h&rdquo;
+#include &ldquo;printdata.h&rdquo;
+#include <mysql++.h>
+#include <iostream>
+#include <iomanip></p>
+
+<p>using namespace std;</p>
+
+<p>int main(int argc, char <em>argv[])
+{
+    //从命令行中获取数据库相关参数
+    const char</em> db = 0, *server = 0, *user = 0, *pass = &ldquo;&rdquo;;
+    if (!parse_command_line(argc, argv, &amp;db, &amp;server, &amp;user, &amp;pass))
+    {
+        return 1;
+    }</p>
+
+<pre><code>// 连接数据库
+mysqlpp::Connection conn(false);
+if (conn.connect(db, server, user, pass))
+{
+    // 从stock表中获取Item字段数据表并显示
+    mysqlpp::Query query = conn.query(&quot;select item from stock&quot;);
+    if (mysqlpp::StoreQueryResult res = query.store())
+    {
+        cout &lt;&lt; &quot;We have:&quot; &lt;&lt; endl;
+        for (size_t i = 0; i &lt; res.num_rows(); ++i)
+        {
+            cout &lt;&lt; '\t' &lt;&lt; res[i][0] &lt;&lt; endl;
+        }
+    }
+    else
+    {
+        cerr &lt;&lt; &quot;Failed to get item list: &quot; &lt;&lt; query.error() &lt;&lt; endl;
+        return 1;
+    }
+    return 0;
+}
+else
+{
+    cerr &lt;&lt; &quot;DB connection failed: &quot; &lt;&lt; conn.error() &lt;&lt; endl;
+    return 1;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>这个例子里我们从数据库中查找 stock 表，获取其中的 item 列数据，并将数据逐一输出。
+注意MySQL++中的 StoreQueryResult 起源于 std::vector ，而其中的 Row 又定义了类似 vector 一样的接口，意味着你可以进行下标访问，当然，也可以使用迭代器进行访问。
+Row 比 vertor 更强大的一点是，它支持你使用字段标示进行访问，例如: res[i][“Item”]
+这段代码中唯一不非常清楚的就是 parse_command_line() ，这个函数只是为了这些例子有一个统一的接口风格，你可以理解它是一个黑盒子，将 argc 和 argv 分割为不同的数据库参数。</p>
+
+<p>3.3. 一个相对复杂一些的例子 Simple2.cpp</p>
+
+<p>Simple1这个例子过于简单，没有太多价值，我们讲的深入一些，这里是 examples/simple2.cpp ，以下是代码：</p>
+
+<p>#include &ldquo;cmdline.h&rdquo;
+#include &ldquo;printdata.h&rdquo;
+#include <mysql++.h>
+#include <iostream>
+#include <iomanip></p>
+
+<p>using namespace std;</p>
+
+<p>int main(int argc, char <em>argv[])
+{
+    //从命令行中获取数据库相关参数
+    const char</em> db = 0, *server = 0, *user = 0, *pass = &ldquo;&rdquo;;
+    if (!parse_command_line(argc, argv, &amp;db, &amp;server, &amp;user, &amp;pass))
+    {
+        return 1;
+    }</p>
+
+<pre><code>// 连接数据库
+mysqlpp::Connection conn(false);
+if (conn.connect(db, server, user, pass))
+{
+    // 获取 stock 表内所有数据并存储
+    mysqlpp::Query query = conn.query(&quot;select * from stock&quot;);
+    mysqlpp::StoreQueryResult res = query.store();
+
+    // 输出结果
+    if (res)
+    {
+        // 输出标题列
+        cout.setf(ios::left);
+
+        cout &lt;&lt; setw(31) &lt;&lt; &quot;Item&quot; &lt;&lt;
+            setw(10) &lt;&lt; &quot;Num&quot; &lt;&lt;
+            setw(10) &lt;&lt; &quot;Weight&quot; &lt;&lt;
+            setw(10) &lt;&lt; &quot;Price&quot; &lt;&lt; “Date” &lt;&lt; endl &lt;&lt; endl;
+
+        // 取结果里的每一行输出
+        for (size_t i = 0; i &lt; res.num_rows(); ++i)
+        {
+            cout &lt;&lt; setw(30) &lt;&lt; res[i][&quot;item&quot;] &lt;&lt; ' ' &lt;&lt;
+                setw(9) &lt;&lt; res[i][&quot;num&quot;] &lt;&lt; ' ' &lt;&lt;
+                setw(9) &lt;&lt; res[i][&quot;weight&quot;] &lt;&lt; ' ' &lt;&lt;
+                setw(9) &lt;&lt; res[i][&quot;price&quot;] &lt;&lt; ' ' &lt;&lt;
+                setw(9) &lt;&lt; res[i][&quot;sdate&quot;] &lt;&lt;
+                endl;
+        }
+    }
+    else
+    {
+        cerr &lt;&lt; &quot;Failed to get stock table: &quot; &lt;&lt; query.error() &lt;&lt; endl;
+        return 1;
+    }
+    return 0;
+}
+else
+{
+    cerr &lt;&lt; &quot;DB connection failed: &quot; &lt;&lt; conn.error() &lt;&lt; endl;
+    return 1;
+}
+</code></pre>
+
+<p>}</p>
+
+<p>这个例子主要说明，我们使用对象字段标示进行访问，而不再使用下标。这样做会略微慢一些，但是可读性很好。</p>
+
+<p>3.4. 异常</p>
+
+<p>默认状态下，MySQL++会将异常视为一种错误，逐步传递下去。在我们的例子里面，所有异常将在 Connection 的构造函数处传递出来，使其构造失败，这样做会更加允许弹性的处理错误。在我们实际的项目中，我推荐我们将错误处理开启，有错误直接处理掉。这样我们也可以使用默认的 Connection 构造函数。
+MySQL++中的所有异常均继承于一个Exception类，而它又是继承于 std::exception 类。所以，所有的标准C++错误都可能被MySQL++捕获。
+若你强硬设置异常不进行抛出，那么异常将被视做一个错误返回。或者是一个int的错误码，或者是一个空对象指针，或者是一个false，也可能是一个对象中的一个错误标示。但是，你只能将继承于 OptionalException 接口的异常视为错误而不抛出，这些不被抛出的异常将别传递到 Connection 的构造函数处。
+如果一个基于 OptionalException 接口继承的对象有一份拷贝对象，那么这个对象也将会拷贝源对象的一个异常标识。</p>
+
+<p>例如：
+mysqlpp::Connection con; // 这样的话，这个对象将会在构造时抛出异常。</p>
+
+<p>但继承于NoException的对象是永远不会抛出异常的
+例如：
+mysqlpp::NoExceptions ne(con); // 这里没有问题
+if (!con.select_db(&ldquo;a_db_that_might_not_exist_yet&rdquo;))
+{
+ //  只会进入这里，表明某处有错误，但这个错误实际并非 select_db 函数的错误，而是 con 原本就为空。
+}</p>
+
+<p>但有些异常，MySQL++是不允许视为错误的，将会无条件抛出：
+- 索引访问错误。例如对一个只有5组数据的数组，进行 row[21] 的访问，你将会得到一个 BadIndex 异常。如果你进行row[“field”] 访问，而实际上没有 field 这个字段，你将会得到一个 BadFieldName 异常。在之前的版本中，由于过于模仿STL容器，所以这里可能会返回 std::range 异常，但是在MySQL++ v3.0.7 版本之后，应该是不会出现问题了。
+- String转换时异常。例如，你尝试将”1.25”转换为int类型时，会抛出一个 BadConversion 异常。但是，如果你试图将”1.00”转换为int，则不会抛出异常。MySQL++能够判断哪些类型可以安全转换。
+- 模板参数异常。如果你使用模板查询，而你又没有传入足够的参数，将会抛出一个 BadParamCount 异常。
+- 类型查找异常。如果你使用一个C++数据结构，但是MySQL++又无法将其转换为SQL结构，MySQL++将抛出一个 TypeLookupFailed 异常。非常建议你使用 lib/sqltypes.h 内定义的类型。
+当然，如果你拼错一个字母，或者强制转换一个奇怪类型，也将引发一些异常。</p>
+
+<p>3.5. 引用和引号泄露</p>
+
+<p>SQL语法解析经常需要依赖一些外界数据，例如下面这个查询：</p>
+
+<p>SELECT * FROM stock WHERE item = &lsquo;Hotdog Buns&rsquo;</p>
+
+<p>因为 “Hotdog Buns” 字符串需要被一对单引号包含，是一种引用，在MySQL++中，你通常不需要将这些引用特殊处理。</p>
+
+<p>string s = &ldquo;Hotdog Buns&rdquo;;
+query &lt;&lt; &ldquo;SELECT * FROM stock WHERE item = &ldquo; &lt;&lt; quote_only &lt;&lt; s;</p>
+
+<p>这个代码创建了同样的一个查询字符串。我们使用了MySQL++的quote_only操作符。这个操作符会在下一个单元加上单引号，再加入流中。这种方式在MySQL++类型适配器中可以进行完美解析。
+引用还是比较简单的，但是SQL语法解析时经常还有一种“单引泄露”。假设一下，我们现在要查找一个数据为”Frank’s Hotdog Buns“这么一个数据表，我们的查询字符串将会是</p>
+
+<p>SELECT * FROM stock WHERE item = &lsquo;Frank&rsquo;s Brand Hotdog Buns&rsquo;</p>
+
+<p>其实这样不是一个有效的查询语法，有效的语法应该是</p>
+
+<p>SELECT * FROM stock WHERE item = &lsquo;Frank&rdquo;s Brand Hotdog Buns&rsquo;</p>
+
+<p>如你所料，MySQL++对这种引号泄露操作有特殊处理。我们可以用一个很简单的方法来处理它：</p>
+
+<p>string s = &ldquo;Frank’s Brand Hotdog Buns&rdquo;;
+query &lt;&lt; &ldquo;SELECT * FROM stock WHERE item = &ldquo; &lt;&lt; quote &lt;&lt; s;</p>
+
+<p>类似于quote_only,quote等相关的特定操作符在MySQL++中还有许多，可以参考代码中 manip.h 一些定义。
+ 有一点非常重要，我们必须明白MySQL++这些操作符的实现机制。这些操作符在你没有将查询语句创建为一个流之前是完全无效的。另外这些操作符是一种建议的性质，不是命令。当MySQL++认为符合SQL语法时候，MySQL++可能无视这些操作符。
+ 还有一点要注意，这些操作符在组成查询流的时候，以及在使用模板参数查询的时候意义是不完全一致的。</p>
+
+<p>3.6. C++ vs. SQL数据类型</p>
+
+<p>C++和SQL数据类型有些不同，这就导致你在使用MySQL++时候可能会引发一些问题。当然，你在使用其它库的时候也可能出现这些问题。
+大多数数据类型都可以保存在SQL数据库中，但是SQL自身是一个文本格式化语言，所以数字类型或者其他类型都要求被转化为文本类型进行数据存储。因此，MySQL++做了很多文本化操作，以便将C++的一些数字型数据简便的进行文本化处理。
+一些用户会担心类型转变会引发部分的数据丢失，但显然这不成问题，MySQL++承诺对二进制数据以及数字类型的转化完全不会有信息丢失。
+（但是最大的问题还是浮点类型数据。FLOAT 和 DOUBLE 类型的SQL数据类型，我们依旧有些麻烦……）(译者笃志按：原文这句话用小八号字体写在小角落里，这不吭爹么……)
+关于类型转换，我们还有一个已知的问题就是SQL的DECIMAL类型转化为C++浮点型时可能会有溢出，显然这种情况我们很难遇到，这是为什么我们暂时没有解决这个BUG的原因。
+避免数据类型转换的最好方法依然是使用MySQL++里Lib/sqltypes里的标准格式。
+MySQL++不会强制你使用这些typedef。所以你可以在自己的程序里写满 int 而绝不使用 mysqlpp::sql tinyint unsigned。但是，使用MySQL++给你带来以下一些好处：
+- 空间消耗小。MySQL++类型完全基于MySQL数据类型，没有额外附属信息。
+- 平台无关。如果你的程序需要在不同的操作系统上运行，甚至在32位和64位平台上切换运行，使用MySQL++类型将使你的代码平台无关化。
+- 清晰易懂。C++类型和SQL类型同时使用的话，将使你的代码混乱不堪，统一为MySQL++类型将使你的代码类型简单易懂。
+- 安全。使用C++类型进行数据转换时，可能会引发 TypeLookupFailed 异常，甚至更糟糕。
+类型兼容不仅仅对你当前代码很重要，对你以后的代码维护也非常重要。我们会定期的修改MySQL++的类型定义，以更好的适应不同系统平台的C++和不同版本的SQL平台。例如，如果你使用 sql_decimal 替代 DECIMAL，那么当数据库对double不同处理时，我们会自动的使你代码重新编译以适应新的数据库平台。
+许多类型定义是使用标准C++数据类型，但是有些是MySQL++自定义的类型。例如：在SQL里的DATETIME类型在MySQL++里被定义为 mysqlpp::DateTime ，为了一致性考虑，在 sql_types.h 里再次将 DateTime 类型定义为 mysqlpp::sql_datetime 类型。
+但是MySQL++并没有定义一些非C++标准和SQL的类型，例如空间坐标Vector等类型，使用这些类型时请注意小心。</p>
+
+<p>3.7. 处理SQL的NULL</p>
+
+<p>C++和SQL 都有一类数据称为NULL，但是它们某些情况下是不同的。因此，MySQL++在这里做了一些支持封装。
+Both C++ and SQL have things in them called NULL, but they differ in several ways. Consequently, MySQL++ has
+to provide special support for this, rather than just wrap native C++ facilities as it can with most data type issues.</p>
+
+<p>当SQL NULL 时一个类型修饰时</p>
+
+<p>在SQL中，“NULL”可能是一个类型修饰，它是一个特殊的值。
+为适应SQL中的NULL，MySQL++提供一个空的模板去实现类似于C++的NULL类型。例如，我们有一个TINYINT UNSIGNED类型里存储了一个C++的空值。那么可以这样写：</p>
+
+<p>mysqlpp::Null<a href="mysqlpp::sql_tinyint_unsigned">mysqlpp::sql_tinyint_unsigned</a> myfield;</p>
+
+<p>在MySQL++ v3.1中，我们可以更简单一些，如下去写：</p>
+
+<p>mysqlpp::sql_tinyint_unsigned_null myfield;</p>
+
+<p>这些类型都定义在 lib/sql_types.h 中。你可以自行查看。模板实例化是C++的一个高级特性，这里使用该特性可以更大程度的避免C++和MySQL之间的NULL不同定义问题。</p>
+
+<p>当SQL NULL是一个唯一值时</p>
+
+<p>在SQL中和标准C++中的NULL第二个明显差异就是：SQL可能是一种特殊类型值，它既不是0，也不是false，也不是空字符串，而代表一种“未知/未定义”。此时我们不能用C++的NULL和它画上等号。这种NULL，在MySQL++中我们使用一个全局的 null 对象表示。</p>
+
+<p>myfield = mysqlpp::null;</p>
+
+<p>如果你将SQL的Null填充到C++的IO流中，输出时候你会得到一个类似于普通字符串的“(NULL)”，这样可以适度的保留SQL的NULL值得特性。
+如果你尝试保存一个SQL的NULL，你可以使用Null模板。默认该模板第二个参数是 mysqlpp::NullIsNull 。这会自动标记 mysqlpp::null 为SQL的NULL。
+我们看下面代码</p>
+
+<p>mysqlpp::Null<unsigned char, mysqlpp::NullIsNull> myfield(mysqlpp::null);
+cout &lt;&lt; myfield &lt;&lt; endl;
+cout &lt;&lt; int(myfield) &lt;&lt; endl;</p>
+
+<p>这样的话，第一行会输出”(NULL)”，第二行甚至不会被编译通过，而抛出一个错误 CannotConvertNullToAnyOtherDataType 。
+但是，如果你希望存储一个标准的 unsigned char 类型的NULL，即0.你可以这样做</p>
+
+<p>mysqlpp::Null<unsigned char, mysqlpp::NullIsZero> myfield(mysqlpp::null);
+cout &lt;&lt; myfield &lt;&lt; endl;
+cout &lt;&lt; int(myfield) &lt;&lt; endl;</p>
+
+<p>这样则会输出两次 0 。 请注意模板的第二个参数。</p>
+
+<p>3.8. MySQL++的特殊的String类型</p>
+
+<p>MySQL++有两个类很类似 std::string ： String 和 SQLTypeAdapter 。
+这两个类提供了类似 std::string 的方法并额外提供了一些其他方法，但他们都不是 std::string 的继承子类，也不是一个封装。因此很多用户很喜欢直接使用 std::string 而不使用这两个类。但是这两个类的确对MySQL++而言非常重要，下面我们将用些时间去熟悉他们。</p>
+
+<p>SQLTypeAdapter</p>
+
+<p>这俩类中，相对简单一些的是 SQLTypeAdapter，也可简写为 STA。
+如它名字所言，这个类的目的是将其他类型转化为SQL理解的类型。它有一系列的类型转换构造函数，可以将许多其他类型转换为 SQLTypeAdapter 类型。在构造函数的转换过程中，SQLTypeAdapter会记录原有的数据类型信息，所以这种转换不会丢弃任何重要信息。
+STA 在MySQL++里创建SQL查询时被经常使用。即使你使用模板查询，也同样会在底层使用 STA。</p>
+
+<p>String</p>
+
+<p>如果说MySQL++有自定义类型，那么只能是 String。但是这个类不是足够被大众习惯使用。可能以后MySQL++将更多的开放基于 std::string 的功能，在V2.3版本之前，String 类名是 ColData ，但是后来发现它的功能不仅仅是保存一行数据，于是就修改类名为 SQLString 了。
+String 比 std::string 功能强大的一点是，它知道能够将一些SQL的字符串转换为C++格式的一些特殊类型。例如：如果你使用String类型初始化”2007-11-19”，String 可以将其转换为 Date 类型，通样，Date 类型也可以简便的转换为 String 类型。
+因为 Row::operator[] 返回的是 String 类型，所以你可以这样编码：</p>
+
+<p>int x = row[&ldquo;x&rdquo;];</p>
+
+<p>在一些情况下，String 其实和 STA 是相反的： String 可以将SQL类型字符串转换为C++数据类型。STA 可以将C++数据类型转换为SQL 类型字符串。</p>
+
+<p>String 主要有俩个用途：
+首先它经常被 Row 使用，例如上面的例子，它不仅仅作为 Row::operator[] 返回值，它也是Row内部的核心组成。所以，当MySQL++从数据库取得数据后，都会通过 String 的转换然后再转为你所需要的C++数据类型。
+另外，因为String是从数据库取值转换为我们自定义数据的最后一道也是唯一的接口，所以它是需要拷贝出来提供给我们使用的，此时，如果是MySQL++的sql_blob类型，拷贝的代价就过于昂贵了，所以String采用了引用计数。</p>
+
+<p>引用计数</p>
+
+<p>为了减少不必要的内存拷贝，STA和String都采用了 引用计数 和 写时拷贝 技术。写时拷贝 意味着你使用拷贝构造时，并没有真正的拷贝数据，仅仅是拷贝了一个原本对象的数据内存指针，并修改了引用计数。只有当新的数据发生更变的时候，才减少源内存的引用计数并进行真正的拷贝。这样做可以大幅减少内存拷贝的代码，是很有意义的。例如你进行 Row::operator[] 返回String类型的话，将不会进行真正的内存拷贝。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2011/">2011</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C1/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册1">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C3/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册3">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C2/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C1/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册1">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C3/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册3">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/08/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C2/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2011%2F08%2Fmysql---v3.1.0-%25E7%2594%25A8%25E6%2588%25B7%25E6%2589%258B%25E5%2586%258C2%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie</h4>
+    
+      <div id="about-card-bio">Full-time solo indie game developer.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        freelancer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2011\/08\/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C2\/';
+          
+            this.page.identifier = '\/2011\/08\/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C2\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

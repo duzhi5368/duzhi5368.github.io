@@ -23,10 +23,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
     <title>SUN代码剖析:内存泄漏Dump，单键陷阱</title>
-    <meta name="author" content="Frankie Wong">
-    <meta name="keywords" content="FreeKnight, duzhi5368, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+    <meta name="author" content="Frankie">
+    <meta name="keywords" content="FreeKnight, duzhi5368, IndieGameDev, IndieGame, GameDev, IndieGame, Frankie, Blog, duzhi5368">
 
-    <link rel="icon" href="https://duzhi5368.github.io/favicon.png">
+    <link rel="icon" href="_images/favicon.png">
     
 
     
@@ -39,9 +39,9 @@
     <meta property="og:type" content="blog">
     <meta property="og:title" content="SUN代码剖析:内存泄漏Dump，单键陷阱">
     <meta property="og:url" content="/2009/04/sun%E4%BB%A3%E7%A0%81%E5%89%96%E6%9E%90%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8Fdump%E5%8D%95%E9%94%AE%E9%99%B7%E9%98%B1/">
-    <meta property="og:site_name" content="The lost island">
+    <meta property="og:site_name" content="IndieGameDev-Frankie">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="The lost island">
+    <meta name="twitter:title" content="IndieGameDev-Frankie">
     <meta name="twitter:description" content="国内一些网游的乱糟代码，或是面向过程的设计，或是夸张的本分守己，或是故弄玄虚，查看这些代码，不仅耗时又无所得，糟糕者甚至有“和破棋篓子下棋，越下越臭”的味道，是以读代码应读好代码，才能事半功倍。SUN代码是我所见过最值得研究的代码之一。之后将陆续记录查看该系列代码所得。附带说一下，我这里拿到的是2005年10月29日的1.02版本代码，服务器&#43;客户端&#43;引擎（带部分美术资源），总大小为1.24G。其他版本必有所出入。
 
 ">
@@ -84,7 +84,7 @@
       <header id="header" data-behavior="4">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="https://duzhi5368.github.io/">The lost island</a>
+    <a class="header-title-link" href="https://duzhi5368.github.io/">IndieGameDev-Frankie</a>
   </div>
   
 </header>
@@ -96,9 +96,9 @@
         <a href="https://duzhi5368.github.io/#about">
           <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
         </a>
-        <h4 class="sidebar-profile-name">Frankie Wong</h4>
+        <h4 class="sidebar-profile-name">Frankie</h4>
         
-          <h5 class="sidebar-profile-bio">Ever tried, ever failed, fail better.</h5>
+          <h5 class="sidebar-profile-bio">Full-time solo indie game developer.</h5>
         
       </div>
     
@@ -111,16 +111,6 @@
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
       <span class="sidebar-button-desc">首页</span>
-    </a>
-  </li>
-
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://duzhi5368.github.io/categories">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
-      
-      <span class="sidebar-button-desc">分类</span>
     </a>
   </li>
 
@@ -168,20 +158,20 @@
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/@indiegamedev-frankie" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">YouTube</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
       
-  <li class="sidebar-button">
-    
-      <a class="sidebar-button-link " href="https://duzhi5368.github.io/index.xml">
-    
-      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
-      
-      <span class="sidebar-button-desc">RSS</span>
-    </a>
-  </li>
-
 
     </ul>
   </div>
@@ -207,7 +197,12 @@
     
       <time itemprop="datePublished" datetime="2009-04-07T00:00:00Z">
         
-  四月 7, 2009
+  
+  
+  
+  
+    四月 7, 2009 
+  
 
       </time>
     
@@ -564,15 +559,15 @@ T* CSingleton&lt;T&gt;::s_pSingleton = NULL;
     
       <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
     
-    <h4 id="about-card-name">Frankie Wong</h4>
+    <h4 id="about-card-name">Frankie</h4>
     
-      <div id="about-card-bio">Ever tried, ever failed, fail better.</div>
+      <div id="about-card-bio">Full-time solo indie game developer.</div>
     
     
       <div id="about-card-job">
         <i class="fa fa-briefcase"></i>
         <br/>
-        Full-time solo indie game developer
+        freelancer
       </div>
     
     

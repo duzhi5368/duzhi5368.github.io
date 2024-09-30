@@ -1,0 +1,1004 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>MySQL&#43;&#43; V3.1.0 用户手册6</title>
+    <meta name="author" content="Frankie">
+    <meta name="keywords" content="FreeKnight, duzhi5368, IndieGameDev, IndieGame, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="_images/favicon.png">
+    
+
+    
+    <meta name="description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    <meta property="og:description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="MySQL&#43;&#43; V3.1.0 用户手册6">
+    <meta property="og:url" content="/2011/09/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C6/">
+    <meta property="og:site_name" content="IndieGameDev-Frankie">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IndieGameDev-Frankie">
+    <meta name="twitter:description" content="MySQL&#43;&#43;是一个针对MySQL C API的C&#43;&#43;封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">IndieGameDev-Frankie</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie</h4>
+        
+          <h5 class="sidebar-profile-bio">Full-time solo indie game developer.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/@indiegamedev-frankie" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">YouTube</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      MySQL&#43;&#43; V3.1.0 用户手册6
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-09-18T00:00:00Z">
+        
+  
+  
+  
+  
+    九月 18, 2011 
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2011">2011</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>MySQL++是一个针对MySQL C API的C++封装。它的目的是提供一个类似STL容易一样简单易用的接口，帮助你有效的避免在代码中使用复杂的SQL语句。</p>
+
+<p></p>
+
+<p>5.3 找回数据</p>
+
+<p>我们对SSQLS进行应用，下面是一个例子在 examples/ssqls1.cpp 中</p>
+
+<pre><code class="language-cpp">#include &quot;cmdline.h&quot;
+#include &quot;printdata.h&quot;
+#include &quot;stock.h&quot;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+int main(int argc, char *argv[])
+{
+    // 从控制台参数中拿到数据库基本信息
+    const char* db = 0, *server = 0, *user = 0, *pass = &quot;&quot;;
+    if (!parse_command_line(argc, argv, &amp;db, &amp;server, &amp;user, &amp;pass))
+    {
+        return 1;
+    }
+    try
+    {                      
+        // 尝试连接数据库服务器
+        mysqlpp::Connection con(db, server, user, pass);
+
+        // 从Stock表中获取一个表的部分字段信息，并将这个结果保存在一个Stock的SSQLS结构数组中。
+        mysqlpp::Query query = con.query(&quot;select item,description from stock&quot;);
+        vector&lt;stock&gt; res;
+        query.storein(res);
+
+        // 显示这些元素单元
+        cout &lt;&lt; &quot;We have:&quot; &lt;&lt; endl;
+        vector&lt;stock&gt;::iterator it;
+        for (it = res.begin(); it != res.end(); ++it)
+        {
+            cout &lt;&lt; '\t' &lt;&lt; it-&gt;item;
+            if (it-&gt;description != mysqlpp::null)
+            {
+                cout &lt;&lt; &quot; (&quot; &lt;&lt; it-&gt;description &lt;&lt; &quot;)&quot;;
+            }
+            cout &lt;&lt; endl;
+        }
+    }
+    catch (const mysqlpp::BadQuery&amp; er)
+    {
+        cerr &lt;&lt; &quot;Query error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::BadConversion&amp; er)
+    {
+        cerr &lt;&lt; &quot;Conversion error: &quot; &lt;&lt; er.what() &lt;&lt; endl &lt;&lt;
+                &quot;\tretrieved data size: &quot; &lt;&lt; er.retrieved &lt;&lt;
+                &quot;, actual size: &quot; &lt;&lt; er.actual_size &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::Exception&amp; er)
+    {
+        cerr &lt;&lt; &quot;Error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    return 0;
+}
+</code></pre>
+
+<p>// 下面是例子中依赖到的  stock.h 头文件
+#include <mysql++.h>
+#include <ssqls.h></p>
+
+<p>// 下面的代码将被多次使用，因为我们其他例子可能还需要不停的创建“stock结构”，这个结构一定具备下述成员变量
+//
+//   sql_char item;
+//   &hellip;
+//   Null<sql_mediumtext> description;
+//
+// 这个函数可以创建一个MySQL行。</p>
+
+<p>sql_create_6(stock,
+    1, 6, // 这行的意义请参考上一节介绍。
+    mysqlpp::sql_char, item,
+    mysqlpp::sql_bigint, num,
+    mysqlpp::sql_double, weight,
+    mysqlpp::sql_double, price,
+    mysqlpp::sql_date, sdate,
+    mysqlpp::Null<a href="mysqlpp::sql_mediumtext">mysqlpp::sql_mediumtext</a>, description)</p>
+
+<p>这个例子有点类似  Simlpe1.cpp 那个例子（参见3.2章节），但是这里使用了一个高级的数据结构来替代3.2例子中的低级结构。另外，这个例子额外使用了MySQL++的异常抛出替代了原本的错误判断，在这个短小的例子中，你不会发现MySQL++异常抛出的意义，但如果你在编写一个庞大的项目，你将会发现MySQL++的异常抛出比自己定义错误码以及错误处理更加方便和强大。
+ 你会注意到，我们只是用了stock表内的部分列内信息，但是保存时却保存在一个更多列的stock结构中。这可能让你感觉很不习惯，当然，你可以创建一个小一些的SSQLS结构，如下：</p>
+
+<p>sql_create_1(stock_subset,
+  1, 0,
+  string, item)
+vector<stock_subset> res;
+query.storein(res);</p>
+
+<p>MySQL++可以很方便自由的组件SSQLS。它就有点类似于一个网页编程，一个设计就可以支持世界上大部分的系统，仅仅裁决于你的浏览器是否可以解析这个规则。你可以通过一个查询结果来填充一个SSQLS，并且允许查询结果中没有SSQLS的部分列，但是MySQL++就类似浏览器一样会默认的为这些空结果列填写一个默认值。（默认会对数字类型字段填充0，bool类型字段填充false，对于一些特殊类型填充一些其他指定值：例如对 mysqlpp::DateTime 类型会填写系统默认值。）
+但是请注意，当查询结果列数和SSQLS列数不同时，MySQL++3.0之前版本进行填充时可能会抛出一些错误，更早期版本可能会引发一个数据丢失，但不会抛出错误。</p>
+
+<p>通常情况下，我们查询语句得到的数据会比SSQLS列更多，此时，多出的查询结果列将被忽略。
+因为MySQL是一个网络数据库服务器，意味着将有大量连接。我们无法保证大量的客户端不会在同时进行更新操作，而你得到的查询结果还需要进行一次向SSQLS内的拷贝操作，这意味着你得到的数据未必是最新的（可能已被其他客户端修改）。这样的拷贝将带来一些问题，但是考虑到进行预处理操作带来的当机错误可能，我们不得不这么做，这个我们将在后期考虑去进行改进。</p>
+
+<p>5.4 增加数据
+MySQL++提供了许多将SSQLS内数据写入数据库表中的方式。</p>
+
+<hr />
+
+<p>增加一个单行
+最简单的方式就是一次增加一行数据，请参见例子 examples/ssqls2.cpp:</p>
+
+<pre><code class="language-cpp">#include &quot;cmdline.h&quot;
+#include &quot;printdata.h&quot;
+#include &quot;stock.h&quot;
+#include &lt;iostream&gt;
+using namespace std;
+int main(int argc, char *argv[])
+{
+    // 从控制台获取数据库参数
+    const char* db = 0, *server = 0, *user = 0, *pass = &quot;&quot;;
+    if (!parse_command_line(argc, argv, &amp;db, &amp;server, &amp;user, &amp;pass))
+    {
+        return 1;
+    }
+    try
+    {
+        // 连接数据库服务器
+        mysqlpp::Connection con(db, server, user, pass);
+        // 创建一个SSQLS的Stock对象，我们也可是使用set()函数，它可以类似下面的构造函数一样进行变量设置
+        stock row(&quot;Hot Dogs&quot;, 100, 1.5, 1.75,
+                mysqlpp::sql_date(&quot;1998-09-25&quot;), mysqlpp::null);
+        // 执行一个查询将数据插入stock表中
+        mysqlpp::Query query = con.query();
+        query.insert(row);
+        // 显示将被执行的查询语句
+        cout &lt;&lt; &quot;Query: &quot; &lt;&lt; query &lt;&lt; endl;
+        // 执行语句，我们使用的是 INSERT ，不需要结果表，所以可以使用 execute() 函数。
+        query.execute();
+        // 查新出新的表内数据
+        print_stock_table(query);
+    }
+    catch (const mysqlpp::BadQuery&amp; er)
+    {
+        // 处理查询错误
+        cerr &lt;&lt; &quot;Query error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::BadConversion&amp; er)
+    { 
+        // 处理转换失败错误
+        cerr &lt;&lt; &quot;Conversion error: &quot; &lt;&lt; er.what() &lt;&lt; endl &lt;&lt;
+                &quot;\tretrieved data size: &quot; &lt;&lt; er.retrieved &lt;&lt;
+                &quot;, actual size: &quot; &lt;&lt; er.actual_size &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::Exception&amp; er)
+    {
+        // 处理其他的MySQL++异常
+        cerr &lt;&lt; &quot;Error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    return 0;
+}
+</code></pre>
+
+<p>这就是我们需要做的全部过程，足够简单吧。MySQL++甚至将在使用SSQLS时容易由于引用和空格引发的问题都替我们解决了。</p>
+
+<hr />
+
+<p>插入多行
+插入一个单行很有用，但是，你或许希望能够一次插入多行或者多个SSQLS。
+最保守的方式，你可以写个循环，然后一条一条写入：）当然，MySQL++提供了一个更加高效的实现方式，你可以从一个查询就完成这个插入操作，唯一的不同仅仅是在insert()操作时，你可以这么写</p>
+
+<p>vector<stock> LotsOfStuff;
+&hellip; // 填充这个vector
+query.insert(LotsOfStuff.begin(), LotsOfStuff.end()).execute();</p>
+
+<p>顺带一说，你可以继续加强 query 的操作，因为 query 的insert等操作会返回 *this 指针。</p>
+
+<hr />
+
+<p>关于MySQL的包大小限制
+上面的使用两个迭代访问有一个风险：MySQL对SQL查询有一个大小限制。默认限制为1MB。你可以调整这个限制，但是这个限制依然不允许调整到非常高的一个值。所以除非你真的是一行内数据大于1MB而不得不调整，否则避免进行重新设置。你如果一次性插入越多的数据，将更大概率出现错误，最糟糕的情况下，可能发生数据丢失。
+所以，如果你想一次性写入数MB的数据，建议还是考虑其他方式。当然你可以自己写个循环，逐条插入，但是这样很慢，因为你将为每一条查询付出代价。你可能会想到使用insert()包含两个迭代，保证两个迭代之间的数据大小接近1MB，然后进行分块插入。这样，即减少了进行查询的次数，也避免了一次性写入带来的危险。
+当前MySQL++也想到了这一点。你可以使用 Query::insertfrom()。之所以不称之为inset()，而另外起了一个函数名，是因为它不会创建一个  INSERT 查询，你在execute()执行的时候，它更类似一个 storein()，它将我们的分块插入封装成了一个函数调用，我们现在来看一个例子来更好的了解它，请参考例子 examples/ssqls6.cpp:</p>
+
+<pre><code class="language-cpp">#include &quot;cmdline.h&quot;
+#include &quot;printdata.h&quot;
+#include &quot;stock.h&quot;
+#include &lt;fstream&gt;
+using namespace std;
+
+// 将一个tab制表符分割的一行文本 分割为 多个字符串
+static size_t tokenize_line(const string&amp; line, vector&lt;mysqlpp::String&gt;&amp; strings)
+{
+    string field;
+    strings.clear();
+    istringstream iss(line);
+    while (getline(iss, field, '\t'))
+    {
+        strings.push_back(mysqlpp::String(field));
+    }
+    return strings.size();
+}
+
+// 读取一个Tab制表符分割文件，将返回数据填充到一个 SSQLS 对象向量中
+static bool read_stock_items(const char* filename, vector&lt;stock&gt;&amp; stock_vector)
+{
+    ifstream input(filename);
+    if (!input) {
+        cerr &lt;&lt; &quot;Error opening input file '&quot; &lt;&lt; filename &lt;&lt; &quot;'&quot; &lt;&lt; endl;
+        return false;
+    }
+    string line;
+    vector&lt;mysqlpp::String&gt; strings;
+    while (getline(input, line)) {
+        if (tokenize_line(line, strings) == 6) {
+            stock_vector.push_back(stock(string(strings[0]), strings[1],
+                    strings[2], strings[3], strings[4], strings[5]));
+        }
+        else {
+            cerr &lt;&lt; &quot;Error parsing input line (doesn't have 6 fields) &quot; &lt;&lt;
+                    &quot;in file '&quot; &lt;&lt; filename &lt;&lt; &quot;'&quot; &lt;&lt; endl;
+            cerr &lt;&lt; &quot;invalid line: '&quot; &lt;&lt; line &lt;&lt; &quot;'&quot; &lt;&lt; endl;
+        }
+    }
+    return true;
+}
+int main(int argc, char *argv[])
+{
+    mysqlpp::examples::CommandLine cmdline(argc, argv);
+    if (!cmdline) {
+        return 1;
+    }
+    // 从一个tab制表符分割的文件中读取一组stock数据
+    vector&lt;stock&gt; stock_vector;
+    if (!read_stock_items(&quot;examples/stock.txt&quot;, stock_vector))
+    {
+        return 1;
+    }
+    try
+    {
+        // 尝试连接数据库服务器
+        mysqlpp::Connection con(mysqlpp::examples::db_name,
+                cmdline.server(), cmdline.user(), cmdline.pass());
+        // 清空整个 stock 表内全部数据
+        mysqlpp::Query query = con.query();
+        query.exec(&quot;DELETE FROM stock&quot;);
+        // 从CSV文件中读取数据，设置每次实际 insert() 最大许可1000字节。
+        // 我们这里设置的相对小一些，在实际项目中，你可以设置大一些。
+        mysqlpp::Query::MaxPacketInsertPolicy&lt;&gt; insert_policy(1000);
+        query.insertfrom(stock_vector.begin(), stock_vector.end(),
+                insert_policy);
+        // 输出插入后的表内数据
+        print_stock_table(query);
+    }
+    catch (const mysqlpp::BadQuery&amp; er)
+    {
+        cerr &lt;&lt; &quot;Query error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::BadConversion&amp; er)
+    {
+        cerr &lt;&lt; &quot;Conversion error: &quot; &lt;&lt; er.what() &lt;&lt; endl &lt;&lt;
+                &quot;\tretrieved data size: &quot; &lt;&lt; er.retrieved &lt;&lt;
+                &quot;, actual size: &quot; &lt;&lt; er.actual_size &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::BadInsertPolicy&amp; er)
+    {
+        cerr &lt;&lt; &quot;InsertPolicy error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    catch (const mysqlpp::Exception&amp; er)
+    {
+        cerr &lt;&lt; &quot;Error: &quot; &lt;&lt; er.what() &lt;&lt; endl;
+        return -1;
+    }
+    return 0;
+}
+</code></pre>
+
+<p>这个例子里比较复杂的只是从一个CSV，Tab制表符分割文件中读取SSQLS数据。这里实际上最有意义的就两行代码：创建一个insert_policy对象，然后通过 Query::insertfrom(). 对每次插入进行一个分块限制。
+这个policy（限制）对象是insertfrom()和insert()的最大区别。它控制了我们如何通过insertfrom()分段的创建一个查询语句。
+MySQL++默认提供了三种不同的插入限制类，它们通常可以满足我们大部分需求。
+- MaxPacketInsertPolicy：如上面的例子所示，功能也显而易见，当你创建这个对象之后，它将限制你每次创建查询语句中的语句大小，当达到了你指定的限制字节大小，或者达到了行尾，它会封装一个INSERT语句发送。
+- SizeThresholdInsertPolicy：它和MaxPacketInsertPolicy不同之处在于，它能够保证一次INSERT最小大小为你指定的值，但是上限它将自动根据你的SQL环境进行调整。当你的数据内每一行都比较短小的时候（例如没有BLOB数据字段），使用该限制对象，将使你的插入更加高效和合理。
+- RowCountInsertPolicy：这个是最简单的限制，你可以指定每次INSERT到数据库中的行数。如果你很清楚每一行数据的大小，你可以通过计算得到一个合理的值并通过这个限制进行控制。
+如果上述限制你都不满意，你可以很轻松的定制一个限制对象，只要你学习一下 lib/insertpolicy.* 文件就可以了。</p>
+
+<hr />
+
+<p>事务限制
+默认情况下，insertfrom()这个封装一旦其中一个INSERT失败，这个数据库服务器将发生回滚，它本身就是创建了一个SQL事务。这可以有效避免在操作过程中某一个语句崩溃带来的“部分修改”问题，因为通常没有人会喜欢修改了一半的数据库。此时insertfrom()一旦任何一句失败，它将自动的从头重新执行一遍，当然你可以通过 NoTransactions 来限制它不创建事务，放弃回滚功能。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2011/">2011</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/09/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C7/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册7">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/09/%E8%BD%AC%E7%A4%BE%E4%BA%A4%E8%A7%86%E9%A2%91%E7%A7%BB%E5%8A%A8%E4%BA%92%E8%81%94%E7%BD%91/" data-tooltip="[转]社交，视频，移动，互联网">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/09/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C6/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/09/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C7/" data-tooltip="MySQL&#43;&#43; V3.1.0 用户手册7">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/09/%E8%BD%AC%E7%A4%BE%E4%BA%A4%E8%A7%86%E9%A2%91%E7%A7%BB%E5%8A%A8%E4%BA%92%E8%81%94%E7%BD%91/" data-tooltip="[转]社交，视频，移动，互联网">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/09/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C6/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2011%2F09%2Fmysql---v3.1.0-%25E7%2594%25A8%25E6%2588%25B7%25E6%2589%258B%25E5%2586%258C6%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie</h4>
+    
+      <div id="about-card-bio">Full-time solo indie game developer.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        freelancer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2011\/09\/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C6\/';
+          
+            this.page.identifier = '\/2011\/09\/mysql---v3.1.0-%E7%94%A8%E6%88%B7%E6%89%8B%E5%86%8C6\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

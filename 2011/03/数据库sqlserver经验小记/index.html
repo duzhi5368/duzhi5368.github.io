@@ -1,0 +1,1198 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+  
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.29 with theme Tranquilpeak 0.4.1-BETA">
+    <title>数据库SQLServer经验小记</title>
+    <meta name="author" content="Frankie">
+    <meta name="keywords" content="FreeKnight, duzhi5368, IndieGameDev, IndieGame, GameDev, IndieGame, Frankie, Blog, duzhi5368">
+
+    <link rel="icon" href="_images/favicon.png">
+    
+
+    
+    <meta name="description" content="SQLServer的性能测试和性能优化建议
+
+">
+    <meta property="og:description" content="SQLServer的性能测试和性能优化建议
+
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="数据库SQLServer经验小记">
+    <meta property="og:url" content="/2011/03/%E6%95%B0%E6%8D%AE%E5%BA%93sqlserver%E7%BB%8F%E9%AA%8C%E5%B0%8F%E8%AE%B0/">
+    <meta property="og:site_name" content="IndieGameDev-Frankie">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="IndieGameDev-Frankie">
+    <meta name="twitter:description" content="SQLServer的性能测试和性能优化建议
+
+">
+    
+      <meta name="twitter:creator" content="@duzhi5368">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=640">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://duzhi5368.github.io/css/style-fpbzgxsy0kgmdvyrj5ykkg6ratccrk3gocmaqn4xpcjywmv5dteilzucro4f.min.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://duzhi5368.github.io/">IndieGameDev-Frankie</a>
+  </div>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://duzhi5368.github.io/#about">
+          <img class="sidebar-profile-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Frankie</h4>
+        
+          <h5 class="sidebar-profile-bio">Full-time solo indie game developer.</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://fafo4games.github.io" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">Website</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://duzhi5368.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/duzhi5368" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.youtube.com/@indiegamedev-frankie" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-youtube"></i>
+      
+      <span class="sidebar-button-desc">YouTube</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      数据库SQLServer经验小记
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2011-03-08T00:00:00Z">
+        
+  
+  
+  
+  
+    三月 8, 2011 
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/%e7%a8%8b%e5%ba%8f">程序</a>, 
+    
+      <a class="category-link" href="https://duzhi5368.github.io/categories/2011">2011</a>
+    
+  
+
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>SQLServer的性能测试和性能优化建议</p>
+
+<p></p>
+
+<p>1：WindowsSQL2000 性能测试结果
+1&gt;     测试方面</p>
+
+<p>MSSQL是关系型数据库，该类数据库在随着数量级或者容量级的数据急剧膨胀下，数据库的性能将会有飞速下降。所以重点测试以下情况。</p>
+
+<p>@ 当数据库在大容量状态下的执行情况。
+@ 当数据库在大记录量状态下的执行情况。</p>
+
+<p>2&gt;     测试环境</p>
+
+<p>@ OS：    Windows 2000 Server
+@ DB:        MS SQL Server 2000
+@ DBS:      ADV2000
+@ 连接方式：ADO</p>
+
+<p>3&gt;     测试步骤。</p>
+
+<p>@ 创建数据库 test ，设置其大小为10GB。（免除了动态内存分配引起的性能代价）
+@ 在 test 数据库里创建一个 tab 表，包含以下字段</p>
+
+<pre><code>       字段名     数据类型         字段情况                可否为空
+
+       ID              int, 4                主键，自叠加         不可
+
+       Name       char,10              --                                   不可
+
+       Age           int,4                   --                                   不可
+
+       Photo        Image,16          --                                   可
+</code></pre>
+
+<p>@ 使用ADO接口，链接数据库服务器，测试程序完成以下功能</p>
+
+<p>1)       插入2000条数据 insert
+2)       选择1000条数据 select
+3)       更新1000条数据 update
+4)       删除1000条数据 delete
+5)       插入100000条带图片的数据 （大容量测试）
+6)       插入1000000条不带图片的数据（大记录量测试）</p>
+
+<p>4&gt;     结果分析和推论</p>
+
+<p>@ 大容量数据测试中，我们选择的是一张 41958 字节的图片，插入的是100000条记录，我们大约可以估算当时数据表内的容量为 ( 41958 * 100000 ) / ( 1024 * 1024 ) = 4001.43 MB.
+@ 测试结果1为</p>
+
+<p>对一个空表进行操作，其中每个记录内的Photo字段是一张字节为41958的图片。</p>
+
+<p>对空表内Insert 2000 记录                                                  132.781秒</p>
+
+<p>对2000记录的表进行选择1000个记录                        41.94秒</p>
+
+<p>对2000记录的表进行1000个记录的Update              0.841秒</p>
+
+<p>对2000记录的表delete其中1000条记录          1.552秒</p>
+
+<pre><code>               结论：
+</code></pre>
+
+<p>插入新记录代价远比更新删除记录代价大。</p>
+
+<p>即使数据量不大，选择记录的代价也比较大。</p>
+
+<p>@ 测试结果2为</p>
+
+<p>对一个已经插入了100000条带图片记录的数据库表进行处理，该数据库表约4001.43MB大小。</p>
+
+<pre><code>     对该表内Insert2000记录                                                    139.05秒
+     对102000条数据进行选择1000条记录                        42.36秒
+     对102000条数据进行1000条数据的update              0.971秒
+     对102000条数据delete其中1000条记录          2.264秒
+</code></pre>
+
+<p>结论：</p>
+
+<pre><code>     在大数据量（百万条数据，表大小为4001MB左右时）对SQL2000影响并不大，整体性能基本不会有太大变动。
+
+     但是在大容量数据环境下，时间增加的百分比则不同了。如下
+</code></pre>
+
+<p>两次Insert2000数据的时间增加比：                  4.72%
+两次Select1000数据的时间增加比：                  1.001%
+两次Update1000数据的时间增加比：               15.46%
+两次Delete1000数据的时间增加比：                 45.88%</p>
+
+<p>表中可看出，Delete操作时，大容量环境下降性能损失较为严重。原因是删除记录时，数据库会重建索引，所以当数据量太大的情况下，会导致重建索引消耗更多的时间。</p>
+
+<pre><code>               @测试结果3为
+
+               对一个空表进行操作，但是与测试1不同的是，Photo字段为空，不再插入任何数据。
+</code></pre>
+
+<p>对空表内Insert 2000 记录                       16.274秒
+对2000记录的表进行选择1000个记录                        0.07秒
+对2000记录的表进行1000个记录的Update              0.04秒
+对2000记录的表delete其中1000条记录          0.04秒</p>
+
+<pre><code>               结论：
+
+                        当字段数据量小的时候，数据库操作将有大幅度的效率提高。
+
+               @测试结果4为
+
+               对一个表内增加1000000条数据。（注意，比测试2多了10倍），这些数据内photo字段为空。
+
+    对该表内Insert2000记录                               16.574秒
+     对1002000条数据进行选择1000条记录                      0.05秒
+     对1002000条数据进行1000条数据的update            0.05秒
+     对1002000条数据delete其中1000条记录                 0.051秒
+</code></pre>
+
+<p>结论：</p>
+
+<pre><code>                        在大数据量下，MSSQL性能损失不大。
+</code></pre>
+
+<p>5&gt;     总体结论</p>
+
+<p>1：MSSQL 在常规的大容量和大记录量环境下，效能可以保持较高水平。
+2：避免单表字段容量过大，会较大影响性能。
+3：大容量和大记录量对MSSQL影响并不致命。
+4：插入新数据代价较大。</p>
+
+<p>2：数据库SQL语句规则和优化方案
+         1：where条件中不使用非索引列。若未建立索引，则该列就不存在index seek，只能用传统的index scan或table scan，性能消耗极大。
+         附加说明：Index seek是一个B树，查询时是从B数根节点开始，一级一级查找到目标。而Index scan则是全部遍历一遍。</p>
+
+<pre><code>     2：尽量避免使用 不等号（!=）或NOT 逻辑运算符。这两个运算符相当于强制要求数据库进行全员遍历index scan。
+
+     3：查询条件中不要包含运算，这样将导致无法进行index seek只能进行index scan或table scan了。例如下列都是错误的做法。
+
+     select * from Users where UserName + “Knight “ = “FreeKnight”; // 字符串连接运算。
+     Select * from tabel1 where Col1 like ‘%aa’;  // 通配符(“%”)在(“aa”)前面的Like运算。
+     Select * from table2 where datapart( dd, logtime ) = 3; // 使用其他自定义函数，标量函数。
+</code></pre>
+
+<p>4：查询条件内不要包含同一张表内不同列之间的运算。</p>
+
+<pre><code>     例如下列运算都是错误的做法：
+
+     Select * from table1 where ( col1 – col2 = 1997 );  // 加减乘除运算
+     Select * from table1 where col1 &gt; col2;  // 比较运算
+
+     这样情况下，即使col1,col2建立了索引，甚至覆盖索引，连携索引均是无效的。遇到这样的情况，可以在表内创建一个计算字段，值设置为运算后的结果，再在该结果字段上创建索引，则可以了。
+
+     5：在一个频繁发生插入操作的表上创建聚簇索引时，不要建在有单调上升（IDENTITY）列上，否则经常引起锁冲突。
+
+     6：在聚簇索引中不要包含经常修改的列，因为当列的码值被修改后，数据行必须移动到新的物理位置。
+
+     7：对有索引的列进行查询时，避免搜索查询结果大于20%数据量。可能被逃开index seek而直接进行table scan。
+
+     8：非聚簇索引避免过大，建议小于20字节的会比较合适。
+
+     9：避免出现select * from table 语句，要明确的查出字段。
+
+     10：在判断有无符合条件的记录时，建议不要使用 select count( * ) 和select top 1语句，以减少数据的处理量。
+
+     11：应该绝对避免在order by子句中使用表达式。
+
+     若一定要在语句中使用表达式，尽量使用
+
+     Select id from table1 where num = 10 * 2
+
+     替代
+
+     Select id from table1 where num/2 = 10
+
+     12：如果需要从关联表读数据，关联的表一般不要超过7个。
+
+     13：小心使用IN和OR，需要注意IN集合中的数据量，建议集合中的数据不要超过200个。在where中使用or将导致数据库无法使用索引而进行全表扫描。
+</code></pre>
+
+<p>若一定要求使用or,则建议使用</p>
+
+<pre><code>     Select id from table1 where num = 10
+
+     Union all
+
+     Select id from table1 where num = 20
+
+     替代
+
+     Select id from table1 where num = 10 or num = 20
+
+     若一定要使用in或者not in，建议可能的话使用between 替代，或者使用exists代替，例如，使用
+
+               Select num from tableA where exists( select 1 from tabelB where num = tableA.num )
+
+               替代
+
+               Select num from tableA where num in ( select num from tabelB )
+
+     14： &lt;&gt; 尽量使用 &lt; 和 &gt; 替代， &gt; 尽量使用 &gt;= 替代， &lt; 尽量使用 &lt;= 替代，这样可以有效的使用索引，否则数据库将放弃索引而使用全表扫描。
+
+     15：尽量在where和order by 涉及的列上建立索引。
+
+     16：应尽量避免进行null值判断，Null值无法进行索引。对num类型的建议设置默认值为0。
+
+     Select id from table1 where num is null 效率远低于 select id from table1 where num =0;
+
+     17：应该避免在where语句中对字段进行函数操作。
+
+     若一定要求使用，可使用
+
+     Select id from table1 where name like ‘abc%’  //找name前三个字符为abc的数据。
+
+     Select id from table1 where date &gt;= ‘2011-3-7’ and date &lt; ‘2011-3-8’  // 找date等于2011-3-7的数据
+
+     替代
+
+     Select id from table1 where substring( name, 1, 3 ) = ‘abc’
+
+     Select id from table1 where datediff( day, date, ‘2011-3-7’ )
+
+     18：若使用复合索引字段作为条件时，那么必须使用该复合索引中的第一个字段作为where条件才能保证数据库正确使用该索引。若使用多个字段查询，则需要字段顺序与复合索引顺序一致才可以进行。
+
+     19：建立索引会消耗硬盘空间之外，还会加大insert和update效率，适度创建。一般一个表的索引最好不要超过6个。
+
+     20：可以的话，尽量使用数字型字段，避免使用字符型字段，这回降低查询性能和存储开销。数据库对字符串的比对是需要逐字符的比对，数字型的则只需要一次比对。
+
+     21：尽量使用varchar/nvarchar替代char/nchar，因为变长字段存储空间小，且，对于较小的字段进行查询搜索效率也会高一些。
+
+     22：尽量使用表变量( table类型对象 )来替代临时表，避免频繁的创建和删除临时表，可减少系统消耗。因为任何的临时表创建和销毁都会锁住系统表。
+
+     23：若不可避免的使用了临时表，在存储过程最后务必显式的删除临时表，先truncate table再drop table可以避免长时间的表锁定。
+
+     24：避免向数据库用户返回大数据量。
+
+     25：在所有的存储过程和触发器的开始处设置SET NOCOUNT ON，结束时设置SET NOCOUNT OFF。可以设置存储过程中的语句无需返回许多冗余数据，大量减少了返回数据量，可显著提高性能。
+
+     26：在确定结果没有重复性的前提下，Union all效率比union高，性能好。及时有重复，更建议在调用数据库的应用程序上进行重复性检查，因为此时数据已经较小。
+
+     27：若插入大的二进制值到image列，使用存储过程，不要使用内嵌insert。因为这样的话数据库将首先将二进制数据转换为字符串，保存时又将转换为二进制文件，存储过程则可以跳过这些动作。但是更建议的还是二进制数据保存在varbinary类型下，就不会出现上述问题。
+
+     28：尽量避免使用distinct和order by，他们增加了额外开销。这些限制可以在调用数据库的应用程序上执行。
+
+     29：一般在GROUP BY 个HAVING字句之前就能剔除多余的行，所以尽量不要用它们来做剔除行的工作。他们的执行顺序应该如下最优：select 的Where字句选择所有合适的行，Group By用来分组个统计行，Having字句用来剔除多余的分组。这样Group By 个Having的开销小，查询快.对于大的数据行进行分组和Having十分消耗资源。如果Group BY的目的不包括计算，只是分组，那么用Distinct更快。
+
+     30：一次更新多条记录比多次更新一条记录快，建议进行批处理。
+
+     31：当服务器的内存够多时，配制线程数量 = 最大连接数+5，这样能发挥最大的效率；否则使用 配制线程数量&lt;最大连接数启用SQL SERVER的线程池来解决,如果还是数量 = 最大连接数+5，严重的损害服务器的性能。
+
+     32：按照一定的次序来访问你的表。如果你先锁住表A，再锁住表B，那么在所有的存储过程中都要按照这个顺序来锁定它们。如果你（不经意的）某个存储过程中先锁定表B，再锁定表A，这可能就会导致一个死锁。如果锁定顺序没有被预先详细的设计好，死锁很难被发现。
+
+     33：
+</code></pre>
+
+<p>3：数据库基本原理描述
+1：索引块和数据块的区别</p>
+
+<pre><code>              我们都知道数据库创建索引可以提高效率，但是，索引是如何提高效率的呢？OK。我们假设我们现在一个角色主表内一个记录有8000字节的数据，我们对其角色ID，四个字节的一个字段创建索引，假设我们记录的用户数据为10W个。
+
+               我们知道SQL Server上最小空间分配单元是”Page页”，一个页在磁盘占用8K空间，那么我们一个页内只能记录一个角色主表记录，但是可以记录角色ID为2000个。
+
+               如果我们没有索引的话，我们搜索10W个页面才可以找到结果，但，若在检索字段上有索引的话，那么我们只需要搜索 10W / 2000 = 50个页面就可以找到了满足条件的索引块，然后我们根据索引块上的指针找到结果数据块，IO访问少出很多。
+
+     2：聚簇索引和非聚簇索引
+</code></pre>
+
+<p>若想更直接的发现两图的不同，那就看最底下一排。在聚簇索引下，数据本身是有序的，聚簇索引无需保存每个数据的指针。非聚簇索引则需要保存每个数据的指针，因为数据是无序的，我们只能靠有序的页节点保存指针来有序访问。</p>
+
+<pre><code>               SQLServer默认缺省情况下创建的索引是非聚簇索引。
+
+               假设我们没有索引，那么我们查找一个数据时将需要遍历全部的数据，若有索引（无论聚簇与否），我们直接查找它属于哪一段便可以迅速定位到该数据的数据物理位置。
+</code></pre>
+
+<p>聚簇索引的顺序就是数据的物理存储顺序，所以一个表之可能有一个聚簇索引。</p>
+
+<p>非聚簇索引虽然也是平衡树，但每个索引的节点却是一个指针，指向数据的指针节点，每个指针节点指向一个对应的数据块，在SQLServer中，一个表最多允许与249个非聚簇索引。</p>
+
+<p>因为需要维护索引有一定的代价，要维护额外的平衡数，所以当一个表内索引增多时，对表进行插入删除操作将消耗更大的代价。</p>
+
+<p>我们来计算一下，依旧假设我们一个角色主表内一个记录为8000字节，其中一个需要建立索引的字段长度为4字节。我们记录的用户数据为10W个。</p>
+
+<p>此时，我们若为4字节字段创建非聚簇索引主键，则需要节点为10W×2 = 20W节点，而这20W节点中将有10W个叶节点指向一个数据记录。此时，数据将占用10W×8000 字节/ 8096字节 = 10W个页面。索引将占用 20W × 4字节 / 8096字节 = 100页面。而同样一个表，我们为4字节字段创建聚簇索引主键，由于聚簇索引的叶节点就是数据节点，所以索引节点只有10W个，占50个页面。</p>
+
+<pre><code>     3：索引优化技术
+
+               有些时候，我们可能使用索引反而会更加麻烦。例如，我们检索全部的表内记录，若我们建立了索引，则会遍历访问全部索引，再根据索引结果查找全部的数据页面，这意味着我们先访问50个页面的索引块，然后根据找到的全部索引再访问全部的数据库10W页面，则消耗10W零50个页面的访问，这显然还不如不用索引。
+
+              但是SqlServer在上面的情况下，SQLServer的查询计划会自动的进行tableScan表扫描的方式检索数据，而不会使用任何索引。那么SQLServer为什么会做这种判断？这是因为SQLServer除了保存数据之外，还会保存一份数据统计信息。这些数据统计信息里包括了数据的密度信息和数据分布信息，这些信息帮助SQLServer制定查询计划以及查询是否使用索引，以及使用什么样的索引。
+
+               为SQLServer黄建索引的列，都会付出一定代价来维护这个索引，这时SQLServer会自动分析是否使用该列的索引，若返回结果集比较大的列（例如100W数据返回50W结果的列），SQLServer将可能不使用列上索引，而直接使用table Scan全表扫描的方法。
+
+               附PS： SET SHOWPLAN_TEXT ON // 可以显示执行计划，查看语句使用了哪些索引
+
+               索引可以大幅提高数据检索速度，但是like等模糊查询列完全无需设置索引，是没有意义的，只有 = &gt; IN 等操作符时才考虑使用索引。SQLServer在进行数据插入，更新，删除时都会更新相应的索引，这将大大增加更新时间。所以，当查询的性能比更新的性能更重要的时候才创建索引。
+
+     4：复合索引
+
+               对多个列创建索引，这种索引是复合索引，它是针对于单一索引（对一个列创建索引）相对而言的。
+
+               创建很容易 create index idx1 on table1( col1, col2, col3 )
+
+               我们若进行这样的查询，select * from table1 where col1 = A and col2 = B and col3 = C
+
+               则此时我们无需扫描表数据了，而可以直接从索引中取得数据，这种不需要访问数据的，只访问索引区的查询叫做覆盖式查询。
+
+              注意：复合索引的索引顺序是重要的，例如上面的复合索引，如果查询语句是
+
+               select * from table1 where col3 = A and col2 = B and col1 = C 这样的或者
+
+               select * from table1 where col3 = A 这样都将不会有效的使用复合索引。
+
+     5：include索引/覆盖索引
+
+               这个索引是SqlServer2005开始提供的新功能。复合索引上面已经提到了，是建立在多个列上的索引。但是”include索引”是允许添加非键列到非聚合索引的叶节点内的索引。它又被称为覆盖索引。
+
+               覆盖索引是指那些索引项里包含了查询所需要的全部信息的非聚簇索引。换言之，非聚簇索引的叶节点原本只保存了数据的指针，假设我们要根据ID去查找角色名称。那么ID是一个非聚簇索引，若这个非聚簇索引的叶节点内保存了 角色名称 的信息，那么我们就可以直接根据页节点获得我们需要的角色名称信息，免去了根据叶节点内保存的指针信息去查找数据的代价，这样我们可以更高效的查找得到我们需要的数据。它可以大幅的提高性能。
+
+               覆盖索引因为要求在叶节点保存了列数据，所以，Hash等不能存储值的索引是无效的，只能B-Tree这种设计的数据存储才可以使用。MySQL,SQLServer,Oracl等数据库均是采用的B-Tree.
+
+               复合索引创建方式如下
+</code></pre>
+
+<p>Create index idx_tbA_col1_col2 on tableA
+{
+         Col1,
+         Col2
+}</p>
+
+<p>创建覆盖索引的方式如下</p>
+
+<p>Create index idx_tbA_col1_col2_col3 on tableA
+{
+         Col1
+} include( col2, col3 )</p>
+
+<p>6：Union和Union All</p>
+
+<p>看个例子：
+Drop table test;
+Create table test
+{</p>
+
+<pre><code>     Id int primary key,
+     Name nvarchar( 50 ) not null,
+</code></pre>
+
+<p>};</p>
+
+<p>Insert int test values( 1, ‘Freedom’ );
+Insert int test values( 2, ‘knight’  );
+Insert int test values( 3, ‘duzhi’ );
+Insert int test values( 4, ‘Freedom’ );
+Insert int test values( 5, ‘knight’  );
+Insert int test values( 6, ‘duzhi’ );</p>
+
+<p>若语句是</p>
+
+<p>Select * from test where id &lt; 3
+Union
+Select * from test where id &gt; 1 and id &lt; 4</p>
+
+<p>结果将是</p>
+
+<p>1         Freedom
+2         Knight
+3         Duzhi</p>
+
+<p>若语句是</p>
+
+<p>Select * from test where id &lt; 3
+Union all
+Select * from test where id &gt; 1 and id &lt; 4</p>
+
+<p>结果将是</p>
+
+<p>1         Freedom
+2         Knight
+2  Knight
+3         Duzhi</p>
+
+<p>可见，两者区别是对结果重复性的检查上。</p>
+
+<p>4：误区
+1：primary key 就是聚簇索引。
+         A： primary key上必须要有索引，但是需要注意这个索引未必是聚簇索引。例如下面的语句
+         Create table A
+         {
+                   Id int indentity(1,1) primary key,
+                   Name varchar(64)
+         }
+         通常会在id列上创建聚簇索引，主键也经常是被作为聚簇索引，但是，这仅仅是“通常”并非必然和必须。我们同样可以指定主键为非聚簇索引。
+         Create table A
+         {
+                   Id int indentity(1,1) primary key nonclustered,
+                   Name varchar(64)
+         }
+         这样是完全可以的，只是多数情况下，主键字段创建索引有利于效率。</p>
+
+<p>2：看到一个表，习惯就加个自增的ID列。
+         A：有些表，例如Log表，初始配置表有ID列是无任何意义的。例如Log，通常我们关心Log时间，Log重要层级，Log内容信息，UseID等，对Log本身的ID是完全不需要关心的。我们完全可以砍掉。</p>
+
+<p>3：在where条件中对一个表中列进行运算比较时候，通常认为创建了某种类型的索引可以提高效率。
+         A：其实，当两表内进行运算比较时，即使创建复合索引都是无法提高性能的。例如 select count(*) from user where MaxHp – CurHp &gt; 10，这样的语句，无论复合索引还是在maxHP, curHP上分别建立索引均是无效的，无法让性能得到提升。</p>
+
+<p>4：编写where查询的存储过程中大量使用局部变量，而不使用参数变量。</p>
+
+<pre><code>     A：例如
+
+    ```sql
+     Create proc test
+     {
+               @id int
+    }
+    As
+            Select * from tableA where ColID &gt; @id
+    ```
+</code></pre>
+
+<p>效率就远比</p>
+
+<pre><code>    ```sql
+    Alter proc test
+    {
+            @id int
+    }
+    As
+            Declare @local int
+            Set @local = @id
+            Select * from where ColID &gt; @local
+    ```
+</code></pre>
+
+<p>高出许多，具体可参见查询计划中的估计查询行数。</p>
+
+<p>5：查询条件中，类型不匹配。
+         A：
+         例如查询条件为 where AAA = @BBB，而AAA实际是varchar(64)类型，@BBB是bigint类型，这样做可能不会一定出什么错误，但很可能直接导致index seek无法使用，只得进行idnex scan.</p>
+
+<p>5：建议
+    1：多查看SQLServer自带的查询计划，根据看到的查询开销和流程进行优化。
+    2：可以使用profiler跟踪查询，得到查询所需时间，再进行优化。
+    3：使用SQL Server performance monitor监视相应硬件负载。
+        1&gt;     Memory: Page Faults / sec计数器如果该值偶尔走高，表明当时有线程竞争内存。如果持续很高，则内存可能是瓶颈。
+        2&gt;     %Processor Time计数器 如果该参数值持续超过95%，表明瓶颈是CPU。可以考虑增加一个处理器或换一个更快的处理器。
+        3&gt;     % User Time表示耗费CPU的数据库操作，如排序，执行aggregate functions等。如果该值很高，可考虑增加索引，尽量使用简单的表联接，水平分割大表格等方法来降低该值。
+        4&gt;     Physical Disk: Curretn Disk Queue Length计数器该值应不超过磁盘数的1.5~2倍。要提高性能，可增加磁盘。
+        5&gt;     Cache Hit Ratio计数器该值越高越好。如果持续低于80%，应考虑增加内存.( 不过，需要注意，这个值在运行一段时候之后，将无法正确反映系统当前值。)</p>
+
+<p>6：其他
+1：PHP对数据库的性能测试数据
+硬件：Intel&reg; Core&trade;2 Quad CPU    Q6600  @ 2.40GHz         4G内存</p>
+
+<p>1)：哈希型数据库
+ 第一次写：500万条记录 309秒
+ 第二次写：500万条记录 321秒
+ 第三次写：500万条记录 309秒
+ 第四次写：500万条记录 314秒
+ 第五次写：1000万条记录 601秒
+ 第六次写：1000万条记录 635秒
+ 第七次写：2000万条记录 1289秒
+ 第八次写：4000万条记录 php发生错误无返回信息 但数据都有写到数据库</p>
+
+<p>500 万条记录里 循环1万次查找： 没找到记录时共约490~540毫秒 找到一条记录时共约740~770毫秒
+ 1000万条记录里 循环1万次查找： 没找到记录时共约520~550毫秒 找到一条记录时共约740~770毫秒
+ 1500万条记录里 循环1万次查找： 没找到记录时共约490~550毫秒 找到一条记录时共约630~700毫秒
+ 2000万条记录里 循环1万次查找： 没找到记录时共约490~550毫秒 找到一条记录时共约650~750毫秒
+ 3000万条记录里 循环1万次查找： 没找到记录时共约490~550毫秒 找到一条记录时共约650~750毫秒
+ 4000万条记录里 循环1万次查找： 没找到记录时共约470~550毫秒 找到一条记录时共约650~750毫秒
+ 6000万条记录里 循环1万次查找： 没找到记录时共约470~550毫秒 找到一条记录时共约500~600毫秒
+ 1亿条记录里     循环1万次查找： 没找到记录时共约480~550毫秒 找到一条记录时共约650~750毫秒</p>
+
+<p>官方的测试数据时100万条读0.6秒，写0.7秒。我的测试包含网络存取开销，另外我的服务器还运行其他程序速度比较不稳定。</p>
+
+<p>2)：Table数据库<br />
+表结构
+        name sex age memo1 memo2 memo3 memo4 memo5 memo6 memo7 memo8 memo9 memo10 memo11 memo12 memo13
+对age字段做索引</p>
+
+<pre><code>    第一次写：10万条记录 20秒
+    第二次写：40万条记录 140秒
+    第三次写：20万条记录 293秒
+    写数据，当记录数增大的时候，写入的数据变慢
+    读：1000次 没找到：大概120毫秒 找到一条：大概190毫秒 10万条记录
+    读：1000次 没找到：大概120毫秒 找到一条：大概190毫秒 50万条记录
+    读：1000次 没找到：大概120毫秒 找到一条：大概190毫秒 70万条记录
+    记录数的增加，对查找速度没影响。如果有返回信息则影响速度。返回的信息越多速度越慢。
+</code></pre>
+
+<p>2：SQLSERVER2005压力测试
+         一亿两千七百万条数据，占用硬盘40G左右，索引占用6G左右，一个聚簇索引。
+         此时1分钟约可插入10W条记录，简单查询select count(1) from Table 一次消耗1分多钟。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/">程序</a>
+
+  <a class="tag tag--primary tag--small" href="https://duzhi5368.github.io/tags/2011/">2011</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/03/%E8%BD%AC%E4%BB%99%E5%89%91%E8%AF%97%E8%AF%8D/" data-tooltip="[转]仙剑诗词">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/03/unrealscript%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-tooltip="UnrealScript学习心得">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/03/%E6%95%B0%E6%8D%AE%E5%BA%93sqlserver%E7%BB%8F%E9%AA%8C%E5%B0%8F%E8%AE%B0/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread"></div>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 <a href="https://duzhi5368.github.io">Frankie</a>. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/03/%E8%BD%AC%E4%BB%99%E5%89%91%E8%AF%97%E8%AF%8D/" data-tooltip="[转]仙剑诗词">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://duzhi5368.github.io/2011/03/unrealscript%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-tooltip="UnrealScript学习心得">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://duzhi5368.github.io/?=https://duzhi5368.github.io/2011/03/%E6%95%B0%E6%8D%AE%E5%BA%93sqlserver%E7%BB%8F%E9%AA%8C%E5%B0%8F%E8%AE%B0/">
+              <i class="fa fa-home"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://duzhi5368.github.io/?=https%3A%2F%2Fduzhi5368.github.io%2F2011%2F03%2F%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593sqlserver%25E7%25BB%258F%25E9%25AA%258C%25E5%25B0%258F%25E8%25AE%25B0%2F">
+          <i class="fa fa-home"></i><span>分享到 Homepage</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="//www.gravatar.com/avatar/04ac3b6c0ab5e7f256a7ed05871e69e5?s=110" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Frankie</h4>
+    
+      <div id="about-card-bio">Full-time solo indie game developer.</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        freelancer
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Ecuador
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/09/%E6%9C%88%E8%AE%B0202409/">
+                <h3 class="media-heading">月记202409</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Sep 9, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月简单整理完毕了像素角色编辑器，虽然能用，但很遗憾觉得并不足够强大，对其进行扩展的意义不高，所以放弃了。</p>
+
+<p>下半个月主要在游戏marketing方面，搭建各种宣传营销途径。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/08/%E6%9C%88%E8%AE%B0202408/">
+                <h3 class="media-heading">月记202408</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这个月前几天沉迷《铃兰之剑》，之后进一步完善了游戏策划案，特别是战棋主线关卡的剧情，基本完成了大部分的策划案。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E6%9C%88%E8%AE%B0202407/">
+                <h3 class="media-heading">月记202407</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半个月大致就是继续在调整方向，其根本原因还是去欧洲的计划给逼的。</p>
+
+<p>虽然在美洲躺平是可以的，但从被动收入的角度来说，有自己的事业并增加被动收入的本金也是应当去做的事情。而一旦要去欧洲，我依然要去做一些事情获取更多的收入，所以最近在调研这些事情。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E5%89%A7%E6%9C%AC%E4%BB%8E%E4%BA%9A%E9%A9%AC%E9%80%8A%E4%B8%9B%E6%9E%97%E6%97%85%E6%B8%B8%E5%BD%92%E6%9D%A5%E6%89%80%E6%84%9F/">
+                <h3 class="media-heading">[剧本]从亚马逊丛林旅游归来所感</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天是从亚马逊丛林旅游回来的第三天，疲劳感基本已经缓解，另外最近俩天到家有稳定网络了，和先前一些同事做了一些联系，这里也顺道记录一下感受。所以，今天这里要谈的主题主要是：
+1：先前十几天旅行的回顾和感受，以及一些心态的变化
+2：最近的一些感受：【只需致富一次】【朋友们终究是渐行渐远】【移民的困境】【海外教育的困境】【思维产生差异】【浅谈海外】【欧洲工作信息】
+3：关于独立游戏开发大方向和资产上限的一个巨大调整</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/07/%E8%AE%A1%E5%88%92%E6%80%BB%E7%BB%932024%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%B1%95%E6%9C%9B2024%E4%B8%8B%E5%8D%8A%E5%B9%B4/">
+                <h3 class="media-heading">[计划]总结2024上半年,展望2024下半年</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>总结2024上半年,展望2024下半年 [75分]</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E6%9C%88%E8%AE%B0202406/">
+                <h3 class="media-heading">月记202406</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近考察觉得，西班牙移民还是相当明智的；之后的计划可能要做一些调整了，要进一步远离国内的各种影响才行。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/06/%E5%89%A7%E6%9C%AC%E9%80%89%E6%8B%A9%E7%8E%AF%E5%A2%83%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/">
+                <h3 class="media-heading">[剧本]选择环境的重要性</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>最近我一直在关注欧洲哪些国家适合居住，毕竟明年底就打算登陆欧洲，如不出意外，下半辈子除了偶尔回美洲度度假，很可能就在欧洲那边定居了，选择一个合适的生活工作环境十分重要。毕竟我才刚40岁，还考虑继续在职场折腾，也完全有能力重新开始一段崭新的生活，未来的“环境”对于我而言就会是极其重要。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E6%9C%88%E8%AE%B0202405/">
+                <h3 class="media-heading">月记202405</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这半月语言学习进度很好，有了很好的学习习惯。但独立游戏没有开始进展，始终在思考和整理中。</p>
+
+<p>为避免多线作战，打算6月底之前就不进行独立游戏了，先把英日西三语学到一个阶段，然后该停止的停止，该减量的减量，然后全力投入独立游戏中。</p>
+
+<p>这半个月继续了解了一些被动收入和欧洲移民的信息，大致对被动收入这块的认知有一些进步，还是趁着年轻继续积累本金有意义，也就意味着可以去快乐的打工，而非一定要100%投入到被动收入和数字游牧，可以慢慢的向那个方向转变，现在全职被动收入，还是有些步子迈的大了一些。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/rya%E8%88%B9%E9%95%BF%E5%A4%8D%E4%B9%A0/">
+                <h3 class="media-heading">RYA船长复习</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>众所周知，我是一名爱画画的船长。所以接下来俺将一些自己RYA帆船航行课程整理一下，以便自己之后有机会进行进阶。为表达方便，会以两种方式呈现，部分以文字，部分以图示记录。大致内容为RYA(英国皇家游艇协会)体系的Competent Crew(合格水手) Day skipper(日间船长)，Coastal Skipper(近岸船长)，甚至包含了Yacht Master Ocean(远洋航海大师)的理论内容，以中英双语总结。那么废话不多说，开始总结记录。</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://duzhi5368.github.io/2024/05/%E5%89%A7%E6%9C%AC%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E5%92%8C%E4%B8%BB%E5%8A%A8%E5%B7%A5%E4%BD%9C/">
+                <h3 class="media-heading">[剧本]关于财务自由和主动工作</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  May 5, 2024
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>今天有人吐槽我“不是财务自由了吗，干嘛还在搞独立游戏？”。</p>
+
+<p>这是一个有意思的问题，值得我认真解释回答一下。“如果实现了财务自由，就不应该主动工作赚钱”，这其实是对财务自由的一个典型的误解。我们先看看维基百科中对财务自由的定义：“财务自由是指你工作并不为了钱，而钱完全够用的状态。只有资产产生的被动收入等于或超过所需的日常开支，就可以算作进入财务自由的状态。此时只要不发生什么重大灾难，就可以生活下去，你可以继续工作下去，或选择自己真正喜欢做的事，而不是为生活所迫做那些不乐意却又无可奈何要做的事。”</p>
+
+<p></p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         602 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://duzhi5368.github.io/images/cover.png');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" integrity="sha256-IFHWFEbU2/+wNycDECKgjIRSirRNIDp2acEB5fvdVRU=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js" integrity="sha256-+mpyNVJsNt4rVXCw0F+pAOiB3YxmHgrbJsx4ecPuUaI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.js" integrity="sha256-vMxgR/7FtLovVA+IPrR7+xTgIgARH7y9VZQnmmi0HDI=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.js" integrity="sha256-N0qFUh7/9vLvia87dDndewmsgsyYoNkdA212tPc+2NI=" crossorigin="anonymous"></script>
+
+
+<script src="https://duzhi5368.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/duzhi5368.github.io\/2011\/03\/%E6%95%B0%E6%8D%AE%E5%BA%93sqlserver%E7%BB%8F%E9%AA%8C%E5%B0%8F%E8%AE%B0\/';
+          
+            this.page.identifier = '\/2011\/03\/%E6%95%B0%E6%8D%AE%E5%BA%93sqlserver%E7%BB%8F%E9%AA%8C%E5%B0%8F%E8%AE%B0\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'duzhi5368-github-io';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
