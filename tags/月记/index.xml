@@ -6,10 +6,21 @@
     <description>Recent content in 月记 on IndieGameDev-Frankie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 30 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/%E6%9C%88%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>月记202412</title>
+      <link>https://duzhi5368.github.io/2024/12/%E6%9C%88%E8%AE%B0202412/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2024/12/%E6%9C%88%E8%AE%B0202412/</guid>
+      <description>&lt;p&gt;2024年12月日志记录。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>月记202411</title>
@@ -17,7 +28,26 @@
       <pubDate>Sat, 30 Nov 2024 00:00:00 +0000</pubDate>
       
       <guid>https://duzhi5368.github.io/2024/11/%E6%9C%88%E8%AE%B0202411/</guid>
-      <description>&lt;p&gt;2024年11月日志记录。&lt;/p&gt;
+      <description>&lt;h1 id=&#34;本月todo&#34;&gt;本月TODO&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;练手小Pixel图 &lt;strong&gt;[DONE]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;整理Project，规划大致开发周期 &lt;strong&gt;[DONE]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;恢复每日Duolingo的学习，恢复每日看书习惯 &lt;strong&gt;[DONE]&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;继续看独立游戏开发相关经验视频，开始录制YouTube视频&lt;/li&gt;
+&lt;li&gt;先做一个原型Prototype &lt;strong&gt;[DOING]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;总结：独立游戏相关进展不错；恢复了DUOLINGO的学习；也每天抽出时间看书了，但未养成习惯；YouTube还是没搞，等稳定来电吧，先以日志记录为主养成习惯也行。&lt;/p&gt;
+
+&lt;h1 id=&#34;本月其他&#34;&gt;本月其他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;关于Godot看法&lt;/li&gt;
+&lt;li&gt;AIA保险预算&lt;/li&gt;
+&lt;li&gt;末日准备和船舶生活&lt;/li&gt;
+&lt;li&gt;投机Doge&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
