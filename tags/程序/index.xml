@@ -6,10 +6,23 @@
     <description>Recent content in 程序 on IndieGameDev-Frankie</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 28 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 10 Aug 2025 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://duzhi5368.github.io/tags/%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Flutter学习记录</title>
+      <link>https://duzhi5368.github.io/2025/08/flutter%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://duzhi5368.github.io/2025/08/flutter%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</guid>
+      <description>&lt;p&gt;因为接下来去日本工作的话，更多需要的是Flutter和getX技术栈。这俩项我并不够熟悉，接下来大约不到三个月时间做一些技术和语言准备，所以做一些学习整理于此。&lt;/p&gt;
+
+&lt;p&gt;我更多依然使用自己习惯的书评方式记录，对自己技术提高最有效。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>vue学习记录</title>
